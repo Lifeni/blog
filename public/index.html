@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dark-mode="false">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,500&display=auto" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/index.css">
+        <link rel="stylesheet" href="/static/css/markdown.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <title>LIFENI</title>
+    </head>
+
+    <body>
+        <header>
+            <img src="favicon.ico" alt="网页图标" title="LIFENI" class="page-icon">
+            <nav>
+                <a href="/#/" title="https://lifeni.top/#/">主页</a>
+                <a href="/#/contact" title="https://lifeni.top/#/contact">联系我</a>
+            </nav>
+        </header>
+        <main>
+            <template id="home-template">
+                <div class="item">
+                    <a href="" class="title" title="文章标题"></a>
+                    <span class="description" title="文章描述"></span>
+                    <span class="date" title="最后编辑时间"></span>
+                </div>
+            </template>
+            <div class="content" id="home-content"></div>
+            <div class="content" id="article-content">
+                <article class="markdown-body"></article>
+            </div>
+            <div class="content" id="contact-content">
+                <form id="form-contact" method="POST" enctype="application/json">
+                    <span class="form-text">
+                        <a href="mailto:liangfengning@foxmail.com" title="liangfengning@foxmail.com">直接发邮件</a> 或者 发送表单：
+                    </span>
+                    <input type="email" name="email" id="contact-email" autocomplete="off" placeholder="你的邮箱：" required>
+                    <textarea name="message" id="contact-message" cols="30" rows="10" placeholder="想说的："
+                        required></textarea>
+                    <input type="submit" value="🚀 发给我" id="contact-submit" title="消息是私密的，不会被公开">
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div>
+                <button id="like-it" title="给网站好评">🔥 给好评</button>
+                <button id="dark-mode" title="切换黑暗模式">🌚 变暗</button>
+            </div>
+            <a href="http://www.beian.miit.gov.cn/" id="icp" target="_blank" title="[外部链接] http://www.beian.miit.gov.cn/">鲁ICP备19006085号</a>
+        </footer>
+        <script src="/static/javascript/index.js"></script>
+    </body>
+
+</html>
