@@ -21,8 +21,9 @@ function hashListener() {
         document.location.hash = '/';
     } else if (root === '#') {
         if (path === undefined || path === '') {
+            document.title = 'Lifeni';
             getList();
-            pageChanger('#home-content')
+            pageChanger('#home-content');
         } else if (path === 'article') {
             if (name === undefined || name === '') {
                 document.location.hash = '/';
@@ -30,8 +31,8 @@ function hashListener() {
                 getArticle(name);
                 pageChanger('#article-content');
             }
-
         } else if (path === 'contact') {
+            document.title = '联系我 - Lifeni';
             pageChanger('#contact-content');
         } else {
             document.location.hash = '/';
@@ -87,6 +88,7 @@ function getArticle(name) {
                 article.innerHTML = '<h1>找不到该文章。</h1>'
             } else {
                 article.innerHTML = data;
+                document.title = data.split('<h1>')[1].split('</h1>')[0] + ' - Lifeni';
             }
         }
     }
