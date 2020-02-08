@@ -80,16 +80,38 @@ function parse() {
 }
 
 
+let cache = {
+    update: null,
+    all: null
+}
+
 // 返回文章列表
-function list() {
-    articlesIndex.sort((a, b) => {
-        if (a['modified'] !== b['modified']) {
-            return a['modified'] < b['modified'];
-        } else {
-            return a['created'] < b['created'];
-        }
-    })
-    return articlesIndex;
+function update() {
+    if (cache.update === null) {
+        articlesIndex.sort((a, b) => {
+            if (a['modified'] !== b['modified']) {
+                return a['modified'] < b['modified'];
+            } else {
+                return a['created'] < b['created'];
+            }
+        })
+        cache.update = articlesIndex[0];
+    }
+    return cache.update;
+}
+
+function all() {
+    if (cache.all === null) {
+        articlesIndex.sort((a, b) => {
+            if (a['created'] !== b['created']) {
+                return a['created'] < b['created'];
+            } else {
+                return a['modified'] < b['modified'];
+            }
+        })
+        cache.all = articlesIndex;
+    }
+    return cache.all;
 }
 
 // 返回指定文章内容
@@ -105,6 +127,7 @@ function content(name) {
 
 module.exports = {
     parse,
-    list,
+    update,
+    all,
     content,
 }

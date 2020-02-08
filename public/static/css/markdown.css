@@ -1,31 +1,15 @@
-html {
-    --font: black;
-    --font-weak: rgba(0, 0, 0, .5);
-    --background: white;
-    --background-weak: rgba(250, 250, 250, 1);
-    --border: rgba(224, 224, 224, 1);
-    --border-hover: black;
-    --shadow: rgba(224, 224, 224, 1);
-}
-
-html[dark-mode='true'] {
-    --font: rgba(250, 250, 250, 1);
-    --font-weak: rgba(255, 255, 255, .5);
-    --background: black;
-    --background-weak: rgba(10, 10, 10, 1);
-    --border: rgba(33, 33, 33, 1);
-    --border-hover: white;
-    --shadow: rgba(33, 33, 33, 1);
-}
-
-
 article {
-    padding: 0 24px;
+    width: 100%;
+    margin: 16px 0;
+    padding: 64px;
     color: var(--font);
     font-size: 16px;
     font-family: '思源黑体 CN', 'Noto Sans SC', sans-serif;
     font-weight: 300;
     line-height: 1.8em;
+    border-radius: 8px;
+    box-shadow: 0 0 16px var(--shadow);
+    background-color: var(--background);
 }
 
 article h1,
@@ -48,7 +32,7 @@ article h6::before {
 }
 
 article h1 {
-    margin-bottom: 24px;
+    margin: 0 0 24px 0;
     font-size: 2em;
     line-height: 1.8em;
 }
@@ -124,7 +108,7 @@ article pre code {
 article kbd {
     margin: 0 2px;
     padding: 2px 6px;
-    border: solid 1px rgba(224, 224, 224, 1);
+    border: solid 1px var(--border);
     border-radius: 2px;
     font-size: 0.9em;
     font-family: 'Consolas', 'Courier New', Courier, monospace;
@@ -132,6 +116,7 @@ article kbd {
 }
 
 article a {
+    color: var(--link);
     text-decoration: none;
     border-bottom: solid 1px transparent;
 }
@@ -155,10 +140,10 @@ article em {
 
 article blockquote {
     width: 100%;
-    margin: 12px 0;
+    margin: 12px 0 12px 4px;
     padding: 0 16px;
-    border-left: solid 4px rgba(224, 224, 224, 1);
-    color: rgba(97, 97, 97, 1);
+    border-left: solid 4px var(--background-weak);
+    color: var(--font-weak);
 }
 
 article hr {
@@ -166,27 +151,41 @@ article hr {
     margin: 24px 0;
     padding: 0;
     border: none;
-    background-color: rgba(224, 224, 224, 1);
+    background-color: var(--border);
 }
 
 article table {
-    margin: 0;
+    margin: 1em 0;
     padding: 0;
     overflow: auto;
     border-collapse: collapse;
-    border: solid 2px rgba(224, 224, 224, 1);
+    border: solid 1px var(--border);
 }
 
 article th,
 article td {
     padding: 8px 16px;
-    border: solid 2px rgba(224, 224, 224, 1);
+    border: solid 1px var(--border);
     white-space: nowrap;
 }
 
 article tr:nth-child(2n) {
     background-color: var(--background-weak);
     transition: background-color .2s;
+}
+
+@media screen and (max-width:600px) {
+    article {
+        margin: 0;
+        padding: 48px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    article {
+        margin: 0;
+        padding: 32px;
+    }
 }
 
 /*

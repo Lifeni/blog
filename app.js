@@ -24,7 +24,11 @@ app.all('*', (req, res, next) => {
 })
 
 app.get('/api/article', (req, res) => {
-    res.json(article.list());
+    let a = {
+        update: article.update(),
+        all: article.all()
+    }
+    res.json(a);
     res.end();
 });
 

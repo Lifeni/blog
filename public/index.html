@@ -12,44 +12,76 @@
     </head>
 
     <body>
-        <header>
-            <img src="favicon.ico" alt="网页图标" title="Lifeni" class="page-icon">
-            <nav>
-                <a href="/#/" title="https://lifeni.top/#/">主页</a>
-                <a href="/#/contact" title="https://lifeni.top/#/contact">联系我</a>
-            </nav>
-        </header>
-        <main>
+        <div class="container">
             <template id="home-template">
-                <div class="item">
-                    <a href="" class="title" title="文章标题"></a>
+                <a class="item">
+                    <span class="date" title="文章编辑时间"></span>
+                    <span class="title" title="文章标题"></span>
                     <span class="description" title="文章描述"></span>
-                    <span class="date" title="最后编辑时间"></span>
-                </div>
+                </a>
             </template>
-            <div class="content" id="home-content"></div>
-            <div class="content" id="article-content">
-                <article class="markdown-body"></article>
+            <div class="content" id="home">
+                <div class="sidebar">
+                    <div class="space">
+                        <button id="switch-close"></button>
+                        <span>更多</span>
+                    </div>
+                    <div class="sidebar-title"><a href="#/" title="返回主页">Lifeni</a></div>
+                    <div class="side-box" id="box-me">
+                        <div class="avatar">
+                            <img src="https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/avatar.webp" alt="头像">
+                        </div>
+                        <div class="text" title="来自动画《日常》">我们所经历的每个平凡的日常，也许就是连续发生的奇迹。</div>
+                    </div>
+                    <div class="side-box" id="box-search">
+                        <input type="search" id="search" placeholder="搜索" title="简单的文章搜索">
+                    </div>
+                    <div class="side-box" id="box-tag">
+                        <div class="box-title">文章标签</div>
+                        <div class="tag-list" id="tag-list"></div>
+                    </div>
+                    <div class="side-box" id="box-find">
+                        <div class="box-title">找到我</div>
+                        <div class="link-list">
+                            <a href="https://github.com/Lifeni" id="github" title="https://github.com/Lifeni">Github @Lifeni</a>
+                        </div>
+                    </div>
+                    <div class="side-box" id="box-contact">
+                        <div class="box-title">联系我</div>
+                        <form id="contact" method="POST" enctype="application/json">
+                            <input type="email" name="email" id="contact-email" autocomplete="off" placeholder="你的邮箱："
+                                required>
+                            <textarea name="message" id="contact-message" cols="30" rows="10" placeholder="想说的："
+                                required></textarea>
+                            <input type="submit" value="发给我" id="contact-submit" title="消息是私密的，不会被公开">
+                        </form>
+                    </div>
+                    <div class="links">
+                        <a href="http://www.beian.miit.gov.cn/" id="icp" target="_blank" tabindex="-1"
+                            title="http://www.beian.miit.gov.cn/">鲁ICP备19006085号</a>
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="space">
+                        <span>主页</span>
+                        <button id="switch-open"></button>
+                    </div>
+                    <div class="article-list hide" id="list-result">
+                        <div class="list-title">文章标签：</div>
+                    </div>
+                    <div class="article-list" id="list-update">
+                        <div class="list-title">最近更新</div>
+                    </div>
+                    <div class="article-list" id="list-all">
+                        <div class="list-title">全部</div>
+                    </div>
+                </div>
             </div>
-            <div class="content" id="contact-content">
-                <form id="form-contact" method="POST" enctype="application/json">
-                    <span class="form-text">
-                        <a href="mailto:liangfengning@foxmail.com" title="liangfengning@foxmail.com">直接发邮件</a> 或者 发送表单：
-                    </span>
-                    <input type="email" name="email" id="contact-email" autocomplete="off" placeholder="你的邮箱：" required>
-                    <textarea name="message" id="contact-message" cols="30" rows="10" placeholder="想说的："
-                        required></textarea>
-                    <input type="submit" value="🚀 发给我" id="contact-submit" title="消息是私密的，不会被公开">
-                </form>
+            <div class="content" id="article">
+                <a href="#/" class="back-to-home">返回主页</a>
+                <article></article>
             </div>
-        </main>
-        <footer>
-            <div>
-                <button id="like-it" title="给网站好评">🔥 给好评</button>
-                <button id="dark-mode" title="切换黑暗模式">🌚 变暗</button>
-            </div>
-            <a href="http://www.beian.miit.gov.cn/" id="icp" target="_blank" title="[外部链接] http://www.beian.miit.gov.cn/">鲁ICP备19006085号</a>
-        </footer>
+        </div>
         <script src="/static/javascript/index.js"></script>
     </body>
 
