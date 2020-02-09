@@ -4,6 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Lifeni">
+        <meta name="description" content="记录干杯。">
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,500&display=auto" rel="stylesheet">
         <link rel="stylesheet" href="/static/css/index.css">
         <link rel="stylesheet" href="/static/css/markdown.css">
@@ -23,18 +25,18 @@
             <div class="content" id="home">
                 <div class="sidebar">
                     <div class="space">
-                        <button id="switch-close"></button>
+                        <button id="switch-close" aria-label="关闭侧栏"></button>
                         <span>更多</span>
                     </div>
-                    <div class="sidebar-title"><a href="#/" title="主页" tabindex="1">Lifeni</a></div>
+                    <div class="sidebar-title"><a href="#/" title="主页" tabindex="1" aria-label="主页链接">Lifeni</a></div>
                     <div class="side-box" id="box-me">
                         <div class="avatar">
                             <img src="https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/avatar.webp" alt="头像">
                         </div>
-                        <div class="text" title="来自动画《日常》">我们所经历的每个平凡的日常，也许就是连续发生的奇迹。</div>
+                        <div class="text" title="来自动画《日常》" aria-label="来自动画《日常》">我们所经历的每个平凡的日常，也许就是连续发生的奇迹。</div>
                     </div>
                     <div class="side-box" id="box-search">
-                        <input type="search" id="search" placeholder="搜索" autocomplete="off" title="简单的文章搜索" tabindex="4">
+                        <input type="search" id="search" placeholder="搜索" autocomplete="off" title="简单的文章搜索" tabindex="4" aria-label="搜索文章">
                     </div>
                     <div class="side-box" id="box-tag">
                         <div class="box-title">文章标签</div>
@@ -43,35 +45,35 @@
                     <div class="side-box" id="box-find">
                         <div class="box-title">无法形容的链接</div>
                         <div class="link-list">
-                            <a href="https://github.com/Lifeni" id="github" title="https://github.com/Lifeni">Github
+                            <a href="https://github.com/Lifeni" id="github" title="https://github.com/Lifeni" aria-label="我的 Github 主页">Github
                                 @Lifeni</a>
                             <a href="mailto:liangfengning@foxmail.com" id="email"
-                                title="liangfengning@foxmail.com">邮箱</a>
+                                title="liangfengning@foxmail.com" aria-label="我的邮箱地址">邮箱</a>
                             <a href="https://github.com/Lifeni/website/blob/master/README.md" id="readme"
-                                title="https://github.com/Lifeni/website/blob/master/README.md">README</a>
+                                title="https://github.com/Lifeni/website/blob/master/README.md" aria-label="关于这个网站">README</a>
                         </div>
                     </div>
                     <div class="side-box" id="box-contact">
                         <div class="box-title">联系我</div>
                         <form id="contact" method="POST" enctype="application/json">
                             <input type="email" name="email" id="contact-email" autocomplete="off" placeholder="你的邮箱："
-                                required>
+                                required aria-label="输入你的邮箱" aria-required="true">
                             <textarea name="message" id="contact-message" cols="30" rows="10" placeholder="想说的："
-                                required></textarea>
+                                required aria-label="输入你想说的话" aria-required="true"></textarea>
                             <input type="submit" value="发给我" id="contact-submit" title="消息是私密的，不会被公开">
                         </form>
                     </div>
                     <div class="links">
                         <a href="http://www.beian.miit.gov.cn/" id="icp" target="_blank" tabindex="-1"
-                            title="http://www.beian.miit.gov.cn/">鲁ICP备19006085号</a>
+                            title="http://www.beian.miit.gov.cn/" aria-label="ICP 备案号">鲁ICP备19006085号</a>
                     </div>
                 </div>
                 <div class="main">
                     <div class="space">
                         <span>主页</span>
-                        <button id="switch-open"></button>
+                        <button id="switch-open" aria-label="打开侧栏"></button>
                     </div>
-                    <div class="article-list hide" id="list-result">
+                    <div class="article-list hide" id="list-result" aria-relevant="all">
                         <div class="list-title">文章标签：</div>
                     </div>
                     <div class="article-list" id="list-update">
@@ -82,10 +84,10 @@
                     </div>
                 </div>
             </div>
-            <div class="content" id="article">
+            <div class="content" id="article" aria-live="assertive" aria-atomic="true">
                 <div class="article-bar">
                     <a href="#/" class="back-to-home">返回主页</a>
-                    <span class="article-info" id="info"></span>
+                    <span class="article-info" id="info" aria-label="文章信息"></span>
                 </div>
                 <article></article>
             </div>

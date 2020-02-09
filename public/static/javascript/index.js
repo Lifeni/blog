@@ -167,7 +167,7 @@ function getResult(name, method) {
                         list.appendChild(clone);
                     }
                 }
-            });
+            })
         }
     })
 }
@@ -208,6 +208,7 @@ function getList() {
                     node.title = e.keyword;
                     node.href = '#/tag/' + e.keyword;
                     node.setAttribute('tabindex', '5');
+                    node.setAttribute('aria-label', '文章标签');
                     let list = document.querySelector('#tag-list');
                     list.appendChild(node);
                 } else {
