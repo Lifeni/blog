@@ -1,6 +1,7 @@
 article {
+    position: relative;
     width: 100%;
-    margin: 16px 0;
+    margin: 16px 0 0 0;
     padding: 64px;
     color: var(--font);
     font-size: 16px;
@@ -10,6 +11,7 @@ article {
     border-radius: 8px;
     box-shadow: 0 0 16px var(--shadow);
     background-color: var(--background);
+    overflow-x: hide;
 }
 
 article h1,
@@ -34,7 +36,7 @@ article h6::before {
 article h1 {
     margin: 0 0 24px 0;
     font-size: 2em;
-    line-height: 1.8em;
+    line-height: 1.5em;
 }
 
 article h2 {
@@ -155,11 +157,12 @@ article hr {
 }
 
 article table {
+    width: 100%;
     margin: 1em 0;
     padding: 0;
-    overflow: auto;
+    display: block;
+    overflow-x: auto;
     border-collapse: collapse;
-    border: solid 1px var(--border);
 }
 
 article th,
@@ -176,15 +179,13 @@ article tr:nth-child(2n) {
 
 @media screen and (max-width:600px) {
     article {
-        margin: 0;
-        padding: 48px;
+        padding: 36px;
     }
 }
 
 @media screen and (max-width:400px) {
     article {
-        margin: 0;
-        padding: 32px;
+        padding: 24px;
     }
 }
 

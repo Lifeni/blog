@@ -42,7 +42,15 @@ function hashListener() {
             if (name === undefined || name === '') {
                 document.location.hash = '/';
             } else {
-                getArticle(name);
+                if (flag === 0) {
+                    // 当直接打开页面时
+                    getList();
+                    setTimeout(() => {
+                        getArticle(name);
+                    }, 100);
+                } else {
+                    getArticle(name);
+                }
                 pageChanger('#article');
             }
         } else if (path === 'tag') {
@@ -179,6 +187,7 @@ function getList() {
             let clone = document.importNode(template.content, true);
             clone.querySelector('.item').id = data.update.name;
             clone.querySelector('.item').href = '/#/article/' + data.update.name;
+            clone.querySelector('.item').setAttribute('tabindex', '2');
             clone.querySelector('.title').innerText = data.update.title;
             clone.querySelector('.description').innerText = data.update.description;
             if (data.update.created === data.update.modified) {
@@ -198,6 +207,7 @@ function getList() {
                     node.innerText = e.keyword;
                     node.title = e.keyword;
                     node.href = '#/tag/' + e.keyword;
+                    node.setAttribute('tabindex', '5');
                     let list = document.querySelector('#tag-list');
                     list.appendChild(node);
                 } else {
@@ -207,6 +217,7 @@ function getList() {
                 let clone = document.importNode(template.content, true);
                 clone.querySelector('.item').id = e.name;
                 clone.querySelector('.item').href = '/#/article/' + e.name;
+                clone.querySelector('.item').setAttribute('tabindex', '3');
                 clone.querySelector('.title').innerText = e.title;
                 clone.querySelector('.description').innerText = e.description;
                 clone.querySelector('.date').innerText = '创建于 ' + e.created;
@@ -221,14 +232,27 @@ function getList() {
 
 // 获取指定文章内容
 function getArticle(name) {
+    document.body.scrollTop = 0;
     let article = document.querySelector('#article').querySelector('article');
     article.innerHTML = '';
+    // 加载慢时给提示
     setTimeout(() => {
         if (article.innerHTML === '') {
             article.innerHTML = '<h1>数据加载中。</h1>';
         }
     }, 100);
-    document.body.scrollTop = 0;
+    // 添加文章信息
+    let info = document.querySelector('#info');
+    info.innerText = '';
+    cache.forEach((e) => {
+        if (e.name === name) {
+            info.innerText += '最后编辑日期：' + e.modified;
+            info.innerText += ' | ';
+            info.innerText += ' 创建日期：' + e.created;
+            info.innerText += ' | ';
+            info.innerText += ' 共享协议：' + e.license;
+        }
+    })
     let requset = new XMLHttpRequest();
     requset.onreadystatechange = () => {
         if (requset.readyState === 4 && requset.status === 200) {
