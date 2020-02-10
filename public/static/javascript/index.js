@@ -25,6 +25,7 @@ function hashListener() {
     let root = hash[0];
     let path = hash[1];
     let name = hash[2];
+    let index = hash[3];
 
     if (root === undefined || root === '') {
         document.location.hash = '/';
@@ -48,10 +49,15 @@ function hashListener() {
                     setTimeout(() => {
                         getArticle(name);
                     }, 100);
+                    pageChanger('#article');
                 } else {
-                    getArticle(name);
+                    if (index === undefined || index === '') {
+                        // 当不存在目录锚点时
+                        // 即点击锚点时不会刷新页面
+                        getArticle(name);
+                        pageChanger('#article');
+                    }
                 }
-                pageChanger('#article');
             }
         } else if (path === 'tag') {
             // 标签页面
@@ -236,6 +242,8 @@ function getArticle(name) {
     document.body.scrollTop = 0;
     let article = document.querySelector('#article').querySelector('article');
     article.innerHTML = '';
+    let index = document.querySelector('#index');
+    index.classList.remove('expand');
     // 加载慢时给提示
     setTimeout(() => {
         if (article.innerHTML === '') {
@@ -263,6 +271,36 @@ function getArticle(name) {
             } else {
                 article.innerHTML = data;
                 document.title = data.split('<h1>')[1].split('</h1>')[0] + ' - Lifeni';
+                let heading = article.querySelectorAll('*');
+                let list = document.querySelector('#index-list');
+                list.innerHTML = '';
+                let h2;
+                heading.forEach((e) => {
+                    // 提取 h2 和 h3，制作目录
+                    if (e.nodeName === 'H2') {
+                        let link = '/article/' + name + '/' + e.innerText;
+                        e.id = link;
+                        h2 = e.innerText;
+                        let li = document.createElement('li');
+                        let a = document.createElement('a');
+                        a.href = '#' + link;
+                        a.innerText = e.innerText;
+                        li.appendChild(a);
+                        li.className = 'index-item-1';
+                        list.appendChild(li);
+                    } else if (e.nodeName === 'H3') {
+                        let link = '/article/' + name + '/' + h2 + '/' + e.innerText;
+                        e.id = link;
+                        let li = document.createElement('li');
+                        let a = document.createElement('a');
+                        a.href = '#' + link;
+                        a.innerText = e.innerText;
+                        li.appendChild(a);
+                        li.className = 'index-item-2';
+                        list.appendChild(li);
+                    }
+
+                })
             }
         }
     }
@@ -306,4 +344,24 @@ ed.addEventListener('click', () => {
 let search = document.querySelector('#search');
 search.addEventListener('input', (e) => {
     document.location.hash = '/search/' + e.target.value;
+})
+
+// 回到顶部
+let toTop = document.querySelector('#top');
+toTop.addEventListener('click', () => {
+    scrollTo(0, 0);
+})
+
+// 展开目录
+let openIndex = document.querySelector('#open-index');
+openIndex.addEventListener('click', () => {
+    let index = document.querySelector('#index');
+    index.classList.add('expand');
+})
+
+// 关闭目录
+let closeIndex = document.querySelector('#close-index');
+closeIndex.addEventListener('click', () => {
+    let index = document.querySelector('#index');
+    index.classList.remove('expand');
 })

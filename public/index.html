@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn" dark-mode="false">
+<html lang="zh-cn">
 
     <head>
         <meta charset="UTF-8">
@@ -25,7 +25,7 @@
             <div class="content" id="home">
                 <div class="sidebar">
                     <div class="space">
-                        <button id="switch-close" aria-label="关闭侧栏"></button>
+                        <button id="switch-close" title="关闭侧栏" aria-label="关闭侧栏"></button>
                         <span>更多</span>
                     </div>
                     <div class="sidebar-title"><a href="#/" title="主页" tabindex="1" aria-label="主页链接">Lifeni</a></div>
@@ -36,7 +36,8 @@
                         <div class="text" title="来自动画《日常》" aria-label="来自动画《日常》">我们所经历的每个平凡的日常，也许就是连续发生的奇迹。</div>
                     </div>
                     <div class="side-box" id="box-search">
-                        <input type="search" id="search" placeholder="搜索" autocomplete="off" title="简单的文章搜索" tabindex="4" aria-label="搜索文章">
+                        <input type="search" id="search" placeholder="搜索" autocomplete="off" title="简单的文章搜索"
+                            tabindex="4" aria-label="搜索文章">
                     </div>
                     <div class="side-box" id="box-tag">
                         <div class="box-title">文章标签</div>
@@ -45,12 +46,14 @@
                     <div class="side-box" id="box-find">
                         <div class="box-title">无法形容的链接</div>
                         <div class="link-list">
-                            <a href="https://github.com/Lifeni" id="github" title="https://github.com/Lifeni" aria-label="我的 Github 主页">Github
+                            <a href="https://github.com/Lifeni" id="github" title="https://github.com/Lifeni"
+                                aria-label="我的 Github 主页">Github
                                 @Lifeni</a>
-                            <a href="mailto:liangfengning@foxmail.com" id="email"
-                                title="liangfengning@foxmail.com" aria-label="我的邮箱地址">邮箱</a>
+                            <a href="mailto:liangfengning@foxmail.com" id="email" title="liangfengning@foxmail.com"
+                                aria-label="我的邮箱地址">邮箱</a>
                             <a href="https://github.com/Lifeni/website/blob/master/README.md" id="readme"
-                                title="https://github.com/Lifeni/website/blob/master/README.md" aria-label="关于这个网站">README</a>
+                                title="https://github.com/Lifeni/website/blob/master/README.md"
+                                aria-label="关于这个网站">README</a>
                         </div>
                     </div>
                     <div class="side-box" id="box-contact">
@@ -71,7 +74,7 @@
                 <div class="main">
                     <div class="space">
                         <span>主页</span>
-                        <button id="switch-open" aria-label="打开侧栏"></button>
+                        <button id="switch-open" title="打开侧栏" aria-label="打开侧栏"></button>
                     </div>
                     <div class="article-list hide" id="list-result" aria-relevant="all">
                         <div class="list-title">文章标签：</div>
@@ -85,11 +88,22 @@
                 </div>
             </div>
             <div class="content" id="article" aria-live="assertive" aria-atomic="true">
-                <div class="article-bar">
-                    <a href="#/" class="back-to-home">返回主页</a>
-                    <span class="article-info" id="info" aria-label="文章信息"></span>
-                </div>
+                <span class="article-info" id="info" aria-label="文章信息"></span>
                 <article></article>
+                <div class="article-bar-left">
+                    <button class="open-index" id="open-index" title="打开目录" aria-label="打开目录"></button>
+                </div>
+                <div class="article-bar-right">
+                    <button class="back-to-top" id="top" title="回到顶部" aria-label="回到顶部"></button>
+                    <a href="#/" class="back-to-home" title="返回主页" aria-label="返回主页"></a>
+                </div>
+                <div class="article-index" id="index">
+                    <div class="index-title">
+                        <span>目录</span>
+                        <button id="close-index" title="关闭目录" aria-label="关闭目录"></button>
+                    </div>
+                    <ul class="index-list" id="index-list" title="目录" aria-label="目录"></ul>
+                </div>
             </div>
         </div>
         <script src="/static/javascript/index.js"></script>
