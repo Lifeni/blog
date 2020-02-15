@@ -278,9 +278,9 @@ function getArticle(name) {
                 heading.forEach((e) => {
                     // 提取 h2 和 h3，制作目录
                     if (e.nodeName === 'H2') {
-                        let link = '/article/' + name + '/' + e.innerText;
+                        let link = '/article/' + name + '/' + e.innerText.replace(/\s/g, '+');
                         e.id = link;
-                        h2 = e.innerText;
+                        h2 = e.innerText.replace(/\s/g, '+');
                         let li = document.createElement('li');
                         let a = document.createElement('a');
                         a.href = '#' + link;
@@ -289,7 +289,7 @@ function getArticle(name) {
                         li.className = 'index-item-1';
                         list.appendChild(li);
                     } else if (e.nodeName === 'H3') {
-                        let link = '/article/' + name + '/' + h2 + '/' + e.innerText;
+                        let link = '/article/' + name + '/' + h2 + '/' + e.innerText.replace(/\s/g, '+');
                         e.id = link;
                         let li = document.createElement('li');
                         let a = document.createElement('a');
