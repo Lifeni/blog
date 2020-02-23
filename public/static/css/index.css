@@ -20,9 +20,11 @@ html {
     --background: white;
     --background-weak: rgba(245, 245, 245, 1);
     --link: rgba(48, 79, 254, 1);
-    --border: rgba(220, 220, 220, 1);
+    --border: rgba(235, 235, 235, 1);
     --shadow: rgba(235, 235, 235, 1);
     --shadow-bold: rgba(220, 220, 220, 1);
+    --hover: rgba(235, 235, 235, 1);
+    overflow-y: scroll;
 }
 
 /*
@@ -56,6 +58,7 @@ button {
     color: var(--font);
     font-family: inherit;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .container {
@@ -106,8 +109,12 @@ button {
     font-weight: 500;
 }
 
-.sidebar-title::before {
+.sidebar-title a::before {
     content: '@ ';
+}
+
+.sidebar-title a.back-code::before {
+    content: '< ';
 }
 
 .side-box {
@@ -174,6 +181,12 @@ button {
     padding: 8px 12px;
     font-weight: 500;
     cursor: pointer;
+    transition: background-color .2s;
+}
+
+.side-box input[type=submit]:hover,
+.side-box input[type=submit]:focus {
+    background-color: var(--hover);
 }
 
 .side-box input:disabled {
@@ -186,6 +199,14 @@ button {
     margin: 8px 0;
     resize: vertical;
 }
+.side-box form span {
+    width: 100%;
+    padding: 0 4px 8px 4px;
+    color: var(--font-weak);
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+}
 
 .side-box .box-title {
     padding: 16px 24px 0 24px;
@@ -197,14 +218,14 @@ button {
     content: '# '
 }
 
-.tag-list,
+.keyword-list,
 .link-list {
     padding: 12px;
     display: flex;
     flex-wrap: wrap;
 }
 
-.tag-list a,
+.keyword-list a,
 .link-list a {
     margin: 4px;
     padding: 4px 8px;
@@ -212,6 +233,14 @@ button {
     font-size: 16px;
     font-weight: 300;
     background-color: var(--background-weak);
+    transition: background-color .2s;
+}
+
+.keyword-list a:hover,
+.keyword-list a:focus,
+.link-list a:hover,
+.link-list a:focus {
+    background-color: var(--hover);
 }
 
 .links {
@@ -326,7 +355,7 @@ button {
     overflow-x: auto;
     flex-wrap: nowrap;
     text-align: center;
-    animation: opacity .2s ease;
+    animation: opacity .2s;
 }
 
 .article-bar-left,
@@ -371,7 +400,7 @@ button {
     background-size: 20px;
     background-position: center;
     background-color: var(--background);
-    animation: opacity .2s ease;
+    animation: opacity .2s;
 }
 
 .article-index {

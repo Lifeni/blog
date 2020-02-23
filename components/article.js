@@ -8,11 +8,24 @@ const markdown = require('markdown-it')({
         if (lang && highlight.getLanguage(lang)) {
             try {
                 return highlight.highlight(lang, str, true).value;
-            } catch (__) {}
+            } catch (__) { }
         }
         return '';
     }
 });
+
+const moment = require('moment');
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+
+const adapter = new FileSync('./database/articles.json');
+const db = low(adapter);
+
+db.defaults({
+    date: 'NULL',
+    article: [],
+    count: 0
+}).write();
 
 // 储存数据的变量
 let articles = new Array();
@@ -21,9 +34,10 @@ let articlesIndex = new Array();
 // 对 Markdown 文件进行解析
 function parse() {
     // 初始化
-    articles = [];
-    articlesIndex = [];
+    articles = new Array();
+    articlesIndex = new Array();
     const path = './markdown/';
+    db.set('date', '').set('article', []).set('count', 0).write();
     // 读取 md 文件
     fs.readdir(path, (err, files) => {
         if (err) {
@@ -50,6 +64,10 @@ function parse() {
                         flag++;
                         if (flag === 2) {
                             articlesIndex.push(articleIndex);
+                            // 将数据写入文件
+                            db.set('date', moment().format()).write();
+                            db.get('article').push(articleIndex).write();
+                            db.update('count', n => n + 1).write();
                         }
                     } else if (flag < 2) {
                         // 解析元数据
@@ -63,12 +81,6 @@ function parse() {
                         content += lines[i] + "\n";
                         article['content'] = markdown.render(content);
                         articles.push(article);
-                        // 将数据写入文件
-                        fs.writeFileSync('./database/db.json', JSON.stringify(articlesIndex), (err) => {
-                            if (err) {
-                                console.error(err);
-                            }
-                        })
                     } else {
                         // 读取文章内容
                         content += lines[i] + "\n";

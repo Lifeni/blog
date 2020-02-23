@@ -2,7 +2,7 @@
 
 这是一个关于“记录”的个人网站。
 
-大概在 [https://lifeni.top/#/](https://lifeni.top/#/)。
+大概在 [https://lifeni.life](https://lifeni.life)。
 
 ## 过去
 
@@ -18,16 +18,21 @@
 
 项目主要文件及目录说明如下：
 
-| 文件名或目录名        | 说明                                          |
-| --------------------- | --------------------------------------------- |
-| components/           | node 的组件，用于处理不同任务                 |
-| components/article.js | 解析 markdown 文件夹中的 md 文件，发送给前端  |
-| components/contact.js | 接收前端表单信息，并存入 messages 文件夹      |
-| database/             | [需自建] 解析后的文章元数据会以 json 格式存入 |
-| markdown/             | [需自建] 存放文章，需要在开头添加元数据       |
-| messages/             | [需自建] 接收的消息以 json 格式存入           |
-| public/               | 存放前端文件                                  |
-| app.js                | node 的程序入口                               |
+| 文件名或目录名    | 说明                                                  |
+| ----------------- | ----------------------------------------------------- |
+| components/       | node 的组件，用于处理不同任务                         |
+| ---/article.js    | 解析 markdown 文件夹中的 md 文件，发送给前端          |
+| ---/console.js    | 响应 [控制台](https://lifeni.life/console) 页面的命令 |
+| ---/contact.js    | 接收前端表单信息，并存入 messages 文件夹              |
+| database/         | 解析后的文章元数据会以 JSON 格式存入                  |
+| ---/articles.json | [自动生成] 文章基本信息数据库                         |
+| ---/messages.json | [自动生成] 消息数据库                                 |
+| ---/password.json | 控制台密码                                            |
+| markdown/         | 存放文章，需要在开头添加元数据                        |
+| public/           | 存放前端文件                                          |
+| ---/console       | 存放 [控制台](https://lifeni.life/console) 页面       |
+| ---/static        | 存放 JS CSS 等文件                                    |
+| app.js            | node 的程序入口                                       |
 
 ## 协议相关
 

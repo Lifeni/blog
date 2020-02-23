@@ -7,11 +7,16 @@ article {
     font-size: 16px;
     font-family: '思源黑体 CN', 'Noto Sans SC', sans-serif;
     font-weight: 300;
-    line-height: 1.8em;
+    line-height: 1.5em;
     border-radius: 8px;
     box-shadow: 0 0 16px var(--shadow);
     background-color: var(--background);
     overflow-x: hide;
+    animation: opacity .2s ease;
+}
+
+article p {
+    margin: 8px 0;
 }
 
 article h1,
@@ -99,7 +104,7 @@ article code {
 article pre {
     margin: 12px 2px;
     padding: 12px 16px;
-    border-radius: 2px;
+    border-radius: 4px;
     background-color: var(--background-weak);
     line-height: 1.5em;
     overflow-x: auto;
@@ -110,6 +115,7 @@ article pre code {
     margin: 0;
     padding: 0;
     border: none;
+    /* word-break: keep-all; */
 }
 
 article kbd {
@@ -172,6 +178,7 @@ article table {
 
 article table code {
     border: solid 1px var(--border);
+    word-break: keep-all;
 }
 
 article th,
@@ -294,4 +301,14 @@ hue-6-2: #c18401
 
 .hljs-link {
     text-decoration: underline;
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

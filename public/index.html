@@ -28,7 +28,8 @@
                         <button id="switch-close" title="关闭侧栏" aria-label="关闭侧栏"></button>
                         <span>更多</span>
                     </div>
-                    <div class="sidebar-title"><a href="#/" title="主页" tabindex="1" aria-label="主页链接">Lifeni</a></div>
+                    <div class="sidebar-title"><a href="#/" id="side-title" title="主页" tabindex="1"
+                            aria-label="主页链接">Lifeni</a></div>
                     <div class="side-box" id="box-me">
                         <div class="avatar">
                             <img src="https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/avatar.webp" alt="头像">
@@ -39,9 +40,9 @@
                         <input type="search" id="search" placeholder="搜索" autocomplete="off" title="简单的文章搜索"
                             tabindex="4" aria-label="搜索文章">
                     </div>
-                    <div class="side-box" id="box-tag">
-                        <div class="box-title">文章标签</div>
-                        <div class="tag-list" id="tag-list"></div>
+                    <div class="side-box" id="box-keyword">
+                        <div class="box-title">文章关键词</div>
+                        <div class="keyword-list" id="keyword-list"></div>
                     </div>
                     <div class="side-box" id="box-find">
                         <div class="box-title">无法形容的链接</div>
@@ -54,6 +55,8 @@
                             <a href="https://github.com/Lifeni/website/blob/master/README.md" id="readme"
                                 title="https://github.com/Lifeni/website/blob/master/README.md"
                                 aria-label="关于这个网站">README</a>
+                            <a href="/console" id="console" title="网站管理页面" aria-label="网站管理页面">控制台</a>
+                            <!-- <a href="/实验室" id="laboratory" title="一些实验项目" aria-label="一些实验项目">实验室</a> -->
                         </div>
                     </div>
                     <div class="side-box" id="box-contact">
@@ -63,7 +66,8 @@
                                 required aria-label="输入你的邮箱" aria-required="true">
                             <textarea name="message" id="contact-message" cols="30" rows="10" placeholder="想说的："
                                 required aria-label="输入你想说的话" aria-required="true"></textarea>
-                            <input type="submit" value="发给我" id="contact-submit" title="消息是私密的，不会被公开">
+                            <span>消息将以表单的形式发送</span>
+                            <input type="submit" value="发给我" id="contact-submit" aria-label="发送消息" title="发送消息">
                         </form>
                     </div>
                     <div class="links">

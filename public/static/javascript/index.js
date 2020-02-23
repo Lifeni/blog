@@ -11,7 +11,7 @@ let flag = 0;
 
 // 网页加载后判断当前状态
 document.addEventListener('DOMContentLoaded', () => {
-    hashListener()
+    hashListener();
 })
 
 // 监听 hash 变化
@@ -27,76 +27,72 @@ function hashListener() {
     let name = hash[2];
     let index = hash[3];
 
-    if (root === undefined || root === '') {
-        document.location.hash = '/';
-    } else if (root === '#') {
-        if (path === undefined || path === '') {
-            // 主页
-            document.title = 'Lifeni';
-            if (flag === 0) {
-                getList();
-            }
-            listChanger();
-            pageChanger('#home');
-        } else if (path === 'article') {
-            // 文章页面
-            if (name === undefined || name === '') {
-                document.location.hash = '/';
-            } else {
-                if (flag === 0) {
-                    // 当直接打开页面时
-                    getList();
-                    setTimeout(() => {
-                        getArticle(name);
-                    }, 100);
-                    pageChanger('#article');
-                } else {
-                    if (index === undefined || index === '') {
-                        // 当不存在目录锚点时
-                        // 即点击锚点时不会刷新页面
-                        getArticle(name);
-                        pageChanger('#article');
-                    }
-                }
-            }
-        } else if (path === 'tag') {
-            // 标签页面
-            if (name === undefined || name === '') {
-                document.location.hash = '/';
-            } else {
-                if (flag === 0) {
-                    // 当直接打开页面时
-                    getList();
-                    setTimeout(() => {
-                        getResult(name, 'tag');
-                    }, 100);
-                } else {
-                    getResult(name, 'tag');
-                }
-                listChanger(path);
-                pageChanger('#home');
-            }
-        } else if (path === 'search') {
-            // 搜索页面
-            if (name === undefined || name === '') {
-                document.location.hash = '/';
-            } else {
-                if (flag === 0) {
-                    // 当直接打开页面时
-                    getList();
-                    setTimeout(() => {
-                        getResult(name, 'search');
-                    }, 100);
-                } else {
-                    getResult(name, 'search');
-                }
-                listChanger(path);
-                pageChanger('#home');
-            }
-        } else {
-            // 其他情况跳转到主页
-            document.location.hash = '/';
+    if (path === undefined || path === '') {
+        // 主页
+        document.title = 'Lifeni';
+        if (flag === 0) {
+            getList();
         }
+        listChanger();
+        pageChanger('#home');
+    } else if (path === 'article') {
+        // 文章页面
+        if (name === undefined || name === '') {
+            document.location.hash = '/';
+        } else {
+            if (flag === 0) {
+                // 当直接打开页面时
+                getList();
+                setTimeout(() => {
+                    getArticle(name);
+                }, 100);
+                pageChanger('#article');
+            } else {
+                if (index === undefined || index === '') {
+                    // 当不存在目录锚点时
+                    // 即点击锚点时不会刷新页面
+                    getArticle(name);
+                    pageChanger('#article');
+                }
+            }
+        }
+    } else if (path === 'keyword') {
+        // 标签页面
+        if (name === undefined || name === '') {
+            document.location.hash = '/';
+        } else {
+            if (flag === 0) {
+                // 当直接打开页面时
+                getList();
+                setTimeout(() => {
+                    getResult(name, 'keyword');
+                }, 100);
+            } else {
+                getResult(name, 'keyword');
+            }
+            listChanger(path);
+            pageChanger('#home');
+        }
+    } else if (path === 'search') {
+        // 搜索页面
+        if (name === undefined || name === '') {
+            document.location.hash = '/';
+        } else {
+            if (flag === 0) {
+                // 当直接打开页面时
+                getList();
+                setTimeout(() => {
+                    getResult(name, 'search');
+                }, 100);
+            } else {
+                getResult(name, 'search');
+            }
+            listChanger(path);
+            pageChanger('#home');
+        }
+    } else {
+        // 其他情况跳转到主页
+        document.location.hash = '/';
     }
 }
 
@@ -114,17 +110,22 @@ function pageChanger(name) {
 
 // 更改主页的列表
 function listChanger(name) {
+    let title = document.querySelector('#side-title');
     if (name === undefined) {
         // 主页
         document.querySelector('#list-result').classList.add('hide');
         document.querySelector('#list-update').classList.remove('hide');
         document.querySelector('#list-all').classList.remove('hide');
+        title.innerText = 'Lifeni';
+        title.classList.remove('back-code');
     } else {
         // 标签和搜索页面
         let list = document.querySelector('#list-result');
         list.classList.remove('hide');
         document.querySelector('#list-update').classList.add('hide');
         document.querySelector('#list-all').classList.add('hide');
+        title.innerText = '返回主页';
+        title.classList.add('back-code');
     }
 }
 
@@ -137,13 +138,13 @@ function getResult(name, method) {
     // 添加标题
     let node = document.createElement('div');
     node.className = 'list-title';
-    node.innerText = decodeURI(name);
+    node.innerText = name.replace(/\+/g, ' ');
     list.appendChild(node);
     // map 去掉重复结果
     let de = new Map();
     // 对每个文章进行处理
     cache.forEach((e) => {
-        if (method === 'tag') {
+        if (method === 'keyword') {
             // 标签页
             if (e.keyword === name) {
                 let clone = document.importNode(template.content, true);
@@ -156,7 +157,7 @@ function getResult(name, method) {
             }
         } else if (method === 'search') {
             // 搜索页
-            let word = decodeURI(name).split(' ');
+            let word = decodeURI(name).split('+');
             // 对空格分割的关键词进行匹配
             word.forEach((w) => {
                 if (w !== '' && de[e.name] === undefined) {
@@ -180,10 +181,10 @@ function getResult(name, method) {
 
 // 获取文章列表
 function getList() {
-    let requset = new XMLHttpRequest();
-    requset.onreadystatechange = () => {
-        if (requset.readyState === 4 && requset.status === 200) {
-            let data = JSON.parse(requset.responseText);
+    let request = new XMLHttpRequest();
+    request.onreadystatechange = () => {
+        if (request.readyState === 4 && request.status === 200) {
+            let data = JSON.parse(request.responseText);
             cache = data.all;
             // flag 代表数据已从服务器获取
             flag = 1;
@@ -202,23 +203,23 @@ function getList() {
                 clone.querySelector('.date').innerText = '更新于 ' + data.update.modified;
             }
             update.appendChild(clone);
-            // tag 用于标签去重
-            let tag = new Map();
+            // keyword 用于标签去重
+            let keyword = new Map();
             // 对文章列表遍历
             data.all.forEach((e) => {
-                if (tag[e.keyword] === undefined) {
+                if (keyword[e.keyword] === undefined) {
                     // 如果标签没被添加
-                    tag[e.keyword] = 1;
+                    keyword[e.keyword] = 1;
                     let node = document.createElement('a');
                     node.innerText = e.keyword;
                     node.title = e.keyword;
-                    node.href = '#/tag/' + e.keyword;
+                    node.href = '#/keyword/' + e.keyword;
                     node.setAttribute('tabindex', '5');
                     node.setAttribute('aria-label', '文章标签');
-                    let list = document.querySelector('#tag-list');
+                    let list = document.querySelector('#keyword-list');
                     list.appendChild(node);
                 } else {
-                    tag[e.keyword]++;
+                    keyword[e.keyword]++;
                 }
                 // 使用模板复制列表项目
                 let clone = document.importNode(template.content, true);
@@ -233,8 +234,8 @@ function getList() {
             all.querySelector('.list-title').innerText += ' ' + data.all.length + ' 篇文章';
         }
     }
-    requset.open('GET', 'https://lifeni.top/api/article');
-    requset.send();
+    request.open('GET', 'https://lifeni.life/api/article');
+    request.send();
 }
 
 // 获取指定文章内容
@@ -247,7 +248,7 @@ function getArticle(name) {
     // 加载慢时给提示
     setTimeout(() => {
         if (article.innerHTML === '') {
-            article.innerHTML = '<h1>数据加载中。</h1>';
+            article.innerHTML = '<h1>数据加载中</h1>';
         }
     }, 100);
     // 添加文章信息
@@ -262,12 +263,12 @@ function getArticle(name) {
             info.innerText += ' 共享协议：' + e.license;
         }
     })
-    let requset = new XMLHttpRequest();
-    requset.onreadystatechange = () => {
-        if (requset.readyState === 4 && requset.status === 200) {
-            let data = requset.responseText;
+    let request = new XMLHttpRequest();
+    request.onreadystatechange = () => {
+        if (request.readyState === 4 && request.status === 200) {
+            let data = request.responseText;
             if (data === '') {
-                article.innerHTML = '<h1>找不到该文章。</h1>'
+                article.innerHTML = '<h1>找不到该文章</h1>'
             } else {
                 article.innerHTML = data;
                 document.title = data.split('<h1>')[1].split('</h1>')[0] + ' - Lifeni';
@@ -304,8 +305,8 @@ function getArticle(name) {
             }
         }
     }
-    requset.open('GET', 'https://lifeni.top/api/article/' + name);
-    requset.send();
+    request.open('GET', 'https://lifeni.life/api/article/' + name);
+    request.send();
 }
 
 
@@ -314,16 +315,16 @@ let contact = document.querySelector('#contact');
 contact.addEventListener('submit', (event) => {
     event.preventDefault();
     let data = new FormData(contact);
-    let requset = new XMLHttpRequest();
-    requset.onreadystatechange = () => {
-        if (requset.readyState === 4 && requset.status === 200) {
+    let request = new XMLHttpRequest();
+    request.onreadystatechange = () => {
+        if (request.readyState === 4 && request.status === 200) {
             let submit = document.querySelector('#contact-submit');
             submit.value = '消息已发送';
             submit.disabled = 'true';
         }
     }
-    requset.open('POST', 'https://lifeni.top/api/contact');
-    requset.send(data);
+    request.open('POST', 'https://lifeni.life/api/contact');
+    request.send(data);
 })
 
 // 移动端打开侧栏
@@ -343,7 +344,7 @@ ed.addEventListener('click', () => {
 // 搜索框监听
 let search = document.querySelector('#search');
 search.addEventListener('input', (e) => {
-    document.location.hash = '/search/' + e.target.value;
+    document.location.hash = '/search/' + e.target.value.replace(/\s/g, '+');
 })
 
 // 回到顶部
