@@ -138,7 +138,7 @@ function getResult(name, method) {
     // 添加标题
     let node = document.createElement('div');
     node.className = 'list-title';
-    node.innerText = name.replace(/\+/g, ' ');
+    node.innerText = decodeURI(name.replace(/\+/g, ' '));
     list.appendChild(node);
     // map 去掉重复结果
     let de = new Map();

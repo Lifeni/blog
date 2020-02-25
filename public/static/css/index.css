@@ -417,7 +417,7 @@ button {
 }
 
 .expand {
-    width: 280px;
+    width: 300px;
 }
 
 .index-title {
@@ -430,7 +430,7 @@ button {
 
 .index-title span {
     margin: 0 24px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     white-space: nowrap;
 }
@@ -455,14 +455,14 @@ button {
 .index-item-1 {
     width: fit-content;
     width: -moz-fit-content;
-    margin: 4px 0;
+    margin: 8px 0;
     white-space: nowrap;
 }
 
 .index-item-2 {
     width: fit-content;
     width: -moz-fit-content;
-    margin: 4px 0 4px 1em;
+    margin: 8px 0 8px 1em;
     white-space: nowrap;
 }
 
@@ -523,6 +523,12 @@ button {
         padding: 0 16px;
         font-size: 18px;
         font-weight: 500;
+    }
+
+    .article-info {
+        width: calc(100% - 24px);
+        margin: 0 12px;
+        padding: 0;
     }
 }
 

@@ -5,9 +5,9 @@ article {
     padding: 64px;
     color: var(--font);
     font-size: 16px;
-    font-family: '思源黑体 CN', 'Noto Sans SC', sans-serif;
+    font-family: inherit;
     font-weight: 300;
-    line-height: 1.5em;
+    line-height: 1.65em;
     border-radius: 8px;
     box-shadow: 0 0 16px var(--shadow);
     background-color: var(--background);
@@ -34,29 +34,30 @@ article h4::before,
 article h5::before,
 article h6::before {
     content: '# ';
+    font-size: 20px;
     color: var(--border);
     transition: color .2s;
 }
 
 article h1 {
     margin: 0 0 24px 0;
-    font-size: 2.4em;
+    font-size: 2.25em;
     line-height: 1.5em;
 }
 
 article h2 {
     margin: 48px 0 24px 0;
-    font-size: 1.7em;
+    font-size: 1.6em;
 }
 
 article h3 {
     margin: 24px 0;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 article h4 {
     margin: 16px 0;
-    font-size: 1.25em;
+    font-size: 1.2em;
 }
 
 article h5 {
@@ -96,7 +97,7 @@ article code {
     border-radius: 2px;
     background-color: var(--background-weak);
     font-size: .9em;
-    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     word-break: break-all;
     transition: background-color .2s;
 }
@@ -124,7 +125,7 @@ article kbd {
     border: solid 1px var(--border);
     border-radius: 2px;
     font-size: 0.9em;
-    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     line-height: 1.5em;
 }
 
@@ -196,7 +197,10 @@ article th {
 
 @media screen and (max-width:600px) {
     article {
+        width: calc(100% + 32px);
+        margin: 16px -16px 80px -16px;
         padding: 36px;
+        border-radius: 0;
     }
 }
 
