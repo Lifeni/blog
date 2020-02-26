@@ -9,8 +9,8 @@ body {
     position: relative;
     min-height: 100vh;
     color: rgba(220, 220, 220, 1);
-    font-family: 'Consolas', 'Courier New', Courier, sans-serif;
-    background-color: rgba(25, 25, 25, 1);
+    font-family: 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+    background-color: rgba(12, 12, 12, 1);
     overflow-x: auto;
     overflow-y: auto;
     scroll-behavior: smooth;

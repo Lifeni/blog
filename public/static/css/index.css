@@ -25,21 +25,44 @@ html {
     --shadow-bold: rgba(220, 220, 220, 1);
     --hover: rgba(235, 235, 235, 1);
     overflow-y: scroll;
+    background-color: black;
 }
 
-/*
-// dark-mode 开发中……
-html[dark-mode='true'] {
-    --font: white;
-    --font-weak: rgba(150, 150, 150, 1);
-    --background: rgba(10, 10, 10, 1);
-    --background-weak: rgba(25, 25, 25, 1);
-    --link: rgba(41, 98, 255, 1);
-    --border: rgba(40, 40, 40, 1);
-    --shadow: rgba(20, 20, 20, 1);
-    --shadow-bold: rgba(40, 40, 40, 1);
+html .avatar img {
+    filter: brightness(100%);
+    transition: filter .2s;
 }
-*/
+
+html .avatar img:hover {
+    filter: brightness(90%);
+}
+
+html[dark-mode='true'] {
+    --font: rgba(220, 220, 220, 1);
+    --font-weak: rgba(110, 110, 110, 1);
+    --background: rgba(18, 18, 18, 1);
+    --background-weak: rgba(12, 12, 12, 1);
+    --link: rgba(66, 165, 245, 1);
+    --border: rgba(40, 40, 40, 1);
+    --shadow: rgba(15, 15, 15, 1);
+    --shadow-bold: rgba(10, 10, 10, 1);
+    --hover: rgba(40, 40, 40, 1);
+}
+
+html[dark-mode='true'] .icon {
+    filter: invert(1);
+    --background: rgba(231, 231, 231, 1);
+    --shadow-bold: rgba(240, 240, 240, 1);
+}
+
+html[dark-mode='true'] img {
+    filter: brightness(60%);
+    transition: filter .2s;
+}
+
+html[dark-mode='true'] img:hover {
+    filter: brightness(90%);
+}
 
 body {
     color: var(--font);
@@ -114,7 +137,7 @@ button {
 }
 
 .sidebar-title a.back-code::before {
-    content: '< ';
+    content: '.. ';
 }
 
 .side-box {
@@ -124,6 +147,7 @@ button {
     border-radius: 8px;
     box-shadow: 0 0 16px var(--shadow);
     background-color: var(--background);
+    transition: all .2s;
 }
 
 .side-box .avatar {
@@ -169,6 +193,7 @@ button {
     font-family: inherit;
     font-weight: 300;
     background-color: var(--background);
+    transition: all .2s;
 }
 
 .side-box form input,
@@ -199,6 +224,7 @@ button {
     margin: 8px 0;
     resize: vertical;
 }
+
 .side-box form span {
     width: 100%;
     padding: 0 4px 8px 4px;
@@ -315,6 +341,7 @@ button {
     font-size: 16px;
     font-weight: 300;
     background-color: var(--background);
+    animation: opacity .2s;
 }
 
 .article-list .item .title,
@@ -529,6 +556,11 @@ button {
         width: calc(100% - 24px);
         margin: 0 12px;
         padding: 0;
+    }
+
+    .article-list .item:hover::after,
+    .article-list .item:focus::after {
+        display: none;
     }
 }
 

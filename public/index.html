@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" dark-mode='false'>
 
     <head>
         <meta charset="UTF-8">
@@ -25,7 +25,7 @@
             <div class="content" id="home">
                 <div class="sidebar">
                     <div class="space">
-                        <button id="switch-close" title="关闭侧栏" aria-label="关闭侧栏"></button>
+                        <button class="icon" id="switch-close" title="关闭侧栏" aria-label="关闭侧栏"></button>
                         <span>更多</span>
                     </div>
                     <div class="sidebar-title"><a href="#/" id="side-title" title="主页" tabindex="1"
@@ -78,7 +78,7 @@
                 <div class="main">
                     <div class="space">
                         <span>主页</span>
-                        <button id="switch-open" title="打开侧栏" aria-label="打开侧栏"></button>
+                        <button class="icon" id="switch-open" title="打开侧栏" aria-label="打开侧栏"></button>
                     </div>
                     <div class="article-list hide" id="list-result" aria-relevant="all">
                         <div class="list-title">文章标签：</div>
@@ -95,16 +95,16 @@
                 <span class="article-info" id="info" aria-label="文章信息"></span>
                 <article></article>
                 <div class="article-bar-left">
-                    <button class="open-index" id="open-index" title="打开目录" aria-label="打开目录"></button>
+                    <button class="open-index icon" id="open-index" title="打开目录" aria-label="打开目录"></button>
                 </div>
                 <div class="article-bar-right">
-                    <button class="back-to-top" id="top" title="回到顶部" aria-label="回到顶部"></button>
-                    <a href="#/" class="back-to-home" title="返回主页" aria-label="返回主页"></a>
+                    <button class="back-to-top icon" id="top" title="回到顶部" aria-label="回到顶部"></button>
+                    <a href="#/" class="back-to-home icon" title="返回主页" aria-label="返回主页"></a>
                 </div>
                 <div class="article-index" id="index">
                     <div class="index-title">
                         <span>目录</span>
-                        <button id="close-index" title="关闭目录" aria-label="关闭目录"></button>
+                        <button class="icon" id="close-index" title="关闭目录" aria-label="关闭目录"></button>
                     </div>
                     <ul class="index-list" id="index-list" title="目录" aria-label="目录"></ul>
                 </div>

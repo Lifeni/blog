@@ -12,12 +12,32 @@ let flag = 0;
 // 网页加载后判断当前状态
 document.addEventListener('DOMContentLoaded', () => {
     hashListener();
+    colorChanger();
 })
 
 // 监听 hash 变化
 window.addEventListener('hashchange', () => {
     hashListener();
 })
+
+// 切换暗色模式
+let avatar = document.querySelector('.avatar');
+avatar.addEventListener('click', () => {
+    let html = document.querySelector('html');
+    let status = html.getAttribute('dark-mode');
+    html.setAttribute('dark-mode', status === 'true' ? 'false' : 'true');
+})
+
+// 自动切换暗色模式
+function colorChanger() {
+    let hour = new Date().getHours();
+    let html = document.querySelector('html');
+    if (hour >= 20 || hour <= 5) {
+        html.setAttribute('dark-mode', 'true');
+    } else {
+        html.setAttribute('dark-mode', 'false');
+    }
+}
 
 // 对 hash 变化做出响应
 function hashListener() {
@@ -124,7 +144,7 @@ function listChanger(name) {
         list.classList.remove('hide');
         document.querySelector('#list-update').classList.add('hide');
         document.querySelector('#list-all').classList.add('hide');
-        title.innerText = '返回主页';
+        title.innerText = '返回';
         title.classList.add('back-code');
     }
 }

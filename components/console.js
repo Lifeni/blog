@@ -40,7 +40,7 @@ function article(token) {
     if (token === data.token) {
         const adapter = new FileSync('./database/articles.json');
         const db = low(adapter);
-        return db.get('article').value();
+        return db.get('article').sortBy('modified').value();
     } else {
         return { error: 1 }
     }
