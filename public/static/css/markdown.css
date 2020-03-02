@@ -11,7 +11,7 @@ article {
     border-radius: 8px;
     box-shadow: 0 0 16px var(--shadow);
     background-color: var(--background);
-    overflow-x: hide;
+    overflow-x: hidden;
     animation: opacity .2s ease;
 }
 
@@ -116,7 +116,6 @@ article pre code {
     margin: 0;
     padding: 0;
     border: none;
-    /* word-break: keep-all; */
 }
 
 article kbd {
@@ -156,7 +155,7 @@ article blockquote {
     width: 100%;
     margin: 12px 0 12px 4px;
     padding: 0 16px;
-    border-left: solid 4px var(--background-weak);
+    border-left: solid 4px var(--border);
     color: var(--font-weak);
 }
 

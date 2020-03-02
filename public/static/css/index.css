@@ -40,7 +40,7 @@ html .avatar img:hover {
 html[dark-mode='true'] {
     --font: rgba(220, 220, 220, 1);
     --font-weak: rgba(110, 110, 110, 1);
-    --background: rgba(18, 18, 18, 1);
+    --background: rgba(22, 22, 22, 1);
     --background-weak: rgba(12, 12, 12, 1);
     --link: rgba(66, 165, 245, 1);
     --border: rgba(40, 40, 40, 1);
@@ -271,7 +271,7 @@ button {
 
 .links {
     width: 100%;
-    padding: 8px 0 24px 0;
+    padding: 8px 0 16px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -281,7 +281,18 @@ button {
 }
 
 .links a {
-    border-bottom: solid 1px var(--font);
+    color: var(--font-weak);
+    margin-bottom: 8px;
+    border-bottom: solid 1px;
+}
+
+.links a#beian::before {
+    content: '---';
+    color: transparent;
+    background-image: url("../image/备案图标.webp");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .content .main {
@@ -294,6 +305,7 @@ button {
 
 .space {
     display: none;
+    transition: all .2s;
 }
 
 .article-list {
@@ -346,6 +358,7 @@ button {
 
 .article-list .item .title,
 .article-list .item .description,
+.article-list .item .keyword,
 .article-list .item .date {
     width: fit-content;
     width: -moz-fit-content;
@@ -364,6 +377,20 @@ button {
     font-size: 16px;
     font-weight: 300;
 }
+
+.article-list .item .keyword {
+    position: absolute;
+    right: 16px;
+    top: 14px;
+    margin: 4px 0;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 300;
+    background-color: var(--background-weak);
+    transition: background-color .2s;
+}
+
 
 .article-list .item .date {
     margin: 4px 0;
@@ -439,7 +466,6 @@ button {
     box-shadow: 0 0 32px var(--shadow-bold);
     background-color: var(--background);
     overflow-x: hidden;
-    overflow-y: auto;
     transition: all .4s;
 }
 
@@ -448,8 +474,12 @@ button {
 }
 
 .index-title {
-    width: 100%;
-    height: 64px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    height: 96px;
+    padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -465,7 +495,6 @@ button {
 .index-title button {
     width: 48px;
     height: 48px;
-    margin: 0 8px;
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E %3Cpath d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z'%3E%3C/path%3E %3C/svg%3E");
     background-repeat: no-repeat;
     background-size: 20px;
@@ -473,10 +502,13 @@ button {
 }
 
 .index-list {
-    margin: 0 24px 24px 24px;
+    height: calc(100vh - 96px);
+    padding: 24px;
     font-size: 16px;
     font-weight: 300;
     list-style: none;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .index-item-1 {

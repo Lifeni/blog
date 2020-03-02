@@ -20,6 +20,7 @@
                     <span class="date" title="文章编辑时间"></span>
                     <span class="title" title="文章标题"></span>
                     <span class="description" title="文章描述"></span>
+                    <span class="keyword" title="文章关键词"></span>
                 </a>
             </template>
             <div class="content" id="home">
@@ -66,13 +67,17 @@
                                 required aria-label="输入你的邮箱" aria-required="true">
                             <textarea name="message" id="contact-message" cols="30" rows="10" placeholder="想说的："
                                 required aria-label="输入你想说的话" aria-required="true"></textarea>
-                            <span>消息将以表单的形式发送</span>
+                            <span>这条消息不会公开</span>
                             <input type="submit" value="发给我" id="contact-submit" aria-label="发送消息" title="发送消息">
                         </form>
                     </div>
                     <div class="links">
                         <a href="http://www.beian.miit.gov.cn/" id="icp" target="_blank" tabindex="-1"
                             title="http://www.beian.miit.gov.cn/" aria-label="ICP 备案号">鲁ICP备19006085号</a>
+                        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392" id="beian"
+                            tabindex="-1" target="_blank" title="http://www.beian.gov.cn/" aria-label="公网安备号">
+                            鲁公网安备 37132102371392号
+                        </a>
                     </div>
                 </div>
                 <div class="main">
@@ -102,11 +107,11 @@
                     <a href="#/" class="back-to-home icon" title="返回主页" aria-label="返回主页"></a>
                 </div>
                 <div class="article-index" id="index">
-                    <div class="index-title">
-                        <span>目录</span>
-                        <button class="icon" id="close-index" title="关闭目录" aria-label="关闭目录"></button>
-                    </div>
                     <ul class="index-list" id="index-list" title="目录" aria-label="目录"></ul>
+                    <div class="index-title">
+                        <button class="icon" id="close-index" title="关闭目录" aria-label="关闭目录"></button>
+                        <span># 文章目录</span>
+                    </div>
                 </div>
             </div>
         </div>

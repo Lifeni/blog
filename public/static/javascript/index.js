@@ -172,6 +172,7 @@ function getResult(name, method) {
                 clone.querySelector('.item').href = '/#/article/' + e.name;
                 clone.querySelector('.title').innerText = e.title;
                 clone.querySelector('.description').innerText = e.description;
+                clone.querySelector('.keyword').innerText = e.keyword;
                 clone.querySelector('.date').innerText = '创建于 ' + e.created;
                 list.appendChild(clone);
             }
@@ -190,6 +191,7 @@ function getResult(name, method) {
                         clone.querySelector('.item').href = '/#/article/' + e.name;
                         clone.querySelector('.title').innerText = e.title;
                         clone.querySelector('.description').innerText = e.description;
+                        clone.querySelector('.keyword').innerText = e.keyword;
                         clone.querySelector('.date').innerText = '创建于 ' + e.created;
                         list.appendChild(clone);
                     }
@@ -217,6 +219,7 @@ function getList() {
             clone.querySelector('.item').setAttribute('tabindex', '2');
             clone.querySelector('.title').innerText = data.update.title;
             clone.querySelector('.description').innerText = data.update.description;
+            clone.querySelector('.keyword').innerText = data.update.keyword;
             if (data.update.created === data.update.modified) {
                 clone.querySelector('.date').innerText = '创建于 ' + data.update.created;
             } else {
@@ -248,6 +251,7 @@ function getList() {
                 clone.querySelector('.item').setAttribute('tabindex', '3');
                 clone.querySelector('.title').innerText = e.title;
                 clone.querySelector('.description').innerText = e.description;
+                clone.querySelector('.keyword').innerText = e.keyword;
                 clone.querySelector('.date').innerText = '创建于 ' + e.created;
                 all.appendChild(clone);
             });
@@ -260,7 +264,7 @@ function getList() {
 
 // 获取指定文章内容
 function getArticle(name) {
-    document.body.scrollTop = 0;
+    document.querySelector('html').scrollTop = 0;
     let article = document.querySelector('#article').querySelector('article');
     article.innerHTML = '';
     let index = document.querySelector('#index');
@@ -270,7 +274,7 @@ function getArticle(name) {
         if (article.innerHTML === '') {
             article.innerHTML = '<h1>数据加载中</h1>';
         }
-    }, 100);
+    }, 200);
     // 添加文章信息
     let info = document.querySelector('#info');
     info.innerText = '';
