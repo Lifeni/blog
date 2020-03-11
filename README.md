@@ -23,7 +23,7 @@
 | log/                      | [手动创建] 日志记录                                          |
 | markdown/                 | [手动创建] 存放文章，需要在开头添加元数据                    |
 | public/                   | 存放前端文件                                                 |
-| -- /article/              | [自动创建] 存放 [控制台](https://lifeni.life/console) 页面   |
+| -- /article/              | [自动创建] 文章页面                                          |
 | -- /static/               | 存放 JS CSS 等文件                                           |
 | -- /index.html            | [自动创建] 包含文章列表的首页                                |
 | template/                 | 首页和文章页的模板文件                                       |
