@@ -14,6 +14,7 @@ const markdown = require('markdown-it')({
         return '';
     }
 });
+const moment = require('moment');
 
 class Index {
     constructor() { this.articles = new Array(); }
@@ -83,8 +84,9 @@ function creatHome() {
         data2 += `<a href="/#/tag/${name.toLowerCase()}" class="tag" keyword="${name.toLowerCase()}">${name} ${count}</a>`
     }
     data2 += `<a href="/#/" class="tag hide" id="clear" keyword="clear">清除标签</a>`
-    template = template.replace(/{{INSERT-0}}/, data);
-    template = template.replace(/{{INSERT-1}}/, data2)
+    template = template.replace(/{{INSERT-0}}/, moment().format());
+    template = template.replace(/{{INSERT-1}}/, data);
+    template = template.replace(/{{INSERT-2}}/, data2)
     fs.writeFileSync('./public/index.html', template);
 }
 
