@@ -103,7 +103,6 @@ dist
 # TernJS port file
 .tern-port
 
-database/articles.json
-database/messages.json
-
-test.js
+markdown
+log
+public/article

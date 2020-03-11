@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Lifeni">
+        <meta name="description" content="记录干杯。">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=block" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/home.css">
+        <title>Lifeni</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="part">
+                <a href="https://lifeni.life" class="home">Lifeni</a>
+            </div>
+            <div class="part">
+                <button class="down" id="down"></button>
+                <button class="more" id="more"></button>
+            </div>
+        </header>
+
+        <div class="center">
+            <main>
+                {{INSERT-0}}
+                <div class="empty hide" id="empty">
+                    <h2>搜索无结果</h2>
+                    <p>换个关键词试试？或者 <a href="/#/">返回主页</a></p>
+                </div>
+            </main>
+            <aside>
+                <div class="hash">
+                    <input class="search" id="search" type="search" placeholder="搜索">
+                    <div class="tags">
+                        {{INSERT-1}}
+                    </div>
+                    <div class="bar"></div>
+                </div>
+                <address class="address">
+                    <a class="readme" href="https://github.com/Lifeni/website/blob/master/README.md">README 关于</a>
+                    <a class="mail" href="mailto:liangfengning@foxmail.com">Mailto 邮箱</a>
+                    <a class="github" href="https://github.com/Lifeni">Github @Lifeni</a>
+                    <div class="bar"></div>
+                </address>
+            </aside>
+        </div>
+        <footer>
+            <div class="part">
+                <span>追求源于热爱。</span>
+            </div>
+            <div class="part">
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鲁ICP备19006085号</a>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
+                    target="_blank">鲁公网安备 37132102371392号</a>
+            </div>
+        </footer>
+        <script src="/static/javascript/home.js"></script>
+    </body>
+
+</html>

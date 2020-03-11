@@ -2,9 +2,10 @@
 
 const fs = require('fs');
 const highlight = require('highlight.js');
+const log4js = require('log4js');
 const markdown = require('markdown-it')({
     // 代码高亮
-    highlight: function (str, lang) {
+    highlight(str, lang) {
         if (lang && highlight.getLanguage(lang)) {
             try {
                 return highlight.highlight(lang, str, true).value;
@@ -14,132 +15,102 @@ const markdown = require('markdown-it')({
     }
 });
 
-const moment = require('moment');
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
+class Index {
+    constructor() { this.articles = new Array(); }
+    add(data) { this.articles.push(data); }
+    getAll() { return this.articles; }
+    getLast() { return this.articles[this.articles.length - 1]; }
+    sort() { this.articles.sort((a, b) => (a.get('modified') < b.get('modified'))) }
+    clear() { this.articles = []; }
+}
 
-const adapter = new FileSync('./database/articles.json');
-const db = low(adapter);
+let list = new Index();
 
-db.defaults({
-    date: 'NULL',
-    article: [],
-    count: 0
-}).write();
-
-// 储存数据的变量
-let articles = new Array();
-let articlesIndex = new Array();
-
-// 对 Markdown 文件进行解析
 function parse() {
-    // 初始化
-    articles = new Array();
-    articlesIndex = new Array();
-    const path = './markdown/';
-    db.set('date', '').set('article', []).set('count', 0).write();
-    // 读取 md 文件
-    fs.readdir(path, (err, files) => {
-        if (err) {
-            console.error(err);
-        }
-
-        files.forEach((file) => {
-            fs.readFile(path + file, (err, data) => {
-                if (err) {
-                    console.error(err);
-                }
-
-                let lines = new Array();
-                let content = new String();
-                let article = new Object();
-                let articleIndex = new Object();
-                let flag = 0;
-
-                // 把数据按行分割
-                lines = data.toString().split("\n");
-                for (let i = 0; i < lines.length; i++) {
-                    if (lines[i].startsWith("---")) {
-                        // 识别元数据开始和结束标志
-                        flag++;
-                        if (flag === 2) {
-                            articlesIndex.push(articleIndex);
-                            // 将数据写入文件
-                            db.set('date', moment().format()).write();
-                            db.get('article').push(articleIndex).write();
-                            db.update('count', n => n + 1).write();
-                        }
-                    } else if (flag < 2) {
-                        // 解析元数据
-                        let temp = new Array();
-                        temp = lines[i].split(": ");
-                        article[temp[0]] = temp[1];
-                        articleIndex[temp[0]] = temp[1];
-                    } else if (i === lines.length - 1) {
-                        // 数据读到最后一行
-                        // 将数据保存在变量中
-                        content += lines[i] + "\n";
-                        article['content'] = markdown.render(content);
-                        articles.push(article);
-                    } else {
-                        // 读取文章内容
-                        content += lines[i] + "\n";
-                    }
-                }
-            })
-        })
-    })
-}
-
-
-let cache = {
-    update: null,
-    all: null
-}
-
-// 返回文章列表
-function update() {
-    if (cache.update === null) {
-        articlesIndex.sort((a, b) => {
-            if (a['modified'] !== b['modified']) {
-                return a['modified'] < b['modified'];
-            } else {
-                return a['created'] < b['created'];
+    list.clear();
+    let files = fs.readdirSync('./markdown/');
+    let template = fs.readFileSync('./template/article.template.html').toString();
+    for (const fileName of files) {
+        markdown.use(require('markdown-it-front-matter'), (fm) => {
+            let map = new Map();
+            let lines = fm.split('\n');
+            for (const line of lines) {
+                map.set(line.split(': ')[0], line.split(': ')[1]);
             }
-        })
-        cache.update = articlesIndex[0];
+            list.add(map);
+        });
+        let file = fs.readFileSync(`./markdown/${fileName}`).toString();
+        let data = markdown.render(file);
+        creatArticle(list.getLast(), data, template);
     }
-    return cache.update;
+    list.sort();
+    creatHome();
 }
 
-function all() {
-    if (cache.all === null) {
-        articlesIndex.sort((a, b) => {
-            if (a['created'] !== b['created']) {
-                return a['created'] < b['created'];
-            } else {
-                return a['modified'] < b['modified'];
-            }
-        })
-        cache.all = articlesIndex;
-    }
-    return cache.all;
-}
 
-// 返回指定文章内容
-function content(name) {
-    let data;
-    articles.forEach((article) => {
-        if (article['name'] === name) {
-            data = article['content'];
+function creatHome() {
+    let template = fs.readFileSync('./template/home.template.html').toString();
+    let data = '';
+    let tags = new Map();
+    for (const index of list.getAll()) {
+        data +=
+            `<div class="card" keyword="${index.get('keyword').toLowerCase()}">
+                <a href="/article/${index.get('name')}">
+                    <span class="info">${index.get('keyword')} | ${index.get('modified')}</span>
+                    <span class="title">${index.get('title')}</span>
+                    <span class="description">${index.get('description')}</span>
+                    <div class="bar"></div>
+                </a>
+            </div>`;
+
+        let tag = index.get('keyword');
+        if (tags.has(tag)) {
+            let count = tags.get(tag)
+            tags.set(tag, ++count);
+        } else {
+            tags.set(tag, 1);
         }
-    })
-    return data;
+    }
+    let data2 = '';
+    tags = Array.from(tags).sort((a, b) => {
+        if (a[1] === b[1]) {
+            return a[0] > b[0];
+        } else {
+            return a[1] < b[1];
+        }
+    });
+    for (let [name, count] of tags) {
+        data2 += `<a href="/#/tag/${name.toLowerCase()}" class="tag" keyword="${name.toLowerCase()}">${name} ${count}</a>`
+    }
+    data2 += `<a href="/#/" class="tag hide" id="clear" keyword="clear">清除标签</a>`
+    template = template.replace(/{{INSERT-0}}/, data);
+    template = template.replace(/{{INSERT-1}}/, data2)
+    fs.writeFileSync('./public/index.html', template);
 }
 
-module.exports = {
-    parse,
-    update,
-    all,
-    content,
+function creatArticle(info, data, template) {
+    try {
+        fs.mkdirSync(`./public/article/${info.get('name')}`, { recursive: true });
+    } catch (e) {
+        console.log('目录已存在');
+    }
+
+    data =
+        `<span class="bread">
+            <a href="/">Home</a> / <a href="/#/tag/${info.get('keyword').toLowerCase()}">${info.get('keyword')}</a> / ${info.get('name')}
+        </span>
+        <div class="info" id="info">
+            <span>创建于 ${info.get('created')}</span>
+            <span>修改于 ${info.get('modified')}</span>
+            <span>署名-相同方式共享 4.0 国际</span>
+            <hr>
+        </div>` + data;
+    template = template.replace(/{{INSERT-0}}/, info.get('description'));
+    template = template.replace(/{{INSERT-1}}/, info.get('title'));
+    template = template.replace(/{{INSERT-2}}/, info.get('keyword').toLowerCase());
+    template = template.replace(/{{INSERT-3}}/, data);
+    fs.writeFileSync(`./public/article/${info.get('name')}/index.html`, template);
 }
+
+
+module.exports = { parse }

@@ -1,121 +1,105 @@
 <!DOCTYPE html>
-<html lang="zh-cn" dark-mode='false'>
+<html lang="zh-cn">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Lifeni">
         <meta name="description" content="记录干杯。">
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,500&display=auto" rel="stylesheet">
-        <link rel="stylesheet" href="/static/css/index.css">
-        <link rel="stylesheet" href="/static/css/markdown.css">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=block" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/home.css">
         <title>Lifeni</title>
     </head>
 
     <body>
-        <div class="container">
-            <template id="home-template">
-                <a class="item">
-                    <span class="date" title="文章编辑时间"></span>
-                    <span class="title" title="文章标题"></span>
-                    <span class="description" title="文章描述"></span>
-                    <span class="keyword" title="文章关键词"></span>
+        <header>
+            <div class="part">
+                <a href="https://lifeni.life" class="home">Lifeni</a>
+            </div>
+            <div class="part">
+                <button class="down" id="down"></button>
+                <button class="more" id="more"></button>
+            </div>
+        </header>
+
+        <div class="center">
+            <main>
+                <div class="card" keyword="web">
+                <a href="/article/about-website">
+                    <span class="info">Web | 2020-03-10</span>
+                    <span class="title">个人网站开发记录</span>
+                    <span class="description">记录这个网站的过去，不是全部，有时更新</span>
+                    <div class="bar"></div>
                 </a>
-            </template>
-            <div class="content" id="home">
-                <div class="sidebar">
-                    <div class="space">
-                        <button class="icon" id="switch-close" title="关闭侧栏" aria-label="关闭侧栏"></button>
-                        <span>更多</span>
-                    </div>
-                    <div class="sidebar-title"><a href="#/" id="side-title" title="主页" tabindex="1"
-                            aria-label="主页链接">Lifeni</a></div>
-                    <div class="side-box" id="box-me">
-                        <div class="avatar">
-                            <img src="https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/avatar.webp" alt="头像">
-                        </div>
-                        <div class="text" title="来自动画《日常》" aria-label="来自动画《日常》">我们所经历的每个平凡的日常，也许就是连续发生的奇迹。</div>
-                    </div>
-                    <div class="side-box" id="box-search">
-                        <input type="search" id="search" placeholder="搜索" autocomplete="off" title="简单的文章搜索"
-                            tabindex="4" aria-label="搜索文章">
-                    </div>
-                    <div class="side-box" id="box-keyword">
-                        <div class="box-title">文章关键词</div>
-                        <div class="keyword-list" id="keyword-list"></div>
-                    </div>
-                    <div class="side-box" id="box-find">
-                        <div class="box-title">无法形容的链接</div>
-                        <div class="link-list">
-                            <a href="https://github.com/Lifeni" id="github" title="https://github.com/Lifeni"
-                                aria-label="我的 Github 主页">Github
-                                @Lifeni</a>
-                            <a href="mailto:liangfengning@foxmail.com" id="email" title="liangfengning@foxmail.com"
-                                aria-label="我的邮箱地址">邮箱</a>
-                            <a href="https://github.com/Lifeni/website/blob/master/README.md" id="readme"
-                                title="https://github.com/Lifeni/website/blob/master/README.md"
-                                aria-label="关于这个网站">README</a>
-                            <a href="/console" id="console" title="网站管理页面" aria-label="网站管理页面">控制台</a>
-                            <!-- <a href="/实验室" id="laboratory" title="一些实验项目" aria-label="一些实验项目">实验室</a> -->
-                        </div>
-                    </div>
-                    <div class="side-box" id="box-contact">
-                        <div class="box-title">联系我</div>
-                        <form id="contact" method="POST" enctype="application/json">
-                            <input type="email" name="email" id="contact-email" autocomplete="off" placeholder="你的邮箱："
-                                required aria-label="输入你的邮箱" aria-required="true">
-                            <textarea name="message" id="contact-message" cols="30" rows="10" placeholder="想说的："
-                                required aria-label="输入你想说的话" aria-required="true"></textarea>
-                            <span>这条消息不会公开</span>
-                            <input type="submit" value="发给我" id="contact-submit" aria-label="发送消息" title="发送消息">
-                        </form>
-                    </div>
-                    <div class="links">
-                        <a href="http://www.beian.miit.gov.cn/" id="icp" target="_blank" tabindex="-1"
-                            title="http://www.beian.miit.gov.cn/" aria-label="ICP 备案号">鲁ICP备19006085号</a>
-                        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392" id="beian"
-                            tabindex="-1" target="_blank" title="http://www.beian.gov.cn/" aria-label="公网安备号">
-                            鲁公网安备 37132102371392号
-                        </a>
-                    </div>
-                </div>
-                <div class="main">
-                    <div class="space">
-                        <span>主页</span>
-                        <button class="icon" id="switch-open" title="打开侧栏" aria-label="打开侧栏"></button>
-                    </div>
-                    <div class="article-list hide" id="list-result" aria-relevant="all">
-                        <div class="list-title">文章标签：</div>
-                    </div>
-                    <div class="article-list" id="list-update">
-                        <div class="list-title">最近更新</div>
-                    </div>
-                    <div class="article-list" id="list-all">
-                        <div class="list-title">全部</div>
-                    </div>
-                </div>
+            </div><div class="card" keyword="docker">
+                <a href="/article/use-docker">
+                    <span class="info">Docker | 2020-02-20</span>
+                    <span class="title">使用 Docker</span>
+                    <span class="description">学习 Docker 的用法，记录常用配置过程</span>
+                    <div class="bar"></div>
+                </a>
+            </div><div class="card" keyword="linux">
+                <a href="/article/cloud-server">
+                    <span class="info">Linux | 2020-02-15</span>
+                    <span class="title">云服务器配置记录</span>
+                    <span class="description">记录云服务器的常用配置，不定期更新</span>
+                    <div class="bar"></div>
+                </a>
+            </div><div class="card" keyword="windows">
+                <a href="/article/install-rime">
+                    <span class="info">Windows | 2020-02-05</span>
+                    <span class="title">安装 RIME 输入法</span>
+                    <span class="description">记录 Windows 10 下 RIME 输入法自然码的安装</span>
+                    <div class="bar"></div>
+                </a>
+            </div><div class="card" keyword="linux">
+                <a href="/article/install-arch-linux">
+                    <span class="info">Linux | 2020-02-03</span>
+                    <span class="title">安装 Arch Linux</span>
+                    <span class="description">记录在旧的笔记本上安装和简单配置 Arch Linux 的过程</span>
+                    <div class="bar"></div>
+                </a>
+            </div><div class="card" keyword="java">
+                <a href="/article/java-restful-server">
+                    <span class="info">Java | 2020-02-01</span>
+                    <span class="title">用 Java 搭建 RESTful API 服务器</span>
+                    <span class="description">面向对象的程序设计课程作业，选择 Jersey 框架进行开发</span>
+                    <div class="bar"></div>
+                </a>
             </div>
-            <div class="content" id="article" aria-live="assertive" aria-atomic="true">
-                <span class="article-info" id="info" aria-label="文章信息"></span>
-                <article></article>
-                <div class="article-bar-left">
-                    <button class="open-index icon" id="open-index" title="打开目录" aria-label="打开目录"></button>
+                <div class="empty hide" id="empty">
+                    <h2>搜索无结果</h2>
+                    <p>换个关键词试试？或者 <a href="/#/">返回主页</a></p>
                 </div>
-                <div class="article-bar-right">
-                    <button class="back-to-top icon" id="top" title="回到顶部" aria-label="回到顶部"></button>
-                    <a href="#/" class="back-to-home icon" title="返回主页" aria-label="返回主页"></a>
-                </div>
-                <div class="article-index" id="index">
-                    <ul class="index-list" id="index-list" title="目录" aria-label="目录"></ul>
-                    <div class="index-title">
-                        <button class="icon" id="close-index" title="关闭目录" aria-label="关闭目录"></button>
-                        <span># 文章目录</span>
+            </main>
+            <aside>
+                <div class="hash">
+                    <input class="search" id="search" type="search" placeholder="搜索">
+                    <div class="tags">
+                        <a href="/#/tag/linux" class="tag" keyword="linux">Linux 2</a><a href="/#/tag/docker" class="tag" keyword="docker">Docker 1</a><a href="/#/tag/java" class="tag" keyword="java">Java 1</a><a href="/#/tag/web" class="tag" keyword="web">Web 1</a><a href="/#/tag/windows" class="tag" keyword="windows">Windows 1</a><a href="/#/" class="tag hide" id="clear" keyword="clear">清除标签</a>
                     </div>
+                    <div class="bar"></div>
                 </div>
-            </div>
+                <address class="address">
+                    <a class="readme" href="https://github.com/Lifeni/website/blob/master/README.md">README 关于</a>
+                    <a class="mail" href="mailto:liangfengning@foxmail.com">Mailto 邮箱</a>
+                    <a class="github" href="https://github.com/Lifeni">Github @Lifeni</a>
+                    <div class="bar"></div>
+                </address>
+            </aside>
         </div>
-        <script src="/static/javascript/index.js"></script>
+        <footer>
+            <div class="part">
+                <span>追求源于热爱。</span>
+            </div>
+            <div class="part">
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鲁ICP备19006085号</a>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
+                    target="_blank">鲁公网安备 37132102371392号</a>
+            </div>
+        </footer>
+        <script src="/static/javascript/home.js"></script>
     </body>
 
 </html>
