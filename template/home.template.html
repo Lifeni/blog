@@ -22,36 +22,66 @@
     <body>
         <header>
             <div class="part">
-                <a href="https://lifeni.life" class="home">Lifeni</a>
+                <a href="https://lifeni.life" class="home" title="lifeni.life">Lifeni</a>
             </div>
             <div class="part">
-                <button class="down" id="down"></button>
-                <button class="more" id="more"></button>
+                <button class="expand" id="expand" title="跳转到侧栏""></button>
+                <button class="more" id="more" title="查看菜单"></button>
+                <div class="window" id="window">
+                    <input type="checkbox" name="dark-mode" class="dark-checkbox" id="dark">
+                    <label for="dark" class="dark" tabindex="0">
+                        <span class="checkbox"></span>
+                        暗色主题
+                    </label>
+                    <input type="checkbox" name="store-mode" class="store-checkbox" id="store">
+                    <label for="store" class="store" tabindex="0">
+                        <span class="checkbox"></span>
+                        启用储存
+                    </label>
+                    <a href="https://github.com/Lifeni/website/blob/beta/README.md" class="readme">关于这个网站</a>
+                </div>
             </div>
         </header>
 
         <div class="center">
+            <nav>
+                <div class="hash">
+                    <a href="/" class="home" title="首页">Home</a>
+                    <a href="/laboratory" class="laboratory" title="实验室">Lab</a>
+                    <a href="/resume" class="resume" title="关于我">Me</a>
+                </div>
+                <div class="at">
+                    <a href="mailto:liangfengning@foxmail.com" class="mail" title="邮箱">Mail</a>
+                    <a href="https://github.com/Lifeni" class="github" title="Github">Github</a>
+                </div>
+            </nav>
             <main>
                 {{INSERT-1}}
                 <div class="empty hide" id="empty">
                     <h2>搜索无结果</h2>
-                    <p>换个关键词试试？或者 <a href="/#/">返回主页</a></p>
+                    <p>换个关键词试试？或者 <a href="/">返回主页</a></p>
                 </div>
             </main>
             <aside>
-                <div class="hash">
-                    <input class="search" id="search" type="search" placeholder="搜索">
+                <div class="find">
+                    <input class="search" id="search" type="search" placeholder="搜索" aria-label="搜索">
                     <div class="tags">
                         {{INSERT-2}}
                     </div>
                     <div class="bar"></div>
                 </div>
-                <address class="address">
-                    <a class="readme" href="https://github.com/Lifeni/website/blob/beta/README.md">README 关于</a>
-                    <a class="mail" href="mailto:liangfengning@foxmail.com">Mailto 邮箱</a>
-                    <a class="github" href="https://github.com/Lifeni">Github @Lifeni</a>
+                <div class="calendar" id="calendar">
+                    <div class="months">
+                        {{INSERT-3}}
+                    </div>
                     <div class="bar"></div>
-                </address>
+                </div>
+                <div class="tool tool-hide" id="tool">
+                    <div>
+                        <button class="top" id="top" title="跳转到顶部">跳转到顶部</button>
+                        <button class="bottom" id="bottom" title="跳转到底部">跳转到底部</button>
+                    </div>
+                </div>
             </aside>
         </div>
         <footer>
@@ -59,12 +89,13 @@
                 <span>追求源于热爱。</span>
             </div>
             <div class="part">
-                <a href="http://www.beian.miit.gov.cn/" target="_blank">鲁ICP备19006085号</a>
-                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
-                    target="_blank">鲁公网安备 37132102371392号</a>
+                <a href="http://www.beian.miit.gov.cn/" class="icp" target="_blank" rel="noopener noreferrer">鲁ICP备19006085号</a>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392" class="beian"
+                    target="_blank" rel="noopener noreferrer">鲁公网安备 37132102371392号</a>
             </div>
         </footer>
         <script src="/static/javascript/home.js"></script>
+        <script src="/static/javascript/common.js"></script>
     </body>
 
 </html>
