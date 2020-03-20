@@ -1,5 +1,14 @@
 'use strict';
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.tag-radio').forEach((e) => {
+        e.checked = false;
+    })
+    document.querySelectorAll('.month-checkbox').forEach((e) => {
+        e.checked = false;
+    })
+})
+
 // 监听搜索框
 const searchInput = document.querySelector('#search');
 searchInput.addEventListener('input', (e) => {
@@ -42,7 +51,7 @@ for (let label of monthLabel) {
 const resetLabel = document.querySelector('#reset');
 const resetRadio = document.querySelector('#reset-radio');
 resetLabel.addEventListener('click', () => {
-    resetRadio.checked = 'true';
+    resetRadio.checked = true;
     articleFilter('none');
 })
 
@@ -58,21 +67,8 @@ toBottom.addEventListener('click', () => {
     window.scrollTo(0, document.body.scrollHeight);
 })
 
-// 跳转侧栏
-const html = document.querySelector('html');
-const nav = document.querySelector('nav');
-const aside = document.querySelector('aside');
-const toSidebar = document.querySelector('#expand');
-toSidebar.addEventListener('click', () => {
-    if (html.offsetWidth > 720) {
-        nav.classList.toggle('fold');
-        aside.classList.toggle('fold');
-    } else {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-})
-
 // 导航栏和工具栏的吸附效果
+const html = document.querySelector('html');
 const tool = document.querySelector('#tool');
 window.addEventListener('scroll', (e) => {
     if (html.offsetWidth > 720) {
@@ -81,9 +77,9 @@ window.addEventListener('scroll', (e) => {
         } else {
             tool.classList.remove('tool-show');
         }
+        // 右下角工具栏
         const main = document.querySelector('main');
         const max = main.getBoundingClientRect().height - tool.offsetTop - 132;
-        // 右下角工具栏
         let delta = html.scrollTop - tool.offsetTop - 216 + html.clientHeight;
         if (delta < 0) {
             delta = 0;

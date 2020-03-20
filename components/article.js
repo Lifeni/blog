@@ -68,8 +68,11 @@ function creatHome() {
         // 添加文章卡片
         dataList +=
             `<div class="card" data-keyword="${index.get('keyword').toLowerCase()}">
-                <a href="/article/${index.get('name')}">
-                    <span class="info">${index.get('keyword')} | ${index.get('modified')}</span>
+                <a href="/article/${index.get('name')}/">
+                    <span class="info">
+                        <span class="keyword">${index.get('keyword')}</span>
+                        <span class="date">${index.get('modified')}</span>
+                    </span>
                     <span class="title">${index.get('title')}</span>
                     <span class="description">${index.get('description')}</span>
                     <div class="bar" title="查看标题为《${index.get('title')}》的文章"></div>

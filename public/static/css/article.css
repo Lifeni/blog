@@ -116,16 +116,6 @@ header .home::after {
     font-size: 0.875rem;
 }
 
-header .down {
-    width: 48px;
-    height: 48px;
-    display: none;
-    background-image: url("data:image/svg+xml,%3Csvg focusable='false' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true' style='will-change: transform;'%3E%3Cpath d='M4 26H28V28H4zM4 19H28V21H4zM26 6v6H6V6H26m0-2H6A2 2 0 004 6v6a2 2 0 002 2H26a2 2 0 002-2V6a2 2 0 00-2-2z'%3E%3C/path%3E%3Ctitle%3EView mode 1%3C/title%3E%3C/svg%3E");
-    background-size: 24px;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
 header .more {
     width: 48px;
     height: 48px;
@@ -227,9 +217,10 @@ header .window-show {
 }
 
 header[data-keyword="docker"] a,
-header[data-keyword="linux"] a,
+header[data-keyword="git"] a,
 header[data-keyword="java"] a,
 header[data-keyword="javascript"] a,
+header[data-keyword="linux"] a,
 header[data-keyword="web"] a,
 header[data-keyword="windows"] a,
 header[data-keyword="翻译"] a,
@@ -239,12 +230,14 @@ header[data-keyword="算法"] a {
 
 header[data-keyword="docker"] a:active,
 header[data-keyword="docker"] a:focus,
-header[data-keyword="linux"] a:active,
-header[data-keyword="linux"] a:focus,
+header[data-keyword="git"] a:active,
+header[data-keyword="git"] a:focus,
 header[data-keyword="java"] a:active,
 header[data-keyword="java"] a:focus,
 header[data-keyword="javascript"] a:active,
 header[data-keyword="javascript"] a:focus,
+header[data-keyword="linux"] a:active,
+header[data-keyword="linux"] a:focus,
 header[data-keyword="web"] a:active,
 header[data-keyword="web"] a:focus,
 header[data-keyword="windows"] a:active,
@@ -257,9 +250,10 @@ header[data-keyword="算法"] a:focus{
 }
 
 header[data-keyword="docker"] .more,
-header[data-keyword="linux"] .more,
+header[data-keyword="git"] .more,
 header[data-keyword="java"] .more,
 header[data-keyword="javascript"] .more,
+header[data-keyword="linux"] .more,
 header[data-keyword="web"] .more,
 header[data-keyword="windows"] .more,
 header[data-keyword="翻译"] .more,
@@ -282,19 +276,19 @@ header[data-keyword="docker"] button:focus {
     background-color: var(--blue-0);
 }
 
-/* linux */
+/* git */
 
-header[data-keyword="linux"] {
-    background-color: var(--deep-purple-0);
+header[data-keyword="git"] {
+    background-color: var(--red-0);
 }
 
-header[data-keyword="linux"] button:hover {
-    background-color: var(--deep-purple-1);
+header[data-keyword="git"] button:hover {
+    background-color: var(--red-1);
 }
 
-header[data-keyword="linux"] button:focus {
+header[data-keyword="git"] button:focus {
     border: solid 2px var(--white);
-    background-color: var(--deep-purple-0);
+    background-color: var(--red-0);
 }
 
 /* java */
@@ -325,6 +319,21 @@ header[data-keyword="javascript"] button:hover {
 header[data-keyword="javascript"] button:focus {
     border: solid 2px var(--white);
     background-color: var(--yellow-0);
+}
+
+/* linux */
+
+header[data-keyword="linux"] {
+    background-color: var(--deep-purple-0);
+}
+
+header[data-keyword="linux"] button:hover {
+    background-color: var(--deep-purple-1);
+}
+
+header[data-keyword="linux"] button:focus {
+    border: solid 2px var(--white);
+    background-color: var(--deep-purple-0);
 }
 
 /* web */
@@ -407,7 +416,7 @@ article {
 
 article .bread {
     display: inline-block;
-    margin-top: 48px;
+    margin-top: 56px;
     padding-left: 4px;
 }
 
@@ -446,7 +455,7 @@ article h6 {
 
 article h1 {
     position: relative;
-    margin: 8px 0 64px 0;
+    margin: 0 0 64px 0;
     font-size: 2.8rem;
 }
 
@@ -485,14 +494,14 @@ article h6 {
 article img {
     width: 100%;
     height: 50vh;
-    margin: 12px 0;
-    padding: 24px;
+    margin: 24px 0;
+    opacity: 0;
     display: block;
     color: var(--gray-60);
     font-size: .875rem;
     line-height: 1rem;
     text-align: right;
-    background-color: var(--gray-10);
+    transition: all .2s;
 }
 
 article img[data-loaded="ok"] {
@@ -500,7 +509,7 @@ article img[data-loaded="ok"] {
     max-width: 100%;
     height: auto;
     padding: 0;
-    animation: opacity s;
+    opacity: 1;
 }
 
 article ol,

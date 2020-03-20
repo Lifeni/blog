@@ -25,16 +25,15 @@
                 <a href="https://lifeni.life" class="home" title="lifeni.life">Lifeni</a>
             </div>
             <div class="part">
-                <button class="expand" id="expand" title="跳转到侧栏""></button>
                 <button class="more" id="more" title="查看菜单"></button>
                 <div class="window" id="window">
                     <input type="checkbox" name="dark-mode" class="dark-checkbox" id="dark">
-                    <label for="dark" class="dark" tabindex="0">
+                    <label for="dark" class="dark" tabindex="0" title="启用/禁用暗色模式">
                         <span class="checkbox"></span>
                         暗色主题
                     </label>
                     <input type="checkbox" name="store-mode" class="store-checkbox" id="store">
-                    <label for="store" class="store" tabindex="0">
+                    <label for="store" class="store" tabindex="0" title="把此设置储存在浏览器中">
                         <span class="checkbox"></span>
                         启用储存
                     </label>
@@ -44,17 +43,6 @@
         </header>
 
         <div class="center">
-            <nav>
-                <div class="hash">
-                    <a href="/" class="home" title="首页">Home</a>
-                    <a href="/laboratory" class="laboratory" title="实验室">Lab</a>
-                    <a href="/resume" class="resume" title="关于我">Me</a>
-                </div>
-                <div class="at">
-                    <a href="mailto:liangfengning@foxmail.com" class="mail" title="邮箱">Mail</a>
-                    <a href="https://github.com/Lifeni" class="github" title="Github">Github</a>
-                </div>
-            </nav>
             <main>
                 {{INSERT-1}}
                 <div class="empty hide" id="empty">
