@@ -439,7 +439,7 @@ article .info span {
 }
 
 article p {
-    margin: 12px 0;
+    margin: 12px 2px;
     font-size: 1rem;
     line-height: 1.6rem;
 }
@@ -542,7 +542,7 @@ article h3 code {
 }
 
 article pre {
-    margin: 16px 2px;
+    margin: 24px 2px;
     padding: 18px 24px;
     background-color: var(--gray-10);
     line-height: 1.5rem;

@@ -324,6 +324,7 @@ main {
     height: 20px;
     border-radius: 36px;
     background-color: var(--yellow-0);
+    overflow: hidden;
 }
 
 .card .info .keyword {
@@ -338,6 +339,7 @@ main {
     padding: 6px 14px;
     border-radius: 48px;
     background-color: var(--gray-10);
+    white-space: nowrap;
 }
 
 .card .bar {
@@ -755,7 +757,7 @@ footer .beian::before {
     background-image: url("/static/image/备案图标.webp");
 }
 
-@media screen and (max-width:720px) {
+@media screen and (max-width:640px) {
 
     html,
     body {
