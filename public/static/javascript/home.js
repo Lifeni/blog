@@ -1,12 +1,9 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.tag-radio').forEach((e) => {
-        e.checked = false;
-    })
-    document.querySelectorAll('.month-checkbox').forEach((e) => {
-        e.checked = false;
-    })
+    setTimeout(() => {
+        articleFilter('none');
+    }, 0);
 })
 
 // 监听搜索框
@@ -68,9 +65,9 @@ toBottom.addEventListener('click', () => {
 })
 
 // 导航栏和工具栏的吸附效果
-const html = document.querySelector('html');
 const tool = document.querySelector('#tool');
 window.addEventListener('scroll', (e) => {
+    const html = document.querySelector('html');
     if (html.offsetWidth > 720) {
         if (html.scrollTop > 72) {
             tool.classList.add('tool-show');
@@ -99,11 +96,20 @@ function articleFilter(method, value) {
     empty.classList.add('hide');
     if (method === 'none') {
         // 无条件
+        document.querySelectorAll('.tag-radio').forEach((e) => {
+            e.checked = false;
+        })
+        document.querySelectorAll('.month-checkbox').forEach((e) => {
+            e.checked = false;
+        })
         for (let card of cards) {
             card.classList.remove('hide');
         }
     } else if (method === 'tag') {
         // 标签
+        document.querySelectorAll('.month-checkbox').forEach((e) => {
+            e.checked = false;
+        })
         reset.classList.remove('hide');
         for (let card of cards) {
             card.classList.add('hide');
@@ -113,6 +119,12 @@ function articleFilter(method, value) {
         }
     } else if (method === 'search') {
         // 搜索
+        document.querySelectorAll('.tag-radio').forEach((e) => {
+            e.checked = false;
+        })
+        document.querySelectorAll('.month-checkbox').forEach((e) => {
+            e.checked = false;
+        })
         value = decodeURI(value).replace(/\+/g, ' ');
         let count = 0;
         for (let card of cards) {
@@ -129,11 +141,13 @@ function articleFilter(method, value) {
         }
     } else if (method === 'date') {
         // 月份
+        document.querySelectorAll('.tag-radio').forEach((e) => {
+            e.checked = false;
+        })
         for (let card of cards) {
-            const text = card.innerText.toLowerCase();
             card.classList.add('hide');
             for (let date of value) {
-                if (text.includes(date.toLowerCase())) {
+                if (card.dataset.date.includes(date.toLowerCase())) {
                     card.classList.remove('hide');
                 }
             }
