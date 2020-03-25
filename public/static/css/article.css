@@ -1,17 +1,5 @@
 :root {
-    /* Carbon Design */
-    --white: #ffffff;
-    --black: #000000;
-    --gray-10: #f4f4f4;
-    --gray-20: #e0e0e0;
-    --gray-30: #c6c6c6;
-    --gray-40: #a8a8a8;
-    --gray-50: #8d8d8d;
-    --gray-60: #6f6f6f;
-    --gray-70: #525252;
-    --gray-80: #393939;
-    --gray-90: #262626;
-    --gray-100: #161616;
+    font-size: 18px;
     /* Flat UI */
     --blue-0: #3498db;
     --blue-1: #2980b9;
@@ -29,14 +17,13 @@
     --green-1: #27ae60;
     --blue-green-0: #1abc9c;
     --blue-green-1: #16a085;
-
-    font-size: 18px;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    color: var(--color-5);
 }
 
 html,
@@ -49,18 +36,38 @@ body {
 }
 
 html {
+    --color-0: #ffffff;
+    --color-1: #f4f4f4;
+    --color-2: #e0e0e0;
+    --color-3: #6f6f6f;
+    --color-4: #393939;
+    --color-5: #000000;
+}
+
+html {
     overflow-y: scroll;
+    background-color: var(--color-0);
+}
+
+html[data-mode="dark"] {
+    --color-0: #161616;
+    --color-1: #121212;
+    --color-2: #262626;
+    --color-3: #8d8d8d;
+    --color-4: #a8a8a8;
+    --color-5: #c6c6c6;
 }
 
 body {
     font-size: 1rem;
-    font-family: 'IBM Plex Sans','Noto Sans SC','思源黑体 CN', sans-serif;
-    color: var(--black);
+    font-family: 'IBM Plex Sans', 'Noto Sans SC', '思源黑体 CN', sans-serif;
+    background-color: var(--color-0);
+    transition: all .2s;
 }
 
 button {
     border: solid 2px transparent;
-    color: var(--black);
+    border-radius: 0;
     background-color: transparent;
     cursor: pointer;
     outline: none;
@@ -68,12 +75,12 @@ button {
 }
 
 button:hover {
-    background-color: var(--gray-10);
+    background-color: var(--color-1);
 }
 
 button:focus {
-    border: solid 2px var(--black);
-    background-color: var(--white);
+    border: solid 2px var(--color-5);
+    background-color: var(--color-0);
 }
 
 a {
@@ -85,7 +92,7 @@ a {
 
 a:active,
 a:focus {
-    border: solid 2px var(--black);
+    border: solid 2px var(--color-5);
 }
 
 header {
@@ -97,7 +104,7 @@ header {
     align-items: center;
     justify-content: space-between;
     font-size: 1.35rem;
-    background-color: var(--white);
+    background-color: var(--color-0);
 }
 
 header .part {
@@ -106,14 +113,7 @@ header .part {
 }
 
 header .home {
-    color: var(--black);
     padding: 4px 12px;
-}
-
-header .home::after {
-    content: 'Beta';
-    padding-left: 8px;
-    font-size: 0.875rem;
 }
 
 header .more {
@@ -126,18 +126,33 @@ header .more {
     transition: border .2s, background-color .2s;
 }
 
+html[data-mode="dark"] header .more {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23000000' aria-hidden='true' style='will-change:transform'%3E%3Cpath d='M27 16.76V16v-.77l1.92-1.68A2 2 0 0 0 29.3 11l-2.36-4a2 2 0 0 0-1.73-1 2 2 0 0 0-.64.1l-2.43.82a11.35 11.35 0 0 0-1.31-.75l-.51-2.52a2 2 0 0 0-2-1.61h-4.68a2 2 0 0 0-2 1.61l-.51 2.52a11.48 11.48 0 0 0-1.32.75l-2.38-.86A2 2 0 0 0 6.79 6a2 2 0 0 0-1.73 1L2.7 11a2 2 0 0 0 .41 2.51L5 15.24v1.53l-1.89 1.68A2 2 0 0 0 2.7 21l2.36 4a2 2 0 0 0 1.73 1 2 2 0 0 0 .64-.1l2.43-.82a11.35 11.35 0 0 0 1.31.75l.51 2.52a2 2 0 0 0 2 1.61h4.72a2 2 0 0 0 2-1.61l.51-2.52a11.48 11.48 0 0 0 1.32-.75l2.42.82a2 2 0 0 0 .64.1 2 2 0 0 0 1.73-1l2.28-4a2 2 0 0 0-.41-2.51zM25.21 24l-3.43-1.16a8.86 8.86 0 0 1-2.71 1.57L18.36 28h-4.72l-.71-3.55a9.36 9.36 0 0 1-2.7-1.57L6.79 24l-2.36-4 2.72-2.4a8.9 8.9 0 0 1 0-3.13L4.43 12l2.36-4 3.43 1.16a8.86 8.86 0 0 1 2.71-1.57L13.64 4h4.72l.71 3.55a9.36 9.36 0 0 1 2.7 1.57L25.21 8l2.36 4-2.72 2.4a8.9 8.9 0 0 1 0 3.13L27.57 20z'/%3E%3Cpath d='M16 22a6 6 0 1 1 6-6 5.94 5.94 0 0 1-6 6zm0-10a3.91 3.91 0 0 0-4 4 3.91 3.91 0 0 0 4 4 3.91 3.91 0 0 0 4-4 3.91 3.91 0 0 0-4-4z'/%3E%3C/svg%3E");
+}
+
 header .more-show {
     z-index: 100;
-    border: solid 2px var(--gray-10) !important;
-    border-bottom: solid 3px var(--white) !important;
-    background-color: var(--white);
+    border: solid 2px var(--color-1) !important;
+    border-bottom: solid 3px var(--color-0) !important;
+    background-color: var(--color-0);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true' style='will-change:transform'%3E%3Cpath d='M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z'/%3E%3C/svg%3E") !important;
+}
+
+html[data-mode="dark"] header .more-show {
+    border: solid 2px var(--color-1) !important;
+    border-bottom: solid 3px var(--color-0) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23C6C6C6' aria-hidden='true' style='will-change:transform'%3E%3Cpath d='M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z'/%3E%3C/svg%3E") !important;
+}
+
+header .more:active,
+header .more:focus {
+    border: solid 2px var(--color-0);
 }
 
 header .more-show:hover,
 header .more-show:active,
 header .more-show:focus {
-    background-color: var(--white) !important;
+    background-color: var(--color-0) !important;
 }
 
 header .window {
@@ -155,10 +170,9 @@ header .window {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border: solid 2px var(--gray-10);
+    border: solid 2px var(--color-1);
     font-size: .875rem;
-    color: var(--black);
-    background-color: var(--white);
+    background-color: var(--color-0);
     overflow: hidden;
     transition: all .2s;
 }
@@ -175,7 +189,7 @@ header .window-show {
     border: solid 2px transparent;
     display: flex;
     align-items: center;
-    color: var(--black) !important;
+    color: var(--color-5) !important;
     outline: none;
     cursor: pointer;
     transition: all .2s;
@@ -183,14 +197,14 @@ header .window-show {
 
 .window a:hover,
 .window label:hover {
-    background-color: var(--gray-10);
+    background-color: var(--color-1);
 }
 
 .window a:active,
 .window a:focus,
 .window label:active,
 .window label:focus {
-    border: solid 2px var(--black);
+    border: solid 2px var(--color-5);
 }
 
 .window .dark-checkbox,
@@ -204,7 +218,7 @@ header .window-show {
     margin: 2px 8px 0 0;
     border-radius: 16px;
     display: inline-block;
-    border: solid 1.5px var(--black);
+    border: solid 1.5px var(--color-5);
     background-size: 8px;
     background-position: center;
     background-repeat: no-repeat;
@@ -212,8 +226,13 @@ header .window-show {
 
 .window .dark-checkbox:checked+.dark .checkbox,
 .window .store-checkbox:checked+.store .checkbox {
-    background-color: var(--black);
+    background-color: var(--color-5);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E %3Cpath fill='%23FFFFFF' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'%3E%3C/path%3E %3C/svg%3E");
+}
+
+html[data-mode="dark"] .window .dark-checkbox:checked+.dark .checkbox,
+html[data-mode="dark"] .window .store-checkbox:checked+.store .checkbox {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E %3Cpath d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'%3E%3C/path%3E %3C/svg%3E");
 }
 
 header[data-keyword="docker"] a,
@@ -225,7 +244,7 @@ header[data-keyword="web"] a,
 header[data-keyword="windows"] a,
 header[data-keyword="翻译"] a,
 header[data-keyword="算法"] a {
-    color: var(--white);
+    color: var(--color-0);
 }
 
 header[data-keyword="docker"] a:active,
@@ -245,8 +264,8 @@ header[data-keyword="windows"] a:focus,
 header[data-keyword="翻译"] a:active,
 header[data-keyword="翻译"] a:focus,
 header[data-keyword="算法"] a:active,
-header[data-keyword="算法"] a:focus{
-    border: solid 2px var(--white);
+header[data-keyword="算法"] a:focus {
+    border: solid 2px var(--color-0);
 }
 
 header[data-keyword="docker"] .more,
@@ -261,9 +280,14 @@ header[data-keyword="算法"] .more {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23FFFFFF' aria-hidden='true' style='will-change:transform'%3E%3Cpath d='M14 4h4v4h-4zM4 4h4v4H4zm20 0h4v4h-4zM14 14h4v4h-4zM4 14h4v4H4zm20 0h4v4h-4zM14 24h4v4h-4zM4 24h4v4H4zm20 0h4v4h-4z'/%3E%3C/svg%3E");
 }
 
+header[data-keyword="docker"] button:focus {
+    border: solid 2px var(--color-0);
+}
+
 /* docker */
 
-header[data-keyword="docker"] {
+header[data-keyword="docker"],
+header[data-keyword="docker"] button:focus {
     background-color: var(--blue-0);
 }
 
@@ -271,14 +295,10 @@ header[data-keyword="docker"] button:hover {
     background-color: var(--blue-1);
 }
 
-header[data-keyword="docker"] button:focus {
-    border: solid 2px var(--white);
-    background-color: var(--blue-0);
-}
-
 /* git */
 
-header[data-keyword="git"] {
+header[data-keyword="git"],
+header[data-keyword="git"] button:focus {
     background-color: var(--red-0);
 }
 
@@ -286,14 +306,10 @@ header[data-keyword="git"] button:hover {
     background-color: var(--red-1);
 }
 
-header[data-keyword="git"] button:focus {
-    border: solid 2px var(--white);
-    background-color: var(--red-0);
-}
-
 /* java */
 
-header[data-keyword="java"] {
+header[data-keyword="java"],
+header[data-keyword="java"] button:focus {
     background-color: var(--orange-0);
 }
 
@@ -301,14 +317,10 @@ header[data-keyword="java"] button:hover {
     background-color: var(--orange-1);
 }
 
-header[data-keyword="java"] button:focus {
-    border: solid 2px var(--white);
-    background-color: var(--orange-0);
-}
-
 /* javascript */
 
-header[data-keyword="javascript"] {
+header[data-keyword="javascript"],
+header[data-keyword="javascript"] button:focus {
     background-color: var(--yellow-0);
 }
 
@@ -316,14 +328,10 @@ header[data-keyword="javascript"] button:hover {
     background-color: var(--yellow-1);
 }
 
-header[data-keyword="javascript"] button:focus {
-    border: solid 2px var(--white);
-    background-color: var(--yellow-0);
-}
-
 /* linux */
 
-header[data-keyword="linux"] {
+header[data-keyword="linux"],
+header[data-keyword="linux"] button:focus {
     background-color: var(--deep-purple-0);
 }
 
@@ -331,14 +339,10 @@ header[data-keyword="linux"] button:hover {
     background-color: var(--deep-purple-1);
 }
 
-header[data-keyword="linux"] button:focus {
-    border: solid 2px var(--white);
-    background-color: var(--deep-purple-0);
-}
-
 /* web */
 
-header[data-keyword="web"] {
+header[data-keyword="web"],
+header[data-keyword="web"] button:focus {
     background-color: var(--green-0);
 }
 
@@ -346,14 +350,10 @@ header[data-keyword="web"] button:hover {
     background-color: var(--green-1);
 }
 
-header[data-keyword="web"] button:focus {
-    border: solid 2px var(--white);
-    background-color: var(--green-0);
-}
-
 /* windows */
 
-header[data-keyword="windows"] {
+header[data-keyword="windows"],
+header[data-keyword="windows"] button:focus {
     background-color: var(--blue-0);
 }
 
@@ -361,14 +361,10 @@ header[data-keyword="windows"] button:hover {
     background-color: var(--blue-1);
 }
 
-header[data-keyword="windows"] button:focus {
-    border: solid 2px var(--white);
-    background-color: var(--blue-0);
-}
-
 /* 翻译 */
 
-header[data-keyword="翻译"] {
+header[data-keyword="翻译"],
+header[data-keyword="翻译"] button:focus {
     background-color: var(--red-0);
 }
 
@@ -376,24 +372,15 @@ header[data-keyword="翻译"] button:hover {
     background-color: var(--red-1);
 }
 
-header[data-keyword="翻译"] button:focus {
-    border: solid 2px var(--white);
-    background-color: var(--red-0);
-}
-
 /* 算法 */
 
-header[data-keyword="算法"] {
+header[data-keyword="算法"],
+header[data-keyword="算法"] button:focus {
     background-color: var(--blue-green-0);
 }
 
 header[data-keyword="算法"] button:hover {
     background-color: var(--blue-green-1);
-}
-
-header[data-keyword="算法"] button:focus {
-    border: solid 2px var(--white);
-    background-color: var(--blue-green-0);
 }
 
 main {
@@ -426,7 +413,7 @@ article .info {
     flex-direction: column;
     align-items: flex-start;
     font-size: 0.875rem;
-    color: var(--gray-60);
+    color: var(--color-3);
 }
 
 article .info hr {
@@ -467,7 +454,8 @@ article h2 {
 
 article h3::before {
     content: '# ';
-    color: var(--gray-20);
+    color: var(--color-2);
+    transition: all .2s;
 }
 
 article h3 {
@@ -497,7 +485,7 @@ article img {
     margin: 24px 0;
     opacity: 0;
     display: block;
-    color: var(--gray-60);
+    color: var(--color-3);
     font-size: .875rem;
     line-height: 1rem;
     text-align: right;
@@ -527,8 +515,8 @@ article li {
 article code {
     margin: 0 2px;
     padding: 2px 6px;
-    color: var(--gray-80);
-    background-color: var(--gray-10);
+    color: var(--color-4);
+    background-color: var(--color-1);
     font-size: 0.875rem;
     font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
     font-weight: 500;
@@ -544,7 +532,7 @@ article h3 code {
 article pre {
     margin: 24px 2px;
     padding: 18px 24px;
-    background-color: var(--gray-10);
+    background-color: var(--color-1);
     line-height: 1.5rem;
     overflow-x: auto;
     transition: background-color .2s;
@@ -559,14 +547,14 @@ article pre code {
 article kbd {
     margin: 0 2px;
     padding: 2px 6px;
-    border: solid 1px var(--gray-20);
+    border: solid 1px var(--color-2);
     font-size: 0.875rem;
     font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
     line-height: 1.5rem;
 }
 
 article a {
-    color: var(--purple-0);
+    color: var(--blue-1);
     text-decoration: none;
     border: solid 1px transparent;
     word-break: break-all;
@@ -595,8 +583,8 @@ article blockquote {
     width: 100%;
     margin: 12px 0 12px 4px;
     padding: 0 16px;
-    border-left: solid 4px var(--gray-20);
-    color: var(--gray-60);
+    border-left: solid 4px var(--color-2);
+    color: var(--color-3);
 }
 
 article hr {
@@ -605,7 +593,8 @@ article hr {
     margin: 24px 0;
     padding: 0;
     border: none;
-    background-color: var(--gray-20);
+    background-color: var(--color-2);
+    transition: all .2s;
 }
 
 article table {
@@ -618,7 +607,7 @@ article table {
 }
 
 article table code {
-    border: solid 1px var(--gray-20);
+    border: solid 1px var(--color-2);
     word-break: keep-all;
 }
 
@@ -626,13 +615,13 @@ article th,
 article td {
     width: 100%;
     padding: 12px 16px;
-    border: solid 1px var(--gray-20);
+    border: solid 1px var(--color-2);
     white-space: nowrap;
 }
 
 article tr:nth-child(2n),
 article th {
-    background-color: var(--gray-10);
+    background-color: var(--color-1);
     transition: background-color .2s;
 }
 
@@ -659,7 +648,7 @@ footer a {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--gray-60);
+    color: var(--color-3);
     font-size: 0.875rem;
     text-decoration: none;
     transition: all .2s;
@@ -672,7 +661,7 @@ footer span {
 footer a:hover,
 footer a:focus,
 footer a:active {
-    color: var(--black);
+    color: var(--color-5);
 }
 
 footer .beian::before {

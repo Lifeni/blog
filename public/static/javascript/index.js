@@ -10,6 +10,10 @@ more.addEventListener('click', () => {
 
 // 点击窗口外关闭窗口
 window.addEventListener('click', (e) => {
+    if (e.x === 0 && e.y === 0) {
+        // 键盘 Enter 屏蔽
+        return;
+    }
     if (win.classList.contains('window-show')) {
         const moreSize = more.getBoundingClientRect();
         const winSize = win.getBoundingClientRect();
@@ -23,15 +27,25 @@ window.addEventListener('click', (e) => {
     }
 })
 
+// ESC 关闭窗口
+document.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape' && win.classList.contains('window-show')) {
+        more.classList.remove('more-show');
+        win.classList.remove('window-show');
+    }
+})
+
 // 暗色模式
+const html = document.querySelector('html');
 const dark = document.querySelector('#dark');
 dark.addEventListener('click', () => {
-    alert('功能未完成');
     if (dark.checked) {
+        html.dataset.mode = 'dark';
         if (localStorage.getItem('store-mode')) {
             localStorage.setItem('dark-mode', 'true');
         }
     } else {
+        html.dataset.mode = 'light';
         if (localStorage.getItem('store-mode')) {
             localStorage.setItem('dark-mode', 'false');
         }
@@ -63,7 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (localStorage.getItem('dark-mode') === 'true') {
         dark.checked = true;
+        html.dataset.mode = 'dark';
     } else {
         dark.checked = false;
+        html.dataset.mode = 'light';
     }
 })

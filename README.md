@@ -18,18 +18,15 @@
 
 | 文件名或目录名            | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ |
-| components/               | node 的组件，用于处理不同任务                                |
-| -- /article.js            | 解析 markdown 文件夹中的 md 文件，把数据插入 template 文件夹中的模板以生成 html 文件并存入 public 文件夹 |
-| log/                      | [手动创建] 日志记录                                          |
 | markdown/                 | [手动创建] 存放文章，需要在开头添加元数据                    |
 | public/                   | 存放前端文件                                                 |
 | -- /article/              | [自动创建] 文章页面                                          |
 | -- /static/               | 存放 JS CSS 等文件                                           |
 | -- /index.html            | [自动创建] 包含文章列表的首页                                |
 | template/                 | 首页和文章页的模板文件                                       |
-| -- /article.template.html | 文章页模板文件，由 components/article.js 处理                |
-| -- /home.template.html    | 首页模板文件，由 components/article.js 处理                  |
-| app.js                    | node 的程序入口                                              |
+| -- /article.template.html | 文章页模板文件                                               |
+| -- /home.template.html    | 首页模板文件                                                 |
+| app.js                    | 解析 markdown 文件夹中的文件，把数据插入 template 文件夹中的模板以生成 html 文件并存入 public 文件夹 |
 
 ## 协议相关
 

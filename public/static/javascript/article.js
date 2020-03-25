@@ -13,6 +13,7 @@ const observer = new IntersectionObserver((entries) => {
         }
     })
 })
+
 const images = article.querySelectorAll('img');
 images.forEach((image) => {
     observer.observe(image);

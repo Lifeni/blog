@@ -104,5 +104,5 @@ dist
 .tern-port
 
 markdown
-log
 public/article
+public/index.html
