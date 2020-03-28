@@ -1,9 +1,35 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
+    calcDate();
     setTimeout(() => {
+        toolResize();
         articleFilter('none');
     }, 0);
+})
+
+function calcDate() {
+    const time = new Date();
+    const year = time.getFullYear();
+    const month = time.getMonth() + 1;
+    const day = time.getDate();
+    const weekday = time.getDay();
+
+    const array = ['天', '一', '二', '三', '四', '五', '六'];
+
+    const startDate = new Date(`${year}/01/01 00:00:00`);
+    const nowDate = new Date(`${year}/${month}/${day} 00:00:00`)
+    const endDate = new Date(`${year + 1}/01/01 00:00:00`)
+    const percent = ((nowDate - startDate) / (endDate - startDate)) * 100;
+
+    const textNow = document.querySelector('#date-now');
+    const textPercent = document.querySelector('#year-percent');
+    textNow.innerText = `今天是 ${month} 月 ${day} 日，星期${array[weekday]}`;
+    textPercent.innerText = `${year} 过了 ${percent.toFixed(1)}%`;
+}
+
+window.addEventListener('resize', () => {
+    toolResize();
 })
 
 // 监听搜索框
@@ -52,6 +78,31 @@ resetLabel.addEventListener('click', () => {
     articleFilter('none');
 })
 
+// 工具栏的吸附效果
+const tool = document.querySelector('#tool');
+window.addEventListener('scroll', () => {
+    const html = document.querySelector('html');
+    if (html.offsetWidth > 640) {
+        const aside = document.querySelector('aside');
+        const footer = document.querySelector('footer');
+        if (aside.getBoundingClientRect().bottom + 132 < html.clientHeight) {
+            const foo = footer.getBoundingClientRect().top - html.clientHeight - 12;
+            if (foo < 0) {
+                tool.style.bottom = `${-foo}px`;
+            } else {
+                tool.style.bottom = '12px';
+            }
+        } else {
+            tool.style.bottom = `${html.clientHeight - aside.getBoundingClientRect().bottom - 120}px`;
+        }
+    }
+})
+
+function toolResize() {
+    const aside = document.querySelector('aside');
+    tool.style.left = `${aside.getBoundingClientRect().left}px`;
+}
+
 // 跳转顶部
 const toTop = document.querySelector('#top');
 toTop.addEventListener('click', () => {
@@ -64,28 +115,47 @@ toBottom.addEventListener('click', () => {
     window.scrollTo(0, document.body.scrollHeight);
 })
 
-// 导航栏和工具栏的吸附效果
-const tool = document.querySelector('#tool');
-window.addEventListener('scroll', (e) => {
-    const html = document.querySelector('html');
-    if (html.offsetWidth > 720) {
-        if (html.scrollTop > 72) {
-            tool.classList.add('tool-show');
-        } else {
-            tool.classList.remove('tool-show');
+// 右上角菜单
+const setting = document.querySelector('#setting');
+const win = document.querySelector('#window');
+setting.addEventListener('click', () => {
+    setting.classList.toggle('setting-show');
+    win.classList.toggle('window-show');
+})
+
+// 点击窗口外关闭窗口
+window.addEventListener('click', (e) => {
+    if (e.x === 0 && e.y === 0) {
+        // 键盘 Enter 屏蔽
+        return;
+    }
+    if (win.classList.contains('window-show')) {
+        const settingSize = setting.getBoundingClientRect();
+        const winSize = win.getBoundingClientRect();
+        if ((e.x < winSize.left || e.x > winSize.right
+            || e.y < winSize.top || e.y > winSize.bottom)
+            && (e.x < settingSize.left || e.x > settingSize.right
+                || e.y < settingSize.top || e.y > settingSize.bottom)) {
+            setting.classList.remove('setting-show');
+            win.classList.remove('window-show');
         }
-        // 右下角工具栏
-        const main = document.querySelector('main');
-        const max = main.getBoundingClientRect().height - tool.offsetTop - 132;
-        let delta = html.scrollTop - tool.offsetTop - 216 + html.clientHeight;
-        if (delta < 0) {
-            delta = 0;
-        } else if (delta > max) {
-            delta = max;
-        }
-        tool.style.paddingTop = `${delta}px`;
     }
 })
+
+// ESC 关闭窗口
+document.addEventListener('keydown', (e) => {
+    if (e.code === 'Enter') {
+        if (e.target.tagName === 'LABEL') {
+            e.target.click();
+        }
+    }
+
+    if (e.code === 'Escape' && win.classList.contains('window-show')) {
+        setting.classList.remove('setting-show');
+        win.classList.remove('window-show');
+    }
+})
+
 
 // 筛选文章
 function articleFilter(method, value) {
