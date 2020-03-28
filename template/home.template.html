@@ -7,7 +7,6 @@
         <meta name="author" content="Lifeni">
         <meta name="description" content="记录干杯。">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=block" rel="stylesheet">
         <link rel="stylesheet" href="/static/css/home.css">
         <title>Lifeni</title>
     </head>
@@ -18,7 +17,7 @@
                 <a href="https://lifeni.life" class="home" title="lifeni.life">Lifeni</a>
             </div>
             <div class="part">
-                <button class="more" id="more" title="查看菜单"></button>
+                <button class="setting" id="setting" title="查看菜单"></button>
                 <div class="window" id="window">
                     <input type="checkbox" name="dark-mode" class="dark-checkbox" id="dark">
                     <label for="dark" class="dark" tabindex="0" title="启用/禁用暗色模式">
@@ -34,6 +33,15 @@
                 </div>
             </div>
         </header>
+
+        <section>
+            <div class="screen">
+                <canvas></canvas>
+                <div class="bar">
+                    <span id="date-now"></span><span id="year-percent"></span>
+                </div>
+            </div>
+        </section>
 
         <div class="center">
             <main>
@@ -57,11 +65,9 @@
                     </div>
                     <div class="bar"></div>
                 </div>
-                <div class="tool tool-hide" id="tool">
-                    <div>
-                        <button class="top" id="top" title="跳转到顶部">跳转到顶部</button>
-                        <button class="bottom" id="bottom" title="跳转到底部">跳转到底部</button>
-                    </div>
+                <div class="tool" id="tool">
+                    <button class="top" id="top" title="跳转到顶部">跳转到顶部</button>
+                    <button class="bottom" id="bottom" title="跳转到底部">跳转到底部</button>
                 </div>
             </aside>
         </div>
@@ -70,7 +76,8 @@
                 <span>追求源于热爱。</span>
             </div>
             <div class="part">
-                <a href="http://www.beian.miit.gov.cn/" class="icp" target="_blank" rel="noopener noreferrer">鲁ICP备19006085号</a>
+                <a href="http://www.beian.miit.gov.cn/" class="icp" target="_blank"
+                    rel="noopener noreferrer">鲁ICP备19006085号</a>
                 <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392" class="beian"
                     target="_blank" rel="noopener noreferrer">鲁公网安备 37132102371392号</a>
             </div>

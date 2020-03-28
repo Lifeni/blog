@@ -12,7 +12,12 @@ const markdown = require('markdown-it')({
         }
         return '';
     }
-}).use(require('markdown-it-abbr'));
+}).use(require('markdown-it-abbr'))
+    .use(require('markdown-it-anchor'))
+    .use(require("markdown-it-table-of-contents"), {
+        'includeLevel': [2, 3],
+        'containerClass': 'toc'
+    });
 const moment = require('moment');
 
 // 储存和获取文章数据
@@ -40,8 +45,11 @@ for (const fileName of files) {
         }
         dataArticle.add(map);
     });
-    const file = fs.readFileSync(`./markdown/${fileName}`).toString();
-    const data = markdown.render(file);
+    const file = fs.readFileSync(`./markdown/${fileName}`).toString() + '\n[[toc]]';
+    const data = markdown.render(file)
+        .replace(/`/g, '').replace(/%60/g, '')
+        .replace(/\*/g, '').replace(/%22/g, '');
+
     // 创建文章网页
     creatArticle(dataArticle.getLast(), data, template);
 }
