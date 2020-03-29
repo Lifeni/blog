@@ -193,7 +193,7 @@ header .setting-show:active,
 header .setting-show:focus,
 header .content-show:hover,
 header .content-show:active,
-header .content-show:focus  {
+header .content-show:focus {
     background-color: var(--color-0) !important;
 }
 
@@ -667,10 +667,10 @@ article td {
     padding: 12px 16px;
     border: solid 1px var(--color-2);
     white-space: nowrap;
+    transition: all .2s;
 }
 
-article tr:nth-child(2n),
-article th {
+article tr:nth-child(2n) {
     background-color: var(--color-11);
     transition: background-color .2s;
 }

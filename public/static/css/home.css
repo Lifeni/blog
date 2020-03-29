@@ -104,7 +104,7 @@ html[data-mode="dark"] button:hover {
 button:active,
 button:focus {
     border: solid 2px var(--color-5);
-    background-color: var(--color-0);
+    background-color: var(--color-00);
 }
 
 a {
@@ -868,6 +868,14 @@ footer .beian::before {
     html,
     body {
         height: auto;
+    }
+
+    .screen .bar {
+        justify-content: center;
+    }
+
+    .screen .bar span:last-child {
+        display: none;
     }
 
     .center {
