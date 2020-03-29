@@ -25,7 +25,7 @@ function calcDate() {
     const textNow = document.querySelector('#date-now');
     const textPercent = document.querySelector('#year-percent');
     textNow.innerText = `今天是 ${month} 月 ${day} 日，星期${array[weekday]}`;
-    textPercent.innerText = `${year} 过了 ${percent.toFixed(1)}%`;
+    textPercent.innerText = `${percent.toFixed(1)}%`;
 }
 
 window.addEventListener('resize', () => {
@@ -86,9 +86,9 @@ window.addEventListener('scroll', () => {
         const aside = document.querySelector('aside');
         const footer = document.querySelector('footer');
         if (aside.getBoundingClientRect().bottom + 132 < html.clientHeight) {
-            const foo = footer.getBoundingClientRect().top - html.clientHeight - 12;
+            const foo = footer.getBoundingClientRect().top - html.clientHeight;
             if (foo < 0) {
-                tool.style.bottom = `${-foo}px`;
+                tool.style.bottom = `${-foo + 12}px`;
             } else {
                 tool.style.bottom = '12px';
             }
