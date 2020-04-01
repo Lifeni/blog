@@ -1,8 +1,8 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const store = document.querySelector('.store-checkbox');
-    const dark = document.querySelector('.dark-checkbox');
+    const store = document.querySelector('#checkbox-store');
+    const dark = document.querySelector('#checkbox-dark');
     if (localStorage.getItem('store-mode') === 'true') {
         store.checked = true;
     } else {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 暗色模式
 const html = document.querySelector('html');
-const dark = document.querySelector('#dark');
+const dark = document.querySelector('#checkbox-dark');
 dark.addEventListener('click', () => {
     if (dark.checked) {
         html.dataset.mode = 'dark';
@@ -35,7 +35,7 @@ dark.addEventListener('click', () => {
 })
 
 // 储存数据
-const store = document.querySelector('#store');
+const store = document.querySelector('#checkbox-store');
 store.addEventListener('click', () => {
     if (store.checked) {
         localStorage.setItem('store-mode', 'true');
