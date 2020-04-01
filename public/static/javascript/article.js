@@ -3,13 +3,14 @@
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const h1 = document.querySelector('h1');
-const info = document.querySelector('#info');
+const info = document.querySelector('#text-info');
 const toc = document.querySelector('.toc')
-const nav = document.querySelector('nav');
+const windowSetting = document.querySelector('#window-setting');
+const windowIndex = document.querySelector('#window-index');
 const article = document.querySelector('article');
 
 article.insertBefore(h1, info);
-nav.appendChild(toc);
+windowIndex.appendChild(toc);
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -30,22 +31,21 @@ images.forEach((image) => {
 })
 
 // 右上角菜单
-const setting = document.querySelector('#setting');
-const content = document.querySelector('#content');
-const win = document.querySelector('#window');
+const setting = document.querySelector('#button-setting');
+const index = document.querySelector('#button-index');
 
 setting.addEventListener('click', () => {
-    setting.classList.toggle('setting-show');
-    win.classList.toggle('window-show');
-    content.classList.remove('content-show');
-    nav.classList.remove('nav-show');
+    setting.classList.toggle('show');
+    windowSetting.classList.toggle('show');
+    index.classList.remove('show');
+    windowIndex.classList.remove('show');
 })
 
-content.addEventListener('click', () => {
-    content.classList.toggle('content-show');
-    nav.classList.toggle('nav-show');
-    setting.classList.remove('setting-show');
-    win.classList.remove('window-show');
+index.addEventListener('click', () => {
+    index.classList.toggle('show');
+    windowIndex.classList.toggle('show');
+    setting.classList.remove('show');
+    windowSetting.classList.remove('show');
 })
 
 // 点击窗口外关闭窗口
@@ -54,26 +54,26 @@ window.addEventListener('click', (e) => {
         // 键盘 Enter 屏蔽
         return;
     }
-    if (win.classList.contains('window-show')) {
+    if (windowSetting.classList.contains('show')) {
         const settingSize = setting.getBoundingClientRect();
-        const winSize = win.getBoundingClientRect();
+        const winSize = windowSetting.getBoundingClientRect();
         if ((e.x < winSize.left || e.x > winSize.right
             || e.y < winSize.top || e.y > winSize.bottom)
             && (e.x < settingSize.left || e.x > settingSize.right
                 || e.y < settingSize.top || e.y > settingSize.bottom)) {
-            setting.classList.remove('setting-show');
-            win.classList.remove('window-show');
+            setting.classList.remove('show');
+            windowSetting.classList.remove('show');
         }
     }
-    if (nav.classList.contains('nav-show')) {
-        const contentSize = content.getBoundingClientRect();
-        const navSize = nav.getBoundingClientRect();
-        if ((e.x < navSize.left || e.x > navSize.right
-            || e.y < navSize.top || e.y > navSize.bottom)
-            && (e.x < contentSize.left || e.x > contentSize.right
-                || e.y < contentSize.top || e.y > contentSize.bottom)) {
-            content.classList.remove('content-show');
-            nav.classList.remove('nav-show');
+    if (windowIndex.classList.contains('show')) {
+        const indexSize = index.getBoundingClientRect();
+        const windowIndexSize = windowIndex.getBoundingClientRect();
+        if ((e.x < windowIndexSize.left || e.x > windowIndexSize.right
+            || e.y < windowIndexSize.top || e.y > windowIndexSize.bottom)
+            && (e.x < indexSize.left || e.x > indexSize.right
+                || e.y < indexSize.top || e.y > indexSize.bottom)) {
+            index.classList.remove('show');
+            windowIndex.classList.remove('show');
         }
     }
 })
@@ -86,10 +86,10 @@ document.addEventListener('keydown', (e) => {
         }
     }
 
-    if (e.code === 'Escape' && (win.classList.contains('window-show') || nav.classList.contains('nav-show'))) {
-        setting.classList.remove('setting-show');
-        content.classList.remove('content-show');
-        win.classList.remove('window-show');
-        nav.classList.remove('nav-show');
+    if (e.code === 'Escape' && (windowSetting.classList.contains('show') || windowIndex.classList.contains('show'))) {
+        setting.classList.remove('show');
+        index.classList.remove('show');
+        windowSetting.classList.remove('show');
+        windowIndex.classList.remove('show');
     }
 })

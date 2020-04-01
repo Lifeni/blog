@@ -7,78 +7,75 @@
         <meta name="author" content="Lifeni">
         <meta name="description" content="记录干杯。">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/static/css/framework.css">
         <link rel="stylesheet" href="/static/css/home.css">
         <title>Lifeni</title>
     </head>
 
     <body>
         <header>
-            <div class="part">
-                <a href="https://lifeni.life" class="home" title="lifeni.life">Lifeni</a>
+            <div>
+                <span class="text name">Lifeni</span>
             </div>
-            <div class="part">
-                <button class="setting" id="setting" title="查看菜单"></button>
-                <div class="window" id="window">
-                    <input type="checkbox" name="dark-mode" class="dark-checkbox" id="dark">
-                    <label for="dark" class="dark" tabindex="0" title="启用/禁用暗色模式">
-                        <span class="checkbox"></span>
-                        暗色主题
+            <div>
+                <button class="button setting icon" id="button-setting" title="查看菜单">查看菜单</button>
+                <div class="window setting" id="window-setting">
+                    <label class="label dark" tabindex="0" title="启用/禁用暗色模式">
+                        <input type="checkbox" name="dark-mode" class="checkbox dark" id="checkbox-dark">
+                        <span class="text">暗色主题</span>
                     </label>
-                    <input type="checkbox" name="store-mode" class="store-checkbox" id="store">
-                    <label for="store" class="store" tabindex="0" title="把此设置储存在浏览器中">
-                        <span class="checkbox"></span>
-                        启用储存
+                    <label class="label store" tabindex="0" title="使用 Local Storage 把此设置储存在浏览器中">
+                        <input type="checkbox" name="store-mode" class="checkbox store" id="checkbox-store">
+                        <span class="text">记住这些设置</span>
                     </label>
-                    <a href="https://github.com/Lifeni/website/blob/master/README.md" class="readme">关于这个网站</a>
                 </div>
             </div>
         </header>
 
         <section>
-            <div class="screen">
-                <canvas></canvas>
-                <div class="bar">
-                    <span id="date-now"></span><span id="year-percent"></span>
-                </div>
+            <canvas></canvas>
+            <div class="bar welcome">
+                <span id="time-today"></span>
+                <span id="time-percent"></span>
             </div>
         </section>
 
-        <div class="center">
+        <div class="container">
             <main>
-                {{INSERT-1}}
-                <div class="empty hide" id="empty">
+                {{文章列表}}
+                <div class="card empty hide" id="card-empty">
                     <h2>搜索无结果</h2>
                     <p>换个关键词试试？或者 <a href="/">返回主页</a></p>
                 </div>
             </main>
             <aside>
-                <div class="find">
-                    <input class="search" id="search" type="search" placeholder="搜索" aria-label="搜索">
-                    <div class="tags">
-                        {{INSERT-2}}
+                <div class="card find" id="card-find">
+                    <input class="input search" id="input-search" type="search" placeholder="搜索" aria-label="搜索">
+                    <div class="list tags">
+                        {{标签列表}}
                     </div>
-                    <div class="bar"></div>
+                    <div class="bar find"></div>
                 </div>
-                <div class="calendar" id="calendar">
-                    <div class="months">
-                        {{INSERT-3}}
+                <div class="card calendar" id="card-calendar">
+                    <div class="list months">
+                        {{时间线}}
                     </div>
-                    <div class="bar"></div>
+                    <div class="bar calendar"></div>
                 </div>
-                <div class="tool" id="tool">
-                    <button class="top" id="top" title="跳转到顶部">跳转到顶部</button>
-                    <button class="bottom" id="bottom" title="跳转到底部">跳转到底部</button>
+                <div class="card tool" id="card-tool">
+                    <button class="button top" id="button-top" title="跳转到顶部" tabindex="-1">跳转到顶部</button>
+                    <button class="button bottom" id="button-bottom" title="跳转到底部" tabindex="-1">跳转到底部</button>
                 </div>
             </aside>
         </div>
         <footer>
-            <div class="part">
-                <span>追求源于热爱。</span>
+            <div>
+                <span class="text slogan">追求源于热爱。</span>
             </div>
-            <div class="part">
-                <a href="http://www.beian.miit.gov.cn/" class="icp" target="_blank"
+            <div>
+                <a href="http://www.beian.miit.gov.cn/" class="link icp" target="_blank"
                     rel="noopener noreferrer">鲁ICP备19006085号</a>
-                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392" class="beian"
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392" class="link beian"
                     target="_blank" rel="noopener noreferrer">鲁公网安备 37132102371392号</a>
             </div>
         </footer>

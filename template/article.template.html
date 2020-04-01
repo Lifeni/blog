@@ -5,49 +5,47 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Lifeni">
-        <meta name="description" content="{{INSERT-0}}">
+        <meta name="description" content="{{文章描述}}">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/static/css/framework.css">
         <link rel="stylesheet" href="/static/css/article.css">
-        <title>{{INSERT-1}} - Lifeni</title>
+        <title>{{文章标题}} - Lifeni</title>
     </head>
 
     <body>
-        <header data-keyword="{{INSERT-2}}">
-            <div class="part">
-                <a href="https://lifeni.life" class="home" title="lifeni.life">Lifeni</a>
+        <header class="color" data-keyword="{{文章关键词}}">
+            <div>
+                <span class="text name">Lifeni</span>
             </div>
-            <div class="part">
-                <button class="content" id="content" title="查看目录"></button>
-                <nav></nav>
-                <button class="setting" id="setting" title="查看菜单"></button>
-                <div class="window" id="window">
-                    <input type="checkbox" name="dark-mode" class="dark-checkbox" id="dark">
-                    <label for="dark" class="dark" tabindex="0" title="启用/禁用暗色模式">
-                        <span class="checkbox"></span>
-                        暗色主题
+            <div>
+                <button class="button index icon color" id="button-index" title="查看目录">查看目录</button>
+                <nav class="window index" id="window-index"></nav>
+                <button class="button setting icon color" id="button-setting" title="查看设置">查看设置</button>
+                <div class="window setting" id="window-setting">
+                    <label class="label dark" tabindex="0" title="启用/禁用暗色模式">
+                        <input type="checkbox" name="dark-mode" class="checkbox dark" id="checkbox-dark">
+                        <span class="text">暗色主题</span>
                     </label>
-                    <input type="checkbox" name="store-mode" class="store-checkbox" id="store">
-                    <label for="store" class="store" tabindex="0" title="把此设置储存在浏览器中">
-                        <span class="checkbox"></span>
-                        启用储存
+                    <label class="label store" tabindex="0" title="使用 Local Storage 把此设置储存在浏览器中">
+                        <input type="checkbox" name="store-mode" class="checkbox store" id="checkbox-store">
+                        <span class="text">记住这些设置</span>
                     </label>
-                    <a href="https://github.com/Lifeni/website/blob/beta/README.md" class="readme">关于这个网站</a>
                 </div>
             </div>
         </header>
         <main>
             <article>
-                {{INSERT-3}}
+                {{文章内容}}
             </article>
         </main>
         <footer>
-            <div class="part">
-                <span>追求源于热爱。</span>
+            <div>
+                <span class="text slogan">追求源于热爱。</span>
             </div>
-            <div class="part">
-                <a href="http://www.beian.miit.gov.cn/" class="icp" target="_blank"
+            <div>
+                <a href="http://www.beian.miit.gov.cn/" class="link icp" target="_blank"
                     rel="noopener noreferrer">鲁ICP备19006085号</a>
-                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392" class="beian"
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392" class="link beian"
                     target="_blank" rel="noopener noreferrer">鲁公网安备 37132102371392号</a>
             </div>
         </footer>

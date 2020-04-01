@@ -22,7 +22,7 @@ const moment = require('moment');
 
 // 储存和获取文章数据
 class Data {
-    constructor() { this.articles = new Array(); }
+    constructor() { this.articles = []; }
     add(data) { this.articles.push(data); }
     getAll() { return this.articles; }
     getLast() { return this.articles[this.articles.length - 1]; }
@@ -68,15 +68,16 @@ function creatHome() {
     for (const index of dataArticle.getAll()) {
         // 添加文章卡片
         dataList +=
-            `<div class="card" data-keyword="${index.get('keyword').toLowerCase()}" data-date="${index.get('modified').toLowerCase()}">
+            `<div class="card article" data-keyword="${index.get('keyword').toLowerCase()}" data-date="${index.get('modified').toLowerCase()}">
                 <a href="/article/${index.get('name')}/">
-                    <span class="info">
-                        <span class="keyword">${index.get('keyword')}</span>
-                        <span class="date">${moment(index.get('modified')).month() + 1} 月 ${moment(index.get('modified')).date()} 日</span>
+                    <span class="group info">
+                        <span class="point color" data-keyword="${index.get('keyword').toLowerCase()}"></span>
+                        <span class="text keyword">${index.get('keyword')}</span>
+                        <span class="text date">${moment(index.get('modified')).month() + 1} 月 ${moment(index.get('modified')).date()} 日</span>
                     </span>
-                    <span class="title">${index.get('title')}</span>
-                    <span class="description">${index.get('description')}</span>
-                    <div class="bar" title="查看标题为《${index.get('title')}》的文章"></div>
+                    <span class="text title">${index.get('title')}</span>
+                    <span class="text description">${index.get('description')}</span>
+                    <div class="bar article" title="查看标题为《${index.get('title')}》的文章"></div>
                 </a>
             </div>`;
         // 统计文章标签
@@ -108,28 +109,30 @@ function creatHome() {
     // 插入标签
     for (let [name, count] of tags) {
         dataTag +=
-            `<input type="radio" class="tag-radio" id="${name.toLowerCase()}" name="tag" data-keyword="${name.toLowerCase()}" value="${name} ${count}">
-             <label for="${name.toLowerCase()}" class="tag" data-keyword="${name.toLowerCase()}" title="筛选标签为 ${name} 的文章" tabindex="0">${name} ${count}</label>`;
+            `<label class="label tag color" title="筛选标签为 ${name} 的文章" tabindex="0">
+                <input type="radio" class="radio tag" data-keyword="${name.toLowerCase()}" id="radio-${name.toLowerCase()}" name="tag" value="${name} ${count}">
+                <span class="point color" data-keyword="${name.toLowerCase()}"></span>
+                <span class="text">${name} ${count}</span>
+             </label>`;
     }
     dataTag +=
-        `<input type="radio" class="tag-radio" id="reset-radio" name="tag" data-keyword="reset" value="清除标签">
-         <label for="reset" class="tag hide reset" id="reset" data-keyword="reset" title="清除标签" tabindex="0">清除标签</label>`;
+        `<label class="label tag hide reset" id="label-reset" title="清除标签" tabindex="0">
+            <input type="radio" class="radio tag" data-keyword="reset" id="radio-reset" name="tag" value="清除标签">
+            清除标签
+         </label>`;
     // 插入时间线
     let dataMonth = '';
     for (let [month, count] of months) {
         dataMonth +=
-            `<div>
-                <input type="checkbox" id="${month}" class="month-checkbox">
-                <label for="${month}" class="month"  title="筛选修改时间在 ${moment(month).year()} 年 ${moment(month).month() + 1} 月 的文章" tabindex="0">
-                    <span class="count">${count}</span>${moment(month).year()} 年 ${moment(month).month() + 1} 月
-                </label>
-             </div>`;
+            `<label class="label month" title="筛选修改时间在 ${moment(month).year()} 年 ${moment(month).month() + 1} 月 的文章" tabindex="0">
+                <input type="checkbox" id="${month}" class="checkbox month">
+                <span class="text count">${count}</span>${moment(month).year()} 年 ${moment(month).month() + 1} 月
+             </label>`;
     }
     // 生成首页
-    template = template.replace(/{{INSERT-0}}/, moment().format());
-    template = template.replace(/{{INSERT-1}}/, dataList);
-    template = template.replace(/{{INSERT-2}}/, dataTag);
-    template = template.replace(/{{INSERT-3}}/, dataMonth);
+    template = template.replace(/{{文章列表}}/, dataList);
+    template = template.replace(/{{标签列表}}/, dataTag);
+    template = template.replace(/{{时间线}}/, dataMonth);
     fs.writeFileSync('./public/index.html', template);
 }
 
@@ -138,20 +141,20 @@ function creatArticle(info, data, template) {
     data = data.replace(/src/g, 'data-src');
     // 添加文章元数据
     data =
-        `<span class="bread">
+        `<span class="text bread">
             <a href="/">lifeni.life</a> / article / ${info.get('name')}
         </span>
-        <div class="info" id="info">
+        <div class="text info" id="text-info">
             <span>创建于 ${moment(info.get('created')).year()} 年 ${moment(info.get('created')).month() + 1} 月 ${moment(info.get('created')).date()} 日</span>
             <span>修改于 ${moment(info.get('modified')).year()} 年 ${moment(info.get('modified')).month() + 1} 月 ${moment(info.get('modified')).date()} 日</span>
             <span>署名-相同方式共享 4.0 国际</span>
             <hr>
         </div>` + data;
     // 生成文章页
-    template = template.replace(/{{INSERT-0}}/, info.get('description'));
-    template = template.replace(/{{INSERT-1}}/, info.get('title'));
-    template = template.replace(/{{INSERT-2}}/, info.get('keyword').toLowerCase());
-    template = template.replace(/{{INSERT-3}}/, data);
+    template = template.replace(/{{文章描述}}/, info.get('description'));
+    template = template.replace(/{{文章标题}}/, info.get('title'));
+    template = template.replace(/{{文章关键词}}/, info.get('keyword').toLowerCase());
+    template = template.replace(/{{文章内容}}/, data);
     // 如果目录不存在则创建
     fs.mkdirSync(`./public/article/${info.get('name')}`, { recursive: true });
     fs.writeFileSync(`./public/article/${info.get('name')}/index.html`, template);
