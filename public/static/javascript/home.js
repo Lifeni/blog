@@ -54,6 +54,7 @@ const checkboxMonth = document.querySelectorAll('.checkbox.month');
 for (let month of labelMonth) {
     month.addEventListener('click', () => {
         let monthArray = [];
+
         // checkbox 从点击到 checked 状态需要一点时间
         setTimeout(() => {
             for (let checkbox of checkboxMonth) {
@@ -61,6 +62,7 @@ for (let month of labelMonth) {
                     monthArray.push(checkbox.id);
                 }
             }
+
             if (monthArray.length === 0) {
                 articleFilter('none');
             } else {
@@ -85,8 +87,10 @@ window.addEventListener('scroll', () => {
     if (html.offsetWidth > 640) {
         const aside = document.querySelector('aside');
         const footer = document.querySelector('footer');
+
         if (aside.getBoundingClientRect().bottom + 132 < html.clientHeight) {
             const foo = footer.getBoundingClientRect().top - html.clientHeight;
+
             if (foo < 0) {
                 cardTool.style.bottom = `${-foo + 12}px`;
             } else {
@@ -125,10 +129,12 @@ setting.addEventListener('click', () => {
 
 // 点击窗口外关闭窗口
 window.addEventListener('click', (e) => {
+
+    // 键盘 Enter 屏蔽
     if (e.x === 0 && e.y === 0) {
-        // 键盘 Enter 屏蔽
         return;
     }
+
     if (windowSetting.classList.contains('show')) {
         const settingSize = setting.getBoundingClientRect();
         const winSize = windowSetting.getBoundingClientRect();
@@ -162,64 +168,75 @@ function articleFilter(method, value) {
     const cardArticle = document.querySelectorAll('.card.article');
     const cardEmpty = document.querySelector('#card-empty');
     const cardTool = document.querySelector('#card-tool');
+
     labelReset.classList.add('hide');
     cardEmpty.classList.add('hide');
     cardTool.classList.add('hide');
-    if (method === 'none') {
-        // 无条件
+
+
+    if (method === 'none') {    // 无条件
         document.querySelectorAll('.radio.tag').forEach((e) => {
             e.checked = false;
         })
+
         document.querySelectorAll('.checkbox.month').forEach((e) => {
             e.checked = false;
         })
+
         cardTool.classList.remove('hide');
+
         for (let card of cardArticle) {
             card.classList.remove('hide');
         }
-    } else if (method === 'tag') {
-        // 标签
+    } else if (method === 'tag') {      // 标签
         document.querySelectorAll('.checkbox.month').forEach((e) => {
             e.checked = false;
         })
+
         labelReset.classList.remove('hide');
+
         for (let card of cardArticle) {
             card.classList.add('hide');
             if (card.dataset.keyword === value) {
                 card.classList.remove('hide');
             }
         }
-    } else if (method === 'search') {
-        // 搜索
+    } else if (method === 'search') {   // 搜索
         if (value === '') {
             articleFilter('none');
             return;
         }
+
         document.querySelectorAll('.radio.tag').forEach((e) => {
             e.checked = false;
         })
+
         document.querySelectorAll('.checkbox.month').forEach((e) => {
             e.checked = false;
         })
+
         value = decodeURI(value).replace(/\+/g, ' ');
+
         let count = 0;
         for (let card of cardArticle) {
             const text = card.innerText.toLowerCase();
             count++;
             card.classList.add('hide');
+
             if (text.includes(value.toLowerCase())) {
                 count--;
                 card.classList.remove('hide');
             }
         }
+
         if (count === cardArticle.length) {
             cardEmpty.classList.remove('hide');
         }
-    } else if (method === 'date') {
-        // 月份
+    } else if (method === 'date') {     // 月份
         document.querySelectorAll('.radio.tag').forEach((e) => {
             e.checked = false;
         })
+
         for (let card of cardArticle) {
             card.classList.add('hide');
             for (let date of value) {

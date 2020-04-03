@@ -1,30 +1,43 @@
 .window.index .toc {
-    width: fit-content;
-    width: -moz-fit-content;
-    margin: 4px -8px;
+    max-height: 60vh;
+    padding: 16px;
+    overflow-y: auto;
 }
 
 .window.index li {
-    width: fit-content;
-    width: -moz-fit-content;
-    margin: 8px 0;
-    padding: 0 1rem 0 1.5rem;
+    position: relative;
     font-size: .875rem;
+    line-height: 1.5rem;
     list-style: none;
 }
 
-.window.index a {
-    color: var(--color-font-primary);
-    text-decoration: none;
-    border: solid 1px transparent;
-    white-space: nowrap;
+.window.index li li a {
+    padding: 8px calc(.875rem + 8px);
 }
 
-.window.index a:hover,
+.window.index a {
+    position: relative;
+    width: 100%;
+    min-width: 120px;
+    height: 36px;
+    padding: 8px;
+    border: solid 2px transparent;
+    display: flex;
+    align-items: center;
+    outline: none;
+    white-space: nowrap;
+    color: var(--color-font-primary);
+    text-decoration: none;
+    transition: all .2s;
+}
+
+.window.index a:hover {
+    background-color: var(--color-background-layer-highlight);
+}
+
 .window.index a:active,
 .window.index a:focus {
-    border: solid 1px transparent;
-    border-bottom: solid 1px;
+    border: solid 2px var(--color-active-focus);
 }
 
 main {
@@ -235,7 +248,7 @@ article blockquote {
 
 article hr {
     width: 100%;
-    height: 1px;
+    height: 2px;
     margin: 24px 0;
     padding: 0;
     border: none;

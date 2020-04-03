@@ -31,6 +31,17 @@ section .bar {
     transition: all .2s;
 }
 
+section .text.percent {
+    padding-bottom: 2px;
+    border-bottom: dashed 2px var(--color-border-highlight);
+    cursor: help;
+    transition: all .2s;
+}
+
+section .text.percent:hover {
+    border-bottom-color: var(--color-font-secondary);
+}
+
 .container {
     position: relative;
     min-height: calc(100vh - 144px);
