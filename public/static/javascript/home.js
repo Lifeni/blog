@@ -1,34 +1,15 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    calcDate();
+    sectionResize();
     setTimeout(() => {
         toolResize();
         articleFilter('none');
     }, 0);
 })
 
-function calcDate() {
-    const time = new Date();
-    const year = time.getFullYear();
-    const month = time.getMonth() + 1;
-    const day = time.getDate();
-    const weekday = time.getDay();
-
-    const array = ['天', '一', '二', '三', '四', '五', '六'];
-
-    const startDate = new Date(`${year}/01/01 00:00:00`);
-    const nowDate = new Date(`${year}/${month}/${day} 00:00:00`)
-    const endDate = new Date(`${year + 1}/01/01 00:00:00`)
-    const percent = ((nowDate - startDate) / (endDate - startDate)) * 100;
-
-    const textToday = document.querySelector('#time-today');
-    const textPercent = document.querySelector('#time-percent');
-    textToday.innerText = `今天是 ${month} 月 ${day} 日，星期${array[weekday]}`;
-    textPercent.innerText = `${percent.toFixed(1)}%`;
-}
-
 window.addEventListener('resize', () => {
+    sectionResize();
     toolResize();
 })
 
@@ -105,6 +86,15 @@ window.addEventListener('scroll', () => {
 function toolResize() {
     const aside = document.querySelector('aside');
     cardTool.style.left = `${aside.getBoundingClientRect().left}px`;
+}
+
+function sectionResize() {
+    const section = document.querySelector('section');
+    let top = section.getBoundingClientRect().left - 168;
+    if (top < 12 ) {
+        top = 12;
+    }
+    section.style.marginTop = `${top}px`;
 }
 
 // 跳转顶部
