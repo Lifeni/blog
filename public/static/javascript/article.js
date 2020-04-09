@@ -9,9 +9,11 @@ const windowSetting = document.querySelector('#window-setting');
 const windowIndex = document.querySelector('#window-index');
 const article = document.querySelector('article');
 
+// 更改组件位置
 article.insertBefore(h1, info);
 windowIndex.appendChild(toc);
 
+// 图片懒加载
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.intersectionRatio > 0) {
@@ -50,10 +52,12 @@ index.addEventListener('click', () => {
 
 // 点击窗口外关闭窗口
 window.addEventListener('click', (e) => {
+
+    // 键盘 Enter 屏蔽
     if (e.x === 0 && e.y === 0) {
-        // 键盘 Enter 屏蔽
         return;
     }
+
     if (windowSetting.classList.contains('show')) {
         const settingSize = setting.getBoundingClientRect();
         const winSize = windowSetting.getBoundingClientRect();
@@ -65,6 +69,7 @@ window.addEventListener('click', (e) => {
             windowSetting.classList.remove('show');
         }
     }
+
     if (windowIndex.classList.contains('show')) {
         const indexSize = index.getBoundingClientRect();
         const windowIndexSize = windowIndex.getBoundingClientRect();

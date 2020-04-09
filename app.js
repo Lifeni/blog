@@ -36,6 +36,7 @@ let dataArticle = new Data();
 const files = fs.readdirSync('./markdown/');
 const template = fs.readFileSync('./template/article.template.html').toString();
 for (const fileName of files) {
+
     // 处理元数据
     markdown.use(require('markdown-it-front-matter'), (fm) => {
         let map = new Map();
@@ -45,6 +46,7 @@ for (const fileName of files) {
         }
         dataArticle.add(map);
     });
+
     const file = fs.readFileSync(`./markdown/${fileName}`).toString() + '\n[[toc]]';
     const data = markdown.render(file)
         .replace(/`/g, '').replace(/%60/g, '')
@@ -53,11 +55,12 @@ for (const fileName of files) {
     // 创建文章网页
     creatArticle(dataArticle.getLast(), data, template);
 }
+
 // 按修改时间倒序
 dataArticle.sort();
+
 // 创建首页
 creatHome();
-
 
 // 根据模板创建首页
 function creatHome() {
@@ -65,7 +68,9 @@ function creatHome() {
     let dataList = '';
     let tags = new Map();
     let months = new Map();
+
     for (const index of dataArticle.getAll()) {
+
         // 添加文章卡片
         dataList +=
             `<div class="card article" data-keyword="${index.get('keyword').toLowerCase()}" data-date="${index.get('modified').toLowerCase()}">
@@ -80,6 +85,7 @@ function creatHome() {
                     <div class="bar article" title="查看标题为《${index.get('title')}》的文章"></div>
                 </a>
             </div>`;
+
         // 统计文章标签
         const tag = index.get('keyword');
         if (tags.has(tag)) {
@@ -88,6 +94,7 @@ function creatHome() {
         } else {
             tags.set(tag, 1);
         }
+
         // 统计文章时间
         const month = index.get('modified').slice(0, 7);
         if (months.has(month)) {
@@ -97,6 +104,7 @@ function creatHome() {
             months.set(month, 1);
         }
     }
+
     // 标签按数量排序
     let dataTag = '';
     tags = Array.from(tags).sort((a, b) => {
@@ -106,6 +114,7 @@ function creatHome() {
             return a[1] < b[1];
         }
     });
+
     // 插入标签
     for (let [name, count] of tags) {
         dataTag +=
@@ -115,11 +124,13 @@ function creatHome() {
                 <span class="text">${name} ${count}</span>
              </label>`;
     }
+
     dataTag +=
         `<label class="label tag hide reset" id="label-reset" title="清除标签" tabindex="0">
             <input type="radio" class="radio tag" data-keyword="reset" id="radio-reset" name="tag" value="清除标签">
             清除标签
          </label>`;
+
     // 插入时间线
     let dataMonth = '';
     for (let [month, count] of months) {
@@ -129,6 +140,7 @@ function creatHome() {
                 <span class="text count">${count}</span>${moment(month).year()} 年 ${moment(month).month() + 1} 月
              </label>`;
     }
+
     // 生成首页
     template = template.replace(/{{文章列表}}/, dataList);
     template = template.replace(/{{标签列表}}/, dataTag);
@@ -137,8 +149,10 @@ function creatHome() {
 }
 
 function creatArticle(info, data, template) {
+
     // 图片懒加载
     data = data.replace(/src/g, 'data-src');
+
     // 添加文章元数据
     data =
         `<span class="text bread">
@@ -150,11 +164,13 @@ function creatArticle(info, data, template) {
             <span>署名-相同方式共享 4.0 国际</span>
             <hr>
         </div>` + data;
+
     // 生成文章页
     template = template.replace(/{{文章描述}}/, info.get('description'));
     template = template.replace(/{{文章标题}}/, info.get('title'));
     template = template.replace(/{{文章关键词}}/, info.get('keyword').toLowerCase());
     template = template.replace(/{{文章内容}}/, data);
+
     // 如果目录不存在则创建
     fs.mkdirSync(`./public/article/${info.get('name')}`, { recursive: true });
     fs.writeFileSync(`./public/article/${info.get('name')}/index.html`, template);

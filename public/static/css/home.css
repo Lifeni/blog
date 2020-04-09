@@ -1,38 +1,45 @@
 section {
     position: relative;
-    width: 100%;
+    z-index: 50;
+    width: calc(100% - 24px);
     max-width: 852px;
-    height: 33vh;
-    margin: 0 auto;
-    padding: 0 12px;
+    margin: 12px auto;
+    padding: 24px 24px 24px 84px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    border: dashed 2px var(--color-border-highlight);
+    overflow: hidden;
+    transition: border .2s;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 84px;
+    height: calc(48px + 1.75rem);
+    background-size: 28px;
+    background-position: center;
+    background-repeat: no-repeat;
     transition: all .2s;
 }
 
-section canvas {
-    width: 100%;
-    height: 100%;
+section.quote::before {
+    background-image: var(--icon-quotes);
 }
 
-section .bar {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+section .text {
     color: var(--color-font-secondary);
+    line-height: 1.75rem;
     transition: all .2s;
 }
 
 .container {
     position: relative;
+    z-index: 50;
     min-height: calc(100vh - 144px);
     display: flex;
     align-items: flex-start;
@@ -55,7 +62,6 @@ main {
     position: relative;
     width: 100%;
     margin-bottom: 12px;
-    box-shadow: var(--box-shadow-card);
     background-color: var(--color-background-layer);
     transition: all .2s;
 }
@@ -312,11 +318,12 @@ aside {
     height: 48px;
     margin-bottom: 8px;
     padding-right: 14px;
-    border: solid 2px var(--color-background-layer-highlight);
+    border: solid 2px var(--color-background-layer);
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: var(--color-font-secondary);
+    background-color: var(--color-background-layer-highlight);
     cursor: pointer;
     outline: none;
     overflow: hidden;
@@ -330,6 +337,7 @@ aside {
 .card.calendar .label:active,
 .card.calendar .label:focus {
     border: solid 2px var(--color-active-focus);
+    background-color: var(--color-background-layer-highlight-plus);
 }
 
 .card.calendar .label:active .count,
@@ -347,7 +355,7 @@ aside {
     justify-content: center;
     font-size: 1rem;
     color: var(--color-font-secondary);
-    background-color: var(--color-background-layer-highlight);
+    background-color: var(--color-background-layer-highlight-plus);
     transition: all .2s;
 }
 
@@ -372,7 +380,7 @@ aside {
 }
 
 .card.calendar .checkbox:checked~.count::before {
-    content: '→ ';
+    content: '选中 ';
     margin-right: 4px;
     opacity: 1;
 }
@@ -424,14 +432,6 @@ aside {
 }
 
 @media screen and (max-width:640px) {
-    section .bar {
-        justify-content: center;
-    }
-
-    section .bar span:last-child {
-        display: none;
-    }
-
     .container {
         flex-direction: column;
         justify-content: flex-start
