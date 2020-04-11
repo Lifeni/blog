@@ -15,6 +15,9 @@
     <body>
         <div class="top-bar"></div>
         <header>
+            <div class="div mobile">
+                <button class="button sidebar icon" id="button-sidebar" title="查看侧栏">查看侧栏</button>
+            </div>
             <div>
                 <span class="text name">Lifeni</span>
             </div>
@@ -40,11 +43,20 @@
             </div>
         </header>
 
-        <section class="quote">
+        <section class="tips">
+            <span class="text">
+                网页正在开发中，部分功能并不完善。
+            </span>
+        </section>
+
+        <section class="quotes">
             <span class="text">
                 我们所经历的每个平凡的日常，也许就是连续发生的奇迹。
             </span>
-
+            <span class="info">
+                来自动画《日常》
+            </span>
+            <div class="character" id="character"></div>
         </section>
 
         <div class="container">
@@ -56,6 +68,9 @@
                 </div>
             </main>
             <aside>
+                <div class="div mobile">
+                    <button class="button close icon" id="button-close-sidebar" title="关闭侧栏">关闭侧栏</button>
+                </div>
                 <div class="card find" id="card-find">
                     <input class="input search" id="input-search" type="search" placeholder="搜索" aria-label="搜索">
                     <div class="list tags">

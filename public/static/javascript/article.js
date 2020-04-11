@@ -1,7 +1,5 @@
 'use strict';
 
-const header = document.querySelector('header');
-const main = document.querySelector('main');
 const h1 = document.querySelector('h1');
 const info = document.querySelector('#text-info');
 const toc = document.querySelector('.toc')
