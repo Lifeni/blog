@@ -8,7 +8,9 @@ const markdown = require('markdown-it')({
         if (lang && highlight.getLanguage(lang)) {
             try {
                 return highlight.highlight(lang, str, true).value;
-            } catch (__) { }
+            } catch (e) {
+                console.log(e);
+            }
         }
         return '';
     }
@@ -172,6 +174,11 @@ function creatArticle(info, data, template) {
     template = template.replace(/{{文章内容}}/, data);
 
     // 如果目录不存在则创建
-    fs.mkdirSync(`./public/article/${info.get('name')}`, { recursive: true });
+    try {
+        fs.mkdirSync(`./public/article/${info.get('name')}`, { recursive: true });
+    } catch (e) {
+        console.log(e);
+    }
+
     fs.writeFileSync(`./public/article/${info.get('name')}/index.html`, template);
 }

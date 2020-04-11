@@ -1,17 +1,28 @@
+.div.mobile {
+    display: none;
+}
+
 section {
     position: relative;
-    z-index: 50;
+    z-index: 60;
     width: calc(100% - 24px);
     max-width: 852px;
     margin: 12px auto;
-    padding: 24px 24px 24px 84px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    border: dashed 2px var(--color-border-highlight);
-    overflow: hidden;
-    transition: border .2s;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-left: solid 8px var(--color-border-highlight);
+    background-color: var(--color-background-highlight);
+    transition: border .2s, background .2s;
+}
+
+section.tips {
+    padding: 24px 24px 24px 78px;
+}
+
+section.quotes {
+    padding: 24px 144px 24px 78px;
 }
 
 section::before {
@@ -19,28 +30,89 @@ section::before {
     position: absolute;
     left: 0;
     top: 0;
-    width: 84px;
+    width: 78px;
     height: calc(48px + 1.75rem);
-    background-size: 28px;
+    background-size: 24px;
     background-position: center;
     background-repeat: no-repeat;
     transition: all .2s;
 }
 
-section.quote::before {
+section.tips::before {
+    background-image: var(--icon-tips);
+}
+
+section.quotes::before {
     background-image: var(--icon-quotes);
 }
 
 section .text {
+    display: inline-block;
     color: var(--color-font-secondary);
     line-height: 1.75rem;
+    user-select: none;
+    -moz-user-select: none;
     transition: all .2s;
+}
+
+section .info {
+    display: inline-block;
+    width: 100%;
+    padding-top: 12px;
+    padding-right: 0;
+    font-size: .875rem;
+    line-height: 1.75rem;
+    color: var(--color-font-secondary);
+    text-align: right;
+    white-space: nowrap;
+    user-select: none;
+    -moz-user-select: none;
+    transition: all .2s;
+}
+
+section .character {
+    position: absolute;
+    right: 24px;
+    bottom: 0;
+    z-index: 1000;
+    width: 120px;
+    height: 120px;
+    background-image: url("https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/%E6%97%A5%E5%B8%B8%EF%BC%9A%E5%8D%9A%E5%A3%AB.webp");
+    background-size: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: grab;
+    transition: background .2s, filter .2s;
+}
+
+section .character::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* border-bottom: solid 2px var(--color-border-highlight); */
+    transition: all .2s;
+}
+
+section .character.click {
+    cursor: grabbing;
+}
+
+html[data-mode="dark"] section .character {
+    background-image: url("https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/%E6%97%A5%E5%B8%B8%EF%BC%9A%E9%95%BF%E9%87%8E%E5%8E%9F%E7%BE%8E%E7%BB%AA.webp");
+    filter: brightness(.5);
+}
+
+html[data-mode="dark"] section .character::after {
+    filter: brightness(2);
 }
 
 .container {
     position: relative;
     z-index: 50;
-    min-height: calc(100vh - 144px);
+    min-height: calc(100vh - 168px);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -64,6 +136,12 @@ main {
     margin-bottom: 12px;
     background-color: var(--color-background-layer);
     transition: all .2s;
+}
+
+.card .text,
+.card .label {
+    user-select: none;
+    -moz-user-select: none;
 }
 
 .card .bar {
@@ -190,7 +268,7 @@ main {
 
 aside {
     position: relative;
-    width: 280px;
+    width: 278px;
     margin-right: 12px;
     opacity: 1;
     visibility: visible;
@@ -200,7 +278,7 @@ aside {
 .card.find,
 .card.calendar {
     z-index: 1;
-    min-width: 280px;
+    min-width: 278px;
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -432,7 +510,24 @@ aside {
 }
 
 @media screen and (max-width:640px) {
+    .div.mobile {
+        display: flex;
+    }
+
+    section {
+        z-index: 50;
+    }
+
+    section.quotes {
+        padding: 24px 108px 24px 78px;
+    }
+
+    section .character {
+        right: 0;
+    }
+
     .container {
+        z-index: 1000;
         flex-direction: column;
         justify-content: flex-start
     }
@@ -448,10 +543,63 @@ aside {
     }
 
     aside {
-        width: 100%;
-        max-width: 100%;
+        position: fixed;
+        left: -100vw;
+        top: 0;
+        z-index: 1010;
+        width: 100vw;
+        height: 100vh;
         margin: 0;
-        padding: 0 12px;
+        padding: 12px 12px 0 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        overflow-y: auto;
+        transition: left .4s ease .2s, background ease .2s;
+    }
+
+    aside.expand {
+        left: 0;
+        background-color: var(--color-mask);
+        transition: left ease .4s, background .2s ease .3s;
+    }
+
+    aside .div.mobile {
+        height: 72px;
+        margin: 0 0 12px -12px;
+        padding: 16px 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-self: flex-start;
+        justify-content: space-between;
+        background-color: var(--color-background-layer);
+        transition: all .2s ease .2s;
+    }
+
+    aside .button.close {
+        position: relative;
+        z-index: 5;
+        width: 48px;
+        height: 48px;
+        color: transparent;
+        background-color: transparent;
+        background-size: 24px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: var(--icon-next);
+        user-select: none;
+        -moz-user-select: none;
+        transform: rotate(180deg);
+    }
+
+    aside .button.close:hover {
+        background-color: var(--color-hover);
+    }
+
+    aside .card {
+        max-width: 280px;
     }
 }
 

@@ -89,10 +89,17 @@ function toolResize() {
 }
 
 function sectionResize() {
-    const section = document.querySelector('section');
-    let top = section.getBoundingClientRect().left - 168;
-    if (top < 12 ) {
+    const html = document.querySelector('html');
+    const container = document.querySelector('.container');
+    const section = document.querySelector('section.tips');
+    let top = section.getBoundingClientRect().left
+        + section.getBoundingClientRect().top
+        - container.getBoundingClientRect().top;
+    let max = html.clientHeight / 3;
+    if (top < 12) {
         top = 12;
+    } else if (top > max) {
+        top = max;
     }
     section.style.marginTop = `${top}px`;
 }
@@ -116,6 +123,39 @@ setting.addEventListener('click', () => {
     setting.classList.toggle('show');
     windowSetting.classList.toggle('show');
 })
+
+const openSidebar = document.querySelector('#button-sidebar');
+const closeSidebar = document.querySelector('#button-close-sidebar');
+const sidebar = document.querySelector('aside');
+
+openSidebar.addEventListener('click', () => {
+    sidebar.classList.add('expand');
+})
+
+closeSidebar.addEventListener('click', () => {
+    sidebar.classList.remove('expand');
+})
+
+// 引用的图片部分
+const character = document.querySelector('#character');
+let dX, dY;
+character.addEventListener('mousedown', (e) => {
+    character.classList.add('click');
+    dX = e.clientX - character.getBoundingClientRect().left;
+    dY = e.clientY - character.getBoundingClientRect().top;
+    document.addEventListener('mousemove', divMove);
+})
+
+document.addEventListener('mouseup', () => {
+    character.classList.remove('click');
+    document.removeEventListener('mousemove', divMove);
+})
+
+function divMove(e) {
+    character.style.position = 'fixed';
+    character.style.left = e.clientX - dX + 'px';
+    character.style.top = e.clientY - dY + 'px';
+}
 
 // 点击窗口外关闭窗口
 window.addEventListener('click', (e) => {
