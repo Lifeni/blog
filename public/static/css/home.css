@@ -1,4 +1,4 @@
-.div.mobile {
+.mobile {
     display: none;
 }
 
@@ -487,7 +487,7 @@ aside {
 }
 
 .card.tool .button:hover {
-    background-color: var(--color-background-layer-highlight);
+    background-color: var(--color-hover);
 }
 
 .card.tool .top,
@@ -510,7 +510,7 @@ aside {
 }
 
 @media screen and (max-width:640px) {
-    .div.mobile {
+    .mobile {
         display: flex;
     }
 
@@ -565,7 +565,7 @@ aside {
         transition: left ease .4s, background .2s ease .3s;
     }
 
-    aside .div.mobile {
+    aside .mobile {
         height: 72px;
         margin: 0 0 12px -12px;
         padding: 16px 12px;
@@ -578,7 +578,7 @@ aside {
         transition: all .2s ease .2s;
     }
 
-    aside .button.close {
+    .mobile .button {
         position: relative;
         z-index: 5;
         width: 48px;
@@ -594,7 +594,7 @@ aside {
         transform: rotate(180deg);
     }
 
-    aside .button.close:hover {
+    .mobile .button:hover {
         background-color: var(--color-hover);
     }
 
