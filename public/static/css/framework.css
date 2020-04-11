@@ -277,6 +277,7 @@ header .window {
     box-shadow: var(--box-shadow-window);
     overflow-x: auto;
     overflow-y: hidden;
+    pointer-events: none;
     transition: all .2s;
 }
 
@@ -288,6 +289,7 @@ header .window.index {
 header .window.show {
     opacity: 1;
     visibility: visible;
+    pointer-events: unset;
 }
 
 header .label,
@@ -404,6 +406,7 @@ footer .link {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: solid 2px transparent;
     color: var(--color-font-secondary);
     font-size: 0.875rem;
     text-decoration: none;
