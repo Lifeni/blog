@@ -333,6 +333,7 @@ header .link::after {
     background-position: center;
     background-size: 16px;
     background-image: var(--icon-exlink);
+    transition: all .2s;
 }
 
 header .checkbox {

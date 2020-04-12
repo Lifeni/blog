@@ -1,7 +1,16 @@
 'use strict';
 
+// 判断是否支持 Webp
+const isSupportWebp = function () {
+    return document.createElement('canvas').toDataURL('image/webp', .5).includes('data:image/webp');
+}
+
 // 浏览器是否支持判断系统主题
-let themeSupported = false;
+const isSupportTheme = function () {
+    return window.matchMedia('(prefers-color-scheme: light)').matches
+        || window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const store = document.querySelector('#checkbox-store');
     const system = document.querySelector('#checkbox-system');
@@ -30,17 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
         store.checked = false;
     }
 
-    // 判断浏览器是否支持判断系统主题
-    if (window.matchMedia('(prefers-color-scheme: light)').matches
-        || window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        themeSupported = true;
+    if (!isSupportWebp()) {
+        let images = document.querySelectorAll('img');
+        images.forEach((e) => {
+            console.log(e.src + '?x-oss-process=image/format,jpg');
+            e.src = e.src + '?x-oss-process=image/format,jpg';
+        })
+    }
 
+    // 判断浏览器是否支持判断系统主题
+    if (isSupportTheme()) {
         // 默认开启跟随系统主题
         if (!localStorage.getItem('store-mode')) {
             system.checked = true;
         }
     } else {
-        themeSupported = false;
         system.checked = false;
         if (localStorage.getItem('store-mode')) {
             localStorage.setItem('system-mode', 'false');
@@ -48,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 根据系统主题切换暗色模式
-    if (themeSupported && system.checked) {
+    if (isSupportTheme() && system.checked) {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 
             // 如果系统是暗色，网页是亮色
@@ -71,7 +84,7 @@ const dark = document.querySelector('#checkbox-dark');
 dark.addEventListener('click', (e) => {
 
     // 手动点击时，改变了默认主题时，需要取消跟随系统主题
-    if (themeSupported && system.checked && e.x !== 0) {
+    if (isSupportTheme() && system.checked && e.x !== 0) {
         system.click();
     }
 
@@ -94,7 +107,7 @@ const system = document.querySelector('#checkbox-system');
 system.addEventListener('click', () => {
 
     // 如果支持跟随系统主题，就判断切换并切换主题
-    if (themeSupported) {
+    if (isSupportTheme()) {
         if (system.checked) {
             if (localStorage.getItem('store-mode')) {
                 localStorage.setItem('system-mode', 'true');
