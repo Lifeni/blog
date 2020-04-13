@@ -1,5 +1,5 @@
 .window.index .toc {
-    max-height: 60vh;
+    max-height: 66vh;
     padding: 16px;
     overflow-y: auto;
 }
@@ -62,7 +62,7 @@ article {
 article .bread {
     width: 100%;
     display: inline-block;
-    margin: 24px 0 0 0;
+    margin: 48px 0 0 0;
     padding-left: 4px;
 }
 
@@ -101,7 +101,7 @@ article h6 {
 
 article h1 {
     position: relative;
-    margin: 0 0 64px 0;
+    margin: 0 0 108px 0;
     font-size: 2.8rem;
 }
 
