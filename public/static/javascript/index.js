@@ -1,6 +1,6 @@
 'use strict';
 
-// 判断是否支持 Webp
+// 判断是否支持 WebP
 const isSupportWebp = function () {
     return document.createElement('canvas').toDataURL('image/webp', .5).includes('data:image/webp');
 }
@@ -39,11 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
         store.checked = false;
     }
 
+    // 修改 WebP 到 JPG
     if (!isSupportWebp()) {
         let images = document.querySelectorAll('img');
         images.forEach((e) => {
-            console.log(e.src + '?x-oss-process=image/format,jpg');
-            e.src = e.src + '?x-oss-process=image/format,jpg';
+            if (e.src) {
+                e.src = e.src + '?x-oss-process=image/format,jpg';
+            }
+
+            if (e.srcset) {
+                e.srcset = e.srcset + '?x-oss-process=image/format,jpg';
+            }
         })
     }
 

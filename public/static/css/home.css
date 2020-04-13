@@ -375,8 +375,7 @@ aside {
 }
 
 .card.find .label.hide {
-    opacity: 0;
-    visibility: hidden;
+    display: none;
 }
 
 .card.find .bar {

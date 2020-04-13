@@ -25,6 +25,7 @@ html {
     --color-theme-java: #e55844;
     --color-theme-javascript: #ffd600;
     --color-theme-linux: #185886;
+    --color-theme-node: #689f63;
     --color-theme-web: #4caf50;
     --color-theme-windows: #0078d7;
     --color-theme-翻译: #e00012;
@@ -137,6 +138,10 @@ html[data-mode="dark"] {
 
 .color[data-keyword="linux"] {
     background-color: var(--color-theme-linux);
+}
+
+.color[data-keyword="node"] {
+    background-color: var(--color-theme-node);
 }
 
 .color[data-keyword="web"] {
