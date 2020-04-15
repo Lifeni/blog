@@ -47,10 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.src = e.src + '?x-oss-process=image/format,jpg';
             }
 
-            if (e.srcset) {
-                e.srcset = e.srcset + '?x-oss-process=image/format,jpg';
+            if (e.dataset.src) {
+                e.dataset.src = e.dataset.src + '?x-oss-process=image/format,jpg';
             }
         })
+
+        const character = document.querySelector('#character');
+        if (character) {
+            character.style.backgroundImage = 'url("https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/%E6%97%A5%E5%B8%B8%EF%BC%9A%E5%9D%82%E6%9C%AC.png")'
+        }
     }
 
     // 判断浏览器是否支持判断系统主题

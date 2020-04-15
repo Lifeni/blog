@@ -95,7 +95,7 @@ function sectionResize() {
     let top = section.getBoundingClientRect().left
         + section.getBoundingClientRect().top
         - container.getBoundingClientRect().top;
-    let max = html.clientHeight / 3;
+    let max = html.clientHeight / 4;
     if (top < 12) {
         top = 12;
     } else if (top > max) {

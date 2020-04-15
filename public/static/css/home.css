@@ -301,6 +301,7 @@ aside {
     background-repeat: no-repeat;
     background-color: var(--color-background-layer-highlight);
     outline: none;
+    -webkit-appearance: none;
     transition: all .2s;
 }
 
