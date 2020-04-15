@@ -124,8 +124,10 @@ setting.addEventListener('click', () => {
     windowSetting.classList.toggle('show');
 })
 
+// 移动端侧栏相关
 const openSidebar = document.querySelector('#button-sidebar');
 const closeSidebar = document.querySelector('#button-close-sidebar');
+const divCloseSidebar = document.querySelector('#div-close-sidebar');
 const sidebar = document.querySelector('aside');
 
 openSidebar.addEventListener('click', () => {
@@ -133,6 +135,10 @@ openSidebar.addEventListener('click', () => {
 })
 
 closeSidebar.addEventListener('click', () => {
+    sidebar.classList.remove('expand');
+})
+
+divCloseSidebar.addEventListener('click', () => {
     sidebar.classList.remove('expand');
 })
 
