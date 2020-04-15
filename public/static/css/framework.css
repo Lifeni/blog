@@ -429,12 +429,12 @@ footer .link.beian::before {
     content: '';
     width: 16px;
     height: 16px;
-    margin: 4px 4px 1px 2px;
+    margin: 4px;
     display: inline-block;
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("/static/image/备案图标.webp");
+    background-image: url("/static/image/备案图标.png");
 }
 
 /*
