@@ -15,9 +15,6 @@
     <body>
         <div class="top-bar"></div>
         <header>
-            <div class="div mobile">
-                <button class="button sidebar icon" id="button-sidebar" title="查看侧栏">查看侧栏</button>
-            </div>
             <div>
                 <span class="text name">Lifeni</span>
             </div>
@@ -43,21 +40,54 @@
             </div>
         </header>
 
-        <section class="tips">
-            <span class="text">
-                网页正在开发中，部分功能并不完善。
-            </span>
-        </section>
+        <div class="bar project">
+            <h1 class="text title">项目</h1>
+        </div>
 
-        <section class="quotes">
-            <span class="text">
-                我们所经历的每个平凡的日常，也许就是连续发生的奇迹。
-            </span>
-            <span class="info">
-                来自动画《日常》
-            </span>
-            <div class="character" id="character"></div>
-        </section>
+        <div class="projects" id="projects">
+            <button class="go left hide" id="go-left" tabindex="-1"></button>
+            <button class="go right" id="go-right" tabindex="-1"></button>
+            <div class="showcase" id="showcase">
+                <div class="board project">
+                    <img src="https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/see.webp" alt="[下个 ID 见] 的背景图片"
+                        class="image">
+                    <div class="info">
+                        <h2 class="text name">see-you-next-id</h2>
+                        <span class="text description">下个 ID 见！一个论坛项目。</span>
+                    </div>
+                    <div class="bar">
+                        <a href="https://github.com/Lifeni/see-you-next-id" class="link code">代码</a>
+                    </div>
+                </div>
+                <div class="board project">
+                    <img src="https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/java.webp"
+                        alt="[Java 搭建简单的 RESTful API 服务器] 的背景图片" class="image">
+                    <div class="info">
+                        <h2 class="text name">java-restful-api-server</h2>
+                        <span class="text description">Java 搭建简单的 RESTful API 服务器。</span>
+                    </div>
+                    <div class="bar">
+                        <a href="https://github.com/Lifeni/java-restful-api-server" class="link code">代码</a>
+                    </div>
+                </div>
+                <div class="board project">
+                    <img src="https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/where.webp" alt="[我们从哪来] 的背景图片"
+                        class="image">
+                    <div class="info">
+                        <h2 class="text name">where-are-we-from</h2>
+                        <span class="text description">我们从哪来？一个性教育网站。 </span>
+                    </div>
+                    <div class="bar">
+                        <a href="https://lifeni.github.io/where-are-we-from/" class="link example">演示</a>
+                        <a href="https://github.com/Lifeni/where-are-we-from" class="link code">代码</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bar article">
+            <h1 class="text title">文章</h1>
+        </div>
 
         <div class="container">
             <main>
@@ -68,11 +98,6 @@
                 </div>
             </main>
             <aside>
-                <div class="background" id="div-close-sidebar"></div>
-                <div class="div mobile">
-                    <button class="button close icon" id="button-close-sidebar" title="关闭侧栏">关闭侧栏</button>
-                    <span class="text">这是侧栏</span>
-                </div>
                 <div class="card find" id="card-find">
                     <input class="input search" id="input-search" type="search" placeholder="搜索" aria-label="搜索">
                     <div class="list tags">
