@@ -1,7 +1,6 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    sectionResize();
     setTimeout(() => {
         toolResize();
         articleFilter('none');
@@ -9,9 +8,37 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.addEventListener('resize', () => {
-    sectionResize();
     toolResize();
 })
+
+if (document.querySelector('html').offsetWidth > 640) {
+    // 项目部分的左右滑动按钮
+    const showcase = document.querySelector('#showcase');
+    const goLeft = document.querySelector('#go-left');
+    const goRight = document.querySelector('#go-right');
+    const allDiv = showcase.querySelectorAll('.board');
+    const lastDiv = allDiv[allDiv.length - 1];
+
+    goLeft.addEventListener('click', () => {
+        const length = showcase.getBoundingClientRect().width;
+        showcase.scrollLeft -= length;
+    })
+
+    goRight.addEventListener('click', () => {
+        const length = showcase.getBoundingClientRect().width;
+        showcase.scrollLeft += length;
+    })
+
+    showcase.addEventListener('scroll', () => {
+        goLeft.classList.add('hide');
+        goRight.classList.add('hide');
+        if (showcase.scrollLeft === 0) {
+            goRight.classList.remove('hide');
+        } else if (parseInt(lastDiv.getBoundingClientRect().right) === parseInt(showcase.getBoundingClientRect().right)) {
+            goLeft.classList.remove('hide');
+        }
+    })
+}
 
 // 监听搜索框
 const inputSearch = document.querySelector('#input-search');
@@ -88,22 +115,6 @@ function toolResize() {
     cardTool.style.left = `${aside.getBoundingClientRect().left}px`;
 }
 
-function sectionResize() {
-    const html = document.querySelector('html');
-    const container = document.querySelector('.container');
-    const section = document.querySelector('section.tips');
-    let top = section.getBoundingClientRect().left
-        + section.getBoundingClientRect().top
-        - container.getBoundingClientRect().top;
-    let max = html.clientHeight / 4;
-    if (top < 12) {
-        top = 12;
-    } else if (top > max) {
-        top = max;
-    }
-    section.style.marginTop = `${top}px`;
-}
-
 // 跳转顶部
 const toTop = document.querySelector('#button-top');
 toTop.addEventListener('click', () => {
@@ -123,45 +134,6 @@ setting.addEventListener('click', () => {
     setting.classList.toggle('show');
     windowSetting.classList.toggle('show');
 })
-
-// 移动端侧栏相关
-const openSidebar = document.querySelector('#button-sidebar');
-const closeSidebar = document.querySelector('#button-close-sidebar');
-const divCloseSidebar = document.querySelector('#div-close-sidebar');
-const sidebar = document.querySelector('aside');
-
-openSidebar.addEventListener('click', () => {
-    sidebar.classList.add('expand');
-})
-
-closeSidebar.addEventListener('click', () => {
-    sidebar.classList.remove('expand');
-})
-
-divCloseSidebar.addEventListener('click', () => {
-    sidebar.classList.remove('expand');
-})
-
-// 引用的图片部分
-const character = document.querySelector('#character');
-let dX, dY;
-character.addEventListener('mousedown', (e) => {
-    character.classList.add('click');
-    dX = e.clientX - character.getBoundingClientRect().left;
-    dY = e.clientY - character.getBoundingClientRect().top;
-    document.addEventListener('mousemove', divMove);
-})
-
-document.addEventListener('mouseup', () => {
-    character.classList.remove('click');
-    document.removeEventListener('mousemove', divMove);
-})
-
-function divMove(e) {
-    character.style.position = 'fixed';
-    character.style.left = e.clientX - dX + 'px';
-    character.style.top = e.clientY - dY + 'px';
-}
 
 // 点击窗口外关闭窗口
 window.addEventListener('click', (e) => {
