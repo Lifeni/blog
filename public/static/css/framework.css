@@ -248,6 +248,7 @@ header .button {
     background-repeat: no-repeat;
     user-select: none;
     -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 header .button:hover {
@@ -322,6 +323,7 @@ header .link {
     cursor: pointer;
     user-select: none;
     -moz-user-select: none;
+    -webkit-user-select: none;
     transition: all .2s;
 }
 
