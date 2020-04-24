@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         toolResize();
         articleFilter('none');
+        loadMore();
     }, 0);
 })
 
@@ -127,50 +128,6 @@ toBottom.addEventListener('click', () => {
     window.scrollTo(0, document.body.scrollHeight);
 })
 
-// 右上角菜单
-const setting = document.querySelector('#button-setting');
-const windowSetting = document.querySelector('#window-setting');
-setting.addEventListener('click', () => {
-    setting.classList.toggle('show');
-    windowSetting.classList.toggle('show');
-})
-
-// 点击窗口外关闭窗口
-window.addEventListener('click', (e) => {
-
-    // 键盘 Enter 屏蔽
-    if (e.x === 0 && e.y === 0) {
-        return;
-    }
-
-    if (windowSetting.classList.contains('show')) {
-        const settingSize = setting.getBoundingClientRect();
-        const winSize = windowSetting.getBoundingClientRect();
-        if ((e.x < winSize.left || e.x > winSize.right
-            || e.y < winSize.top || e.y > winSize.bottom)
-            && (e.x < settingSize.left || e.x > settingSize.right
-                || e.y < settingSize.top || e.y > settingSize.bottom)) {
-            setting.classList.remove('show');
-            windowSetting.classList.remove('show');
-        }
-    }
-})
-
-// ESC 关闭窗口
-document.addEventListener('keydown', (e) => {
-    if (e.code === 'Enter') {
-        if (e.target.tagName === 'LABEL') {
-            e.target.click();
-        }
-    }
-
-    if (e.code === 'Escape' && windowSetting.classList.contains('show')) {
-        setting.classList.remove('show');
-        windowSetting.classList.remove('show');
-    }
-})
-
-
 // 筛选文章
 function articleFilter(method, value) {
     const cardArticle = document.querySelectorAll('.card.article');
@@ -180,7 +137,7 @@ function articleFilter(method, value) {
     labelReset.classList.add('hide');
     cardEmpty.classList.add('hide');
     cardTool.classList.add('hide');
-
+    loadButton.classList.add('hide');
 
     if (method === 'none') {    // 无条件
         document.querySelectorAll('.radio.tag').forEach((e) => {
@@ -192,10 +149,13 @@ function articleFilter(method, value) {
         })
 
         cardTool.classList.remove('hide');
+        loadButton.classList.remove('hide');
 
-        for (let card of cardArticle) {
-            card.classList.remove('hide');
-        }
+        // for (let card of cardArticle) {
+        //     card.classList.remove('hide');
+        // }
+        loadCount -= 4;
+        loadMore();
     } else if (method === 'tag') {      // 标签
         document.querySelectorAll('.checkbox.month').forEach((e) => {
             e.checked = false;
@@ -255,3 +215,27 @@ function articleFilter(method, value) {
         }
     }
 }
+
+let loadCount = 0;
+function loadMore() {
+    loadCount += 4;
+    const articles = document.querySelectorAll('.card.article');
+    if (loadCount > articles.length) {
+        loadCount = articles.length;
+    }
+    articles.forEach((e, index) => {
+        if (index < loadCount) {
+            e.classList.remove('hide');
+            if (index === articles.length - 1) {
+                loadButton.classList.add('hide');
+            }
+        } else {
+            e.classList.add('hide');
+        }
+    })
+}
+
+const loadButton = document.querySelector('#load-more');
+loadButton.addEventListener('click', () => {
+    loadMore();
+})

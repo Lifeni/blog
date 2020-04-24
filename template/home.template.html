@@ -12,7 +12,7 @@
         <title>Lifeni</title>
     </head>
 
-    <body>
+    <body class="nothing">
         <div class="top-bar"></div>
         <header>
             <div>
@@ -49,37 +49,43 @@
             <button class="go right" id="go-right" tabindex="-1">向右滚动</button>
             <div class="showcase" id="showcase">
                 <div class="board project">
-                    <img src="https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/see.webp" alt="[下个 ID 见] 的背景图片"
-                        class="image">
-                    <div class="info">
+                    <div class="info color" data-keyword="vue">
+                        <span class="text status">等待 Vue 3</span>
+                        <span class="text language">Vue</span>
+                    </div>
+                    <div class="content">
                         <h2 class="text name">see-you-next-id</h2>
                         <span class="text description">下个 ID 见！一个论坛项目。</span>
                     </div>
                     <div class="bar">
-                        <a href="https://github.com/Lifeni/see-you-next-id" class="link code">代码</a>
+                        <a href="https://github.com/Lifeni/see-you-next-id" class="link code">Github</a>
                     </div>
                 </div>
                 <div class="board project">
-                    <img src="https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/java.webp"
-                        alt="[Java 搭建简单的 RESTful API 服务器] 的背景图片" class="image">
-                    <div class="info">
+                    <div class="info color" data-keyword="java">
+                        <span class="text status">已存档</span>
+                        <span class="text language">Java</span>
+                    </div>
+                    <div class="content">
                         <h2 class="text name">java-restful-api-server</h2>
                         <span class="text description">Java 搭建简单的 RESTful API 服务器。</span>
                     </div>
                     <div class="bar">
-                        <a href="https://github.com/Lifeni/java-restful-api-server" class="link code">代码</a>
+                        <a href="https://github.com/Lifeni/java-restful-api-server" class="link code">Github</a>
                     </div>
                 </div>
                 <div class="board project">
-                    <img src="https://lifeni.oss-cn-beijing.aliyuncs.com/website/image/where.webp" alt="[我们从哪来] 的背景图片"
-                        class="image">
-                    <div class="info">
+                    <div class="info color" data-keyword="html">
+                        <span class="text status">已存档</span>
+                        <span class="text language">HTML</span>
+                    </div>
+                    <div class="content">
                         <h2 class="text name">where-are-we-from</h2>
                         <span class="text description">我们从哪来？一个性教育网站。 </span>
                     </div>
                     <div class="bar">
-                        <a href="https://lifeni.github.io/where-are-we-from/" class="link example">演示</a>
-                        <a href="https://github.com/Lifeni/where-are-we-from" class="link code">代码</a>
+                        <a href="https://lifeni.github.io/where-are-we-from/" class="link example">Demo</a>
+                        <a href="https://github.com/Lifeni/where-are-we-from" class="link code">Github</a>
                     </div>
                 </div>
             </div>
@@ -96,6 +102,7 @@
                     <h2>搜索无结果</h2>
                     <p>换个关键词试试？或者 <a href="/">返回主页</a></p>
                 </div>
+                <button class="load more" id="load-more">查看更多</button>
             </main>
             <aside>
                 <div class="card find" id="card-find">

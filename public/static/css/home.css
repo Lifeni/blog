@@ -49,6 +49,7 @@ body>.bar .text {
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
+    scrollbar-width: none;
     transition: all .2s;
 }
 
@@ -58,8 +59,8 @@ body>.bar .text {
 
 .board {
     position: relative;
-    max-width: 366px;
-    margin: 0 12px 0 0;
+    width: 366px;
+    margin: 0 12px 12px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,12 +74,14 @@ body>.bar .text {
 .board .image {
     position: relative;
     width: 100%;
+    display: none;
     filter: brightness(.9);
     pointer-events: none;
     transition: all .2s;
 }
 
 .board .info,
+.board .content,
 .board .bar {
     width: 100%;
     padding: 24px;
@@ -87,10 +90,30 @@ body>.bar .text {
     align-items: flex-start;
     justify-content: center;
     color: var(--color-font-primary);
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
     transition: all .2s;
+}
+
+.board .info {
+    height: 64px;
+    padding: 0 24px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-font-secondary);
+    border-top: solid 4px;
+    background-color: var(--color-background-highlight);
+}
+
+.info.color[data-keyword="html"] {
+    border-color: var(--color-theme-html);
+}
+
+.info.color[data-keyword="java"] {
+    border-color: var(--color-theme-java);
+}
+
+.info.color[data-keyword="vue"] {
+    border-color: var(--color-theme-vue);
 }
 
 .board .bar {
@@ -101,14 +124,18 @@ body>.bar .text {
 }
 
 .board .link {
+    height: 36px;
     margin-right: 8px;
-    padding: 4px 12px;
-    padding-left: 48px;
+    padding: 6px 14px;
+    padding-left: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 48px;
     color: var(--color-font-link);
-    background-size: 24px;
+    background-size: 20px;
     background-repeat: no-repeat;
-    background-position: 12px center;
+    background-position: 10px center;
     background-color: var(--color-background-layer-highlight);
     transition: all .2s;
 }
@@ -122,6 +149,12 @@ body>.bar .text {
 }
 
 .board .link:hover {
+    background-color: var(--color-hover);
+}
+
+.board .link:active,
+.board .link:focus {
+    border-color: transparent;
     background-color: var(--color-hover);
 }
 
@@ -150,21 +183,32 @@ body>.bar .text {
     z-index: 1000;
     width: 64px;
     height: 64px;
-    border-radius: 64px;
     visibility: visible;
     opacity: 1;
     cursor: pointer;
+    border-radius: 72px;
     background-size: 32px;
     background-repeat: no-repeat;
     background-position: center;
     background-color: var(--color-mask);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(4px);
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     color: transparent;
     transition: all .2s;
 }
+
+.go:hover {
+    background-color: var(--color-hover);
+}
+
+.go:active,
+.go:focus {
+    border-color: transparent;
+    background-color: var(--color-hover);
+}
+
 
 .go.left {
     left: 24px;
@@ -254,6 +298,7 @@ main {
 }
 
 .card.article .info {
+    margin: 0 -2px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -263,7 +308,7 @@ main {
 
 .card.article .info .point {
     position: absolute;
-    left: 36px;
+    left: 34px;
     top: 30px;
     width: 20px;
     height: 20px;
@@ -284,7 +329,7 @@ main {
 }
 
 .card.article .info .keyword {
-    padding-left: 36px;
+    padding-left: 40px;
 }
 
 .card.article .info .date {
@@ -300,7 +345,7 @@ main {
 }
 
 .card.empty {
-    padding: 48px 24px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -309,14 +354,16 @@ main {
 }
 
 .card.empty h2 {
-    margin-bottom: 12px;
-    font-size: 2rem;
+    margin: 12px 0 4px 0;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
     font-weight: normal;
 }
 
 .card.empty p {
     margin-bottom: 12px;
     font-size: 1rem;
+    line-height: 1.75rem;
 }
 
 .card.empty a {
@@ -340,9 +387,30 @@ main {
     display: none;
 }
 
+.load.more {
+    width: 100%;
+    height: 72px;
+    margin-bottom: 12px;
+    padding: 0 24px;
+    color: var(--color-font-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    text-align: right;
+    background-color: var(--color-background-layer);
+    background-size: 24px;
+    background-position: 24px center;
+    background-repeat: no-repeat;
+    background-image: var(--icon-more);
+    transition: all .2s;
+}
+
+.load.more.hide {
+    display: none;
+}
+
 aside {
     position: relative;
-    width: 278px;
+    width: 280px;
     margin-right: 12px;
     opacity: 1;
     visibility: visible;
@@ -415,9 +483,7 @@ aside .background {
 
 .card.find .label:active,
 .card.find .label:focus {
-    color: var(--color-font-primary);
-    background-color: var(--color-background-layer-highlight-plus);
-
+    background-color: var(--color-hover);
 }
 
 .card.find .radio~.text {
@@ -438,7 +504,7 @@ aside .background {
 }
 
 .card.find .radio:checked~.text {
-    padding-left: 20px;
+    padding-left: 24px;
     transition: all .2s;
 }
 
@@ -589,7 +655,8 @@ aside .background {
 
 @media screen and (max-width:640px) {
     .board {
-        width: auto;
+        width: 100%;
+        max-width: 100%;
     }
 
     .projects .go {

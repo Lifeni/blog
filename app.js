@@ -156,21 +156,17 @@ function creatArticle(info, data, template) {
     data = data.replace(/src/g, 'data-src');
 
     // 添加文章元数据
-    data =
-        `<span class="text bread">
-            <a href="/">lifeni.life</a> / article / ${info.get('name')}
-        </span>
-        <div class="text info" id="text-info">
+    const infoData = `<div class="text info" id="text-info">
             <span>创建于 ${moment(info.get('created')).year()} 年 ${moment(info.get('created')).month() + 1} 月 ${moment(info.get('created')).date()} 日</span>
             <span>修改于 ${moment(info.get('modified')).year()} 年 ${moment(info.get('modified')).month() + 1} 月 ${moment(info.get('modified')).date()} 日</span>
-            <span>署名-相同方式共享 4.0 国际</span>
-            <hr>
-        </div>` + data;
+            <span>${info.get('license')}</span>
+        </div>`
 
     // 生成文章页
     template = template.replace(/{{文章描述}}/, info.get('description'));
     template = template.replace(/{{文章标题}}/, info.get('title'));
     template = template.replace(/{{文章关键词}}/, info.get('keyword').toLowerCase());
+    template = template.replace(/{{文章信息}}/, infoData);
     template = template.replace(/{{文章内容}}/, data);
 
     // 如果目录不存在则创建
