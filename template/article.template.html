@@ -12,7 +12,7 @@
         <title>{{文章标题}} - Lifeni</title>
     </head>
 
-    <body>
+    <body class="nothing">
         <div class="top-bar color" data-keyword="{{文章关键词}}"></div>
         <header>
             <div>
@@ -20,7 +20,6 @@
             </div>
             <div>
                 <button class="button index icon color" id="button-index" title="查看目录">查看目录</button>
-                <nav class="window index" id="window-index"></nav>
                 <button class="button setting icon color" id="button-setting" title="查看设置">查看设置</button>
                 <div class="window setting" id="window-setting">
                     <label class="label dark" tabindex="0" title="启用/禁用暗色模式">
@@ -42,6 +41,10 @@
             </div>
         </header>
         <main>
+            <aside>
+                <a href="/" class="link home">lifeni.life</a>
+                {{文章信息}}
+            </aside>
             <article>
                 {{文章内容}}
             </article>
