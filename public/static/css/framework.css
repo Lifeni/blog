@@ -57,8 +57,8 @@ html {
     --color-border-reverse: #000000;
 
     --color-hover: rgba(0, 0, 0, .1);
+    --color-hover-blur: rgba(0, 0, 0, .05);
     --color-active-focus: #000000;
-    --color-active-focus-color: #ffffff;
 
     --box-shadow-image: 0 2px 8px -4px #cccccc;
     --box-shadow-button: 0 0 4px -1px #cccccc;
@@ -108,8 +108,8 @@ html[data-mode="dark"] {
     --color-border-bold: #c6c6c6;
 
     --color-hover: rgba(255, 255, 255, .1);
+    --color-hover-blur: rgba(255, 255, 255, .02);
     --color-active-focus: #ffffff;
-    --color-active-focus-color: #000000;
 
     --box-shadow-image: 0 2px 8px -4px #000000;
     --box-shadow-button: 0 0 4px -1px #000000;

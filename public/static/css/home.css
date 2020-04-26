@@ -200,13 +200,13 @@ body>.bar .text {
 }
 
 .go:hover {
-    background-color: var(--color-hover);
+    background-color: var(--color-hover-blur);
 }
 
 .go:active,
 .go:focus {
     border-color: transparent;
-    background-color: var(--color-hover);
+    background-color: var(--color-hover-blur);
 }
 
 

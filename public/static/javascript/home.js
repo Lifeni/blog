@@ -17,8 +17,9 @@ if (document.querySelector('html').offsetWidth > 640) {
     const showcase = document.querySelector('#showcase');
     const goLeft = document.querySelector('#go-left');
     const goRight = document.querySelector('#go-right');
-    const allDiv = showcase.querySelectorAll('.board');
-    const lastDiv = allDiv[allDiv.length - 1];
+    const allBoard = showcase.querySelectorAll('.board');
+    const firstBoard = allBoard[0];
+    const lastBoard = allBoard[allBoard.length - 1];
 
     goLeft.addEventListener('click', () => {
         const length = showcase.getBoundingClientRect().width;
@@ -31,12 +32,21 @@ if (document.querySelector('html').offsetWidth > 640) {
     })
 
     showcase.addEventListener('scroll', () => {
-        goLeft.classList.add('hide');
-        goRight.classList.add('hide');
-        if (showcase.scrollLeft === 0) {
-            goRight.classList.remove('hide');
-        } else if (parseInt(lastDiv.getBoundingClientRect().right) === parseInt(showcase.getBoundingClientRect().right)) {
+        const leftLength = parseInt(firstBoard.getBoundingClientRect().left) - parseInt(showcase.getBoundingClientRect().left);
+        const rightLength = parseInt(showcase.getBoundingClientRect().right) - parseInt(lastBoard.getBoundingClientRect().right);
+
+        if (leftLength === 0 && rightLength === 12) {
+            goLeft.classList.add('hide');
+            goRight.classList.add('hide');
+        } else if (Math.abs(rightLength) <= 1) {
             goLeft.classList.remove('hide');
+            goRight.classList.add('hide');
+        } else if (leftLength === 0) {
+            goLeft.classList.add('hide');
+            goRight.classList.remove('hide');
+        } else {
+            goLeft.classList.remove('hide');
+            goRight.classList.remove('hide');
         }
     })
 }
@@ -238,4 +248,5 @@ function loadMore() {
 const loadButton = document.querySelector('#load-more');
 loadButton.addEventListener('click', () => {
     loadMore();
+    cardTool.style.bottom = '12px';
 })
