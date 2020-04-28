@@ -6,7 +6,7 @@ body>.bar {
     margin: 24px auto;
     padding: 0 40px;
     background-size: 24px;
-    background-position: 16px 6px;
+    background-position: 16px center;
     background-repeat: no-repeat;
     transition: all .2s;
 }
@@ -54,6 +54,10 @@ body>.bar .text {
 }
 
 .showcase::-webkit-scrollbar {
+    display: none;
+}
+
+.projects .touch-tips {
     display: none;
 }
 
@@ -654,6 +658,28 @@ aside .background {
 }
 
 @media screen and (max-width:640px) {
+    .projects .touch-tips {
+        position: absolute;
+        right: 24px;
+        bottom: 36px;
+        z-index: 100;
+        width: 24px;
+        height: 36px;
+        display: block;
+        background-size: 24px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-image: var(--icon-touch);
+        transition: all .2s;
+        animation: slide 3s ease infinite;
+    }
+
+    .projects .touch-tips.hide {
+        display: none;
+        animation: none;
+    }
+
     .board {
         width: 100%;
         max-width: 100%;
@@ -704,5 +730,34 @@ aside .background {
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+        right: 24px;
+        transform: scale(1.2);
+    }
+
+    10% {
+        opacity: 1;
+        right: 24px;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        right: 64px;
+    }
+
+    60% {
+        opacity: 0;
+        right: 64px;
+    }
+
+    100% {
+        opacity: 0;
+        right: 24px;
     }
 }

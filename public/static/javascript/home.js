@@ -3,52 +3,63 @@
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         toolResize();
+        boardSlide();
         articleFilter('none');
         loadMore();
     }, 0);
 })
 
+let htmlWidth = document.querySelector('html').offsetWidth;
 window.addEventListener('resize', () => {
+    htmlWidth = document.querySelector('html').offsetWidth;
     toolResize();
+    boardSlide();
 })
 
-if (document.querySelector('html').offsetWidth > 640) {
-    // 项目部分的左右滑动按钮
+function boardSlide() {
     const showcase = document.querySelector('#showcase');
-    const goLeft = document.querySelector('#go-left');
-    const goRight = document.querySelector('#go-right');
     const allBoard = showcase.querySelectorAll('.board');
     const firstBoard = allBoard[0];
     const lastBoard = allBoard[allBoard.length - 1];
+    if (htmlWidth > 640) {
+        // 项目部分的左右滑动按钮
+        const goLeft = document.querySelector('#go-left');
+        const goRight = document.querySelector('#go-right');
 
-    goLeft.addEventListener('click', () => {
-        const length = showcase.getBoundingClientRect().width;
-        showcase.scrollLeft -= length;
-    })
+        goLeft.addEventListener('click', () => {
+            const length = showcase.getBoundingClientRect().width;
+            showcase.scrollLeft -= length;
+        })
 
-    goRight.addEventListener('click', () => {
-        const length = showcase.getBoundingClientRect().width;
-        showcase.scrollLeft += length;
-    })
+        goRight.addEventListener('click', () => {
+            const length = showcase.getBoundingClientRect().width;
+            showcase.scrollLeft += length;
+        })
 
-    showcase.addEventListener('scroll', () => {
-        const leftLength = parseInt(firstBoard.getBoundingClientRect().left) - parseInt(showcase.getBoundingClientRect().left);
-        const rightLength = parseInt(showcase.getBoundingClientRect().right) - parseInt(lastBoard.getBoundingClientRect().right);
+        showcase.addEventListener('scroll', () => {
+            const leftLength = parseInt(firstBoard.getBoundingClientRect().left) - parseInt(showcase.getBoundingClientRect().left);
+            const rightLength = parseInt(showcase.getBoundingClientRect().right) - parseInt(lastBoard.getBoundingClientRect().right);
 
-        if (leftLength === 0 && rightLength === 12) {
-            goLeft.classList.add('hide');
-            goRight.classList.add('hide');
-        } else if (Math.abs(rightLength) <= 1) {
-            goLeft.classList.remove('hide');
-            goRight.classList.add('hide');
-        } else if (leftLength === 0) {
-            goLeft.classList.add('hide');
-            goRight.classList.remove('hide');
-        } else {
-            goLeft.classList.remove('hide');
-            goRight.classList.remove('hide');
-        }
-    })
+            if (leftLength === 0 && rightLength === 12) {
+                goLeft.classList.add('hide');
+                goRight.classList.add('hide');
+            } else if (Math.abs(rightLength) <= 1) {
+                goLeft.classList.remove('hide');
+                goRight.classList.add('hide');
+            } else if (leftLength === 0) {
+                goLeft.classList.add('hide');
+                goRight.classList.remove('hide');
+            } else {
+                goLeft.classList.remove('hide');
+                goRight.classList.remove('hide');
+            }
+        })
+    } else {
+        const tips = document.querySelector('#touch-tips');
+        showcase.addEventListener('scroll', () => {
+            tips.classList.add('hide');
+        })
+    }
 }
 
 // 监听搜索框
