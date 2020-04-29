@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         toolResize();
+        terminalResize();
         boardSlide();
         articleFilter('none');
         loadMore();
@@ -13,6 +14,7 @@ let htmlWidth = document.querySelector('html').offsetWidth;
 window.addEventListener('resize', () => {
     htmlWidth = document.querySelector('html').offsetWidth;
     toolResize();
+    terminalResize();
     boardSlide();
 })
 
@@ -59,6 +61,16 @@ function boardSlide() {
         showcase.addEventListener('scroll', () => {
             tips.classList.add('hide');
         })
+    }
+}
+
+function terminalResize() {
+    const terminal = document.querySelector('#terminal');
+    if (htmlWidth > 640) {
+        const father = document.querySelector('#overview').querySelector('.right');
+        terminal.style.height = `${father.getBoundingClientRect().height}px`;
+    } else {
+        terminal.style.height = 'auto';
     }
 }
 
