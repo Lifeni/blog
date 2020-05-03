@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         toolResize();
-        terminalResize();
+        //terminalResize();
         boardSlide();
         articleFilter('none');
         loadMore();
@@ -14,7 +14,7 @@ let htmlWidth = document.querySelector('html').offsetWidth;
 window.addEventListener('resize', () => {
     htmlWidth = document.querySelector('html').offsetWidth;
     toolResize();
-    terminalResize();
+    //terminalResize();
     boardSlide();
 })
 
@@ -63,7 +63,7 @@ function boardSlide() {
         })
     }
 }
-
+/*
 function terminalResize() {
     const terminal = document.querySelector('#terminal');
     if (htmlWidth > 640) {
@@ -72,7 +72,7 @@ function terminalResize() {
     } else {
         terminal.style.height = 'auto';
     }
-}
+}*/
 
 // 监听搜索框
 const inputSearch = document.querySelector('#input-search');
