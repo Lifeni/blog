@@ -107,3 +107,4 @@ markdown
 public/article
 public/index.html
 *.mp4
+public/static/css/backup.css
