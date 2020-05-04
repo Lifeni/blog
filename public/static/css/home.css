@@ -135,8 +135,8 @@ body>.bar .text {
     background-image: var(--icon-code-link);
 }
 
-.board .link.example {
-    background-image: var(--icon-example-link);
+.board .link.demo {
+    background-image: var(--icon-demo-link);
 }
 
 .board .link:hover {
@@ -336,7 +336,7 @@ main {
 }
 
 .card.empty {
-    padding: 24px;
+    padding: 48px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -738,7 +738,7 @@ aside .background {
         transform: scale(1.2);
     }
 
-    10% {
+    20% {
         opacity: 1;
         right: 24px;
         transform: scale(1);
@@ -746,12 +746,12 @@ aside .background {
 
     50% {
         opacity: 1;
-        right: 64px;
+        right: 96px;
     }
 
     60% {
         opacity: 0;
-        right: 64px;
+        right: 96px;
     }
 
     100% {

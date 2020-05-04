@@ -12,30 +12,35 @@
         <title>Lifeni</title>
     </head>
 
-    <body class="nothing">
+    <body>
         <div class="top-bar"></div>
         <header>
             <div>
-                <span class="text name">Lifeni</span>
+                <a href="/" class="link name">Lifeni</a>
             </div>
             <div>
                 <button class="button setting icon" id="button-setting" title="查看菜单">查看菜单</button>
                 <div class="window setting" id="window-setting">
-                    <label class="label dark" tabindex="0" title="启用/禁用暗色模式">
-                        <input type="checkbox" name="dark-mode" class="checkbox dark" id="checkbox-dark">
-                        <span class="text">暗色主题</span>
-                    </label>
-                    <label class="label system" tabindex="0" title="根据系统设置自动切换主题">
-                        <input type="checkbox" name="system-mode" class="checkbox system" id="checkbox-system">
-                        <span class="text">跟随系统主题</span>
-                    </label>
-                    <label class="label store" tabindex="0" title="使用 Local Storage 把此设置储存在浏览器中">
-                        <input type="checkbox" name="store-mode" class="checkbox store" id="checkbox-store">
-                        <span class="text">记住这些设置</span>
-                    </label>
-                    <a href="https://github.com/Lifeni/website/blob/master/README.md" class="link readme"
-                        target="_blank" rel="noopener noreferrer">关于</a>
-                    <a href="mailto:liangfengning@foxmail.com" class="link mail">联系我</a>
+                    <h2 class="title">主题</h2>
+                    <div class="area theme">
+                        <label for="theme-auto" class="label theme auto">
+                            <input type="radio" name="theme" id="theme-auto" value="auto" class="radio theme auto"
+                                checked>
+                            <span class="text">自动</span>
+                        </label>
+                        <label for="theme-light" class="label theme light">
+                            <input type="radio" name="theme" id="theme-light" value="light" class="radio theme light">
+                            <span class="text">白色</span>
+                        </label>
+                        <label for="theme-dark" class="label theme dark">
+                            <input type="radio" name="theme" id="theme-dark" value="dark" class="radio theme dark">
+                            <span class="text">暗色</span>
+                        </label>
+                    </div>
+                    <p class="text description">主题设置会自动储存到浏览器的 Local Storage 中，不会影响其他网站，你可以随时删除。</p>
+                    <h2 class="title">数据</h2>
+                    <a href="" class="link data">数据使用说明</a>
+                    <p class="text description">了解网站如何储存数据，以及如何清除浏览器上的数据。</p>
                 </div>
             </div>
         </header>
@@ -49,46 +54,7 @@
             <button class="go right" id="go-right" tabindex="-1">向右滚动</button>
             <div class="showcase" id="showcase">
                 <div class="touch-tips" id="touch-tips"></div>
-                <div class="board project">
-                    <div class="info color" data-keyword="vue">
-                        <span class="text status">等待 Vue 3</span>
-                        <span class="text language">Vue / Node</span>
-                    </div>
-                    <div class="content">
-                        <h2 class="text name">see-you-next-id</h2>
-                        <span class="text description">下个 ID 见！一个论坛项目。</span>
-                    </div>
-                    <div class="bar">
-                        <a href="https://github.com/Lifeni/see-you-next-id" class="link code">Github</a>
-                    </div>
-                </div>
-                <div class="board project">
-                    <div class="info color" data-keyword="java">
-                        <span class="text status">已存档</span>
-                        <span class="text language">Java</span>
-                    </div>
-                    <div class="content">
-                        <h2 class="text name">java-restful-api-server</h2>
-                        <span class="text description">Java 搭建简单的 RESTful API 服务器。</span>
-                    </div>
-                    <div class="bar">
-                        <a href="https://github.com/Lifeni/java-restful-api-server" class="link code">Github</a>
-                    </div>
-                </div>
-                <div class="board project">
-                    <div class="info color" data-keyword="html">
-                        <span class="text status">已存档</span>
-                        <span class="text language">HTML</span>
-                    </div>
-                    <div class="content">
-                        <h2 class="text name">where-are-we-from</h2>
-                        <span class="text description">我们从哪来？一个性教育网站。 </span>
-                    </div>
-                    <div class="bar">
-                        <a href="https://lifeni.github.io/where-are-we-from/" class="link example">Demo</a>
-                        <a href="https://github.com/Lifeni/where-are-we-from" class="link code">Github</a>
-                    </div>
-                </div>
+                {{项目列表}}
             </div>
         </div>
 

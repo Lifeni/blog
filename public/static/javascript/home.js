@@ -1,28 +1,28 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
+    loadMore();
+    boardSlider();
+})
+
+window.addEventListener('pageshow', () => {
     setTimeout(() => {
-        toolResize();
-        //terminalResize();
-        boardSlide();
+        toolResizer();
         articleFilter('none');
-        loadMore();
     }, 0);
 })
 
 let htmlWidth = document.querySelector('html').offsetWidth;
 window.addEventListener('resize', () => {
     htmlWidth = document.querySelector('html').offsetWidth;
-    toolResize();
-    //terminalResize();
-    boardSlide();
+    toolResizer();
 })
 
-function boardSlide() {
+function boardSlider() {
     const showcase = document.querySelector('#showcase');
-    const allBoard = showcase.querySelectorAll('.board');
-    const firstBoard = allBoard[0];
-    const lastBoard = allBoard[allBoard.length - 1];
+    const boards = showcase.querySelectorAll('.board');
+    const firstBoard = boards[0];
+    const lastBoard = boards[boards.length - 1];
     if (htmlWidth > 640) {
         // 项目部分的左右滑动按钮
         const goLeft = document.querySelector('#go-left');
@@ -39,19 +39,27 @@ function boardSlide() {
         })
 
         showcase.addEventListener('scroll', () => {
-            const leftLength = parseInt(firstBoard.getBoundingClientRect().left) - parseInt(showcase.getBoundingClientRect().left);
-            const rightLength = parseInt(showcase.getBoundingClientRect().right) - parseInt(lastBoard.getBoundingClientRect().right);
+            const leftLength =
+                parseInt(firstBoard.getBoundingClientRect().left)
+                - parseInt(showcase.getBoundingClientRect().left);
+            const rightLength =
+                parseInt(showcase.getBoundingClientRect().right)
+                - parseInt(lastBoard.getBoundingClientRect().right);
 
             if (leftLength === 0 && rightLength === 12) {
+                // 无溢出
                 goLeft.classList.add('hide');
                 goRight.classList.add('hide');
             } else if (Math.abs(rightLength) <= 1) {
+                // 最右
                 goLeft.classList.remove('hide');
                 goRight.classList.add('hide');
             } else if (leftLength === 0) {
+                // 最左
                 goLeft.classList.add('hide');
                 goRight.classList.remove('hide');
             } else {
+                // 中间
                 goLeft.classList.remove('hide');
                 goRight.classList.remove('hide');
             }
@@ -63,43 +71,33 @@ function boardSlide() {
         })
     }
 }
-/*
-function terminalResize() {
-    const terminal = document.querySelector('#terminal');
-    if (htmlWidth > 640) {
-        const father = document.querySelector('#overview').querySelector('.right');
-        terminal.style.height = `${father.getBoundingClientRect().height}px`;
-    } else {
-        terminal.style.height = 'auto';
-    }
-}*/
 
 // 监听搜索框
-const inputSearch = document.querySelector('#input-search');
-inputSearch.addEventListener('input', (e) => {
+const searchInput = document.querySelector('#input-search');
+searchInput.addEventListener('input', (e) => {
     if (!e.target.value.startsWith(' ')) {
         articleFilter('search', e.target.value.replace(/\s/g, '+'));
     }
 })
 
 // 监听标签点击
-const radioTag = document.querySelectorAll('.radio.tag');
-for (let tag of radioTag) {
+const tagRadio = document.querySelectorAll('.radio.tag');
+for (const tag of tagRadio) {
     tag.addEventListener('click', (e) => {
         articleFilter('tag', e.target.dataset.keyword);
     })
 }
 
 // 监听月份点击
-const labelMonth = document.querySelectorAll('.label.month');
-const checkboxMonth = document.querySelectorAll('.checkbox.month');
-for (let month of labelMonth) {
+const monthLabel = document.querySelectorAll('.label.month');
+const monthCheckbox = document.querySelectorAll('.checkbox.month');
+for (const month of monthLabel) {
     month.addEventListener('click', () => {
         let monthArray = [];
 
         // checkbox 从点击到 checked 状态需要一点时间
         setTimeout(() => {
-            for (let checkbox of checkboxMonth) {
+            for (const checkbox of monthCheckbox) {
                 if (checkbox.checked) {
                     monthArray.push(checkbox.id);
                 }
@@ -115,38 +113,36 @@ for (let month of labelMonth) {
 }
 
 // 监听标签清空
-const labelReset = document.querySelector('#label-reset');
-const radioReset = document.querySelector('#radio-reset');
-labelReset.addEventListener('click', () => {
-    radioReset.checked = true;
+const resetLabel = document.querySelector('#label-reset');
+const resetRadio = document.querySelector('#radio-reset');
+resetLabel.addEventListener('click', () => {
+    resetRadio.checked = true;
     articleFilter('none');
 })
 
 // 工具栏的吸附效果
-const cardTool = document.querySelector('#card-tool');
-window.addEventListener('scroll', () => {
+const toolCard = document.querySelector('#card-tool');
+window.addEventListener('scroll', toolResizer);
+
+function toolResizer() {
     const html = document.querySelector('html');
     if (html.offsetWidth > 640) {
         const aside = document.querySelector('aside');
         const footer = document.querySelector('footer');
-
+        toolCard.style.left = `${aside.getBoundingClientRect().left}px`;
         if (aside.getBoundingClientRect().bottom + 132 < html.clientHeight) {
             const foo = footer.getBoundingClientRect().top - html.clientHeight;
 
             if (foo < 0) {
-                cardTool.style.bottom = `${-foo + 12}px`;
+                toolCard.style.bottom = `${-foo + 12}px`;
             } else {
-                cardTool.style.bottom = '12px';
+                toolCard.style.bottom = '12px';
             }
         } else {
-            cardTool.style.bottom = `${html.clientHeight - aside.getBoundingClientRect().bottom - 120}px`;
+            toolCard.style.bottom =
+                `${html.clientHeight - aside.getBoundingClientRect().bottom - 120}px`;
         }
     }
-})
-
-function toolResize() {
-    const aside = document.querySelector('aside');
-    cardTool.style.left = `${aside.getBoundingClientRect().left}px`;
 }
 
 // 跳转顶部
@@ -163,84 +159,61 @@ toBottom.addEventListener('click', () => {
 
 // 筛选文章
 function articleFilter(method, value) {
-    const cardArticle = document.querySelectorAll('.card.article');
-    const cardEmpty = document.querySelector('#card-empty');
-    const cardTool = document.querySelector('#card-tool');
+    const articleCard = document.querySelectorAll('.card.article');
+    const emptyCard = document.querySelector('#card-empty');
 
-    labelReset.classList.add('hide');
-    cardEmpty.classList.add('hide');
-    cardTool.classList.add('hide');
+    resetLabel.classList.add('hide');
+    emptyCard.classList.add('hide');
+    toolCard.classList.add('hide');
     loadButton.classList.add('hide');
 
-    if (method === 'none') {    // 无条件
-        document.querySelectorAll('.radio.tag').forEach((e) => {
-            e.checked = false;
-        })
-
-        document.querySelectorAll('.checkbox.month').forEach((e) => {
-            e.checked = false;
-        })
-
-        cardTool.classList.remove('hide');
+    if (method === 'none') {
+        // 无条件
+        removeChecked();
+        toolCard.classList.remove('hide');
         loadButton.classList.remove('hide');
-
-        // for (let card of cardArticle) {
-        //     card.classList.remove('hide');
-        // }
-        loadCount -= 4;
-        loadMore();
-    } else if (method === 'tag') {      // 标签
-        document.querySelectorAll('.checkbox.month').forEach((e) => {
-            e.checked = false;
-        })
-
-        labelReset.classList.remove('hide');
-
-        for (let card of cardArticle) {
+        loadMore(4);
+    } else if (method === 'tag') {
+        // 标签
+        removeChecked('month');
+        resetLabel.classList.remove('hide');
+        for (const card of articleCard) {
             card.classList.add('hide');
             if (card.dataset.keyword === value) {
                 card.classList.remove('hide');
             }
         }
-    } else if (method === 'search') {   // 搜索
+    } else if (method === 'search') {
+        // 搜索
         if (value === '') {
             articleFilter('none');
-            return;
-        }
+        } else {
+            removeChecked();
+            let count = 0;
+            for (const card of articleCard) {
+                const text = card.innerText.toLowerCase();
+                count++;
+                card.classList.add('hide');
+                if (text.includes(
+                    decodeURI(value)
+                        .replace(/\+/g, ' ')
+                        .toLowerCase()
+                )) {
+                    count--;
+                    card.classList.remove('hide');
+                }
+            }
 
-        document.querySelectorAll('.radio.tag').forEach((e) => {
-            e.checked = false;
-        })
-
-        document.querySelectorAll('.checkbox.month').forEach((e) => {
-            e.checked = false;
-        })
-
-        value = decodeURI(value).replace(/\+/g, ' ');
-
-        let count = 0;
-        for (let card of cardArticle) {
-            const text = card.innerText.toLowerCase();
-            count++;
-            card.classList.add('hide');
-
-            if (text.includes(value.toLowerCase())) {
-                count--;
-                card.classList.remove('hide');
+            if (count === articleCard.length) {
+                emptyCard.classList.remove('hide');
             }
         }
-
-        if (count === cardArticle.length) {
-            cardEmpty.classList.remove('hide');
-        }
-    } else if (method === 'date') {     // 月份
-        document.querySelectorAll('.radio.tag').forEach((e) => {
-            e.checked = false;
-        })
-
-        for (let card of cardArticle) {
+    } else if (method === 'date') {
+        // 月份
+        removeChecked('tag');
+        for (const card of articleCard) {
             card.classList.add('hide');
-            for (let date of value) {
+            for (const date of value) {
                 if (card.dataset.date.includes(date.toLowerCase())) {
                     card.classList.remove('hide');
                 }
@@ -249,13 +222,33 @@ function articleFilter(method, value) {
     }
 }
 
+// 移除之前的筛选
+function removeChecked(key) {
+    const tags = document.querySelectorAll('.radio.tag');
+    const months = document.querySelectorAll('.checkbox.month');
+    if (key === 'tag') {
+        tags.forEach(e => e.checked = false)
+    } else if (key === 'month') {
+        months.forEach(e => e.checked = false)
+    } else {
+        tags.forEach(e => e.checked = false)
+        months.forEach(e => e.checked = false)
+    }
+}
+
+// 计算当前应该显示几个文章
 let loadCount = 0;
-function loadMore() {
+function loadMore(count) {
     loadCount += 4;
+    if (count) {
+        loadCount = count;
+    }
+
     const articles = document.querySelectorAll('.card.article');
     if (loadCount > articles.length) {
         loadCount = articles.length;
     }
+
     articles.forEach((e, index) => {
         if (index < loadCount) {
             e.classList.remove('hide');
@@ -268,8 +261,9 @@ function loadMore() {
     })
 }
 
+// 加载更多文章
 const loadButton = document.querySelector('#load-more');
 loadButton.addEventListener('click', () => {
     loadMore();
-    cardTool.style.bottom = '12px';
+    toolCard.style.bottom = '12px';
 })

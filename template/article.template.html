@@ -12,37 +12,41 @@
         <title>{{文章标题}} - Lifeni</title>
     </head>
 
-    <body class="nothing">
+    <body>
         <div class="top-bar color" data-keyword="{{文章关键词}}"></div>
         <header>
             <div>
-                <span class="text name">Lifeni</span>
+                <a href="/" class="link name">Lifeni</a>
             </div>
             <div>
                 <button class="button index icon color" id="button-index" title="查看目录">查看目录</button>
                 <button class="button setting icon color" id="button-setting" title="查看设置">查看设置</button>
                 <div class="window setting" id="window-setting">
-                    <label class="label dark" tabindex="0" title="启用/禁用暗色模式">
-                        <input type="checkbox" name="dark-mode" class="checkbox dark" id="checkbox-dark">
-                        <span class="text">暗色主题</span>
-                    </label>
-                    <label class="label system" tabindex="0" title="根据系统设置自动切换主题">
-                        <input type="checkbox" checked name="system-mode" class="checkbox system" id="checkbox-system">
-                        <span class="text">跟随系统主题</span>
-                    </label>
-                    <label class="label store" tabindex="0" title="使用 Local Storage 把此设置储存在浏览器中">
-                        <input type="checkbox" name="store-mode" class="checkbox store" id="checkbox-store">
-                        <span class="text">记住这些设置</span>
-                    </label>
-                    <a href="https://github.com/Lifeni/website/blob/master/README.md" class="link readme"
-                        target="_blank" rel="noopener noreferrer">关于</a>
-                    <a href="mailto:liangfengning@foxmail.com" class="link mail">联系我</a>
+                    <h2 class="title">主题</h2>
+                    <div class="area theme">
+                        <label for="theme-auto" class="label theme auto">
+                            <input type="radio" name="theme" id="theme-auto" value="auto" class="radio theme auto"
+                                checked>
+                            <span class="text">自动</span>
+                        </label>
+                        <label for="theme-light" class="label theme light">
+                            <input type="radio" name="theme" id="theme-light" value="light" class="radio theme light">
+                            <span class="text">白色</span>
+                        </label>
+                        <label for="theme-dark" class="label theme dark">
+                            <input type="radio" name="theme" id="theme-dark" value="dark" class="radio theme dark">
+                            <span class="text">暗色</span>
+                        </label>
+                    </div>
+                    <p class="text description">主题设置会自动储存到浏览器的 Local Storage 中，不会影响其他网站，你可以随时删除。</p>
+                    <h2 class="title">数据</h2>
+                    <a href="" class="link data">数据使用说明</a>
+                    <p class="text description">了解网站如何储存数据，以及如何清除浏览器上的数据。</p>
                 </div>
             </div>
         </header>
         <main>
             <aside>
-                <a href="/" class="link home">lifeni.life</a>
                 {{文章信息}}
             </aside>
             <article>
