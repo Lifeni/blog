@@ -9,7 +9,6 @@ window.addEventListener('pageshow', () => {
     setTimeout(() => {
         toolResizer();
         articleFilter('none');
-        loadMore();
     }, 0);
 })
 
