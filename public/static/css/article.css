@@ -68,6 +68,7 @@ aside .toc {
 
 aside .info {
     width: 100%;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -88,40 +89,15 @@ aside .info span {
     transition: all .2s;
 }
 
-aside a.home {
-    width: fit-content;
-    height: 36px;
-    margin: 1rem 0 2rem 0;
-    padding: 6px 14px;
-    padding-left: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 48px;
-    color: var(--color-font-link);
-    background-size: 20px;
-    background-repeat: no-repeat;
-    background-position: 10px center;
-    background-color: var(--color-background-highlight);
-    background-image: var(--icon-home-link);
-    white-space: nowrap;
-    transition: all .2s;
-}
-
-aside a.home:hover,
-aside a.home:active,
-aside a.home:focus {
-    border-color: transparent;
-    background-color: var(--color-hover);
-}
-
 article {
     position: relative;
     width: 100%;
     max-width: 760px;
     padding: 12px 24px;
     font-size: 1rem;
+    line-height: 2rem;
     color: var(--color-font-primary);
+    overflow: hidden;
     transition: all .2s;
 }
 
@@ -169,7 +145,7 @@ article h3 {
 
 article h1 {
     position: relative;
-    padding: 0 0 1.5rem 0;
+    padding: 2.5rem 0 5.5rem 0;
     font-size: 2.5rem;
 }
 
@@ -243,12 +219,16 @@ article h3 code {
 }
 
 article pre {
-    margin: .5rem 0;
+    margin: .75rem 0;
     padding: 1rem 1.5rem;
     background-color: var(--color-background-highlight);
     line-height: 1.5rem;
     overflow-x: auto;
     transition: all .2s;
+}
+
+article pre+pre {
+    margin-top: 1rem;
 }
 
 article pre code {
@@ -259,10 +239,18 @@ article pre code {
 
 article blockquote {
     width: 100%;
-    margin: 12px 0;
-    padding: 0 16px;
+    margin: 16px 0;
+    padding: 0 24px;
     border-left: solid 4px var(--color-background-highlight);
+}
+
+article blockquote p,
+article blockquote code {
     color: var(--color-font-secondary);
+}
+
+article blockquote p {
+    margin: 1rem 0;
 }
 
 article table {
@@ -293,7 +281,7 @@ article tr:nth-child(2n) {
     transition: background-color .2s;
 }
 
-@media screen and (max-width:1120px) {
+@media screen and (max-width:800px) {
     header .button.index {
         display: inline-block;
         background-image: var(--icon-down);
@@ -316,7 +304,8 @@ article tr:nth-child(2n) {
     }
 
     article h1 {
-        margin: 2rem 0 4rem 0;
+        margin: 1rem 0 4rem 0;
+        padding: 0;
     }
 
     aside {

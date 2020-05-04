@@ -6,7 +6,7 @@ body>.bar {
     margin: 24px auto;
     padding: 0 40px;
     background-size: 24px;
-    background-position: 16px 6px;
+    background-position: 16px center;
     background-repeat: no-repeat;
     transition: all .2s;
 }
@@ -57,6 +57,10 @@ body>.bar .text {
     display: none;
 }
 
+.projects .touch-tips {
+    display: none;
+}
+
 .board {
     position: relative;
     width: 366px;
@@ -100,20 +104,7 @@ body>.bar .text {
     align-items: center;
     justify-content: space-between;
     color: var(--color-font-secondary);
-    border-top: solid 4px;
-    background-color: var(--color-background-highlight);
-}
-
-.info.color[data-keyword="html"] {
-    border-color: var(--color-theme-html);
-}
-
-.info.color[data-keyword="java"] {
-    border-color: var(--color-theme-java);
-}
-
-.info.color[data-keyword="vue"] {
-    border-color: var(--color-theme-vue);
+    background-color: var(--color-background-layer-highlight-plus);
 }
 
 .board .bar {
@@ -144,8 +135,8 @@ body>.bar .text {
     background-image: var(--icon-code-link);
 }
 
-.board .link.example {
-    background-image: var(--icon-example-link);
+.board .link.demo {
+    background-image: var(--icon-demo-link);
 }
 
 .board .link:hover {
@@ -200,13 +191,13 @@ body>.bar .text {
 }
 
 .go:hover {
-    background-color: var(--color-hover);
+    background-color: var(--color-hover-blur);
 }
 
 .go:active,
 .go:focus {
     border-color: transparent;
-    background-color: var(--color-hover);
+    background-color: var(--color-hover-blur);
 }
 
 
@@ -653,7 +644,30 @@ aside .background {
     background-image: var(--icon-bottom);
 }
 
+
 @media screen and (max-width:640px) {
+    .projects .touch-tips {
+        position: absolute;
+        right: 24px;
+        bottom: 36px;
+        z-index: 100;
+        width: 24px;
+        height: 36px;
+        display: block;
+        background-size: 24px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-image: var(--icon-touch);
+        transition: all .2s;
+        animation: slide 3s ease infinite;
+    }
+
+    .projects .touch-tips.hide {
+        display: none;
+        animation: none;
+    }
+
     .board {
         width: 100%;
         max-width: 100%;
@@ -669,8 +683,18 @@ aside .background {
         justify-content: flex-start
     }
 
-    .card.tool .tool {
+    .card.tool {
         display: none;
+    }
+
+    .card.calendar .label .count {
+        width: 100px;
+    }
+
+    .card.calendar .label .count::before {
+        content: '文章 × ';
+        margin-right: 4px;
+        opacity: 1;
     }
 
     main {
@@ -704,5 +728,34 @@ aside .background {
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+        right: 24px;
+        transform: scale(1.2);
+    }
+
+    20% {
+        opacity: 1;
+        right: 24px;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        right: 96px;
+    }
+
+    60% {
+        opacity: 0;
+        right: 96px;
+    }
+
+    100% {
+        opacity: 0;
+        right: 24px;
     }
 }
