@@ -42,11 +42,11 @@
 
 1. 按 `F12` 或鼠标右键调出 DevTools
 
-2. Chrome: 找到 Application / Storage / Local Storage / https://lifeni.life/
+2. Chrome: 找到 Application / Storage / Local Storage / https://lifeni.life
 
-   Firefox: 找到 储存 / 本地储存 / https://lifeni.life/
+   Firefox: 找到 储存 / 本地储存 / https://lifeni.life
 
-   Microsoft Edge Chromium: 应用程序 / 储存 / 本地储存 / https://lifeni.life/
+   Microsoft Edge Chromium: 找到 应用程序 / 储存 / 本地储存 / https://lifeni.life
 
 3. 右侧或下侧应该出现相应的 Key / Value
 
@@ -61,15 +61,15 @@
 
 1. 按 `F12` 或鼠标右键调出 DevTools
 
-2. Chrome: 找到 Application / Storage / Local Storage / https://lifeni.life/
+2. Chrome: 找到 Application / Storage / Local Storage / https://lifeni.life
 
-   Firefox: 找到 储存 / 本地储存 / https://lifeni.life/
+   Firefox: 找到 储存 / 本地储存 / https://lifeni.life
 
-   Microsoft Edge Chromium: 应用程序 / 储存 / 本地储存 / https://lifeni.life/
+   Microsoft Edge Chromium: 找到 应用程序 / 储存 / 本地储存 / https://lifeni.life
 
 3. 按上方 🚫 按钮即可清除数据
 
-如果你不想网页在浏览器中储存数据，你可以使用 无痕模式 / 隐私模式 / InPrivate 浏览 等功能，网页的正常功能（如浏览页面）不会受到影响。
+如果你不想网页在浏览器中储存数据，你可以使用 无痕模式 / 隐私模式 / InPrivate 浏览 等功能。
 
 ### 其他要说的
 
