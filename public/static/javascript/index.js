@@ -70,7 +70,6 @@ lightTheme.addEventListener('click', themeSwitcher);
 darkTheme.addEventListener('click', themeSwitcher);
 
 function themeSwitcher(e) {
-    console.log(e.target);
     localStorage.setItem('theme', e.target.value);
     if (e.target.value === 'auto') {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {

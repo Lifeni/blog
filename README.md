@@ -38,6 +38,10 @@
 
 本网页使用到了浏览器的储存功能：Local Storage。
 
+可以参考：[使用 Web Storage API - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
+
+与这个 API 相关的代码在 `/public/static/javascript/index.js` 中。
+
 ### 查看
 
 1. 按 `F12` 或鼠标右键调出 DevTools
