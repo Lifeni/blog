@@ -24,20 +24,20 @@ async function createArticle(article, index) {
 
     // 添加文章元数据
     const infoData =
-        `<div class="text info" id="text-info">
-            <span>
+        `<div class="area info" id="area-info">
+            <span class="text">
                 创建于
                 ${moment(index.get('created')).year()} 年
                 ${moment(index.get('created')).month() + 1} 月
                 ${moment(index.get('created')).date()} 日
             </span>
-            <span>
+            <span class="text">
                 修改于
                 ${moment(index.get('modified')).year()} 年
                 ${moment(index.get('modified')).month() + 1} 月
                 ${moment(index.get('modified')).date()} 日
             </span>
-            <span>
+            <span class="text">
                 ${index.get('license')}
             </span>
          </div>`

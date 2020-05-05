@@ -15,14 +15,14 @@
     <body>
         <div class="top-bar color" data-keyword="{{文章关键词}}"></div>
         <header>
-            <div>
+            <div class="area left">
                 <a href="/" class="link name">Lifeni</a>
             </div>
-            <div>
-                <button class="button index icon color" id="button-index" title="查看目录">查看目录</button>
-                <button class="button setting icon color" id="button-setting" title="查看设置">查看设置</button>
+            <div class="area right">
+                <button class="button index icon" id="button-index" title="查看目录">查看目录</button>
+                <button class="button setting icon" id="button-setting" title="查看菜单">查看菜单</button>
                 <div class="window setting" id="window-setting">
-                    <h2 class="title">主题</h2>
+                    <h2 class="text title">主题及数据</h2>
                     <div class="area theme">
                         <label for="theme-auto" class="label theme auto">
                             <input type="radio" name="theme" id="theme-auto" value="auto" class="radio theme auto"
@@ -39,7 +39,6 @@
                         </label>
                     </div>
                     <p class="text description">主题设置会自动储存到浏览器的 Local Storage 中，不会影响其他网站，你可以随时删除。</p>
-                    <h2 class="title">数据</h2>
                     <a href="https://github.com/Lifeni/website/blob/master/README.md#数据使用说明" target="_blank"
                         class="link data" rel="noopener noreferrer">数据使用说明</a>
                     <p class="text description">了解网站如何储存数据，以及如何清除浏览器上的数据。</p>

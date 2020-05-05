@@ -40,7 +40,7 @@ async function createProject(infos) {
 
         html.projects +=
             `<div class="board project">
-                <div class="info">
+                <div class="area info">
                     <span class="text status">
                     ${info.status}
                     </span>
@@ -48,7 +48,7 @@ async function createProject(infos) {
                         ${info.languages.join(' / ')}
                     </span>
                 </div>
-                <div class="content">
+                <div class="area content">
                     <h2 class="text name">
                         ${info.name}
                     </h2>
@@ -89,7 +89,7 @@ async function createArticle(indexs) {
                   data-keyword="${index.get('keyword').toLowerCase()}"
                   data-date="${index.get('modified').toLowerCase()}">
                 <a href="/article/${index.get('name')}/">
-                    <span class="group info">
+                    <span class="area info">
                         <span class="point color"
                               data-keyword="${index.get('keyword').toLowerCase()}">
                         </span>
@@ -107,7 +107,7 @@ async function createArticle(indexs) {
                     <span class="text description">
                         ${index.get('description')}
                     </span>
-                    <div class="bar article"
+                    <div class="bar"
                          title="查看标题为《${index.get('title')}》的文章">
                     </div>
                 </a>
