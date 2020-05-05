@@ -53,7 +53,7 @@ html {
     --color-mask: rgba(238, 238, 238, .5);
 
     --color-border: #f4f4f4;
-    --color-border-highlight: #e4e4e4;
+    --color-border-highlight: #e0e0e0;
     --color-border-reverse: #000000;
 
     --color-hover: rgba(0, 0, 0, .1);
@@ -103,7 +103,7 @@ html[data-theme="dark"] {
     --color-mask: rgba(0, 0, 0, .5);
 
     --color-border: #121212;
-    --color-border-highlight: #181818;
+    --color-border-highlight: #242424;
     --color-border-reverse: #c6c6c6;
 
     --color-hover: rgba(255, 255, 255, .1);

@@ -67,11 +67,15 @@ async function createProject(infos) {
 }
 
 // 根据模板创建首页
-async function createArticle(indexs) {
-    indexs = indexs.sort(
-        (a, b) =>
-            (a.get('modified') < b.get('modified'))
-    );
+async function createArticle(data) {
+    const indexs = data.sort((a, b) => {
+        if (a.get('modified') < b.get('modified')) {
+            return 1;
+        } else if (a.get('modified') > b.get('modified')) {
+            return -1;
+        }
+        return 0;
+    });
 
     const html = {
         articles: '',
@@ -134,11 +138,7 @@ async function createArticle(indexs) {
 
     // 标签按数量排序
     tags = Array.from(tags).sort((a, b) => {
-        if (a[1] === b[1]) {
-            return a[0] > b[0];
-        } else {
-            return a[1] < b[1];
-        }
+        return b[1] - a[1];
     });
 
     // 插入标签
@@ -180,9 +180,9 @@ async function createArticle(indexs) {
     for (const [month, count] of months) {
         html.months +=
             `<label class="label month"
-                    title="筛选修改时间在
-                        ${moment(month).year()} 年
-                        ${moment(month).month() + 1} 月 的文章"
+                    title="筛选修改时间在 ${
+            moment(month).year()} 年 ${
+            moment(month).month() + 1} 月 的文章"
                     tabindex="0">
                 <input type="checkbox"
                        id="${month}"
