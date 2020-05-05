@@ -1,4 +1,5 @@
-body>.bar {
+.bar.project,
+.bar.article {
     position: relative;
     z-index: 60;
     width: calc(100% - 24px);
@@ -11,7 +12,8 @@ body>.bar {
     transition: all .2s;
 }
 
-body>.bar .text {
+.bar.project .text,
+.bar.article .text {
     padding: 0 12px;
     font-size: 1.25rem;
     font-weight: normal;
@@ -39,7 +41,7 @@ body>.bar .text {
     margin: 0 auto;
 }
 
-.showcase {
+.projects .showcase {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -53,7 +55,7 @@ body>.bar .text {
     transition: all .2s;
 }
 
-.showcase::-webkit-scrollbar {
+.projects .showcase::-webkit-scrollbar {
     display: none;
 }
 
@@ -168,7 +170,7 @@ body>.bar .text {
     overflow: hidden;
 }
 
-.go {
+.projects .go {
     position: absolute;
     top: calc(50% - 32px);
     z-index: 1000;
@@ -190,29 +192,29 @@ body>.bar .text {
     transition: all .2s;
 }
 
-.go:hover {
+.projects .go:hover {
     background-color: var(--color-hover-blur);
 }
 
-.go:active,
-.go:focus {
+.projects .go:active,
+.projects .go:focus {
     border-color: transparent;
     background-color: var(--color-hover-blur);
 }
 
 
-.go.left {
+.projects .go.left {
     left: 24px;
     background-image: var(--icon-more);
     transform: rotate(180deg);
 }
 
-.go.right {
+.projects .go.right {
     right: 24px;
     background-image: var(--icon-more);
 }
 
-.go.hide {
+.projects .go.hide {
     visibility: hidden;
     opacity: 0;
 }
@@ -406,10 +408,6 @@ aside {
     opacity: 1;
     visibility: visible;
     transition: all .2s;
-}
-
-aside .background {
-    display: none;
 }
 
 .card.find,
@@ -625,8 +623,7 @@ aside .background {
     background-color: var(--color-hover);
 }
 
-.card.tool .top,
-.card.tool .bottom {
+.card.tool .go {
     width: 48px;
     height: 48px;
     color: transparent;
@@ -636,14 +633,13 @@ aside .background {
     transition: all .2s;
 }
 
-.card.tool .top {
+.card.tool .go.top {
     background-image: var(--icon-top);
 }
 
-.card.tool .bottom {
+.card.tool .go.bottom {
     background-image: var(--icon-bottom);
 }
-
 
 @media screen and (max-width:640px) {
     .projects .touch-tips {

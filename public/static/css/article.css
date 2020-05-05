@@ -37,19 +37,19 @@ aside .toc {
     transition: all .2s;
 }
 
-.toc li {
+aside .toc li {
     list-style-type: none;
 }
 
-.toc ul>li {
+aside .toc ul>li {
     margin: .5rem 0;
 }
 
-.toc ul>li li {
+aside .toc ul>li li {
     margin: .5rem 1.5rem;
 }
 
-.toc a {
+aside .toc a {
     margin-right: 1.5rem;
     color: var(--color-font-link);
     text-decoration: none;
@@ -58,13 +58,12 @@ aside .toc {
     transition: all .2s;
 }
 
-.toc a:hover,
-.toc a:active,
-.toc a:focus {
+aside .toc a:hover,
+aside .toc a:active,
+aside .toc a:focus {
     border: solid 1px transparent;
     border-bottom: solid 1px var(--color-font-link);
 }
-
 
 aside .info {
     width: 100%;
@@ -76,7 +75,7 @@ aside .info {
     color: var(--color-font-secondary);
 }
 
-aside .info span {
+aside .info .text {
     height: 36px;
     margin-bottom: 8px;
     padding: 6px 14px;
@@ -312,12 +311,116 @@ article tr:nth-child(2n) {
         max-width: 760px;
         height: 0;
         margin: 0;
+        opacity: 0;
         padding: 0 12px;
         overflow: hidden;
     }
 
     aside.show {
-        padding: 12px;
+        opacity: 1;
+        padding: 64px 12px 36px 12px;
         height: auto;
     }
+
+    aside .area.info {
+        margin: 0;
+    }
+}
+
+
+/*
+
+Atom One Light by Daniel Gamage
+Original One Light Syntax theme from https://github.com/atom/one-light-syntax
+
+base:    #fafafa
+mono-1:  #383a42
+mono-2:  #686b77
+mono-3:  #a0a1a7
+hue-1:   #0184bb
+hue-2:   #4078f2
+hue-3:   #a626a4
+hue-4:   #50a14f
+hue-5:   #e45649
+hue-5-2: #c91243
+hue-6:   #986801
+hue-6-2: #c18401
+
+*/
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5rem;
+    color: #383a42;
+    background: #fafafa;
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: #a0a1a7;
+    font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+    color: #a626a4;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+    color: #e45649;
+}
+
+.hljs-literal {
+    color: #0184bb;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string {
+    color: #50a14f;
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+    color: #c18401;
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+    color: #986801;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+    color: #4078f2;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
+
+.hljs-link {
+    text-decoration: underline;
 }

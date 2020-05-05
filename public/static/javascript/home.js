@@ -146,13 +146,13 @@ function toolResizer() {
 }
 
 // 跳转顶部
-const toTop = document.querySelector('#button-top');
+const toTop = document.querySelector('#go-top');
 toTop.addEventListener('click', () => {
     window.scrollTo(0, 0);
 })
 
 // 跳转底部
-const toBottom = document.querySelector('#button-bottom');
+const toBottom = document.querySelector('#go-bottom');
 toBottom.addEventListener('click', () => {
     window.scrollTo(0, document.body.scrollHeight);
 })
