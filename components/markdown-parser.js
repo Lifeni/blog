@@ -41,7 +41,9 @@ class List {
     }
 
     get index() {
-        return this.indexs;
+        return this.indexs.sort(
+            (a, b) => (a.get('modified') - b.get('modified'))
+        );
     }
 
     sort() {

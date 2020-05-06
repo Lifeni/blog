@@ -14,13 +14,13 @@ async function work() {
     }
 }
 
-async function createArticle(article, index) {
+async function createArticle(data, index) {
     let template =
         fs.readFileSync('./template/article.template.html')
             .toString();
 
     // 图片懒加载
-    article = article.replace(/src/g, 'data-src');
+    const article = data.replace(/src/g, 'data-src');
 
     // 添加文章元数据
     const infoData =
@@ -57,7 +57,7 @@ async function createArticle(article, index) {
             { recursive: true }
         );
     } catch (e) {
-        console.log(e);
+        // console.log(e);
     }
 
     fs.writeFileSync(
