@@ -63,6 +63,34 @@ html {
     --box-shadow-image: 0 2px 8px -4px #cccccc;
     --box-shadow-button: 0 0 4px -1px #cccccc;
     --box-shadow-window: 0 2px 6px -2px #cccccc;
+}
+
+html[data-theme="light"] {
+    --color-font-primary: #000000;
+    --color-font-secondary: #6b6b6b;
+    --color-font-link: #3f51b5;
+    --color-font-reverse: #ffffff;
+
+    --color-background: #f4f4f4;
+    --color-background-highlight: #ececec;
+    --color-background-reverse: #000000;
+    --color-background-layer: #ffffff;
+    --color-background-layer-highlight: #f4f4f4;
+    --color-background-layer-highlight-plus: #ececec;
+
+    --color-mask: rgba(238, 238, 238, .5);
+
+    --color-border: #f4f4f4;
+    --color-border-highlight: #e0e0e0;
+    --color-border-reverse: #000000;
+
+    --color-hover: rgba(0, 0, 0, .1);
+    --color-hover-blur: rgba(0, 0, 0, .05);
+    --color-active-focus: #000000;
+
+    --box-shadow-image: 0 2px 8px -4px #cccccc;
+    --box-shadow-button: 0 0 4px -1px #cccccc;
+    --box-shadow-window: 0 2px 6px -2px #cccccc;
 
     --icon-setting: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true' style='will-change:transform'%3E%3Cpath d='M27 16.76V16v-.77l1.92-1.68A2 2 0 0 0 29.3 11l-2.36-4a2 2 0 0 0-1.73-1 2 2 0 0 0-.64.1l-2.43.82a11.35 11.35 0 0 0-1.31-.75l-.51-2.52a2 2 0 0 0-2-1.61h-4.68a2 2 0 0 0-2 1.61l-.51 2.52a11.48 11.48 0 0 0-1.32.75l-2.38-.86A2 2 0 0 0 6.79 6a2 2 0 0 0-1.73 1L2.7 11a2 2 0 0 0 .41 2.51L5 15.24v1.53l-1.89 1.68A2 2 0 0 0 2.7 21l2.36 4a2 2 0 0 0 1.73 1 2 2 0 0 0 .64-.1l2.43-.82a11.35 11.35 0 0 0 1.31.75l.51 2.52a2 2 0 0 0 2 1.61h4.72a2 2 0 0 0 2-1.61l.51-2.52a11.48 11.48 0 0 0 1.32-.75l2.42.82a2 2 0 0 0 .64.1 2 2 0 0 0 1.73-1l2.28-4a2 2 0 0 0-.41-2.51zM25.21 24l-3.43-1.16a8.86 8.86 0 0 1-2.71 1.57L18.36 28h-4.72l-.71-3.55a9.36 9.36 0 0 1-2.7-1.57L6.79 24l-2.36-4 2.72-2.4a8.9 8.9 0 0 1 0-3.13L4.43 12l2.36-4 3.43 1.16a8.86 8.86 0 0 1 2.71-1.57L13.64 4h4.72l.71 3.55a9.36 9.36 0 0 1 2.7 1.57L25.21 8l2.36 4-2.72 2.4a8.9 8.9 0 0 1 0 3.13L27.57 20z'/%3E%3Cpath d='M16 22a6 6 0 1 1 6-6 5.94 5.94 0 0 1-6 6zm0-10a3.91 3.91 0 0 0-4 4 3.91 3.91 0 0 0 4 4 3.91 3.91 0 0 0 4-4 3.91 3.91 0 0 0-4-4z'/%3E%3C/svg%3E");
     --icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true' style='will-change:transform'%3E%3Cpath d='M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z'/%3E%3C/svg%3E");
@@ -187,14 +215,6 @@ body {
     font-family: var(--font-family-normal);
     background-color: var(--color-background);
     transition: all .2s;
-}
-
-body.theme-dark,
-body.theme-dark *,
-body.theme-dark *::before,
-body.theme-dark *::after {
-    transition: none !important;
-    animation: none !important;
 }
 
 a,
@@ -515,6 +535,34 @@ footer .link.beian::before {
 }
 
 @media (prefers-color-scheme: light) {
+    html {
+        --color-font-primary: #000000;
+        --color-font-secondary: #6b6b6b;
+        --color-font-link: #3f51b5;
+        --color-font-reverse: #ffffff;
+
+        --color-background: #f4f4f4;
+        --color-background-highlight: #ececec;
+        --color-background-reverse: #000000;
+        --color-background-layer: #ffffff;
+        --color-background-layer-highlight: #f4f4f4;
+        --color-background-layer-highlight-plus: #ececec;
+
+        --color-mask: rgba(238, 238, 238, .5);
+
+        --color-border: #f4f4f4;
+        --color-border-highlight: #e0e0e0;
+        --color-border-reverse: #000000;
+
+        --color-hover: rgba(0, 0, 0, .1);
+        --color-hover-blur: rgba(0, 0, 0, .05);
+        --color-active-focus: #000000;
+
+        --box-shadow-image: 0 2px 8px -4px #cccccc;
+        --box-shadow-button: 0 0 4px -1px #cccccc;
+        --box-shadow-window: 0 2px 6px -2px #cccccc;
+    }
+
     header .window .label.auto {
         color: #000000;
         background-color: #f4f4f4;
@@ -522,6 +570,33 @@ footer .link.beian::before {
 }
 
 @media (prefers-color-scheme: dark) {
+    html {
+        --color-font-primary: #c6c6c6;
+        --color-font-secondary: #8d8d8d;
+        --color-font-link: #2196f3;
+        --color-font-reverse: #000000;
+
+        --color-background: #000000;
+        --color-background-highlight: #121212;
+        --color-background-layer: #0b0b0b;
+        --color-background-layer-highlight: #121212;
+        --color-background-layer-highlight-plus: #181818;
+
+        --color-mask: rgba(0, 0, 0, .5);
+
+        --color-border: #121212;
+        --color-border-highlight: #242424;
+        --color-border-reverse: #c6c6c6;
+
+        --color-hover: rgba(255, 255, 255, .1);
+        --color-hover-blur: rgba(255, 255, 255, .02);
+        --color-active-focus: #ffffff;
+
+        --box-shadow-image: 0 2px 8px -4px #000000;
+        --box-shadow-button: 0 0 4px -1px #000000;
+        --box-shadow-window: 0 2px 6px -2px #000000;
+    }
+
     header .window .label.auto {
         color: #c6c6c6;
         background-color: #35363a;

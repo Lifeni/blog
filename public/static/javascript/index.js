@@ -7,7 +7,6 @@ const isSupportWebp =
         .includes('data:image/webp');
 
 const html = document.querySelector('html');
-const body = document.querySelector('body');
 
 document.addEventListener('DOMContentLoaded', () => {
     // 修改 WebP 到 JPG
@@ -35,12 +34,6 @@ window.addEventListener('pageshow', () => {
     const current = localStorage.getItem('current-theme');
     if (current) {
         html.dataset.theme = current;
-        body.classList.add('theme-dark');
-
-        setTimeout(() => {
-            body.classList.remove('theme-dark');
-        }, 200);
-
         if (theme) {
             if (theme === 'light') {
                 lightTheme.checked = true;
