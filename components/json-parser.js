@@ -27,5 +27,5 @@ async function work() {
 
 module.exports = {
     work: work,
-    infos: projectList.project
+    infos: projectList.project,
 };

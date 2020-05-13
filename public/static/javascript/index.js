@@ -1,10 +1,10 @@
 'use strict';
 
 // 判断是否支持 WebP
-const isSupportWebp =
-    document.createElement('canvas')
-        .toDataURL('image/webp', .5)
-        .includes('data:image/webp');
+const isSupportWebp = document
+    .createElement('canvas')
+    .toDataURL('image/webp', 0.5)
+    .includes('data:image/webp');
 
 const html = document.querySelector('html');
 
@@ -19,11 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 图片懒加载的情况
             if (e.dataset.src) {
-                e.dataset.src = e.dataset.src + '?x-oss-process=image/format,jpg';
+                e.dataset.src =
+                    e.dataset.src + '?x-oss-process=image/format,jpg';
             }
-        })
+        });
     }
-})
+});
 
 const autoTheme = document.querySelector('#theme-auto');
 const lightTheme = document.querySelector('#theme-light');
@@ -56,7 +57,7 @@ window.addEventListener('pageshow', () => {
             localStorage.setItem('current-theme', 'light');
         }
     }
-})
+});
 
 autoTheme.addEventListener('click', themeSwitcher);
 lightTheme.addEventListener('click', themeSwitcher);
@@ -86,7 +87,7 @@ const settingWindow = document.querySelector('#window-setting');
 setting.addEventListener('click', () => {
     setting.classList.toggle('show');
     settingWindow.classList.toggle('show');
-})
+});
 
 // 点击窗口外关闭窗口
 window.addEventListener('click', (e) => {
@@ -98,22 +99,21 @@ window.addEventListener('click', (e) => {
     if (settingWindow.classList.contains('show')) {
         const settingSize = setting.getBoundingClientRect();
         const winSize = settingWindow.getBoundingClientRect();
-        if ((
-            e.x < winSize.left
-            || e.x > winSize.right
-            || e.y < winSize.top
-            || e.y > winSize.bottom
-        ) && (
-                e.x < settingSize.left
-                || e.x > settingSize.right
-                || e.y < settingSize.top
-                || e.y > settingSize.bottom
-            )) {
+        if (
+            (e.x < winSize.left ||
+                e.x > winSize.right ||
+                e.y < winSize.top ||
+                e.y > winSize.bottom) &&
+            (e.x < settingSize.left ||
+                e.x > settingSize.right ||
+                e.y < settingSize.top ||
+                e.y > settingSize.bottom)
+        ) {
             setting.classList.remove('show');
             settingWindow.classList.remove('show');
         }
     }
-})
+});
 
 // ESC 关闭窗口
 document.addEventListener('keydown', (e) => {
@@ -127,7 +127,7 @@ document.addEventListener('keydown', (e) => {
         setting.classList.remove('show');
         settingWindow.classList.remove('show');
     }
-})
+});
 
 // 纪念日
 const now = new Date();
@@ -139,10 +139,10 @@ const dateList = [
 
 dateList.forEach(([month, day, year = now.getFullYear()]) => {
     if (
-        now.getFullYear() === year
-        && now.getMonth() === month - 1
-        && now.getDate() === day
+        now.getFullYear() === year &&
+        now.getMonth() === month - 1 &&
+        now.getDate() === day
     ) {
         html.style.filter = 'grayscale(100%)';
     }
-})
+});

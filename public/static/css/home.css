@@ -1,15 +1,91 @@
+.app {
+    position: relative;
+    z-index: 50;
+    width: calc(100% - 24px);
+    max-width: 860px;
+    margin: 12px auto;
+    border: solid 2px transparent;
+    background-color: var(--color-background-layer);
+    transition: all 0.2s;
+}
+
+.app .code-block {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.app .code-block .line {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.app .code-block .block {
+    height: 16px;
+    margin: 4px;
+    padding: 0 24px;
+    background-color: var(--color-background-layer-highlight);
+    transition: all 0.2s;
+}
+
+.app .code-block .block.highlight {
+    background-color: var(--color-background-layer-highlight-plus);
+}
+
+.app .code-block .block:hover {
+    background-color: var(--color-hover);
+}
+
+.app .code-block .block.length-0 {
+    padding: 0 16px;
+}
+
+.app .code-block .block.length-1 {
+    padding: 0 32px;
+}
+
+.app .code-block .block.length-2 {
+    padding: 0 48px;
+}
+
+.app .code-block .block.length-3 {
+    padding: 0 64px;
+}
+
+.app .slogan {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 24px;
+    color: var(--color-font-secondary);
+    transition: all 0.2s;
+}
+
 .bar.project,
 .bar.article {
     position: relative;
     z-index: 60;
     width: calc(100% - 24px);
-    max-width: 852px;
+    max-width: 860px;
     margin: 24px auto;
     padding: 0 40px;
     background-size: 24px;
     background-position: 16px center;
     background-repeat: no-repeat;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .bar.project .text,
@@ -21,10 +97,11 @@
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .bar.project {
+    margin-top: 48px;
     background-image: var(--icon-project);
 }
 
@@ -37,7 +114,7 @@
     position: relative;
     z-index: 50;
     width: calc(100% - 24px);
-    max-width: 852px;
+    max-width: 860px;
     margin: 0 auto;
 }
 
@@ -52,7 +129,7 @@
     overflow-y: hidden;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .projects .showcase::-webkit-scrollbar {
@@ -74,16 +151,16 @@
     flex-shrink: 0;
     flex-grow: 0;
     background-color: var(--color-background-layer);
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .board .image {
     position: relative;
     width: 100%;
     display: none;
-    filter: brightness(.9);
+    filter: brightness(0.9);
     pointer-events: none;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .board .info,
@@ -96,7 +173,7 @@
     align-items: flex-start;
     justify-content: center;
     color: var(--color-font-primary);
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .board .info {
@@ -130,7 +207,7 @@
     background-repeat: no-repeat;
     background-position: 10px center;
     background-color: var(--color-background-layer-highlight);
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .board .link.code {
@@ -189,7 +266,7 @@
     -moz-user-select: none;
     -webkit-user-select: none;
     color: transparent;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .projects .go:hover {
@@ -236,7 +313,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card {
@@ -244,7 +321,7 @@ main {
     width: 100%;
     margin-bottom: 12px;
     background-color: var(--color-background-layer);
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card .text,
@@ -278,7 +355,7 @@ main {
     font-size: 1.5rem;
     line-height: 2.25rem;
     color: var(--color-font-primary);
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card.article .description {
@@ -286,7 +363,7 @@ main {
     color: var(--color-font-secondary);
     font-size: 1rem;
     line-height: 1.75rem;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card.article .info {
@@ -317,7 +394,7 @@ main {
     border-radius: 48px;
     background-color: var(--color-background-layer-highlight);
     white-space: nowrap;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card.article .info .keyword {
@@ -393,7 +470,7 @@ main {
     background-position: 24px center;
     background-repeat: no-repeat;
     background-image: var(--icon-more);
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .load.more.hide {
@@ -402,11 +479,11 @@ main {
 
 aside {
     position: relative;
-    width: 280px;
+    width: 288px;
     margin-right: 12px;
     opacity: 1;
     visibility: visible;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card.find,
@@ -436,7 +513,7 @@ aside {
     background-color: var(--color-background-layer-highlight);
     outline: none;
     -webkit-appearance: none;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card.find .search:hover {
@@ -451,18 +528,31 @@ aside {
     display: none;
 }
 
+.card.find .list {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .card.find .label {
     position: relative;
+    height: 36px;
     margin: 4px;
     padding: 6px 14px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 24px;
     font-size: 1rem;
     color: var(--color-font-secondary);
     background-color: var(--color-background-layer-highlight);
     cursor: pointer;
     outline: none;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card.find .label:hover {
@@ -474,11 +564,11 @@ aside {
     background-color: var(--color-hover);
 }
 
-.card.find .radio~.text {
-    transition: padding .2s .1s;
+.card.find .radio ~ .text {
+    transition: padding 0.2s 0.1s;
 }
 
-.card.find .radio+.point {
+.card.find .radio + .point {
     position: absolute;
     left: 9px;
     top: 8px;
@@ -488,18 +578,18 @@ aside {
     opacity: 0;
     visibility: hidden;
     overflow: hidden;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
-.card.find .radio:checked~.text {
+.card.find .radio:checked ~ .text {
     padding-left: 24px;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
-.card.find .radio:checked+.point {
+.card.find .radio:checked + .point {
     opacity: 1;
     visibility: visible;
-    transition: all .2s .1s;
+    transition: all 0.2s 0.1s;
 }
 
 .card.find .label.reset {
@@ -537,7 +627,7 @@ aside {
     cursor: pointer;
     outline: none;
     overflow: hidden;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card.calendar .label:hover .count {
@@ -566,13 +656,13 @@ aside {
     font-size: 1rem;
     color: var(--color-font-secondary);
     background-color: var(--color-background-layer-highlight-plus);
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card.calendar .months .count::before {
     content: '';
     opacity: 0;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card.calendar .label:hover .count::before {
@@ -585,11 +675,11 @@ aside {
     display: none;
 }
 
-.card.calendar .checkbox:checked~.count {
+.card.calendar .checkbox:checked ~ .count {
     width: 88px;
 }
 
-.card.calendar .checkbox:checked~.count::before {
+.card.calendar .checkbox:checked ~ .count::before {
     content: '选中 ';
     margin-right: 4px;
     opacity: 1;
@@ -611,7 +701,7 @@ aside {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    transition: background-color .2s, box-shadow .2s;
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .card.tool .button {
@@ -629,7 +719,7 @@ aside {
     background-size: 24px;
     background-position: center;
     background-repeat: no-repeat;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .card.tool .go.top {
@@ -640,7 +730,11 @@ aside {
     background-image: var(--icon-bottom);
 }
 
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
+    .app .code-block {
+        margin-bottom: 48px;
+    }
+
     .projects .touch-tips {
         position: absolute;
         right: 24px;
@@ -654,7 +748,7 @@ aside {
         background-repeat: no-repeat;
         background-color: transparent;
         background-image: var(--icon-touch);
-        transition: all .2s;
+        transition: all 0.2s;
         animation: slide 3s ease infinite;
     }
 
@@ -675,7 +769,7 @@ aside {
     .container {
         z-index: 1000;
         flex-direction: column;
-        justify-content: flex-start
+        justify-content: flex-start;
     }
 
     .card.tool {
@@ -683,11 +777,11 @@ aside {
     }
 
     .card.calendar .label .count {
-        width: 100px;
+        width: 80px;
     }
 
     .card.calendar .label .count::before {
-        content: '文章 × ';
+        content: ' × ';
         margin-right: 4px;
         opacity: 1;
     }
@@ -706,13 +800,13 @@ aside {
         align-items: flex-start;
         justify-content: flex-start;
         overflow-y: auto;
-        transition: left .4s ease .2s, background ease .2s;
+        transition: left 0.4s ease 0.2s, background ease 0.2s;
     }
 
     aside.expand {
         left: 0;
         background-color: var(--color-mask);
-        transition: left ease .4s, background .2s ease .3s;
+        transition: left ease 0.4s, background 0.2s ease 0.3s;
     }
 }
 

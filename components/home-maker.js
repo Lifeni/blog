@@ -6,9 +6,7 @@ const moment = require('moment');
 const markdownParser = require('./markdown-parser');
 const jsonParser = require('./json-parser');
 
-let template = fs
-    .readFileSync('./template/home.template.html')
-    .toString();
+let template = fs.readFileSync('./template/home.template.html').toString();
 
 async function work() {
     await jsonParser.work();
@@ -25,21 +23,19 @@ async function work() {
 async function createProject(infos) {
     const html = {
         links: '',
-        projects: ''
-    }
+        projects: '',
+    };
 
     for (const info of infos) {
         html.links = '';
         for (const link of info.links) {
-            html.links +=
-                `<a href="${link.url}"
+            html.links += `<a href="${link.url}"
                     class="link ${link.type}">
                         ${link.text}
-                 </a>`
+                 </a>`;
         }
 
-        html.projects +=
-            `<div class="board project">
+        html.projects += `<div class="board project">
                 <div class="area info">
                     <span class="text status">
                     ${info.status}
@@ -59,11 +55,10 @@ async function createProject(infos) {
                 <div class="bar">
                     ${html.links}
                 </div>
-            </div>`
+            </div>`;
     }
 
-    template = template
-        .replace(/{{项目列表}}/, html.projects);
+    template = template.replace(/{{项目列表}}/, html.projects);
 }
 
 // 根据模板创建首页
@@ -80,22 +75,23 @@ async function createArticle(data) {
     const html = {
         articles: '',
         tags: '',
-        months: ''
-    }
+        months: '',
+    };
 
     let tags = new Map();
     let months = new Map();
 
     for (const index of indexs) {
         // 添加文章卡片
-        html.articles +=
-            `<div class="card article"
+        html.articles += `<div class="card article"
                   data-keyword="${index.get('keyword').toLowerCase()}"
                   data-date="${index.get('modified').toLowerCase()}">
                 <a href="/article/${index.get('name')}/">
                     <span class="area info">
                         <span class="point color"
-                              data-keyword="${index.get('keyword').toLowerCase()}">
+                              data-keyword="${index
+                                  .get('keyword')
+                                  .toLowerCase()}">
                         </span>
                         <span class="text keyword">
                             ${index.get('keyword')}
@@ -120,7 +116,7 @@ async function createArticle(data) {
         // 统计文章标签
         const tag = index.get('keyword');
         if (tags.has(tag)) {
-            let count = tags.get(tag)
+            let count = tags.get(tag);
             tags.set(tag, ++count);
         } else {
             tags.set(tag, 1);
@@ -138,13 +134,20 @@ async function createArticle(data) {
 
     // 标签按数量排序
     tags = Array.from(tags).sort((a, b) => {
+        if (a[1] === b[1]) {
+            if (a[0] > b[0]) {
+                return 1;
+            } else if (a[0] < b[0]) {
+                return -1;
+            }
+            return 0;
+        }
         return b[1] - a[1];
     });
 
     // 插入标签
     for (const [name, count] of tags) {
-        html.tags +=
-            `<label class="label tag color"
+        html.tags += `<label class="label tag color"
                     title="筛选标签为 ${name} 的文章"
                     tabindex="0">
                 <input type="radio"
@@ -162,8 +165,7 @@ async function createArticle(data) {
              </label>`;
     }
 
-    html.tags +=
-        `<label class="label tag hide reset"
+    html.tags += `<label class="label tag hide reset"
                 id="label-reset"
                 title="清除标签"
                 tabindex="0">
@@ -178,11 +180,10 @@ async function createArticle(data) {
 
     // 插入时间线
     for (const [month, count] of months) {
-        html.months +=
-            `<label class="label month"
-                    title="筛选修改时间在 ${
-            moment(month).year()} 年 ${
-            moment(month).month() + 1} 月 的文章"
+        html.months += `<label class="label month"
+                    title="筛选修改时间在 ${moment(month).year()} 年 ${
+            moment(month).month() + 1
+        } 月 的文章"
                     tabindex="0">
                 <input type="checkbox"
                        id="${month}"
@@ -203,5 +204,5 @@ async function createArticle(data) {
 }
 
 module.exports = {
-    work: work
+    work: work,
 };

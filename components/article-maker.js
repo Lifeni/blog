@@ -15,16 +15,15 @@ async function work() {
 }
 
 async function createArticle(data, index) {
-    let template =
-        fs.readFileSync('./template/article.template.html')
-            .toString();
+    let template = fs
+        .readFileSync('./template/article.template.html')
+        .toString();
 
     // 图片懒加载
     const article = data.replace(/src/g, 'data-src');
 
     // 添加文章元数据
-    const infoData =
-        `<div class="area info" id="area-info">
+    const infoData = `<div class="area info" id="area-info">
             <span class="text">
                 创建于
                 ${moment(index.get('created')).year()} 年
@@ -40,7 +39,7 @@ async function createArticle(data, index) {
             <span class="text">
                 ${index.get('license')}
             </span>
-         </div>`
+         </div>`;
 
     // 生成文章页
     template = template
@@ -52,10 +51,9 @@ async function createArticle(data, index) {
 
     // 如果目录不存在则创建
     try {
-        fs.mkdirSync(
-            `./public/article/${index.get('name')}`,
-            { recursive: true }
-        );
+        fs.mkdirSync(`./public/article/${index.get('name')}`, {
+            recursive: true,
+        });
     } catch (e) {
         // console.log(e);
     }
@@ -66,7 +64,6 @@ async function createArticle(data, index) {
     );
 }
 
-
 module.exports = {
-    work: work
+    work: work,
 };
