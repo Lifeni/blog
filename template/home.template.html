@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Lifeni">
-        <meta name="description" content="记录干杯。">
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="/static/css/framework.css">
-        <link rel="stylesheet" href="/static/css/home.css">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Lifeni" />
+        <meta name="description" content="记录干杯。" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="/static/css/framework.css" />
+        <link rel="stylesheet" href="/static/css/home.css" />
         <title>Lifeni</title>
     </head>
 
@@ -19,39 +18,136 @@
                 <a href="/" class="link name">Lifeni</a>
             </div>
             <div class="area right">
-                <button class="button setting icon" id="button-setting" title="查看菜单">查看菜单</button>
+                <button
+                    class="button setting icon"
+                    id="button-setting"
+                    title="查看菜单"
+                >
+                    查看菜单
+                </button>
                 <div class="window setting" id="window-setting">
                     <h2 class="text title">主题及数据</h2>
                     <div class="area theme">
                         <label for="theme-auto" class="label theme auto">
-                            <input type="radio" name="theme" id="theme-auto" value="auto" class="radio theme auto"
-                                checked>
+                            <input
+                                type="radio"
+                                name="theme"
+                                id="theme-auto"
+                                value="auto"
+                                class="radio theme auto"
+                                checked
+                            />
                             <span class="text">自动</span>
                         </label>
                         <label for="theme-light" class="label theme light">
-                            <input type="radio" name="theme" id="theme-light" value="light" class="radio theme light">
+                            <input
+                                type="radio"
+                                name="theme"
+                                id="theme-light"
+                                value="light"
+                                class="radio theme light"
+                            />
                             <span class="text">白色</span>
                         </label>
                         <label for="theme-dark" class="label theme dark">
-                            <input type="radio" name="theme" id="theme-dark" value="dark" class="radio theme dark">
+                            <input
+                                type="radio"
+                                name="theme"
+                                id="theme-dark"
+                                value="dark"
+                                class="radio theme dark"
+                            />
                             <span class="text">暗色</span>
                         </label>
                     </div>
-                    <p class="text description">主题设置会自动储存到浏览器的 Local Storage 中，不会影响其他网站，你可以随时删除。</p>
-                    <a href="https://github.com/Lifeni/website/blob/master/README.md#数据使用说明" target="_blank"
-                        class="link data" rel="noopener noreferrer">数据使用说明</a>
-                    <p class="text description">了解网站如何储存数据，以及如何清除浏览器上的数据。</p>
+                    <p class="text description">
+                        主题设置会自动储存到浏览器的 Local Storage
+                        中，不会影响其他网站，你可以随时删除。
+                    </p>
+                    <a
+                        href="https://github.com/Lifeni/website/blob/master/README.md#数据使用说明"
+                        target="_blank"
+                        class="link data"
+                        rel="noopener noreferrer"
+                        >数据使用说明</a
+                    >
+                    <p class="text description">
+                        了解网站如何储存数据，以及如何清除浏览器上的数据。
+                    </p>
                 </div>
             </div>
         </header>
+
+        <div class="app">
+            <div class="code-block">
+                <div class="line">
+                    <span class="block length-1"></span>
+                    <span class="block length-0"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-3"></span>
+                    <span class="block length-0"></span>
+                    <span class="block length-1 highlight"></span>
+                    <span class="block length-1"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-2"></span>
+                    <span class="block length-2"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-1"></span>
+                    <span class="block length-2 highlight"></span>
+                    <span class="block length-1"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-2"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-1"></span>
+                    <span class="block length-2"></span>
+                    <span class="block length-0 highlight"></span>
+                    <span class="block length-1"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-2"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-1"></span>
+                    <span class="block length-1"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-3 highlight"></span>
+                    <span class="block length-1"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-2"></span>
+                    <span class="block length-3"></span>
+                    <span class="block length-1"></span>
+                    <span class="block length-2 highlight"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-1"></span>
+                    <span class="block length-2"></span>
+                    <span class="block length-2"></span>
+                </div>
+                <div class="line">
+                    <span class="block length-1"></span>
+                </div>
+            </div>
+            <span class="text slogan">记录干杯。</span>
+        </div>
 
         <div class="bar project">
             <h1 class="text title">项目</h1>
         </div>
 
         <section class="projects" id="projects">
-            <button class="button go left hide" id="go-left" tabindex="-1">向左滚动</button>
-            <button class="button go right" id="go-right" tabindex="-1">向右滚动</button>
+            <button class="button go left hide" id="go-left" tabindex="-1">
+                向左滚动
+            </button>
+            <button class="button go right" id="go-right" tabindex="-1">
+                向右滚动
+            </button>
             <div class="showcase" id="showcase">
                 <div class="touch-tips" id="touch-tips"></div>
                 {{项目列表}}
@@ -67,13 +163,24 @@
                 {{文章列表}}
                 <div class="card empty hide" id="card-empty">
                     <h2 class="text title">搜索无结果</h2>
-                    <p class="text description">换个关键词试试？或者 <a class="link home" href="/">返回主页</a></p>
+                    <p class="text description">
+                        换个关键词试试？或者
+                        <a class="link home" href="/">返回主页</a>
+                    </p>
                 </div>
-                <button class="button load more" id="load-more">查看更多</button>
+                <button class="button load more" id="load-more">
+                    查看更多
+                </button>
             </main>
             <aside>
                 <div class="card find" id="card-find">
-                    <input class="input search" id="input-search" type="search" placeholder="搜索" aria-label="搜索">
+                    <input
+                        class="input search"
+                        id="input-search"
+                        type="search"
+                        placeholder="搜索"
+                        aria-label="搜索"
+                    />
                     <div class="list tags">
                         {{标签列表}}
                     </div>
@@ -86,8 +193,22 @@
                     <div class="bar calendar"></div>
                 </div>
                 <div class="card tool" id="card-tool">
-                    <button class="button go top" id="go-top" title="跳转到顶部" tabindex="-1">跳转到顶部</button>
-                    <button class="button go bottom" id="go-bottom" title="跳转到底部" tabindex="-1">跳转到底部</button>
+                    <button
+                        class="button go top"
+                        id="go-top"
+                        title="跳转到顶部"
+                        tabindex="-1"
+                    >
+                        跳转到顶部
+                    </button>
+                    <button
+                        class="button go bottom"
+                        id="go-bottom"
+                        title="跳转到底部"
+                        tabindex="-1"
+                    >
+                        跳转到底部
+                    </button>
                 </div>
             </aside>
         </div>
@@ -97,15 +218,24 @@
                 <span class="text slogan">追求源于热爱。</span>
             </div>
             <div class="area right">
-                <a href="http://www.beian.miit.gov.cn/" class="link icp" target="_blank"
-                    rel="noopener noreferrer">鲁ICP备19006085号</a>
-                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392" class="link beian"
-                    target="_blank" rel="noopener noreferrer">鲁公网安备 37132102371392号</a>
+                <a
+                    href="http://www.beian.miit.gov.cn/"
+                    class="link icp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >鲁ICP备19006085号</a
+                >
+                <a
+                    href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
+                    class="link beian"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >鲁公网安备 37132102371392号</a
+                >
             </div>
         </footer>
         <div class="bottom-bar"></div>
         <script src="/static/javascript/index.js"></script>
         <script src="/static/javascript/home.js"></script>
     </body>
-
 </html>

@@ -3,20 +3,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadMore();
     boardSlider();
-})
+});
 
 window.addEventListener('pageshow', () => {
     setTimeout(() => {
         toolResizer();
         articleFilter('none');
     }, 0);
-})
+});
 
 let htmlWidth = document.querySelector('html').offsetWidth;
 window.addEventListener('resize', () => {
     htmlWidth = document.querySelector('html').offsetWidth;
     toolResizer();
-})
+});
 
 function boardSlider() {
     const showcase = document.querySelector('#showcase');
@@ -31,20 +31,20 @@ function boardSlider() {
         goLeft.addEventListener('click', () => {
             const length = showcase.getBoundingClientRect().width;
             showcase.scrollLeft -= length;
-        })
+        });
 
         goRight.addEventListener('click', () => {
             const length = showcase.getBoundingClientRect().width;
             showcase.scrollLeft += length;
-        })
+        });
 
         showcase.addEventListener('scroll', () => {
             const leftLength =
-                parseInt(firstBoard.getBoundingClientRect().left)
-                - parseInt(showcase.getBoundingClientRect().left);
+                parseInt(firstBoard.getBoundingClientRect().left) -
+                parseInt(showcase.getBoundingClientRect().left);
             const rightLength =
-                parseInt(showcase.getBoundingClientRect().right)
-                - parseInt(lastBoard.getBoundingClientRect().right);
+                parseInt(showcase.getBoundingClientRect().right) -
+                parseInt(lastBoard.getBoundingClientRect().right);
 
             if (leftLength === 0 && rightLength === 12) {
                 // 无溢出
@@ -63,12 +63,12 @@ function boardSlider() {
                 goLeft.classList.remove('hide');
                 goRight.classList.remove('hide');
             }
-        })
+        });
     } else {
         const tips = document.querySelector('#touch-tips');
         showcase.addEventListener('scroll', () => {
             tips.classList.add('hide');
-        })
+        });
     }
 }
 
@@ -78,14 +78,14 @@ searchInput.addEventListener('input', (e) => {
     if (!e.target.value.startsWith(' ')) {
         articleFilter('search', e.target.value.replace(/\s/g, '+'));
     }
-})
+});
 
 // 监听标签点击
 const tagRadio = document.querySelectorAll('.radio.tag');
 for (const tag of tagRadio) {
     tag.addEventListener('click', (e) => {
         articleFilter('tag', e.target.dataset.keyword);
-    })
+    });
 }
 
 // 监听月份点击
@@ -109,7 +109,7 @@ for (const month of monthLabel) {
                 articleFilter('date', monthArray);
             }
         }, 100);
-    })
+    });
 }
 
 // 监听标签清空
@@ -118,7 +118,7 @@ const resetRadio = document.querySelector('#radio-reset');
 resetLabel.addEventListener('click', () => {
     resetRadio.checked = true;
     articleFilter('none');
-})
+});
 
 // 工具栏的吸附效果
 const toolCard = document.querySelector('#card-tool');
@@ -127,20 +127,24 @@ window.addEventListener('scroll', toolResizer);
 function toolResizer() {
     const html = document.querySelector('html');
     if (html.offsetWidth > 640) {
+        const main = document.querySelector('main');
         const aside = document.querySelector('aside');
-        const footer = document.querySelector('footer');
+
         toolCard.style.left = `${aside.getBoundingClientRect().left}px`;
-        if (aside.getBoundingClientRect().bottom + 132 < html.clientHeight) {
-            const foo = footer.getBoundingClientRect().top - html.clientHeight;
+
+        if (main.getBoundingClientRect().bottom > html.clientHeight) {
+            const foo =
+                html.clientHeight - aside.getBoundingClientRect().bottom - 132;
 
             if (foo < 0) {
-                toolCard.style.bottom = `${-foo + 12}px`;
+                toolCard.style.bottom = `${foo + 12}px`;
             } else {
                 toolCard.style.bottom = '12px';
             }
         } else {
-            toolCard.style.bottom =
-                `${html.clientHeight - aside.getBoundingClientRect().bottom - 120}px`;
+            toolCard.style.bottom = `${
+                html.clientHeight - main.getBoundingClientRect().bottom + 12
+            }px`;
         }
     }
 }
@@ -149,13 +153,13 @@ function toolResizer() {
 const toTop = document.querySelector('#go-top');
 toTop.addEventListener('click', () => {
     window.scrollTo(0, 0);
-})
+});
 
 // 跳转底部
 const toBottom = document.querySelector('#go-bottom');
 toBottom.addEventListener('click', () => {
     window.scrollTo(0, document.body.scrollHeight);
-})
+});
 
 // 筛选文章
 function articleFilter(method, value) {
@@ -194,11 +198,11 @@ function articleFilter(method, value) {
                 const text = card.innerText.toLowerCase();
                 count++;
                 card.classList.add('hide');
-                if (text.includes(
-                    decodeURI(value)
-                        .replace(/\+/g, ' ')
-                        .toLowerCase()
-                )) {
+                if (
+                    text.includes(
+                        decodeURI(value).replace(/\+/g, ' ').toLowerCase()
+                    )
+                ) {
                     count--;
                     card.classList.remove('hide');
                 }
@@ -227,12 +231,12 @@ function removeChecked(key) {
     const tags = document.querySelectorAll('.radio.tag');
     const months = document.querySelectorAll('.checkbox.month');
     if (key === 'tag') {
-        tags.forEach(e => e.checked = false)
+        tags.forEach((e) => (e.checked = false));
     } else if (key === 'month') {
-        months.forEach(e => e.checked = false)
+        months.forEach((e) => (e.checked = false));
     } else {
-        tags.forEach(e => e.checked = false)
-        months.forEach(e => e.checked = false)
+        tags.forEach((e) => (e.checked = false));
+        months.forEach((e) => (e.checked = false));
     }
 }
 
@@ -258,7 +262,7 @@ function loadMore(count) {
         } else {
             e.classList.add('hide');
         }
-    })
+    });
 }
 
 // 加载更多文章
@@ -266,4 +270,4 @@ const loadButton = document.querySelector('#load-more');
 loadButton.addEventListener('click', () => {
     loadMore();
     toolCard.style.bottom = '12px';
-})
+});

@@ -13,12 +13,13 @@ const markdown = require('markdown-it')({
             }
         }
         return '';
-    }
-}).use(require('markdown-it-abbr'))
+    },
+})
+    .use(require('markdown-it-abbr'))
     .use(require('markdown-it-anchor'))
-    .use(require("markdown-it-table-of-contents"), {
-        'includeLevel': [2, 3],
-        'containerClass': 'toc'
+    .use(require('markdown-it-table-of-contents'), {
+        includeLevel: [2, 3],
+        containerClass: 'toc',
     });
 
 // 储存和获取文章数据
@@ -37,19 +38,11 @@ class List {
     }
 
     set index(data) {
-        this.indexs.push(data)
+        this.indexs.push(data);
     }
 
     get index() {
-        return this.indexs.sort(
-            (a, b) => (a.get('modified') - b.get('modified'))
-        );
-    }
-
-    sort() {
-        this.articles.sort(
-            (a, b) => (a.get('modified') < b.get('modified'))
-        )
+        return this.indexs;
     }
 }
 
@@ -69,9 +62,12 @@ async function work() {
             articleList.index = map;
         });
 
-        const file = `${fs.readFileSync(`./markdown/${fileName}`).toString()}[[toc]]`;
-        articleList.article = markdown.render(file)
-            .replace(/`/g, '')      // 转义锚点 id 中的符号
+        const file = `${fs
+            .readFileSync(`./markdown/${fileName}`)
+            .toString()}[[toc]]`;
+        articleList.article = markdown
+            .render(file)
+            .replace(/`/g, '') // 转义锚点 id 中的符号
             .replace(/%60/g, '')
             .replace(/\*/g, '')
             .replace(/%22/g, '');
@@ -81,5 +77,5 @@ async function work() {
 module.exports = {
     work: work,
     articles: articleList.article,
-    indexs: articleList.index
+    indexs: articleList.index,
 };
