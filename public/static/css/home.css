@@ -34,9 +34,10 @@
 }
 
 .app .code-block .block {
-    height: 16px;
+    height: 18px;
     margin: 4px;
     padding: 0 24px;
+    border-radius: 18px;
     background-color: var(--color-background-layer-highlight);
     transition: all 0.2s;
 }
@@ -740,14 +741,12 @@ aside {
         right: 24px;
         bottom: 36px;
         z-index: 100;
-        width: 24px;
+        width: 36px;
         height: 36px;
+        border: solid 6px var(--color-background-layer-highlight);
+        border-radius: 100%;
         display: block;
-        background-size: 24px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-color: transparent;
-        background-image: var(--icon-touch);
+        background-color: var(--color-background-layer-highlight-plus);
         transition: all 0.2s;
         animation: slide 3s ease infinite;
     }
