@@ -31,12 +31,15 @@ aside .toc {
     width: 100%;
     max-height: calc(100vh - 256px);
     margin-top: 2rem;
-    padding: 1rem 1.5rem;
     font-size: 1rem;
     background-color: var(--color-background-highlight);
     overflow-x: auto;
     overflow-y: auto;
     transition: all 0.2s;
+}
+
+aside .toc > ul {
+    margin: 1.5rem;
 }
 
 aside .toc li {
@@ -241,17 +244,18 @@ article pre code {
 article blockquote {
     width: 100%;
     margin: 16px 0;
-    padding: 0 24px;
-    border-left: solid 6px var(--color-background-highlight);
+    padding: 4px 24px;
+    border-left: solid 6px var(--color-border-highlight);
 }
 
 article blockquote p,
+article blockquote li,
 article blockquote code {
     color: var(--color-font-secondary);
 }
 
 article blockquote p {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 }
 
 article table {
