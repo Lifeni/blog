@@ -13,7 +13,6 @@ body {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
@@ -34,7 +33,7 @@ html {
     --color-theme-check: #4caf50;
 
     --font-family-normal: 'Roboto', 'Noto Sans SC', '思源黑体 CN', sans-serif;
-    --font-family-monospace: 'Consolas', Courier, monospace, 'Noto Sans SC',
+    --font-family-monospace: 'Consolas', monospace, 'Noto Sans SC',
         '思源黑体 CN', sans-serif;
 
     --color-font-primary: #000000;
@@ -48,8 +47,8 @@ html {
     --color-background-layer: #ffffff;
     --color-background-layer-highlight: #f4f4f4;
     --color-background-layer-highlight-plus: #ececec;
-
-    --color-mask: rgba(238, 238, 238, 0.5);
+  
+    --color-mask: rgba(255, 255, 255, 0.5);
 
     --color-border: #f4f4f4;
     --color-border-highlight: #e0e0e0;
@@ -112,6 +111,7 @@ html[data-theme='light'] {
     --icon-lab-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%233f51b5' aria-hidden='true' style='will-change:transform'%3E%3Cpath d='M27.231 23.618L20 13.675V4h2V2H10v2h2v9.675l-7.231 9.943A4.018 4.018 0 0 0 8.019 30H23.98a4.018 4.018 0 0 0 3.25-6.382zM14 14.325V4h4v10.325L20.673 18h-9.346zM23.981 28H8.02a2.02 2.02 0 0 1-1.633-3.206L9.873 20h12.254l3.487 4.794A2.02 2.02 0 0 1 23.981 28z'/%3E%3C/svg%3E");
     --icon-dev-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%233f51b5' aria-hidden='true' style='will-change:transform'%3E%3Cpath d='M26 24.005H6a2.002 2.002 0 0 1-2-2v-14a2.002 2.002 0 0 1 2-2h20a2.002 2.002 0 0 1 2 2v14a2.003 2.003 0 0 1-2 2zm-20-16v14h20v-14zM2 26.005h28v2H2z'/%3E%3C/svg%3E");
     --icon-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true'%3E%3Cpath d='M29.25 6.76a6 6 0 0 0-8.5 0l1.42 1.42a4 4 0 1 1 5.67 5.67l-8 8a4 4 0 1 1-5.67-5.66l1.41-1.42-1.41-1.42-1.42 1.42a6 6 0 0 0 0 8.5A6 6 0 0 0 17 25a6 6 0 0 0 4.27-1.76l8-8a6 6 0 0 0-.02-8.48z'/%3E%3Cpath d='M4.19 24.82a4 4 0 0 1 0-5.67l8-8a4 4 0 0 1 5.67 0A3.94 3.94 0 0 1 19 14a4 4 0 0 1-1.17 2.85L15.71 19l1.42 1.42 2.12-2.12a6 6 0 0 0-8.51-8.51l-8 8a6 6 0 0 0 0 8.51A6 6 0 0 0 7 28a6.07 6.07 0 0 0 4.28-1.76l-1.42-1.42a4 4 0 0 1-5.67 0z'/%3E%3C/svg%3E");
+    --icon-theme: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true'%3E%3Ccircle cx='10' cy='12' r='2'/%3E%3Ccircle cx='16' cy='9' r='2'/%3E%3Ccircle cx='22' cy='12' r='2'/%3E%3Ccircle cx='23' cy='18' r='2'/%3E%3Ccircle cx='19' cy='23' r='2'/%3E%3Cpath d='M16.54 2A14 14 0 0 0 2 16a4.82 4.82 0 0 0 6.09 4.65l1.12-.31a3 3 0 0 1 3.79 2.9V27a3 3 0 0 0 3 3 14 14 0 0 0 14-14.54A14.05 14.05 0 0 0 16.54 2zm8.11 22.31A11.93 11.93 0 0 1 16 28a1 1 0 0 1-1-1v-3.76a5 5 0 0 0-5-5 5.07 5.07 0 0 0-1.33.18l-1.12.31A2.82 2.82 0 0 1 4 16 12 12 0 0 1 16.47 4 12.18 12.18 0 0 1 28 15.53a11.89 11.89 0 0 1-3.35 8.79z'/%3E%3C/svg%3E");
 }
 
 html[data-theme='dark'] {
@@ -161,6 +161,7 @@ html[data-theme='dark'] {
     --icon-lab-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%232196f3' aria-hidden='true' style='will-change:transform'%3E%3Cpath d='M27.231 23.618L20 13.675V4h2V2H10v2h2v9.675l-7.231 9.943A4.018 4.018 0 0 0 8.019 30H23.98a4.018 4.018 0 0 0 3.25-6.382zM14 14.325V4h4v10.325L20.673 18h-9.346zM23.981 28H8.02a2.02 2.02 0 0 1-1.633-3.206L9.873 20h12.254l3.487 4.794A2.02 2.02 0 0 1 23.981 28z'/%3E%3C/svg%3E");
     --icon-dev-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%232196f3' aria-hidden='true' style='will-change:transform'%3E%3Cpath d='M26 24.005H6a2.002 2.002 0 0 1-2-2v-14a2.002 2.002 0 0 1 2-2h20a2.002 2.002 0 0 1 2 2v14a2.003 2.003 0 0 1-2 2zm-20-16v14h20v-14zM2 26.005h28v2H2z'/%3E%3C/svg%3E");
     --icon-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23C6C6C6' aria-hidden='true'%3E%3Cpath d='M29.25 6.76a6 6 0 0 0-8.5 0l1.42 1.42a4 4 0 1 1 5.67 5.67l-8 8a4 4 0 1 1-5.67-5.66l1.41-1.42-1.41-1.42-1.42 1.42a6 6 0 0 0 0 8.5A6 6 0 0 0 17 25a6 6 0 0 0 4.27-1.76l8-8a6 6 0 0 0-.02-8.48z'/%3E%3Cpath d='M4.19 24.82a4 4 0 0 1 0-5.67l8-8a4 4 0 0 1 5.67 0A3.94 3.94 0 0 1 19 14a4 4 0 0 1-1.17 2.85L15.71 19l1.42 1.42 2.12-2.12a6 6 0 0 0-8.51-8.51l-8 8a6 6 0 0 0 0 8.51A6 6 0 0 0 7 28a6.07 6.07 0 0 0 4.28-1.76l-1.42-1.42a4 4 0 0 1-5.67 0z'/%3E%3C/svg%3E");
+    --icon-theme: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23C6C6C6' aria-hidden='true'%3E%3Ccircle cx='10' cy='12' r='2'/%3E%3Ccircle cx='16' cy='9' r='2'/%3E%3Ccircle cx='22' cy='12' r='2'/%3E%3Ccircle cx='23' cy='18' r='2'/%3E%3Ccircle cx='19' cy='23' r='2'/%3E%3Cpath d='M16.54 2A14 14 0 0 0 2 16a4.82 4.82 0 0 0 6.09 4.65l1.12-.31a3 3 0 0 1 3.79 2.9V27a3 3 0 0 0 3 3 14 14 0 0 0 14-14.54A14.05 14.05 0 0 0 16.54 2zm8.11 22.31A11.93 11.93 0 0 1 16 28a1 1 0 0 1-1-1v-3.76a5 5 0 0 0-5-5 5.07 5.07 0 0 0-1.33.18l-1.12.31A2.82 2.82 0 0 1 4 16 12 12 0 0 1 16.47 4 12.18 12.18 0 0 1 28 15.53a11.89 11.89 0 0 1-3.35 8.79z'/%3E%3C/svg%3E");
 }
 
 .color[data-keyword='docker'] {
@@ -234,7 +235,7 @@ button:focus {
 .top-bar,
 .bottom-bar {
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 12px;
     background-color: var(--color-background-highlight);
     transition: all 0.2s;
@@ -295,16 +296,14 @@ header .button.setting {
 header .button.show {
     z-index: 12;
     border-color: transparent;
-    box-shadow: var(--box-shadow-button);
-    box-shadow: var(--box-shadow-window);
     background-color: var(--color-background-layer);
     background-image: var(--icon-close);
 }
 
 header .window {
     position: absolute;
-    right: 0;
-    top: 60px;
+    right: -12px;
+    top: -12px;
     z-index: 10;
     width: fit-content;
     width: -moz-fit-content;
@@ -339,13 +338,17 @@ header .window .title {
     top: 0;
     height: 72px;
     margin-bottom: 14px;
-    padding: 0 24px;
+    padding: 0 24px 0 60px;
     display: flex;
     align-items: center;
-    font-size: 1.15rem;
+    font-size: 1rem;
     line-height: 1.5rem;
     font-weight: normal;
     color: var(--color-font-primary);
+    background-position: 24px center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-image: var(--icon-theme);
     transition: all 0.2s;
 }
 
