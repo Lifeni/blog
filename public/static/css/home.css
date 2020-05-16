@@ -56,6 +56,7 @@
 }
 
 .bar.project {
+    margin-top: 48px;
     background-image: var(--icon-project);
 }
 
