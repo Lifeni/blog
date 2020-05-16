@@ -1,79 +1,32 @@
-.app {
+/* .app {
     position: relative;
     z-index: 50;
     width: calc(100% - 24px);
     max-width: 860px;
+    height: 50vh;
     margin: 12px auto;
     border: solid 2px transparent;
-    background-color: var(--color-background-layer);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.2s;
 }
 
-.app .code-block {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.app .code-block .line {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-}
-
-.app .code-block .block {
-    height: 18px;
-    margin: 4px;
-    padding: 0 24px;
-    border-radius: 18px;
-    background-color: var(--color-background-layer-highlight);
-    transition: all 0.2s;
-}
-
-.app .code-block .block.highlight {
-    background-color: var(--color-background-layer-highlight-plus);
-}
-
-.app .code-block .block:hover {
-    background-color: var(--color-hover);
-}
-
-.app .code-block .block.length-0 {
-    padding: 0 16px;
-}
-
-.app .code-block .block.length-1 {
-    padding: 0 32px;
-}
-
-.app .code-block .block.length-2 {
-    padding: 0 48px;
-}
-
-.app .code-block .block.length-3 {
-    padding: 0 64px;
-}
-
-.app .slogan {
+.app .message {
     position: absolute;
     bottom: 0;
     right: 0;
     padding: 24px;
     color: var(--color-font-secondary);
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
     transition: all 0.2s;
 }
+
+.app .slogan.hide {
+    opacity: 0;
+} */
 
 .bar.project,
 .bar.article {
@@ -91,6 +44,7 @@
 
 .bar.project .text,
 .bar.article .text {
+    margin-top: 60px;
     padding: 0 12px;
     font-size: 1.25rem;
     font-weight: normal;
@@ -102,12 +56,10 @@
 }
 
 .bar.project {
-    margin-top: 48px;
     background-image: var(--icon-project);
 }
 
 .bar.article {
-    margin-top: 48px;
     background-image: var(--icon-article);
 }
 
@@ -144,7 +96,7 @@
 .board {
     position: relative;
     width: 366px;
-    margin: 0 12px 12px 0;
+    margin: 0 12px 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -184,7 +136,7 @@
     align-items: center;
     justify-content: space-between;
     color: var(--color-font-secondary);
-    background-color: var(--color-background-layer-highlight-plus);
+    background-color: var(--color-background-highlight);
 }
 
 .board .bar {
@@ -261,8 +213,8 @@
     background-size: 32px;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: var(--color-mask);
-    backdrop-filter: blur(4px);
+    background-color: var(--color-background-layer-highlight);
+    backdrop-filter: blur(2px);
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -472,6 +424,10 @@ main {
     background-repeat: no-repeat;
     background-image: var(--icon-more);
     transition: all 0.2s;
+}
+
+.load.more:hover {
+    background-position: 36px center;
 }
 
 .load.more.hide {
@@ -732,23 +688,19 @@ aside {
 }
 
 @media screen and (max-width: 640px) {
-    .app .code-block {
-        margin-bottom: 48px;
-    }
-
     .projects .touch-tips {
         position: absolute;
         right: 24px;
-        bottom: 36px;
+        bottom: 24px;
         z-index: 100;
         width: 36px;
         height: 36px;
-        border: solid 6px var(--color-background-layer-highlight);
+        border: solid 12px var(--color-background-layer-highlight);
         border-radius: 100%;
         display: block;
-        background-color: var(--color-background-layer-highlight-plus);
+        background-color: var(--color-font-link);
         transition: all 0.2s;
-        animation: slide 3s ease infinite;
+        animation: slide 2.5s ease infinite;
     }
 
     .projects .touch-tips.hide {
@@ -773,16 +725,6 @@ aside {
 
     .card.tool {
         display: none;
-    }
-
-    .card.calendar .label .count {
-        width: 80px;
-    }
-
-    .card.calendar .label .count::before {
-        content: ' × ';
-        margin-right: 4px;
-        opacity: 1;
     }
 
     main {
@@ -823,18 +765,19 @@ aside {
     0% {
         opacity: 0;
         right: 24px;
-        transform: scale(1.2);
+        border-width: 16px;
     }
 
     20% {
         opacity: 1;
         right: 24px;
-        transform: scale(1);
+        border-width: 8px;
     }
 
     50% {
         opacity: 1;
         right: 96px;
+        border-width: 8px;
     }
 
     60% {

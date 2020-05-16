@@ -15,7 +15,8 @@ main {
 }
 
 aside {
-    position: relative;
+    position: sticky;
+    top: 14px;
     max-width: 340px;
     padding: 12px 24px;
     display: flex;
@@ -28,12 +29,13 @@ aside {
 aside .toc {
     position: relative;
     width: 100%;
+    max-height: calc(100vh - 256px);
     margin-top: 2rem;
     padding: 1rem 1.5rem;
     font-size: 1rem;
     background-color: var(--color-background-highlight);
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: auto;
     transition: all 0.2s;
 }
 
@@ -264,7 +266,6 @@ article table {
 }
 
 article table code {
-    border: solid 2px var(--color-border-highlight);
     word-break: keep-all;
     transition: all 0.2s;
 }
@@ -279,11 +280,8 @@ article td {
     transition: all 0.2s;
 }
 
-article tr:nth-child(2n) {
-    color: var(--color-font-primary);
+article th {
     background-color: var(--color-background-highlight);
-    transition: background-color 0.2s;
-    transition: all 0.2s;
 }
 
 @media screen and (max-width: 800px) {
@@ -314,6 +312,7 @@ article tr:nth-child(2n) {
     }
 
     aside {
+        position: relative;
         width: 100%;
         max-width: 760px;
         height: 0;
@@ -323,9 +322,13 @@ article tr:nth-child(2n) {
         overflow: hidden;
     }
 
+    aside .toc {
+        max-height: unset;
+    }
+
     aside.show {
         opacity: 1;
-        padding: 64px 12px 36px 12px;
+        padding: 12px 12px 60px 12px;
         height: auto;
     }
 
