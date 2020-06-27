@@ -1,0 +1,278 @@
+article {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  padding: 72px 80px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: black;
+  background-color: white;
+  /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.02); */
+  transition: all 0.2s;
+}
+
+article p,
+article address {
+  font-size: 1rem;
+  line-height: 2rem;
+  color: black;
+  transition: all 0.2s;
+}
+
+article address {
+  font-style: normal;
+}
+
+article a {
+  color: #2962ff;
+  padding: 3px 0;
+  text-decoration: none;
+  /* border-bottom: solid 2px #f5f5f5; */
+  word-break: break-all;
+  transition: all 0.2s;
+}
+
+article a:hover,
+article a:active,
+article a:focus {
+  color: #6200ea;
+  /* border-bottom: solid 2px #FFEB3B; */
+}
+
+article strong {
+  font-weight: bold;
+}
+
+article del {
+  text-decoration: line-through;
+}
+
+article em {
+  font-style: italic;
+}
+
+article h1,
+article h2,
+article h3 {
+  color: black;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+article h1 {
+  position: relative;
+  margin: 0 0 48px 0;
+  font-size: 1.75rem;
+}
+
+article h2 {
+  margin: 1rem 0;
+  padding: 2rem 0 0 0;
+  font-size: 1.5rem;
+  /* border-bottom: solid 2px #f5f5f5; */
+}
+
+article h3::before {
+  content: "# ";
+  color: #e0e0e0;
+  transition: all 0.2s;
+}
+
+article h3 {
+  margin: 1rem 0;
+  font-size: 1.25rem;
+}
+
+article h2 + h3 {
+  margin: 0 0 1rem 0;
+}
+
+article ol,
+article ul {
+  margin-left: 1.5rem;
+}
+
+article li {
+  color: black;
+  font-size: 1rem;
+  line-height: 2rem;
+  transition: all 0.2s;
+}
+
+article img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  /* padding: 2px; */
+  opacity: 1;
+  margin: 0.5rem 0;
+  border: solid 2px #f5f5f5;
+  border-radius: 4px;
+  display: block;
+  color: #616161;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  text-align: right;
+  transition: all 0.2s;
+}
+
+article code {
+  margin: 0 2px;
+  padding: 2px 6px;
+  color: #212121;
+  background-color: #f5f5f5;
+  font-size: 1rem;
+  font-family: "Consolas", "Courier New", Courier, monospace;
+  word-break: break-all;
+  transition: all 0.2s;
+}
+
+article code[class*="language-"] {
+  padding: 0.2rem 0.4rem;
+  color: #212121;
+  background-color: #f5f5f5;
+  font-size: 1rem;
+  border-radius: 4px;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+article pre code[class*="language-"] {
+  padding: 0;
+  white-space: unset;
+}
+
+article h2 code[class*="language-"],
+article h3 code[class*="language-"] {
+  font-size: 1em;
+}
+
+article pre {
+  margin: 0.75rem 0;
+  padding: 1rem 1.5rem;
+  background-color: #f5f5f5;
+  line-height: 1.5rem;
+  overflow-x: auto;
+  transition: all 0.2s;
+}
+
+article pre[class*="language-"] {
+  margin: 0.75rem 0;
+  padding: 1rem 1.5rem;
+  color: #212121;
+  background-color: #f5f5f5;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+article pre + pre {
+  margin-top: 1rem;
+}
+
+article pre code {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+article blockquote {
+  width: 100%;
+  margin: 16px 0;
+  padding: 4px 24px;
+  border-left: solid 8px #f5f5f5;
+  border-radius: 4px;
+}
+
+article blockquote p,
+article blockquote li,
+article blockquote code {
+  color: #212121;
+}
+
+article blockquote p {
+  margin: 0.5rem 0;
+}
+
+article table {
+  width: 100%;
+  margin: 1em 0;
+  padding: 0;
+  border-radius: 4px;
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  color: black;
+  transition: all 0.2s;
+}
+
+article table code {
+  word-break: keep-all;
+  transition: all 0.2s;
+}
+
+article th,
+article td {
+  width: 100%;
+  padding: 12px 16px;
+  color: black;
+  border: solid 2px #eeeeee;
+  font-weight: normal;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+article th {
+  font-weight: bold;
+  background-color: #f5f5f5;
+}
+
+article .anchor.before {
+  height: 100%;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none !important;
+}
+
+.gatsby-highlight pre[class*="language-"].line-numbers {
+  padding-left: 4rem;
+}
+
+.gatsby-highlight pre[class*="language-"].line-numbers span.line-numbers-rows {
+  width: 2.8rem !important;
+  height: 100%;
+  padding: 0 0 0 12px;
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  color: white;
+  background-color: #3390ff;
+}
+
+@media screen and (max-width: 840px) {
+  article {
+    padding: 48px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  article {
+    padding: 48px 36px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  article {
+    padding: 48px 32px;
+  }
+}

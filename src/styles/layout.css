@@ -1,0 +1,171 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: 18px;
+}
+
+html {
+  overflow-x: hidden;
+  overflow-y: overlay;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.layout {
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  margin: 0 auto 72px auto;
+  padding: 0 0 0 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: normal;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  /* background-image: url("../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; */
+  background-color: white;
+}
+
+.layout > main {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  max-width: 960px;
+  min-width: calc(50vw + 96px);
+  margin: 0;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+  transition: margin 0.2s, padding 0.2s;
+  animation: opacity 0.4s;
+}
+
+.subtitle {
+  font-weight: bold;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.float-link {
+  position: absolute;
+  top: 76px;
+  left: -36px;
+  z-index: 200;
+  width: 72px;
+  height: 72px;
+  padding: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 2rem;
+  color: black;
+  border-radius: 72px;
+  text-decoration: none;
+  background-color: white;
+  box-shadow: 0 0 24px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: all 0.4s;
+}
+
+.float-link.home {
+  font-size: 1.5rem;
+}
+
+.float-link:hover,
+.float-link:active,
+.float-link:focus {
+  border: none;
+  background-color: #ffeb3b;
+}
+
+.skip-link {
+  position: fixed;
+  top: -24px;
+  left: 24px;
+  opacity: 0;
+
+  transition: all 0.2s;
+}
+
+.skip-link:active,
+.skip-link:focus {
+  top: 24px;
+  opacity: 1;
+}
+
+@media screen and (max-width: 1200px) {
+  .layout {
+    margin: 0;
+  }
+
+  .layout > main {
+    margin: 0 24px 0 0;
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .layout > main {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .layout {
+    margin: 0 auto 120px auto;
+    padding: 0;
+  }
+
+  .layout > main {
+    padding: 24px;
+  }
+
+  .float-link {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  html {
+    overflow: auto;
+  }
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .layout > main {
+    height: auto;
+    padding: 0 12px;
+  }
+
+  .float-link {
+    right: 24px;
+    bottom: 24px;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

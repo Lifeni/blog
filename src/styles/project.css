@@ -1,0 +1,175 @@
+.project-list {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 72px 80px;
+  border-radius: 8px;
+  background-color: transparent;
+  /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.02); */
+  transition: all 0.2s;
+}
+
+.project-list > p {
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.project-list > h2 {
+  margin: 0 0 40px 0;
+  font-size: 1.75rem;
+}
+
+.project {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  height: 48px;
+  margin: 12px 0;
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  font-size: 1rem;
+  white-space: pre-wrap;
+  border-radius: 48px;
+  background-color: #f5f5f5;
+  transition: all 0.2s;
+}
+
+.project.hide {
+  display: none;
+}
+
+.project a {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  text-decoration: none;
+}
+
+.project > a > h3 {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  font-size: 1rem;
+  margin: 8px 0;
+  padding: 3px 0;
+  font-weight: normal;
+  color: black;
+  /* border-bottom: solid 2px #f5f5f5; */
+  transition: all 0.2s;
+  white-space: nowrap;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* .project > a > h3:hover,
+.project > a > h3:focus {
+  border-bottom: solid 2px #FFEB3B;
+} */
+
+.project > a > h3::after {
+  content: "";
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin: 0 0 0 16px;
+  background-color: #eeeeee;
+  border-radius: 1rem;
+  transition: all 0.2s 0.1s;
+}
+
+.project > a > h3:hover::after,
+.project > a > h3:focus::after {
+  content: "";
+  background-color: #ffeb3b;
+}
+
+.project-name {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 8px 24px 8px 0;
+  padding: 4px 8px;
+  color: #616161;
+  /* background-color: #f5f5f5; */
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: normal;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  overflow: hidden;
+  /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.02); */
+  font-family: "Consolas", "Courier New", Courier, monospace;
+  transition: all 0.2s;
+}
+
+.github-link {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  margin: 24px 0 0 0;
+  padding: 4px 8px;
+  border: none;
+  color: transparent;
+  background-color: #f5f5f5;
+  border-radius: 48px;
+  font-size: 1rem;
+  font-weight: normal;
+  white-space: nowrap;
+  text-decoration: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' d='M16 2a14 14 0 0 0-4.43 27.28c.7.13 1-.3 1-.67v-2.38c-3.89.84-4.71-1.88-4.71-1.88a3.71 3.71 0 0 0-1.62-2.05c-1.27-.86.1-.85.1-.85a2.94 2.94 0 0 1 2.14 1.45 3 3 0 0 0 4.08 1.16 2.93 2.93 0 0 1 .88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4 5.4 0 0 1 1.44-3.76 5 5 0 0 1 .14-3.7s1.17-.38 3.85 1.43a13.3 13.3 0 0 1 7 0c2.67-1.81 3.84-1.43 3.84-1.43a5 5 0 0 1 .14 3.7 5.4 5.4 0 0 1 1.44 3.76c0 5.38-3.27 6.56-6.39 6.91a3.33 3.33 0 0 1 .95 2.59v3.84c0 .46.25.81 1 .67A14 14 0 0 0 16 2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.02); */
+  font-family: "Consolas", "Courier New", Courier, monospace;
+  transition: all 0.2s;
+}
+
+.github-link:hover,
+.github-link:focus {
+  background-color: #eeeeee;
+}
+
+.github-link:active {
+  background-color: #e0e0e0;
+}
+
+@media screen and (max-width: 1200px) {
+  .project > a > h3::after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .project-list {
+    padding: 48px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .project-list {
+    padding: 48px 36px;
+  }
+
+  .project-name {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .project-list {
+    padding: 48px 32px;
+  }
+}

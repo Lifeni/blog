@@ -1,0 +1,111 @@
+header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 90;
+  width: 400px;
+  height: 100%;
+  /* margin: 48px 0; */
+  padding: 120px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: black;
+  /* user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none; */
+  background-color: #f5f5f5;
+  transition: all 0.2s;
+}
+
+header > h1 {
+  position: relative;
+  padding: 0 0 40px 0;
+  font-size: 1.75rem;
+}
+
+header > p {
+  line-height: 2rem;
+}
+
+header > nav {
+  display: flex;
+  flex-direction: row;
+}
+
+nav > a {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin: 0 24px 0 0;
+  padding: 4px 8px;
+  border: none;
+  color: transparent;
+  background-color: #ffffff;
+  border-radius: 48px;
+  font-size: 1rem;
+  font-weight: normal;
+  white-space: nowrap;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px;
+  outline: none;
+  overflow: hidden;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.02);
+  font-family: "Consolas", "Courier New", Courier, monospace;
+  transition: all 0.2s, transform 0.4s;
+}
+
+nav > a.home-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true'%3E%3Cpath d='M16.61 2.21a1 1 0 0 0-1.24 0L1 13.42 2.24 15 4 13.62V26a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V13.63L29.76 15 31 13.43zM18 26h-4v-8h4zm2 0v-8a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v8H6V12.06l10-7.79 10 7.8V26z'/%3E%3C/svg%3E");
+}
+
+nav > a.about-icon {
+  background-image: url("data:image/svg+xml,%3Csvg focusable='false' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg' fill='currentColor' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true'%3E%3Cpath d='M17 22L17 13 13 13 13 15 15 15 15 22 12 22 12 24 20 24 20 22 17 22zM16 7a1.5 1.5 0 101.5 1.5A1.5 1.5 0 0016 7z'%3E%3C/path%3E%3Cpath d='M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z'%3E%3C/path%3E%3Ctitle%3EInformation%3C/title%3E%3C/svg%3E");
+}
+
+header > nav > a:hover,
+header > nav > a:active,
+header > nav > a:focus {
+  background-color: #ffeb3b;
+}
+
+/* @media screen and (max-width: 1200px) {
+  header {
+    padding: 72px 32px;
+  }
+} */
+
+@media screen and (max-width: 900px) {
+  header {
+    position: relative;
+    width: 100%;
+    right: 0;
+    margin: 0;
+    padding: 72px 104px;
+    animation: none;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  header {
+    padding: 72px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  header {
+    padding: 48px 60px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    padding: 48px;
+  }
+}
