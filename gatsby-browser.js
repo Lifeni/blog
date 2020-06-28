@@ -34,4 +34,29 @@ exports.onRouteUpdate = () => {
       }
     })
   }
+
+  const pre = document.querySelectorAll("pre")
+  if (pre.length) {
+    pre.forEach(e => {
+      const copy = document.createElement("button")
+      copy.className = "copy-button"
+      copy.textContent = "Copy"
+      copy.onclick = b => {
+        // console.log(
+        //   b.target,
+        //   b.target.parentElement.firstElementChild.textContent
+        // )
+        navigator.clipboard
+          .writeText(b.target.parentElement.firstElementChild.textContent)
+          .then(() => {
+            b.target.textContent = "Copied"
+          })
+          .catch(err => {
+            console.log("复制出错", err)
+          })
+      }
+
+      e.appendChild(copy)
+    })
+  }
 }

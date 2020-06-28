@@ -1,12 +1,12 @@
 header {
   position: absolute;
-  left: 0;
+  left: calc(-65vw + 50%);
   top: 0;
   z-index: 90;
-  width: 400px;
+  width: 30vw;
   height: 100%;
   /* margin: 48px 0; */
-  padding: 120px 80px;
+  padding: 120px 0 120px 128px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -75,16 +75,17 @@ header > nav > a:focus {
   background-color: #ffeb3b;
 }
 
-/* @media screen and (max-width: 1200px) {
+@media screen and (max-width: 1380px) {
   header {
-    padding: 72px 32px;
+    padding: 120px 0 120px 80px;
   }
-} */
+}
 
 @media screen and (max-width: 900px) {
   header {
     position: relative;
     width: 100%;
+    left: 0;
     right: 0;
     margin: 0;
     padding: 72px 104px;

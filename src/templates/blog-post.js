@@ -59,7 +59,7 @@ export const PostQuery = graphql`
         tags
         date(fromNow: true, locale: "zh-cn", formatString: "YYYY 年 M 月 D 日")
       }
-      tableOfContents(absolute: false, heading: "", maxDepth: 3)
+      tableOfContents(absolute: false, maxDepth: 3)
     }
   }
 `

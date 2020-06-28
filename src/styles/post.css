@@ -146,12 +146,12 @@
 
 .post-toc {
   position: absolute;
-  left: calc(-62.5vw + 50%);
+  left: calc(-65vw + 50%);
   top: 300px;
   z-index: 50;
-  width: 400px;
+  width: 30vw;
   margin: 0;
-  padding: 32px 80px;
+  padding: 32px 128px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -216,20 +216,12 @@
   border-radius: 4px;
 }
 
-/* @media screen and (max-width: 1460px) {
+@media screen and (max-width: 1380px) {
   .post-toc {
-    left: -280px;
+    padding: 32px 80px;
   }
 }
 
-@media screen and (max-width: 1360px) {
-  .post-toc {
-    left: unset;
-    top: 300px;
-    right: -352px;
-  }
-}
-*/
 @media screen and (max-width: 1200px) {
   .post > a > h3::after {
     display: none;

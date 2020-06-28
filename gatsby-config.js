@@ -108,6 +108,25 @@ module.exports = {
         },
       },
     },
+    // {
+    //   resolve: "gatsby-transformer-remark",
+    //   options: {
+    //     plugins: [
+    //       {
+    //         resolve: "gatsby-remark-code-buttons",
+    //         options: {
+    //           buttonContainerClass: `copy-code`,
+    //           buttonClass: `copy-code-button`,
+    //           buttonText: `复制代码`,
+    //           toasterClass: `copy-code-toaster`,
+    //           toasterTextClass: `copy-code-toaster-text`,
+    //           toasterText: "已复制",
+    //           toasterDuration: 3000,
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
