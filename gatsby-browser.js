@@ -35,9 +35,9 @@ exports.onRouteUpdate = () => {
     })
   }
 
-  const pre = document.querySelectorAll("pre")
-  if (pre.length) {
-    pre.forEach(e => {
+  const block = document.querySelectorAll(".gatsby-highlight")
+  if (block.length) {
+    block.forEach(e => {
       const copy = document.createElement("button")
       copy.className = "copy-button"
       copy.textContent = "Copy"
@@ -47,7 +47,10 @@ exports.onRouteUpdate = () => {
         //   b.target.parentElement.firstElementChild.textContent
         // )
         navigator.clipboard
-          .writeText(b.target.parentElement.firstElementChild.textContent)
+          .writeText(
+            b.target.parentElement.firstElementChild.firstElementChild
+              .textContent
+          )
           .then(() => {
             b.target.textContent = "Copied"
           })

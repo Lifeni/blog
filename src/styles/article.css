@@ -13,6 +13,7 @@ article {
 
 article p,
 article address {
+  margin: 0.4rem 0;
   font-size: 1rem;
   line-height: 2rem;
   color: black;
@@ -66,7 +67,7 @@ article h1 {
 }
 
 article h2 {
-  margin: 3rem 0 1rem 0;
+  padding: 1rem 0;
   /* padding: 2rem 0 0 0; */
   font-size: 1.5rem;
   /* border-bottom: solid 2px #f5f5f5; */
@@ -79,7 +80,7 @@ article h3::before {
 }
 
 article h3 {
-  margin: 1rem 0;
+  padding: 1rem 0;
   font-size: 1.25rem;
 }
 
@@ -233,6 +234,10 @@ article .anchor.before {
   align-items: center;
   justify-content: center;
   border: none !important;
+}
+
+.gatsby-highlight {
+  position: relative;
 }
 
 .gatsby-highlight pre[class*="language-"].line-numbers {

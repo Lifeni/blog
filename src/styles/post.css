@@ -26,7 +26,7 @@
   max-width: 100%;
   height: 48px;
   margin: 12px 0;
-  padding: 12px 24px;
+  padding: 12px 18px 12px 56px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -34,6 +34,10 @@
   font-size: 1rem;
   border-radius: 48px;
   background-color: #f5f5f5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true'%3E%3Cpath d='M28 12v-2h-6V4h-2v6h-8V4h-2v6H4v2h6v8H4v2h6v6h2v-6h8v6h2v-6h6v-2h-6v-8zm-8 8h-8v-8h8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 16px center;
+  background-size: 24px;
   /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.02); */
   transition: all 0.2s;
 }
@@ -54,7 +58,7 @@
   width: fit-content;
   max-width: 100%;
   font-size: 1rem;
-  padding: 3px 0;
+  padding: 3px 8px 3px 0;
   font-weight: normal;
   color: black;
   /* border-bottom: solid 2px #f5f5f5; */
@@ -65,17 +69,21 @@
   overflow: hidden;
 }
 
-/* .post > a > h3:hover,
-.post > a > h3:focus {
-  border-bottom: solid 2px #FFEB3B;
-} */
+.post:hover,
+.post:focus {
+  background-color: #eeeeee;
+}
 
-.post > a > h3::after {
+.post:active {
+  background-color: #e0e0e0;
+}
+
+/* .post > a > h3::after {
   content: "";
   display: inline-block;
   width: 0.8rem;
   height: 0.8rem;
-  margin: 0 0 0 16px;
+  margin: 0 0 0 14px;
   background-color: #eeeeee;
   border-radius: 1rem;
   transition: all 0.2s 0.1s;
@@ -85,30 +93,30 @@
 .post > a > h3:focus::after {
   content: "";
   background-color: #ffeb3b;
-}
+} */
 
 .post-date {
   position: relative;
   width: fit-content;
   max-width: 100%;
-  margin: 0 24px 0 0;
-  padding: 4px 8px;
-  color: #616161;
+  margin: 0 20px 0 0;
+  padding: 4px 0;
+  color: black;
   /* background-color: #f5f5f5; */
   border-radius: 4px;
   font-size: 1rem;
   font-weight: normal;
   white-space: nowrap;
-  font-family: "Consolas", "Courier New", Courier, monospace;
+  /* font-family: "Consolas", "Courier New", Courier, monospace; */
   transition: all 0.2s;
 }
 
 .expand-post {
   position: relative;
-  width: 48px;
+  width: fit-content;
   height: 48px;
-  margin: 24px 0 0 0;
-  padding: 4px 8px;
+  margin: 40px 0 0 0;
+  padding: 4px 24px 4px 56px;
   border: none;
   color: transparent;
   background-color: #f5f5f5;
@@ -117,22 +125,28 @@
   font-weight: normal;
   white-space: nowrap;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true'%3E%3Cpath d='M16 22L6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 16px center;
   background-size: 24px;
   outline: none;
   overflow: hidden;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
   /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.02); */
-  font-family: "Consolas", "Courier New", Courier, monospace;
+  font-family: inherit;
   transition: all 0.2s, transform 0.4s;
 }
 
 .expand-post[data-status="expand"] {
-  transform: rotate(180deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' width='32' height='32' viewBox='0 0 32 32' aria-hidden='true'%3E%3Cpath d='M16 10l10 10-1.4 1.4-8.6-8.6-8.6 8.6L6 20z'/%3E%3C/svg%3E");
 }
 
 .expand-post:hover,
@@ -146,8 +160,8 @@
 
 .post-toc {
   position: absolute;
-  left: calc(-65vw + 50%);
-  top: 300px;
+  left: calc(-60vw + 50%);
+  top: 360px;
   z-index: 50;
   width: 30vw;
   margin: 0;

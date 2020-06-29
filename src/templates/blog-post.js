@@ -36,6 +36,9 @@ const BlogPost = ({ data }) => {
         id="content"
         dangerouslySetInnerHTML={{ __html: html + post.html }}
       ></article>
+      <a href="#content" className="to-top">
+        Back to Top
+      </a>
     </Layout>
   )
 }
