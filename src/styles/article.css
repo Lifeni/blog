@@ -2,21 +2,20 @@ article {
   position: relative;
   z-index: 100;
   width: 100%;
-  padding: 72px 80px;
+  padding: 64px;
   border-radius: 8px;
   font-size: 1rem;
-  color: black;
-  background-color: white;
-  /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.02); */
+  color: var(--font-primary);
+  background-color: var(--layer);
   transition: all 0.2s;
 }
 
 article p,
 article address {
-  margin: 0.4rem 0;
+  margin: 0.2rem 0;
   font-size: 1rem;
   line-height: 2rem;
-  color: black;
+  color: var(--font-primary);
   transition: all 0.2s;
 }
 
@@ -25,10 +24,9 @@ article address {
 }
 
 article a {
-  color: #2962ff;
+  color: var(--font-link);
   padding: 3px 0;
   text-decoration: none;
-  /* border-bottom: solid 2px #f5f5f5; */
   word-break: break-all;
   transition: all 0.2s;
 }
@@ -36,8 +34,7 @@ article a {
 article a:hover,
 article a:active,
 article a:focus {
-  color: #6200ea;
-  /* border-bottom: solid 2px #FFEB3B; */
+  color: var(--font-link-highlight);
 }
 
 article strong {
@@ -55,7 +52,7 @@ article em {
 article h1,
 article h2,
 article h3 {
-  color: black;
+  color: var(--font-primary);
   font-weight: bold;
   transition: all 0.2s;
 }
@@ -70,18 +67,19 @@ article h2 {
   padding: 1rem 0;
   /* padding: 2rem 0 0 0; */
   font-size: 1.5rem;
-  /* border-bottom: solid 2px #f5f5f5; */
+  /* border-bottom: solid 2px var(--layer-highlight); */
 }
 
 article h3::before {
   content: "# ";
-  color: #e0e0e0;
+  color: var(--font-light);
   transition: all 0.2s;
 }
 
 article h3 {
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
   font-size: 1.25rem;
+  line-height: 2.5rem;
 }
 
 article h2 + h3 {
@@ -94,7 +92,7 @@ article ul {
 }
 
 article li {
-  color: black;
+  color: var(--font-primary);
   font-size: 1rem;
   line-height: 2rem;
   transition: all 0.2s;
@@ -107,10 +105,10 @@ article img {
   /* padding: 2px; */
   opacity: 1;
   margin: 0.5rem 0;
-  border: solid 2px #f5f5f5;
+  border: solid 2px var(--layer-highlight);
   border-radius: 4px;
   display: block;
-  color: #616161;
+  color: var(--font-secondary);
   font-size: 0.875rem;
   line-height: 1rem;
   text-align: right;
@@ -120,18 +118,18 @@ article img {
 article code {
   margin: 0 2px;
   padding: 2px 6px;
-  color: #212121;
-  background-color: #f5f5f5;
+  color: var(--font-code);
+  background-color: var(--layer-highlight);
   font-size: 1rem;
-  font-family: "Consolas", "Courier New", Courier, monospace;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   word-break: break-all;
   transition: all 0.2s;
 }
 
 article code[class*="language-"] {
   padding: 0.2rem 0.4rem;
-  color: #212121;
-  background-color: #f5f5f5;
+  color: var(--font-code);
+  background-color: var(--layer-highlight);
   font-size: 1rem;
   border-radius: 4px;
   word-break: break-all;
@@ -143,6 +141,11 @@ article pre code[class*="language-"] {
   white-space: unset;
 }
 
+article table code[class*="language-"] {
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
 article h2 code[class*="language-"],
 article h3 code[class*="language-"] {
   font-size: 1em;
@@ -151,7 +154,7 @@ article h3 code[class*="language-"] {
 article pre {
   margin: 0.75rem 0;
   padding: 1rem 1.5rem;
-  background-color: #f5f5f5;
+  background-color: var(--layer-highlight);
   line-height: 1.5rem;
   overflow-x: auto;
   transition: all 0.2s;
@@ -160,8 +163,8 @@ article pre {
 article pre[class*="language-"] {
   margin: 0.75rem 0;
   padding: 1rem 1.5rem;
-  color: #212121;
-  background-color: #f5f5f5;
+  color: var(--font-code);
+  background-color: var(--layer-highlight);
   font-size: 1rem;
   border-radius: 4px;
 }
@@ -180,14 +183,14 @@ article blockquote {
   width: 100%;
   margin: 16px 0;
   padding: 4px 24px;
-  border-left: solid 8px #f5f5f5;
+  border-left: solid 8px var(--layer-highlight);
   border-radius: 4px;
 }
 
 article blockquote p,
 article blockquote li,
 article blockquote code {
-  color: #212121;
+  color: var(--font-code);
 }
 
 article blockquote p {
@@ -202,7 +205,7 @@ article table {
   display: block;
   overflow-x: auto;
   border-collapse: collapse;
-  color: black;
+  color: var(--font-primary);
   transition: all 0.2s;
 }
 
@@ -215,8 +218,8 @@ article th,
 article td {
   width: 100%;
   padding: 12px 16px;
-  color: black;
-  border: solid 2px #eeeeee;
+  color: var(--font-primary);
+  border: solid 2px var(--layer-highlight-plus);
   font-weight: normal;
   white-space: nowrap;
   transition: all 0.2s;
@@ -224,7 +227,7 @@ article td {
 
 article th {
   font-weight: bold;
-  background-color: #f5f5f5;
+  background-color: var(--layer-highlight);
 }
 
 article .anchor.before {
@@ -253,31 +256,184 @@ article .anchor.before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #eeeeee;
+  background-color: var(--layer-highlight-plus);
 }
 
 pre[class*="language-"]::selection,
 pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
-  color: white;
-  background-color: #3390ff;
+  color: var(--font-invert);
+  background-color: var(--background-select);
+}
+
+.copy-button {
+  position: absolute;
+  right: 0.6rem;
+  top: 0.6rem;
+  padding: 0.4rem 0.9rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--layer-highlight);
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--font-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-button:hover,
+.copy-button:focus,
+.copy-button:active {
+  background-color: var(--layer-highlight-plus);
+}
+
+.post-toc.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.post-toc {
+  position: absolute;
+  left: calc(-60vw + 50%);
+  top: 0;
+  z-index: 50;
+  width: 30vw;
+  margin: 0;
+  padding: 112px 0 112px 10vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  color: var(--font-primary);
+  white-space: nowrap;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.toc > ul > li > p {
+  font-weight: bold;
+  margin: 0 0 2px 0;
+}
+
+.toc > ul > li > p > a {
+  padding: 0;
+}
+
+.toc > ul,
+.toc > ul > li > ul {
+  padding-left: 0;
+}
+
+.toc ul ul ul a::before {
+  content: "# ";
+  padding: 0 0.4rem;
+  color: var(--font-light);
+}
+
+.toc p,
+.toc li {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  white-space: nowrap;
+}
+
+.toc a {
+  width: fit-content;
+  max-width: 20vw;
+  color: var(--font-secondary);
+  line-height: 2rem;
+  padding: 3px 0;
+  display: inline-block;
+  text-decoration: none;
+  white-space: nowrap;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.toc a:hover,
+.toc a:active,
+.toc a:focus {
+  color: var(--font-primary);
+}
+
+.toc code {
+  width: 100%;
+  padding: 2px 6px;
+  background-color: var(--background-highlight);
+  font-size: 1rem;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.toc code[class*="language-"] {
+  color: var(--font-secondary);
+  padding: 0.2rem 0.4rem;
+  background-color: var(--background-highlight);
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 1140px) {
+  article {
+    padding: 48px;
+  }
+
+  .post-toc {
+    padding: 96px 10vw;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .post-toc {
+    display: none;
+  }
+
+  .post-toc.show {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    background-color: var(--blur);
+    backdrop-filter: blur(10px);
+    transition: all 0.2s;
+  }
+
+  .post-toc.show .toc {
+    width: 100%;
+    height: 100%;
+    padding: 56px 32px 96px 32px;
+    overflow-y: auto;
+  }
+
+  .post-toc.show .toc a {
+    max-width: 100%;
+  }
+
+  .copy-button {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 840px) {
   article {
-    padding: 48px;
+    padding: 36px;
   }
 }
 
 @media screen and (max-width: 500px) {
   article {
-    padding: 48px 36px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  article {
-    padding: 48px 32px;
+    padding: 32px;
   }
 }

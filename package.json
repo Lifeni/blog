@@ -1,5 +1,5 @@
 {
-  "name": "next",
+  "name": "website",
   "private": true,
   "description": "未来的个人网站",
   "version": "0.1.0",
@@ -27,7 +27,7 @@
     "react-helmet": "^6.0.0"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "prettier": "^2.0.5"
   },
   "keywords": [
     "gatsby"
@@ -36,6 +36,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "dev-m": "gatsby develop -H 0.0.0.0 -p 8000",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

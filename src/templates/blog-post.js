@@ -5,23 +5,19 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "../styles/article.css"
 
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 const BlogPost = ({ data }) => {
   const post = data.markdownRemark
 
   const html = ReactDOMServer.renderToStaticMarkup(
     <div className="article-info">
-      {/* <Link to="/" className="float-link article">
-        ×
-      </Link> */}
       <p className="subtitle">{post.frontmatter.date}</p>
-      {/* <h1>{post.frontmatter.title}</h1> */}
     </div>
   )
 
   return (
-    <Layout>
+    <Layout path="article" noheader>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description}
@@ -36,9 +32,25 @@ const BlogPost = ({ data }) => {
         id="content"
         dangerouslySetInnerHTML={{ __html: html + post.html }}
       ></article>
-      <a href="#content" className="to-top">
-        Back to Top
-      </a>
+      <nav>
+        <button className="fab toggle-toc hide" id="toggle" title="查看目录">
+          查看目录
+        </button>
+        <button className="fab focus-content" id="focus" title="聚焦内容">
+          聚焦内容
+        </button>
+        <button className="fab to-top" id="top" title="回到顶部">
+          回到顶部
+        </button>
+        <Link
+          to="/"
+          className="fab back-home article"
+          aria-label="Home"
+          title="回到主页"
+        >
+          回到主页
+        </Link>
+      </nav>
     </Layout>
   )
 }

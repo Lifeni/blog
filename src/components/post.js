@@ -2,11 +2,23 @@ import React from "react"
 import { Link } from "gatsby"
 import "../styles/post.css"
 
-const Post = ({ title, name, date, className }) => (
+const Post = ({ title, name, date, className, description, tags }) => (
   <div className={className}>
-    <p className="post-date">{date}</p>
     <Link to={`/article/${name}`}>
-      <h3>{title}</h3>
+      <h3 className="title">{title}</h3>
+    </Link>
+
+    <div className="info">
+      <span className="date">{date}</span>
+      {tags.map(tag => (
+        <span key={tag} className="tag">
+          # {tag}
+        </span>
+      ))}
+    </div>
+    <p className="description">{description}</p>
+    <Link className="read-more" to={`/article/${name}`}>
+      {">"} Read More...
     </Link>
   </div>
 )

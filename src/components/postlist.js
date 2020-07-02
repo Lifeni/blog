@@ -8,8 +8,6 @@ const PostList = () => (
     render={data => {
       return (
         <div className="post-list" id="content">
-          <p className="subtitle">Articles</p>
-          <h2>文章与笔记</h2>
           {data.allMarkdownRemark.edges.map(({ node }, index) => (
             <Post
               title={node.frontmatter.title}
@@ -18,13 +16,9 @@ const PostList = () => (
               date={node.frontmatter.date}
               tags={node.frontmatter.tags}
               key={node.frontmatter.title}
-              className={index >= 3 ? "post hide" : "post"}
+              className="post"
             />
           ))}
-          {/* <Link to="/" className="float-link home">
-            #
-          </Link> */}
-          <button className="expand-post">Show All Articles</button>
         </div>
       )
     }}
@@ -38,7 +32,8 @@ const indexQuery = graphql`
         node {
           id
           frontmatter {
-            date(formatString: "YYYY / MM / DD ")
+            # date(formatString: "YYYY / MM / DD ")
+            date(formatString: "M 月 D 日")
             title
             name
             tags

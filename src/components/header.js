@@ -1,19 +1,16 @@
 import React from "react"
 import "../styles/header.css"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 
 const Header = () => (
   <header>
-    <p className="subtitle">Lifeni</p>
+    <img
+      src="https://file.lifeni.life/avatar3.jpg"
+      alt="头像"
+      className="avatar"
+    />
+    {/* <p className="subtitle">lifeni.life</p> */}
     <h1>记录干杯</h1>
-    <nav>
-      <Link to="/" className="home-icon" aria-label="Home">
-        Home
-      </Link>
-      <Link to="/about" className="about-icon" aria-label="About">
-        About
-      </Link>
-    </nav>
   </header>
 )
 

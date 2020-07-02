@@ -3,13 +3,20 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import PostList from "../components/postlist"
-import ProjectList from "../components/projectlist"
+import { Link } from "gatsby"
 
 const IndexPage = () => (
-  <Layout>
+  <Layout path="home">
     <SEO title="Home" />
     <PostList />
-    <ProjectList />
+    <nav>
+      <Link className="fab home" to="/" aria-label="主页">
+        主页
+      </Link>
+      <Link className="fab about" to="/about" aria-label="关于">
+        关于
+      </Link>
+    </nav>
   </Layout>
 )
 
