@@ -7,8 +7,11 @@ exports.onRouteUpdate = () => {
   if (block.length) {
     block.forEach(e => {
       const copy = document.createElement("button")
+      const copy$ = document.createElement("button")
       copy.className = "copy-button"
+      copy$.className = "copy-button dollar"
       copy.textContent = "Copy"
+      copy$.textContent = "Copy Without $"
       copy.onclick = b => {
         navigator.clipboard
           .writeText(
@@ -22,8 +25,25 @@ exports.onRouteUpdate = () => {
             console.log("复制出错", err)
           })
       }
-
+      copy$.onclick = b => {
+        navigator.clipboard
+          .writeText(
+            b.target.parentElement.firstElementChild.firstElementChild.textContent.replace(
+              /\$ /g,
+              ""
+            )
+          )
+          .then(() => {
+            b.target.textContent = "Copied"
+          })
+          .catch(err => {
+            console.log("复制出错", err)
+          })
+      }
       e.appendChild(copy)
+      if (e.dataset.language === "bash") {
+        e.appendChild(copy$)
+      }
     })
   }
 
@@ -59,7 +79,6 @@ exports.onRouteUpdate = () => {
     })
   }
 
-  const header = document.querySelector("header")
   const avatar = document.querySelector(".avatar")
   if (avatar) {
     avatar.addEventListener("mouseout", e => {

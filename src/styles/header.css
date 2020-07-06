@@ -1,13 +1,12 @@
 header {
   position: fixed;
   left: 0;
-  top: 0;
+  bottom: 0;
   z-index: 90;
   width: 30vw;
-  height: 100%;
-  padding: 120px 0;
+  padding: 48px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   color: var(--font-primary);
@@ -22,18 +21,23 @@ header.hide {
 
 header > h1 {
   position: relative;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
+  /* font-weight: normal; */
 }
 
 header > p {
   line-height: 2rem;
 }
 
+header > h1 > span {
+  white-space: nowrap;
+}
+
 header > img {
-  width: 15vw;
-  height: 15vw;
-  margin: 48px;
-  box-shadow: 0 0 64px rgba(0, 0, 0, 0.08);
+  width: 64px;
+  height: 64px;
+  margin: 0 32px 0 0;
+  box-shadow: 0 0 48px rgba(0, 0, 0, 0.15);
   border-radius: 50%;
   transition: transform 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
@@ -45,7 +49,7 @@ header > img {
     left: 0;
     right: 0;
     margin: 0;
-    padding: 80px 0;
+    padding: 32px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -54,12 +58,13 @@ header > img {
   }
 
   header > img {
-    width: 72px;
-    height: 72px;
-    margin: 0 24px 0 0;
+    width: 48px;
+    height: 48px;
+    margin: 0;
   }
 
   header > h1 {
     display: inline-block;
+    margin: 0 24px;
   }
 }

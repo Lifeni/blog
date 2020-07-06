@@ -10,7 +10,10 @@ const Header = () => (
       className="avatar"
     />
     {/* <p className="subtitle">lifeni.life</p> */}
-    <h1>记录干杯</h1>
+    <h1>
+      <span>记录</span>
+      <span>干杯</span>
+    </h1>
   </header>
 )
 

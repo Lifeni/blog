@@ -69,7 +69,7 @@ body {
 
 .fab {
   position: fixed;
-  right: calc(5vw - 32px - 17px);
+  right: calc(5vw - 32px - 8.5px);
   z-index: 200;
   width: 64px;
   height: 64px;

@@ -271,9 +271,9 @@ code[class*="language-"] ::selection {
   position: absolute;
   right: 0.6rem;
   top: 0.6rem;
-  padding: 0.4rem 0.9rem;
-  border: none;
+  padding: calc(0.4rem - 2px) 0.9rem;
   border-radius: 4px;
+  border: solid 2px var(--layer-highlight);
   background-color: var(--layer-highlight);
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: 1rem;
@@ -282,11 +282,26 @@ code[class*="language-"] ::selection {
   cursor: pointer;
   transition: all 0.2s;
 }
+.copy-button.dollar:hover,
+.copy-button:hover + .copy-button.dollar {
+  opacity: 1;
+  visibility: visible;
+  border: solid 2px var(--layer-highlight-plus);
+}
+
+.copy-button.dollar {
+  top: calc(40.8px + 0.6rem);
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+}
 
 .copy-button:hover,
 .copy-button:focus,
 .copy-button:active {
   background-color: var(--layer-highlight-plus);
+  border: solid 2px var(--layer-highlight-plus);
 }
 
 .post-toc.hide {
@@ -301,10 +316,10 @@ code[class*="language-"] ::selection {
   z-index: 50;
   width: 30vw;
   margin: 0;
-  padding: 112px 0 112px 10vw;
+  padding: 112px 5vw;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-end;
   color: var(--font-primary);
   white-space: nowrap;
@@ -419,6 +434,11 @@ code[class*="language-"] ::selection {
 
   .post-toc.show .toc a {
     max-width: 100%;
+  }
+
+  .post-toc.show .toc code {
+    background-color: var(--blur-code);
+    backdrop-filter: blur(10px);
   }
 
   .copy-button {
