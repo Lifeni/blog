@@ -34,13 +34,13 @@ const BlogPost = ({ data }) => {
       ></article>
       <nav>
         <button className="fab toggle-toc hide" id="toggle" title="查看目录">
-          查看目录
+          目录
         </button>
         <button className="fab focus-content" id="focus" title="聚焦内容">
           聚焦内容
         </button>
         <button className="fab to-top" id="top" title="回到顶部">
-          回到顶部
+          最上
         </button>
         <Link
           to="/"
@@ -48,7 +48,7 @@ const BlogPost = ({ data }) => {
           aria-label="Home"
           title="回到主页"
         >
-          回到主页
+          返回
         </Link>
       </nav>
     </Layout>

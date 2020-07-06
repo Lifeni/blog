@@ -23,6 +23,9 @@ const Layout = ({ children, noheader }) => {
       {noheader ? null : <Header />}
       <main>{children}</main>
       <Footer />
+      <section className="notice" id="notice">
+        <div className="text" id="text"></div>
+      </section>
     </div>
   )
 }

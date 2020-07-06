@@ -121,7 +121,8 @@ article code {
   color: var(--font-code);
   background-color: var(--layer-highlight);
   font-size: 1rem;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: "Ubuntu Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
   word-break: break-all;
   transition: all 0.2s;
 }
@@ -131,6 +132,8 @@ article code[class*="language-"] {
   color: var(--font-code);
   background-color: var(--layer-highlight);
   font-size: 1rem;
+  font-family: "Ubuntu Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
   border-radius: 4px;
   word-break: break-all;
   white-space: pre-wrap;
@@ -166,6 +169,8 @@ article pre[class*="language-"] {
   color: var(--font-code);
   background-color: var(--layer-highlight);
   font-size: 1rem;
+  font-family: "Ubuntu Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
   border-radius: 4px;
 }
 
@@ -275,7 +280,8 @@ code[class*="language-"] ::selection {
   border-radius: 4px;
   border: solid 2px var(--layer-highlight);
   background-color: var(--layer-highlight);
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: "Ubuntu Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
   font-size: 1rem;
   line-height: 1.5;
   color: var(--font-secondary);
@@ -310,22 +316,25 @@ code[class*="language-"] ::selection {
 }
 
 .post-toc {
-  position: absolute;
-  left: calc(-60vw + 50%);
+  position: fixed;
+  /* left: calc(-60vw + 50%); */
+  left: 0;
   top: 0;
   z-index: 50;
-  width: 30vw;
+  width: 384px;
+  max-height: 100vh;
   margin: 0;
-  padding: 112px 5vw;
+  padding: 112px 0 112px 96px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: flex-start;
+  justify-content: flex-start;
   color: var(--font-primary);
   white-space: nowrap;
   word-break: break-all;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   transition: all 0.2s;
 }
 
@@ -383,7 +392,8 @@ code[class*="language-"] ::selection {
   padding: 2px 6px;
   background-color: var(--background-highlight);
   font-size: 1rem;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: "Ubuntu Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
   white-space: nowrap;
   transition: all 0.2s;
 }
@@ -396,13 +406,19 @@ code[class*="language-"] ::selection {
   border-radius: 4px;
 }
 
+@media screen and (min-width: 2000px) {
+  .post-toc {
+    width: calc(50vw - 600px);
+  }
+}
+
 @media screen and (max-width: 1140px) {
   article {
     padding: 48px;
   }
 
   .post-toc {
-    padding: 96px 10vw;
+    padding: 96px 0 96px 96px;
   }
 }
 
@@ -421,7 +437,7 @@ code[class*="language-"] ::selection {
     height: 100vh;
     padding: 0;
     background-color: var(--blur);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     transition: all 0.2s;
   }
 
@@ -438,7 +454,7 @@ code[class*="language-"] ::selection {
 
   .post-toc.show .toc code {
     background-color: var(--blur-code);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
   }
 
   .copy-button {

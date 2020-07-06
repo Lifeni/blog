@@ -1,16 +1,19 @@
 header {
   position: fixed;
-  left: 0;
-  bottom: 0;
+  /* left: 5vw; */
+  left: 48px;
+  bottom: 48px;
   z-index: 90;
-  width: 30vw;
-  padding: 48px;
+  width: 200px;
+  height: 64px;
+  padding: 0;
+  border-radius: 96px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   color: var(--font-primary);
-  background-color: transparent;
+  background-color: var(--layer);
   transition: all 0.2s;
 }
 
@@ -21,7 +24,7 @@ header.hide {
 
 header > h1 {
   position: relative;
-  font-size: 1.25rem;
+  font-size: 1rem;
   /* font-weight: normal; */
 }
 
@@ -36,10 +39,19 @@ header > h1 > span {
 header > img {
   width: 64px;
   height: 64px;
-  margin: 0 32px 0 0;
-  box-shadow: 0 0 48px rgba(0, 0, 0, 0.15);
+  margin: 0 24px 0 0;
+  border: solid 8px var(--layer);
+  /* box-shadow: 0 0 48px rgba(0, 0, 0, 0.15); */
+  /* box-shadow: 0 0 48px 24px rgba(0, 0, 0, 0.04); */
+  /* box-shadow: 0 0 24px rgba(0, 0, 0, 0.05); */
   border-radius: 50%;
   transition: transform 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+@media screen and (max-width: 1140px) {
+  header {
+    left: 24px;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -48,8 +60,11 @@ header > img {
     width: 100%;
     left: 0;
     right: 0;
+    bottom: 0;
+    height: auto;
     margin: 0;
-    padding: 32px;
+    padding: 60px 0 0 0;
+    border-radius: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -58,13 +73,15 @@ header > img {
   }
 
   header > img {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     margin: 0;
+    border: none;
   }
 
   header > h1 {
     display: inline-block;
     margin: 0 24px;
+    font-size: 1.25rem;
   }
 }

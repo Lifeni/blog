@@ -50,7 +50,7 @@
   width: fit-content;
   max-width: 100%;
   font-size: 1.5rem;
-  line-height: 2.5rem;
+  line-height: 2rem;
   font-weight: bold;
   color: var(--font-primary);
   transition: all 0.2s;
@@ -72,7 +72,7 @@
 .post .title:hover::after,
 .post .title:focus::after,
 .post .title:active::after {
-  background-color: var(--highlight);
+  background-color: var(--yellow);
 }
 
 .post .tag {
@@ -97,7 +97,7 @@
 }
 
 .post .description {
-  line-height: 2rem;
+  line-height: 1.5rem;
   color: var(--font-primary);
 }
 

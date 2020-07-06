@@ -5,7 +5,7 @@ import "../styles/header.css"
 const Header = () => (
   <header>
     <img
-      src="https://file.lifeni.life/avatar3.jpg"
+      src="https://file.lifeni.life/avatar2.jpg"
       alt="头像"
       className="avatar"
     />

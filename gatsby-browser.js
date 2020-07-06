@@ -74,8 +74,7 @@ exports.onRouteUpdate = () => {
       const toc = document.querySelector(".post-toc")
       toc.classList.toggle("show")
       toggle.classList.toggle("show")
-      toggle.textContent =
-        toggle.textContent === "查看目录" ? "关闭目录" : "查看目录"
+      toggle.textContent = toggle.textContent === "目录" ? "收起" : "目录"
     })
   }
 
@@ -96,6 +95,19 @@ exports.onRouteUpdate = () => {
       avatar.style.transform = `perspective(300px)
       rotateX(${x}deg)
       rotateY(${y}deg)`
+    })
+  }
+
+  const like = document.querySelector("#like-it")
+  if (like) {
+    like.addEventListener("click", () => {
+      const notice = document.querySelector("#notice")
+      const text = notice.querySelector("#text")
+      text.textContent = "❤ 感谢支持"
+      notice.classList.add("show")
+      setTimeout(() => {
+        notice.classList.remove("show")
+      }, 2000)
     })
   }
 }

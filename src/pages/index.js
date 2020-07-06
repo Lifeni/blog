@@ -10,9 +10,12 @@ const IndexPage = () => (
     <SEO title="Home" />
     <PostList />
     <nav>
-      <Link className="fab home" to="/" aria-label="主页">
+      {/* <Link className="fab home" to="/" aria-label="主页">
         主页
-      </Link>
+      </Link> */}
+      <button className="fab like" id="like-it" aria-label="喜欢">
+        喜欢
+      </button>
       <Link className="fab about" to="/about" aria-label="关于">
         关于
       </Link>

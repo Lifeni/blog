@@ -110,7 +110,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Open Sans:400,700"],
+          families: ["Quicksand:500,700", "Ubuntu Mono:400,700"],
         },
       },
     },
