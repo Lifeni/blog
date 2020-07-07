@@ -5,7 +5,7 @@ import "../styles/post.css"
 const Post = ({ title, name, date, className, description, tags }) => (
   <div className={className}>
     <Link to={`/article/${name}`}>
-      <h3 className="title">{title}</h3>
+      <span className="title">{title}</span>
     </Link>
 
     <div className="info">

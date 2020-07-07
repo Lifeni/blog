@@ -110,8 +110,20 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Quicksand:500,700", "Ubuntu Mono:400,700"],
+          families: [
+            "Quicksand:500,700&display=swap",
+            "Ubuntu Mono:400,700&display=swap",
+          ],
         },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-ackee-tracker",
+      options: {
+        domainId: "6020b3a0-c240-4ded-8040-318af061810b",
+        server: "https://dev.lifeni.life",
+        ignoreLocalhost: true,
+        detailed: true,
       },
     },
     // {

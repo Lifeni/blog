@@ -121,8 +121,8 @@ article code {
   color: var(--font-code);
   background-color: var(--layer-highlight);
   font-size: 1rem;
-  font-family: "Ubuntu Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
+  font-family: "Ubuntu Mono", Consolas, Monaco, "思源黑体 CN",
+    "Source Han Sans CN", monospace, sans-serif;
   word-break: break-all;
   transition: all 0.2s;
 }
@@ -132,8 +132,8 @@ article code[class*="language-"] {
   color: var(--font-code);
   background-color: var(--layer-highlight);
   font-size: 1rem;
-  font-family: "Ubuntu Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
+  font-family: "Ubuntu Mono", Consolas, Monaco, "思源黑体 CN",
+    "Source Han Sans CN", monospace, sans-serif;
   border-radius: 4px;
   word-break: break-all;
   white-space: pre-wrap;
@@ -169,8 +169,8 @@ article pre[class*="language-"] {
   color: var(--font-code);
   background-color: var(--layer-highlight);
   font-size: 1rem;
-  font-family: "Ubuntu Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
+  font-family: "Ubuntu Mono", Consolas, Monaco, "思源黑体 CN",
+    "Source Han Sans CN", monospace, sans-serif;
   border-radius: 4px;
 }
 
@@ -280,8 +280,8 @@ code[class*="language-"] ::selection {
   border-radius: 4px;
   border: solid 2px var(--layer-highlight);
   background-color: var(--layer-highlight);
-  font-family: "Ubuntu Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
+  font-family: "Ubuntu Mono", Consolas, Monaco, "思源黑体 CN",
+    "Source Han Sans CN", monospace, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: var(--font-secondary);
@@ -392,8 +392,8 @@ code[class*="language-"] ::selection {
   padding: 2px 6px;
   background-color: var(--background-highlight);
   font-size: 1rem;
-  font-family: "Ubuntu Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
+  font-family: "Ubuntu Mono", Consolas, Monaco, "思源黑体 CN",
+    "Source Han Sans CN", monospace, sans-serif;
   white-space: nowrap;
   transition: all 0.2s;
 }
@@ -412,13 +412,21 @@ code[class*="language-"] ::selection {
   }
 }
 
+@media screen and (max-width: 1380px) {
+  .post-toc {
+    width: 296px;
+    padding: 112px 0 112px 72px;
+  }
+}
+
 @media screen and (max-width: 1140px) {
   article {
     padding: 48px;
   }
 
   .post-toc {
-    padding: 96px 0 96px 96px;
+    width: 248px;
+    padding: 96px 0 96px 64px;
   }
 }
 
