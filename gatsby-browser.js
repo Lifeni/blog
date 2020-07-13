@@ -102,12 +102,20 @@ exports.onRouteUpdate = () => {
   if (like) {
     like.addEventListener("click", () => {
       const notice = document.querySelector("#notice")
-      const text = notice.querySelector("#text")
-      text.textContent = "❤ 感谢支持"
-      notice.classList.add("show")
-      setTimeout(() => {
-        notice.classList.remove("show")
-      }, 2000)
+      const title = notice.querySelector("#notice-title")
+      const subtitle = notice.querySelector("#notice-subtitle")
+      fetch("https://api.lifeni.life/like", {
+        method: "POST",
+      })
+        .then(response => response.text())
+        .then(count => {
+          title.textContent = `❤ × ${count}`
+          subtitle.textContent = `感谢支持`
+          notice.classList.add("show")
+          setTimeout(() => {
+            notice.classList.remove("show")
+          }, 2000)
+        })
     })
   }
 }

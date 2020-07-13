@@ -18,8 +18,22 @@ body {
   background-color: var(--background);
 }
 
+.showcase {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 34vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray);
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
 .layout {
   position: relative;
+  z-index: 100;
   height: auto;
   min-height: 100vh;
   margin: 0 160px 72px 384px;
@@ -82,20 +96,48 @@ body {
   justify-content: center;
   color: transparent;
   font-size: 1rem;
+  font-family: inherit;
   border-radius: 64px;
   text-decoration: none;
   background-color: var(--layer);
-  overflow: hidden;
+  /* overflow: hidden; */
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  /* box-shadow: 0 0 24px rgba(0, 0, 0, 0.05); */
   text-align: center;
   cursor: pointer;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
+  outline: none;
   transition: all 0.2s;
+}
+
+.fab::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -56px;
+  width: 100%;
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: var(--pop);
+  backdrop-filter: blur(15px);
+  font-family: inherit;
+  color: var(--pop-font);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.fab:hover::before {
+  opacity: 1;
+  visibility: visible;
 }
 
 .fab.home {
@@ -103,17 +145,28 @@ body {
   background-image: var(--icon-home);
 }
 
+.fab.home::before {
+  content: "主页";
+}
+
 .fab.about {
   bottom: 48px;
   background-image: var(--icon-about);
 }
 
+.fab.about::before {
+  content: "关于";
+}
+
 .fab.like {
-  /* left: calc(5vw + 224px); */
   left: 272px;
   right: unset;
   bottom: 48px;
   background-image: var(--icon-like);
+}
+
+.fab.like::before {
+  content: "喜欢";
 }
 
 .fab.focus-content {
@@ -121,8 +174,16 @@ body {
   background-image: var(--icon-focus);
 }
 
+.fab.focus-content::before {
+  content: "聚焦";
+}
+
 .fab.focus-content.max {
   background-image: var(--icon-unfocus);
+}
+
+.fab.focus-content.max::before {
+  content: "正常";
 }
 
 .fab.to-top {
@@ -130,9 +191,17 @@ body {
   background-image: var(--icon-top);
 }
 
+.fab.to-top::before {
+  content: "最上";
+}
+
 .fab.back-home {
   bottom: 48px;
   background-image: var(--icon-close);
+}
+
+.fab.back-home::before {
+  content: "返回";
 }
 
 .fab.toggle-toc {
@@ -231,10 +300,11 @@ body {
   opacity: 0;
   visibility: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--mask-blur);
-  backdrop-filter: blur(20px);
+  background-color: var(--blur);
+  backdrop-filter: blur(15px);
   transition: all 0.4s;
 }
 
@@ -243,8 +313,15 @@ body {
   visibility: visible;
 }
 
-.notice .text {
+.notice .title {
+  margin: 12px;
+  font-size: 2.5rem;
+  color: var(--font-primary);
+}
+
+.notice .subtitle {
   font-size: 2rem;
+  font-family: inherit;
   color: var(--font-primary);
 }
 
@@ -278,6 +355,10 @@ hr {
 }
 
 @media screen and (max-width: 1140px) {
+  .showcase {
+    display: none;
+  }
+
   .layout {
     margin: 0 112px 72px 248px;
   }
@@ -337,7 +418,7 @@ hr {
     width: auto;
     height: 48px;
     margin: 12px 0;
-    padding: 0 16px 0 48px;
+    padding: 0 20px 0 56px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -347,10 +428,14 @@ hr {
     border-radius: 4px;
     font-size: 1rem;
     background-color: transparent;
-    background-position: 12px center;
+    background-position: 16px center;
     background-size: 24px;
     box-shadow: none;
     transition: all 0.2s;
+  }
+
+  .fab::before {
+    content: none !important;
   }
 
   .fab.toggle-toc {

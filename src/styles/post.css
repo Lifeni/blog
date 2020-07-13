@@ -3,7 +3,7 @@
   z-index: 10;
   width: 100%;
   margin: 0;
-  padding: 64px;
+  padding: 48px 64px;
   border-radius: 8px;
   transition: all 0.2s;
 }
@@ -20,7 +20,6 @@
   justify-content: center;
   font-size: 1rem;
   border-bottom: solid 2px var(--layer-highlight);
-  background-color: var(--layer);
   background-repeat: no-repeat;
   background-position: 16px center;
   background-size: 24px;
@@ -104,8 +103,7 @@
 .post .read-more {
   color: var(--font-link);
   text-align: right;
-  margin-top: 32px;
-  line-height: 2rem;
+  margin-top: 48px;
   transition: all 0.2s;
 }
 
