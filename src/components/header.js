@@ -1,19 +1,25 @@
 import React from "react"
 import "../styles/header.css"
-// import { Link } from "gatsby"
 
 const Header = () => (
   <header>
     <img
-      src="https://file.lifeni.life/avatar2.jpg"
+      src="https://file.lifeni.life/avatar3.jpg"
       alt="头像"
       className="avatar"
     />
-    {/* <p className="subtitle">lifeni.life</p> */}
     <h1>
       <span>记录</span>
       <span>干杯</span>
     </h1>
+    <a
+      className="background-author"
+      href="https://www.pixiv.net/artworks/75961171"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      图片来自 Pixiv @banishment
+    </a>
   </header>
 )
 

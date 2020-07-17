@@ -7,9 +7,9 @@ import { Link } from "gatsby"
 
 const IndexPage = () => (
   <>
-    <div className="showcase" id="showcase">
+    {/* <div className="showcase" id="showcase">
       <div className="mask" id="mask"></div>
-    </div>
+    </div> */}
     <Layout path="home">
       <SEO title="Home" />
       <PostList />

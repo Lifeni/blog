@@ -3,9 +3,9 @@ footer {
   z-index: 80;
   bottom: -72px;
   left: 0;
-  width: 100%;
+  width: calc(100% - 160px - 384px);
   height: 72px;
-  margin: 0;
+  margin: 0 160px 0 384px;
   padding: 12px 112px;
   display: flex;
   flex-direction: row;
@@ -40,13 +40,15 @@ footer > a:focus {
 
 @media screen and (max-width: 1380px) {
   footer {
-    padding: 0 64px;
+    padding: 0 72px;
   }
 }
 
 @media screen and (max-width: 1140px) {
   footer {
-    padding: 0 48px;
+    width: calc(100% - 112px - 248px);
+    margin: 0 112px 0 248px;
+    padding: 0 60px;
   }
 }
 

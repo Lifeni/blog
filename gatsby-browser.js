@@ -49,12 +49,10 @@ exports.onRouteUpdate = () => {
 
   const focus = document.querySelector("#focus")
   if (focus) {
-    const layout = document.querySelector(".layout")
     const aside = document.querySelector("aside")
     const main = document.querySelector("main")
     focus.addEventListener("click", () => {
       focus.classList.toggle("max")
-      layout.classList.toggle("max")
       aside.classList.toggle("hide")
       main.classList.toggle("max")
     })

@@ -1,35 +1,29 @@
 header {
-  position: fixed;
-  /* left: 5vw; */
-  left: 48px;
-  bottom: 48px;
+  position: relative;
   z-index: 90;
-  width: 200px;
-  height: 64px;
-  padding: 0;
-  border-radius: 96px;
+  width: 100%;
+  height: 40vh;
+  padding: 36px 48px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-start;
-  color: var(--font-primary);
-  background-color: var(--layer);
-  transition: all 0.2s;
-}
-
-header.hide {
-  opacity: 0;
-  visibility: hidden;
+  color: var(--white);
+  background-color: var(--gray);
+  background-image: url("https://file.lifeni.life/website/image/background.webp");
+  background-repeat: no;
+  background-size: cover;
+  background-position: top;
+  transition: all 0.4s;
 }
 
 header > h1 {
   position: relative;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1rem;
-  /* font-weight: normal; */
-}
-
-header > p {
-  line-height: 2rem;
 }
 
 header > h1 > span {
@@ -37,51 +31,55 @@ header > h1 > span {
 }
 
 header > img {
-  width: 64px;
-  height: 64px;
+  width: 36px;
+  height: 36px;
   margin: 0 24px 0 0;
-  border: solid 8px var(--layer);
-  /* box-shadow: 0 0 48px rgba(0, 0, 0, 0.15); */
-  /* box-shadow: 0 0 48px 24px rgba(0, 0, 0, 0.04); */
-  /* box-shadow: 0 0 24px rgba(0, 0, 0, 0.05); */
   border-radius: 50%;
   transition: transform 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
-@media screen and (max-width: 1140px) {
-  header {
-    left: 24px;
-  }
+header > a {
+  position: absolute;
+  right: 48px;
+  bottom: 36px;
+  height: 36px;
+  padding: 4px 16px;
+  border-radius: 36px;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.875rem;
+  background-color: var(--pop);
+  backdrop-filter: blur(15px);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+header:hover > a {
+  opacity: 1;
+  visibility: visible;
 }
 
 @media screen and (max-width: 900px) {
   header {
-    position: relative;
-    width: 100%;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    padding: 64px 36px 0 36px;
     height: auto;
-    margin: 0;
-    padding: 60px 0 0 0;
-    border-radius: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
-    animation: none;
+    background-image: none;
+    background-color: var(--layer);
   }
 
-  header > img {
-    width: 36px;
-    height: 36px;
-    margin: 0;
-    border: none;
+  header > a {
+    display: none;
   }
 
   header > h1 {
-    display: inline-block;
-    margin: 0 24px;
-    font-size: 1.25rem;
+    padding: 0 24px 0 0;
+    color: var(--font-primary);
+    font-size: 1.125rem;
   }
 }

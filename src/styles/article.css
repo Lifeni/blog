@@ -65,9 +65,7 @@ article h1 {
 
 article h2 {
   padding: 1rem 0;
-  /* padding: 2rem 0 0 0; */
   font-size: 1.5rem;
-  /* border-bottom: solid 2px var(--layer-highlight); */
 }
 
 article h3::before {
@@ -77,7 +75,6 @@ article h3::before {
 }
 
 article h3 {
-  /* padding: 1rem 0; */
   font-size: 1.25rem;
   line-height: 2.5rem;
 }
@@ -102,7 +99,6 @@ article img {
   width: auto;
   max-width: 100%;
   height: auto;
-  /* padding: 2px; */
   opacity: 1;
   margin: 0.5rem 0;
   border: solid 2px var(--layer-highlight);
@@ -320,7 +316,6 @@ code[class*="language-"] ::selection {
 
 .post-toc {
   position: fixed;
-  /* left: calc(-60vw + 50%); */
   left: 0;
   top: 0;
   z-index: 50;
@@ -341,35 +336,35 @@ code[class*="language-"] ::selection {
   transition: all 0.2s;
 }
 
-.toc > ul > li > p {
+.post-toc .toc > ul > li > p {
   font-weight: bold;
   margin: 0 0 2px 0;
 }
 
-.toc > ul > li > p > a {
+.post-toc .toc > ul > li > p > a {
   padding: 0;
 }
 
-.toc > ul,
-.toc > ul > li > ul {
+.post-toc .toc > ul,
+.post-toc .toc > ul > li > ul {
   padding-left: 0;
 }
 
-.toc ul ul ul a::before {
+.post-toc .toc ul ul ul a::before {
   content: "# ";
   padding: 0 0.4rem;
   color: var(--font-light);
 }
 
-.toc p,
-.toc li {
+.post-toc .toc p,
+.post-toc .toc li {
   display: flex;
   flex-direction: column;
   list-style: none;
   white-space: nowrap;
 }
 
-.toc a {
+.post-toc .toc a {
   width: fit-content;
   max-width: 20vw;
   color: var(--font-secondary);
@@ -384,32 +379,28 @@ code[class*="language-"] ::selection {
   transition: all 0.2s;
 }
 
-.toc a:hover,
-.toc a:active,
-.toc a:focus {
+.post-toc .toc a:hover,
+.post-toc .toc a:active,
+.post-toc .toc a:focus {
   color: var(--font-primary);
 }
 
-.toc code {
+.post-toc .toc code,
+.post-toc .toc code[class*="language-"] {
   width: 100%;
   padding: 2px 6px;
+  color: var(--font-secondary);
+  padding: 0.2rem 0.4rem;
   background-color: var(--background-highlight);
   font-size: 1rem;
+  border-radius: 4px;
   font-family: "Ubuntu Mono", Consolas, Monaco, "思源黑体 CN",
     "Source Han Sans CN", monospace, sans-serif;
   white-space: nowrap;
   transition: all 0.2s;
 }
 
-.toc code[class*="language-"] {
-  color: var(--font-secondary);
-  padding: 0.2rem 0.4rem;
-  background-color: var(--background-highlight);
-  font-size: 1rem;
-  border-radius: 4px;
-}
-
-@media screen and (min-width: 2000px) {
+@media screen and (min-width: 1800px) {
   .post-toc {
     width: calc(50vw - 600px);
   }

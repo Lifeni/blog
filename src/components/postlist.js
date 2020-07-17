@@ -32,7 +32,6 @@ const indexQuery = graphql`
         node {
           id
           frontmatter {
-            # date(formatString: "YYYY / MM / DD ")
             date(formatString: "M 月 D 日")
             title
             name
