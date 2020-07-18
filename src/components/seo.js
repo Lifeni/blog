@@ -32,7 +32,7 @@ function SEO({ description, lang, meta, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={title === "Home" ? "记录干杯" : title}
       titleTemplate={`%s - ${site.siteMetadata.title}`}
       meta={[
         {

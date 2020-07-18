@@ -23,6 +23,7 @@ body {
   width: 100%;
   height: auto;
   min-height: 100vh;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -53,6 +54,7 @@ body {
 .layout > main.max {
   width: calc(100% - 160px - 160px);
   margin: 0 160px;
+  transition: all 0.4s;
 }
 
 .subtitle {
@@ -60,197 +62,6 @@ body {
   font-size: 1rem;
   white-space: nowrap;
   margin: 0;
-}
-
-.fab {
-  position: fixed;
-  right: 48px;
-  z-index: 200;
-  width: 64px;
-  height: 64px;
-  padding: 12px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: transparent;
-  font-size: 1rem;
-  font-family: inherit;
-  border-radius: 64px;
-  text-decoration: none;
-  background-color: var(--layer);
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  text-align: center;
-  cursor: pointer;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 28px;
-  outline: none;
-  transition: all 0.2s;
-}
-
-.fab::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: -56px;
-  width: 100%;
-  padding: 8px 0;
-  opacity: 0;
-  visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  background-color: var(--pop);
-  backdrop-filter: blur(15px);
-  font-family: inherit;
-  color: var(--pop-font);
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.2s;
-}
-
-.fab:hover::before {
-  opacity: 1;
-  visibility: visible;
-}
-
-.fab.home {
-  bottom: 136px;
-  background-image: var(--icon-home);
-}
-
-.fab.home::before {
-  content: "主页";
-}
-
-.fab.home:hover,
-.fab.home:focus,
-.fab.home:active {
-  background-image: var(--icon-home-hover);
-}
-
-.fab.about {
-  bottom: 48px;
-  background-image: var(--icon-about);
-}
-
-.fab.about::before {
-  content: "关于";
-}
-
-.fab.about:hover,
-.fab.about:focus,
-.fab.about:active {
-  background-image: var(--icon-about-hover);
-}
-
-.fab.like {
-  bottom: 136px;
-  background-image: var(--icon-like);
-}
-
-.fab.like::before {
-  content: "喜欢";
-}
-
-.fab.like:hover,
-.fab.like:focus,
-.fab.like:active {
-  background-color: var(--red);
-  background-image: var(--icon-like-hover);
-}
-
-.fab.focus-content {
-  bottom: 224px;
-  background-image: var(--icon-focus);
-}
-
-.fab.focus-content::before {
-  content: "聚焦";
-}
-
-.fab.focus-content:hover,
-.fab.focus-content:focus,
-.fab.focus-content:active {
-  background-image: var(--icon-focus-hover);
-}
-
-.fab.focus-content.max {
-  background-image: var(--icon-unfocus);
-}
-
-.fab.focus-content.max::before {
-  content: "正常";
-}
-
-.fab.focus-content.max:hover,
-.fab.focus-content.max:focus,
-.fab.focus-content.max:active {
-  background-image: var(--icon-unfocus-hover);
-}
-
-.fab.to-top {
-  bottom: 136px;
-  background-image: var(--icon-top);
-}
-
-.fab.to-top::before {
-  content: "最上";
-}
-
-.fab.to-top:hover,
-.fab.to-top:focus,
-.fab.to-top:active {
-  background-image: var(--icon-top-hover);
-}
-
-.fab.back-home {
-  bottom: 48px;
-  background-image: var(--icon-close);
-}
-
-.fab.back-home::before {
-  content: "返回";
-}
-
-.fab.back-home:hover,
-.fab.back-home:focus,
-.fab.back-home:active {
-  background-image: var(--icon-close-hover);
-}
-
-.fab.toggle-toc {
-  display: none;
-  opacity: 0;
-  background-image: var(--icon-toc);
-}
-
-.fab.toggle-toc:hover,
-.fab.toggle-toc:focus,
-.fab.toggle-toc:active {
-  background-image: var(--icon-toc-hover);
-}
-
-.fab.toggle-toc.show {
-  background-image: var(--icon-toc-fold);
-}
-
-.fab.toggle-toc.show:hover,
-.fab.toggle-toc.show:focus,
-.fab.toggle-toc.show:active {
-  background-image: var(--icon-toc-fold-hover);
-}
-
-.fab:hover,
-.fab:active,
-.fab:focus {
-  border: none;
-  background-color: var(--yellow);
-  transition: all 0.2s;
 }
 
 .skip-link {
@@ -304,6 +115,7 @@ body {
 .notice .subtitle {
   font-size: 2rem;
   font-family: inherit;
+  font-weight: normal;
   color: var(--font-primary);
 }
 
@@ -312,10 +124,27 @@ hr {
   margin: 0 0 48px 0;
 }
 
-@media screen and (min-width: 1800px) {
+@media screen and (min-width: 2000px) {
   .layout {
-    max-width: 1800px;
-    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .layout > main {
+    width: 100%;
+    margin: 0;
+  }
+
+  .layout.max {
+    margin: 0 160px;
+    width: 100%;
+    max-width: calc(100% - 320px);
+  }
+
+  .layout > main.max {
+    width: 100%;
+    margin: 0;
   }
 }
 
@@ -334,10 +163,6 @@ hr {
   .layout > main.max {
     width: calc(100% - 112px - 112px);
     margin: 0 112px;
-  }
-
-  .fab {
-    right: 24px;
   }
 }
 
@@ -380,47 +205,6 @@ hr {
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
   }
-
-  .fab {
-    position: relative;
-    right: unset !important;
-    left: unset !important;
-    bottom: unset !important;
-    width: auto;
-    height: 48px;
-    margin: 12px 0;
-    padding: 0 20px 0 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--font-primary);
-    border-radius: 4px;
-    font-size: 1rem;
-    background-color: transparent;
-    background-position: 16px center;
-    background-size: 24px;
-    box-shadow: none;
-    transition: all 0.2s;
-  }
-
-  .fab::before {
-    content: none !important;
-  }
-
-  .fab.toggle-toc {
-    display: flex;
-    opacity: 1;
-  }
-
-  .fab.focus-content {
-    display: none;
-  }
-
-  .fab:hover,
-  .fab:active,
-  .fab:focus {
-    color: var(--black);
-  }
 }
 
 @media screen and (max-width: 640px) {
@@ -435,14 +219,5 @@ hr {
   .layout > main {
     height: auto;
     padding: 24px 0;
-  }
-}
-
-@keyframes opacity {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }

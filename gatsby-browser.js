@@ -1,6 +1,7 @@
 require("prismjs/themes/prism-solarizedlight.css")
 require("prismjs/plugins/line-numbers/prism-line-numbers.css")
 require("./src/styles/color.css")
+require("./src/styles/fab.css")
 
 exports.onRouteUpdate = () => {
   const block = document.querySelectorAll(".gatsby-highlight")
@@ -49,9 +50,11 @@ exports.onRouteUpdate = () => {
 
   const focus = document.querySelector("#focus")
   if (focus) {
+    const layout = document.querySelector(".layout")
     const aside = document.querySelector("aside")
     const main = document.querySelector("main")
     focus.addEventListener("click", () => {
+      layout.classList.toggle("max")
       focus.classList.toggle("max")
       aside.classList.toggle("hide")
       main.classList.toggle("max")
@@ -79,10 +82,12 @@ exports.onRouteUpdate = () => {
   const avatar = document.querySelector(".avatar")
   if (avatar) {
     avatar.addEventListener("mouseout", e => {
-      avatar.style.transform = `perspective(300px)
-                     rotateX(0deg)
-                     rotateY(0deg)
-                     rotateZ(0deg)`
+      window.requestAnimationFrame(() => {
+        avatar.style.transform = `perspective(300px)
+        rotateX(0deg)
+        rotateY(0deg)
+        rotateZ(0deg)`
+      })
     })
 
     avatar.addEventListener("mousemove", e => {
@@ -114,6 +119,31 @@ exports.onRouteUpdate = () => {
             notice.classList.remove("show")
           }, 2000)
         })
+    })
+  }
+
+  const showcase = document.querySelector("#showcase")
+  if (showcase) {
+    const html = document.querySelector("html")
+    window.addEventListener("scroll", () => {
+      window.requestAnimationFrame(() => {
+        if (html.scrollTop > html.clientHeight * 0.4 + 24) {
+          showcase.classList.add("show")
+        } else {
+          showcase.classList.remove("show")
+        }
+      })
+    })
+
+    const tabs = document.querySelectorAll(".tab")
+    const lists = document.querySelectorAll(".list")
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(e => e.classList.remove("active"))
+        lists.forEach(e => e.classList.remove("show"))
+        tab.classList.add("active")
+        document.querySelector(`#${tab.dataset.target}`).classList.add("show")
+      })
     })
   }
 }

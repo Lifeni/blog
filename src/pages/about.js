@@ -32,9 +32,6 @@ const AboutPage = () => (
       <time style={{ float: "right" }}>修改于 2020 年 7 月 6 日</time>
     </article>
     <nav>
-      <button className="fab like" id="like-it" aria-label="喜欢">
-        喜欢
-      </button>
       <Link to="/" className="fab back-home" aria-label="Home" title="回到主页">
         返回
       </Link>

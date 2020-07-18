@@ -3,15 +3,14 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import PostList from "../components/postlist"
+import Showcase from "../components/showcase"
 import { Link } from "gatsby"
 
 const IndexPage = () => (
   <>
-    {/* <div className="showcase" id="showcase">
-      <div className="mask" id="mask"></div>
-    </div> */}
     <Layout path="home">
       <SEO title="Home" />
+      <Showcase />
       <PostList />
       <nav>
         <button className="fab like" id="like-it" aria-label="喜欢">

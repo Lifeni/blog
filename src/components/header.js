@@ -3,14 +3,13 @@ import "../styles/header.css"
 
 const Header = () => (
   <header>
-    <img
+    {/* <img
       src="https://file.lifeni.life/avatar3.jpg"
       alt="头像"
       className="avatar"
-    />
+    /> */}
     <h1>
-      <span>记录</span>
-      <span>干杯</span>
+      <span># 记录干杯</span>
     </h1>
     <a
       className="background-author"

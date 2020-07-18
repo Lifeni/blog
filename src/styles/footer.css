@@ -38,6 +38,14 @@ footer > a:focus {
   color: var(--font-primary);
 }
 
+@media screen and (min-width: 2000px) {
+  footer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (max-width: 1380px) {
   footer {
     padding: 0 72px;

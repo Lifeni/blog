@@ -4,6 +4,7 @@ module.exports = {
     description: `记录干杯。`,
     author: `Lifeni`,
     siteLanguage: "zh-cn",
+    siteUrl: `https://lifeni.life`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -32,7 +33,7 @@ module.exports = {
         background_color: `#feec44`,
         theme_color: `#feec44`,
         display: `minimal-ui`,
-        icon: `src/images/logo@1024.jpg`, // This path is relative to the root of the site.
+        icon: `src/images/logo@1024.jpg`,
       },
     },
     `gatsby-plugin-sharp`,
@@ -43,9 +44,6 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
               loading: "lazy",
             },
           },
@@ -100,7 +98,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images-native-lazy-load`,
             options: {
-              loading: "lazy", // "lazy" | "eager" | "auto"
+              loading: "lazy",
             },
           },
         ],
@@ -123,27 +121,6 @@ module.exports = {
         detailed: true,
       },
     },
-    // {
-    //   resolve: "gatsby-transformer-remark",
-    //   options: {
-    //     plugins: [
-    //       {
-    //         resolve: "gatsby-remark-code-buttons",
-    //         options: {
-    //           buttonContainerClass: `copy-code`,
-    //           buttonClass: `copy-code-button`,
-    //           buttonText: `复制代码`,
-    //           toasterClass: `copy-code-toaster`,
-    //           toasterTextClass: `copy-code-toaster-text`,
-    //           toasterText: "已复制",
-    //           toasterDuration: 3000,
-    //         },
-    //       },
-    //     ],
-    //   },
-    // },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-sitemap`,
   ],
 }

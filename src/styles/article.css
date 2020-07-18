@@ -64,7 +64,7 @@ article h1 {
 }
 
 article h2 {
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   font-size: 1.5rem;
 }
 
@@ -76,11 +76,7 @@ article h3::before {
 
 article h3 {
   font-size: 1.25rem;
-  line-height: 2.5rem;
-}
-
-article h2 + h3 {
-  margin: 0 0 1rem 0;
+  line-height: 3rem;
 }
 
 article ol,
@@ -400,7 +396,7 @@ code[class*="language-"] ::selection {
   transition: all 0.2s;
 }
 
-@media screen and (min-width: 1800px) {
+@media screen and (min-width: 2000px) {
   .post-toc {
     width: calc(50vw - 600px);
   }
