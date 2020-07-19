@@ -3,11 +3,6 @@ import "../styles/header.css"
 
 const Header = () => (
   <header>
-    {/* <img
-      src="https://file.lifeni.life/avatar3.jpg"
-      alt="头像"
-      className="avatar"
-    /> */}
     <h1>
       <span># 记录干杯</span>
     </h1>

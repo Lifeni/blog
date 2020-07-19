@@ -70,7 +70,7 @@
 }
 
 .fab.about {
-  bottom: 48px;
+  bottom: 136px;
   background-image: var(--icon-about);
 }
 
@@ -101,7 +101,7 @@
 }
 
 .fab.like {
-  bottom: 136px;
+  bottom: 224px;
   background-image: var(--icon-like);
 }
 
@@ -181,6 +181,10 @@
   background-image: var(--icon-toc);
 }
 
+.fab.toggle-toc::before {
+  content: "目录";
+}
+
 .fab.toggle-toc:hover,
 .fab.toggle-toc:focus,
 .fab.toggle-toc:active {
@@ -189,6 +193,10 @@
 
 .fab.toggle-toc.show {
   background-image: var(--icon-toc-fold);
+}
+
+.fab.toggle-toc.show::before {
+  content: "折叠";
 }
 
 .fab.toggle-toc.show:hover,
@@ -205,9 +213,21 @@
   transition: all 0.2s;
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1200px) {
   .fab {
     right: 24px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .fab.toggle-toc {
+    bottom: 224px;
+    display: flex;
+    opacity: 1;
+  }
+
+  .fab.focus-content {
+    display: none;
   }
 }
 
@@ -217,39 +237,46 @@
     right: unset !important;
     left: unset !important;
     bottom: unset !important;
-    width: auto;
+    width: 108px;
     height: 48px;
-    margin: 12px 0;
-    padding: 0 20px 0 56px;
+    margin: 8px 0;
+    padding: 0 0 0 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--font-primary);
-    border-radius: 4px;
+    border-radius: 48px;
     font-size: 1rem;
+    font-weight: bold;
+    color: var(--font-primary);
     background-color: transparent;
-    background-position: 16px center;
     background-size: 24px;
+    background-position: 16px center;
     box-shadow: none;
     transition: all 0.2s;
   }
 
   .fab::before {
-    content: none !important;
-  }
-
-  .fab.toggle-toc {
-    display: flex;
-    opacity: 1;
-  }
-
-  .fab.focus-content {
     display: none;
   }
+}
 
-  .fab:hover,
-  .fab:active,
-  .fab:focus {
-    color: var(--black);
+@media screen and (max-width: 640px) {
+  .fab {
+    width: 48px;
+    margin: 8px 8px 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 48px;
+    font-size: 1rem;
+    font-weight: normal;
+    color: transparent;
+    background-position: center;
+    box-shadow: none;
+    transition: all 0.2s;
+  }
+
+  .fab::before {
+    display: flex;
   }
 }

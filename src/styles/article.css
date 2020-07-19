@@ -280,11 +280,20 @@ code[class*="language-"] ::selection {
   cursor: pointer;
   transition: all 0.2s;
 }
+
+.copy-button:hover,
+.copy-button:focus,
+.copy-button:active {
+  border-radius: 4px;
+  background-color: var(--layer-highlight-plus);
+  border: solid 2px var(--layer-highlight-plus);
+}
+
 .copy-button.dollar:hover,
 .copy-button:hover + .copy-button.dollar {
   opacity: 1;
   visibility: visible;
-  border-radius: 4px 0 4px 4px;
+  border-radius: 4px;
   border: solid 2px var(--layer-highlight-plus);
   background-color: var(--layer-highlight-plus);
 }
@@ -295,14 +304,6 @@ code[class*="language-"] ::selection {
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s;
-}
-
-.copy-button:hover,
-.copy-button:focus,
-.copy-button:active {
-  border-radius: 4px 4px 0 0;
-  background-color: var(--layer-highlight-plus);
-  border: solid 2px var(--layer-highlight-plus);
 }
 
 .post-toc.hide {
@@ -409,7 +410,7 @@ code[class*="language-"] ::selection {
   }
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1200px) {
   article {
     padding: 48px;
   }
@@ -420,19 +421,20 @@ code[class*="language-"] ::selection {
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1080px) {
   .post-toc {
     position: fixed;
     left: -100%;
     top: 0;
     z-index: 900;
     width: fit-content;
+    max-width: 100%;
     height: 100vh;
     padding: 0;
     display: flex;
     background-color: var(--blur);
     backdrop-filter: blur(15px);
-    transition: all 0.2s;
+    transition: all 0.4s;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
   }
 
@@ -443,7 +445,7 @@ code[class*="language-"] ::selection {
   .post-toc .toc {
     width: 100%;
     height: 100%;
-    padding: 56px 32px 96px 32px;
+    padding: 64px 72px;
     overflow-y: auto;
   }
 
@@ -454,6 +456,24 @@ code[class*="language-"] ::selection {
   .post-toc .toc code {
     background-color: var(--blur-code);
     backdrop-filter: blur(15px);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .post-toc .toc {
+    width: 100%;
+    height: 100%;
+    padding: 56px 56px 96px 56px;
+    overflow-y: auto;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .post-toc .toc {
+    width: 100%;
+    height: 100%;
+    padding: 56px 48px 96px 48px;
+    overflow-y: auto;
   }
 
   .copy-button {

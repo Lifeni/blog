@@ -71,7 +71,6 @@ exports.onRouteUpdate = () => {
   const toggle = document.querySelector("#toggle")
   if (toggle) {
     toggle.addEventListener("click", () => {
-      console.log("click")
       const toc = document.querySelector(".post-toc")
       toc.classList.toggle("show")
       toggle.classList.toggle("show")
@@ -127,7 +126,7 @@ exports.onRouteUpdate = () => {
     const html = document.querySelector("html")
     window.addEventListener("scroll", () => {
       window.requestAnimationFrame(() => {
-        if (html.scrollTop > html.clientHeight * 0.4 + 24) {
+        if (html.scrollTop > html.clientHeight * 0.4 - 108) {
           showcase.classList.add("show")
         } else {
           showcase.classList.remove("show")
@@ -145,5 +144,16 @@ exports.onRouteUpdate = () => {
         document.querySelector(`#${tab.dataset.target}`).classList.add("show")
       })
     })
+
+    const pageList = document.querySelector("#page-list")
+    let currentPageItem = 0
+    pageList.style.marginTop = `${currentPageItem}px`
+    setInterval(() => {
+      currentPageItem = currentPageItem - 64
+      if (currentPageItem === pageList.children.length * -64) {
+        currentPageItem = 0
+      }
+      pageList.style.marginTop = `${currentPageItem}px`
+    }, 3000)
   }
 }

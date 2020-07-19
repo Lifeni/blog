@@ -150,17 +150,26 @@ hr {
 
 @media screen and (max-width: 1380px) {
   .layout > main {
+    width: calc(100% - 160px - 296px);
+    margin: 0 160px 0 296px;
     padding: 12px;
   }
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1200px) {
   .layout > main {
     width: calc(100% - 112px - 248px);
     margin: 0 112px 0 248px;
   }
 
   .layout > main.max {
+    width: calc(100% - 112px - 112px);
+    margin: 0 112px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .layout > main {
     width: calc(100% - 112px - 112px);
     margin: 0 112px;
   }
@@ -178,8 +187,8 @@ hr {
   }
 
   .layout > main {
-    width: 100%;
-    margin: 0;
+    width: calc(100% - 48px - 48px);
+    margin: 0 48px;
     padding: 24px;
     min-height: unset;
   }
@@ -200,7 +209,7 @@ hr {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     background-color: var(--blur);
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
@@ -217,7 +226,10 @@ hr {
   }
 
   .layout > main {
+    width: 100%;
     height: auto;
+    margin: 0;
     padding: 24px 0;
+    min-height: unset;
   }
 }

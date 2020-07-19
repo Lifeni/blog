@@ -19,6 +19,9 @@ const IndexPage = () => (
         <Link className="fab about" to="/about" aria-label="关于">
           关于
         </Link>
+        <Link className="fab chat" to="/chat" aria-label="留言">
+          留言
+        </Link>
       </nav>
     </Layout>
   </>

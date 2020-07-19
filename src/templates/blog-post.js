@@ -20,7 +20,7 @@ const BlogPost = ({ data }) => {
     <Layout path="article" noheader>
       <SEO
         title={post.frontmatter.title}
-        description={post.frontmatter.description}
+        description={post.frontmatter.descriptions.join(" | ")}
       />
       <aside className="post-toc">
         <nav
@@ -70,7 +70,7 @@ export const PostQuery = graphql`
       frontmatter {
         title
         name
-        description
+        descriptions
         tags
         date(fromNow: true, locale: "zh-cn", formatString: "YYYY 年 M 月 D 日")
       }

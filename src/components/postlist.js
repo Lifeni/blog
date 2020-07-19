@@ -12,9 +12,10 @@ const PostList = () => (
             <Post
               title={node.frontmatter.title}
               name={node.frontmatter.name}
-              description={node.frontmatter.description}
+              descriptions={node.frontmatter.descriptions}
               date={node.frontmatter.date}
               tags={node.frontmatter.tags}
+              excerpt={node.excerpt}
               key={node.frontmatter.title}
               className="post"
             />
@@ -32,12 +33,13 @@ const indexQuery = graphql`
         node {
           id
           frontmatter {
-            date(formatString: "M 月 D 日")
+            date(formatString: "YYYY 年 M 月 D 日")
             title
             name
             tags
-            description
+            descriptions
           }
+          excerpt(format: HTML, pruneLength: 100)
         }
       }
     }

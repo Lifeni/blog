@@ -12,7 +12,7 @@ header {
   color: var(--white);
   background-color: var(--gray);
   background-image: url("https://file.lifeni.life/website/image/background.webp");
-  background-repeat: no;
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
   transition: all 0.4s;
@@ -68,17 +68,27 @@ header:hover > a {
 
 @media screen and (max-width: 900px) {
   header {
-    padding: 48px;
+    height: 33vh;
+    max-height: 300px;
+    padding: 36px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  header {
+    padding: 72px 72px 24px 72px;
     height: auto;
-    justify-content: center;
-    background-color: var(--layer);
+    justify-content: flex-start;
+    background-color: var(--gray);
   }
 
   header > a {
     display: none;
   }
+}
 
-  header > h1 {
-    font-size: 1.25rem;
+@media screen and (max-width: 500px) {
+  header {
+    padding: 72px 32px 24px 32px;
   }
 }
