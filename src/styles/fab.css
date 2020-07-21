@@ -70,7 +70,8 @@
 }
 
 .fab.about {
-  bottom: 136px;
+  /* bottom: 136px; */
+  bottom: 48px;
   background-image: var(--icon-about);
 }
 
@@ -101,7 +102,8 @@
 }
 
 .fab.like {
-  bottom: 224px;
+  /* bottom: 224px; */
+  bottom: 136px;
   background-image: var(--icon-like);
 }
 

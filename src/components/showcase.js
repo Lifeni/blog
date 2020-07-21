@@ -10,6 +10,9 @@ const Showcase = () => (
       <button className="tab" data-target="page-list">
         页面
       </button>
+      <button className="tab" data-target="search-list">
+        搜索
+      </button>
     </div>
     <div className="lists">
       <ul className="list friend show" id="friend-list">
@@ -26,9 +29,7 @@ const Showcase = () => (
       </ul>
       <ul className="list page" id="page-list">
         <li className="list-item small">
-          <time>
-            网站更新于 {new Date().toLocaleString("zh-CN", { hour12: false })}
-          </time>
+          <time>网站更新于 2020 年 7 月 21 日</time>
         </li>
         <li className="list-item small">
           <span>文章的日期是最后修改日期</span>
@@ -45,6 +46,18 @@ const Showcase = () => (
           共享
         </li>
       </ul>
+      <div className="list search" id="search-list">
+        <button className="search-button" id="go-search">
+          Search
+        </button>
+        <input
+          type="search"
+          className="search-text"
+          id="search"
+          placeholder="使用 Google 搜索内容"
+          aria-label="使用 Google 搜索内容"
+        />
+      </div>
     </div>
   </section>
 )

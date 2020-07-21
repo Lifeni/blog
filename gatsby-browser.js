@@ -126,7 +126,7 @@ exports.onRouteUpdate = () => {
     const html = document.querySelector("html")
     window.addEventListener("scroll", () => {
       window.requestAnimationFrame(() => {
-        if (html.scrollTop > html.clientHeight * 0.4 - 108) {
+        if (html.scrollTop > 0) {
           showcase.classList.add("show")
         } else {
           showcase.classList.remove("show")
@@ -155,5 +155,23 @@ exports.onRouteUpdate = () => {
       }
       pageList.style.marginTop = `${currentPageItem}px`
     }, 3000)
+
+    const search = document.querySelector("#go-search")
+    const text = document.querySelector("#search")
+    search.addEventListener("click", () => {
+      window.open(
+        "https://www.google.com/search?q=site%3Alifeni.life+" +
+          encodeURI(text.value)
+      )
+    })
+
+    document.addEventListener("keypress", e => {
+      if (text.value.length && e.code === "Enter") {
+        window.open(
+          "https://www.google.com/search?q=site%3Alifeni.life+" +
+            encodeURI(text.value)
+        )
+      }
+    })
   }
 }
