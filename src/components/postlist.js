@@ -1,6 +1,34 @@
+import { graphql, Link, StaticQuery } from "gatsby"
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
-import Post from "./post"
+import "../styles/PostList.less"
+
+const Post = ({ title, name, date, className, descriptions, tags }) => (
+  <div className={className}>
+    <span className="date">{date}</span>
+    <Link to={`/article/${name}`}>
+      <span className="title">{title}</span>
+    </Link>
+
+    <div className="info">
+      {tags.map(tag => (
+        <span key={tag} className="tag">
+          # {tag}
+        </span>
+      ))}
+    </div>
+    <p className="description">
+      {descriptions.map((description, index) => (
+        <span key={description}>
+          {description}
+          {index === descriptions.length - 1 ? null : <br />}
+        </span>
+      ))}
+    </p>
+    <Link className="read-more" to={`/article/${name}`}>
+      {">"} Read More
+    </Link>
+  </div>
+)
 
 const PostList = () => (
   <StaticQuery

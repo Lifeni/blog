@@ -58,7 +58,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              offsetY: `4`,
+              offsetY: `76`,
               maintainCase: false,
               removeAccents: true,
               isIconAfterHeader: false,
@@ -108,7 +108,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Quicksand:500,700", "Ubuntu Mono:400,700&display=swap"],
+          families: ["Inter:400,600&display=swap"],
         },
       },
     },
@@ -122,5 +122,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-less`,
   ],
 }

@@ -1,29 +1,21 @@
 import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-
-import PostList from "../components/postlist"
-import Showcase from "../components/showcase"
-import { Link } from "gatsby"
+import Aside from "../components/Aside"
+import Header from "../components/Header"
+import PostList from "../components/PostList"
+import SEO from "../components/SEO"
+import "../styles/Layout.less"
 
 const IndexPage = () => (
   <>
-    <Layout path="home">
-      <SEO title="Home" />
-      <Showcase />
+    <a href="#content" className="skip-link">
+      Skip to main content | 跳转到主要内容
+    </a>
+    <SEO title="Home" />
+    <Header home like aside title="记录干杯" />
+    <main>
+      <Aside about footer />
       <PostList />
-      <nav>
-        <button className="fab like" id="like-it" aria-label="喜欢">
-          喜欢
-        </button>
-        <Link className="fab about" to="/about" aria-label="关于">
-          关于
-        </Link>
-        {/* <Link className="fab chat" to="/chat" aria-label="留言">
-          留言
-        </Link> */}
-      </nav>
-    </Layout>
+    </main>
   </>
 )
 

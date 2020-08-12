@@ -1,7 +1,5 @@
 require("prismjs/themes/prism-solarizedlight.css")
 require("prismjs/plugins/line-numbers/prism-line-numbers.css")
-require("./src/styles/color.css")
-require("./src/styles/fab.css")
 
 exports.onRouteUpdate = () => {
   const block = document.querySelectorAll(".gatsby-highlight")
@@ -48,130 +46,80 @@ exports.onRouteUpdate = () => {
     })
   }
 
-  const focus = document.querySelector("#focus")
-  if (focus) {
-    const layout = document.querySelector(".layout")
-    const aside = document.querySelector("aside")
-    const main = document.querySelector("main")
-    focus.addEventListener("click", () => {
-      layout.classList.toggle("max")
-      focus.classList.toggle("max")
-      aside.classList.toggle("hide")
-      main.classList.toggle("max")
-    })
-  }
-
-  const top = document.querySelector("#top")
+  const top = document.querySelector("#go-top")
   if (top) {
-    top.addEventListener("click", () => {
-      window.scrollTo(0, 0)
-    })
-  }
-
-  const toggle = document.querySelector("#toggle")
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      const toc = document.querySelector(".post-toc")
-      toc.classList.toggle("show")
-      toggle.classList.toggle("show")
-      toggle.textContent = toggle.textContent === "目录" ? "收起" : "目录"
-    })
-  }
-
-  const avatar = document.querySelector(".avatar")
-  if (avatar) {
-    avatar.addEventListener("mouseout", e => {
+    const title = document.querySelector("#header-title")
+    const about = document.querySelector("#about")
+    window.addEventListener("scroll", () => {
       window.requestAnimationFrame(() => {
-        avatar.style.transform = `perspective(300px)
-        rotateX(0deg)
-        rotateY(0deg)
-        rotateZ(0deg)`
+        const scrollTop = document.querySelector("html").scrollTop
+        if (scrollTop > 160) {
+          top.classList.remove("hide")
+          title.classList.add("show")
+          if (about) {
+            about.classList.add("light")
+          }
+        } else {
+          top.classList.add("hide")
+          title.classList.remove("show")
+          if (about) {
+            about.classList.remove("light")
+          }
+        }
       })
     })
 
-    avatar.addEventListener("mousemove", e => {
-      let w = avatar.clientWidth
-      let h = avatar.clientHeight
-      let y = ((e.offsetX - w * 0.5) / w) * 45
-      let x = ((1 - (e.offsetY - h * 0.5)) / h) * 45
-      avatar.style.transform = `perspective(300px)
-      rotateX(${x}deg)
-      rotateY(${y}deg)`
+    top.addEventListener("click", () => {
+      window.scrollTo(0, 0)
     })
   }
 
   const like = document.querySelector("#like-it")
   if (like) {
     like.addEventListener("click", () => {
-      const notice = document.querySelector("#notice")
-      const title = notice.querySelector("#notice-title")
-      const subtitle = notice.querySelector("#notice-subtitle")
+      const popover = document.querySelector("#popover")
+      const h2 = document.querySelector("#popover h2")
+      const h3 = document.querySelector("#popover h3")
       fetch("https://api.lifeni.life/like", {
         method: "POST",
       })
         .then(response => response.text())
         .then(count => {
-          title.textContent = `❤ × ${count}`
-          subtitle.textContent = `感谢支持`
-          notice.classList.add("show")
+          h2.textContent = `❤ × ${count}`
+          h3.textContent = `感谢支持`
+          popover.classList.add("show")
+          like.classList.add("fill")
           setTimeout(() => {
-            notice.classList.remove("show")
-          }, 2000)
+            popover.classList.remove("show")
+          }, 3000)
         })
     })
   }
 
-  const showcase = document.querySelector("#showcase")
-  if (showcase) {
-    const html = document.querySelector("html")
-    window.addEventListener("scroll", () => {
-      window.requestAnimationFrame(() => {
-        if (html.scrollTop > 0) {
-          showcase.classList.add("show")
-        } else {
-          showcase.classList.remove("show")
-        }
-      })
+  const info = document.querySelector("#article-info")
+  if (info) {
+    info.addEventListener("click", () => {
+      const popover = document.querySelector("#popover")
+      popover.classList.add("show")
+      setTimeout(() => {
+        popover.classList.remove("show")
+      }, 5000)
     })
+  }
 
-    const tabs = document.querySelectorAll(".tab")
-    const lists = document.querySelectorAll(".list")
-    tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        tabs.forEach(e => e.classList.remove("active"))
-        lists.forEach(e => e.classList.remove("show"))
-        tab.classList.add("active")
-        document.querySelector(`#${tab.dataset.target}`).classList.add("show")
-      })
+  const expand = document.querySelector("#expand-aside")
+  if (expand) {
+    expand.addEventListener("click", () => {
+      const aside = document.querySelector("aside")
+      aside.classList.toggle("expand")
     })
+  }
 
-    const pageList = document.querySelector("#page-list")
-    let currentPageItem = 0
-    pageList.style.marginTop = `${currentPageItem}px`
-    setInterval(() => {
-      currentPageItem = currentPageItem - 64
-      if (currentPageItem === pageList.children.length * -64) {
-        currentPageItem = 0
-      }
-      pageList.style.marginTop = `${currentPageItem}px`
-    }, 3000)
-
-    const search = document.querySelector("#go-search")
-    const text = document.querySelector("#search")
-    search.addEventListener("click", () => {
-      window.open(
-        "https://www.google.com/search?q=site%3Alifeni.life+" +
-          encodeURI(text.value)
-      )
-    })
-
-    document.addEventListener("keypress", e => {
-      if (text.value.length && e.code === "Enter") {
-        window.open(
-          "https://www.google.com/search?q=site%3Alifeni.life+" +
-            encodeURI(text.value)
-        )
-      }
+  const expand2 = document.querySelector("#expand-aside-header")
+  if (expand2) {
+    expand2.addEventListener("click", () => {
+      const aside = document.querySelector("aside")
+      aside.classList.toggle("expand")
     })
   }
 }
