@@ -33,8 +33,12 @@ section.popover {
     height: 0;
     border: 8px solid transparent;
     border-top: 12px solid transparent;
-    border-bottom: 12px solid #2c2c2c;
+    border-bottom: 12px solid rgba(33, 33, 33, 0.9);
     display: block;
+
+    @media (max-width: 480px) {
+      border-bottom: 12px solid #2c2c2c;
+    }
   }
 
   &.show {

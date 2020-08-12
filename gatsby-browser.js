@@ -47,28 +47,33 @@ exports.onRouteUpdate = () => {
   }
 
   const top = document.querySelector("#go-top")
-  if (top) {
-    const title = document.querySelector("#header-title")
-    const about = document.querySelector("#about")
-    window.addEventListener("scroll", () => {
-      window.requestAnimationFrame(() => {
-        const scrollTop = document.querySelector("html").scrollTop
-        if (scrollTop > 160) {
+  const title = document.querySelector("#header-title")
+  const about = document.querySelector("#about")
+  window.addEventListener("scroll", () => {
+    window.requestAnimationFrame(() => {
+      const scrollTop = document.querySelector("html").scrollTop
+      if (scrollTop > 160) {
+        if (top) {
           top.classList.remove("hide")
           title.classList.add("show")
-          if (about) {
-            about.classList.add("light")
-          }
-        } else {
+        }
+
+        if (about) {
+          about.classList.add("light")
+        }
+      } else {
+        if (top) {
           top.classList.add("hide")
           title.classList.remove("show")
-          if (about) {
-            about.classList.remove("light")
-          }
         }
-      })
-    })
 
+        if (about) {
+          about.classList.remove("light")
+        }
+      }
+    })
+  })
+  if (top) {
     top.addEventListener("click", () => {
       window.scrollTo(0, 0)
     })
