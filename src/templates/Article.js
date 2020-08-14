@@ -1,3 +1,5 @@
+import dayjs from "dayjs"
+import "dayjs/locale/zh-cn"
 import { graphql } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
@@ -6,13 +8,37 @@ import Header from "../components/Header"
 import SEO from "../components/SEO"
 import "../styles/Article.less"
 
+const relativeTime = require("dayjs/plugin/relativeTime")
+dayjs.extend(relativeTime)
+dayjs.locale("zh-cn")
+
 const BlogPost = ({ data }) => {
   const post = data.markdownRemark
-  console.log(post.frontmatter)
-
   const html = ReactDOMServer.renderToStaticMarkup(
     <div className="article-info">
-      <p className="subtitle">{post.frontmatter.date}</p>
+      {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
+      6 * 30 * 24 * 60 * 60 ? (
+        <div className="outdated-tips" id="outdated-tips">
+          提示：这篇文章修改于 {dayjs(post.frontmatter.date).fromNow()}
+          ，其中有些信息可能已经过时
+          <button className="close-tips" id="close-tips">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      ) : null}
+      <p className="subtitle">
+        {dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日")}
+      </p>
     </div>
   )
 
@@ -65,12 +91,8 @@ export const PostQuery = graphql`
         name
         descriptions
         tags
-        date(fromNow: true, locale: "zh-cn", formatString: "YYYY 年 M 月 D 日")
-        create_date(
-          fromNow: true
-          locale: "zh-cn"
-          formatString: "YYYY 年 M 月 D 日"
-        )
+        date
+        create_date
         license
       }
       wordCount {

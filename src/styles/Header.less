@@ -87,6 +87,7 @@ header {
     border: none;
     background: transparent;
     cursor: pointer;
+    outline: none;
     transition: all 0.2s;
 
     &.hide {
@@ -116,7 +117,11 @@ header {
     }
   }
 
+  a:active,
+  a:focus,
   a:hover,
+  button:active,
+  button:focus,
   button:hover {
     background-color: #212121;
   }

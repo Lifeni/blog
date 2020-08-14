@@ -112,15 +112,6 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: "gatsby-plugin-ackee-tracker",
-      options: {
-        domainId: "6020b3a0-c240-4ded-8040-318af061810b",
-        server: "https://dev.lifeni.life",
-        ignoreLocalhost: true,
-        detailed: true,
-      },
-    },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-less`,
   ],

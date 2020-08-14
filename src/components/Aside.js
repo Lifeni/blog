@@ -61,7 +61,7 @@ const Aside = ({ children, about, footer }) => (
         </a>
       </footer>
     ) : null}
-    <button className="expand-aside" id="expand-aside">
+    <button className="expand-aside" id="expand-aside" aria-label="展开侧栏">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

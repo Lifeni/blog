@@ -81,10 +81,10 @@ exports.onRouteUpdate = () => {
 
   const like = document.querySelector("#like-it")
   if (like) {
+    const popover = document.querySelector("#popover")
+    const h2 = document.querySelector("#popover h2")
+    const h3 = document.querySelector("#popover h3")
     like.addEventListener("click", () => {
-      const popover = document.querySelector("#popover")
-      const h2 = document.querySelector("#popover h2")
-      const h3 = document.querySelector("#popover h3")
       fetch("https://api.lifeni.life/like", {
         method: "POST",
       })
@@ -94,21 +94,23 @@ exports.onRouteUpdate = () => {
           h3.textContent = `感谢支持`
           popover.classList.add("show")
           like.classList.add("fill")
-          setTimeout(() => {
-            popover.classList.remove("show")
-          }, 3000)
         })
+    })
+
+    like.addEventListener("blur", () => {
+      popover.classList.remove("show")
     })
   }
 
   const info = document.querySelector("#article-info")
   if (info) {
+    const popover = document.querySelector("#popover")
     info.addEventListener("click", () => {
-      const popover = document.querySelector("#popover")
       popover.classList.add("show")
-      setTimeout(() => {
-        popover.classList.remove("show")
-      }, 5000)
+    })
+
+    info.addEventListener("blur", () => {
+      popover.classList.remove("show")
     })
   }
 
@@ -125,6 +127,14 @@ exports.onRouteUpdate = () => {
     expand2.addEventListener("click", () => {
       const aside = document.querySelector("aside")
       aside.classList.toggle("expand")
+    })
+  }
+
+  const closeTips = document.querySelector("#close-tips")
+  if (closeTips) {
+    closeTips.addEventListener("click", () => {
+      const outdatedTips = document.querySelector("#outdated-tips")
+      outdatedTips.classList.add("hide")
     })
   }
 }

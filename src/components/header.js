@@ -1,3 +1,4 @@
+import dayjs from "dayjs"
 import { Link } from "gatsby"
 import React from "react"
 import "../styles/Header.less"
@@ -41,7 +42,11 @@ const Header = ({ home, top, like, info, aside, title, data }) => (
       )}
 
       {aside ? (
-        <button id="expand-aside-header" className="expand-aside-header">
+        <button
+          id="expand-aside-header"
+          className="expand-aside-header"
+          aria-label="展开侧栏"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -62,7 +67,7 @@ const Header = ({ home, top, like, info, aside, title, data }) => (
 
     <div>
       {top ? (
-        <button id="go-top" className="hide">
+        <button id="go-top" className="hide" aria-label="回到顶部">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -79,7 +84,7 @@ const Header = ({ home, top, like, info, aside, title, data }) => (
 
       {like ? (
         <>
-          <button id="like-it">
+          <button id="like-it" aria-label="喜欢">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -115,7 +120,7 @@ const Header = ({ home, top, like, info, aside, title, data }) => (
 
       {info ? (
         <>
-          <button id="article-info">
+          <button id="article-info" aria-label="文章信息">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -130,8 +135,10 @@ const Header = ({ home, top, like, info, aside, title, data }) => (
             </svg>
           </button>
           <Popover>
-            <h4>创建日期：{data.create_date}</h4>
-            <h4>修改日期：{data.date}</h4>
+            <h4>
+              创建日期：{dayjs(data.create_date).format("YYYY 年 M 月 D 日")}
+            </h4>
+            <h4>修改日期：{dayjs(data.date).format("YYYY 年 M 月 D 日")}</h4>
             <h4>共享协议：{data.license}</h4>
           </Popover>
         </>
