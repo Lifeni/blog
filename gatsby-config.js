@@ -33,7 +33,7 @@ module.exports = {
         background_color: `#feec44`,
         theme_color: `#feec44`,
         display: `minimal-ui`,
-        icon: `src/images/logo@1024.jpg`,
+        icon: `src/images/favicon.png`,
       },
     },
     `gatsby-plugin-sharp`,
