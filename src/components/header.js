@@ -112,8 +112,8 @@ const Header = ({ home, top, like, info, aside, title, data }) => (
             </svg>
           </button>
           <Popover>
-            <h2>❤</h2>
-            <h3>Thanks</h3>
+            <p id="like-count">❤</p>
+            <p id="like-text">Thanks</p>
           </Popover>
         </>
       ) : null}
@@ -135,11 +135,11 @@ const Header = ({ home, top, like, info, aside, title, data }) => (
             </svg>
           </button>
           <Popover>
-            <h4>
+            <p>
               创建日期：{dayjs(data.create_date).format("YYYY 年 M 月 D 日")}
-            </h4>
-            <h4>修改日期：{dayjs(data.date).format("YYYY 年 M 月 D 日")}</h4>
-            <h4>共享协议：{data.license}</h4>
+            </p>
+            <p>修改日期：{dayjs(data.date).format("YYYY 年 M 月 D 日")}</p>
+            <p>共享协议：{data.license}</p>
           </Popover>
         </>
       ) : null}

@@ -1,6 +1,25 @@
 require("prismjs/themes/prism-solarizedlight.css")
 require("prismjs/plugins/line-numbers/prism-line-numbers.css")
 
+exports.onInitialClientRender = () => {
+  fetch("https://api.lifeni.life/😎", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "@",
+      agent: navigator.userAgent,
+      language: navigator.language,
+    }),
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log("API", data)
+    })
+}
+
 exports.onRouteUpdate = () => {
   const block = document.querySelectorAll(".gatsby-highlight")
   if (block.length) {
@@ -82,16 +101,16 @@ exports.onRouteUpdate = () => {
   const like = document.querySelector("#like-it")
   if (like) {
     const popover = document.querySelector("#popover")
-    const h2 = document.querySelector("#popover h2")
-    const h3 = document.querySelector("#popover h3")
+    const count = document.querySelector("#like-count")
+    const text = document.querySelector("#like-text")
     like.addEventListener("click", () => {
-      fetch("https://api.lifeni.life/like", {
-        method: "POST",
+      fetch("https://api.lifeni.life/😘", {
+        credentials: "include",
       })
-        .then(response => response.text())
-        .then(count => {
-          h2.textContent = `❤ × ${count}`
-          h3.textContent = `感谢支持`
+        .then(res => res.json())
+        .then(data => {
+          count.textContent = `❤ × ${data.count}`
+          text.textContent = `感谢支持`
           popover.classList.add("show")
           like.classList.add("fill")
         })
@@ -114,20 +133,19 @@ exports.onRouteUpdate = () => {
     })
   }
 
-  const expand = document.querySelector("#expand-aside")
-  if (expand) {
-    expand.addEventListener("click", () => {
-      const aside = document.querySelector("aside")
-      aside.classList.toggle("expand")
-    })
+  const toggleAside = () => {
+    const aside = document.querySelector("aside")
+    aside.classList.toggle("expand")
   }
 
-  const expand2 = document.querySelector("#expand-aside-header")
-  if (expand2) {
-    expand2.addEventListener("click", () => {
-      const aside = document.querySelector("aside")
-      aside.classList.toggle("expand")
-    })
+  const expand = document.querySelector("#expand-aside")
+  if (expand) {
+    expand.addEventListener("click", toggleAside)
+  }
+
+  const expandHeader = document.querySelector("#expand-aside-header")
+  if (expandHeader) {
+    expandHeader.addEventListener("click", toggleAside)
   }
 
   const closeTips = document.querySelector("#close-tips")
