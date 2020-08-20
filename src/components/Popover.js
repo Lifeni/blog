@@ -1,8 +1,8 @@
 import React from "react"
 import "../styles/Popover.less"
 
-const Popover = ({ children }) => (
-  <section className="popover" id="popover">
+const Popover = ({ children, big }) => (
+  <section className={`popover${big ? " big" : ""}`} id="popover">
     {children}
   </section>
 )

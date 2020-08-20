@@ -3,9 +3,9 @@ import "dayjs/locale/zh-cn"
 import { graphql } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
-import Aside from "../components/Aside"
 import Header from "../components/Header"
 import SEO from "../components/SEO"
+import Sidebar from "../components/Sidebar"
 import "../styles/Article.less"
 
 const relativeTime = require("dayjs/plugin/relativeTime")
@@ -59,12 +59,12 @@ const BlogPost = ({ data }) => {
         data={post.frontmatter}
       />
       <main>
-        <Aside>
+        <Sidebar>
           <nav
             className="toc"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
           ></nav>
-        </Aside>
+        </Sidebar>
         <article
           id="content"
           dangerouslySetInnerHTML={{ __html: html + post.html }}

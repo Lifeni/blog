@@ -1,7 +1,7 @@
 require("prismjs/themes/prism-solarizedlight.css")
 require("prismjs/plugins/line-numbers/prism-line-numbers.css")
 
-exports.onInitialClientRender = () => {
+exports.onRouteUpdate = () => {
   fetch("https://api.lifeni.life/😎", {
     method: "POST",
     credentials: "include",
@@ -9,7 +9,8 @@ exports.onInitialClientRender = () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "@",
+      name: "@",
+      from: window.location.href,
       agent: navigator.userAgent,
       language: navigator.language,
     }),
@@ -18,9 +19,7 @@ exports.onInitialClientRender = () => {
     .then(data => {
       console.log("API", data)
     })
-}
 
-exports.onRouteUpdate = () => {
   const block = document.querySelectorAll(".gatsby-highlight")
   if (block.length) {
     block.forEach(e => {
@@ -109,8 +108,17 @@ exports.onRouteUpdate = () => {
       })
         .then(res => res.json())
         .then(data => {
-          count.textContent = `❤ × ${data.count}`
-          text.textContent = `感谢支持`
+          if (data.code === 200) {
+            count.textContent = `❤ × ${data.count}`
+            text.textContent = `感谢支持`
+          } else if (data.code === 401) {
+            count.textContent = `❤ 不认识你`
+            text.textContent = `听说刷新页面...`
+          } else if (data.code === 429) {
+            count.textContent = `❤ 溢出了`
+            text.textContent = `等一会再点吧`
+          }
+
           popover.classList.add("show")
           like.classList.add("fill")
         })
@@ -154,5 +162,24 @@ exports.onRouteUpdate = () => {
       const outdatedTips = document.querySelector("#outdated-tips")
       outdatedTips.classList.add("hide")
     })
+  }
+
+  const privacy = document.querySelector("#privacy-snackbar")
+  if (privacy) {
+    if (window.localStorage.getItem("privacy")) {
+      privacy.classList.remove("show")
+    } else {
+      privacy.classList.add("show")
+    }
+
+    const closeSnackbar = document.querySelector("#close-snackbar")
+    closeSnackbar.addEventListener("click", () => {
+      privacy.classList.remove("show")
+      window.localStorage.setItem("privacy", "ok")
+    })
+  }
+
+  if (window.location.pathname.includes("/privacy")) {
+    window.localStorage.setItem("privacy", "ok")
   }
 }

@@ -1,14 +1,14 @@
 import React from "react"
-import "../styles/Aside.less"
+import "../styles/Sidebar.less"
 
-const Aside = ({ children, about, footer }) => (
+const Sidebar = ({ children, about, footer }) => (
   <aside>
     {about ? (
       <section className="about" id="about">
         <h2>Hi</h2>
         <br />
         <p>
-          这是我的个人网站「记录干杯」，使用
+          这是我的个人网站「 记录干杯 」，使用
           <a
             href="https://www.gatsbyjs.org/"
             target="_blank"
@@ -77,4 +77,4 @@ const Aside = ({ children, about, footer }) => (
   </aside>
 )
 
-export default Aside
+export default Sidebar

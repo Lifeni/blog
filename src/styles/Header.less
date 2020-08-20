@@ -23,14 +23,6 @@ header {
     align-items: center;
     justify-content: flex-start;
 
-    a {
-      height: 72px;
-      padding: 24px;
-      display: flex;
-      align-items: center;
-      line-height: 24px;
-    }
-
     svg {
       margin: 0 24px 0 0;
     }
@@ -47,9 +39,22 @@ header {
   }
 
   a {
+    height: 72px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    line-height: 24px;
     color: white;
     text-decoration: none;
     transition: all 0.2s;
+
+    &.home {
+      display: none;
+      @media (min-width: 480px) {
+        display: flex;
+        align-items: center;
+      }
+    }
   }
 
   h6 {
