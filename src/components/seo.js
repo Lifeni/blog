@@ -32,8 +32,8 @@ function SEO({ description, lang, meta, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={title === "Home" ? "记录干杯" : title}
-      titleTemplate={`%s - ${site.siteMetadata.title}`}
+      title={title === "Home" ? "主页" : title}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Lifeni`,
-    description: `记录干杯。`,
+    title: `记录干杯`,
+    description: `个人网站「 记录干杯 」，在这里记录一些技术相关的文章、尝试一些新的技术。`,
     author: `Lifeni`,
     siteLanguage: "zh-cn",
     siteUrl: `https://lifeni.life`,
@@ -27,8 +27,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Lifeni`,
-        short_name: `Lifeni`,
+        name: `记录干杯 - Lifeni`,
+        short_name: `记录干杯`,
         start_url: `/`,
         background_color: `#feec44`,
         theme_color: `#feec44`,
