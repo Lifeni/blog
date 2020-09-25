@@ -2,30 +2,30 @@ article {
   position: relative;
   width: 100%;
   max-width: calc(30% + 900px);
-  padding: calc(56px + 72px) 72px 56px calc(30% + 72px);
+  padding: 56px 72px 56px calc(30% + 72px);
   font-size: 1rem;
   color: #000000;
   background-color: #ffffff;
   transition: all 0.2s;
 
   @media (max-width: 1024px) {
-    padding: calc(48px + 72px) 48px 48px calc(30% + 48px);
+    padding: 48px 48px 48px calc(30% + 48px);
   }
 
   @media (max-width: 768px) {
-    padding: calc(48px + 72px) 48px 48px calc(72px + 48px);
+    padding: 48px 48px 48px calc(72px + 48px);
   }
 
   @media (max-width: 600px) {
-    padding: calc(48px + 72px) 36px 48px calc(72px + 36px);
+    padding: 48px 36px 48px calc(72px + 36px);
   }
 
   @media (max-width: 480px) {
-    padding: calc(48px + 72px) 36px 48px 36px;
+    padding: 120px 36px 48px 36px;
   }
 
   @media (max-width: 400px) {
-    padding: calc(48px + 72px) 28px 48px 28px;
+    padding: 120px 28px 48px 28px;
   }
 
   p,
@@ -327,6 +327,11 @@ code[class*="language-"] ::selection {
   font-size: 1rem;
   white-space: nowrap;
   margin: 0;
+
+  .tag {
+    padding: 0 1rem 0 0;
+    color: #616161;
+  }
 }
 
 .outdated-tips {
@@ -337,9 +342,8 @@ code[class*="language-"] ::selection {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: solid 2px #ffe082;
   border-radius: 4px;
-  background: #fff9c4;
+  background: #fff7d1;
   font-size: 1rem;
   line-height: 2rem;
 

@@ -5,7 +5,7 @@ header {
   z-index: 2000;
   width: 100%;
   height: 72px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   background: rgba(33, 33, 33, 0.9);
@@ -13,12 +13,12 @@ header {
   font-size: 1.125rem;
 
   @media (max-width: 480px) {
+    display: flex;
     background: #2c2c2c;
     backdrop-filter: none;
   }
 
   nav {
-    height: 72px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -62,24 +62,14 @@ header {
   }
 
   h6 {
+    padding: 0 24px;
     font-size: 1.125rem;
     font-weight: 400;
     color: #ffffff;
-    opacity: 0;
-    visibility: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     transition: all 0.2s;
-
-    &.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    @media (max-width: 480px) {
-      display: none;
-    }
   }
 
   div {

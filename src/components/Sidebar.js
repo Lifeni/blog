@@ -8,18 +8,12 @@ const Sidebar = ({ children, about, footer }) => (
         <h2>Hi</h2>
         <br />
         <p>
-          这是我的个人网站「 记录干杯 」，使用
-          <a
-            href="https://www.gatsbyjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            &nbsp;GatsbyJS&nbsp;
-          </a>
-          构建，我会在这里记录一些技术相关的文章、尝试一些新的技术。
+          这是我的个人网站「 记录干杯
+          」，我会在这里记录一些技术相关的文章、尝试一些新的技术。
         </p>
         <p>
-          我主要研究的方向是 Web 前端，可以在
+          我比较感兴趣的方向是 Web 前端，喜欢好看的设计，目前正在尝试使用
+          TypeScript。在
           <a
             href="https://github.com/Lifeni"
             target="_blank"
@@ -27,9 +21,10 @@ const Sidebar = ({ children, about, footer }) => (
           >
             &nbsp;GitHub&nbsp;
           </a>
-          上找到我和我的项目。
+          上可以找到我和我的项目。
         </p>
         <p>
+          还有，
           <a
             href="https://tanakarino.cn/"
             target="_blank"
@@ -37,9 +32,8 @@ const Sidebar = ({ children, about, footer }) => (
           >
             Nanako&nbsp;
           </a>
-          是我的朋友，可以去看一看。
+          是我的朋友，有时间可以去他的网站看一看。
         </p>
-        {/* <p>Lifeni Lab 是一个实验室，我会在那里使用一些新的技术，欢迎访问。</p> */}
       </section>
     ) : null}
     {children}

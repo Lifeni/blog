@@ -5,10 +5,10 @@ import Sidebar from "../components/Sidebar"
 
 const NotFoundPage = () => (
   <>
-    <SEO title="404: Not found" />
-    <Header />
+    <SEO title="404 Not found" />
+    <Header back />
     <main>
-      <Sidebar footer />
+      <Sidebar />
       <article>
         <p className="subtitle">404</p>
         <h1>NOT FOUND</h1>

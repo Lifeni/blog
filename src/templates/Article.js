@@ -14,6 +14,7 @@ dayjs.locale("zh-cn")
 
 const BlogPost = ({ data }) => {
   const post = data.markdownRemark
+
   const html = ReactDOMServer.renderToStaticMarkup(
     <div className="article-info">
       {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
@@ -37,7 +38,11 @@ const BlogPost = ({ data }) => {
         </div>
       ) : null}
       <p className="subtitle">
-        {dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日")}
+        {post.frontmatter.tags.map(tag => (
+          <span key={tag} className="tag">
+            # {tag}
+          </span>
+        ))}
       </p>
     </div>
   )
@@ -52,14 +57,33 @@ const BlogPost = ({ data }) => {
         Skip to main content | 跳转到主要内容
       </a>
       <Header
-        top
-        info
+        back
         aside
         title={post.frontmatter.title}
         data={post.frontmatter}
       />
       <main>
         <Sidebar>
+          <section className="banner">
+            <p>
+              创建日期：
+              <span>
+                {dayjs(post.frontmatter.create_date).format(
+                  "YYYY 年 M 月 D 日"
+                )}
+              </span>
+            </p>
+            <p>
+              修改日期：
+              <span>
+                {dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日")}
+              </span>
+            </p>
+            <p>
+              共享协议：
+              <span>{post.frontmatter.license}</span>
+            </p>
+          </section>
           <nav
             className="toc"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}

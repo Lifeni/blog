@@ -62,7 +62,7 @@ module.exports = {
               maintainCase: false,
               removeAccents: true,
               isIconAfterHeader: false,
-              elements: [`h1`, `h2`, `h3`],
+              elements: [`h2`, `h3`],
             },
           },
           {
@@ -102,6 +102,12 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-177358412-1",
       },
     },
     {
