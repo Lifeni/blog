@@ -6,7 +6,6 @@ const Sidebar = ({ children, about, footer }) => (
     {about ? (
       <section className="about" id="about">
         <h2>Hi</h2>
-        <br />
         <p>
           这是我的个人网站「 记录干杯
           」，我会在这里记录一些技术相关的文章、尝试一些新的技术。

@@ -1,6 +1,6 @@
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
 import Header from "../components/Header"
@@ -64,24 +64,33 @@ const BlogPost = ({ data }) => {
       />
       <main>
         <Sidebar>
+          <nav className="sidebar-nav">
+            <Link to="/" aria-label="返回" className="back-home">
+              <span>&lt;--</span>
+            </Link>
+          </nav>
           <section className="banner">
-            <p>
+            <p
+              title={
+                "创建日期：" +
+                dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日")
+              }
+            >
               创建日期：
-              <span>
-                {dayjs(post.frontmatter.create_date).format(
-                  "YYYY 年 M 月 D 日"
-                )}
-              </span>
+              {dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日")}
             </p>
-            <p>
+            <p
+              title={
+                "修改日期：" +
+                dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日")
+              }
+            >
               修改日期：
-              <span>
-                {dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日")}
-              </span>
+              {dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日")}
             </p>
-            <p>
+            <p title={"共享协议：" + post.frontmatter.license}>
               共享协议：
-              <span>{post.frontmatter.license}</span>
+              {post.frontmatter.license}
             </p>
           </section>
           <nav

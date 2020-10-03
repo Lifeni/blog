@@ -114,7 +114,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Inter:300,400,600&display=auto"],
+          families: ["Inter:300,400,600&display=swap"],
         },
       },
     },
