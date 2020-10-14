@@ -1,10 +1,10 @@
 import { Link } from "gatsby"
 import React from "react"
-import "../styles/Header.less"
+import "../styles/header.less"
 
 const Header = ({ back, aside, title }) => (
   <header>
-    {back ? (
+    {back && (
       <nav>
         <Link to="/" aria-label="返回">
           <svg
@@ -22,11 +22,11 @@ const Header = ({ back, aside, title }) => (
           <span>返回</span>
         </Link>
       </nav>
-    ) : null}
+    )}
 
-    {title ? <h6 id="header-title">{title}</h6> : null}
+    {title && <h6 id="header-title">{title}</h6>}
 
-    {aside ? (
+    {aside && (
       <div>
         <button
           id="expand-aside-header"
@@ -47,7 +47,7 @@ const Header = ({ back, aside, title }) => (
           </svg>
         </button>
       </div>
-    ) : null}
+    )}
   </header>
 )
 

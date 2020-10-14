@@ -1,9 +1,9 @@
 import React from "react"
-import "../styles/Sidebar.less"
+import "../styles/sidebar.less"
 
 const Sidebar = ({ children, about, footer }) => (
   <aside>
-    {about ? (
+    {about && (
       <section className="about" id="about">
         <h2>Hi</h2>
         <p>
@@ -34,9 +34,9 @@ const Sidebar = ({ children, about, footer }) => (
           是我的朋友，有时间可以去他的网站看一看。
         </p>
       </section>
-    ) : null}
+    )}
     {children}
-    {footer ? (
+    {footer && (
       <footer>
         <a
           href="http://www.beian.miit.gov.cn/"
@@ -53,7 +53,7 @@ const Sidebar = ({ children, about, footer }) => (
           鲁公网安备 37132102371392 号
         </a>
       </footer>
-    ) : null}
+    )}
     <button className="expand-aside" id="expand-aside" aria-label="展开侧栏">
       <svg
         xmlns="http://www.w3.org/2000/svg"

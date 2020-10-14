@@ -1,7 +1,7 @@
 import React from "react"
-import Header from "../components/Header"
-import SEO from "../components/SEO"
-import Sidebar from "../components/Sidebar"
+import Header from "../components/header"
+import SEO from "../components/seo"
+import Sidebar from "../components/sidebar"
 
 const NotFoundPage = () => (
   <>

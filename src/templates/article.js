@@ -3,10 +3,10 @@ import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
-import Header from "../components/Header"
-import SEO from "../components/SEO"
-import Sidebar from "../components/Sidebar"
-import "../styles/Article.less"
+import Header from "../components/header"
+import SEO from "../components/seo"
+import Sidebar from "../components/sidebar"
+import "../styles/article.less"
 
 const relativeTime = require("dayjs/plugin/relativeTime")
 dayjs.extend(relativeTime)
@@ -15,13 +15,18 @@ dayjs.locale("zh-cn")
 const BlogPost = ({ data }) => {
   const post = data.markdownRemark
 
+  const date = {
+    create: dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日"),
+    modify: dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日"),
+    from: dayjs(post.frontmatter.date).fromNow(),
+  }
+
   const html = ReactDOMServer.renderToStaticMarkup(
     <div className="article-info">
       {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
-      6 * 30 * 24 * 60 * 60 ? (
+        6 * 30 * 24 * 60 * 60 && (
         <div className="outdated-tips" id="outdated-tips">
-          提示：这篇文章修改于 {dayjs(post.frontmatter.date).fromNow()}
-          ，其中有些信息可能已经过时
+          提示：这篇文章修改于 {date.from} ，其中有些信息可能已经过时
           <button className="close-tips" id="close-tips">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +41,7 @@ const BlogPost = ({ data }) => {
             </svg>
           </button>
         </div>
-      ) : null}
+      )}
       <p className="subtitle">
         {post.frontmatter.tags.map(tag => (
           <span key={tag} className="tag">
@@ -69,34 +74,17 @@ const BlogPost = ({ data }) => {
               <span>&lt;--</span>
             </Link>
           </nav>
-          <section className="banner">
-            <p
-              title={
-                "创建日期：" +
-                dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日")
-              }
-            >
-              创建日期：
-              {dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日")}
-            </p>
-            <p
-              title={
-                "修改日期：" +
-                dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日")
-              }
-            >
-              修改日期：
-              {dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日")}
-            </p>
-            <p title={"共享协议：" + post.frontmatter.license}>
-              共享协议：
-              {post.frontmatter.license}
-            </p>
-          </section>
           <nav
             className="toc"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
           ></nav>
+          <section className="banner">
+            <p title={`创建日期：${date.create}`}>创建日期： {date.create}</p>
+            <p title={`修改日期：${date.modify}`}>修改日期： {date.modify}</p>
+            <p title={`共享协议：${post.frontmatter.license}`}>
+              共享协议： {post.frontmatter.license}
+            </p>
+          </section>
         </Sidebar>
         <article
           id="content"

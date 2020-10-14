@@ -1,6 +1,6 @@
 import { graphql, Link, StaticQuery } from "gatsby"
 import React from "react"
-import "../styles/PostList.less"
+import "../styles/postlist.less"
 
 const Post = ({ title, name, date, className, descriptions, tags }) => (
   <div className={className}>
@@ -20,7 +20,7 @@ const Post = ({ title, name, date, className, descriptions, tags }) => (
       {descriptions.map((description, index) => (
         <span key={description}>
           {description}
-          {index === descriptions.length - 1 ? null : <br />}
+          {index !== descriptions.length - 1 && <br />}
         </span>
       ))}
     </p>

@@ -1,9 +1,9 @@
 import React from "react"
-import Header from "../components/Header"
-import PostList from "../components/PostList"
-import SEO from "../components/SEO"
-import Sidebar from "../components/Sidebar"
-import "../styles/Layout.less"
+import Header from "../components/header"
+import PostList from "../components/postlist"
+import SEO from "../components/seo"
+import Sidebar from "../components/sidebar"
+import "../styles/layout.less"
 
 const IndexPage = () => (
   <>
