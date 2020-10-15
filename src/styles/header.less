@@ -3,116 +3,52 @@ header {
   top: 0;
   left: 0;
   z-index: 2000;
-  width: 100%;
-  height: 72px;
+  width: 72px;
+  height: 100%;
   display: none;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background: rgba(33, 33, 33, 0.9);
-  backdrop-filter: blur(10px);
+  background: #f5f5f5;
   font-size: 1.125rem;
 
+  @media (max-width: 768px) {
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    background-color: #ffffff;
+
+    a,
+    button {
+      width: 72px;
+      height: 72px;
+      padding: 24px;
+      border: none;
+      display: flex;
+      align-items: center;
+      line-height: 24px;
+      background-color: transparent;
+      text-decoration: none;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+    }
+  }
+
   @media (max-width: 480px) {
-    display: flex;
-    background: #2c2c2c;
-    backdrop-filter: none;
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    svg {
-      margin: 0 24px 0 0;
-    }
-
-    a > span {
-      padding: 0 8px 0 0;
-    }
-
-    @media (max-width: 600px) {
-      a > span {
-        display: none;
-      }
-
-      svg {
-        margin: 0;
-      }
-    }
-  }
-
-  a {
-    height: 72px;
+    width: 100%;
+    height: auto;
+    min-height: unset;
     padding: 24px;
-    display: flex;
-    align-items: center;
-    line-height: 24px;
-    color: white;
-    text-decoration: none;
-    transition: all 0.2s;
+    flex-direction: row;
+    background-color: transparent;
 
-    &.home {
-      display: none;
-      @media (min-width: 480px) {
-        display: flex;
-        align-items: center;
-      }
-    }
-  }
-
-  h6 {
-    padding: 0 24px;
-    font-size: 1.125rem;
-    font-weight: 400;
-    color: #ffffff;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    transition: all 0.2s;
-  }
-
-  div {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-
-  button {
-    width: 72px;
-    height: 72px;
-    padding: 24px;
-    opacity: 1;
-    visibility: visible;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.2s;
-
-    &.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .like-icon-fill {
-      display: none;
-    }
-
-    &.fill {
-      .like-icon {
-        display: none;
-      }
-
-      .like-icon-fill {
-        display: block;
-      }
-    }
-
-    &.expand-aside-header {
-      display: none;
-      @media (max-width: 480px) {
-        display: block;
-      }
+    a,
+    button {
+      width: 72px;
+      height: 72px;
+      border-radius: 72px;
+      background-color: #f5f5f5;
     }
   }
 
@@ -122,6 +58,6 @@ header {
   button:active,
   button:focus,
   button:hover {
-    background-color: #212121;
+    background-color: #eeeeee;
   }
 }

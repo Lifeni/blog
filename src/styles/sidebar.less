@@ -6,117 +6,54 @@ aside {
   width: 30%;
   height: 100%;
   min-height: 100vh;
-  padding: 56px 72px 0 72px;
+  padding: 56px 72px;
   display: flex;
   flex-direction: column;
   background: #f5f5f5;
   overflow: hidden auto;
   transition: all 0.4s;
 
-  .expand-aside {
-    display: none;
-  }
-
   @media (max-width: 1024px) {
-    padding: 48px 48px 0 48px;
+    padding: 48px;
   }
 
   @media (max-width: 768px) {
     width: 72px;
-    padding: 48px 24px 0 24px;
+    padding: 72px 0;
+    background: #f5f5f5;
+    box-shadow: 0 0 48px rgba(0, 0, 0, 0.08);
     overflow: hidden;
 
-    .expand-aside {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 400;
-      width: 72px;
-      height: 100%;
-      padding: 0 0 160px 0;
-      display: block;
-      border: none;
-      background: #f5f5f5;
-    }
-
     &.expand {
-      width: calc(360px + 24px);
-      padding: 48px 72px 0 48px;
-
-      .expand-aside {
-        z-index: 200;
-      }
-
-      .expand-aside > svg {
-        transform: rotate(0.5turn);
-      }
-    }
-  }
-
-  @media (max-width: 600px) {
-    &.expand {
-      width: calc(300px + 72px);
-      padding: 48px 72px 0 36px;
+      width: calc(360px + 128px);
+      padding: 72px 64px 72px 136px;
+      box-shadow: none;
+      overflow: hidden auto;
     }
   }
 
   @media (max-width: 480px) {
+    bottom: 0;
+    top: unset;
+    width: 100%;
+    height: 0;
+    min-height: unset;
+    border-radius: 36px 36px 0 0;
     z-index: 3000;
-    width: 0;
-    padding: 48px 0 0 0;
+    padding: 0 48px;
     overflow: hidden;
-    background: #ffffff;
-    box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
-
-    .expand-aside {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 400;
-      width: 0;
-      height: 100%;
-      display: block;
-      border: none;
-      background: #ffffff;
-    }
 
     &.expand {
-      width: calc(300px + 72px);
-      padding: 48px 72px 0 36px;
-
-      .expand-aside {
-        z-index: 200;
-        width: 72px;
-      }
-
-      .expand-aside > svg {
-        transform: rotate(0.5turn);
-      }
-    }
-  }
-
-  @media (max-width: 400px) {
-    &.expand {
-      width: calc(300px + 64px);
-      padding: 48px 72px 0 28px;
+      width: 100%;
+      height: calc(100vh - 120px);
+      padding: 48px;
     }
   }
 
   nav {
-    &.toc {
-      flex: 1;
-    }
-
     @media (max-width: 768px) {
       width: 100%;
-      height: 100%;
-      padding: 0 0 48px 0;
-      min-width: calc(360px - 48px - 48px);
-      overflow-y: auto;
-    }
-
-    @media (max-width: 600px) {
-      min-width: calc(300px - 36px);
+      min-width: calc(360px - 36px - 36px);
     }
 
     p,
@@ -162,7 +99,7 @@ aside {
       white-space: nowrap;
       transition: all 0.2s;
 
-      @media (max-width: 480px) {
+      @media (max-width: 768px) {
         background-color: #f5f5f5;
       }
     }
@@ -196,11 +133,8 @@ aside {
 
   section {
     @media (max-width: 768px) {
-      min-width: calc(360px - 48px - 48px);
-    }
-
-    @media (max-width: 600px) {
-      min-width: calc(300px - 36px);
+      width: 100%;
+      min-width: calc(360px - 36px - 36px);
     }
 
     h2 {
@@ -265,28 +199,17 @@ section.about {
       transition: all 0.2s;
     }
   }
-
-  @media (max-width: 480px) {
-    background-color: #ffffff;
-  }
 }
 
 section.banner {
   position: relative;
   z-index: 300;
-  margin: 48px -72px 0 -72px;
-  padding: 48px 72px;
+  margin: 48px 0 0 0;
   border-radius: 4px;
-  background-color: #eeeeee;
-
-  @media (max-width: 768px) {
-    margin: 0 -72px;
-    padding: 32px 72px;
-  }
-
-  @media (max-width: 480px) {
-    background-color: #f5f5f5;
-  }
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
   p {
     line-height: 2rem;
@@ -323,26 +246,18 @@ nav.sidebar-nav {
 
 footer {
   position: relative;
-  margin: 48px -72px 0 -72px;
+  margin: 0 -72px -48px -72px;
   padding: 48px 72px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   white-space: nowrap;
-  background-color: #eeeeee;
+  // background-color: #eeeeee;
   transition: all 0.2s;
 
   @media (max-width: 1024px) {
     padding: 48px 72px;
-  }
-
-  @media (max-width: 860px) {
-    display: none;
-  }
-
-  @media (max-height: 600px) {
-    display: none;
   }
 
   a {
