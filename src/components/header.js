@@ -6,7 +6,7 @@ const Header = ({ app, back, aside }) => (
   <header>
     {app && (
       <>
-        <button className="auto-width" id="open-dialog">
+        <button className="auto-width" id="open-dialog" aria-label="更多应用">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -31,7 +31,7 @@ const Header = ({ app, back, aside }) => (
                 height="24"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   fill="#616161"
                   d="M2.75 2A1.75 1.75 0 001 3.75v3.5C1 8.216 1.784 9 2.75 9h18.5A1.75 1.75 0 0023 7.25v-3.5A1.75 1.75 0 0021.25 2H2.75zm18.5 1.5H2.75a.25.25 0 00-.25.25v3.5c0 .138.112.25.25.25h18.5a.25.25 0 00.25-.25v-3.5a.25.25 0 00-.25-.25z"
                 ></path>

@@ -1,113 +1,145 @@
 header {
   position: fixed;
-  top: 0;
-  left: 0;
+  bottom: 0;
+  right: 0;
   z-index: 2000;
-  width: 72px;
-  height: 100%;
-  display: none;
-  flex-direction: column;
+  width: 70%;
+  height: 72px;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #f5f5f5;
+  background: transparent;
   font-size: 1.125rem;
+  pointer-events: none;
 
   .dialog {
-    display: none;
-  }
-
-  .title {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9000;
+    width: 100%;
     height: 100%;
     min-height: 100vh;
     display: flex;
-    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: auto;
+    transition: all 0.4s;
 
-    .dialog {
-      position: fixed;
-      top: 0;
+    .mask {
+      position: absolute;
       left: 0;
-      z-index: 9000;
+      top: 0;
+      z-index: 10;
       width: 100%;
       height: 100%;
-      min-height: 100vh;
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: all 0.4s;
+    }
+
+    .card {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      z-index: 100;
+      width: 0;
+      height: 0;
+      padding: 24px;
+      border-radius: 50%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.2s;
+      background-color: #ffffff;
+      transition: all 0.4s;
 
-      &.show {
-        opacity: 1;
-        visibility: visible;
+      svg {
+        width: 36px;
+        height: 36px;
+        margin: 18px;
       }
 
-      .mask {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 10;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
+      span {
+        color: #616161;
       }
+    }
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
 
       .card {
-        z-index: 100;
-        width: calc(100% - 48px);
-        max-width: 360px;
-        height: auto;
-        min-height: 40vh;
-        padding: 24px;
+        width: 400px;
+        height: 400px;
         border-radius: 4px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: #ffffff;
-
-        svg {
-          width: 36px;
-          height: 36px;
-          margin: 18px;
-        }
-
-        span {
-          color: #616161;
-        }
       }
+    }
+  }
+
+  .title {
+    font-size: 1.15rem;
+    margin: 0 8px 0 20px;
+    pointer-events: auto;
+  }
+
+  a,
+  button {
+    width: 72px;
+    height: 72px;
+    padding: 24px;
+    border: none;
+    display: none;
+    align-items: center;
+    line-height: 24px;
+    background-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    pointer-events: auto;
+    outline: none;
+    color: #000000;
+    font-family: inherit;
+    transition: all 0.2s;
+
+    &.auto-width {
+      width: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    top: 0;
+    left: 0;
+    right: unset;
+    width: 72px;
+    height: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #ffffff;
+
+    .title {
+      display: none;
     }
 
     a,
     button {
-      width: 72px;
-      height: 72px;
-      padding: 24px;
-      border: none;
       display: flex;
-      align-items: center;
-      line-height: 24px;
-      background-color: transparent;
-      text-decoration: none;
-      cursor: pointer;
-      outline: none;
-      color: #000000;
-      font-family: inherit;
-      transition: all 0.2s;
+    }
 
-      &.auto-width {
-        width: auto;
+    .dialog {
+      .card {
+        position: absolute;
+        left: 24px;
+        top: 24px;
+        z-index: 100;
+        width: 72px;
+        height: 72px;
       }
     }
   }
-
   @media (max-width: 480px) {
     width: 100%;
-    height: auto;
+    height: 120px;
     min-height: unset;
     padding: 24px;
     flex-direction: row;
@@ -115,8 +147,26 @@ header {
 
     .title {
       display: inline-block;
-      font-size: 1.15rem;
-      margin: 0 8px 0 20px;
+    }
+
+    .dialog {
+      .card {
+        position: absolute;
+        left: 0;
+        top: -40vh;
+        z-index: 100;
+        width: 100%;
+        max-width: 100%;
+        height: 40vh;
+        border-radius: 0 0 36px 36px;
+      }
+
+      &.show {
+        .card {
+          top: 0;
+          width: 100%;
+        }
+      }
     }
 
     a,
@@ -124,7 +174,8 @@ header {
       width: 72px;
       height: 72px;
       border-radius: 72px;
-      background-color: #f5f5f5;
+      background-color: rgba(245, 245, 245, 0.8);
+      backdrop-filter: blur(12px);
 
       &.auto-width {
         width: auto;

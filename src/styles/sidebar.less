@@ -27,6 +27,8 @@ aside {
     &.expand {
       width: calc(360px + 128px);
       padding: 72px 64px 72px 136px;
+      background-color: rgba(245, 245, 245, 0.8);
+      backdrop-filter: blur(12px);
       box-shadow: none;
       overflow: hidden auto;
     }
@@ -98,10 +100,6 @@ aside {
         "Source Han Sans CN", monospace, sans-serif;
       white-space: nowrap;
       transition: all 0.2s;
-
-      @media (max-width: 768px) {
-        background-color: #f5f5f5;
-      }
     }
   }
 
