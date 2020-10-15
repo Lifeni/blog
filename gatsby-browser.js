@@ -75,4 +75,20 @@ exports.onRouteUpdate = () => {
       outdatedTips.classList.add("hide")
     })
   }
+
+  const openDialog = document.querySelector("#open-dialog")
+  if (openDialog) {
+    openDialog.addEventListener("click", () => {
+      const dialog = document.querySelector("#home-dialog")
+      dialog.classList.add("show")
+    })
+  }
+
+  const closeDialog = document.querySelector("#close-dialog")
+  if (closeDialog) {
+    closeDialog.addEventListener("click", () => {
+      const dialog = document.querySelector("#home-dialog")
+      dialog.classList.remove("show")
+    })
+  }
 }
