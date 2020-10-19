@@ -6,7 +6,11 @@ const Header = ({ app, back, aside }) => (
   <header>
     {app && (
       <>
-        <button className="auto-width" id="open-dialog" aria-label="更多应用">
+        <button
+          className="fab auto-width"
+          id="open-dialog"
+          aria-label="更多应用"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -52,7 +56,7 @@ const Header = ({ app, back, aside }) => (
     )}
 
     {back && (
-      <Link to="/" className="auto-width" aria-label="返回">
+      <Link to="/" className="mobile-only auto-width" aria-label="返回">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -71,7 +75,7 @@ const Header = ({ app, back, aside }) => (
     {aside && (
       <button
         id="expand-aside-header"
-        className="expand-aside-header"
+        className="mobile-only expand-aside-header"
         aria-label="展开侧栏"
       >
         <svg

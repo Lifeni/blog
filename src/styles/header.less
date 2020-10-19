@@ -3,11 +3,12 @@ header {
   bottom: 0;
   right: 0;
   z-index: 2000;
-  width: 70%;
-  height: 72px;
+  width: 100%;
+  height: 168px;
+  padding: 24px 48px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   background: transparent;
   font-size: 1.125rem;
   pointer-events: none;
@@ -41,13 +42,13 @@ header {
 
     .card {
       position: absolute;
-      top: 24px;
-      right: 24px;
+      bottom: 48px;
+      right: 48px;
       z-index: 100;
-      width: 0;
-      height: 0;
+      width: 24px;
+      height: 24px;
       padding: 24px;
-      border-radius: 50%;
+      border-radius: 36px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -79,6 +80,7 @@ header {
   }
 
   .title {
+    display: none;
     font-size: 1.15rem;
     margin: 0 8px 0 20px;
     pointer-events: auto;
@@ -89,11 +91,13 @@ header {
     width: 72px;
     height: 72px;
     padding: 24px;
+    margin: 0 0 0 36px;
     border: none;
-    display: none;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
     line-height: 24px;
-    background-color: transparent;
+    background-color: #f5f5f5;
     text-decoration: none;
     cursor: pointer;
     pointer-events: auto;
@@ -101,6 +105,19 @@ header {
     color: #000000;
     font-family: inherit;
     transition: all 0.2s;
+
+    &.fab {
+      background-color: #ffeb3b;
+
+      &:hover,
+      &:active {
+        background-color: #fdd835;
+      }
+    }
+
+    &.mobile-only {
+      display: none;
+    }
 
     &.auto-width {
       width: auto;
@@ -111,32 +128,55 @@ header {
     top: 0;
     left: 0;
     right: unset;
+    bottom: unset;
     width: 72px;
-    height: 100%;
     min-height: 100vh;
+    padding: 0;
     flex-direction: column;
+    justify-content: space-between;
     background-color: #ffffff;
-
-    .title {
-      display: none;
-    }
-
-    a,
-    button {
-      display: flex;
-    }
 
     .dialog {
       .card {
         position: absolute;
-        left: 24px;
-        top: 24px;
+        left: 0;
+        top: 0;
         z-index: 100;
-        width: 72px;
-        height: 72px;
+        width: 24px;
+        height: 24px;
+        border-radius: 0;
+      }
+
+      &.show {
+        .card {
+          left: 24px;
+          top: 24px;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    a,
+    button {
+      margin: 0;
+      border-radius: 0;
+      background-color: transparent;
+
+      // &.fab {
+      //   background-color: transparent;
+
+      //   &:hover,
+      //   &:active {
+      //     background-color: #eeeeee;
+      //   }
+      // }
+
+      &.mobile-only {
+        display: flex;
       }
     }
   }
+
   @media (max-width: 480px) {
     width: 100%;
     height: 120px;
@@ -158,13 +198,15 @@ header {
         width: 100%;
         max-width: 100%;
         height: 40vh;
-        border-radius: 0 0 36px 36px;
+        border-radius: 0;
       }
 
       &.show {
         .card {
           top: 0;
+          left: 0;
           width: 100%;
+          border-radius: 0;
         }
       }
     }
@@ -177,8 +219,21 @@ header {
       background-color: rgba(245, 245, 245, 0.8);
       backdrop-filter: blur(12px);
 
+      &.fab {
+        background-color: rgba(245, 245, 245, 0.8);
+
+        &:hover,
+        &:active {
+          background-color: #eeeeee;
+        }
+      }
+
       &.auto-width {
         width: auto;
+      }
+
+      &.desktop-only {
+        display: none;
       }
     }
   }
