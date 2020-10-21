@@ -1,17 +1,22 @@
 header {
   position: fixed;
-  bottom: 0;
-  right: 0;
+  top: 0;
+  left: 0;
   z-index: 2000;
-  width: 100%;
-  height: 168px;
-  padding: 24px 48px;
+  width: 30%;
+  height: auto;
+  padding: 56px 72px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   background: transparent;
   font-size: 1.125rem;
   pointer-events: none;
+  transition: all 0.2s;
+
+  @media (max-width: 1024px) {
+    padding: 48px;
+  }
 
   .dialog {
     position: fixed;
@@ -28,6 +33,7 @@ header {
     visibility: hidden;
     pointer-events: auto;
     transition: all 0.4s;
+    perspective: 2000px;
 
     .mask {
       position: absolute;
@@ -41,20 +47,18 @@ header {
     }
 
     .card {
-      position: absolute;
-      bottom: 48px;
-      right: 48px;
       z-index: 100;
-      width: 24px;
-      height: 24px;
+      width: 400px;
+      height: 400px;
       padding: 24px;
-      border-radius: 36px;
+      border-radius: 4px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       background-color: #ffffff;
-      transition: all 0.4s;
+      transform: rotateX(30deg) scaleX(0.9);
+      transition: all 0.2s;
 
       svg {
         width: 36px;
@@ -72,9 +76,7 @@ header {
       visibility: visible;
 
       .card {
-        width: 400px;
-        height: 400px;
-        border-radius: 4px;
+        transform: rotateX(0) scaleX(1);
       }
     }
   }
@@ -91,13 +93,13 @@ header {
     width: 72px;
     height: 72px;
     padding: 24px;
-    margin: 0 0 0 36px;
+    margin: 0;
     border: none;
     border-radius: 50%;
     display: flex;
     align-items: center;
     line-height: 24px;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     text-decoration: none;
     cursor: pointer;
     pointer-events: auto;
@@ -105,15 +107,6 @@ header {
     color: #000000;
     font-family: inherit;
     transition: all 0.2s;
-
-    &.fab {
-      background-color: #ffeb3b;
-
-      &:hover,
-      &:active {
-        background-color: #fdd835;
-      }
-    }
 
     &.mobile-only {
       display: none;
@@ -133,43 +126,14 @@ header {
     min-height: 100vh;
     padding: 0;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     background-color: #ffffff;
-
-    .dialog {
-      .card {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 100;
-        width: 24px;
-        height: 24px;
-        border-radius: 0;
-      }
-
-      &.show {
-        .card {
-          left: 24px;
-          top: 24px;
-          border-radius: 4px;
-        }
-      }
-    }
 
     a,
     button {
       margin: 0;
       border-radius: 0;
       background-color: transparent;
-
-      // &.fab {
-      //   background-color: transparent;
-
-      //   &:hover,
-      //   &:active {
-      //     background-color: #eeeeee;
-      //   }
-      // }
 
       &.mobile-only {
         display: flex;
@@ -183,6 +147,7 @@ header {
     min-height: unset;
     padding: 24px;
     flex-direction: row;
+    justify-content: space-between;
     background-color: transparent;
 
     .title {
@@ -193,12 +158,13 @@ header {
       .card {
         position: absolute;
         left: 0;
-        top: -40vh;
+        top: -60vh;
         z-index: 100;
         width: 100%;
         max-width: 100%;
-        height: 40vh;
+        height: 60vh;
         border-radius: 0;
+        transform: none;
       }
 
       &.show {
@@ -215,18 +181,10 @@ header {
     button {
       width: 72px;
       height: 72px;
+      margin: 0;
       border-radius: 72px;
       background-color: rgba(245, 245, 245, 0.8);
       backdrop-filter: blur(12px);
-
-      &.fab {
-        background-color: rgba(245, 245, 245, 0.8);
-
-        &:hover,
-        &:active {
-          background-color: #eeeeee;
-        }
-      }
 
       &.auto-width {
         width: auto;

@@ -2,6 +2,7 @@ import React from "react"
 import Header from "../components/header"
 import PostList from "../components/postlist"
 import SEO from "../components/seo"
+import Showcase from "../components/showcase"
 import Sidebar from "../components/sidebar"
 import "../styles/layout.less"
 
@@ -15,9 +16,8 @@ const IndexPage = () => (
     <main>
       <Sidebar footer>
         <section className="about" id="about">
-          <h2>Hi</h2>
           <p>
-            这是我的个人网站「 记录干杯
+            Hi，这是我的个人网站「 记录干杯
             」，我会在这里记录一些技术相关的文章、尝试一些新的技术。
           </p>
           <p>
@@ -45,7 +45,10 @@ const IndexPage = () => (
           </p>
         </section>
       </Sidebar>
-      <PostList />
+      <div className="container">
+        {/* <Showcase /> */}
+        <PostList />
+      </div>
     </main>
   </>
 )

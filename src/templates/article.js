@@ -69,11 +69,6 @@ const BlogPost = ({ data }) => {
       />
       <main>
         <Sidebar>
-          <nav className="sidebar-nav">
-            <Link to="/" aria-label="返回" className="back-home">
-              <span>&lt;--</span>
-            </Link>
-          </nav>
           <nav
             className="toc"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
@@ -86,10 +81,12 @@ const BlogPost = ({ data }) => {
             </p>
           </section>
         </Sidebar>
-        <article
-          id="content"
-          dangerouslySetInnerHTML={{ __html: html + post.html }}
-        ></article>
+        <div className="container">
+          <article
+            id="content"
+            dangerouslySetInnerHTML={{ __html: html + post.html }}
+          ></article>
+        </div>
       </main>
     </>
   )
