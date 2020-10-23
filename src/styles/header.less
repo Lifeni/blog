@@ -82,7 +82,7 @@ header {
   }
 
   .title {
-    display: none;
+    display: flex;
     font-size: 1.15rem;
     margin: 0 8px 0 20px;
     pointer-events: auto;
@@ -95,7 +95,7 @@ header {
     padding: 24px;
     margin: 0;
     border: none;
-    border-radius: 50%;
+    border-radius: 36px;
     display: flex;
     align-items: center;
     line-height: 24px;
@@ -103,6 +103,9 @@ header {
     text-decoration: none;
     cursor: pointer;
     pointer-events: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     outline: none;
     color: #000000;
     font-family: inherit;
@@ -128,6 +131,10 @@ header {
     flex-direction: column;
     justify-content: center;
     background-color: #ffffff;
+
+    .title {
+      display: none;
+    }
 
     a,
     button {

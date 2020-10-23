@@ -1,6 +1,6 @@
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
 import Header from "../components/header"

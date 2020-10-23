@@ -2,7 +2,7 @@ import React from "react"
 import Header from "../components/header"
 import PostList from "../components/postlist"
 import SEO from "../components/seo"
-import Showcase from "../components/showcase"
+// import Showcase from "../components/showcase"
 import Sidebar from "../components/sidebar"
 import "../styles/layout.less"
 
@@ -16,8 +16,9 @@ const IndexPage = () => (
     <main>
       <Sidebar footer>
         <section className="about" id="about">
+          <h3>Hi，</h3>
           <p>
-            Hi，这是我的个人网站「 记录干杯
+            这是我的个人网站「 记录干杯
             」，我会在这里记录一些技术相关的文章、尝试一些新的技术。
           </p>
           <p>
@@ -35,13 +36,23 @@ const IndexPage = () => (
           <p>
             还有，
             <a
+              href="http://blog.bluebonnet27.xyz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="friend"
+            >
+              bluebonnet27
+            </a>
+            和
+            <a
               href="https://tanakarino.cn/"
               target="_blank"
               rel="noopener noreferrer"
+              className="friend"
             >
-              Nanako&nbsp;
+              Nanako
             </a>
-            是我的朋友，有时间可以去他的网站看一看。
+            是我的朋友，有时间可以去他们的网站看一看。
           </p>
         </section>
       </Sidebar>
