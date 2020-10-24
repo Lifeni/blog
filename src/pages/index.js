@@ -16,7 +16,7 @@ const IndexPage = () => (
     <main>
       <Sidebar footer>
         <section className="about" id="about">
-          <h3>Hi，</h3>
+          <h3>👋🏻 Hi，</h3>
           <p>
             这是我的个人网站「 记录干杯
             」，我会在这里记录一些技术相关的文章、尝试一些新的技术。
@@ -34,16 +34,16 @@ const IndexPage = () => (
             上可以找到我和我的项目。
           </p>
           <p>
-            还有，
+            还有，「{" "}
             <a
-              href="http://blog.bluebonnet27.xyz/"
+              href="https://blog.bluebonnet27.xyz/"
               target="_blank"
               rel="noopener noreferrer"
               className="friend"
             >
               bluebonnet27
-            </a>
-            和
+            </a>{" "}
+            」和「{" "}
             <a
               href="https://tanakarino.cn/"
               target="_blank"
@@ -51,8 +51,8 @@ const IndexPage = () => (
               className="friend"
             >
               Nanako
-            </a>
-            是我的朋友，有时间可以去他们的网站看一看。
+            </a>{" "}
+            」是我的朋友，有时间可以去他们的网站看看。
           </p>
         </section>
       </Sidebar>

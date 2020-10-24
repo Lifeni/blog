@@ -56,7 +56,7 @@ const Header = ({ app, back, aside }) => (
     )}
 
     {back && (
-      <Link to="/" className="auto-width" aria-label="返回">
+      <Link to="/" className="fab auto-width" aria-label="返回">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

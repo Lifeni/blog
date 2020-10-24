@@ -26,7 +26,10 @@ const BlogPost = ({ data }) => {
       {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
         6 * 30 * 24 * 60 * 60 && (
         <div className="outdated-tips" id="outdated-tips">
-          提示：这篇文章修改于 {date.from} ，其中有些信息可能已经过时
+          <span>
+            这篇文章修改于 <strong> {date.from} </strong>
+            ，其中有些信息可能已经过时
+          </span>
           <button className="close-tips" id="close-tips">
             <svg
               xmlns="http://www.w3.org/2000/svg"

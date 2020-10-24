@@ -17,8 +17,8 @@ const Sidebar = ({ children, footer }) => (
                 rel="noopener noreferrer"
                 className="upyun"
               >
-                本网站由 <img src={data.imageSharp.original.src} alt="又拍云" />{" "}
-                提供 CDN 加速/云储存服务
+                本网站由 <img src={data.file.publicURL} alt="又拍云" /> 提供 CDN
+                加速/云储存服务
               </a>
             )
           }}
@@ -48,12 +48,8 @@ export default Sidebar
 
 export const UPYunQuery = graphql`
   query UPYunQuery {
-    imageSharp(original: { src: { regex: "/又拍云/" } }) {
-      original {
-        height
-        src
-        width
-      }
+    file(name: { regex: "/又拍云/" }) {
+      publicURL
     }
   }
 `

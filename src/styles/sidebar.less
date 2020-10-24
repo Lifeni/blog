@@ -27,8 +27,9 @@ aside {
     &.expand {
       width: calc(360px + 128px);
       padding: 72px 64px 72px 136px;
-      background-color: rgba(245, 245, 245, 0.8);
-      backdrop-filter: blur(12px);
+      // background-color: rgba(245, 245, 245, 0.8);
+      // backdrop-filter: blur(12px);
+      background-color: #f5f5f5;
       box-shadow: none;
       overflow: hidden auto;
     }
@@ -90,7 +91,6 @@ aside {
     code,
     code[class*="language-"] {
       width: 100%;
-      padding: 2px 6px;
       color: #616161;
       padding: 0.2rem 0.4rem;
       background-color: #eeeeee;
@@ -128,15 +128,19 @@ aside {
   nav > ul > li > ul {
     padding-left: 0;
   }
+  nav ul ul ul a {
+    vertical-align: middle;
 
-  nav ul ul ul a::before {
-    content: " ";
-    position: relative;
-    width: 1.5rem;
-    height: 100%;
-    display: inline-block;
-    background-color: transparent;
-    color: transparent;
+    &::before {
+      content: " ";
+      position: relative;
+      width: 1.5rem;
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+      background-color: transparent;
+      color: transparent;
+    }
   }
 
   section {
@@ -180,19 +184,9 @@ section.about {
   word-break: break-all;
   transition: all 0.2s;
 
-  h2 {
-    margin: 0 0 48px 0;
-    line-height: 2rem;
-  }
-
-  a.friend {
-    display: inline;
-    margin: 0 0.4rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: 2rem;
-    background-color: #eeeeee;
-    font-size: 0.875rem;
-    // font-weight: bold;
+  h3 {
+    margin: 1rem 0;
+    line-height: 3rem;
   }
 
   @media (min-width: 769px) {
@@ -218,10 +212,6 @@ section.about {
     &:hover a {
       color: #304ffe;
       transition: all 0.2s;
-
-      &.friend {
-        background-color: #ffffff;
-      }
     }
   }
 }
@@ -300,12 +290,11 @@ footer {
     transition: all 0.2s;
 
     &.upyun {
-      display: inline-flex;
-      align-items: center;
+      // margin: 0 0 1rem 0;
 
       img {
-        height: 1.75rem;
-        margin: 0 0.5rem;
+        height: 1.125rem;
+        margin: -0.25rem 0.5rem;
         filter: grayscale(1);
         transition: all 0.2s;
       }
