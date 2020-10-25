@@ -16,7 +16,12 @@ const IndexPage = () => (
     <main>
       <Sidebar footer>
         <section className="about" id="about">
-          <h3>👋🏻 Hi，</h3>
+          <h3>
+            <span role="img" aria-label="Hi">
+              👋🏻
+            </span>{" "}
+            Hi，
+          </h3>
           <p>
             这是我的个人网站「 记录干杯
             」，我会在这里记录一些技术相关的文章、尝试一些新的技术。

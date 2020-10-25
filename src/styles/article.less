@@ -92,15 +92,20 @@ article {
     max-width: 100%;
     height: auto;
     opacity: 1;
-    margin: 0.5rem 0;
-    border: solid 2px #f5f5f5;
+    margin: 1rem 0;
+    border: solid 4px transparent;
     border-radius: 4px;
     display: block;
     color: #616161;
+    // background-color: #eeeeee;
     font-size: 0.875rem;
     line-height: 1rem;
     text-align: right;
     transition: all 0.2s;
+
+    &:hover {
+      border: solid 4px #eeeeee;
+    }
   }
 
   code,
@@ -303,7 +308,7 @@ code[class*="language-"] ::selection {
 .subtitle {
   font-weight: bold;
   font-size: 1rem;
-  white-space: nowrap;
+  // white-space: nowrap;
   margin: 0;
 
   .tag {
