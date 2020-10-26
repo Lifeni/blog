@@ -28,7 +28,7 @@ const IndexPage = () => (
           </p>
           <p>
             我比较感兴趣的方向是 Web 前端，喜欢好看的设计，目前正在尝试使用
-            TypeScript。在
+            TypeScript 做一些东西。在
             <a
               href="https://github.com/Lifeni"
               target="_blank"

@@ -78,9 +78,25 @@ exports.onRouteUpdate = () => {
 
   const openDialog = document.querySelector("#open-dialog")
   if (openDialog) {
+    const dialog = document.querySelector("#home-dialog")
+    const search = document.querySelector("#article-search")
     openDialog.addEventListener("click", () => {
-      const dialog = document.querySelector("#home-dialog")
       dialog.classList.add("show")
+      setTimeout(() => {
+        search.focus()
+      }, 300)
+    })
+
+    window.addEventListener("keypress", e => {
+      if (e.key === "/") {
+        e.preventDefault()
+        dialog.classList.toggle("show")
+        if (dialog.classList.contains("show")) {
+          setTimeout(() => {
+            search.focus()
+          }, 300)
+        }
+      }
     })
   }
 
