@@ -6,32 +6,50 @@ aside {
   width: 30%;
   height: 100%;
   min-height: 100vh;
-  padding: 168px 72px 56px 72px;
+  padding: 168px 72px 0 72px;
   display: flex;
   flex-direction: column;
   background: #f5f5f5;
   overflow: hidden auto;
   transition: all 0.4s;
 
+  &::after {
+    content: "";
+    display: block;
+    min-height: 56px;
+  }
+
   @media (max-width: 1024px) {
-    padding: 152px 48px 48px 48px;
+    padding: 152px 48px 0 48px;
+
+    &::after {
+      min-height: 48px;
+    }
   }
 
   @media (max-width: 768px) {
     width: 72px;
-    padding: 72px 0;
+    padding: 72px 0 0 0;
     background: #f5f5f5;
     box-shadow: 0 0 48px rgba(0, 0, 0, 0.08);
     overflow: hidden;
 
+    &::after {
+      min-height: 72px;
+    }
+
     &.expand {
       width: calc(360px + 128px);
-      padding: 72px 64px 72px 136px;
+      padding: 72px 64px 0 136px;
       // background-color: rgba(245, 245, 245, 0.8);
       // backdrop-filter: blur(12px);
       background-color: #f5f5f5;
       box-shadow: none;
       overflow: hidden auto;
+
+      &::after {
+        min-height: 72px;
+      }
     }
   }
 
@@ -46,10 +64,18 @@ aside {
     padding: 0 48px;
     overflow: hidden;
 
+    &::after {
+      min-height: 0;
+    }
+
     &.expand {
       width: 100%;
       height: calc(100vh - 120px);
-      padding: 48px;
+      padding: 48px 48px 0 48px;
+
+      &::after {
+        min-height: 48px;
+      }
     }
   }
 

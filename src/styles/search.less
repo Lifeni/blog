@@ -23,13 +23,15 @@
     height: calc(100% - 64px);
     overflow-x: hidden;
     overflow-y: auto;
+    border-radius: 4px;
 
     li {
+      position: relative;
       width: 100%;
       padding: 0;
       font-size: 1rem;
       line-height: 1.75rem;
-      background-color: #ffffff;
+      background-color: transparent;
       transition: all 0.2s;
 
       &.search-tips {
@@ -53,11 +55,21 @@
         }
       }
 
+      .num {
+        position: absolute;
+        left: 24px;
+        top: 52px;
+        color: #616161;
+        font-size: 1.125rem;
+        font-weight: bold;
+        text-align: right;
+      }
+
       .link {
         width: 100%;
         height: auto;
         margin: 0;
-        padding: 20px 24px;
+        padding: 20px 24px 20px 56px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -81,10 +93,19 @@
         line-height: 2rem;
       }
 
-      .tag {
-        padding: 0 1rem 0 0;
-        color: #616161;
-        font-size: 0.875rem;
+      .tags {
+        width: 100%;
+        display: flex;
+
+        .tag {
+          padding: 0 1rem 0 0;
+          color: #616161;
+          font-size: 0.875rem;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          word-break: keep-all;
+          overflow: hidden;
+        }
       }
 
       .descriptions {
@@ -102,6 +123,13 @@
           overflow: hidden;
         }
       }
+    }
+
+    hr {
+      height: 2px;
+      margin: -1px 24px -1px 48px;
+      background-color: #f5f5f5;
+      border: none;
     }
   }
 }

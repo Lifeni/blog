@@ -27,7 +27,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
     />
 
     <ul>
-      <li className="search-tips">
+      <li className="search-tips" tabIndex="-1">
         <Stats
           translations={{
             stats(nbHits, timeSpentMS) {
@@ -41,27 +41,31 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
           }}
         />
       </li>
-      {hits.map(hit => (
-        <li key={hit.objectID}>
-          <Link className="link" to={`/article/${hit.name}`}>
-            <p className="tags">
-              {hit.tags.map(tag => (
-                <span key={tag} className="tag">
-                  # {tag}
-                </span>
-              ))}
-            </p>
-            <h6 className="title">{hit.title}</h6>
-            <p className="descriptions">
-              {hit.descriptions.map((description, index) => (
-                <span key={description} className="description">
-                  {description}
-                  {index !== hit.descriptions.length - 1 && <br />}
-                </span>
-              ))}
-            </p>
-          </Link>
-        </li>
+      {hits.map((hit, index) => (
+        <>
+          <li key={hit.objectID}>
+            <Link className="link" to={`/article/${hit.name}`}>
+              <span className="num">{index + 1}</span>
+              <p className="tags">
+                {hit.tags.map(tag => (
+                  <span key={tag} className="tag">
+                    # {tag}
+                  </span>
+                ))}
+              </p>
+              <h6 className="title">{hit.title}</h6>
+              <p className="descriptions">
+                {hit.descriptions.map((description, index) => (
+                  <span key={description} className="description">
+                    {description}
+                    {index !== hit.descriptions.length - 1 && <br />}
+                  </span>
+                ))}
+              </p>
+            </Link>
+          </li>
+          {index !== hits.length - 1 && <hr />}
+        </>
       ))}
     </ul>
   </div>

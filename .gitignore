@@ -68,5 +68,8 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
+# Markdown Source
 content
-.recycle/
+
+# Deploy Shell
+deploy.sh
