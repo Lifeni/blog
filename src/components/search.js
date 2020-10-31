@@ -67,6 +67,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
           {index !== hits.length - 1 && <hr />}
         </>
       ))}
+      <li className="search-tips full-height">已经到底了 : )</li>
     </ul>
   </div>
 )

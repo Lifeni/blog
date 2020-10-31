@@ -21,6 +21,8 @@
   ul {
     width: 100%;
     height: calc(100% - 64px);
+    display: flex;
+    flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
     border-radius: 4px;
@@ -41,6 +43,11 @@
         border-radius: 4px;
         font-size: 0.875rem;
         background-color: #ffffff;
+
+        &.full-height {
+          flex: 1;
+          align-items: flex-end;
+        }
       }
 
       a {
