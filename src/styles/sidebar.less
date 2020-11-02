@@ -10,7 +10,8 @@ aside {
   display: flex;
   flex-direction: column;
   background: #f5f5f5;
-  overflow: hidden auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   transition: all 0.4s;
 
   &::after {
@@ -19,19 +20,31 @@ aside {
     min-height: 56px;
   }
 
-  @media (max-width: 1024px) {
+  .off-margin {
+    width: calc(100% + 144px);
+    margin: 48px -72px -56px -72px;
+    padding: 56px 72px;
+    background-color: #eeeeee;
+  }
+
+  @media (max-width: 1120px) {
     padding: 152px 48px 0 48px;
 
     &::after {
       min-height: 48px;
     }
+
+    .off-margin {
+      width: calc(100% + 96px);
+      margin: 48px -48px -48px -48px;
+      padding: 48px;
+    }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 824px) {
     width: 72px;
     padding: 72px 0 0 0;
-    background: #f5f5f5;
-    box-shadow: 0 0 48px rgba(0, 0, 0, 0.08);
+    background: #eeeeee;
     overflow: hidden;
 
     &::after {
@@ -45,11 +58,18 @@ aside {
       // backdrop-filter: blur(12px);
       background-color: #f5f5f5;
       box-shadow: none;
-      overflow: hidden auto;
+      overflow-x: hidden;
+      overflow-y: auto;
 
       &::after {
         min-height: 72px;
       }
+    }
+
+    .off-margin {
+      width: calc(360px + 56px);
+      margin: 48px -64px -72px -64px;
+      padding: 48px 64px;
     }
   }
 
@@ -62,7 +82,14 @@ aside {
     border-radius: 36px 36px 0 0;
     z-index: 3000;
     padding: 0 48px;
+    background-color: #eeeeee;
     overflow: hidden;
+
+    .off-margin {
+      width: calc(100% + 96px);
+      margin: 48px -48px -48px -48px;
+      padding: 48px;
+    }
 
     &::after {
       min-height: 0;
@@ -72,6 +99,7 @@ aside {
       width: 100%;
       height: calc(100vh - 120px);
       padding: 48px 48px 0 48px;
+      background-color: #f5f5f5;
 
       &::after {
         min-height: 48px;
@@ -80,7 +108,7 @@ aside {
   }
 
   nav {
-    @media (max-width: 768px) {
+    @media (max-width: 824px) {
       width: 100%;
       min-width: calc(360px - 36px - 36px);
     }
@@ -128,7 +156,7 @@ aside {
       white-space: nowrap;
       transition: all 0.2s;
 
-      @media (max-width: 768px) {
+      @media (max-width: 824px) {
         background-color: rgba(238, 238, 238, 0.8);
         backdrop-filter: blur(12px);
       }
@@ -172,7 +200,7 @@ aside {
   }
 
   section {
-    @media (max-width: 768px) {
+    @media (max-width: 824px) {
       width: 100%;
       min-width: calc(360px - 36px - 36px);
     }
@@ -201,7 +229,7 @@ aside {
   }
 }
 
-section.about {
+.about {
   position: relative;
   z-index: 200;
   padding: 0;
@@ -260,11 +288,12 @@ section.about {
   }
 }
 
-section.banner {
+.banner {
   position: relative;
   z-index: 300;
   margin: 48px 0 0 0;
-  border-radius: 4px;
+  padding: 0;
+  border-radius: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -282,10 +311,10 @@ section.banner {
   }
 }
 
-nav.sidebar-nav {
+.sidebar-nav {
   margin: 0 0 48px 0;
 
-  @media (max-width: 768px) {
+  @media (max-width: 824px) {
     display: none;
   }
 
@@ -307,12 +336,12 @@ footer {
   position: relative;
   margin: 48px 0 0 0;
   padding: 0;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   white-space: nowrap;
-  // background-color: #eeeeee;
   transition: all 0.2s;
 
   a {

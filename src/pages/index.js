@@ -62,7 +62,11 @@ const IndexPage = () => (
         </section>
       </Sidebar>
       <div className="container">
-        {/* <Showcase /> */}
+        {/* <Showcase>
+          <div className="row">
+            <div className="card xl"></div>
+          </div>
+        </Showcase> */}
         <PostList />
       </div>
     </main>

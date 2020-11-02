@@ -6,7 +6,7 @@ const Sidebar = ({ children, footer }) => (
   <aside>
     {children}
     {footer && (
-      <footer>
+      <footer className="off-margin">
         <StaticQuery
           query={UPYunQuery}
           render={data => {

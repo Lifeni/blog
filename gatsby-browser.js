@@ -55,7 +55,9 @@ exports.onRouteUpdate = () => {
 
   const toggleAside = () => {
     const aside = document.querySelector("aside")
+    const header = document.querySelector("header")
     aside.classList.toggle("expand")
+    header.classList.toggle("expand")
   }
 
   const expand = document.querySelector("#expand-aside")

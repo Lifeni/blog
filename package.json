@@ -38,9 +38,6 @@
   "devDependencies": {
     "prettier": "^2.0.5"
   },
-  "keywords": [
-    "gatsby"
-  ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -52,12 +49,5 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Lifeni/next"
-  },
-  "bugs": {
-    "url": "https://github.com/Lifeni/next/issues"
   }
 }
