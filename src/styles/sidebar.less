@@ -20,24 +20,11 @@ aside {
     min-height: 56px;
   }
 
-  .off-margin {
-    width: calc(100% + 144px);
-    margin: 48px -72px -56px -72px;
-    padding: 56px 72px;
-    background-color: #eeeeee;
-  }
-
   @media (max-width: 1120px) {
     padding: 152px 48px 0 48px;
 
     &::after {
       min-height: 48px;
-    }
-
-    .off-margin {
-      width: calc(100% + 96px);
-      margin: 48px -48px -48px -48px;
-      padding: 48px;
     }
   }
 
@@ -65,12 +52,6 @@ aside {
         min-height: 72px;
       }
     }
-
-    .off-margin {
-      width: calc(360px + 56px);
-      margin: 48px -64px -72px -64px;
-      padding: 48px 64px;
-    }
   }
 
   @media (max-width: 480px) {
@@ -84,12 +65,6 @@ aside {
     padding: 0 48px;
     background-color: #eeeeee;
     overflow: hidden;
-
-    .off-margin {
-      width: calc(100% + 96px);
-      margin: 48px -48px -48px -48px;
-      padding: 48px;
-    }
 
     &::after {
       min-height: 0;
@@ -291,13 +266,19 @@ aside {
 .banner {
   position: relative;
   z-index: 300;
-  margin: 48px 0 0 0;
-  padding: 0;
+  margin: 32px 0 0 0;
+  padding: 36px 0 0 0;
+  border-top: solid 2px #eeeeee;
   border-radius: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  @media (max-width: 480px) {
+    margin: 28px 0 0 0;
+    padding: 32px 0 0 0;
+  }
 
   p {
     line-height: 2rem;
@@ -334,8 +315,9 @@ aside {
 
 footer {
   position: relative;
-  margin: 48px 0 0 0;
-  padding: 0;
+  margin: 20px 0 0 0;
+  padding: 36px 0 0 0;
+  border-top: solid 2px #eeeeee;
   border-radius: 0;
   display: flex;
   flex-direction: column;
@@ -343,6 +325,11 @@ footer {
   justify-content: flex-start;
   white-space: nowrap;
   transition: all 0.2s;
+
+  @media (max-width: 480px) {
+    margin: 16px 0 0 0;
+    padding: 32px 0 0 0;
+  }
 
   a {
     position: relative;
