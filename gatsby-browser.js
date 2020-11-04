@@ -109,4 +109,12 @@ exports.onRouteUpdate = () => {
       dialog.classList.remove("show")
     })
   }
+
+  const closeSearch = document.querySelector("#close-search")
+  if (closeSearch) {
+    closeSearch.addEventListener("click", () => {
+      const dialog = document.querySelector("#home-dialog")
+      dialog.classList.remove("show")
+    })
+  }
 }
