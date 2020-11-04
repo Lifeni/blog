@@ -2,7 +2,6 @@ import React from "react"
 import Header from "../components/header"
 import PostList from "../components/postlist"
 import SEO from "../components/seo"
-// import Showcase from "../components/showcase"
 import Sidebar from "../components/sidebar"
 import "../styles/layout.less"
 
@@ -62,11 +61,6 @@ const IndexPage = () => (
         </section>
       </Sidebar>
       <div className="container">
-        {/* <Showcase>
-          <div className="row">
-            <div className="card xl"></div>
-          </div>
-        </Showcase> */}
         <PostList />
       </div>
     </main>

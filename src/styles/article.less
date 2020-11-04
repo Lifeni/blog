@@ -23,7 +23,7 @@ article {
     color: #304ffe;
     padding: 3px 0;
     text-decoration: none;
-    word-break: break-all;
+    // word-break: break-all;
     transition: all 0.2s;
   }
 
@@ -117,7 +117,6 @@ article {
     font-size: 1rem;
     font-family: "Fira Mono", Consolas, Monaco, "思源黑体 CN", "Source Han Sans",
       "Source Han Sans CN", monospace, sans-serif;
-    word-break: break-all;
     transition: all 0.2s;
   }
 
@@ -125,7 +124,6 @@ article {
     margin: 0;
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
-    white-space: pre-wrap;
   }
 
   pre code[class*="language-"] {
@@ -228,6 +226,14 @@ article {
     align-items: center;
     justify-content: center;
     border: none !important;
+
+    @media (max-width: 480px) {
+      padding: 0 10px;
+    }
+
+    @media (max-width: 420px) {
+      padding: 0 6px;
+    }
   }
 }
 

@@ -76,7 +76,7 @@ const BlogPost = ({ data }) => {
             className="toc"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
           ></nav>
-          <section className="banner off-margin">
+          <section className="banner">
             <p title={`创建日期：${date.create}`}>创建日期： {date.create}</p>
             <p title={`修改日期：${date.modify}`}>修改日期： {date.modify}</p>
             <p title={`共享协议：${post.frontmatter.license}`}>
