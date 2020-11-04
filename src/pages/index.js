@@ -1,4 +1,5 @@
 import React from "react"
+import Footer from "../components/footer"
 import Header from "../components/header"
 import PostList from "../components/postlist"
 import SEO from "../components/seo"
@@ -56,12 +57,13 @@ const IndexPage = () => (
             >
               Nanako
             </a>{" "}
-            」是我的朋友，有时间可以去他们的网站看看。
+            」都是我的朋友，有时间可以去他们的网站看看。
           </p>
         </section>
       </Sidebar>
       <div className="container">
         <PostList />
+        <Footer />
       </div>
     </main>
   </>

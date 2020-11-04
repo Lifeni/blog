@@ -1,0 +1,65 @@
+footer {
+  position: relative;
+  width: 100%;
+  margin: 48px 0 0 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  white-space: nowrap;
+  transition: all 0.2s;
+
+  @media (max-width: 1120px) {
+    margin: 48px 0 -12px 0;
+  }
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+
+  div {
+    display: flex;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  a,
+  span {
+    position: relative;
+    width: 100%;
+    max-width: fit-content;
+    margin: 0 1rem 0 0;
+    padding: 0 0 4px 0;
+    color: #616161;
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.2s;
+
+    &.upyun {
+      // margin: 0 0 1rem 0;
+
+      img {
+        height: 1.25rem;
+        margin: -0.25rem 0.25rem;
+        filter: grayscale(1);
+        transition: all 0.2s;
+      }
+    }
+  }
+
+  a:hover,
+  a:active,
+  a:focus {
+    color: #000000;
+
+    img {
+      filter: grayscale(0);
+    }
+  }
+}

@@ -21,12 +21,12 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
       <input
         id="article-search"
         type="search"
-        autocomplete="off"
+        autoComplete="off"
         placeholder="在此输入搜索内容 ..."
         value={currentRefinement}
         onChange={event => refine(event.currentTarget.value)}
       />
-      <button id="close-search" aria-label="关闭搜索窗口">
+      <button id="close-search" title="关闭搜索窗口" aria-label="关闭搜索窗口">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
           height="24"
         >
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"
           ></path>
         </svg>
@@ -57,30 +57,27 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
         />
       </li>
       {hits.map((hit, index) => (
-        <>
-          <li key={hit.objectID}>
-            <Link className="link" to={`/article/${hit.name}`}>
-              <span className="num">{index + 1}</span>
-              <p className="tags">
-                {hit.tags.map(tag => (
-                  <span key={tag} className="tag">
-                    # {tag}
-                  </span>
-                ))}
-              </p>
-              <h6 className="title">{hit.title}</h6>
-              <p className="descriptions">
-                {hit.descriptions.map((description, index) => (
-                  <span key={description} className="description">
-                    {description}
-                    {index !== hit.descriptions.length - 1 && <br />}
-                  </span>
-                ))}
-              </p>
-            </Link>
-          </li>
-          {index !== hits.length - 1 && <hr />}
-        </>
+        <li key={hit.objectID}>
+          <Link className="link" to={`/article/${hit.name}`}>
+            <span className="num">{index + 1}</span>
+            <p className="tags">
+              {hit.tags.map(tag => (
+                <span key={tag} className="tag">
+                  # {tag}
+                </span>
+              ))}
+            </p>
+            <h6 className="title">{hit.title}</h6>
+            <p className="descriptions">
+              {hit.descriptions.map((description, index) => (
+                <span key={description} className="description">
+                  {description}
+                  {index !== hit.descriptions.length - 1 && <br />}
+                </span>
+              ))}
+            </p>
+          </Link>
+        </li>
       ))}
       <li className="search-tips full-height">已经到底了 : )</li>
     </ul>

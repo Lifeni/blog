@@ -22,37 +22,55 @@ const BlogPost = ({ data }) => {
   }
 
   const html = ReactDOMServer.renderToStaticMarkup(
-    <div className="article-info">
-      {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
-        6 * 30 * 24 * 60 * 60 && (
-        <div className="outdated-tips" id="outdated-tips">
-          <span>
-            这篇文章修改于 <strong> {date.from} </strong>
-            ，其中有些信息可能已经过时
+    <>
+      <div className="article-info">
+        {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
+          6 * 30 * 24 * 60 * 60 && (
+          <div className="outdated-tips" id="outdated-tips">
+            <span>
+              这篇文章修改于 <strong> {date.from} </strong>
+              ，其中有些信息可能已经过时
+            </span>
+            <button className="close-tips" id="close-tips">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        )}
+        <p className="subtitle">
+          {post.frontmatter.tags.map(tag => (
+            <span key={tag} className="tag">
+              # {tag}
+            </span>
+          ))}
+        </p>
+      </div>
+      <section className="banner" id="article-meta">
+        <div>
+          <span title={`创建日期：${date.create}`}>{date.create}</span>
+          <span> / </span>
+          <span title={`修改日期：${date.modify}`}>
+            {date.create.slice(0, 4) === date.modify.slice(0, 4)
+              ? date.modify.slice(7)
+              : date.modify}
           </span>
-          <button className="close-tips" id="close-tips">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"
-              ></path>
-            </svg>
-          </button>
         </div>
-      )}
-      <p className="subtitle">
-        {post.frontmatter.tags.map(tag => (
-          <span key={tag} className="tag">
-            # {tag}
+        <div>
+          <span title={`共享协议：${post.frontmatter.license}`}>
+            © {post.frontmatter.license}
           </span>
-        ))}
-      </p>
-    </div>
+        </div>
+      </section>
+    </>
   )
 
   return (
@@ -76,13 +94,6 @@ const BlogPost = ({ data }) => {
             className="toc"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
           ></nav>
-          <section className="banner">
-            <p title={`创建日期：${date.create}`}>创建日期： {date.create}</p>
-            <p title={`修改日期：${date.modify}`}>修改日期： {date.modify}</p>
-            <p title={`共享协议：${post.frontmatter.license}`}>
-              共享协议： {post.frontmatter.license}
-            </p>
-          </section>
         </Sidebar>
         <div className="container">
           <article

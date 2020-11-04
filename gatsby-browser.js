@@ -3,71 +3,68 @@ require("prismjs/plugins/line-numbers/prism-line-numbers.css")
 
 exports.onRouteUpdate = () => {
   const block = document.querySelectorAll(".gatsby-highlight")
-  if (block.length) {
+  const bars = document.querySelectorAll(".code-bar")
+  if (block.length && !bars.length) {
     block.forEach(e => {
+      const bar = document.createElement("div")
+      bar.className = "code-bar"
+      bar.textContent = e.dataset.language
+
       const copy = document.createElement("button")
       const copy$ = document.createElement("button")
+
       copy.className = "copy-button"
       copy$.className = "copy-button dollar"
-      copy.textContent = "Copy"
-      copy$.textContent = "Copy Without $"
+      copy.textContent = "复制"
+      copy$.textContent = "复制并去掉 $"
+
       copy.onclick = b => {
+        const code =
+          b.target.parentElement.parentElement.parentElement.lastElementChild
+            .firstElementChild
         navigator.clipboard
-          .writeText(
-            b.target.parentElement.firstElementChild.firstElementChild
-              .textContent
-          )
+          .writeText(code.textContent)
           .then(() => {
-            b.target.textContent = "Copied"
+            b.target.textContent = "已复制"
           })
           .catch(err => {
             console.log("复制出错", err)
           })
       }
       copy$.onclick = b => {
+        const code =
+          b.target.parentElement.parentElement.parentElement.lastElementChild
+            .firstElementChild
         navigator.clipboard
-          .writeText(
-            b.target.parentElement.firstElementChild.firstElementChild.textContent.replace(
-              /\$ /g,
-              ""
-            )
-          )
+          .writeText(code.textContent.replace(/\$ /g, ""))
           .then(() => {
-            b.target.textContent = "Copied"
+            b.target.textContent = "已复制"
           })
           .catch(err => {
             console.log("复制出错", err)
           })
       }
-      e.appendChild(copy)
+
+      const group = document.createElement("div")
+      group.appendChild(copy)
       if (e.dataset.language === "bash") {
-        e.appendChild(copy$)
+        group.appendChild(copy$)
       }
+      bar.appendChild(group)
+
+      const inner = e.firstElementChild
+      e.insertBefore(bar, inner)
     })
   }
 
-  const title = document.querySelector("#header-title")
-  if (title) {
-    title.addEventListener("click", () => {
-      window.scrollTo(0, 0)
+  const openSidebar = document.querySelector("#expand-aside")
+  if (openSidebar) {
+    openSidebar.addEventListener("click", () => {
+      const aside = document.querySelector("aside")
+      const header = document.querySelector("header")
+      aside.classList.toggle("expand")
+      header.classList.toggle("expand")
     })
-  }
-
-  const toggleAside = () => {
-    const aside = document.querySelector("aside")
-    const header = document.querySelector("header")
-    aside.classList.toggle("expand")
-    header.classList.toggle("expand")
-  }
-
-  const expand = document.querySelector("#expand-aside")
-  if (expand) {
-    expand.addEventListener("click", toggleAside)
-  }
-
-  const expandHeader = document.querySelector("#expand-aside-header")
-  if (expandHeader) {
-    expandHeader.addEventListener("click", toggleAside)
   }
 
   const closeTips = document.querySelector("#close-tips")
@@ -116,5 +113,12 @@ exports.onRouteUpdate = () => {
       const dialog = document.querySelector("#home-dialog")
       dialog.classList.remove("show")
     })
+  }
+
+  const article = document.querySelector("article")
+  if (article) {
+    const articleH1 = document.querySelector("article h1")
+    const articleMeta = document.querySelector("#article-meta")
+    article.insertBefore(articleH1, articleMeta)
   }
 }

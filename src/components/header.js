@@ -49,8 +49,8 @@ const Header = ({ app, back, aside }) => (
 
     {aside && (
       <button
-        id="expand-aside-header"
-        className="mobile-only expand-aside-header"
+        id="expand-aside"
+        className="mobile-only expand-aside"
         aria-label="展开侧栏"
       >
         <svg
