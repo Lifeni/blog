@@ -42,7 +42,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop -H 0.0.0.0 -p 8000",
-    "deploy":"/bin/bash deploy.sh",
+    "deploy": "/bin/bash deploy.sh",
     "sitemap": "gatsby build && gatsby serve",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",

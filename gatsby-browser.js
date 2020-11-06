@@ -11,12 +11,15 @@ exports.onRouteUpdate = () => {
       bar.textContent = e.dataset.language
 
       const copy = document.createElement("button")
-      const copy$ = document.createElement("button")
+      const copyNoDollar = document.createElement("button")
+      const copyNoGreater = document.createElement("button")
 
       copy.className = "copy-button"
-      copy$.className = "copy-button dollar"
+      copyNoDollar.className = "copy-button dollar"
+      copyNoGreater.className = "copy-button greater"
       copy.textContent = "复制"
-      copy$.textContent = "复制并去掉 $"
+      copyNoDollar.textContent = "复制并去掉 $"
+      copyNoGreater.textContent = "复制并去掉 >"
 
       copy.onclick = b => {
         const code =
@@ -31,7 +34,8 @@ exports.onRouteUpdate = () => {
             console.log("复制出错", err)
           })
       }
-      copy$.onclick = b => {
+
+      copyNoDollar.onclick = b => {
         const code =
           b.target.parentElement.parentElement.parentElement.lastElementChild
             .firstElementChild
@@ -45,11 +49,29 @@ exports.onRouteUpdate = () => {
           })
       }
 
+      copyNoGreater.onclick = b => {
+        const code =
+          b.target.parentElement.parentElement.parentElement.lastElementChild
+            .firstElementChild
+        navigator.clipboard
+          .writeText(code.textContent.replace(/> /g, ""))
+          .then(() => {
+            b.target.textContent = "已复制"
+          })
+          .catch(err => {
+            console.log("复制出错", err)
+          })
+      }
+
       const group = document.createElement("div")
       group.appendChild(copy)
+
       if (e.dataset.language === "bash") {
-        group.appendChild(copy$)
+        group.appendChild(copyNoDollar)
+      } else if (e.dataset.language === "powershell") {
+        group.appendChild(copyNoGreater)
       }
+
       bar.appendChild(group)
 
       const inner = e.firstElementChild

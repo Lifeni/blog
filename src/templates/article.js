@@ -6,6 +6,7 @@ import ReactDOMServer from "react-dom/server"
 import Header from "../components/header"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar"
+import Utterances from "../components/utterances"
 import "../styles/article.less"
 
 const relativeTime = require("dayjs/plugin/relativeTime")
@@ -100,6 +101,7 @@ const BlogPost = ({ data }) => {
             id="content"
             dangerouslySetInnerHTML={{ __html: html + post.html }}
           ></article>
+          <Utterances />
         </div>
       </main>
     </>

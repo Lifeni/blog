@@ -23,7 +23,8 @@ article {
     color: #304ffe;
     padding: 3px 0;
     text-decoration: none;
-    // word-break: break-all;
+    word-break: break-all;
+    white-space: pre-wrap;
     transition: all 0.2s;
   }
 
@@ -119,6 +120,8 @@ article {
     padding: 2px 6px;
     color: #212121;
     background-color: #f5f5f5;
+    word-break: break-all;
+    white-space: pre-wrap;
     font-size: 1rem;
     font-family: "Fira Mono", Consolas, Monaco, "思源黑体 CN", "Source Han Sans",
       "Source Han Sans CN", monospace, sans-serif;
@@ -247,7 +250,7 @@ article {
 }
 
 .gatsby-highlight pre[class*="language-"].line-numbers {
-  padding-left: 4rem;
+  padding-left: 3rem;
   border-radius: 0 0 4px 4px;
 }
 
@@ -382,4 +385,8 @@ code[class*="language-"] ::selection {
       font-weight: normal;
     }
   }
+}
+
+.comment {
+  margin: 48px 0 0 0;
 }

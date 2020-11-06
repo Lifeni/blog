@@ -39,19 +39,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              loading: "lazy",
-            },
-          },
-        ],
-      },
-    },
     `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-transformer-remark`,
@@ -95,6 +82,13 @@ module.exports = {
                 global: false,
               },
               escapeEntities: {},
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              loading: "lazy",
+              linkImagesToOriginal: false,
             },
           },
           {
