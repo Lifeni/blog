@@ -1,82 +1,104 @@
 require("prismjs/themes/prism-solarizedlight.css")
 require("prismjs/plugins/line-numbers/prism-line-numbers.css")
 
-exports.onRouteUpdate = () => {
-  const block = document.querySelectorAll(".gatsby-highlight")
-  const bars = document.querySelectorAll(".code-bar")
-  if (block.length && !bars.length) {
-    block.forEach(e => {
-      const bar = document.createElement("div")
-      bar.className = "code-bar"
-      bar.textContent = e.dataset.language
+exports.onRouteUpdate = ({ location, prevLocation }) => {
+  if (!prevLocation || location.pathname !== prevLocation.pathname) {
+    const block = document.querySelectorAll(".gatsby-highlight")
+    const bars = document.querySelectorAll(".code-bar")
+    if (block.length && !bars.length) {
+      block.forEach(e => {
+        const bar = document.createElement("div")
+        bar.className = "code-bar"
+        bar.textContent = e.dataset.language
 
-      const copy = document.createElement("button")
-      const copyNoDollar = document.createElement("button")
-      const copyNoGreater = document.createElement("button")
+        const copy = document.createElement("button")
+        const copyNoDollar = document.createElement("button")
+        const copyNoGreater = document.createElement("button")
 
-      copy.className = "copy-button"
-      copyNoDollar.className = "copy-button dollar"
-      copyNoGreater.className = "copy-button greater"
-      copy.textContent = "复制"
-      copyNoDollar.textContent = "复制并去掉 $"
-      copyNoGreater.textContent = "复制并去掉 >"
+        copy.className = "copy-button"
+        copyNoDollar.className = "copy-button dollar"
+        copyNoGreater.className = "copy-button greater"
+        copy.textContent = "复制"
+        copyNoDollar.textContent = "复制并去掉 $"
+        copyNoGreater.textContent = "复制并去掉 >"
 
-      copy.onclick = b => {
-        const code =
-          b.target.parentElement.parentElement.parentElement.lastElementChild
-            .firstElementChild
-        navigator.clipboard
-          .writeText(code.textContent)
-          .then(() => {
-            b.target.textContent = "已复制"
-          })
-          .catch(err => {
-            console.log("复制出错", err)
-          })
-      }
+        copy.onclick = b => {
+          const code =
+            b.target.parentElement.parentElement.parentElement.lastElementChild
+              .firstElementChild
+          navigator.clipboard
+            .writeText(code.textContent)
+            .then(() => {
+              b.target.textContent = "已复制"
+            })
+            .catch(err => {
+              console.log("复制出错", err)
+            })
+        }
 
-      copyNoDollar.onclick = b => {
-        const code =
-          b.target.parentElement.parentElement.parentElement.lastElementChild
-            .firstElementChild
-        navigator.clipboard
-          .writeText(code.textContent.replace(/\$ /g, ""))
-          .then(() => {
-            b.target.textContent = "已复制"
-          })
-          .catch(err => {
-            console.log("复制出错", err)
-          })
-      }
+        copyNoDollar.onclick = b => {
+          const code =
+            b.target.parentElement.parentElement.parentElement.lastElementChild
+              .firstElementChild
+          navigator.clipboard
+            .writeText(code.textContent.replace(/\$ /g, ""))
+            .then(() => {
+              b.target.textContent = "已复制"
+            })
+            .catch(err => {
+              console.log("复制出错", err)
+            })
+        }
 
-      copyNoGreater.onclick = b => {
-        const code =
-          b.target.parentElement.parentElement.parentElement.lastElementChild
-            .firstElementChild
-        navigator.clipboard
-          .writeText(code.textContent.replace(/> /g, ""))
-          .then(() => {
-            b.target.textContent = "已复制"
-          })
-          .catch(err => {
-            console.log("复制出错", err)
-          })
-      }
+        copyNoGreater.onclick = b => {
+          const code =
+            b.target.parentElement.parentElement.parentElement.lastElementChild
+              .firstElementChild
+          navigator.clipboard
+            .writeText(code.textContent.replace(/> /g, ""))
+            .then(() => {
+              b.target.textContent = "已复制"
+            })
+            .catch(err => {
+              console.log("复制出错", err)
+            })
+        }
 
-      const group = document.createElement("div")
-      group.appendChild(copy)
+        const group = document.createElement("div")
+        group.appendChild(copy)
 
-      if (e.dataset.language === "bash") {
-        group.appendChild(copyNoDollar)
-      } else if (e.dataset.language === "powershell") {
-        group.appendChild(copyNoGreater)
-      }
+        if (e.dataset.language === "bash") {
+          group.appendChild(copyNoDollar)
+        } else if (e.dataset.language === "powershell") {
+          group.appendChild(copyNoGreater)
+        }
 
-      bar.appendChild(group)
+        bar.appendChild(group)
 
-      const inner = e.firstElementChild
-      e.insertBefore(bar, inner)
-    })
+        const inner = e.firstElementChild
+        e.insertBefore(bar, inner)
+      })
+    }
+
+    const article = document.querySelector("article")
+    if (article) {
+      const articleH1 = document.querySelector("article h1")
+      const articleMeta = document.querySelector("#article-meta")
+      article.insertBefore(articleH1, articleMeta)
+      articleMeta.style.display = "block"
+    }
+
+    const comment = document.querySelector("#comment")
+    if (comment) {
+      const utterances = document.createElement("script")
+      utterances.setAttribute("src", "https://utteranc.es/client.js")
+      utterances.setAttribute("repo", "Lifeni-Site/Utterance")
+      utterances.setAttribute("issue-term", "pathname")
+      utterances.setAttribute("theme", "github-light")
+      utterances.setAttribute("crossOrigin", "anonymous")
+      utterances.setAttribute("async", "true")
+      comment.appendChild(utterances)
+    }
   }
 
   const openSidebar = document.querySelector("#expand-aside")
@@ -135,12 +157,5 @@ exports.onRouteUpdate = () => {
       const dialog = document.querySelector("#home-dialog")
       dialog.classList.remove("show")
     })
-  }
-
-  const article = document.querySelector("article")
-  if (article) {
-    const articleH1 = document.querySelector("article h1")
-    const articleMeta = document.querySelector("#article-meta")
-    article.insertBefore(articleH1, articleMeta)
   }
 }

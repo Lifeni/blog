@@ -15,7 +15,7 @@ const Footer = () => (
             className="upyun"
           >
             本网站由 <img src={data.file.publicURL} alt="又拍云" /> 提供 CDN
-            加速/云储存服务
+            加速与云储存服务
           </a>
         )
       }}
