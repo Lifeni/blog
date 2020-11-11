@@ -11,9 +11,10 @@ const NotFoundPage = () => (
       <Sidebar />
       <div className="container">
         <article>
-          <p className="subtitle">404</p>
+          <p className="subtitle">HTTP 404</p>
           <h1>NOT FOUND</h1>
           <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+          <p>你要找的页面不在这里。</p>
         </article>
       </div>
     </main>

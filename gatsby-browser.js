@@ -8,8 +8,11 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
     if (block.length && !bars.length) {
       block.forEach(e => {
         const bar = document.createElement("div")
+        const span = document.createElement("span")
         bar.className = "code-bar"
-        bar.textContent = e.dataset.language
+        span.className = "code-language"
+        span.textContent = e.dataset.language
+        bar.appendChild(span)
 
         const copy = document.createElement("button")
         const copyNoDollar = document.createElement("button")
@@ -139,6 +142,12 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
             search.focus()
           }, 300)
         }
+      }
+    })
+
+    window.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        dialog.classList.remove("show")
       }
     })
   }

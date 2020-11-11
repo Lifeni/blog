@@ -183,11 +183,10 @@ article {
     width: 100%;
     margin: 16px 0;
     padding: 2px 24px;
-    border-left: solid 8px #f5f5f5;
+    border-left: solid 12px #f5f5f5;
     border-radius: 4px;
   }
 
-  blockquote p,
   blockquote li,
   blockquote code {
     color: #212121;
@@ -249,6 +248,10 @@ article {
   position: relative;
 }
 
+.gatsby-highlight .token.comment {
+  margin: 0;
+}
+
 .gatsby-highlight pre[class*="language-"].line-numbers {
   padding-left: 3rem;
   border-radius: 0 0 4px 4px;
@@ -278,7 +281,6 @@ code[class*="language-"] ::selection {
   position: relative;
   width: 100%;
   margin: 12px 0 -12px 0;
-  padding: 0.4rem 0.4rem 0.4rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -292,13 +294,23 @@ code[class*="language-"] ::selection {
     display: flex;
   }
 
+  .code-language {
+    padding: 0.8rem 0.4rem 0.6rem 1rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: #414141;
+  }
+
   .copy-button {
-    padding: 0.4rem 0.6rem;
+    height: 100%;
+    padding: 0.8rem 0.8rem 0.6rem 0.8rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 0 4px 0 0;
     background-color: #eeeeee;
     font-family: inherit;
     font-size: 0.875rem;
+    line-height: 1.125rem;
     color: #616161;
     cursor: pointer;
     transition: all 0.2s;

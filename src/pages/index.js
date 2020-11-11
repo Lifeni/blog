@@ -14,7 +14,7 @@ const IndexPage = () => (
     <SEO title="Home" />
     <Header app aside title="记录干杯" />
     <main>
-      <Sidebar footer>
+      <Sidebar>
         <section className="about" id="about">
           <h3>
             <span role="img" aria-label="Hi">
@@ -24,11 +24,14 @@ const IndexPage = () => (
           </h3>
           <p>
             这是我的个人网站「 记录干杯
-            」，我会在这里记录一些技术相关的文章、尝试一些新的技术。
+            」，我会在这里记录一些技术相关的文章和想法，尝试一些新的技术。
           </p>
           <p>
             我比较感兴趣的方向是 Web 前端，喜欢好看的设计，目前正在尝试使用
-            TypeScript 做一些东西。在
+            TypeScript 和非 Web 技术做一些东西。
+          </p>
+          <p>
+            在
             <a
               href="https://github.com/Lifeni"
               target="_blank"
@@ -36,7 +39,7 @@ const IndexPage = () => (
             >
               &nbsp;GitHub&nbsp;
             </a>
-            上可以找到我和我的项目。
+            上可以找到我和我的项目，以及关于我的其他信息。
           </p>
           <p>
             还有，「{" "}
@@ -57,7 +60,8 @@ const IndexPage = () => (
             >
               Nanako
             </a>{" "}
-            」都是我的朋友，有时间可以去他们的网站看看。
+            」都是我的朋友，有时间可以去他们的网站看一看。
+            {/* 当然，也可以来我的「 实验室 」玩玩。 */}
           </p>
         </section>
       </Sidebar>
