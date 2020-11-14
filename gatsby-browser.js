@@ -84,9 +84,9 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
     }
 
     const article = document.querySelector("article")
-    if (article) {
-      const articleH1 = document.querySelector("article h1")
-      const articleMeta = document.querySelector("#article-meta")
+    const articleH1 = document.querySelector("article h1")
+    const articleMeta = document.querySelector("#article-meta")
+    if (article && articleH1 && articleMeta) {
       article.insertBefore(articleH1, articleMeta)
       articleMeta.style.display = "block"
     }
@@ -95,7 +95,7 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
     if (comment) {
       const utterances = document.createElement("script")
       utterances.setAttribute("src", "https://utteranc.es/client.js")
-      utterances.setAttribute("repo", "Lifeni-Site/Utterance")
+      utterances.setAttribute("repo", "Lifeni-Site/Comment")
       utterances.setAttribute("issue-term", "pathname")
       utterances.setAttribute("theme", "github-light")
       utterances.setAttribute("crossOrigin", "anonymous")
