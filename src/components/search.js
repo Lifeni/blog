@@ -4,7 +4,9 @@ import React from "react"
 import {
   InstantSearch,
   Stats,
+  Snippet,
   PoweredBy,
+  Highlight,
   connectAutoComplete,
 } from "react-instantsearch-dom"
 
@@ -42,7 +44,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
     </div>
 
     <ul>
-      <li className="search-tips" tabIndex="-1">
+      <li className="search-tips">
         <Stats
           translations={{
             stats(nbHits, timeSpentMS) {
@@ -61,21 +63,31 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
           <Link className="link" to={`/article/${hit.name}`}>
             <span className="num">{index + 1}</span>
             <p className="tags">
-              {hit.tags.map(tag => (
-                <span key={tag} className="tag">
-                  # {tag}
-                </span>
-              ))}
+              #&nbsp;
+              <Highlight
+                hit={hit}
+                attribute="tags"
+                tagName="mark"
+                separator="&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;"
+              />
             </p>
-            <h6 className="title">{hit.title}</h6>
-            <p className="descriptions">
-              {hit.descriptions.map((description, index) => (
-                <span key={description} className="description">
-                  {description}
-                  {index !== hit.descriptions.length - 1 && <br />}
-                </span>
-              ))}
-            </p>
+            <h6 className="title">
+              <Highlight hit={hit} attribute="title" tagName="mark" />
+            </h6>
+            {hit._snippetResult.excerpt.matchLevel === "none" ? (
+              <p className="descriptions">
+                {hit.descriptions.map((description, index) => (
+                  <span key={description} className="description">
+                    {description}
+                    {index !== hit.descriptions.length - 1 && <br />}
+                  </span>
+                ))}
+              </p>
+            ) : (
+              <p className="preview">
+                <Snippet hit={hit} attribute="excerpt" tagName="mark" />
+              </p>
+            )}
           </Link>
         </li>
       ))}

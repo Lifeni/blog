@@ -150,6 +150,8 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
         dialog.classList.remove("show")
       }
     })
+
+    document.querySelector(".search-tips a").setAttribute("tabindex", "-1")
   }
 
   const closeDialog = document.querySelector("#close-dialog")
