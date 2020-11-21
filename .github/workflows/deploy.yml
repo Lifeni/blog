@@ -7,15 +7,21 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: SSH Action
-        uses: appleboy/ssh-action@master
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - uses: actions/setup-node@v1
+        with:
+          version: 12
+      - run: npm ci
+      - run: npm run build
+
+      - uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: |
-            cd /home/website/
-            git pull
-            cnpm install
-            npm run build
+          source: "public/*"
+          target: "/home/website"
