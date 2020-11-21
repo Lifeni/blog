@@ -28,7 +28,7 @@ const IndexPage = () => (
           </p>
           <p>
             我比较感兴趣的方向是 Web 前端，喜欢好看的设计，最近正在尝试使用
-            TypeScript 和非 Web 技术做一些东西。
+            TypeScript 和 Golang 做一些东西。
           </p>
           <p>
             在
