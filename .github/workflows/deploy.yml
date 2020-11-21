@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: 'true'
+          submodules: "true"
 
       - uses: actions/setup-node@v1
         with:
@@ -17,9 +17,9 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          GATSBY_ALGOLIA_APP_ID: ${{GATSBY_ALGOLIA_APP_ID}}
-          GATSBY_ALGOLIA_SEARCH_KEY: ${{GATSBY_ALGOLIA_SEARCH_KEY}}
-          ALGOLIA_ADMIN_KEY: ${{ALGOLIA_ADMIN_KEY}}
+          GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
+          GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_ALGOLIA_SEARCH_KEY }}
+          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
 
       - uses: appleboy/scp-action@master
         with:
