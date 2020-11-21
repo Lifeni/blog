@@ -16,6 +16,10 @@ jobs:
           version: 12
       - run: npm ci
       - run: npm run build
+        env:
+          GATSBY_ALGOLIA_APP_ID: ${{GATSBY_ALGOLIA_APP_ID}}
+          GATSBY_ALGOLIA_SEARCH_KEY: ${{GATSBY_ALGOLIA_SEARCH_KEY}}
+          ALGOLIA_ADMIN_KEY: ${{ALGOLIA_ADMIN_KEY}}
 
       - uses: appleboy/scp-action@master
         with:
