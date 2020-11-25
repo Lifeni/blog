@@ -97,7 +97,7 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
       utterances.setAttribute("src", "https://utteranc.es/client.js")
       utterances.setAttribute("repo", "Lifeni-Site/Comment")
       utterances.setAttribute("issue-term", "pathname")
-      utterances.setAttribute("theme", "github-light")
+      utterances.setAttribute("theme", "preferred-color-scheme")
       utterances.setAttribute("crossOrigin", "anonymous")
       utterances.setAttribute("async", "true")
       comment.appendChild(utterances)

@@ -5,6 +5,7 @@ import PostList from "../components/postlist"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar"
 import "../styles/layout.less"
+import "../styles/variables.less"
 
 const IndexPage = () => (
   <>
