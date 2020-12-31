@@ -16,11 +16,11 @@
     line-height: 2rem;
     color: var(--font-primary);
     border-bottom: solid 2px var(--border-0);
-    transition: all 0.4s;
+    transition: all 0.2s;
 
     @media (max-width: 480px) {
-      margin: 0 0 32px 0;
-      padding: 0 0 32px 0;
+      margin: 0 0 24px 0;
+      padding: 0 0 24px 0;
     }
 
     &:last-child {
@@ -45,10 +45,23 @@
       line-height: 2.5rem;
       font-weight: bold;
       color: var(--font-primary);
-      transition: all 0.4s;
+      transition: all 0.2s;
       word-break: break-all;
       text-overflow: ellipsis;
       overflow: hidden;
+
+      @media (max-width: 480px) {
+        font-size: 1.375rem;
+        line-height: 2rem;
+        padding: 0.25rem 0;
+      }
+    }
+
+    .info {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .tag {
@@ -60,22 +73,36 @@
       padding: 0 1rem 0 0;
       font-weight: bold;
       white-space: nowrap;
-      transition: all 0.4s;
+      transition: all 0.2s;
     }
 
     .description {
+      width: 100%;
       margin-top: 24px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @media (max-width: 480px) {
+        margin: 0;
+      }
     }
 
     .read-more {
+      margin: 6px 0;
+      line-height: initial;
       color: var(--font-link);
-      transition: all 0.4s;
+      border-top: solid 1px transparent;
+      border-bottom: solid 1px transparent;
+      transition: all 0.2s;
     }
 
     .read-more:hover,
     .read-more:active,
     .read-more:focus {
       color: var(--font-link-hover);
+      border-top: solid 1px transparent;
+      border-bottom: solid 1px var(--font-link-hover);
     }
   }
 }

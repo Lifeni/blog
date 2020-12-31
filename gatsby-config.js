@@ -13,8 +13,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `assets`,
+        path: `${__dirname}/src/assets`,
       },
     },
     {
@@ -35,7 +35,7 @@ module.exports = {
         background_color: `#feec44`,
         theme_color: `#feec44`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.png`,
+        icon: `src/assets/favicon.png`,
       },
     },
     `gatsby-plugin-sharp`,
@@ -47,7 +47,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              offsetY: `76`,
+              offsetY: `28`,
               maintainCase: false,
               removeAccents: true,
               isIconAfterHeader: false,

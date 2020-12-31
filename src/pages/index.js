@@ -21,26 +21,37 @@ const IndexPage = () => (
             <span role="img" aria-label="Hi">
               👋🏻
             </span>{" "}
-            Hi，
+            你好
           </h3>
           <p>
             这是我的个人网站「 记录干杯
-            」，我会在这里记录一些技术相关的文章和想法，尝试一些新的技术。
+            」，我会在这里记录一些文章或者是想法，也会在网站上尝试一些新的技术。
           </p>
+          <h3>
+            <span role="img" aria-label="Tea">
+              ☕
+            </span>{" "}
+            关于我
+          </h3>
           <p>
-            我比较感兴趣的方向是 Web 前端，喜欢好看的设计，最近正在尝试使用
-            TypeScript 和 Golang 做一些东西。
-          </p>
-          <p>
-            在
+            我比较感兴趣的方向是 Web 前端，喜欢好看的设计，在&nbsp;
             <a
               href="https://github.com/Lifeni"
               target="_blank"
               rel="noopener noreferrer"
             >
-              &nbsp;GitHub&nbsp;
+              GitHub
             </a>
-            上可以找到我和我的项目，以及关于我的其他信息。
+            &nbsp;上可以找到我和我的项目，以及关于我的其他信息。
+            {/* 比如一个&nbsp;
+            <a
+              href="https://github.com/users/Lifeni/projects/3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              看板
+            </a>
+            &nbsp;，里面记下了我在未来想完成的事。 */}
           </p>
           <p>
             还有，「{" "}

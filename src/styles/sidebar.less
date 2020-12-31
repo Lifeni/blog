@@ -12,7 +12,7 @@ aside {
   background: var(--background-1);
   overflow-x: hidden;
   overflow-y: auto;
-  transition: all 0.4s;
+  transition: all 0.2s;
 
   &::after {
     content: "";
@@ -107,7 +107,7 @@ aside {
       word-break: keep-all;
       text-overflow: ellipsis;
       overflow: hidden;
-      transition: all 0.4s;
+      transition: all 0.2s;
     }
 
     a:hover,
@@ -127,10 +127,11 @@ aside {
       font-family: "Fira Mono", Consolas, Monaco, "思源黑体 CN",
         "Source Han Sans", "Source Han Sans CN", monospace, sans-serif;
       white-space: nowrap;
-      transition: all 0.4s;
+      transition: all 0.2s;
     }
   }
 
+  nav > ul > li > a,
   nav > ul > li > p {
     font-weight: bold;
     display: none;
@@ -185,13 +186,17 @@ aside {
 
     a {
       color: var(--font-link);
-      transition: all 0.4s;
+      border-top: solid 1px transparent;
+      border-bottom: solid 1px transparent;
+      transition: all 0.2s;
       text-decoration: none;
 
       &:hover,
       &:active,
       &:focus {
         color: var(--font-link-hover);
+        border-top: solid 1px transparent;
+        border-bottom: solid 1px var(--font-link-hover);
       }
     }
   }
@@ -205,11 +210,12 @@ aside {
   background-color: transparent;
   flex: unset;
   word-break: break-all;
-  transition: all 0.4s;
+  transition: all 0.2s;
 
   h3 {
     margin: 1rem 0;
     line-height: 2.5rem;
+    font-size: 1.125rem;
     display: inline;
   }
 
@@ -224,32 +230,32 @@ aside {
 
     a {
       color: var(--font-secondary);
-      transition: all 0.4s;
+      transition: all 0.2s;
     }
 
     span {
       opacity: 0.6;
-      transition: all 0.4s;
+      transition: all 0.2s;
     }
 
     &.light {
       opacity: 0;
       visibility: hidden;
-      transition: all 0.4s;
+      transition: all 0.2s;
     }
 
     &:hover {
       color: var(--font-primary);
-      transition: all 0.4s;
+      transition: all 0.2s;
 
       a {
         color: var(--font-link);
-        transition: all 0.4s;
+        transition: all 0.2s;
       }
 
       span {
         opacity: 1;
-        transition: all 0.4s;
+        transition: all 0.2s;
       }
     }
   }
