@@ -20,8 +20,8 @@ const IndexPage = () => (
           <h3>
             <span role="img" aria-label="Hi">
               👋🏻
-            </span>{" "}
-            你好
+            </span>
+            &nbsp;你好
           </h3>
           <p>
             这是我的个人网站「 记录干杯
@@ -30,8 +30,8 @@ const IndexPage = () => (
           <h3>
             <span role="img" aria-label="Tea">
               ☕
-            </span>{" "}
-            关于我
+            </span>
+            &nbsp;关于我
           </h3>
           <p>
             我比较感兴趣的方向是 Web 前端，喜欢好看的设计，在&nbsp;
