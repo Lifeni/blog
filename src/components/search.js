@@ -27,6 +27,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
         placeholder="在此输入搜索内容 ..."
         value={currentRefinement}
         onChange={event => refine(event.currentTarget.value)}
+        aria-label="Search"
       />
       <button id="close-search" title="关闭搜索窗口" aria-label="关闭搜索窗口">
         <svg

@@ -106,20 +106,20 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
 
   const openSidebar = document.querySelector("#expand-aside")
   if (openSidebar) {
-    openSidebar.addEventListener("click", () => {
+    openSidebar.onclick = () => {
       const aside = document.querySelector("aside")
       const header = document.querySelector("header")
       aside.classList.toggle("expand")
       header.classList.toggle("expand")
-    })
+    }
   }
 
   const closeTips = document.querySelector("#close-tips")
   if (closeTips) {
-    closeTips.addEventListener("click", () => {
+    closeTips.onlick = () => {
       const outdatedTips = document.querySelector("#outdated-tips")
       outdatedTips.classList.add("hide")
-    })
+    }
   }
 
   const openDialog = document.querySelector("#open-dialog")
