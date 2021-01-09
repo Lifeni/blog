@@ -35,7 +35,7 @@ const PostList = () => (
     query={indexQuery}
     render={data => {
       return (
-        <div className="post-list" id="content">
+        <div className="post-list" id="main-content">
           {data.allMarkdownRemark.edges.map(({ node }, index) => (
             <Post
               title={node.frontmatter.title}

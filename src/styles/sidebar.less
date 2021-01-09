@@ -33,6 +33,7 @@ aside {
     padding: 72px 0 0 0;
     background: var(--background-1);
     overflow: hidden;
+    pointer-events: none;
 
     &::after {
       min-height: 72px;
@@ -45,6 +46,7 @@ aside {
       box-shadow: none;
       overflow-x: hidden;
       overflow-y: auto;
+      pointer-events: initial;
 
       &::after {
         min-height: 72px;
@@ -70,7 +72,7 @@ aside {
 
     &.expand {
       width: 100%;
-      height: calc(100vh - 120px);
+      height: calc(100vh - 128px);
       padding: 48px 48px 0 48px;
       background-color: var(--background-4);
 
@@ -128,6 +130,17 @@ aside {
         "Source Han Sans", "Source Han Sans CN", monospace, sans-serif;
       white-space: nowrap;
       transition: all 0.2s;
+    }
+
+    @media (max-width: 480px) {
+      a {
+        color: var(--font-primary);
+      }
+
+      code,
+      code[class*="language-"] {
+        color: var(--font-code);
+      }
     }
   }
 

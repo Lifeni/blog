@@ -28,7 +28,7 @@ article {
     border-top: solid 1px transparent;
     border-bottom: solid 1px transparent;
     // padding: 2px 0;
-    margin: 0 4px;
+    margin: 0 2px;
     text-decoration: none;
     word-break: break-all;
     white-space: pre-wrap;
@@ -88,7 +88,7 @@ article {
 
   ol,
   ul {
-    margin: 1rem 0 1rem 1.5rem;
+    margin: 0.75rem 0 0.75rem 1.5rem;
   }
 
   li {
@@ -272,13 +272,13 @@ article {
   transition: all 0.2s;
 }
 
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
-  color: #ffffff;
-  background-color: #3390ff;
-}
+// pre[class*="language-"]::selection,
+// pre[class*="language-"] ::selection,
+// code[class*="language-"]::selection,
+// code[class*="language-"] ::selection {
+//   color: #ffffff;
+//   background-color: #3390ff;
+// }
 
 .code-bar {
   position: relative;
@@ -372,7 +372,7 @@ section + p + p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: solid 12px var(--warn);
+  border-left: solid 12px var(--warn);
   border-radius: 4px;
   background-color: var(--background-1);
   font-size: 1rem;

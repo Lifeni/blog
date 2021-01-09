@@ -9,7 +9,7 @@ import "../styles/variables.less"
 
 const IndexPage = () => (
   <>
-    <a href="#content" className="skip-link">
+    <a href="#main-content" className="skip-link">
       Skip to main content | 跳转到主要内容
     </a>
     <SEO title="Home" />

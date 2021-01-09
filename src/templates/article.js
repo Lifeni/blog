@@ -7,6 +7,7 @@ import Header from "../components/header"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar"
 import Utterances from "../components/utterances"
+import "../styles/code.less"
 import "../styles/article.less"
 
 const relativeTime = require("dayjs/plugin/relativeTime")
@@ -78,9 +79,9 @@ const BlogPost = ({ data }) => {
     <>
       <SEO
         title={post.frontmatter.title}
-        description={post.frontmatter.descriptions.join(" | ")}
+        description={post.frontmatter.descriptions.join(" / ")}
       />
-      <a href="#content" className="skip-link">
+      <a href="#main-content" className="skip-link">
         Skip to main content | 跳转到主要内容
       </a>
       <Header
@@ -98,7 +99,7 @@ const BlogPost = ({ data }) => {
         </Sidebar>
         <div className="container">
           <article
-            id="content"
+            id="main-content"
             dangerouslySetInnerHTML={{ __html: html + post.html }}
           ></article>
           <Utterances />
