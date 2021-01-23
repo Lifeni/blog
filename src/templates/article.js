@@ -9,6 +9,7 @@ import Sidebar from "../components/sidebar"
 import Utterances from "../components/utterances"
 import "../styles/code.less"
 import "../styles/article.less"
+import "../styles/override.less"
 
 const relativeTime = require("dayjs/plugin/relativeTime")
 dayjs.extend(relativeTime)

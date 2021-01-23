@@ -24,8 +24,6 @@ module.exports = {
         path: `${__dirname}/content/notebook`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -38,12 +36,17 @@ module.exports = {
         icon: `src/assets/favicon.png`,
       },
     },
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-images-native-lazy-load`,
+            options: {
+              loading: "lazy",
+            },
+          },
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
@@ -84,22 +87,13 @@ module.exports = {
               escapeEntities: {},
             },
           },
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              loading: "lazy",
-              linkImagesToOriginal: false,
-            },
-          },
-          {
-            resolve: `gatsby-remark-images-native-lazy-load`,
-            options: {
-              loading: "lazy",
-            },
-          },
+          `gatsby-remark-images`,
+          `gatsby-remark-responsive-iframe`,
         ],
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -116,6 +110,7 @@ module.exports = {
     },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-less`,
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-algolia`,
       options: {

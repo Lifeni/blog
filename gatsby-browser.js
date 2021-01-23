@@ -1,7 +1,16 @@
-require("prismjs/plugins/line-numbers/prism-line-numbers.css")
+import "prismjs/plugins/line-numbers/prism-line-numbers.css"
+import mediumZoom from "medium-zoom"
 
-exports.onRouteUpdate = ({ location, prevLocation }) => {
+const onRouteUpdate = ({ location, prevLocation }) => {
   if (!prevLocation || location.pathname !== prevLocation.pathname) {
+    if (location.pathname.startsWith("/article/")) {
+      setTimeout(() => {
+        mediumZoom(document.querySelectorAll("img"), {
+          background: "rgba(0, 0, 0, .8)",
+        })
+      }, 300)
+    }
+
     const block = document.querySelectorAll(".gatsby-highlight")
     const bars = document.querySelectorAll(".code-bar")
     if (block.length && !bars.length) {
@@ -169,3 +178,5 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
     })
   }
 }
+
+export { onRouteUpdate }
