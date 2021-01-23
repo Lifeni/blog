@@ -34,6 +34,9 @@ module.exports = {
         theme_color: `#feec44`,
         display: `minimal-ui`,
         icon: `src/assets/favicon.png`,
+        icon_options: {
+          purpose: `any maskable`,
+        },
       },
     },
     `gatsby-plugin-catch-links`,
