@@ -15,7 +15,7 @@ export default function HTML(props) {
       </head>
       <body {...props.bodyAttributes}>
         <noscript>
-          Website requires JavaScript to run | 网站需要 JavaScript 才能运行
+          <div className="top-bar">JavaScript 已被禁用，部分功能不可用</div>
         </noscript>
         {props.preBodyComponents}
         <div

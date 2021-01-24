@@ -29,7 +29,7 @@ const BlogPost = ({ data }) => {
       <div className="article-info">
         {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
           6 * 30 * 24 * 60 * 60 && (
-          <div className="outdated-tips" id="outdated-tips">
+          <section className="outdated-tips" id="outdated-tips">
             <span>
               这篇文章修改于 <strong> {date.from} </strong>
               ，其中有些信息可能已经过时
@@ -47,7 +47,7 @@ const BlogPost = ({ data }) => {
                 ></path>
               </svg>
             </button>
-          </div>
+          </section>
         )}
         <p className="subtitle">
           {post.frontmatter.tags.map(tag => (
