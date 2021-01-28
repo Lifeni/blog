@@ -112,12 +112,6 @@ aside {
       transition: all 0.2s;
     }
 
-    a:hover,
-    a:active,
-    a:focus {
-      color: var(--font-primary);
-    }
-
     code,
     code[class*="language-"] {
       width: 100%;
@@ -130,6 +124,17 @@ aside {
         "Source Han Sans", "Source Han Sans CN", monospace, sans-serif;
       white-space: nowrap;
       transition: all 0.2s;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+      color: var(--font-primary);
+
+      code,
+      code[class*="language-"] {
+        color: var(--font-code);
+      }
     }
 
     @media (max-width: 480px) {
