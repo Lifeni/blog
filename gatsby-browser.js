@@ -22,13 +22,32 @@ const onRouteUpdate = ({ location, prevLocation }) => {
         span.textContent = e.dataset.language
         bar.appendChild(span)
 
+        const group = document.createElement("div")
+
+        const fold = document.createElement("button")
+        fold.className = "code-button fold"
+        fold.textContent = "折叠代码"
+
+        fold.onclick = () => {
+          const pre = e.querySelector("pre")
+          if (pre.classList.contains("folded")) {
+            pre.classList.remove("folded")
+            fold.textContent = "折叠代码"
+          } else {
+            pre.classList.add("folded")
+            fold.textContent = "展开代码"
+          }
+        }
+
+        group.appendChild(fold)
+
         const copy = document.createElement("button")
         const copyNoDollar = document.createElement("button")
         const copyNoGreater = document.createElement("button")
 
-        copy.className = "copy-button"
-        copyNoDollar.className = "copy-button dollar"
-        copyNoGreater.className = "copy-button greater"
+        copy.className = "code-button copy"
+        copyNoDollar.className = "code-button copy dollar"
+        copyNoGreater.className = "code-button copy greater"
         copy.textContent = "复制"
         copyNoDollar.textContent = "复制并去掉 $"
         copyNoGreater.textContent = "复制并去掉 >"
@@ -75,7 +94,6 @@ const onRouteUpdate = ({ location, prevLocation }) => {
             })
         }
 
-        const group = document.createElement("div")
         group.appendChild(copy)
 
         if (e.dataset.language === "bash") {

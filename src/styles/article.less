@@ -186,6 +186,7 @@ article {
     border-left: solid 12px var(--border-1);
     background-color: var(--background-1);
     border-radius: 4px;
+    transition: all 0.2s;
   }
 
   blockquote li,
@@ -256,6 +257,7 @@ article {
 .gatsby-highlight pre[class*="language-"].line-numbers {
   padding-left: 3rem;
   border-radius: 0 0 4px 4px;
+  transition: background-color 0.2s;
 }
 
 .gatsby-highlight pre[class*="language-"].line-numbers span.line-numbers-rows {
@@ -298,7 +300,7 @@ article {
     color: var(--font-secondary);
   }
 
-  .copy-button {
+  .code-button {
     height: 100%;
     padding: 0.8rem 0.8rem 0.6rem 0.8rem;
     border: none;
@@ -312,21 +314,32 @@ article {
     transition: all 0.2s;
   }
 
-  .copy-button:last-of-type {
+  .code-button:last-of-type {
     border-radius: 0 4px 0 0;
   }
 
-  .copy-button:hover,
-  .copy-button:focus,
-  .copy-button:active {
+  .code-button:hover,
+  .code-button:focus,
+  .code-button:active {
     background-color: var(--background-2);
   }
 
-  .copy-button.dollar {
+  .code-button.dollar {
     top: calc(40.8px + 0.6rem);
     z-index: 10;
     transition: all 0.2s;
   }
+}
+
+.gatsby-highlight pre[class*="language-"].line-numbers.folded {
+  top: 0;
+  height: 0;
+  margin-top: 0;
+  margin-bottom: 32px;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  transition: none;
 }
 
 .subtitle {
