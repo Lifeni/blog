@@ -292,6 +292,11 @@ article {
     display: flex;
   }
 
+  &.folded {
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
   .code-language {
     padding: 0.8rem 0.4rem 0.6rem 1rem;
     font-family: inherit;
@@ -431,4 +436,9 @@ section + p + p {
 .comment {
   margin: 0 -8px;
   padding: 48px 0 0 0;
+
+  @media (max-width: 480px) {
+    margin: 0 -8px -18px -8px;
+    padding: 36px 0 0 0;
+  }
 }

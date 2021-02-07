@@ -90,11 +90,18 @@
 
     .read-more {
       margin: 6px 0;
+      display: flex;
+      align-items: center;
       line-height: initial;
       color: var(--font-link);
       border-top: solid 1px transparent;
       border-bottom: solid 1px transparent;
       transition: all 0.2s;
+
+      svg {
+        margin: 0 0.5rem 0 0;
+        fill: var(--font-link);
+      }
     }
 
     .read-more:hover,

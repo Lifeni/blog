@@ -30,11 +30,14 @@ const onRouteUpdate = ({ location, prevLocation }) => {
 
         fold.onclick = () => {
           const pre = e.querySelector("pre")
+          const bar = e.querySelector(".code-bar")
           if (pre.classList.contains("folded")) {
             pre.classList.remove("folded")
+            bar.classList.remove("folded")
             fold.textContent = "折叠代码"
           } else {
             pre.classList.add("folded")
+            bar.classList.add("folded")
             fold.textContent = "展开代码"
           }
         }

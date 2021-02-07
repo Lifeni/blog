@@ -4,6 +4,31 @@ import "../styles/footer.less"
 
 const Footer = () => (
   <footer>
+    <div>
+      <a
+        href="http://dev.lifeni.life"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        开源项目
+      </a>
+      <span> / </span>
+      <a
+        href="http://lab.lifeni.life"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        实验室
+      </a>
+      <span> / </span>
+      <a
+        href="http://status.lifeni.life"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Status Page
+      </a>
+    </div>
     <StaticQuery
       query={UPYunQuery}
       render={data => {
