@@ -87,7 +87,7 @@ article {
 
   ol,
   ul {
-    margin: 0.75rem 0 0.75rem 1.5rem;
+    margin: 16px 0 16px 1.5rem;
   }
 
   li {
@@ -104,14 +104,23 @@ article {
     max-width: 100%;
     height: auto;
     opacity: 1;
-    margin: 1rem 0;
-    border-radius: 4px;
+    margin: 16px 0;
+    // border-radius: 4px;
+    outline: solid 3px var(--background-0);
     display: block;
     color: var(--font-secondary);
     font-size: 0.875rem;
     line-height: 1rem;
     text-align: right;
     transition: all 0.2s;
+
+    &.medium-zoom-image {
+      transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), outline 0.2s !important;
+    }
+  }
+
+  img:hover {
+    outline: solid 4px var(--background-2);
   }
 
   code,
@@ -150,7 +159,7 @@ article {
   }
 
   pre {
-    margin: 0.75rem 0;
+    margin: 16px 0;
     padding: 1rem 1.5rem;
     background-color: var(--background-1);
     line-height: 1.5rem;
@@ -159,7 +168,7 @@ article {
   }
 
   pre[class*="language-"] {
-    margin: 0.75rem 0;
+    margin: 16px 0;
     padding: 1rem 6rem 1rem 1.5rem;
     color: var(--font-code);
     background-color: var(--background-1);
@@ -276,7 +285,7 @@ article {
 .code-bar {
   position: relative;
   width: 100%;
-  margin: 12px 0 -20px 0;
+  margin: 16px 0 -20px 0;
   display: flex;
   z-index: 10;
   align-items: center;
