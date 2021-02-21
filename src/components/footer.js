@@ -36,14 +36,6 @@ const Footer = () => (
       >
         Gitea
       </a>
-      <span> / </span>
-      <a
-        href="http://code.lifeni.life"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        JupyterLab
-      </a>
     </div>
     <StaticQuery
       query={UPYunQuery}

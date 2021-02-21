@@ -25,7 +25,7 @@ header {
     z-index: 9000;
     width: 100%;
     height: 100%;
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,11 +131,12 @@ header {
     right: unset;
     bottom: unset;
     width: 72px;
-    min-height: 100vh;
-    padding: 0;
+    min-height: 100%;
+    padding: 48px 0;
     flex-direction: column;
     justify-content: space-between;
-    background-color: var(--background-1);
+    border-right: solid 2px var(--border-0);
+    background-color: var(--background-0);
     transition: all 0.2s;
 
     .text {
@@ -163,7 +164,7 @@ header {
     button:active,
     button:focus,
     button:hover {
-      background-color: var(--background-1);
+      background-color: var(--background-1) !important;
     }
   }
 
@@ -217,7 +218,8 @@ header {
       height: 72px;
       margin: 0;
       border-radius: 72px;
-      background-color: var(--background-4);
+      border: solid 2px var(--border-0);
+      background-color: var(--background-0);
 
       &.auto-width {
         width: auto;
@@ -238,7 +240,7 @@ header {
     button:active,
     button:focus,
     button:hover {
-      background-color: var(--background-2);
+      background-color: var(--background-1) !important;
     }
   }
 
