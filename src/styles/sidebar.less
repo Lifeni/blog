@@ -60,7 +60,6 @@ aside {
     width: 100%;
     height: 0;
     min-height: unset;
-    border-radius: 36px 36px 0 0;
     z-index: 3000;
     padding: 0 48px;
     background-color: var(--background-4);
@@ -72,9 +71,9 @@ aside {
 
     &.expand {
       width: 100%;
-      height: calc(100% - 128px);
+      height: calc(100% - 72px);
       padding: 48px 48px 0 48px;
-      background-color: var(--background-4);
+      background-color: var(--background-0);
 
       &::after {
         min-height: 48px;
@@ -116,8 +115,7 @@ aside {
     code[class*="language-"] {
       width: 100%;
       color: var(--font-secondary);
-      padding: 0.2rem 0.4rem;
-      background-color: var(--background-3);
+      background-color: transparent;
       font-size: 1rem;
       border-radius: 4px;
       font-family: "Fira Mono", Consolas, Monaco, "思源黑体 CN",
