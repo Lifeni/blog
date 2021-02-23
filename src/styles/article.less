@@ -25,8 +25,6 @@ article {
 
   a {
     color: var(--font-link);
-    border-top: solid 1px transparent;
-    border-bottom: solid 1px transparent;
     margin: 0 2px;
     text-decoration: none;
     word-break: normal;
@@ -38,8 +36,8 @@ article {
   a:active,
   a:focus {
     color: var(--font-link-hover);
-    border-top: solid 1px transparent;
-    border-bottom: solid 1px var(--font-link-hover);
+    text-decoration: underline from-font;
+    text-underline-offset: 4px;
   }
 
   strong {
@@ -56,7 +54,8 @@ article {
 
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     color: var(--font-primary);
     font-weight: bold;
     transition: all 0.2s;
@@ -85,9 +84,14 @@ article {
     line-height: 3rem;
   }
 
+  h4 {
+    font-size: 1.125rem;
+    line-height: 2.5rem;
+  }
+
   ol,
   ul {
-    margin: 16px 0 16px 1.5rem;
+    margin: 12px 0 12px 1.5rem;
   }
 
   li {
@@ -115,12 +119,8 @@ article {
     transition: all 0.2s;
 
     &.medium-zoom-image {
-      transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), outline 0.2s !important;
+      transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1) !important;
     }
-  }
-
-  img:hover {
-    outline: solid 4px var(--background-2);
   }
 
   code,
@@ -146,6 +146,7 @@ article {
     margin: 0;
     padding: 0;
     white-space: unset;
+    font-size: 1rem;
   }
 
   table code[class*="language-"] {
@@ -154,8 +155,20 @@ article {
   }
 
   h2 code[class*="language-"],
-  h3 code[class*="language-"] {
+  h3 code[class*="language-"],
+  h4 code[class*="language-"] {
     font-size: 1em;
+  }
+
+  details {
+    margin: 16px 0;
+
+    summary {
+      margin: 0 0 0 0.5rem;
+      line-height: 1.75rem;
+      cursor: pointer;
+      outline: none;
+    }
   }
 
   pre {
@@ -191,17 +204,26 @@ article {
   blockquote {
     width: 100%;
     margin: 16px 0;
-    padding: 8px 24px;
+    padding: 12px 24px;
     border-left: solid 12px var(--border-1);
     background-color: var(--background-4);
     border-radius: 4px;
     transition: all 0.2s;
-  }
 
-  blockquote li,
-  blockquote code {
-    color: var(--font-code);
-    margin: 0;
+    ol,
+    ul {
+      margin: 12px 0 12px 1.5rem;
+    }
+
+    li,
+    code {
+      color: var(--font-code);
+      margin: 0;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
   }
 
   table {
