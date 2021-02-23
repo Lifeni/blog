@@ -145,9 +145,16 @@ const onRouteUpdate = ({ location, prevLocation }) => {
 
   const closeTips = document.querySelector("#close-tips")
   if (closeTips) {
-    closeTips.onlick = () => {
+    closeTips.onclick = () => {
       const outdatedTips = document.querySelector("#outdated-tips")
       outdatedTips.classList.add("hide")
+    }
+  }
+
+  const reloadPage = document.querySelector("#reload-page")
+  if (reloadPage) {
+    reloadPage.onclick = () => {
+      window.location.reload()
     }
   }
 
@@ -200,4 +207,8 @@ const onRouteUpdate = ({ location, prevLocation }) => {
   }
 }
 
-export { onRouteUpdate }
+const onServiceWorkerUpdateReady = () => {
+  document.querySelector("#update-card").classList.add("show")
+}
+
+export { onRouteUpdate, onServiceWorkerUpdateReady }

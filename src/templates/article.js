@@ -3,12 +3,13 @@ import "dayjs/locale/zh-cn"
 import { graphql } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
+import Global from "../components/global"
 import Header from "../components/header"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar"
 import Utterances from "../components/utterances"
-import "../styles/code.less"
 import "../styles/article.less"
+import "../styles/code.less"
 import "../styles/override.less"
 
 const relativeTime = require("dayjs/plugin/relativeTime")
@@ -29,25 +30,45 @@ const BlogPost = ({ data }) => {
       <div className="article-info">
         {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
           6 * 30 * 24 * 60 * 60 && (
-          <section className="outdated-tips" id="outdated-tips">
-            <span>
-              这篇文章修改于 <strong> {date.from} </strong>
-              ，其中有些信息可能已经过时
-            </span>
-            <button className="close-tips" id="close-tips">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"
-                ></path>
-              </svg>
-            </button>
-          </section>
+          <div className="outdated-tips" id="outdated-tips">
+            <section>
+              <p className="title">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  className="icon"
+                >
+                  <path d="M12.5 7.25a.75.75 0 00-1.5 0v5.5c0 .27.144.518.378.651l3.5 2a.75.75 0 00.744-1.302L12.5 12.315V7.25z"></path>
+                  <path
+                    fillRule="evenodd"
+                    d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0z"
+                  ></path>
+                </svg>
+                Outdated Content
+              </p>
+              <button className="close-tips" id="close-tips">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"
+                  ></path>
+                </svg>
+              </button>
+            </section>
+            <section>
+              <p>
+                这篇文章修改于 <strong> {date.from} </strong>
+                ，其中有些信息可能已经过时
+              </p>
+            </section>
+          </div>
         )}
         <p className="subtitle">
           {post.frontmatter.tags.map(tag => (
@@ -82,9 +103,7 @@ const BlogPost = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.descriptions.join(" / ")}
       />
-      <a href="#main-content" className="skip-link">
-        Skip to main content | 跳转到主要内容
-      </a>
+      <Global />
       <Header
         back
         aside

@@ -1,6 +1,7 @@
 import React from "react"
 import About from "../components/about"
 import Footer from "../components/footer"
+import Global from "../components/global"
 import Header from "../components/header"
 import PostList from "../components/postlist"
 import SEO from "../components/seo"
@@ -10,9 +11,7 @@ import "../styles/variables.less"
 
 const IndexPage = () => (
   <>
-    <a href="#main-content" className="skip-link">
-      Skip to main content | 跳转到主要内容
-    </a>
+    <Global />
     <SEO title="Home" />
     <Header app aside />
     <main>
