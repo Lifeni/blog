@@ -14,7 +14,7 @@ article {
   address {
     margin: 0.75rem 0;
     font-size: 1rem;
-    line-height: 1.75rem;
+    line-height: 2rem;
     color: var(--font-primary);
     transition: all 0.2s;
   }
@@ -25,7 +25,7 @@ article {
 
   a {
     color: var(--font-link);
-    margin: 0 2px;
+    margin: 0 1px;
     text-decoration: none;
     word-break: normal;
     white-space: normal;
@@ -108,7 +108,7 @@ article {
     max-width: 100%;
     height: auto;
     opacity: 1;
-    margin: 16px 0;
+    margin: 24px 0;
     border-radius: 4px;
     border: solid 2px var(--border-0);
     display: block;
@@ -125,7 +125,7 @@ article {
 
   code,
   code[class*="language-"] {
-    margin: 0 2px;
+    margin: 0 1px;
     padding: 2px 6px;
     color: var(--font-code);
     background-color: var(--background-4);
@@ -165,7 +165,7 @@ article {
 
     summary {
       margin: 0 0 0 0.5rem;
-      line-height: 1.75rem;
+      line-height: 2rem;
       cursor: pointer;
       outline: none;
     }
@@ -181,7 +181,7 @@ article {
   }
 
   pre[class*="language-"] {
-    margin: 16px 0;
+    margin: 16px 0 24px 0;
     padding: 1rem 6rem 1rem 1.5rem;
     color: var(--font-code);
     background-color: var(--background-4);
@@ -203,7 +203,7 @@ article {
 
   blockquote {
     width: 100%;
-    margin: 16px 0;
+    margin: 24px 0;
     padding: 12px 24px;
     border-left: solid 12px var(--border-1);
     background-color: var(--background-4);
@@ -307,7 +307,7 @@ article {
 .code-bar {
   position: relative;
   width: 100%;
-  margin: 16px 0 -20px 0;
+  margin: 24px 0 -20px 0;
   display: flex;
   z-index: 10;
   align-items: center;
@@ -371,7 +371,7 @@ article {
   top: 0;
   height: 0;
   margin-top: 0;
-  margin-bottom: 32px;
+  margin-bottom: 44px;
   padding-top: 0;
   padding-bottom: 0;
   overflow: hidden;
@@ -381,12 +381,40 @@ article {
 .subtitle {
   font-weight: bold;
   font-size: 1rem;
-  line-height: 1.75rem;
+  line-height: 2rem;
   margin: 0 0 4px 0;
 
   .tag {
     padding: 0 1rem 0 0;
     color: var(--font-secondary);
+  }
+}
+
+blockquote {
+  code,
+  code[class*="language-"],
+  pre[class*="language-"] {
+    background-color: var(--background-5);
+  }
+
+  .gatsby-highlight
+    pre[class*="language-"].line-numbers
+    span.line-numbers-rows {
+    background-color: var(--background-5);
+  }
+
+  .code-bar {
+    background-color: var(--background-5);
+
+    .code-button {
+      background-color: var(--background-5);
+    }
+
+    .code-button:hover,
+    .code-button:focus,
+    .code-button:active {
+      background-color: var(--background-4);
+    }
   }
 }
 
@@ -417,8 +445,7 @@ section + p + p {
   border-radius: 4px;
   background-color: var(--background-4);
   font-size: 1rem;
-  line-height: 1.75rem;
-  gap: 0.15rem;
+  line-height: 2rem;
   transition: all 0.2s;
 
   section {
@@ -477,7 +504,7 @@ section + p + p {
   span {
     width: fit-content;
     font-size: 1rem;
-    line-height: 1.75rem;
+    line-height: 2rem;
     margin: 0 0.75rem 0 0;
     color: var(--font-secondary);
     font-weight: bold;
