@@ -32,7 +32,10 @@ const BlogPost = ({ data }) => {
           6 * 30 * 24 * 60 * 60 && (
           <div className="outdated-tips" id="outdated-tips">
             <section>
-              <p className="title"># Outdated Content</p>
+              <p>
+                这篇文章修改于 <strong>{date.from}</strong>
+                ，其中有些信息可能已经过时
+              </p>
               <button className="close-tips" id="close-tips">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -48,10 +51,7 @@ const BlogPost = ({ data }) => {
               </button>
             </section>
             <section>
-              <p>
-                这篇文章修改于 <strong> {date.from} </strong>
-                ，其中有些信息可能已经过时
-              </p>
+              <p className="title"># Outdated Content</p>
             </section>
           </div>
         )}

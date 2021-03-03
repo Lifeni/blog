@@ -49,7 +49,8 @@ const PostList = () => (
         <div className="post-list" id="main-content">
           <div className="update-card" id="update-card">
             <section>
-              <p className="title"># Update Now</p>
+              <p>网站做好了更新准备，请刷新页面以更新</p>
+
               <button className="reload-page" id="reload-page">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +63,7 @@ const PostList = () => (
               </button>
             </section>
             <section>
-              <p>网站做好了更新准备，请刷新页面以更新</p>
+              <p className="title"># Update Now</p>
             </section>
           </div>
           {data.allMarkdownRemark.edges.map(({ node }, index) => (
