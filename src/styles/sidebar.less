@@ -82,9 +82,16 @@ aside {
   }
 
   nav {
+    max-width: 324px;
+
+    &:hover {
+      max-width: unset;
+    }
+
     @media (max-width: 824px) {
       width: 100%;
       min-width: calc(360px - 36px - 36px);
+      max-width: unset;
     }
 
     p,
@@ -224,6 +231,7 @@ aside {
 .about {
   position: relative;
   z-index: 200;
+  max-width: unset;
   padding: 0;
   color: var(--font-primary);
   background-color: transparent;
@@ -247,6 +255,7 @@ aside {
   }
 
   @media (min-width: 769px) {
+    max-width: 324px;
     flex: 1;
     color: var(--font-secondary);
     padding: 0;
