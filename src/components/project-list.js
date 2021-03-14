@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
-import * as apps from "../data/apps.json"
+import apps from "../data/apps.json"
 import "../styles/project-list.less"
 
 const ProjectList = () => (
