@@ -5,6 +5,10 @@ import "../styles/header.less"
 
 const Header = ({ app, back, aside }) => (
   <header>
+    <a href="#main-content" className="skip-link">
+      Skip to main content | 跳转到主要内容
+    </a>
+
     {app && (
       <>
         <button className="fab auto-width" id="open-dialog" aria-label="搜索">

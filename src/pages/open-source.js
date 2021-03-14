@@ -2,30 +2,28 @@ import React from "react"
 import About from "../components/about"
 import Footer from "../components/footer"
 import Header from "../components/header"
-import PostList from "../components/post-list"
+import ProjectList from "../components/project-list"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar"
 import Tabs from "../components/tabs"
 import UpdateCard from "../components/update-card"
-import "../styles/layout.less"
-import "../styles/variables.less"
 
-const IndexPage = () => (
+const OpenSourcePage = () => (
   <>
-    <SEO title="Home" />
+    <SEO title="开源项目" />
     <Header app aside />
     <main>
       <Sidebar>
         <About />
       </Sidebar>
       <div className="container">
-        <Tabs page="article" />
+        <Tabs page="open-source" />
         <UpdateCard />
-        <PostList />
+        <ProjectList />
         <Footer />
       </div>
     </main>
   </>
 )
 
-export default IndexPage
+export default OpenSourcePage

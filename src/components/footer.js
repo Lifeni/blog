@@ -6,19 +6,19 @@ const Footer = () => (
   <footer>
     <div>
       <a
-        href="http://dev.lifeni.life"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        开源项目
-      </a>
-      <span> / </span>
-      <a
         href="http://lab.lifeni.life"
         target="_blank"
         rel="noopener noreferrer"
       >
         实验室
+      </a>
+      <span> / </span>
+      <a
+        href="http://dev.lifeni.life"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Console
       </a>
       <span> / </span>
       <a
@@ -33,6 +33,7 @@ const Footer = () => (
         href="http://git.lifeni.life/liangfengning"
         target="_blank"
         rel="noopener noreferrer"
+        className="last"
       >
         Gitea
       </a>
@@ -45,7 +46,7 @@ const Footer = () => (
             href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
             target="_blank"
             rel="noopener noreferrer"
-            className="upyun"
+            className="upyun last"
           >
             本网站由 <img src={data.file.publicURL} alt="又拍云" /> 提供 CDN
             加速与云储存服务
@@ -66,6 +67,7 @@ const Footer = () => (
         href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
         target="_blank"
         rel="noopener noreferrer"
+        className="last"
       >
         鲁公网安备 37132102371392 号
       </a>

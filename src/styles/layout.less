@@ -64,8 +64,10 @@ main {
   z-index: 999999;
   top: -48px;
   left: 16px;
+  width: auto;
   height: 48px;
   padding: 12px 20px;
+  border: solid 2px var(--font-link);
   border-radius: 4px;
   color: var(--font-link);
   background-color: var(--background-0);
@@ -78,6 +80,7 @@ main {
 .skip-link:focus {
   top: 16px;
   opacity: 1;
+  background-color: var(--background-0);
 }
 
 .top-bar {
@@ -98,7 +101,7 @@ main {
 .update-card {
   width: 100%;
   height: auto;
-  margin: 0 0 48px 0;
+  margin: 0 0 64px 0;
   padding: 24px 28px 20px 28px;
   display: none;
   flex-direction: column;

@@ -3,7 +3,6 @@ import "dayjs/locale/zh-cn"
 import { graphql } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
-import Global from "../components/global"
 import Header from "../components/header"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar"
@@ -88,7 +87,6 @@ const BlogPost = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.descriptions.join(" / ")}
       />
-      <Global />
       <Header
         back
         aside

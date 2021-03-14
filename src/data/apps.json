@@ -1,0 +1,79 @@
+[
+  {
+    "name": "status-page",
+    "title": "Status Page",
+    "logo": "https://file.lifeni.life/dev/status-page/logo.svg",
+    "description": "一个简洁、可自定义的状态监控页",
+    "features": [
+      "基于 UptimeRobot API",
+      "可以通过修改环境变量或配置文件自定义界面",
+      "使用 Next.js 编写，支持 SSR 和 I18N"
+    ],
+    "github": "https://github.com/Lifeni/status-page",
+    "links": [
+      {
+        "name": "查看 Demo 页",
+        "type": "see",
+        "url": "https://status-page.dev.lifeni.life"
+      },
+      {
+        "name": "项目地址",
+        "type": "github",
+        "url": "https://github.com/Lifeni/status-page"
+      }
+    ]
+  },
+  {
+    "name": "make-it-beautiful",
+    "title": "Make It Beautiful",
+    "logo": "https://file.lifeni.life/dev/make-it-beautiful/logo.svg",
+
+    "description": "一个可以把文本页面变得好看和易于阅读的浏览器扩展",
+    "features": [
+      "有一个好看的界面和一些自定义设置",
+      "目前已经在 Microsoft Edge Addons 上架"
+    ],
+    "github": "https://github.com/Lifeni/make-it-beautiful",
+    "links": [
+      {
+        "name": "在 Microsoft Edge 上安装",
+        "type": "install",
+        "url": "https://microsoftedge.microsoft.com/addons/detail/make-it-beautiful/jjgkadobhgomjcppaojffnlooknkkodd"
+      },
+      {
+        "name": "项目地址",
+        "type": "github",
+        "url": "https://github.com/Lifeni/make-it-beautiful"
+      }
+    ]
+  },
+  {
+    "name": "i-show-you",
+    "title": "I Show You",
+    "logo": "https://file.lifeni.life/dev/i-show-you/logo.svg",
+    "description": "一个关于数据展示与分享的 Web 应用",
+    "features": [
+      "灵感来自 GitHub 的 Gist",
+      "可以通过 Docker Compose 部署到自己的服务器",
+      "使用 React 和 Golang 开发"
+    ],
+    "github": "https://github.com/Lifeni/i-show-you",
+    "links": [
+      {
+        "name": "打开应用",
+        "type": "app",
+        "url": "https://i-show-you.dev.lifeni.life"
+      },
+      {
+        "name": "文档",
+        "type": "documentation",
+        "url": "https://lifeni.github.io/i-show-you"
+      },
+      {
+        "name": "项目地址",
+        "type": "github",
+        "url": "https://github.com/Lifeni/i-show-you"
+      }
+    ]
+  }
+]

@@ -10,7 +10,7 @@ const NotFoundPage = () => (
     <main>
       <Sidebar />
       <div className="container">
-        <article>
+        <article id="main-content">
           <p className="subtitle">HTTP 404</p>
           <h1>NOT FOUND</h1>
           <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
