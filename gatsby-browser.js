@@ -178,6 +178,13 @@ const onRouteUpdate = ({ location, prevLocation }) => {
             search.focus()
           }, 300)
         }
+      } else if (e.key === "Enter") {
+        if (
+          dialog.querySelectorAll("ul > li > a") &&
+          dialog.querySelectorAll("ul > li > a")[0]
+        ) {
+          dialog.querySelectorAll("ul > li > a")[0].click()
+        }
       }
     })
 
