@@ -47,7 +47,7 @@ const ProjectList = () => (
               rel="noopener noreferrer"
             >
               <Icons type={link.type} />
-              {link.name}
+              <span> {link.name} </span>
             </a>
           ))}
         </p>

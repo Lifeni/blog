@@ -6,11 +6,27 @@ const Footer = () => (
   <footer>
     <div>
       <a
+        href="https://www.cnblogs.com/liangfengning/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        博客园
+      </a>
+      <span> / </span>
+      <a
         href="http://lab.lifeni.life"
         target="_blank"
         rel="noopener noreferrer"
       >
         实验室
+      </a>
+      <span> / </span>
+      <a
+        href="http://status.lifeni.life"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Status
       </a>
       <span> / </span>
       <a
@@ -20,22 +36,24 @@ const Footer = () => (
       >
         Console
       </a>
-      <span> / </span>
+    </div>
+
+    <div className="wrappable">
       <a
-        href="http://status.lifeni.life"
+        href="http://www.beian.miit.gov.cn/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Status Page
+        鲁ICP备 19006085 号
       </a>
-      <span> / </span>
+      <span className="break-line"> / </span>
       <a
-        href="http://git.lifeni.life/liangfengning"
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
         target="_blank"
         rel="noopener noreferrer"
         className="last"
       >
-        Gitea
+        鲁公网安备 37132102371392 号
       </a>
     </div>
     <StaticQuery
@@ -54,24 +72,6 @@ const Footer = () => (
         )
       }}
     />
-    <div>
-      <a
-        href="http://www.beian.miit.gov.cn/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        鲁ICP备 19006085 号
-      </a>
-      <span> / </span>
-      <a
-        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="last"
-      >
-        鲁公网安备 37132102371392 号
-      </a>
-    </div>
   </footer>
 )
 

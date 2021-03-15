@@ -22,6 +22,16 @@ footer {
     display: flex;
     width: 100%;
     overflow-x: hidden;
+
+    @media (max-width: 480px) {
+      &.wrappable {
+        flex-direction: column;
+      }
+
+      .break-line {
+        display: none;
+      }
+    }
   }
 
   a,
