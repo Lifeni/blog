@@ -29,7 +29,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: auto;
     transition: all 0.2s;
     perspective: 2000px;
     pointer-events: none;
@@ -180,6 +179,7 @@ header {
     justify-content: space-between;
     background-color: var(--background-4);
     overflow: hidden;
+    pointer-events: initial;
 
     .text {
       display: inline-block;
@@ -227,6 +227,7 @@ header {
       margin: 0;
       border-radius: 0;
       background-color: var(--background-4);
+      pointer-events: initial;
 
       &.auto-width {
         width: auto;
