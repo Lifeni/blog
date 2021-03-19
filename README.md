@@ -2,7 +2,7 @@
 
 这是一个关于“记录”的个人网站。
 
-大概在 [https://lifeni.life](https://lifeni.life)。
+大概在 [https://lifeni.life](https://lifeni.life) 。
 
 ## 技术
 

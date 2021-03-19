@@ -30,7 +30,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
         aria-label="Search"
       />
       <button id="close-search" title="关闭搜索窗口" aria-label="关闭搜索窗口">
-        <svg
+        {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"
@@ -39,6 +39,17 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
           <path
             fillRule="evenodd"
             d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"
+          ></path>
+        </svg> */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          width="16"
+          height="16"
+        >
+          <path
+            fillRule="evenodd"
+            d="M3.22 9.78a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06 1.06L8 6.06 4.28 9.78a.75.75 0 01-1.06 0z"
           ></path>
         </svg>
       </button>

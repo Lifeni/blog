@@ -1,5 +1,34 @@
 [
   {
+    "name": "i-show-you",
+    "title": "I Show You",
+    "logo": "https://file.lifeni.life/dev/i-show-you/logo.svg",
+    "description": "一个关于数据展示与分享的 Web 应用",
+    "features": [
+      "灵感来自 GitHub 的 Gist",
+      "可以通过 Docker Compose 部署到自己的服务器",
+      "使用 React 和 Golang 开发"
+    ],
+    "github": "https://github.com/Lifeni/i-show-you",
+    "links": [
+      {
+        "name": "打开应用",
+        "type": "app",
+        "url": "https://i-show-you.dev.lifeni.life"
+      },
+      {
+        "name": "文档",
+        "type": "documentation",
+        "url": "https://lifeni.github.io/i-show-you"
+      },
+      {
+        "name": "项目地址",
+        "type": "github",
+        "url": "https://github.com/Lifeni/i-show-you"
+      }
+    ]
+  },
+  {
     "name": "status-page",
     "title": "Status Page",
     "logo": "https://file.lifeni.life/dev/status-page/logo.svg",
@@ -44,35 +73,6 @@
         "name": "项目地址",
         "type": "github",
         "url": "https://github.com/Lifeni/make-it-beautiful"
-      }
-    ]
-  },
-  {
-    "name": "i-show-you",
-    "title": "I Show You",
-    "logo": "https://file.lifeni.life/dev/i-show-you/logo.svg",
-    "description": "一个关于数据展示与分享的 Web 应用",
-    "features": [
-      "灵感来自 GitHub 的 Gist",
-      "可以通过 Docker Compose 部署到自己的服务器",
-      "使用 React 和 Golang 开发"
-    ],
-    "github": "https://github.com/Lifeni/i-show-you",
-    "links": [
-      {
-        "name": "打开应用",
-        "type": "app",
-        "url": "https://i-show-you.dev.lifeni.life"
-      },
-      {
-        "name": "文档",
-        "type": "documentation",
-        "url": "https://lifeni.github.io/i-show-you"
-      },
-      {
-        "name": "项目地址",
-        "type": "github",
-        "url": "https://github.com/Lifeni/i-show-you"
       }
     ]
   }
