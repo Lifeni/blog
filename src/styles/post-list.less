@@ -41,8 +41,9 @@
       position: relative;
       width: fit-content;
       max-width: 100%;
+      margin: 1rem 0 0 0;
       font-size: 1.5rem;
-      line-height: 2.5rem;
+      line-height: 3rem;
       font-weight: bold;
       color: var(--font-primary);
       transition: all 0.2s;
@@ -57,22 +58,38 @@
       }
     }
 
-    .info {
+    .bar {
+      position: relative;
       width: 100%;
       padding: 2px 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
+    .tags {
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+    }
+
     .tag {
+      width: auto;
       padding: 0 1rem 0 0;
+      display: flex;
+      align-items: center;
       font-weight: bold;
       color: var(--font-secondary);
     }
 
     .date {
-      padding: 0 1rem 0 0;
+      margin: 0 1rem 0 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
       font-weight: bold;
       white-space: nowrap;
       transition: all 0.2s;
@@ -80,18 +97,12 @@
 
     .description {
       width: 100%;
-      margin: 1.5rem 0 0 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-
-      @media (max-width: 480px) {
-        margin: 1rem 0 0 0;
-      }
+      margin: 0 0 1rem 0;
+      padding: 2px 0;
     }
 
     .read-more {
-      margin: calc(1rem + 4px) 1.5rem 4px 0;
+      margin: 4px 0 4px auto;
       display: flex;
       align-items: center;
       line-height: initial;
@@ -101,7 +112,7 @@
       svg {
         min-width: 16px;
         min-height: 16px;
-        margin: 2px 0.5rem 0 0;
+        margin: 2px 0.5rem;
         vertical-align: middle;
         fill: var(--font-link);
       }

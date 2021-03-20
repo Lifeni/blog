@@ -5,7 +5,6 @@ import Header from "../components/header"
 import PostList from "../components/post-list"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar"
-import Tabs from "../components/tabs"
 import UpdateCard from "../components/update-card"
 import "../styles/layout.less"
 import "../styles/variables.less"
@@ -19,7 +18,6 @@ const IndexPage = () => (
         <About />
       </Sidebar>
       <div className="container">
-        <Tabs page="article" />
         <UpdateCard />
         <PostList />
         <Footer />

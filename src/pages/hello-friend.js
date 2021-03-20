@@ -1,20 +1,20 @@
 import React from "react"
 import Footer from "../components/footer"
+import FriendList from "../components/friend-list"
 import Header from "../components/header"
-import ProjectList from "../components/project-list"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar"
 import UpdateCard from "../components/update-card"
 
 const OpenSourcePage = () => (
   <>
-    <SEO title="开源项目" />
+    <SEO title="朋友们" />
     <Header back />
     <main>
       <Sidebar />
       <div className="container">
         <UpdateCard />
-        <ProjectList />
+        <FriendList />
       </div>
     </main>
   </>
