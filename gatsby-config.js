@@ -107,7 +107,10 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Inter:300,400,600", "Fira Mono:400,500,700&display=auto"],
+          families: [
+            "Inter:300,400,600",
+            "JetBrains Mono:400,700&display=auto",
+          ],
         },
       },
     },
