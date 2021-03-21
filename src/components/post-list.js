@@ -45,7 +45,7 @@ const Post = ({ title, name, date, descriptions, tags }) => (
         to={`/article/${name}`}
         aria-label="查看全文"
         title="查看全文"
-        tabindex="-1"
+        tabIndex="-1"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

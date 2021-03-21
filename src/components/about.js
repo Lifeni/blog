@@ -2,7 +2,7 @@ import React from "react"
 import { HashIcon } from "./icon"
 import LinkCard from "./link-card"
 
-const About = ({ hello, project, me, page }) => (
+const About = ({ hello, project, friend, me, page }) => (
   <section className="about" id="about">
     {hello ? (
       <>
@@ -34,6 +34,18 @@ const About = ({ hello, project, me, page }) => (
             GitHub
           </a>
           &nbsp;上还有其他的项目，也可以去看看。
+        </p>
+      </>
+    ) : null}
+
+    {friend ? (
+      <>
+        <h3>
+          <HashIcon />
+          关于
+        </h3>
+        <p>
+          这里是放置友链的地方，排名不分先后，如果要申请友链，可以在页面下面留言。
         </p>
       </>
     ) : null}
