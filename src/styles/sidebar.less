@@ -243,7 +243,16 @@ aside {
     padding: 1rem 0 0 0;
     line-height: 2rem;
     font-size: 1rem;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+
+    svg {
+      min-width: 16px;
+      min-height: 16px;
+      margin: 2px 6px 2px 1px;
+      vertical-align: middle;
+      fill: var(--font-primary);
+    }
   }
 
   h3:first-of-type {
@@ -267,25 +276,76 @@ aside {
     }
   }
 
+  .link-card {
+    position: relative;
+    width: calc(100% + 12 * 2px);
+    margin: 16px -12px;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: solid 2px var(--border-1);
+    border-radius: 4px;
+    background-color: transparent;
+    opacity: 1;
+    font-size: 1rem;
+    line-height: 2rem;
+    text-decoration: none;
+    transition: all 0.2;
+
+    &:first-of-type {
+      margin-top: 24px;
+    }
+
+    span {
+      opacity: 1;
+      color: var(--font-primary);
+
+      svg {
+        margin: 0 0.875rem 0 0;
+        fill: var(--font-primary);
+        transition: all 0.2;
+      }
+    }
+
+    @media (min-width: 769px) {
+      span {
+        color: var(--font-secondary);
+
+        svg {
+          fill: var(--font-secondary);
+        }
+      }
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+      border: solid 2px var(--font-link);
+    }
+
+    .title {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+  }
+
   @media (min-width: 769px) {
     max-width: 324px;
     flex: 1;
     color: var(--font-secondary);
     padding: 0;
 
-    a {
+    h3 svg,
+    .link-card svg {
+      fill: var(--font-secondary);
+    }
+
+    a,
+    .link-card span {
       color: var(--font-secondary);
-      transition: all 0.2s;
-    }
-
-    span {
-      opacity: 0.6;
-      transition: all 0.2s;
-    }
-
-    &.light {
-      opacity: 0;
-      visibility: hidden;
       transition: all 0.2s;
     }
 
@@ -293,9 +353,18 @@ aside {
       color: var(--font-primary);
       transition: all 0.2s;
 
+      h3 svg,
+      .link-card svg {
+        fill: var(--font-primary);
+      }
+
       a {
         color: var(--font-link);
         transition: all 0.2s;
+      }
+
+      .link-card span {
+        color: var(--font-primary);
       }
 
       span {
@@ -324,69 +393,5 @@ aside {
     font-size: 1.5rem;
     line-height: 2rem;
     padding: 0;
-  }
-}
-
-.link-card {
-  position: relative;
-  width: calc(100% + 12 * 2px);
-  margin: 16px -12px;
-  padding: 16px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  border: solid 2px var(--border-1);
-  border-radius: 4px;
-  background-color: transparent;
-  opacity: 1;
-  font-size: 1rem;
-  line-height: 1.875rem;
-  text-decoration: none;
-  transition: all 0.2;
-
-  &:first-of-type {
-    margin-top: 24px;
-  }
-
-  span {
-    opacity: 1;
-    color: var(--font-primary);
-
-    svg {
-      margin: 0 0.875rem 0 0;
-      fill: var(--font-primary);
-      transition: all 0.2;
-    }
-  }
-
-  @media (min-width: 769px) {
-    span {
-      color: var(--font-secondary);
-
-      svg {
-        fill: var(--font-secondary);
-      }
-    }
-  }
-
-  &:hover,
-  &:active,
-  &:focus {
-    text-decoration: none;
-    border: solid 2px var(--font-link);
-
-    span {
-      color: var(--font-primary);
-    }
-
-    svg {
-      fill: var(--font-primary);
-    }
-  }
-
-  .title {
-    font-weight: bold;
-    display: flex;
-    align-items: center;
   }
 }

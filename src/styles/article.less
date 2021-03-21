@@ -384,10 +384,22 @@ article {
   font-size: 1rem;
   line-height: 2rem;
   margin: 0 0 4px 0;
+  display: flex;
+  align-items: center;
 
   .tag {
     padding: 0 1rem 0 0;
     color: var(--font-secondary);
+    display: flex;
+    align-items: center;
+
+    svg {
+      min-width: 16px;
+      min-height: 16px;
+      margin: 2px 6px 2px 1px;
+      vertical-align: middle;
+      fill: var(--font-secondary);
+    }
   }
 }
 
@@ -459,6 +471,14 @@ section + p + p {
   p {
     margin: 0;
     font-weight: bold;
+
+    svg {
+      min-width: 16px;
+      min-height: 16px;
+      margin: 2px 6px 2px 1px;
+      vertical-align: middle;
+      fill: var(--font-secondary);
+    }
   }
 
   .icon {

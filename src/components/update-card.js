@@ -1,4 +1,5 @@
 import React from "react"
+import { HashIcon } from "./icon"
 
 const UpdateCard = () => (
   <div className="update-card" id="update-card">
@@ -16,7 +17,10 @@ const UpdateCard = () => (
       </button>
     </section>
     <section>
-      <p className="title"># Update Now</p>
+      <p className="title">
+        <HashIcon />
+        Update Now
+      </p>
     </section>
   </div>
 )

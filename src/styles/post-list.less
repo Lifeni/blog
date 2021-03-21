@@ -41,7 +41,7 @@
       position: relative;
       width: fit-content;
       max-width: 100%;
-      margin: 1rem 0 0 0;
+      // margin: 1rem 0 0 0;
       font-size: 1.5rem;
       line-height: 3rem;
       font-weight: bold;
@@ -70,13 +70,22 @@
       text-overflow: ellipsis;
     }
 
-    .tags {
+    .info {
       display: flex;
       align-items: center;
       overflow-x: auto;
+
+      svg {
+        min-width: 16px;
+        min-height: 16px;
+        margin: 2px 6px 2px 1px;
+        vertical-align: middle;
+        fill: var(--font-secondary);
+      }
     }
 
-    .tag {
+    .tag,
+    .license {
       width: auto;
       padding: 0 1rem 0 0;
       display: flex;
@@ -90,6 +99,8 @@
       padding: 0;
       display: flex;
       align-items: center;
+      font-size: 1rem;
+      line-height: 2rem;
       font-weight: bold;
       white-space: nowrap;
       transition: all 0.2s;
@@ -103,7 +114,7 @@
     }
 
     .read-more {
-      margin: 4px 0 4px auto;
+      margin: 4px -0.5rem 4px auto;
       display: flex;
       align-items: center;
       line-height: initial;
@@ -111,8 +122,8 @@
       transition: all 0.2s;
 
       svg {
-        min-width: 16px;
-        min-height: 16px;
+        min-width: 24px;
+        min-height: 24px;
         margin: 2px 0.5rem;
         vertical-align: middle;
         fill: var(--font-link);
@@ -125,6 +136,10 @@
       color: var(--font-link-hover);
       text-decoration: underline from-font;
       text-underline-offset: 4px;
+
+      svg {
+        fill: var(--font-link-hover);
+      }
     }
   }
 }

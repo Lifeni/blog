@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
 import Header from "../components/header"
+import { HashIcon } from "../components/icon"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar"
 import Utterances from "../components/utterances"
@@ -50,14 +51,18 @@ const BlogPost = ({ data }) => {
               </button>
             </section>
             <section>
-              <p className="title"># Outdated Content</p>
+              <p className="title">
+                <HashIcon />
+                Outdated Content
+              </p>
             </section>
           </div>
         )}
         <p className="subtitle">
           {post.frontmatter.tags.map(tag => (
             <span key={tag} className="tag">
-              # {tag}
+              <HashIcon />
+              {tag}
             </span>
           ))}
         </p>

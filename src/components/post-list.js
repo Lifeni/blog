@@ -1,6 +1,7 @@
 import { graphql, Link, StaticQuery } from "gatsby"
 import React from "react"
 import "../styles/post-list.less"
+import { HashIcon } from "./icon"
 
 const Post = ({ title, name, date, descriptions, tags }) => (
   <div className="post">
@@ -19,13 +20,15 @@ const Post = ({ title, name, date, descriptions, tags }) => (
       ))}
     </p>
     <div className="bar">
-      <p className="tags">
+      <p className="info">
         {tags.map(tag => (
           <span key={tag} className="tag">
-            # {tag}
+            <HashIcon />
+            {tag}
           </span>
         ))}
       </p>
+
       <Link
         className="read-more"
         to={`/article/${name}`}
@@ -39,7 +42,7 @@ const Post = ({ title, name, date, descriptions, tags }) => (
           height="24"
         >
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"
           ></path>
         </svg>
@@ -62,6 +65,7 @@ const PostList = () => (
               date={node.frontmatter.date}
               create_date={node.frontmatter.create_date}
               tags={node.frontmatter.tags}
+              license={node.frontmatter.license}
               excerpt={node.excerpt}
               key={node.frontmatter.title}
             />
@@ -85,6 +89,7 @@ const indexQuery = graphql`
             name
             tags
             descriptions
+            license
           }
           excerpt(format: HTML, pruneLength: 100)
         }
