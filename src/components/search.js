@@ -1,15 +1,14 @@
 import algoliasearch from "algoliasearch/lite"
-import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import {
-  InstantSearch,
-  Stats,
-  Snippet,
-  PoweredBy,
-  Highlight,
   connectAutoComplete,
+  Highlight,
+  InstantSearch,
+  PoweredBy,
+  Snippet,
+  Stats,
 } from "react-instantsearch-dom"
-
 import "../styles/search.less"
 
 const searchClient = algoliasearch(
@@ -61,7 +60,14 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
       </li>
       {hits.map((hit, index) => (
         <li key={hit.objectID}>
-          <Link className="link" to={`/article/${hit.name}`}>
+          <AniLink
+            cover
+            bg="var(--background-3)"
+            direction="left"
+            duration={1}
+            className="link"
+            to={`/article/${hit.name}`}
+          >
             <span className="num">{index + 1}</span>
             <p className="tags">
               #&nbsp;
@@ -89,7 +95,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
                 <Snippet hit={hit} attribute="excerpt" tagName="mark" />
               </p>
             )}
-          </Link>
+          </AniLink>
         </li>
       ))}
       <li className="search-tips full-height">已经到底了 : )</li>

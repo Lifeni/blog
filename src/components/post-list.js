@@ -1,4 +1,5 @@
-import { graphql, Link, StaticQuery } from "gatsby"
+import { graphql, StaticQuery } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import "../styles/post-list.less"
 import { HashIcon } from "./icon"
@@ -7,9 +8,15 @@ const Post = ({ title, name, date, descriptions, tags }) => (
   <div className="post">
     <span className="date">{date}</span>
 
-    <Link to={`/article/${name}`}>
+    <AniLink
+      cover
+      bg="var(--background-3)"
+      direction="left"
+      duration={1}
+      to={`/article/${name}`}
+    >
       <span className="title">{title}</span>
-    </Link>
+    </AniLink>
 
     <p className="description">
       {descriptions.map((description, index) => (
@@ -29,11 +36,16 @@ const Post = ({ title, name, date, descriptions, tags }) => (
         ))}
       </p>
 
-      <Link
+      <AniLink
+        cover
+        bg="var(--background-3)"
+        direction="left"
+        duration={1}
         className="read-more"
         to={`/article/${name}`}
         aria-label="查看全文"
         title="查看全文"
+        tabindex="-1"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +58,7 @@ const Post = ({ title, name, date, descriptions, tags }) => (
             d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"
           ></path>
         </svg>
-      </Link>
+      </AniLink>
     </div>
   </div>
 )

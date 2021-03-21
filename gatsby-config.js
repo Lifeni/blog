@@ -117,6 +117,7 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-less`,
     `gatsby-plugin-offline`,
+    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-plugin-algolia`,
       options: {

@@ -1,5 +1,4 @@
 import React from "react"
-import Footer from "../components/footer"
 import FriendList from "../components/friend-list"
 import Header from "../components/header"
 import SEO from "../components/seo"

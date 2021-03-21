@@ -2,7 +2,7 @@ import React from "react"
 
 const FriendList = () => (
   <article className="friend-list" id="friend-list">
-    <p class="subtitle">Hello Friend</p>
+    <p className="subtitle">Hello Friend</p>
     <h1>朋友们的网站</h1>
     <p>有时间可以去他们的网站看一看。</p>
     <ul>

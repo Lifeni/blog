@@ -1,9 +1,16 @@
-import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 
 const LinkCard = ({ page }) =>
   page === "open-source" ? (
-    <Link to="/open-source" className="link-card">
+    <AniLink
+      cover
+      bg="var(--background-3)"
+      direction="left"
+      duration={1}
+      to="/open-source"
+      className="link-card"
+    >
       <span className="title">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -19,9 +26,16 @@ const LinkCard = ({ page }) =>
         开源项目
       </span>
       <span className="description">展示一些自己的开源项目</span>
-    </Link>
+    </AniLink>
   ) : page === "hello-friend" ? (
-    <Link to="/hello-friend" className="link-card">
+    <AniLink
+      cover
+      bg="var(--background-3)"
+      direction="left"
+      duration={1}
+      to="/hello-friend"
+      className="link-card"
+    >
       <span className="title">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +51,7 @@ const LinkCard = ({ page }) =>
         朋友们
       </span>
       <span className="description">朋友们的网站，欢迎来看看</span>
-    </Link>
+    </AniLink>
   ) : null
 
 export default LinkCard

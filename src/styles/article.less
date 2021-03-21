@@ -69,6 +69,11 @@ article {
     line-height: 2.75rem;
   }
 
+  h1 ~ h1 {
+    display: none;
+    visibility: hidden;
+  }
+
   h2:first-of-type {
     margin: 0.75rem 0 0 0;
   }
@@ -511,7 +516,6 @@ section + p + p {
 .banner {
   position: relative;
   z-index: 300;
-  display: none;
   margin: 0 0 16px 0;
   padding: 4px 0 0 0;
   border-radius: 0;

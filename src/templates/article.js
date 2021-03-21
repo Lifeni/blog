@@ -67,6 +67,7 @@ const BlogPost = ({ data }) => {
           ))}
         </p>
       </div>
+      <h1>{post.frontmatter.title}</h1>
       <section className="banner" id="article-meta">
         <div>
           <span title={`创建日期：${date.create}`}>{date.create}</span>
@@ -108,7 +109,9 @@ const BlogPost = ({ data }) => {
         <div className="container">
           <article
             id="main-content"
-            dangerouslySetInnerHTML={{ __html: html + post.html }}
+            dangerouslySetInnerHTML={{
+              __html: html + post.html.split("</h1>")[1],
+            }}
           ></article>
           <Utterances />
         </div>
