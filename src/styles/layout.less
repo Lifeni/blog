@@ -33,7 +33,10 @@ main {
   position: relative;
   width: 100%;
   max-width: calc(30% + 900px);
+  min-height: 100vh;
   padding: 56px 72px 56px calc(30% + 72px);
+  display: flex;
+  flex-direction: column;
   background: var(--background-0);
   transition: all 0.2s;
 
@@ -50,11 +53,11 @@ main {
   }
 
   @media (max-width: 480px) {
-    padding: 36px 36px 120px 36px;
+    padding: 108px 36px 42px 36px;
   }
 
   @media (max-width: 420px) {
-    padding: 32px 32px 116px 32px;
+    padding: 100px 32px 36px 32px;
   }
 }
 
@@ -174,4 +177,11 @@ main {
       fill: var(--font-primary);
     }
   }
+}
+
+.not-found-image {
+  width: 240px;
+  height: 240px;
+  margin: 12px 0 24px 0;
+  user-select: none;
 }

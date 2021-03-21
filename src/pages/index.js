@@ -15,7 +15,7 @@ const IndexPage = () => (
     <Header app aside />
     <main>
       <Sidebar>
-        <About />
+        <About hello me page />
       </Sidebar>
       <div className="container">
         <UpdateCard />
