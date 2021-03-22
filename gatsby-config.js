@@ -98,12 +98,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-177358412-1",
-      },
-    },
-    {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
