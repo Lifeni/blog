@@ -254,6 +254,8 @@ aside {
       margin: 2px 6px 2px 1px;
       vertical-align: middle;
       fill: var(--font-primary);
+      opacity: 1;
+      transition: all 0.2s;
     }
   }
 
@@ -307,7 +309,8 @@ aside {
       svg {
         margin: 0 0.875rem 0 0;
         fill: var(--font-primary);
-        transition: all 0.2;
+        transition: all 0.2s;
+        opacity: 1;
       }
     }
 
@@ -316,7 +319,8 @@ aside {
         color: var(--font-secondary);
 
         svg {
-          fill: var(--font-secondary);
+          opacity: 0.6;
+          transition: all 0.2s;
         }
       }
     }
@@ -343,7 +347,8 @@ aside {
 
     h3 svg,
     .link-card svg {
-      fill: var(--font-secondary);
+      opacity: 0.6;
+      transition: all 0.2s;
     }
 
     a,
@@ -358,7 +363,7 @@ aside {
 
       h3 svg,
       .link-card svg {
-        fill: var(--font-primary);
+        opacity: 1;
       }
 
       a {

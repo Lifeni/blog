@@ -4,6 +4,7 @@ import FriendList from "../components/friend-list"
 import Header from "../components/header"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar"
+import UpdateCard from "../components/update-card"
 import Utterances from "../components/utterances"
 
 const OpenSourcePage = () => (
@@ -15,6 +16,7 @@ const OpenSourcePage = () => (
         <About friend page />
       </Sidebar>
       <div className="container">
+        <UpdateCard />
         <FriendList />
         <Utterances />
       </div>
