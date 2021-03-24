@@ -48,6 +48,7 @@ const Post = ({ title, name, date, descriptions, tags }) => (
         tabIndex="-1"
       >
         <svg
+          aria-label="Open Article"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"

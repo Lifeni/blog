@@ -18,6 +18,7 @@ const Header = ({ app, back, aside }) => (
           title="搜索文章"
         >
           <svg
+            aria-label="Search Icon"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             width="24"
@@ -52,6 +53,7 @@ const Header = ({ app, back, aside }) => (
         title="返回主页"
       >
         <svg
+          aria-label="Back Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"
@@ -74,6 +76,7 @@ const Header = ({ app, back, aside }) => (
         title="展开侧栏"
       >
         <svg
+          aria-label="Box Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"

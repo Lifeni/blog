@@ -7,6 +7,7 @@ const UpdateCard = () => (
       <p>网站做好了更新准备，请刷新页面以更新</p>
       <button className="reload-page" id="reload-page">
         <svg
+          aria-label="Close Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"

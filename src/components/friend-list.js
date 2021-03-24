@@ -7,6 +7,7 @@ const FriendList = () => (
     <h1>朋友们的网站</h1>
     <p className="subtitle">
       <svg
+        aria-label="Hash Tag"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
         width="16"

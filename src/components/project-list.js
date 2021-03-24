@@ -61,6 +61,7 @@ const Icons = ({ type }) => {
     <>
       {type === "github" ? (
         <svg
+          aria-label="GitHub Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           width="16"
@@ -73,6 +74,7 @@ const Icons = ({ type }) => {
         </svg>
       ) : type === "link" ? (
         <svg
+          aria-label="Link Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           width="16"
@@ -85,6 +87,7 @@ const Icons = ({ type }) => {
         </svg>
       ) : type === "documentation" ? (
         <svg
+          aria-label="Doc Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           width="16"
@@ -97,6 +100,7 @@ const Icons = ({ type }) => {
         </svg>
       ) : type === "install" ? (
         <svg
+          aria-label="Install Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           width="16"
@@ -109,6 +113,7 @@ const Icons = ({ type }) => {
         </svg>
       ) : type === "app" ? (
         <svg
+          aria-label="App Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           width="16"
@@ -121,6 +126,7 @@ const Icons = ({ type }) => {
         </svg>
       ) : type === "see" ? (
         <svg
+          aria-label="View Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           width="16"
@@ -133,6 +139,7 @@ const Icons = ({ type }) => {
         </svg>
       ) : type === "repo" ? (
         <svg
+          aria-label="Repo Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           width="16"

@@ -13,6 +13,7 @@ const LinkCard = ({ page }) =>
     >
       <span className="title">
         <svg
+          aria-label="Project Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           width="16"
@@ -38,6 +39,7 @@ const LinkCard = ({ page }) =>
     >
       <span className="title">
         <svg
+          aria-label="Friend Icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           width="16"

@@ -35,6 +35,7 @@ const NotFoundPage = () => (
           <h1>你要找的页面不在这里</h1>
           <p className="subtitle">
             <svg
+              aria-label="Nav Icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="16"
