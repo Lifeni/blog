@@ -17,6 +17,24 @@ const OpenSourcePage = () => (
       </Sidebar>
       <div className="container">
         <UpdateCard />
+        <article className="github-chart">
+          <h2>Lifeni's GitHub Chart</h2>
+          <p>
+            Powered by{" "}
+            <a
+              href="https://github.com/2016rshah/githubchart-api"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="friend"
+            >
+              Github Chart API
+            </a>
+          </p>
+          <img
+            src="http://ghchart.rshah.org/Lifeni"
+            alt="Lifeni's Github chart"
+          />
+        </article>
         <ProjectList />
         <Footer />
       </div>

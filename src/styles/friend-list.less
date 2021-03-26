@@ -40,4 +40,45 @@
       }
     }
   }
+
+  .my-site {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+
+    img {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      min-height: 56px;
+      margin: 0 24px 0 0;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    span {
+      font-size: 1rem;
+      line-height: 2rem;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+
+      a {
+        margin: 0 0 0 1rem;
+        cursor: pointer;
+        color: var(--font-secondary);
+        font-weight: normal;
+        font-size: 1rem;
+        text-decoration: none;
+      }
+
+      &.name {
+        font-size: 1.15rem;
+        font-weight: bold;
+      }
+    }
+  }
 }

@@ -42,6 +42,26 @@ const FriendList = () => (
         </li>
       ))}
     </ul>
+    <h2>我的网站</h2>
+    <section className="my-site">
+      <a href="https://lifeni.life/icons/icon-512x512.png" target="_blank">
+        <img
+          className="site-logo"
+          src="https://lifeni.life/icons/icon-512x512.png"
+          alt="Logo"
+        />
+      </a>
+      <div>
+        <span className="name">
+          记录干杯{" "}
+          <a src="https://lifeni.life/" alt="Link">
+            https://lifeni.life/
+          </a>
+        </span>
+
+        <span>在这里记录一些技术相关的文章、尝试一些新的技术。</span>
+      </div>
+    </section>
   </article>
 )
 
