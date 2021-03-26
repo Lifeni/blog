@@ -1,7 +1,7 @@
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
 import { graphql } from "gatsby"
-import React from "react"
+import React, { useState } from "react"
 import ReactDOMServer from "react-dom/server"
 import Header from "../components/header"
 import { HashIcon } from "../components/icon"
@@ -25,18 +25,27 @@ const BlogPost = ({ data }) => {
     from: dayjs(post.frontmatter.date).fromNow(),
   }
 
+  const [hideTips, setHideTips] = useState(false)
+
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
       <div className="article-info">
         {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
           6 * 30 * 24 * 60 * 60 && (
-          <div className="outdated-tips" id="outdated-tips">
+          <div
+            className={`outdated-tips ${hideTips && "hide"}`}
+            id="outdated-tips"
+          >
             <section>
               <p>
                 这篇文章修改于 <strong>{date.from}</strong>
                 ，其中有些信息可能已经过时
               </p>
-              <button className="close-tips" id="close-tips">
+              <button
+                className="close-tips"
+                id="close-tips"
+                onClick={() => setHideTips(true)}
+              >
                 <svg
                   aria-label="Close Icon"
                   xmlns="http://www.w3.org/2000/svg"

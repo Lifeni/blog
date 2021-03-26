@@ -11,49 +11,13 @@ const domOperation = location => {
   }
 
   const block = document.querySelectorAll(".gatsby-highlight")
-  const bars = document.querySelectorAll(".code-bar")
-  if (block.length && !bars.length) {
+  if (block.length) {
     block.forEach(e => {
-      const bar = document.createElement("div")
-      const span = document.createElement("span")
-      bar.className = "code-bar"
-      span.className = "code-language"
-      span.textContent = e.dataset.language
-      bar.appendChild(span)
-
-      const group = document.createElement("div")
-
-      const fold = document.createElement("button")
-      fold.className = "code-button fold"
-      fold.textContent = "折叠代码"
-
-      fold.onclick = () => {
-        const pre = e.querySelector("pre")
-        const bar = e.querySelector(".code-bar")
-        if (pre.classList.contains("folded")) {
-          pre.classList.remove("folded")
-          bar.classList.remove("folded")
-          fold.textContent = "折叠代码"
-        } else {
-          pre.classList.add("folded")
-          bar.classList.add("folded")
-          fold.textContent = "展开代码"
-        }
-      }
-
-      group.appendChild(fold)
-
       const copy = document.createElement("button")
-      const copyNoDollar = document.createElement("button")
-      const copyNoGreater = document.createElement("button")
-
-      copy.className = "code-button copy"
-      copyNoDollar.className = "code-button copy dollar"
-      copyNoGreater.className = "code-button copy greater"
-      copy.textContent = "复制"
-      copyNoDollar.textContent = "复制并去掉 $"
-      copyNoGreater.textContent = "复制并去掉 >"
-
+      copy.className = "code-copy-button"
+      copy.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg>`
+      copy.setAttribute("aria-label", "Copy")
+      copy.title = "Copy"
       copy.onclick = b => {
         const code =
           b.target.parentElement.parentElement.parentElement.lastElementChild
@@ -61,53 +25,15 @@ const domOperation = location => {
         navigator.clipboard
           .writeText(code.textContent)
           .then(() => {
-            b.target.textContent = "已复制"
+            b.target.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>`
           })
           .catch(err => {
             console.log("复制出错", err)
           })
       }
-
-      copyNoDollar.onclick = b => {
-        const code =
-          b.target.parentElement.parentElement.parentElement.lastElementChild
-            .firstElementChild
-        navigator.clipboard
-          .writeText(code.textContent.replace(/\$ /g, ""))
-          .then(() => {
-            b.target.textContent = "已复制"
-          })
-          .catch(err => {
-            console.log("复制出错", err)
-          })
-      }
-
-      copyNoGreater.onclick = b => {
-        const code =
-          b.target.parentElement.parentElement.parentElement.lastElementChild
-            .firstElementChild
-        navigator.clipboard
-          .writeText(code.textContent.replace(/> /g, ""))
-          .then(() => {
-            b.target.textContent = "已复制"
-          })
-          .catch(err => {
-            console.log("复制出错", err)
-          })
-      }
-
-      group.appendChild(copy)
-
-      if (e.dataset.language === "bash") {
-        group.appendChild(copyNoDollar)
-      } else if (e.dataset.language === "powershell") {
-        group.appendChild(copyNoGreater)
-      }
-
-      bar.appendChild(group)
 
       const inner = e.firstElementChild
-      e.insertBefore(bar, inner)
+      e.insertBefore(copy, inner)
     })
   }
 
@@ -122,89 +48,18 @@ const domOperation = location => {
     utterances.setAttribute("async", "true")
     comment.appendChild(utterances)
   }
-
-  const openSidebar = document.querySelector("#expand-aside")
-  if (openSidebar) {
-    openSidebar.onclick = () => {
-      const aside = document.querySelector("aside")
-      const header = document.querySelector("header")
-      aside.classList.toggle("expand")
-      header.classList.toggle("expand")
-    }
-  }
-
-  const closeTips = document.querySelector("#close-tips")
-  if (closeTips) {
-    closeTips.onclick = () => {
-      const outdatedTips = document.querySelector("#outdated-tips")
-      outdatedTips.classList.add("hide")
-    }
-  }
-
-  const reloadPage = document.querySelector("#reload-page")
-  if (reloadPage) {
-    reloadPage.onclick = () => {
-      window.location.reload()
-    }
-  }
-
-  const openDialog = document.querySelector("#open-dialog")
-  if (openDialog) {
-    const dialog = document.querySelector("#home-dialog")
-    const search = document.querySelector("#article-search")
-    openDialog.addEventListener("click", () => {
-      dialog.classList.add("show")
-      setTimeout(() => {
-        search.focus()
-      }, 300)
-    })
-
-    window.addEventListener("keypress", e => {
-      if (e.key === "/") {
-        e.preventDefault()
-        dialog.classList.toggle("show")
-        if (dialog.classList.contains("show")) {
-          setTimeout(() => {
-            search.focus()
-          }, 300)
-        }
-      } else if (e.key === "Enter") {
-        if (
-          dialog.querySelectorAll("ul > li > a") &&
-          dialog.querySelectorAll("ul > li > a")[0]
-        ) {
-          dialog.querySelectorAll("ul > li > a")[0].click()
-        }
-      }
-    })
-
-    window.addEventListener("keydown", e => {
-      if (e.key === "Escape") {
-        dialog.classList.remove("show")
-      }
-    })
-
-    document.querySelector(".search-tips a").setAttribute("tabindex", "-1")
-  }
-
-  const closeDialog = document.querySelector("#close-dialog")
-  if (closeDialog) {
-    closeDialog.addEventListener("click", () => {
-      const dialog = document.querySelector("#home-dialog")
-      dialog.classList.remove("show")
-    })
-  }
-
-  const closeSearch = document.querySelector("#close-search")
-  if (closeSearch) {
-    closeSearch.addEventListener("click", () => {
-      const dialog = document.querySelector("#home-dialog")
-      dialog.classList.remove("show")
-    })
-  }
 }
 
 const onRouteUpdate = ({ location, prevLocation }) => {
+  if (prevLocation && location.pathname === prevLocation.pathname) {
+    const aside = document.querySelector("aside")
+    const header = document.querySelector("header")
+    if (aside.classList.contains("expand")) {
+      aside.classList.remove("expand")
+      header.classList.remove("expand")
+    }
+  }
+
   if (prevLocation && location.pathname !== prevLocation.pathname) {
     setTimeout(() => domOperation(location), 600)
   } else if (!prevLocation) {

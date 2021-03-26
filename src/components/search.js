@@ -45,8 +45,9 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
     </div>
 
     <ul>
-      <li className="search-tips">
+      <li className="search-tips" tabIndex="-1">
         <Stats
+          tabIndex="-1"
           translations={{
             stats(nbHits, timeSpentMS) {
               return `${nbHits} results | ${timeSpentMS} ms`
@@ -54,6 +55,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
           }}
         />
         <PoweredBy
+          tabIndex="-1"
           translations={{
             searchBy: "",
           }}

@@ -295,7 +295,7 @@ article {
 
 .gatsby-highlight pre[class*="language-"].line-numbers {
   padding-left: 3rem;
-  border-radius: 0 0 4px 4px;
+  border-radius: 4px;
   transition: background-color 0.2s;
 }
 
@@ -312,66 +312,40 @@ article {
   transition: all 0.2s;
 }
 
-.code-bar {
-  position: relative;
-  width: 100%;
-  margin: 24px 0 -20px 0;
-  display: flex;
-  z-index: 10;
-  align-items: center;
-  justify-content: space-between;
+.code-copy-button {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--background-0);
+  font-family: inherit;
   font-size: 0.875rem;
-  border-radius: 4px 4px 0 0;
-  background-color: var(--background-4);
-  font-family: var(--font-mono);
+  line-height: 1.125rem;
+  color: var(--font-secondary);
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
   transition: all 0.2s;
+}
 
-  div {
-    display: flex;
+.gatsby-highlight:hover,
+.gatsby-highlight:active,
+.gatsby-highlight:focus {
+  .code-copy-button {
+    visibility: visible;
+    opacity: 1;
   }
+}
 
-  &.folded {
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .code-language {
-    padding: 0.8rem 0.4rem 0.6rem 1rem;
-    font-family: inherit;
-    font-size: 0.875rem;
-    line-height: 1.125rem;
-    color: var(--font-secondary);
-  }
-
-  .code-button {
-    height: 100%;
-    padding: 0.8rem 0.8rem 0.6rem 0.8rem;
-    border: none;
-    border-radius: 0;
-    background-color: var(--background-4);
-    font-family: inherit;
-    font-size: 0.875rem;
-    line-height: 1.125rem;
-    color: var(--font-secondary);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .code-button:last-of-type {
-    border-radius: 0 4px 0 0;
-  }
-
-  .code-button:hover,
-  .code-button:focus,
-  .code-button:active {
-    background-color: var(--background-3);
-  }
-
-  .code-button.dollar {
-    top: calc(40.8px + 0.6rem);
-    z-index: 10;
-    transition: all 0.2s;
-  }
+.code-copy-button:hover,
+.code-copy-button:focus,
+.code-copy-button:active {
+  background-color: var(--background-2);
 }
 
 .gatsby-highlight pre[class*="language-"].line-numbers.folded {
@@ -428,20 +402,6 @@ blockquote {
     pre[class*="language-"].line-numbers
     span.line-numbers-rows {
     background-color: var(--background-5);
-  }
-
-  .code-bar {
-    background-color: var(--background-5);
-
-    .code-button {
-      background-color: var(--background-5);
-    }
-
-    .code-button:hover,
-    .code-button:focus,
-    .code-button:active {
-      background-color: var(--background-4);
-    }
   }
 }
 
