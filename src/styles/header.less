@@ -141,7 +141,9 @@ header {
     transition: all 0.2s;
 
     .text {
-      display: none;
+      margin: 24px 0 0 0;
+      writing-mode: vertical-lr;
+      letter-spacing: 0.5rem;
     }
 
     &.expand {
@@ -150,7 +152,12 @@ header {
 
     a,
     button {
+      width: 100%;
+      height: auto;
       margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       border-radius: 0;
       background-color: transparent;
 
@@ -185,7 +192,8 @@ header {
     pointer-events: initial;
 
     .text {
-      display: inline-block;
+      writing-mode: initial;
+      letter-spacing: initial;
       margin: 0 8px 0 1rem;
     }
 
@@ -224,6 +232,8 @@ header {
       width: 72px;
       height: 72px;
       margin: 0;
+      display: flex;
+      flex-direction: row;
       border-radius: 0;
       pointer-events: initial;
 

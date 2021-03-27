@@ -12,7 +12,7 @@ const Post = ({ title, name, date, descriptions, tags }) => (
       cover
       bg="var(--background-3)"
       direction="left"
-      duration={1}
+      duration={0.8}
       to={`/article/${name}`}
     >
       <span className="title">{title}</span>
@@ -40,7 +40,7 @@ const Post = ({ title, name, date, descriptions, tags }) => (
         cover
         bg="var(--background-3)"
         direction="left"
-        duration={1}
+        duration={0.8}
         className="read-more"
         to={`/article/${name}`}
         aria-label="查看全文"

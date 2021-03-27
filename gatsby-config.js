@@ -53,7 +53,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              offsetY: `100`,
+              offsetY: `24`,
               maintainCase: false,
               removeAccents: true,
               isIconAfterHeader: false,
@@ -103,7 +103,7 @@ module.exports = {
       options: {
         google: {
           families: [
-            "Inter:300,400,600",
+            "Inter:300,400,700,900",
             "JetBrains Mono:400,700&display=auto",
           ],
         },

@@ -67,7 +67,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
             cover
             bg="var(--background-3)"
             direction="left"
-            duration={1}
+            duration={0.8}
             className="link"
             to={`/article/${hit.name}`}
           >

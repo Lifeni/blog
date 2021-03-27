@@ -7,7 +7,7 @@ const LinkCard = ({ page }) =>
       cover
       bg="var(--background-3)"
       direction="left"
-      duration={1}
+      duration={0.8}
       to="/open-source"
       className="link-card"
     >
@@ -33,7 +33,7 @@ const LinkCard = ({ page }) =>
       cover
       bg="var(--background-3)"
       direction="left"
-      duration={1}
+      duration={0.8}
       to="/hello-friend"
       className="link-card"
     >
@@ -59,7 +59,7 @@ const LinkCard = ({ page }) =>
       cover
       bg="var(--background-3)"
       direction="left"
-      duration={1}
+      duration={0.8}
       to="/"
       className="link-card"
     >

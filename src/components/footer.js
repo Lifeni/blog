@@ -14,11 +14,37 @@ const Footer = () => (
       </a>
       <span> / </span>
       <a
+        href="https://cloud.lifeni.life"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Seafile
+      </a>
+      <span> / </span>
+      <a
+        href="https://git.lifeni.life"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Gitea
+      </a>
+    </div>
+
+    <div>
+      <a
         href="https://lab.lifeni.life"
         target="_blank"
         rel="noopener noreferrer"
       >
-        实验室
+        Space
+      </a>
+      <span> / </span>
+      <a
+        href="https://api.lifeni.life"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        API
       </a>
       <span> / </span>
       <a

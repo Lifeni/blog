@@ -9,8 +9,6 @@ const Header = ({ app, back, aside }) => {
 
   useEffect(() => {
     if (app) {
-      const dialog = document.querySelector("#home-dialog")
-
       const closeSearch = document.querySelector("#close-search")
       if (closeSearch) {
         closeSearch.addEventListener("click", () => {
@@ -22,9 +20,10 @@ const Header = ({ app, back, aside }) => {
         if (e.key === "/") {
           setOpenSearch(true)
         } else if (e.key === "Enter") {
+          const dialog = document.querySelector("#home-dialog")
           if (
-            dialog.querySelectorAll("ul > li > a") &&
-            dialog.querySelectorAll("ul > li > a")[0]
+            dialog?.querySelectorAll("ul > li > a") &&
+            dialog?.querySelectorAll("ul > li > a")[0]
           ) {
             dialog.querySelectorAll("ul > li > a")[0].click()
           }
@@ -121,7 +120,7 @@ const Header = ({ app, back, aside }) => {
           cover
           bg="var(--background-3)"
           direction="right"
-          duration={1}
+          duration={0.8}
           to="/"
           className="fab auto-width"
           aria-label="返回主页"
