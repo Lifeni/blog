@@ -190,12 +190,25 @@ article {
 
   pre[class*="language-"] {
     margin: 16px 0 24px 0;
-    padding: 1rem 6rem 1rem 1.5rem;
+    padding: 1rem 0 1rem 1.5rem;
     color: var(--font-code);
     background-color: var(--background-4);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     font-size: 1rem;
     font-family: var(--font-mono);
     border-radius: 4px;
+
+    &::after {
+      content: " ";
+      position: relative;
+      display: block;
+      width: 4rem;
+      min-width: 4rem;
+      height: 100%;
+      background-color: transparent;
+    }
   }
 
   pre + pre {
@@ -428,6 +441,7 @@ section + p + p {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  color: var(--font-primary);
   border-left: solid 12px var(--warn);
   border-radius: 4px;
   background-color: var(--background-4);
@@ -482,6 +496,10 @@ section + p + p {
     background: transparent;
     cursor: pointer;
     outline: none;
+
+    svg {
+      fill: var(--font-primary);
+    }
   }
 }
 

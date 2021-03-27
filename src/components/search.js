@@ -109,7 +109,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
 const AutocompleteSearch = connectAutoComplete(Autocomplete)
 
 const Search = () => (
-  <InstantSearch searchClient={searchClient} indexName="Pages">
+  <InstantSearch searchClient={searchClient} indexName="Pages" role="search">
     <AutocompleteSearch></AutocompleteSearch>
   </InstantSearch>
 )

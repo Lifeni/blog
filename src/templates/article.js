@@ -16,6 +16,53 @@ const relativeTime = require("dayjs/plugin/relativeTime")
 dayjs.extend(relativeTime)
 dayjs.locale("zh-cn")
 
+const OutdatedTips = ({ post, date }) => {
+  const [hideTips, setHideTips] = useState(false)
+
+  return (
+    <>
+      {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
+        6 * 30 * 24 * 60 * 60 && (
+        <div
+          className={`outdated-tips ${hideTips ? "hide" : ""}`}
+          id="outdated-tips"
+        >
+          <section>
+            <p>
+              这篇文章修改于 <strong>{date.from}</strong>
+              ，其中有些信息可能已经过时
+            </p>
+            <button
+              className="close-tips"
+              id="close-tips"
+              onClick={() => setHideTips(true)}
+            >
+              <svg
+                aria-label="Close Icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"
+                ></path>
+              </svg>
+            </button>
+          </section>
+          <section>
+            <p className="title">
+              <HashIcon />
+              Outdated Content
+            </p>
+          </section>
+        </div>
+      )}
+    </>
+  )
+}
+
 const BlogPost = ({ data }) => {
   const post = data.markdownRemark
 
@@ -25,49 +72,9 @@ const BlogPost = ({ data }) => {
     from: dayjs(post.frontmatter.date).fromNow(),
   }
 
-  const [hideTips, setHideTips] = useState(false)
-
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
       <div className="article-info">
-        {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
-          6 * 30 * 24 * 60 * 60 && (
-          <div
-            className={`outdated-tips ${hideTips && "hide"}`}
-            id="outdated-tips"
-          >
-            <section>
-              <p>
-                这篇文章修改于 <strong>{date.from}</strong>
-                ，其中有些信息可能已经过时
-              </p>
-              <button
-                className="close-tips"
-                id="close-tips"
-                onClick={() => setHideTips(true)}
-              >
-                <svg
-                  aria-label="Close Icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"
-                  ></path>
-                </svg>
-              </button>
-            </section>
-            <section>
-              <p className="title">
-                <HashIcon />
-                Outdated Content
-              </p>
-            </section>
-          </div>
-        )}
         <p className="subtitle">
           {post.frontmatter.tags.map(tag => (
             <span key={tag} className="tag">
@@ -117,6 +124,7 @@ const BlogPost = ({ data }) => {
           ></nav>
         </Sidebar>
         <div className="container">
+          <OutdatedTips post={post} date={date} />
           <article
             id="main-content"
             dangerouslySetInnerHTML={{

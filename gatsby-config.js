@@ -92,6 +92,7 @@ module.exports = {
           },
           `gatsby-remark-images`,
           `gatsby-remark-responsive-iframe`,
+          `gatsby-remark-external-links`,
         ],
       },
     },

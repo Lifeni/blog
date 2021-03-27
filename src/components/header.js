@@ -40,7 +40,7 @@ const Header = ({ app, back, aside }) => {
 
       document.querySelector(".search-tips a").setAttribute("tabindex", "-1")
     }
-  }, [])
+  }, [app])
 
   useEffect(() => {
     if (app) {
@@ -55,7 +55,7 @@ const Header = ({ app, back, aside }) => {
         dialog.classList.remove("show")
       }
     }
-  }, [openSearch])
+  }, [app, openSearch])
 
   useEffect(() => {
     if (aside) {
@@ -66,7 +66,7 @@ const Header = ({ app, back, aside }) => {
         header.classList.toggle("expand")
       }
     }
-  }, [openSidebar])
+  }, [aside, openSidebar])
 
   return (
     <header>
@@ -98,11 +98,12 @@ const Header = ({ app, back, aside }) => {
 
             <span className="text">搜索</span>
           </button>
-          <div className="dialog" id="home-dialog">
+          <div className="dialog" id="home-dialog" role="dialog">
             <div
               className="mask"
               id="close-dialog"
               onClick={() => setOpenSearch(false)}
+              aria-hidden="true"
             ></div>
             <div className="card">
               <Search />

@@ -22,6 +22,7 @@
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-autolink-headers": "^3.0.0",
     "gatsby-remark-code-buttons": "^2.0.7",
+    "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^4.0.0",
     "gatsby-remark-images-native-lazy-load": "^1.0.0",
     "gatsby-remark-prismjs": "^4.0.0",
