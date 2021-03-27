@@ -90,8 +90,9 @@ const About = ({ hello, project, friend, me, page }) => (
           <HashIcon />
           页面
         </h3>
-        <LinkCard page="hello-friend" />
-        <LinkCard page="open-source" />
+        {page.includes("home") ? <LinkCard page="home" /> : null}
+        {page.includes("friend") ? <LinkCard page="hello-friend" /> : null}
+        {page.includes("project") ? <LinkCard page="open-source" /> : null}
       </>
     ) : null}
   </section>

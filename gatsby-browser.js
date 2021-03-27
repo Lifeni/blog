@@ -19,9 +19,7 @@ const domOperation = location => {
       copy.setAttribute("aria-label", "Copy")
       copy.title = "Copy"
       copy.onclick = b => {
-        const code =
-          b.target.parentElement.parentElement.parentElement.lastElementChild
-            .firstElementChild
+        const code = e.querySelector("pre code")
         navigator.clipboard
           .writeText(code.textContent)
           .then(() => {

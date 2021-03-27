@@ -14,7 +14,7 @@ const Footer = () => (
       </a>
       <span> / </span>
       <a
-        href="http://lab.lifeni.life"
+        href="https://lab.lifeni.life"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -22,7 +22,7 @@ const Footer = () => (
       </a>
       <span> / </span>
       <a
-        href="http://status.lifeni.life"
+        href="https://status.lifeni.life"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -30,7 +30,7 @@ const Footer = () => (
       </a>
       <span> / </span>
       <a
-        href="http://dev.lifeni.life"
+        href="https://dev.lifeni.life"
         target="_blank"
         rel="noopener noreferrer"
       >

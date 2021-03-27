@@ -10,6 +10,10 @@ html {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: overlay;
+
+  @media (max-width: 480px) {
+    scroll-padding-top: 84px;
+  }
 }
 
 body {
@@ -17,7 +21,6 @@ body {
   background-color: var(--background-0);
   font-family: var(--font-sans);
   transition: all 0.2s;
-  // overflow-y: overlay;
 }
 
 main {

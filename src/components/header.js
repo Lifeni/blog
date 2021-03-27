@@ -20,7 +20,6 @@ const Header = ({ app, back, aside }) => {
 
       window.addEventListener("keypress", e => {
         if (e.key === "/") {
-          e.preventDefault()
           setOpenSearch(true)
         } else if (e.key === "Enter") {
           if (
@@ -98,7 +97,12 @@ const Header = ({ app, back, aside }) => {
 
             <span className="text">搜索</span>
           </button>
-          <div className="dialog" id="home-dialog" role="dialog">
+          <div
+            className="dialog"
+            id="home-dialog"
+            aria-label="搜索对话框"
+            role="dialog"
+          >
             <div
               className="mask"
               id="close-dialog"

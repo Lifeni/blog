@@ -13,7 +13,7 @@ const OpenSourcePage = () => (
     <Header back aside />
     <main>
       <Sidebar>
-        <About project page />
+        <About project page={["home", "friend"]} />
       </Sidebar>
       <div className="container">
         <UpdateCard />
@@ -27,12 +27,13 @@ const OpenSourcePage = () => (
               rel="noopener noreferrer"
               className="friend"
             >
-              Github Chart API
+              GitHub Chart API
             </a>
           </p>
           <img
-            src="http://ghchart.rshah.org/Lifeni"
+            src="https://ghchart.rshah.org/Lifeni"
             alt="Lifeni's Github chart"
+            aria-label="Lifeni's Github chart"
           />
         </article>
         <ProjectList />

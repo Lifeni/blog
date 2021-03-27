@@ -12,7 +12,7 @@ const NotFoundPage = () => (
     <Header back aside />
     <main>
       <Sidebar>
-        <About page />
+        <About page={["home", "friend", "project"]} />
       </Sidebar>
       <div className="container">
         <article id="main-content">

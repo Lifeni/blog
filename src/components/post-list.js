@@ -46,6 +46,7 @@ const Post = ({ title, name, date, descriptions, tags }) => (
         aria-label="查看全文"
         title="查看全文"
         tabIndex="-1"
+        aria-hidden="true"
       >
         <svg
           aria-label="Open Article"
