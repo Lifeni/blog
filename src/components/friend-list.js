@@ -4,7 +4,7 @@ import friends from "../data/friends.json"
 
 const FriendList = () => (
   <article className="friend-list" id="friend-list">
-    <h1>朋友们的网站</h1>
+    <h1>朋友的网站</h1>
     <p className="subtitle">
       <svg
         aria-label="Hash Tag"

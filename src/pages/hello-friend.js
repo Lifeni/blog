@@ -9,7 +9,7 @@ import Utterances from "../components/utterances"
 
 const OpenSourcePage = () => (
   <>
-    <SEO title="朋友们" />
+    <SEO title="朋友" />
     <Header back aside />
     <main className="friend">
       <Sidebar>

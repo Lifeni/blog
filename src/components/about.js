@@ -23,7 +23,10 @@ const About = ({ hello, project, friend, me, page }) => (
           关于
         </h3>
         <p>
-          这里有一些我做过的的开源项目，都是根据自己的需求写的，我的&nbsp;
+          这里有一些我做过的开源项目，其中大部分的项目都是根据自己的需求写的，也都在尝试一些不同的技术。
+        </p>
+        <p>
+          我的&nbsp;
           <a
             href="https://github.com/Lifeni"
             target="_blank"
@@ -33,7 +36,7 @@ const About = ({ hello, project, friend, me, page }) => (
           >
             GitHub
           </a>
-          &nbsp;上还有其他的项目，也可以去看看。
+          &nbsp;上还有一些没有出现在这里的项目，也可以去看看。
         </p>
       </>
     ) : null}
@@ -44,10 +47,12 @@ const About = ({ hello, project, friend, me, page }) => (
           <HashIcon />
           关于
         </h3>
+        <p>这里是放置友链的地方，排名不分先后。</p>
         <p>
-          这里是放置友链的地方，排名不分先后，如果要申请友链，可以在页面下面留言，最好提供一个小的
-          Logo 和页面的名称。
+          如果要申请友链，可以在这个页面下留言，我会审核，最好可以提供一个小的
+          Logo 和网站的名称。
         </p>
+        <p>PS: 最好把网站整得好看一点，最起码配色和排版要正常。</p>
       </>
     ) : null}
 
@@ -71,15 +76,15 @@ const About = ({ hello, project, friend, me, page }) => (
           &nbsp;上可以找到我和我的项目，以及关于我的其他信息。
         </p>
         <p>
-          如果你有一些问题或者好的想法，可以通过{" "}
+          如果你有一些问题或者好的想法，可以通过&nbsp;
           <a
             href="mailto:liangfengning@foxmail.com"
             title="liangfengning@foxmail.com"
             aria-label="邮箱"
           >
             邮箱
-          </a>{" "}
-          联系我。
+          </a>
+          &nbsp;联系我。
         </p>
       </>
     ) : null}
