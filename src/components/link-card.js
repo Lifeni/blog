@@ -26,8 +26,8 @@ const LinkCard = ({ page }) =>
         </svg>
         开源项目
       </span>
-      <span className="description" title="展示一些自己的开源项目">
-        展示一些自己的开源项目
+      <span className="description" title="一些做过的开源项目">
+        一些做过的开源项目
       </span>
     </AniLink>
   ) : page === "hello-friend" ? (
@@ -54,7 +54,7 @@ const LinkCard = ({ page }) =>
         </svg>
         朋友
       </span>
-      <span className="description" title="朋友们的网站，欢迎来看看">
+      <span className="description" title="朋友的网站，欢迎来看看">
         朋友的网站，欢迎来看看
       </span>
     </AniLink>

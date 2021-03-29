@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: 14
       - run: yarn
+      - run: yarn clean
       - run: yarn build
         env:
           GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
