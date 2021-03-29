@@ -122,7 +122,7 @@ const BlogPost = ({ data }) => {
           ></nav>
         </Sidebar>
         <div className="container">
-          <UpdateCard />
+          {/* <UpdateCard /> */}
           <OutdatedTips post={post} date={date} />
           <article
             id="main-content"
