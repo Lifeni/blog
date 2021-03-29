@@ -103,8 +103,9 @@ module.exports = {
       options: {
         google: {
           families: [
-            "Inter:300,400,700",
-            "JetBrains Mono:400,700&display=auto",
+            "Inter:300,400,600",
+            "JetBrains Mono:400,600",
+            "Noto Sans SC:400,700&display=auto",
           ],
         },
       },

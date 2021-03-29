@@ -13,7 +13,7 @@ const OpenSourcePage = () => (
     <Header back aside />
     <main className="friend">
       <Sidebar>
-        <About friend page={["home", "project"]} />
+        <About friend page={["project"]} />
       </Sidebar>
       <div className="container">
         <UpdateCard />
