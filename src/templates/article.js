@@ -29,10 +29,7 @@ const OutdatedTips = ({ post, date }) => {
           id="outdated-tips"
         >
           <section>
-            <p>
-              这篇文章修改于 <strong>{date.from}</strong>
-              ，其中有些信息可能已经过时
-            </p>
+            <p>这篇文章修改于 {date.from} ，其中有些信息可能已经过时</p>
             <button
               className="close-tips"
               id="close-tips"

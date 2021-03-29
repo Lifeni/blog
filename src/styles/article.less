@@ -17,7 +17,8 @@ article {
     line-height: 2rem;
     color: var(--font-primary);
     transition: all 0.2s;
-
+    // text-align: justify;
+    // text-justify: inter-ideograph;
     line-break: auto;
     word-break: break-word;
     overflow-wrap: break-word;
@@ -144,6 +145,11 @@ article {
     &.medium-zoom-image {
       transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1) !important;
     }
+
+    @media (max-width: 480px) {
+      max-width: calc(100% + 24px);
+      margin: 20px -12px;
+    }
   }
 
   code,
@@ -195,16 +201,20 @@ article {
   }
 
   pre {
-    margin: 16px 0;
+    margin: 24px 0;
     padding: 1rem 1.5rem;
     background-color: var(--background-4);
     line-height: 1.5rem;
     overflow-x: auto;
     transition: all 0.2s;
+
+    @media (max-width: 480px) {
+      margin: 20px 0;
+    }
   }
 
   pre[class*="language-"] {
-    margin: 16px 0 24px 0;
+    margin: 24px 0;
     padding: 1rem 0 1rem 1.5rem;
     color: var(--font-code);
     background-color: var(--background-4);
@@ -224,6 +234,10 @@ article {
       min-width: 4rem;
       height: 100%;
       background-color: transparent;
+    }
+
+    @media (max-width: 480px) {
+      margin: 20px 0;
     }
   }
 
@@ -245,6 +259,11 @@ article {
     background-color: var(--background-4);
     border-radius: 4px;
     transition: all 0.2s;
+
+    @media (max-width: 480px) {
+      width: calc(100% + 24px);
+      margin: 20px -12px;
+    }
 
     ol,
     ul {
@@ -283,7 +302,7 @@ article {
   th,
   td {
     width: 100%;
-    padding: 12px 16px;
+    padding: 12px 14px;
     color: var(--font-primary);
     border: solid 2px var(--border-1);
     font-weight: normal;
@@ -316,6 +335,16 @@ article {
 
 .gatsby-highlight {
   position: relative;
+
+  @media (max-width: 480px) {
+    width: calc(100% + 24px);
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+
+  & + h2 {
+    margin-top: 1.5rem;
+  }
 }
 
 .gatsby-highlight .token.comment {

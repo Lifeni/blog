@@ -103,7 +103,7 @@ module.exports = {
       options: {
         google: {
           families: [
-            "Inter:300,400,700,900",
+            "Inter:300,400,700",
             "JetBrains Mono:400,700&display=auto",
           ],
         },
