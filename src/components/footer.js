@@ -22,7 +22,7 @@ const Footer = () => (
       </a>
       <span> / </span>
       <a
-        href="https://git.lifeni.life"
+        href="https://git.lifeni.life/liangfengning"
         target="_blank"
         rel="noopener noreferrer"
       >
