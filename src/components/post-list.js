@@ -92,7 +92,12 @@ const PostList = () => (
 
 const indexQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+    allMarkdownRemark(
+      sort: {
+        fields: [frontmatter___date, frontmatter___create_date]
+        order: [DESC, DESC]
+      }
+    ) {
       edges {
         node {
           id

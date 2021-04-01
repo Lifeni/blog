@@ -104,9 +104,14 @@ main {
 }
 
 .update-card {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
   width: 100%;
+  max-width: 380px;
   height: auto;
-  margin: 0 0 48px 0;
+  margin: 36px;
   padding: 24px 28px 20px 28px;
   display: none;
   flex-direction: column;
@@ -119,12 +124,12 @@ main {
   color: var(--font-primary);
   background-color: var(--background-4);
 
-  @media (max-width: 824px) {
-    margin: 0 0 48px 0;
-  }
-
   @media (max-width: 480px) {
-    margin: 0 0 36px 0;
+    position: relative;
+    top: unset;
+    right: unset;
+    width: calc(100% + 24px);
+    margin: -8px -12px 36px -12px;
   }
 
   section {
