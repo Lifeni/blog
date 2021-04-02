@@ -107,6 +107,7 @@ header {
     overflow: hidden;
     outline: none;
     color: var(--font-primary);
+    box-shadow: var(--shadow-normal);
     font-family: inherit;
     transition: all 0.2s;
 
@@ -136,7 +137,7 @@ header {
     padding: 48px 0;
     flex-direction: column;
     justify-content: space-between;
-    border-right: solid 2px var(--border-0);
+    box-shadow: var(--shadow-deep);
     background-color: var(--background-0);
     transition: all 0.2s;
 
@@ -148,6 +149,7 @@ header {
 
     &.expand {
       background-color: var(--background-0);
+      box-shadow: var(--shadow-press);
     }
 
     a,
@@ -160,6 +162,7 @@ header {
       align-items: center;
       border-radius: 0;
       background-color: transparent;
+      box-shadow: none;
 
       &.mobile-only {
         display: flex;
@@ -173,6 +176,7 @@ header {
     button:focus,
     button:hover {
       background-color: var(--background-1) !important;
+      box-shadow: none !important;
     }
   }
 
@@ -180,16 +184,23 @@ header {
     top: 0;
     bottom: unset;
     left: 0;
+    z-index: 10;
     width: 100%;
     height: 72px;
     min-height: unset;
-    padding: 2px 8px 0 8px;
+    padding: 0 8px;
     flex-direction: row;
     justify-content: space-between;
     border: none;
-    border-bottom: solid 2px var(--border-0);
+    background-color: var(--background-0);
+    box-shadow: var(--shadow-deep);
     overflow: hidden;
     pointer-events: initial;
+
+    &.expand {
+      background-color: var(--background-0);
+      box-shadow: var(--shadow-deep);
+    }
 
     .text {
       writing-mode: initial;
@@ -256,7 +267,7 @@ header {
     button:active,
     button:focus,
     button:hover {
-      background-color: var(--background-7) !important;
+      background-color: var(--background-4) !important;
     }
   }
 
@@ -267,5 +278,6 @@ header {
   button:focus,
   button:hover {
     background-color: var(--background-2);
+    box-shadow: var(--shadow-press);
   }
 }

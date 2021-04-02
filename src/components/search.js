@@ -1,5 +1,5 @@
 import algoliasearch from "algoliasearch/lite"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby"
 import React from "react"
 import {
   connectAutoComplete,
@@ -63,14 +63,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
       </li>
       {hits.map((hit, index) => (
         <li key={hit.objectID}>
-          <AniLink
-            cover
-            bg="var(--background-3)"
-            direction="left"
-            duration={0.8}
-            className="link"
-            to={`/article/${hit.name}`}
-          >
+          <Link className="link" to={`/article/${hit.name}`}>
             <span className="num">{index + 1}</span>
             <p className="tags">
               #&nbsp;
@@ -98,7 +91,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
                 <Snippet hit={hit} attribute="excerpt" tagName="mark" />
               </p>
             )}
-          </AniLink>
+          </Link>
         </li>
       ))}
       <li className="search-tips full-height">已经到底了 : )</li>

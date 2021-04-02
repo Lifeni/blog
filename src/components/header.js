@@ -1,4 +1,4 @@
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
 import Search from "../components/search"
 import "../styles/header.less"
@@ -116,11 +116,7 @@ const Header = ({ app, back, aside }) => {
       )}
 
       {back && (
-        <AniLink
-          cover
-          bg="var(--background-3)"
-          direction="right"
-          duration={0.8}
+        <Link
           to="/"
           className="fab auto-width"
           aria-label="返回主页"
@@ -139,7 +135,7 @@ const Header = ({ app, back, aside }) => {
             ></path>
           </svg>
           <span className="text">主页</span>
-        </AniLink>
+        </Link>
       )}
 
       {aside && (

@@ -1,16 +1,9 @@
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby"
 import React from "react"
 
 const LinkCard = ({ page }) =>
   page === "open-source" ? (
-    <AniLink
-      cover
-      bg="var(--background-3)"
-      direction="left"
-      duration={0.8}
-      to="/open-source"
-      className="link-card"
-    >
+    <Link to="/open-source" className="link-card">
       <span className="title">
         <svg
           aria-label="Project Icon"
@@ -29,16 +22,9 @@ const LinkCard = ({ page }) =>
       <span className="description" title="一些做过的开源项目">
         一些做过的开源项目
       </span>
-    </AniLink>
+    </Link>
   ) : page === "hello-friend" ? (
-    <AniLink
-      cover
-      bg="var(--background-3)"
-      direction="left"
-      duration={0.8}
-      to="/hello-friend"
-      className="link-card"
-    >
+    <Link to="/hello-friend" className="link-card">
       <span className="title">
         <svg
           aria-label="Friend Icon"
@@ -57,16 +43,9 @@ const LinkCard = ({ page }) =>
       <span className="description" title="朋友的网站，欢迎来看看">
         朋友的网站，欢迎来看看
       </span>
-    </AniLink>
+    </Link>
   ) : page === "home" ? (
-    <AniLink
-      cover
-      bg="var(--background-3)"
-      direction="left"
-      duration={0.8}
-      to="/"
-      className="link-card"
-    >
+    <Link to="/" className="link-card">
       <span className="title">
         <svg
           aria-label="Home Icon"
@@ -85,7 +64,7 @@ const LinkCard = ({ page }) =>
       <span className="description" title="点这里可以回到主页">
         点这里可以回到主页
       </span>
-    </AniLink>
+    </Link>
   ) : null
 
 export default LinkCard

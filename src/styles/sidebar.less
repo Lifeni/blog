@@ -13,7 +13,7 @@ aside {
   overflow-x: hidden;
   overflow-y: overlay;
   transition: all 0.4s;
-
+  box-shadow: var(--shadow-inset);
   text-align: justify;
   text-justify: inter-ideograph;
 
@@ -37,6 +37,7 @@ aside {
     background: var(--background-1);
     overflow: hidden;
     pointer-events: none;
+    box-shadow: none;
 
     &::after {
       min-height: 72px;
@@ -66,6 +67,7 @@ aside {
     z-index: 3000;
     padding: 0 48px;
     background-color: var(--background-4);
+    box-shadow: none;
     overflow: hidden;
 
     &::after {
