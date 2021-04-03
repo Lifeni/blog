@@ -90,10 +90,6 @@ header {
     font-size: 1.15rem;
     margin: 0 8px 0 20px;
     pointer-events: auto;
-
-    @media (max-width: 1280px) {
-      display: none;
-    }
   }
 
   a,
@@ -122,6 +118,10 @@ header {
 
     &.go-top {
       margin: 0 0 0 24px;
+
+      @media (max-width: 1280px) {
+        display: none;
+      }
     }
 
     &.mobile-only {
@@ -184,6 +184,7 @@ header {
 
       &.go-top {
         margin: 0;
+        display: initial;
       }
 
       &.mobile-only {
