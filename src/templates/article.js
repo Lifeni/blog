@@ -110,6 +110,7 @@ const BlogPost = ({ data }) => {
       <Header
         back
         aside
+        top
         title={post.frontmatter.title}
         data={post.frontmatter}
       />

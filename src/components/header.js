@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import Search from "../components/search"
 import "../styles/header.less"
 
-const Header = ({ app, back, aside }) => {
+const Header = ({ app, back, aside, top }) => {
   const [openSearch, setOpenSearch] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(null)
 
@@ -72,17 +72,60 @@ const Header = ({ app, back, aside }) => {
         Skip to main content | 跳转到主要内容
       </a>
 
-      {app && (
-        <>
-          <button
+      <section>
+        {app && (
+          <>
+            <button
+              className="fab auto-width"
+              id="open-dialog"
+              aria-label="搜索文章"
+              title="搜索文章"
+              onClick={() => setOpenSearch(true)}
+            >
+              <svg
+                aria-label="Search Icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M14.53 15.59a8.25 8.25 0 111.06-1.06l5.69 5.69a.75.75 0 11-1.06 1.06l-5.69-5.69zM2.5 9.25a6.75 6.75 0 1111.74 4.547.746.746 0 00-.443.442A6.75 6.75 0 012.5 9.25z"
+                ></path>
+              </svg>
+
+              <span className="text">搜索</span>
+            </button>
+            <div
+              className="dialog"
+              id="home-dialog"
+              aria-label="搜索对话框"
+              role="dialog"
+            >
+              <div
+                className="mask"
+                id="close-dialog"
+                onClick={() => setOpenSearch(false)}
+                aria-hidden="true"
+                title="点击这里也可以关闭搜索窗口"
+              ></div>
+              <div className="card">
+                <Search />
+              </div>
+            </div>
+          </>
+        )}
+
+        {back && (
+          <Link
+            to="/"
             className="fab auto-width"
-            id="open-dialog"
-            aria-label="搜索文章"
-            title="搜索文章"
-            onClick={() => setOpenSearch(true)}
+            aria-label="返回主页"
+            title="返回主页"
           >
             <svg
-              aria-label="Search Icon"
+              aria-label="Back Icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               width="24"
@@ -90,54 +133,33 @@ const Header = ({ app, back, aside }) => {
             >
               <path
                 fillRule="evenodd"
-                d="M14.53 15.59a8.25 8.25 0 111.06-1.06l5.69 5.69a.75.75 0 11-1.06 1.06l-5.69-5.69zM2.5 9.25a6.75 6.75 0 1111.74 4.547.746.746 0 00-.443.442A6.75 6.75 0 012.5 9.25z"
+                d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z"
               ></path>
             </svg>
 
-            <span className="text">搜索</span>
-          </button>
-          <div
-            className="dialog"
-            id="home-dialog"
-            aria-label="搜索对话框"
-            role="dialog"
-          >
-            <div
-              className="mask"
-              id="close-dialog"
-              onClick={() => setOpenSearch(false)}
-              aria-hidden="true"
-              title="点击这里也可以关闭搜索窗口"
-            ></div>
-            <div className="card">
-              <Search />
-            </div>
-          </div>
-        </>
-      )}
+            <span className="text">主页</span>
+          </Link>
+        )}
 
-      {back && (
-        <Link
-          to="/"
-          className="fab auto-width"
-          aria-label="返回主页"
-          title="返回主页"
-        >
-          <svg
-            aria-label="Back Icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
+        {top && (
+          <button
+            className="fab auto-width go-top"
+            aria-label="返回页面顶部"
+            title="返回页面顶部"
+            onClick={() => window.scrollTo(0, 0)}
           >
-            <path
-              fillRule="evenodd"
-              d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z"
-            ></path>
-          </svg>
-          <span className="text">主页</span>
-        </Link>
-      )}
+            <svg
+              aria-label="Top Icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path d="M4.97 12.97a.75.75 0 101.06 1.06L11 9.06v12.19a.75.75 0 001.5 0V9.06l4.97 4.97a.75.75 0 101.06-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25zM4.75 3.5a.75.75 0 010-1.5h14.5a.75.75 0 010 1.5H4.75z"></path>
+            </svg>
+          </button>
+        )}
+      </section>
 
       {aside && (
         <button

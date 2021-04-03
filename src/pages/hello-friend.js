@@ -10,7 +10,7 @@ import Utterances from "../components/utterances"
 const OpenSourcePage = () => (
   <>
     <Seo title="朋友" />
-    <Header back aside />
+    <Header back aside top />
     <main className="friend">
       <Sidebar>
         <About friend page={["project"]} />

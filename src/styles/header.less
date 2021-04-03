@@ -3,9 +3,9 @@ header {
   top: 0;
   left: 0;
   z-index: 2000;
-  width: 30%;
+  width: fit-content;
   height: auto;
-  padding: 56px 72px;
+  padding: 64px 72px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -13,6 +13,11 @@ header {
   font-size: 1.125rem;
   pointer-events: none;
   transition: all 0.2s;
+
+  section {
+    display: flex;
+    align-items: center;
+  }
 
   @media (max-width: 1120px) {
     padding: 48px;
@@ -85,6 +90,10 @@ header {
     font-size: 1.15rem;
     margin: 0 8px 0 20px;
     pointer-events: auto;
+
+    @media (max-width: 1280px) {
+      display: none;
+    }
   }
 
   a,
@@ -110,6 +119,10 @@ header {
     box-shadow: var(--shadow-normal);
     font-family: inherit;
     transition: all 0.2s;
+
+    &.go-top {
+      margin: 0 0 0 24px;
+    }
 
     &.mobile-only {
       display: none;
@@ -141,7 +154,12 @@ header {
     background-color: var(--background-0);
     transition: all 0.2s;
 
+    section {
+      flex-direction: column;
+    }
+
     .text {
+      display: inline-flex;
       margin: 24px 0 0 0;
       writing-mode: vertical-lr;
       letter-spacing: 0.2rem;
@@ -163,6 +181,10 @@ header {
       border-radius: 0;
       background-color: transparent;
       box-shadow: none;
+
+      &.go-top {
+        margin: 0;
+      }
 
       &.mobile-only {
         display: flex;
@@ -196,6 +218,10 @@ header {
     box-shadow: var(--shadow-deep);
     overflow: hidden;
     pointer-events: initial;
+
+    section {
+      flex-direction: row;
+    }
 
     &.expand {
       background-color: var(--background-0);
@@ -247,6 +273,10 @@ header {
       flex-direction: row;
       border-radius: 0;
       pointer-events: initial;
+
+      &.go-top {
+        display: none;
+      }
 
       &.auto-width {
         width: auto;

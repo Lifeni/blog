@@ -12,7 +12,7 @@ import "../styles/variables.less"
 const IndexPage = () => (
   <>
     <Seo title="Home" />
-    <Header app aside />
+    <Header app aside top />
     <main>
       <Sidebar>
         <About hello me page={["friend", "project"]} />
