@@ -619,6 +619,11 @@ section + p + p {
   flex: 1 1;
   margin: 0 -4px;
   padding: 48px 0 0 0;
+  width: calc(100% + 8px);
+
+  .utterances {
+    max-width: unset !important;
+  }
 
   @media (max-width: 480px) {
     width: calc(100% + 32px);
