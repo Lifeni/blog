@@ -3,7 +3,7 @@ import About from "../components/about"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import PostList from "../components/post-list"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Sidebar from "../components/sidebar"
 import UpdateCard from "../components/update-card"
 import "../styles/layout.less"
@@ -11,7 +11,7 @@ import "../styles/variables.less"
 
 const IndexPage = () => (
   <>
-    <SEO title="Home" />
+    <Seo title="Home" />
     <Header app aside />
     <main>
       <Sidebar>

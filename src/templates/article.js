@@ -5,9 +5,8 @@ import React, { useState } from "react"
 import ReactDOMServer from "react-dom/server"
 import Header from "../components/header"
 import { HashIcon } from "../components/icon"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Sidebar from "../components/sidebar"
-import UpdateCard from "../components/update-card"
 import Utterances from "../components/utterances"
 import "../styles/article.less"
 import "../styles/code.less"
@@ -104,7 +103,7 @@ const BlogPost = ({ data }) => {
 
   return (
     <>
-      <SEO
+      <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.descriptions.join(" / ")}
       />
@@ -122,7 +121,6 @@ const BlogPost = ({ data }) => {
           ></nav>
         </Sidebar>
         <div className="container">
-          {/* <UpdateCard /> */}
           <OutdatedTips post={post} date={date} />
           <article
             id="main-content"

@@ -107,6 +107,7 @@ const Header = ({ app, back, aside }) => {
               id="close-dialog"
               onClick={() => setOpenSearch(false)}
               aria-hidden="true"
+              title="点击这里也可以关闭搜索窗口"
             ></div>
             <div className="card">
               <Search />

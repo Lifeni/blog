@@ -456,6 +456,7 @@ article {
   line-height: 2rem;
   margin: 0 0 4px 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 
   svg {
@@ -620,7 +621,8 @@ section + p + p {
   padding: 48px 0 0 0;
 
   @media (max-width: 480px) {
-    margin: 0 -8px -18px -8px;
+    width: calc(100% + 32px);
+    margin: 0 -16px -18px -16px;
     padding: 36px 0 0 0;
   }
 }
