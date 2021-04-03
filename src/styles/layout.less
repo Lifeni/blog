@@ -197,7 +197,7 @@ main {
 }
 
 .github-chart {
-  padding: 0 0 2rem 0;
+  padding: 0 0 1.5rem 0;
 
   h2 {
     font-size: 1.75rem;
@@ -216,17 +216,26 @@ main {
     width: auto;
     min-height: 100px;
     overflow-x: auto;
-    margin: 1rem 0 2rem 0;
-  }
+    margin: 1rem 0;
+    border-radius: 4px;
+    background-color: var(--background-4);
+    transition: all 0.2s;
 
-  img {
-    width: auto;
-    min-width: 100%;
-    min-height: 100%;
-    margin: 0;
+    @media (max-width: 480px) {
+      margin: 1rem -12px;
+      width: calc(100% + 24px);
+    }
 
-    @media (max-width: 768px) {
-      min-width: fit-content;
+    img {
+      width: auto;
+      min-width: 100%;
+      min-height: 100%;
+      margin: 0;
+      padding: 24px;
+
+      @media (max-width: 768px) {
+        min-width: fit-content;
+      }
     }
   }
 }
