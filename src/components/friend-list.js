@@ -24,7 +24,7 @@ const FriendList = () => (
       {friends.map((friend, index) => (
         <li key={index}>
           <a
-            href={friend.link}
+            href={friend.url}
             target="_blank"
             rel="noopener noreferrer"
             className="friend"
@@ -59,7 +59,7 @@ const FriendList = () => (
         <span className="name">
           记录干杯{" "}
           <a href="https://lifeni.life/" alt="Link" rel="noopener noreferrer">
-            https://lifeni.life/
+            lifeni.life
           </a>
         </span>
 

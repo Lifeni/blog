@@ -1,12 +1,14 @@
 [
   {
     "name": "Nanako",
-    "link": "https://tanakarino.cn/",
+    "link": "tanakarino.cn",
+    "url": "https://tanakarino.cn/",
     "icon": "https://file.lifeni.life/avatar/friends/Nanako.jpg"
   },
   {
     "name": "bluebonnet27",
-    "link": "https://blog.bluebonnet27.xyz/",
+    "link": "blog.bluebonnet27.xyz",
+    "url": "https://blog.bluebonnet27.xyz/",
     "icon": "https://file.lifeni.life/avatar/friends/bluebonnet27.jpg"
   }
 ]
