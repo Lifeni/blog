@@ -1,5 +1,6 @@
 import React from "react"
 import About from "../components/about"
+import Footer from "../components/footer"
 import FriendList from "../components/friend-list"
 import Header from "../components/header"
 import Seo from "../components/seo"
@@ -19,6 +20,7 @@ const OpenSourcePage = () => (
         <UpdateCard />
         <FriendList />
         <Utterances />
+        <Footer />
       </div>
     </main>
   </>

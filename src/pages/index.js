@@ -6,6 +6,7 @@ import PostList from "../components/post-list"
 import Seo from "../components/seo"
 import Sidebar from "../components/sidebar"
 import UpdateCard from "../components/update-card"
+import Widget from "../components/widget"
 import "../styles/layout.less"
 import "../styles/variables.less"
 
@@ -18,6 +19,7 @@ const IndexPage = () => (
         <About hello me page={["friend", "project"]} />
       </Sidebar>
       <div className="container">
+        <Widget bio />
         <UpdateCard />
         <PostList />
         <Footer />

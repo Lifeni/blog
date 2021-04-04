@@ -197,7 +197,7 @@ main {
 }
 
 .github-chart {
-  padding: 0 0 1.5rem 0;
+  padding: 0 0 3rem 0;
 
   h2 {
     font-size: 1.75rem;
@@ -207,7 +207,7 @@ main {
   }
 
   p {
-    margin: 0 0 2rem 0;
+    margin: 0 0 1.5rem 0;
     font-size: 1rem;
     line-height: 2rem;
   }
@@ -218,24 +218,48 @@ main {
     overflow-x: auto;
     margin: 1rem 0;
     border-radius: 4px;
-    background-color: var(--background-4);
     transition: all 0.2s;
-
-    @media (max-width: 480px) {
-      margin: 1rem -12px;
-      width: calc(100% + 24px);
-    }
 
     img {
       width: auto;
       min-width: 100%;
       min-height: 100%;
       margin: 0;
-      padding: 24px;
 
       @media (max-width: 768px) {
         min-width: fit-content;
       }
     }
+  }
+}
+
+.mobile-text {
+  display: none;
+  text-align: justify;
+  text-justify: inter-ideograph;
+
+  @media (max-width: 480px) {
+    display: flex;
+    width: calc(100% + 36px * 2);
+    margin: -36px -36px 36px -36px;
+    padding: 28px 36px 24px 36px;
+    background-color: var(--background-1);
+    font-size: 1rem;
+    line-height: 2rem;
+    color: var(--font-secondary);
+
+    &::before {
+      content: ">";
+      margin: 0 1rem 0 0;
+      font-size: 1rem;
+      // font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 420px) {
+    width: calc(100% + 32px * 2);
+    margin: -32px -32px 32px -32px;
+    padding: 28px 32px 24px 32px;
   }
 }

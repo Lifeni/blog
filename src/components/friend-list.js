@@ -31,9 +31,9 @@ const FriendList = () => (
           >
             <img
               src={friend.icon}
-              alt="网站图标"
-              aria-label="网站图标"
-              title="网站图标"
+              alt={friend.name}
+              aria-label={friend.name}
+              title={friend.name}
               className="favicon"
             />
             {friend.name}
