@@ -1,4 +1,5 @@
 import React from "react"
+import "../styles/widget.less"
 
 const Widget = ({ chart, bio }) => {
   const openSidebar = () => {
@@ -12,7 +13,7 @@ const Widget = ({ chart, bio }) => {
     <>
       {chart && (
         <article className="github-chart">
-          <h2>开源 × GitHub</h2>
+          <h2>GitHub Contributions Chart</h2>
           <p className="subtitle">
             <svg
               aria-label="Fire Icon"
@@ -47,7 +48,11 @@ const Widget = ({ chart, bio }) => {
       )}
 
       {bio && (
-        <section className="mobile-text" onClick={() => openSidebar()}>
+        <section
+          aria-hidden
+          className="mobile-text"
+          onClick={() => openSidebar()}
+        >
           Hi，这是我的个人网站「记录干杯」，我会在这里记录一些文章或者是想法，也会在网站上尝试一些新的技术。...
         </section>
       )}

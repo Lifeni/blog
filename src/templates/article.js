@@ -3,6 +3,7 @@ import "dayjs/locale/zh-cn"
 import { graphql } from "gatsby"
 import React, { useState } from "react"
 import ReactDOMServer from "react-dom/server"
+import Footer from "../components/footer"
 import Header from "../components/header"
 import { HashIcon } from "../components/icon"
 import Seo from "../components/seo"
@@ -130,6 +131,7 @@ const BlogPost = ({ data }) => {
             }}
           ></article>
           <Utterances />
+          <Footer />
         </div>
       </main>
     </>
