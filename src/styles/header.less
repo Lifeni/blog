@@ -165,11 +165,6 @@ header {
       letter-spacing: 0.2rem;
     }
 
-    &.expand {
-      background-color: var(--background-0);
-      box-shadow: var(--shadow-press);
-    }
-
     a,
     button {
       width: 100%;
@@ -190,6 +185,14 @@ header {
       &.mobile-only {
         display: flex;
       }
+
+      svg.action-open {
+        display: flex;
+      }
+
+      svg.action-close {
+        display: none;
+      }
     }
 
     a:active,
@@ -200,6 +203,19 @@ header {
     button:hover {
       background-color: var(--background-1) !important;
       box-shadow: none !important;
+    }
+
+    &.expand {
+      background-color: var(--background-0);
+      box-shadow: var(--shadow-press);
+
+      svg.action-open {
+        display: none;
+      }
+
+      svg.action-close {
+        display: flex;
+      }
     }
   }
 
@@ -222,11 +238,6 @@ header {
 
     section {
       flex-direction: row;
-    }
-
-    &.expand {
-      background-color: var(--background-0);
-      box-shadow: var(--shadow-deep);
     }
 
     .text {
@@ -283,12 +294,16 @@ header {
         width: auto;
       }
 
-      &.desktop-only {
-        display: none;
-      }
-
       &.fab {
         box-shadow: none;
+      }
+
+      svg.action-open {
+        display: flex;
+      }
+
+      svg.action-close {
+        display: none;
       }
     }
 
@@ -299,6 +314,19 @@ header {
     button:focus,
     button:hover {
       background-color: var(--background-4) !important;
+    }
+
+    &.expand {
+      background-color: var(--background-0);
+      box-shadow: var(--shadow-deep);
+
+      svg.action-open {
+        display: none;
+      }
+
+      svg.action-close {
+        display: flex;
+      }
     }
   }
 

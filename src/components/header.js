@@ -143,7 +143,7 @@ const Header = ({ app, back, aside, top }) => {
 
         {top && (
           <button
-            className="fab auto-width go-top"
+            className="fab go-top"
             aria-label="返回页面顶部"
             title="返回页面顶部"
             onClick={() => window.scrollTo(0, 0)}
@@ -170,6 +170,7 @@ const Header = ({ app, back, aside, top }) => {
           onClick={() => setOpenSidebar(!openSidebar)}
         >
           <svg
+            className="action-open"
             aria-label="Box Icon"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -183,6 +184,20 @@ const Header = ({ app, back, aside, top }) => {
             <path
               fillRule="evenodd"
               d="M5 8.75A.75.75 0 015.75 8h11.5a.75.75 0 010 1.5H5.75A.75.75 0 015 8.75zm0 4a.75.75 0 01.75-.75h5.5a.75.75 0 010 1.5h-5.5a.75.75 0 01-.75-.75z"
+            ></path>
+          </svg>
+
+          <svg
+            className="action-close"
+            aria-label="Close Icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"
             ></path>
           </svg>
         </button>

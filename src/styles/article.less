@@ -502,8 +502,8 @@ section + p + p {
   right: 0;
   bottom: 0;
   z-index: 999;
-  width: 100%;
-  max-width: 380px;
+  width: fit-content;
+  max-width: 100%;
   height: auto;
   margin: 36px;
   padding: 24px 28px 20px 28px;
@@ -525,6 +525,7 @@ section + p + p {
     top: unset;
     right: unset;
     width: calc(100% + 24px);
+    max-width: unset;
     margin: -8px -12px 36px -12px;
   }
 

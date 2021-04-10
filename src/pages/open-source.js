@@ -18,8 +18,9 @@ const OpenSourcePage = () => (
       </Sidebar>
       <div className="container">
         <UpdateCard />
-        <Widget chart />
         <ProjectList />
+        <Widget chart />
+
         <Footer />
       </div>
     </main>
