@@ -20,7 +20,6 @@ const OpenSourcePage = () => (
         <UpdateCard />
         <ProjectList />
         <Widget chart />
-
         <Footer />
       </div>
     </main>

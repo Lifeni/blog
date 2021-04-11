@@ -44,7 +44,7 @@ const FriendList = () => (
     </ul>
     <h2>我的网站</h2>
     <section className="my-site">
-      <a href="/Lifeni.svg" target="_blank" rel="noopener noreferrer">
+      <a href="/lifeni.svg" target="_blank" rel="noopener noreferrer">
         <img className="site-logo" src="/lifeni.svg" alt="Logo" />
       </a>
       <div>
