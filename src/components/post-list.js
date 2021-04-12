@@ -24,7 +24,9 @@ const Post = ({ title, name, date, descriptions, tags }) => (
         {tags.map(tag => (
           <span key={tag} className="tag">
             <HashIcon />
-            {tag}
+            <Link to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}>
+              {tag}
+            </Link>
           </span>
         ))}
       </p>
@@ -56,7 +58,7 @@ const Post = ({ title, name, date, descriptions, tags }) => (
 
 const PostList = () => (
   <StaticQuery
-    query={indexQuery}
+    query={IndexQuery}
     render={data => {
       return (
         <div className="post-list" id="main-content">
@@ -79,7 +81,7 @@ const PostList = () => (
   />
 )
 
-const indexQuery = graphql`
+const IndexQuery = graphql`
   query {
     allMarkdownRemark(
       sort: {
@@ -107,3 +109,5 @@ const indexQuery = graphql`
 `
 
 export default PostList
+
+export { Post }

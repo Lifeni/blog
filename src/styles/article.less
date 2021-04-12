@@ -480,6 +480,17 @@ article {
       vertical-align: middle;
       fill: var(--font-secondary);
     }
+
+    a {
+      color: inherit;
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: underline from-font;
+        text-underline-offset: 6px;
+      }
+    }
   }
 }
 

@@ -7,7 +7,7 @@ const FriendList = () => (
     <h1>朋友的网站</h1>
     <p className="subtitle">
       <svg
-        aria-label="Hash Tag"
+        aria-label="Hash Icon"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
         width="16"
@@ -42,22 +42,6 @@ const FriendList = () => (
         </li>
       ))}
     </ul>
-    <h2>我的网站</h2>
-    <section className="my-site">
-      <a href="/lifeni.svg" target="_blank" rel="noopener noreferrer">
-        <img className="site-logo" src="/lifeni.svg" alt="Logo" />
-      </a>
-      <div>
-        <span className="name">
-          记录干杯{" "}
-          <a href="https://lifeni.life/" alt="Link" rel="noopener noreferrer">
-            lifeni.life
-          </a>
-        </span>
-
-        <span>在这里记录一些技术相关的文章、尝试一些新的技术。</span>
-      </div>
-    </section>
   </article>
 )
 

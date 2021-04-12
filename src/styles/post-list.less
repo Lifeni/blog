@@ -41,7 +41,7 @@
       position: relative;
       width: fit-content;
       max-width: 100%;
-      margin: 0.5rem 0;
+      padding: 0.5rem 0;
       font-size: 1.5rem;
       line-height: 2.5rem;
       font-weight: bold;
@@ -92,6 +92,17 @@
       align-items: center;
       font-weight: bold;
       color: var(--font-secondary);
+
+      a {
+        color: inherit;
+
+        &:hover,
+        &:active,
+        &:focus {
+          text-decoration: underline from-font;
+          text-underline-offset: 6px;
+        }
+      }
     }
 
     .date {

@@ -1,5 +1,6 @@
 const path = require(`path`)
 const BlogPost = path.resolve(`./src/templates/article.js`)
+const BlogTag = path.resolve(`./src/templates/tag.js`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -24,6 +25,9 @@ exports.createPages = async ({ graphql, actions }) => {
               }
             }
           }
+          group(field: frontmatter___tags) {
+            fieldValue
+          }
         }
       }
     `
@@ -42,6 +46,17 @@ exports.createPages = async ({ graphql, actions }) => {
       component: BlogPost,
       context: {
         slug: posts[i].node.fields.slug,
+      },
+    })
+  }
+
+  const tags = result.data.allMarkdownRemark.group
+  for (let i = 0; i < tags.length; i++) {
+    createPage({
+      path: `tag/${tags[i].fieldValue.toLowerCase().replace(" ", "-")}`,
+      component: BlogTag,
+      context: {
+        tag: tags[i].fieldValue,
       },
     })
   }

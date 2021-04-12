@@ -1,6 +1,6 @@
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import React, { useState } from "react"
 import ReactDOMServer from "react-dom/server"
 import Footer from "../components/footer"
@@ -77,7 +77,9 @@ const BlogPost = ({ data }) => {
           {post.frontmatter.tags.map(tag => (
             <span key={tag} className="tag">
               <HashIcon />
-              {tag}
+              <Link to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}>
+                {tag}
+              </Link>
             </span>
           ))}
         </p>
