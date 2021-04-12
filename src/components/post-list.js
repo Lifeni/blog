@@ -1,7 +1,7 @@
+import { ArrowRightIcon, NumberIcon } from "@primer/octicons-react"
 import { graphql, Link, StaticQuery } from "gatsby"
 import React from "react"
 import "../styles/post-list.less"
-import { HashIcon } from "./icon"
 
 const Post = ({ title, name, date, descriptions, tags }) => (
   <div className="post">
@@ -23,7 +23,7 @@ const Post = ({ title, name, date, descriptions, tags }) => (
       <p className="info">
         {tags.map(tag => (
           <span key={tag} className="tag">
-            <HashIcon />
+            <NumberIcon aria-label="Hash Icon" size={16} />
             <Link to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}>
               {tag}
             </Link>
@@ -39,18 +39,7 @@ const Post = ({ title, name, date, descriptions, tags }) => (
         tabIndex="-1"
         aria-hidden="true"
       >
-        <svg
-          aria-label="Open Article"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-        >
-          <path
-            fillRule="evenodd"
-            d="M13.22 19.03a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 10-1.06 1.06l4.97 4.97H3.75a.75.75 0 000 1.5h14.44l-4.97 4.97a.75.75 0 000 1.06z"
-          ></path>
-        </svg>
+        <ArrowRightIcon aria-label="Open Article" size={24} />
       </Link>
     </div>
   </div>

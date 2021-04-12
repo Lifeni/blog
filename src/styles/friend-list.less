@@ -1,7 +1,15 @@
 .friend-list {
   ul {
-    margin: 32px 0 16px 0;
+    margin: 48px 0 16px 0;
     padding: 0;
+
+    @media (max-width: 824px) {
+      margin: 40px 0 16px 0;
+    }
+
+    @media (max-width: 480px) {
+      margin: 32px 0 16px 0;
+    }
 
     li {
       padding: 0;

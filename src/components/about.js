@@ -1,5 +1,5 @@
+import { NumberIcon } from "@primer/octicons-react"
 import React from "react"
-import { HashIcon } from "./icon"
 import LinkCard from "./link-card"
 
 const About = ({ hello, project, friend, me, page }) => (
@@ -8,7 +8,7 @@ const About = ({ hello, project, friend, me, page }) => (
       {hello ? (
         <>
           <h3>
-            <HashIcon />
+            <NumberIcon aria-label="Hash Icon" size={16} />
             你好
           </h3>
           <p>
@@ -20,7 +20,7 @@ const About = ({ hello, project, friend, me, page }) => (
       {project ? (
         <>
           <h3>
-            <HashIcon />
+            <NumberIcon aria-label="Hash Icon" size={16} />
             关于
           </h3>
           <p>
@@ -45,7 +45,7 @@ const About = ({ hello, project, friend, me, page }) => (
       {friend ? (
         <>
           <h3>
-            <HashIcon />
+            <NumberIcon aria-label="Hash Icon" size={16} />
             关于
           </h3>
           <p>这里是放置友链的地方，排名不分先后，欢迎去看看。</p>
@@ -59,7 +59,7 @@ const About = ({ hello, project, friend, me, page }) => (
       {me ? (
         <>
           <h3>
-            <HashIcon />
+            <NumberIcon aria-label="Hash Icon" size={16} />
             关于我
           </h3>
           <p>
@@ -92,7 +92,7 @@ const About = ({ hello, project, friend, me, page }) => (
       {page ? (
         <>
           <h3>
-            <HashIcon />
+            <NumberIcon aria-label="Hash Icon" size={16} />
             页面
           </h3>
           {page.includes("home") ? <LinkCard page="home" /> : null}
