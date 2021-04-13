@@ -1,4 +1,4 @@
-import { NumberIcon, XIcon } from "@primer/octicons-react"
+import { NumberIcon, SyncIcon } from "@primer/octicons-react"
 import React from "react"
 
 const UpdateCard = () => {
@@ -10,8 +10,10 @@ const UpdateCard = () => {
           className="reload-page"
           id="reload-page"
           onClick={() => window.location.reload()}
+          aria-label="刷新页面"
+          title="刷新页面"
         >
-          <XIcon aria-label="Close Icon" size={24} />
+          <SyncIcon aria-label="Refresh Icon" size={24} />
         </button>
       </section>
       <section>

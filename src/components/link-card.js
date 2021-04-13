@@ -30,7 +30,7 @@ const LinkCard = ({ page }) =>
         主页
       </span>
       <span className="description" title="点这里可以回到主页">
-        点这里可以回到主页
+        点这里可以直接回到主页
       </span>
     </Link>
   ) : null

@@ -6,7 +6,7 @@ import {
   XIcon,
   ArrowLeftIcon,
 } from "@primer/octicons-react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import React, { useEffect, useState, useRef } from "react"
 import Search from "../components/search"
 import "../styles/header.less"
@@ -14,7 +14,7 @@ import "../styles/header.less"
 const Header = ({ app, back, aside, top }) => {
   const [openSearch, setOpenSearch] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(null)
-  const [backWay, setBackWay] = useState("home")
+  const [backWay, setBackWay] = useState("direct")
 
   const headerRef = useRef()
 
@@ -81,12 +81,20 @@ const Header = ({ app, back, aside, top }) => {
     if (back) {
       const ref = headerRef.current.dataset.ref
       if (ref === "null") {
-        setBackWay("home")
+        setBackWay("direct")
       } else {
-        setBackWay("back")
+        setBackWay(ref)
       }
     }
   }, [back, setBackWay])
+
+  const handleBack = e => {
+    if (e.button === 0 && !e.ctrlKey) {
+      window.history.back()
+    } else if (e.button === 1 || (e.button === 0 && e.ctrlKey)) {
+      navigate("/")
+    }
+  }
 
   return (
     <header ref={headerRef}>
@@ -129,7 +137,7 @@ const Header = ({ app, back, aside, top }) => {
 
         {back && (
           <>
-            {backWay === "home" ? (
+            {backWay === "direct" ? (
               <Link
                 to="/"
                 className="fab auto-width"
@@ -142,9 +150,9 @@ const Header = ({ app, back, aside, top }) => {
             ) : (
               <button
                 className="fab auto-width"
-                aria-label="返回上一页"
-                title="返回上一页"
-                onClick={() => window.history.back()}
+                aria-label="点击返回上一页，鼠标中键 或 Ctrl + 鼠标左键 返回主页"
+                title="点击返回上一页，鼠标中键 或 Ctrl + 鼠标左键 返回主页"
+                onMouseDown={handleBack}
               >
                 <ArrowLeftIcon aria-label="Back Icon" size={24} />
                 <span className="text">返回</span>

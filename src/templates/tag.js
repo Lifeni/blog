@@ -23,8 +23,8 @@ const BlogTag = ({ data, pageContext }) => {
           <article id="tag-list">
             <h1>{tag}</h1>
             <p className="subtitle">
-              <TagIcon aria-label="Tag Icon" size={16} />
-              文章标签
+              <TagIcon aria-label="Tag Icon" size={16} />有{" "}
+              {data.allMarkdownRemark.edges.length} 篇文章
             </p>
           </article>
           <div className="post-list tag-list" id="main-content">

@@ -34,6 +34,8 @@ const OutdatedTips = ({ post, date }) => {
               className="close-tips"
               id="close-tips"
               onClick={() => setHideTips(true)}
+              aria-label="关闭通知"
+              title="关闭通知"
             >
               <XIcon aria-label="Close Icon" size={24} />
             </button>
@@ -85,9 +87,24 @@ const BlogPost = ({ data }) => {
           </span>
         </div>
         <div>
-          <span title={`共享协议：${post.frontmatter.license}`}>
-            © {post.frontmatter.license}
-          </span>
+          {post.frontmatter.license === "CC-BY-SA-4.0" ? (
+            <a
+              href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`署名-相同方式共享 4.0 国际`}
+              className="article-license"
+            >
+              © {post.frontmatter.license}
+            </a>
+          ) : (
+            <span
+              className="article-license"
+              title={`共享协议：${post.frontmatter.license}`}
+            >
+              © {post.frontmatter.license}
+            </span>
+          )}
         </div>
       </section>
     </>
