@@ -19,7 +19,7 @@ const IndexPage = () => (
         <About hello me page={["friend", "project"]} />
       </Sidebar>
       <div className="container">
-        <Widget bio />
+        {/* <Widget bio /> */}
         <UpdateCard />
         <PostList />
         <Footer />

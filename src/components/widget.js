@@ -1,4 +1,4 @@
-import { MeterIcon } from "@primer/octicons-react"
+import { MeterIcon, ChevronDownIcon } from "@primer/octicons-react"
 import React from "react"
 import "../styles/widget.less"
 
@@ -42,7 +42,17 @@ const Widget = ({ chart, bio }) => {
           className="mobile-text"
           onClick={() => openSidebar()}
         >
-          Hi，这是我的个人网站「记录干杯」，我会在这里记录一些文章或者是想法，也会在网站上尝试一些新的技术。...
+          <p>
+            Hi，这是我的个人网站「记录干杯」，
+            我会在这里记录一些文章或者是想法， 也会在网站上尝试一些新的技术。
+          </p>
+          <p className="right" aria-hidden="true">
+            <ChevronDownIcon
+              aria-hidden="true"
+              aria-label="查看更多"
+              size={24}
+            />
+          </p>
         </section>
       )}
     </>

@@ -12,7 +12,7 @@ const About = ({ hello, project, friend, me, page, tag }) => (
             你好
           </h3>
           <p>
-            这是我的个人网站「&nbsp;记录干杯&nbsp;」，我会在这里记录一些文章或者是想法，也会在网站上尝试一些新的技术。
+            这是我的个人网站「记录干杯」，我会在这里记录一些文章或者是想法，也会在网站上尝试一些新的技术。
           </p>
         </>
       ) : null}
@@ -96,8 +96,8 @@ const About = ({ hello, project, friend, me, page, tag }) => (
             关于
           </h3>
           <p>
-            这里列出了包含了「&nbsp;{tag.name}&nbsp;」标签的文章，一共有&nbsp;
-            {tag.length}&nbsp;篇。
+            这里列出了包含了「{tag.name}」标签的文章，一共有
+            {tag.length} 篇。
           </p>
         </>
       ) : null}
