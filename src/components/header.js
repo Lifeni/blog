@@ -4,15 +4,19 @@ import {
   SearchIcon,
   UploadIcon,
   XIcon,
+  ArrowLeftIcon,
 } from "@primer/octicons-react"
 import { Link } from "gatsby"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import Search from "../components/search"
 import "../styles/header.less"
 
 const Header = ({ app, back, aside, top }) => {
   const [openSearch, setOpenSearch] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(null)
+  const [backWay, setBackWay] = useState("home")
+
+  const headerRef = useRef()
 
   useEffect(() => {
     if (app) {
@@ -73,8 +77,19 @@ const Header = ({ app, back, aside, top }) => {
     }
   }, [aside, openSidebar])
 
+  useEffect(() => {
+    if (back) {
+      const ref = headerRef.current.dataset.ref
+      if (ref === "null") {
+        setBackWay("home")
+      } else {
+        setBackWay("back")
+      }
+    }
+  }, [back, setBackWay])
+
   return (
-    <header>
+    <header ref={headerRef}>
       <a href="#main-content" className="skip-link">
         Skip to main content | 跳转到主要内容
       </a>
@@ -113,15 +128,29 @@ const Header = ({ app, back, aside, top }) => {
         )}
 
         {back && (
-          <Link
-            to="/"
-            className="fab auto-width"
-            aria-label="返回主页"
-            title="返回主页"
-          >
-            <HomeIcon aria-label="Home Icon" size={24} />
-            <span className="text">主页</span>
-          </Link>
+          <>
+            {backWay === "home" ? (
+              <Link
+                to="/"
+                className="fab auto-width"
+                aria-label="返回主页"
+                title="返回主页"
+              >
+                <HomeIcon aria-label="Home Icon" size={24} />
+                <span className="text">主页</span>
+              </Link>
+            ) : (
+              <button
+                className="fab auto-width"
+                aria-label="返回上一页"
+                title="返回上一页"
+                onClick={() => window.history.back()}
+              >
+                <ArrowLeftIcon aria-label="Back Icon" size={24} />
+                <span className="text">返回</span>
+              </button>
+            )}
+          </>
         )}
 
         {top && (

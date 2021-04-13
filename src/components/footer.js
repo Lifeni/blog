@@ -92,8 +92,14 @@ const Footer = () => (
             rel="noopener noreferrer"
             className="upyun last"
           >
-            本网站由 <img src={data.file.publicURL} alt="又拍云" /> 提供 CDN
-            加速与云储存服务
+            本网站由
+            <img
+              src={data.file.publicURL}
+              alt="又拍云"
+              title="又拍云"
+              aria-label="又拍云"
+            />
+            提供 CDN 加速与云储存服务
           </a>
         )
       }}

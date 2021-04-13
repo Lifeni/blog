@@ -1,10 +1,10 @@
-import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 import mediumZoom from "medium-zoom"
+import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 
 const domOperation = location => {
   if (location.pathname.startsWith("/article/")) {
     setTimeout(() => {
-      mediumZoom(document.querySelectorAll("img"), {
+      mediumZoom(document.querySelectorAll("article img"), {
         background: "rgba(0, 0, 0, .8)",
       })
     }, 300)
@@ -50,6 +50,7 @@ const domOperation = location => {
 
 const onRouteUpdate = ({ location, prevLocation }) => {
   if (prevLocation && location.pathname === prevLocation.pathname) {
+    // Hash 锚点的情况
     const aside = document.querySelector("aside")
     const header = document.querySelector("header")
     if (aside.classList.contains("expand")) {
@@ -58,10 +59,22 @@ const onRouteUpdate = ({ location, prevLocation }) => {
     }
   }
 
-  if (prevLocation && location.pathname !== prevLocation.pathname) {
-    setTimeout(() => domOperation(location), 600)
-  } else if (!prevLocation) {
+  if (!prevLocation) {
+    // 第一次进入页面
     domOperation(location)
+    const header = document.querySelector("header")
+    if (header) {
+      header.dataset.ref = "null"
+    }
+  }
+
+  if (prevLocation && location.pathname !== prevLocation.pathname) {
+    // 站内页面跳转
+    domOperation(location)
+    const header = document.querySelector("header")
+    if (header) {
+      header.dataset.ref = prevLocation.pathname
+    }
   }
 }
 
