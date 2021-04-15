@@ -1,7 +1,6 @@
-import { TagIcon } from "@primer/octicons-react"
+import { NoteIcon } from "@primer/octicons-react"
 import { graphql } from "gatsby"
 import React from "react"
-import About from "../components/about"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import { Post } from "../components/post-list"
@@ -13,17 +12,15 @@ const BlogTag = ({ data, pageContext }) => {
   const { tag } = pageContext
   return (
     <>
-      <Seo title={`# ${tag}`} />
-      <Header back aside top />
+      <Seo title={`标签：${tag}`} />
+      <Header back top />
       <main>
-        <Sidebar>
-          <About page={["friend", "project"]} />
-        </Sidebar>
+        <Sidebar></Sidebar>
         <div className="container">
           <article id="tag-list">
-            <h1>{tag}</h1>
+            <h1>标签：{tag}</h1>
             <p className="subtitle">
-              <TagIcon aria-label="Tag Icon" size={16} />有{" "}
+              <NoteIcon aria-label="Note Icon" size={16} />有{" "}
               {data.allMarkdownRemark.edges.length} 篇文章
             </p>
           </article>
