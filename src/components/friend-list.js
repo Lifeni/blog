@@ -6,7 +6,7 @@ import "../styles/friend-list.less"
 const FriendList = () => (
   <article className="friend-list" id="friend-list">
     <h1>朋友的网站</h1>
-    <p className="subtitle">
+    <p className="caption">
       <SmileyIcon aria-label="Smiley Icon" size={16} />
       Hello Friend
     </p>

@@ -56,12 +56,11 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
           <Link className="link" to={`/article/${hit.name}`}>
             <span className="num">{index + 1}</span>
             <p className="tags">
-              #&nbsp;
               <Highlight
                 hit={hit}
                 attribute="tags"
                 tagName="mark"
-                separator="&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;"
+                separator="&nbsp;&nbsp;/&nbsp;&nbsp;"
               />
             </p>
             <h6 className="title">

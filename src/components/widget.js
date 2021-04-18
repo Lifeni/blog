@@ -14,7 +14,7 @@ const Widget = ({ chart, bio }) => {
     <>
       {chart && (
         <article className="github-chart">
-          <p className="subtitle">
+          <p className="caption">
             <MeterIcon aria-label="Fire Icon" size={16} />
             Lifeni's Github Chart - Powered by&nbsp;
             <a

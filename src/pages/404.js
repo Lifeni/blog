@@ -34,7 +34,7 @@ const NotFoundPage = () => (
             }}
           />
           <h1>你要找的页面不在这里</h1>
-          <p className="subtitle">
+          <p className="caption">
             <MilestoneIcon aria-label="Nav Icon" size={16} />
             404 PAGE NOT FOUND
           </p>

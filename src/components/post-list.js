@@ -1,4 +1,4 @@
-import { ArrowRightIcon, NumberIcon } from "@primer/octicons-react"
+import { ArrowRightIcon, TagIcon } from "@primer/octicons-react"
 import { graphql, Link, StaticQuery } from "gatsby"
 import React from "react"
 import "../styles/post-list.less"
@@ -21,9 +21,9 @@ const Post = ({ title, name, date, descriptions, tags }) => (
     </p>
     <div className="bar">
       <p className="info">
+        <TagIcon aria-label="Tag Icon" size={16} />
         {tags.map(tag => (
           <span key={tag} className="tag">
-            <NumberIcon aria-label="Hash Icon" size={16} />
             <Link to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}>
               {tag}
             </Link>

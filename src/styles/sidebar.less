@@ -299,14 +299,14 @@ aside {
 
   .link-card {
     position: relative;
-    width: calc(100% + 12 * 2px);
+    width: calc(100% + 24px);
     margin: 16px -12px;
-    padding: 18px 24px 16px 24px;
+    padding: 18px 24px;
     display: flex;
     align-items: flex-start;
-    border: solid 2px var(--border-3);
+    border: solid 2px transparent;
     border-radius: 4px;
-    background-color: transparent;
+    background-color: var(--background-0);
     opacity: 1;
     font-size: 1rem;
     line-height: 2rem;
@@ -340,6 +340,10 @@ aside {
           transition: all 0.2s;
         }
       }
+    }
+
+    @media (max-width: 480px) {
+      background-color: var(--background-4);
     }
 
     .title {

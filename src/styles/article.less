@@ -440,7 +440,7 @@ article {
   font-weight: bold;
   font-size: 1rem;
   line-height: 2rem;
-  margin: 0 0 4px 0;
+  margin: 0 0 0.875rem 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -448,33 +448,36 @@ article {
   svg {
     min-width: 16px;
     min-height: 16px;
-    margin: 2px 0.875rem 2px 1px;
+    margin: 2px 0.5rem 2px 1px;
     vertical-align: middle;
-    fill: var(--font-primary);
+    fill: var(--font-secondary);
   }
 
   .tag {
-    padding: 0 1rem 0 0;
-    color: var(--font-secondary);
+    width: auto;
+    margin: 0 0 0 0.5rem;
+    padding: 2px 16px;
+    border-radius: 24px;
     display: flex;
     align-items: center;
-
-    svg {
-      min-width: 16px;
-      min-height: 16px;
-      margin: 2px 6px 2px 1px;
-      vertical-align: middle;
-      fill: var(--font-secondary);
-    }
+    color: var(--font-secondary);
+    background-color: var(--background-4);
+    transition: all 0.2s;
+    cursor: pointer;
 
     a {
-      color: inherit;
+      color: var(--font-secondary);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
 
-      &:hover,
-      &:active,
-      &:focus {
-        text-decoration: underline from-font;
-        text-underline-offset: 6px;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: var(--background-5);
+
+      a {
+        color: var(--font-primary);
       }
     }
   }
