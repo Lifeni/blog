@@ -306,7 +306,7 @@ aside {
     align-items: center;
     border: solid 2px transparent;
     border-radius: 4px;
-    background-color: var(--background-0);
+    background-color: var(--background-3);
     opacity: 1;
     font-size: 1rem;
     line-height: 2rem;
@@ -325,6 +325,7 @@ aside {
     }
 
     svg {
+      min-width: 16px;
       margin: 0;
       fill: var(--font-primary);
       transition: all 0.2s;
@@ -348,13 +349,14 @@ aside {
 
     .title {
       font-size: 1rem;
-      margin: 0 8px 0 20px;
+      margin: 0 4px 0 20px;
       display: flex;
       align-items: center;
     }
 
     .description {
       margin: 0 0 0 auto;
+      padding: 0 0 0 1rem;
       font-size: 0.975rem;
       font-family: var(--font-mono);
       white-space: nowrap;

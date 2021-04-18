@@ -464,6 +464,7 @@ article {
     background-color: var(--background-4);
     transition: all 0.2s;
     cursor: pointer;
+    font-weight: normal;
 
     a {
       color: var(--font-secondary);
@@ -487,12 +488,12 @@ section + p,
 section + p + p {
   margin: 0;
   font-size: 1rem;
-  font-weight: bold;
-  color: var(--font-secondary);
+  font-weight: normal;
+  color: var(--font-primary);
   transition: none;
 
   a {
-    font-weight: bold;
+    font-weight: inherit;
     transition: color 0.2s, border 0.2s;
   }
 }
@@ -506,7 +507,7 @@ section + p + p {
   max-width: 100%;
   height: auto;
   margin: 36px;
-  padding: 24px 28px 20px 28px;
+  padding: 24px 28px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -538,12 +539,11 @@ section + p + p {
 
   p {
     margin: 0;
-    font-weight: bold;
 
     svg {
       min-width: 16px;
       min-height: 16px;
-      margin: 2px 6px 2px 1px;
+      margin: 2px 0.875rem 2px 1px;
       vertical-align: middle;
       fill: var(--font-secondary);
     }
@@ -601,7 +601,7 @@ section + p + p {
     font-size: 1rem;
     line-height: 2rem;
     margin: 0 0.75rem 0 0;
-    color: var(--font-secondary);
+    color: var(--font-primary);
     font-weight: bold;
     white-space: nowrap;
     word-break: keep-all;

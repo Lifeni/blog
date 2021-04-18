@@ -1,4 +1,4 @@
-import { NumberIcon, SyncIcon } from "@primer/octicons-react"
+import { BeakerIcon, SyncIcon } from "@primer/octicons-react"
 import React from "react"
 
 const UpdateCard = () => {
@@ -18,7 +18,7 @@ const UpdateCard = () => {
       </section>
       <section>
         <p className="title">
-          <NumberIcon aria-label="Hash Icon" size={16} />
+          <BeakerIcon aria-label="Beaker Icon" size={16} />
           Update Now
         </p>
       </section>

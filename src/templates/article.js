@@ -1,4 +1,4 @@
-import { NumberIcon, TagIcon, XIcon } from "@primer/octicons-react"
+import { AlertIcon, TagIcon, XIcon } from "@primer/octicons-react"
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
@@ -42,7 +42,7 @@ const OutdatedTips = ({ post, date }) => {
           </section>
           <section>
             <p className="title">
-              <NumberIcon aria-label="Hash Icon" size={16} />
+              <AlertIcon aria-label="Alert Icon" size={16} />
               Outdated Content
             </p>
           </section>
@@ -65,7 +65,7 @@ const BlogPost = ({ data }) => {
     <>
       <div className="article-info">
         <p className="subtitle">
-          <TagIcon aria-label="Hash Icon" size={16} />
+          <TagIcon aria-label="Tag Icon" size={16} />
           {post.frontmatter.tags.map(tag => (
             <span key={tag} className="tag">
               <Link to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}>
