@@ -63,7 +63,7 @@ const BlogPost = ({ data }) => {
 
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
-      <p className="article-slug">🥚 {post.frontmatter.name}</p>
+      <p className="article-slug">{post.frontmatter.name}</p>
       <h1>{post.frontmatter.title}</h1>
 
       <section className="article-meta" id="article-meta">
