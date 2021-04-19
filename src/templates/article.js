@@ -63,20 +63,10 @@ const BlogPost = ({ data }) => {
 
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
-      <div className="article-info">
-        <p className="subtitle">
-          <TagIcon aria-label="Tag Icon" size={16} />
-          {post.frontmatter.tags.map(tag => (
-            <span key={tag} className="tag">
-              <Link to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}>
-                {tag}
-              </Link>
-            </span>
-          ))}
-        </p>
-      </div>
+      <p className="article-slug">🥚 {post.frontmatter.name}</p>
       <h1>{post.frontmatter.title}</h1>
-      <section className="banner" id="article-meta">
+
+      <section className="article-meta" id="article-meta">
         <div>
           <span title={`创建日期：${date.create}`}>{date.create}</span>
           <span> / </span>
@@ -86,6 +76,7 @@ const BlogPost = ({ data }) => {
               : date.modify}
           </span>
         </div>
+
         <div>
           {post.frontmatter.license === "CC-BY-SA-4.0" ? (
             <a
@@ -108,6 +99,21 @@ const BlogPost = ({ data }) => {
         </div>
       </section>
     </>
+  )
+
+  const htmlEnd = ReactDOMServer.renderToStaticMarkup(
+    <section className="article-info">
+      <p className="subtitle">
+        <TagIcon aria-label="Tag Icon" size={16} />
+        {post.frontmatter.tags.map(tag => (
+          <span key={tag} className="tag">
+            <Link to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}>
+              {tag}
+            </Link>
+          </span>
+        ))}
+      </p>
+    </section>
   )
 
   return (
@@ -135,7 +141,7 @@ const BlogPost = ({ data }) => {
           <article
             id="main-content"
             dangerouslySetInnerHTML={{
-              __html: html + post.html.split("</h1>")[1],
+              __html: html + post.html.split("</h1>")[1] + htmlEnd,
             }}
           ></article>
           <Utterances />

@@ -121,5 +121,12 @@ module.exports = {
         queries: require("./src/utils/algolia-queries"),
       },
     },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `#feec44`,
+        showSpinner: false,
+      },
+    },
   ],
 }

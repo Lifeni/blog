@@ -440,10 +440,11 @@ article {
   font-weight: bold;
   font-size: 1rem;
   line-height: 2rem;
-  margin: 0 0 0.875rem 0;
+  margin: 2.5rem 0 0 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  transition: all 0.2s;
 
   svg {
     min-width: 16px;
@@ -455,16 +456,16 @@ article {
 
   .tag {
     width: auto;
-    margin: 0 0 0 0.5rem;
+    margin: 0.25rem 0 0.25rem 0.5rem;
     padding: 2px 16px;
     border-radius: 24px;
     display: flex;
     align-items: center;
     color: var(--font-secondary);
     background-color: var(--background-4);
-    transition: all 0.2s;
     cursor: pointer;
     font-weight: normal;
+    transition: all 0.2s;
 
     a {
       color: var(--font-secondary);
@@ -488,8 +489,9 @@ section + p,
 section + p + p {
   margin: 0;
   font-size: 1rem;
-  font-weight: normal;
-  color: var(--font-primary);
+  font-weight: bold;
+  color: var(--font-secondary);
+  font-family: var(--font-mono);
   transition: none;
 
   a {
@@ -507,7 +509,7 @@ section + p + p {
   max-width: 100%;
   height: auto;
   margin: 36px;
-  padding: 24px 28px;
+  padding: 20px 28px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -520,6 +522,10 @@ section + p + p {
   font-size: 1rem;
   line-height: 2rem;
   transition: all 0.2s;
+
+  @media (max-width: 824px) {
+    max-width: calc(100% - 144px);
+  }
 
   @media (max-width: 480px) {
     position: relative;
@@ -539,6 +545,7 @@ section + p + p {
 
   p {
     margin: 0;
+    font-weight: bold;
 
     svg {
       min-width: 16px;
@@ -557,9 +564,13 @@ section + p + p {
   }
 
   .title {
+    margin: 2px 0 0 0;
     display: flex;
     align-items: center;
     color: var(--font-secondary);
+    // font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: normal;
   }
 
   &.hide {
@@ -568,7 +579,7 @@ section + p + p {
 
   .close-tips {
     width: 24px;
-    height: 30px;
+    height: 32px;
     margin: 0 0 0 24px;
     border: none;
     display: flex;
@@ -583,7 +594,7 @@ section + p + p {
   }
 }
 
-.banner {
+.article-meta {
   position: relative;
   z-index: 300;
   margin: 4px 0 24px 0;
@@ -607,11 +618,21 @@ section + p + p {
     word-break: keep-all;
     text-overflow: ellipsis;
     overflow: hidden;
+    transition: all 0.2s;
 
     &.light {
       font-weight: normal;
     }
   }
+}
+
+.article-slug {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: var(--font-mono);
+  color: var(--font-secondary);
+  transition: all 0.2s;
 }
 
 .utterances-comment {
