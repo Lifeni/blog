@@ -14,7 +14,7 @@ const BlogTag = ({ data, pageContext }) => {
   return (
     <>
       <Seo title={`标签：${tag}`} />
-      <Header back top />
+      <Header back />
       <Main
         main={
           <>

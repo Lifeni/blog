@@ -44,7 +44,7 @@ const FriendList = () => (
 const OpenSourcePage = () => (
   <>
     <Seo title="朋友" />
-    <Header back aside top />
+    <Header back aside />
     <Main
       aside={
         <>

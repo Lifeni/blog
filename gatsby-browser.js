@@ -45,6 +45,23 @@ const domOperation = location => {
     utterances.setAttribute("crossOrigin", "anonymous")
     utterances.setAttribute("async", "true")
     comment.appendChild(utterances)
+
+    utterances.onload = () => {
+      const iframe = comment.querySelector("iframe")
+      iframe.onload = () => {
+        comment.querySelector("#comment-loading").classList.add("hide")
+      }
+
+      iframe.onerror = () => {
+        comment.querySelector("#comment-loading").classList.add("hide")
+        comment.querySelector("#comment-error").classList.remove("hide")
+      }
+    }
+
+    utterances.onerror = () => {
+      comment.querySelector("#comment-loading").classList.add("hide")
+      comment.querySelector("#comment-error").classList.remove("hide")
+    }
   }
 }
 

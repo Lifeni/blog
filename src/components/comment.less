@@ -11,6 +11,22 @@
     max-width: unset !important;
   }
 
+  .comment-loading,
+  .comment-error {
+    width: 100%;
+    padding: 16px 24px;
+    color: var(--font-secondary);
+    background-color: var(--background-4);
+    font-size: 1rem;
+    line-height: 2rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+
+    &.hide {
+      display: none;
+    }
+  }
+
   @media (max-width: 480px) {
     width: calc(100% + 32px);
     margin: 0 -16px -18px -16px;

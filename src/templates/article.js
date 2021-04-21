@@ -17,7 +17,6 @@ dayjs.locale("zh-cn")
 
 const BlogArticle = ({ data }) => {
   const post = data.markdownRemark
-  console.log(post)
   const date = {
     create: dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日"),
     modify: dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日"),
@@ -86,7 +85,7 @@ const BlogArticle = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.descriptions.join(" / ")}
       />
-      <Header back aside top />
+      <Header back aside />
       <Main
         aside={
           <nav

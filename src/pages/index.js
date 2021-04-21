@@ -40,12 +40,11 @@ const PostList = () => (
 const IndexPage = () => (
   <>
     <Seo title="主页" />
-    <Header app aside top />
+    <Header app aside />
     <Main
       aside={
         <>
           <Notes.HomeNote />
-          <Links.FriendsLink />
         </>
       }
       main={

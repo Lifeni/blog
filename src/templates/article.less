@@ -255,9 +255,10 @@ article {
     position: relative;
     width: 100%;
     margin: 24px 0;
-    padding: 16px 24px;
-    border-left: solid 12px var(--border-1);
-    background-color: var(--background-4);
+    padding: 4px 24px;
+    color: var(--font-secondary);
+    border-left: solid 8px var(--border-0);
+    // background-color: var(--background-4);
     border-radius: 4px;
     transition: all 0.2s;
 
@@ -274,7 +275,7 @@ article {
     li,
     code,
     code[class*="language-"] {
-      color: var(--font-code);
+      color: var(--font-secondary);
       margin: 0;
       font-size: 0.975rem;
       line-height: 1.875rem;
@@ -284,12 +285,18 @@ article {
       margin: 0.375rem 0;
       font-size: 0.975rem;
       line-height: 1.875rem;
+      color: var(--font-secondary);
+    }
+
+    a {
+      color: var(--font-link-light);
     }
 
     code,
     code[class*="language-"],
     pre[class*="language-"] {
       background-color: var(--background-5);
+      line-height: 1.75rem;
     }
 
     .gatsby-highlight
