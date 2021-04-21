@@ -12,7 +12,7 @@ main {
   top: 0;
   left: 30%;
   z-index: 20;
-  width: 100%;
+  width: 70%;
   max-width: 900px;
   min-height: 100vh;
   padding: 56px 72px;
@@ -29,6 +29,7 @@ main {
   @media (max-width: 824px) {
     z-index: 10;
     left: 0;
+    width: 100%;
     padding: 48px 48px 48px calc(72px + 48px);
   }
 
@@ -234,6 +235,7 @@ aside {
   nav > ul > li > ul {
     padding-left: 0;
   }
+
   nav ul ul ul a {
     font-weight: normal;
     vertical-align: middle;
@@ -248,62 +250,5 @@ aside {
       background-color: transparent;
       color: transparent;
     }
-  }
-
-  section {
-    @media (max-width: 824px) {
-      width: 100%;
-      min-width: calc(360px - 36px - 36px);
-    }
-
-    @media (max-width: 480px) {
-      width: 100%;
-      min-width: unset;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
-    p {
-      margin: 1rem 0;
-      font-size: 1rem;
-      line-height: 2rem;
-    }
-
-    a {
-      color: var(--font-link);
-      transition: all 0.2s;
-      text-decoration: none;
-
-      &:hover,
-      &:active,
-      &:focus {
-        color: var(--font-link-hover);
-        text-decoration: underline from-font;
-        text-underline-offset: 6px;
-      }
-    }
-  }
-}
-
-.sidebar-nav {
-  margin: 0 0 48px 0;
-
-  @media (max-width: 824px) {
-    display: none;
-  }
-
-  svg {
-    margin: 0 12px 0 0;
-  }
-
-  .back-home {
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    padding: 0;
   }
 }

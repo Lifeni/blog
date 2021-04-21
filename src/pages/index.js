@@ -6,7 +6,7 @@ import Header from "../components/header"
 import Main from "../components/main"
 import { UpdateNow } from "../components/notification"
 import Seo from "../components/seo"
-import { Links, Notes } from "../components/widget"
+import { HomeNote } from "../components/notes"
 import "./global.less"
 import "./highlight.less"
 import "./index.less"
@@ -44,7 +44,7 @@ const IndexPage = () => (
     <Main
       aside={
         <>
-          <Notes.HomeNote />
+          <HomeNote />
         </>
       }
       main={

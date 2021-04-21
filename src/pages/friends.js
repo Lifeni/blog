@@ -4,7 +4,7 @@ import Header from "../components/header"
 import Main from "../components/main"
 import { UpdateNow } from "../components/notification"
 import Seo from "../components/seo"
-import { Links, Notes } from "../components/widget"
+import { FriendsNote } from "../components/notes"
 import friends from "../data/friends.json"
 import "./friends.less"
 
@@ -48,7 +48,7 @@ const OpenSourcePage = () => (
     <Main
       aside={
         <>
-          <Notes.FriendsNote />
+          <FriendsNote />
         </>
       }
       main={
