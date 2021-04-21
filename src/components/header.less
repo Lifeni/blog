@@ -11,6 +11,7 @@ header {
   justify-content: flex-start;
   background: transparent;
   font-size: 1.125rem;
+  color: var(--font-primary);
   pointer-events: none;
   transition: all 0.2s;
 
@@ -28,6 +29,10 @@ header {
     font-size: 1.15rem;
     margin: 0 8px 0 20px;
     pointer-events: auto;
+  }
+
+  .header-title {
+    display: none;
   }
 
   a,
@@ -176,12 +181,29 @@ header {
 
     section {
       flex-direction: row;
+      color: inherit;
     }
 
     .text {
+      display: none;
       writing-mode: initial;
       letter-spacing: initial;
       margin: 0 8px 0 1rem;
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      color: inherit;
+
+      svg {
+        transform: scale(1.05);
+
+        path {
+          height: 22px;
+          fill: var(--font-primary);
+        }
+      }
     }
 
     a,
@@ -200,10 +222,6 @@ header {
 
       &.auto-width {
         width: auto;
-      }
-
-      &.fab {
-        box-shadow: none;
       }
 
       svg.action-open {
@@ -247,4 +265,28 @@ header {
     background-color: var(--background-2);
     box-shadow: var(--shadow-press);
   }
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 999999;
+  top: -48px;
+  left: 16px;
+  width: auto;
+  height: 48px;
+  padding: 12px 20px;
+  border: solid 2px var(--font-link);
+  border-radius: 4px;
+  color: var(--font-link);
+  background-color: var(--background-0);
+  text-decoration: none;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.skip-link:active,
+.skip-link:focus {
+  top: 16px;
+  opacity: 1;
+  background-color: var(--background-0);
 }

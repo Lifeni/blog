@@ -4,9 +4,8 @@
   bottom: 0;
   z-index: 999;
   width: fit-content;
-  max-width: 100%;
   height: auto;
-  margin: 36px;
+  margin: 48px;
   padding: 20px 28px 18px 28px;
   display: none;
   flex-direction: column;
@@ -28,15 +27,16 @@
   }
 
   @media (max-width: 824px) {
-    max-width: calc(100% - 144px);
-  }
-
-  @media (max-width: 480px) {
     position: relative;
     top: unset;
     right: unset;
-    width: calc(100% + 24px);
+    width: 100%;
     max-width: unset;
+    margin: 0 0 36px 0;
+  }
+
+  @media (max-width: 480px) {
+    width: calc(100% + 24px);
     margin: -8px -12px 36px -12px;
   }
 

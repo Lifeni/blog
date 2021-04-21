@@ -1,14 +1,13 @@
-import { TagIcon } from "@primer/octicons-react"
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
+import Utterances from "../components/comment"
 import Header from "../components/header"
 import Main from "../components/main"
 import { OutdatedContent } from "../components/notification"
 import Seo from "../components/seo"
-import Utterances from "../components/comment"
 import "./article.less"
 
 const relativeTime = require("dayjs/plugin/relativeTime")
@@ -85,7 +84,7 @@ const BlogArticle = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.descriptions.join(" / ")}
       />
-      <Header back aside />
+      <Header back aside={{ type: "toc" }} />
       <Main
         aside={
           <nav

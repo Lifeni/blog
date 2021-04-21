@@ -4,7 +4,6 @@ import Header from "../components/header"
 import Main from "../components/main"
 import { UpdateNow } from "../components/notification"
 import Seo from "../components/seo"
-import { FriendsNote } from "../components/notes"
 import friends from "../data/friends.json"
 import "./friends.less"
 
@@ -44,13 +43,8 @@ const FriendList = () => (
 const OpenSourcePage = () => (
   <>
     <Seo title="朋友" />
-    <Header back aside />
+    <Header back />
     <Main
-      aside={
-        <>
-          <FriendsNote />
-        </>
-      }
       main={
         <>
           <UpdateNow />

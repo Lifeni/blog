@@ -40,7 +40,7 @@ const PostList = () => (
 const IndexPage = () => (
   <>
     <Seo title="主页" />
-    <Header app aside />
+    <Header app aside={{ type: "note" }} />
     <Main
       aside={
         <>

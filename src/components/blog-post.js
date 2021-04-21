@@ -1,4 +1,4 @@
-import { ArrowRightIcon, TagIcon } from "@primer/octicons-react"
+import { ArrowRightIcon } from "@primer/octicons-react"
 import { Link } from "gatsby"
 import React from "react"
 import "./blog-post.less"
