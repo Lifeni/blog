@@ -1,87 +1,22 @@
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
-import "../styles/footer.less"
+import links from "../data/links.json"
+import "./footer.less"
 
 const Footer = () => (
   <footer>
-    <div>
-      <a
-        href="https://www.cnblogs.com/liangfengning/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        博客园
-      </a>
-      <span> / </span>
-      <a
-        href="https://cloud.lifeni.life"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Seafile
-      </a>
-      <span> / </span>
-      <a
-        href="https://git.lifeni.life/liangfengning"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Gitea
-      </a>
-    </div>
-
-    <div>
-      <a
-        href="https://lab.lifeni.life"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Space
-      </a>
-      <span> / </span>
-      <a
-        href="https://api.lifeni.life"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        API
-      </a>
-      <span> / </span>
-      <a
-        href="https://status.lifeni.life"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Status
-      </a>
-      <span> / </span>
-      <a
-        href="https://dev.lifeni.life"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Console
-      </a>
-    </div>
-
-    <div className="wrappable">
-      <a
-        href="http://www.beian.miit.gov.cn/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        鲁ICP备 19006085 号
-      </a>
-      <span className="break-line"> / </span>
-      <a
-        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="last"
-      >
-        鲁公网安备 37132102371392 号
-      </a>
-    </div>
+    {links.map((line, index) => (
+      <div key={index}>
+        {line.map((link, index) => (
+          <React.Fragment key={link.url}>
+            <a href={link.url} target="_blank" rel="noopener noreferrer">
+              {link.name}
+            </a>
+            {index !== line.length - 1 && <span> / </span>}
+          </React.Fragment>
+        ))}
+      </div>
+    ))}
     <StaticQuery
       query={UPYunQuery}
       render={data => {

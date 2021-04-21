@@ -1,70 +1,21 @@
 import {
+  ArrowLeftIcon,
   HomeIcon,
   PackageIcon,
   SearchIcon,
   UploadIcon,
   XIcon,
-  ArrowLeftIcon,
 } from "@primer/octicons-react"
 import { Link, navigate } from "gatsby"
-import React, { useEffect, useState, useRef } from "react"
-import Search from "../components/search"
-import "../styles/header.less"
+import React, { useEffect, useRef, useState } from "react"
+import "./header.less"
+import Search from "./search"
 
 const Header = ({ app, back, aside, top }) => {
-  const [openSearch, setOpenSearch] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(null)
   const [backWay, setBackWay] = useState("direct")
 
   const headerRef = useRef()
-
-  useEffect(() => {
-    if (app) {
-      const closeSearch = document.querySelector("#close-search")
-      if (closeSearch) {
-        closeSearch.addEventListener("click", () => {
-          setOpenSearch(false)
-        })
-      }
-
-      window.addEventListener("keypress", e => {
-        if (e.key === "/") {
-          setOpenSearch(true)
-        } else if (e.key === "Enter") {
-          const dialog = document.querySelector("#home-dialog")
-          if (
-            dialog?.querySelectorAll("ul > li > a") &&
-            dialog?.querySelectorAll("ul > li > a")[0]
-          ) {
-            dialog.querySelectorAll("ul > li > a")[0].click()
-          }
-        }
-      })
-
-      window.addEventListener("keydown", e => {
-        if (e.key === "Escape") {
-          setOpenSearch(false)
-        }
-      })
-
-      document.querySelector(".search-tips a").setAttribute("tabindex", "-1")
-    }
-  }, [app])
-
-  useEffect(() => {
-    if (app) {
-      const dialog = document.querySelector("#home-dialog")
-      if (openSearch) {
-        const search = document.querySelector("#article-search")
-        dialog.classList.add("show")
-        setTimeout(() => {
-          search.focus()
-        }, 300)
-      } else {
-        dialog.classList.remove("show")
-      }
-    }
-  }, [app, openSearch])
 
   useEffect(() => {
     if (aside) {
@@ -88,6 +39,16 @@ const Header = ({ app, back, aside, top }) => {
     }
   }, [back, setBackWay])
 
+  const handleSearch = () => {
+    const search = document.querySelector("#search-container")
+    if (search) {
+      search.classList.add("show")
+      setTimeout(() => {
+        document.querySelector("#search-input").focus()
+      }, 300)
+    }
+  }
+
   const handleBack = e => {
     if (e.button === 0 && !e.ctrlKey) {
       window.history.back()
@@ -110,28 +71,12 @@ const Header = ({ app, back, aside, top }) => {
               id="open-dialog"
               aria-label="搜索文章"
               title="搜索文章"
-              onClick={() => setOpenSearch(true)}
+              onClick={handleSearch}
             >
               <SearchIcon aria-label="Search Icon" size={24} />
               <span className="text">搜索</span>
             </button>
-            <div
-              className="dialog"
-              id="home-dialog"
-              aria-label="搜索对话框"
-              role="dialog"
-            >
-              <div
-                className="mask"
-                id="close-dialog"
-                onClick={() => setOpenSearch(false)}
-                aria-hidden="true"
-                title="点击这里也可以关闭搜索窗口"
-              ></div>
-              <div className="card">
-                <Search />
-              </div>
-            </div>
+            <Search />
           </>
         )}
 

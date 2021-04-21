@@ -1,60 +1,23 @@
-import { AlertIcon, TagIcon, XIcon } from "@primer/octicons-react"
+import { TagIcon } from "@primer/octicons-react"
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
-import React, { useState } from "react"
+import React from "react"
 import ReactDOMServer from "react-dom/server"
-import Footer from "../components/footer"
 import Header from "../components/header"
+import Main from "../components/main"
+import { OutdatedContent } from "../components/notification"
 import Seo from "../components/seo"
-import Sidebar from "../components/sidebar"
-import Utterances from "../components/utterances"
-import "../styles/article.less"
-import "../styles/code.less"
-import "../styles/override.less"
+import Utterances from "../components/comment"
+import "./article.less"
 
 const relativeTime = require("dayjs/plugin/relativeTime")
 dayjs.extend(relativeTime)
 dayjs.locale("zh-cn")
 
-const OutdatedTips = ({ post, date }) => {
-  const [hideTips, setHideTips] = useState(false)
-
-  return (
-    <>
-      {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
-        6 * 30 * 24 * 60 * 60 && (
-        <div
-          className={`outdated-tips ${hideTips ? "hide" : ""}`}
-          id="outdated-tips"
-        >
-          <section>
-            <p>这篇文章修改于 {date.from} ，其中有些信息可能已经过时</p>
-            <button
-              className="close-tips"
-              id="close-tips"
-              onClick={() => setHideTips(true)}
-              aria-label="关闭通知"
-              title="关闭通知"
-            >
-              <XIcon aria-label="Close Icon" size={24} />
-            </button>
-          </section>
-          <section>
-            <p className="title">
-              <AlertIcon aria-label="Alert Icon" size={16} />
-              Outdated Content
-            </p>
-          </section>
-        </div>
-      )}
-    </>
-  )
-}
-
-const BlogPost = ({ data }) => {
+const BlogArticle = ({ data }) => {
   const post = data.markdownRemark
-
+  console.log(post)
   const date = {
     create: dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日"),
     modify: dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日"),
@@ -63,7 +26,7 @@ const BlogPost = ({ data }) => {
 
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
-      <p className="article-slug">{post.frontmatter.name}</p>
+      <p className="article-subtitle">{post.frontmatter.name}</p>
       <h1>{post.frontmatter.title}</h1>
 
       <section className="article-meta" id="article-meta">
@@ -103,14 +66,15 @@ const BlogPost = ({ data }) => {
 
   const htmlEnd = ReactDOMServer.renderToStaticMarkup(
     <section className="article-info">
-      <p className="subtitle">
-        <TagIcon aria-label="Tag Icon" size={16} />
+      <p className="tags">
         {post.frontmatter.tags.map(tag => (
-          <span key={tag} className="tag">
-            <Link to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}>
-              {tag}
-            </Link>
-          </span>
+          <Link
+            key={tag}
+            className="tag"
+            to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}
+          >
+            {tag}
+          </Link>
         ))}
       </p>
     </section>
@@ -122,40 +86,36 @@ const BlogPost = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.descriptions.join(" / ")}
       />
-      <Header
-        back
-        aside
-        top
-        title={post.frontmatter.title}
-        data={post.frontmatter}
-      />
-      <main>
-        <Sidebar>
+      <Header back aside top />
+      <Main
+        aside={
           <nav
             className="toc"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
           ></nav>
-        </Sidebar>
-        <div className="container">
-          <OutdatedTips post={post} date={date} />
-          <article
-            id="main-content"
-            dangerouslySetInnerHTML={{
-              __html: html + post.html.split("</h1>")[1] + htmlEnd,
-            }}
-          ></article>
-          <Utterances />
-          <Footer />
-        </div>
-      </main>
+        }
+        main={
+          <>
+            {dayjs().unix() - dayjs(post.frontmatter.date).unix() >
+              6 * 30 * 24 * 60 * 60 && <OutdatedContent date={date.from} />}
+            <article
+              id="main-content"
+              dangerouslySetInnerHTML={{
+                __html: html + post.html.split("</h1>")[1] + htmlEnd,
+              }}
+            ></article>
+            <Utterances />
+          </>
+        }
+      />
     </>
   )
 }
 
-export default BlogPost
+export default BlogArticle
 
 export const PostQuery = graphql`
-  query BlogPostQuery($slug: String!) {
+  query BlogArticleQuery($slug: String!) {
     site {
       siteMetadata {
         title

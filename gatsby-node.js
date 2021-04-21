@@ -1,5 +1,5 @@
 const path = require(`path`)
-const BlogPost = path.resolve(`./src/templates/article.js`)
+const BlogArticle = path.resolve(`./src/templates/article.js`)
 const BlogTag = path.resolve(`./src/templates/tag.js`)
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       {
         allMarkdownRemark(
+          filter: { fileAbsolutePath: { regex: "/notebook/" } }
           sort: {
             fields: [frontmatter___date, frontmatter___create_date]
             order: [DESC, DESC]
@@ -43,7 +44,7 @@ exports.createPages = async ({ graphql, actions }) => {
   for (let i = 0; i < posts.length; i++) {
     createPage({
       path: `article/${posts[i].node.fields.slug}`,
-      component: BlogPost,
+      component: BlogArticle,
       context: {
         slug: posts[i].node.fields.slug,
       },

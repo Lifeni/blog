@@ -1,0 +1,44 @@
+[
+  [
+    {
+      "name": "博客园",
+      "url": "https://www.cnblogs.com/liangfengning/"
+    },
+    {
+      "name": "Seafile",
+      "url": "https://cloud.lifeni.life"
+    },
+    {
+      "name": "Gitea",
+      "url": "https://git.lifeni.life/liangfengning"
+    }
+  ],
+  [
+    {
+      "name": "Space",
+      "url": "https://lab.lifeni.life"
+    },
+    {
+      "name": "API",
+      "url": "https://api.lifeni.life"
+    },
+    {
+      "name": "Status",
+      "url": "https://status.lifeni.life"
+    },
+    {
+      "name": "Console",
+      "url": "https://dev.lifeni.life"
+    }
+  ],
+  [
+    {
+      "name": "鲁ICP备 19006085 号",
+      "url": "http://www.beian.miit.gov.cn/"
+    },
+    {
+      "name": "鲁公网安备 37132102371392 号",
+      "url": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
+    }
+  ]
+]

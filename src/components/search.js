@@ -1,7 +1,7 @@
 import { ChevronUpIcon } from "@primer/octicons-react"
 import algoliasearch from "algoliasearch/lite"
 import { Link } from "gatsby"
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import {
   connectAutoComplete,
   Highlight,
@@ -10,7 +10,7 @@ import {
   Snippet,
   Stats,
 } from "react-instantsearch-dom"
-import "../styles/search.less"
+import "./search.less"
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
@@ -19,9 +19,9 @@ const searchClient = algoliasearch(
 
 const Autocomplete = ({ hits, currentRefinement, refine }) => (
   <div className="search-box">
-    <div className="bar">
+    <div className="input-bar">
       <input
-        id="article-search"
+        id="search-input"
         type="search"
         autoComplete="off"
         placeholder="在此输入搜索内容 ..."
@@ -35,7 +35,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
     </div>
 
     <ul>
-      <li className="search-tips" tabIndex="-1">
+      <li className="tip-bar" tabIndex="-1">
         <Stats
           tabIndex="-1"
           translations={{
@@ -83,17 +83,102 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
           </Link>
         </li>
       ))}
-      <li className="search-tips full-height">已经到底了 : )</li>
+      <li className="tip-bar full-height">已经到底了 : )</li>
     </ul>
   </div>
 )
 
 const AutocompleteSearch = connectAutoComplete(Autocomplete)
 
-const Search = () => (
-  <InstantSearch searchClient={searchClient} indexName="Pages" role="search">
-    <AutocompleteSearch></AutocompleteSearch>
-  </InstantSearch>
-)
+const Search = () => {
+  const searchRef = useRef()
+
+  const focusSearchInput = () => {
+    setTimeout(() => {
+      document.querySelector("#search-input").focus()
+    }, 300)
+  }
+
+  const handleSearch = show => {
+    const search = document.querySelector("#search-container")
+
+    if (show) {
+      if (search) {
+        search.classList.add("show")
+        setTimeout(() => {
+          document.querySelector("#search-input").focus()
+        }, 300)
+      }
+    } else {
+      search.classList.remove("show")
+    }
+  }
+
+  useEffect(() => {
+    // 监听 关闭按钮 的点击事件
+    const closeSearch = document.querySelector("#close-search")
+    if (closeSearch) {
+      closeSearch.addEventListener("click", () => {
+        handleSearch(false)
+      })
+    }
+
+    // 监听按键，实现 / 打开搜索框，<Enter> 打开结果第一项
+    const keypress = window.addEventListener("keypress", e => {
+      if (e.key === "/") {
+        handleSearch(true)
+        focusSearchInput()
+      } else if (e.key === "Enter") {
+        if (
+          searchRef.current?.querySelectorAll("ul > li > a") &&
+          searchRef.current?.querySelectorAll("ul > li > a")[0]
+        ) {
+          searchRef.current.querySelectorAll("ul > li > a")[0].click()
+        }
+      }
+    })
+
+    // 监听按键，实现 <Esc> 关闭搜索框
+    const keydown = window.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        handleSearch(false)
+      }
+    })
+
+    // 修正 Algolia `PoweredBy` 组件包含 Tab 焦点的问题
+    document.querySelector(".tip-bar a").setAttribute("tabindex", "-1")
+
+    return () => {
+      window.removeEventListener("keypress", keypress)
+      window.removeEventListener("keydown", keydown)
+    }
+  }, [])
+
+  return (
+    <div
+      className={"search-container"}
+      id="search-container"
+      aria-label="搜索对话框"
+      role="dialog"
+      ref={searchRef}
+    >
+      <div
+        className="mask"
+        id="close-dialog"
+        onClick={() => handleSearch(false)}
+        aria-hidden="true"
+      ></div>
+      <div className="dialog">
+        <InstantSearch
+          searchClient={searchClient}
+          indexName="Pages"
+          role="search"
+        >
+          <AutocompleteSearch></AutocompleteSearch>
+        </InstantSearch>
+      </div>
+    </div>
+  )
+}
 
 export default Search

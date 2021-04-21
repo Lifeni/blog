@@ -1,48 +1,48 @@
-import { NoteIcon } from "@primer/octicons-react"
 import { graphql } from "gatsby"
 import React from "react"
+import BlogPost from "../components/blog-post"
 import Footer from "../components/footer"
 import Header from "../components/header"
-import { Post } from "../components/post-list"
+import Main from "../components/main"
 import Seo from "../components/seo"
-import Sidebar from "../components/sidebar"
-import "../styles/tag.less"
+import "./tag.less"
 
 const BlogTag = ({ data, pageContext }) => {
   const { tag } = pageContext
+  const count = data.allMarkdownRemark.edges.length
+
   return (
     <>
       <Seo title={`标签：${tag}`} />
       <Header back top />
-      <main>
-        <Sidebar></Sidebar>
-        <div className="container">
-          <article id="tag-list">
-            <h1>标签：{tag}</h1>
-            <p className="caption">
-              <NoteIcon aria-label="Note Icon" size={16} />有{" "}
-              {data.allMarkdownRemark.edges.length} 篇文章
-            </p>
-          </article>
-          <div className="post-list tag-list" id="main-content">
-            {data.allMarkdownRemark.edges.map(({ node }) => (
-              <Post
-                title={node.frontmatter.title}
-                name={node.frontmatter.name}
-                descriptions={node.frontmatter.descriptions}
-                date={node.frontmatter.date}
-                create_date={node.frontmatter.create_date}
-                tags={node.frontmatter.tags}
-                license={node.frontmatter.license}
-                excerpt={node.excerpt}
-                key={node.frontmatter.title}
-              />
-            ))}
-          </div>
-
-          <Footer />
-        </div>
-      </main>
+      <Main
+        main={
+          <>
+            <article id="tag-list">
+              <p className="article-subtitle">
+                {count > 1 ? `${count} articles` : `${count} article`}
+              </p>
+              <h1>标签：{tag}</h1>
+            </article>
+            <div className="post-list tag-list" id="main-content">
+              {data.allMarkdownRemark.edges.map(({ node }) => (
+                <BlogPost
+                  title={node.frontmatter.title}
+                  name={node.frontmatter.name}
+                  descriptions={node.frontmatter.descriptions}
+                  date={node.frontmatter.date}
+                  create_date={node.frontmatter.create_date}
+                  tags={node.frontmatter.tags}
+                  license={node.frontmatter.license}
+                  excerpt={node.excerpt}
+                  key={node.frontmatter.title}
+                />
+              ))}
+            </div>
+            <Footer />
+          </>
+        }
+      />
     </>
   )
 }

@@ -1,0 +1,170 @@
+.widget-link {
+  position: relative;
+  width: calc(100% + 24px);
+  margin: 16px -12px;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  border: solid 2px transparent;
+  border-radius: 4px;
+  background-color: var(--background-3);
+  opacity: 1;
+  font-size: 1rem;
+  line-height: 2rem;
+  outline: none;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+
+  &:first-of-type {
+    margin-top: 28px;
+  }
+
+  span {
+    opacity: 1;
+    color: var(--font-primary);
+  }
+
+  svg {
+    min-width: 16px;
+    margin: 0;
+    fill: var(--font-primary);
+    transition: all 0.2s;
+    opacity: 1;
+  }
+
+  @media (min-width: 824px) {
+    span {
+      color: var(--font-secondary);
+    }
+
+    svg {
+      opacity: 0.6;
+      transition: all 0.2s;
+    }
+  }
+
+  @media (max-width: 480px) {
+    background-color: var(--background-4);
+  }
+
+  .title {
+    font-size: 1rem;
+    margin: 0 4px 0 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .description {
+    margin: 0 0 0 auto;
+    padding: 0 0 0 1rem;
+    font-size: 0.975rem;
+    font-family: var(--font-mono);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.widget-note {
+  position: relative;
+  z-index: 200;
+  max-width: unset;
+  padding: 0;
+  color: var(--font-primary);
+  background-color: transparent;
+  word-break: normal;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 1rem;
+  line-height: 2rem;
+
+  a {
+    text-decoration: none;
+  }
+
+  a.anchor {
+    display: none;
+  }
+
+  &::after {
+    content: "";
+    display: flex;
+  }
+
+  h3 {
+    margin: 0.5rem 0;
+    padding: 1rem 0 0 0;
+    line-height: 2rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  h3:first-of-type {
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+  }
+
+  p {
+    margin: 0.5rem 0;
+    vertical-align: baseline;
+  }
+
+  ul {
+    padding: 0 0 0 1.5rem;
+    color: var(--font-primary);
+
+    li {
+      padding: 0px 0px 0px 0.25rem;
+    }
+
+    a {
+      line-height: 2rem;
+    }
+  }
+
+  @media (min-width: 824px) {
+    max-width: 324px;
+    flex: 1;
+    color: var(--font-secondary);
+    padding: 0;
+
+    h3 svg {
+      opacity: 0.6;
+      transition: all 0.2s;
+    }
+
+    a {
+      color: var(--font-secondary);
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      color: var(--font-primary);
+      transition: all 0.2s;
+
+      h3 svg {
+        opacity: 1;
+      }
+
+      a {
+        color: var(--font-link);
+        transition: all 0.2s;
+      }
+
+      span {
+        opacity: 1;
+        transition: all 0.2s;
+      }
+    }
+  }
+
+  a:hover,
+  a:active,
+  a:focus {
+    color: var(--font-link-hover);
+  }
+}

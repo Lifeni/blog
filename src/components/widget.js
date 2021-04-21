@@ -1,62 +1,62 @@
-import { MeterIcon, ChevronDownIcon } from "@primer/octicons-react"
+import { HomeIcon, SmileyIcon } from "@primer/octicons-react"
+import { graphql, Link, StaticQuery } from "gatsby"
 import React from "react"
-import "../styles/widget.less"
+import "./widget.less"
 
-const Widget = ({ chart, bio }) => {
-  const openSidebar = () => {
-    const aside = document.querySelector("aside")
-    const header = document.querySelector("header")
-    aside?.classList.add("expand")
-    header?.classList.add("expand")
+const FriendsLink = () => (
+  <Link to="/friends" className="widget-link">
+    <SmileyIcon aria-label="Smiley Icon" size={16} />
+    <span className="title">朋友</span>
+    <span className="description">friend</span>
+  </Link>
+)
+
+const HomeLink = () => (
+  <Link to="/" className="widget-link">
+    <HomeIcon aria-label="Home Icon" size={16} />
+    <span className="title">主页</span>
+    <span className="description">home</span>
+  </Link>
+)
+
+export const Links = { FriendsLink, HomeLink }
+
+export const MarkdownQuery = graphql`
+  query {
+    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/markdown/" } }) {
+      edges {
+        node {
+          html
+          frontmatter {
+            path
+          }
+        }
+      }
+    }
   }
+`
 
+const BaseNote = ({ path }) => {
   return (
-    <>
-      {chart && (
-        <article className="github-chart">
-          <p className="caption">
-            <MeterIcon aria-label="Fire Icon" size={16} />
-            Lifeni's Github Chart - Powered by&nbsp;
-            <a
-              href="https://github.com/2016rshah/githubchart-api"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="friend"
-            >
-              GitHub Chart API
-            </a>
-          </p>
-          <div className="image-wrapper">
-            <img
-              src="https://ghchart.rshah.org/Lifeni"
-              alt="Lifeni's Github chart"
-              aria-label="Lifeni's Github chart"
-            />
-          </div>
-        </article>
-      )}
-
-      {bio && (
-        <section
-          aria-hidden
-          className="mobile-text"
-          onClick={() => openSidebar()}
-        >
-          <p>
-            Hi，这是我的个人网站「记录干杯」，
-            我会在这里记录一些文章或者是想法， 也会在网站上尝试一些新的技术。
-          </p>
-          <p className="right" aria-hidden="true">
-            <ChevronDownIcon
-              aria-hidden="true"
-              aria-label="查看更多"
-              size={24}
-            />
-          </p>
-        </section>
-      )}
-    </>
+    <StaticQuery
+      query={MarkdownQuery}
+      render={data => {
+        return (
+          <div
+            className="widget-note"
+            dangerouslySetInnerHTML={{
+              __html: data.allMarkdownRemark.edges.find(
+                edge => edge.node.frontmatter.path === path
+              ).node.html,
+            }}
+          ></div>
+        )
+      }}
+    />
   )
 }
 
-export default Widget
+const HomeNote = () => <BaseNote path="home" />
+const FriendsNote = () => <BaseNote path="friends" />
+
+export const Notes = { HomeNote, FriendsNote }

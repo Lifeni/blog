@@ -1,3 +1,44 @@
+.container {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+main {
+  position: relative;
+  width: 100%;
+  max-width: calc(30% + 900px);
+  min-height: 100vh;
+  padding: 56px 72px 56px calc(30% + 72px);
+  display: flex;
+  flex-direction: column;
+  background: var(--background-0);
+  transition: all 0.2s;
+
+  @media (max-width: 1120px) {
+    padding: 48px 48px 48px calc(30% + 48px);
+  }
+
+  @media (max-width: 824px) {
+    padding: 48px 48px 48px calc(72px + 48px);
+  }
+
+  @media (max-width: 600px) {
+    padding: 48px 36px 48px calc(72px + 36px);
+  }
+
+  @media (max-width: 480px) {
+    padding: 112px 36px 42px 36px;
+  }
+
+  @media (max-width: 420px) {
+    padding: 104px 32px 36px 32px;
+  }
+}
+
 aside {
   position: fixed;
   top: 0;
@@ -238,192 +279,6 @@ aside {
         text-underline-offset: 6px;
       }
     }
-  }
-}
-
-.about {
-  position: relative;
-  z-index: 200;
-  max-width: unset;
-  padding: 0;
-  color: var(--font-primary);
-  background-color: transparent;
-  word-break: normal;
-  transition: all 0.2s;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
-  &::after {
-    content: "";
-    display: flex;
-  }
-
-  h3 {
-    padding: 1rem 0 0 0;
-    line-height: 2rem;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-
-    svg {
-      min-width: 16px;
-      min-height: 16px;
-      margin: 2px 6px 2px 1px;
-      vertical-align: middle;
-      fill: var(--font-primary);
-      opacity: 1;
-      transition: all 0.2s;
-    }
-  }
-
-  h3:first-of-type {
-    padding: 0;
-  }
-
-  p {
-    vertical-align: baseline;
-  }
-
-  ul {
-    padding: 0 0 0 1.5rem;
-    color: var(--font-primary);
-
-    li {
-      padding: 0px 0px 0px 0.25rem;
-    }
-
-    a {
-      line-height: 2rem;
-    }
-  }
-
-  .link-card {
-    position: relative;
-    width: calc(100% + 24px);
-    margin: 16px -12px;
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    border: solid 2px transparent;
-    border-radius: 4px;
-    background-color: var(--background-3);
-    opacity: 1;
-    font-size: 1rem;
-    line-height: 2rem;
-    outline: none;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: all 0.2s;
-
-    &:first-of-type {
-      margin-top: 28px;
-    }
-
-    span {
-      opacity: 1;
-      color: var(--font-primary);
-    }
-
-    svg {
-      min-width: 16px;
-      margin: 0;
-      fill: var(--font-primary);
-      transition: all 0.2s;
-      opacity: 1;
-    }
-
-    @media (min-width: 824px) {
-      span {
-        color: var(--font-secondary);
-      }
-
-      svg {
-        opacity: 0.6;
-        transition: all 0.2s;
-      }
-    }
-
-    @media (max-width: 480px) {
-      background-color: var(--background-4);
-    }
-
-    .title {
-      font-size: 1rem;
-      margin: 0 4px 0 20px;
-      display: flex;
-      align-items: center;
-    }
-
-    .description {
-      margin: 0 0 0 auto;
-      padding: 0 0 0 1rem;
-      font-size: 0.975rem;
-      font-family: var(--font-mono);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-
-  @media (min-width: 824px) {
-    max-width: 324px;
-    flex: 1;
-    color: var(--font-secondary);
-    padding: 0;
-
-    h3 svg,
-    .link-card svg {
-      opacity: 0.6;
-      transition: all 0.2s;
-    }
-
-    a,
-    .link-card span {
-      color: var(--font-secondary);
-      transition: all 0.2s;
-    }
-
-    &:hover {
-      color: var(--font-primary);
-      transition: all 0.2s;
-
-      h3 svg,
-      .link-card svg {
-        opacity: 1;
-      }
-
-      a {
-        color: var(--font-link);
-        transition: all 0.2s;
-      }
-
-      .link-card {
-        // border: solid 2px var(--border-2);
-
-        &:hover,
-        &:active,
-        &:focus {
-          text-decoration: none;
-          border: solid 2px var(--font-link);
-        }
-
-        span {
-          color: var(--font-primary);
-        }
-      }
-
-      span {
-        opacity: 1;
-        transition: all 0.2s;
-      }
-    }
-  }
-
-  a:hover,
-  a:active,
-  a:focus {
-    color: var(--font-link-hover);
   }
 }
 
