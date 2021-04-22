@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "author": "Lifeni",
   "dependencies": {
-    "@primer/octicons-react": "^13.0.0",
     "algoliasearch": "^4.8.6",
     "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
@@ -37,6 +36,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.2.0",
     "react-instantsearch-dom": "^6.10.3"
   },
   "devDependencies": {

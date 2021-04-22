@@ -1,4 +1,4 @@
-import { InfinityIcon } from "@primer/octicons-react"
+import { RiBubbleChartLine } from "react-icons/ri"
 import React from "react"
 import "./fab.less"
 
@@ -6,7 +6,7 @@ const Fab = () => {
   return (
     <>
       <button className="fab">
-        <InfinityIcon size={24} />
+        <RiBubbleChartLine size={24} />
       </button>
     </>
   )

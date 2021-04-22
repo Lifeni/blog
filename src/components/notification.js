@@ -1,5 +1,10 @@
-import { AlertIcon, BeakerIcon, SyncIcon, XIcon } from "@primer/octicons-react"
 import React, { useState } from "react"
+import {
+  RiAlertLine,
+  RiCloseLine,
+  RiCupLine,
+  RiRefreshLine,
+} from "react-icons/ri"
 import "./notification.less"
 
 const UpdateNow = () => {
@@ -14,12 +19,12 @@ const UpdateNow = () => {
           aria-label="刷新页面"
           title="刷新页面"
         >
-          <SyncIcon aria-label="Refresh Icon" size={24} />
+          <RiRefreshLine aria-label="Refresh Icon" size={24} />
         </button>
       </section>
       <section>
         <p className="title">
-          <BeakerIcon aria-label="Beaker Icon" size={16} />
+          <RiCupLine aria-label="Beaker Icon" size={16} />
           Update Now
         </p>
       </section>
@@ -44,12 +49,12 @@ const OutdatedContent = ({ date }) => {
           aria-label="关闭通知"
           title="关闭通知"
         >
-          <XIcon aria-label="Close Icon" size={24} />
+          <RiCloseLine aria-label="Close Icon" size={24} />
         </button>
       </section>
       <section>
         <p className="title">
-          <AlertIcon aria-label="Alert Icon" size={16} />
+          <RiAlertLine aria-label="Alert Icon" size={16} />
           Outdated Content
         </p>
       </section>

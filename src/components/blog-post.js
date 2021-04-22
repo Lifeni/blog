@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from "@primer/octicons-react"
+import { RiArrowRightLine } from "react-icons/ri"
 import { Link } from "gatsby"
 import React from "react"
 import "./blog-post.less"
@@ -40,7 +40,7 @@ const BlogPost = ({ title, name, date, descriptions, tags }) => (
         tabIndex="-1"
         aria-hidden="true"
       >
-        <ArrowRightIcon aria-label="Open Article" size={24} />
+        <RiArrowRightLine aria-label="Open Article" size={24} />
       </Link>
     </div>
   </div>

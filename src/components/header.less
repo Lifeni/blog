@@ -24,23 +24,12 @@ header {
     padding: 48px;
   }
 
-  .text {
-    display: flex;
-    font-size: 1.15rem;
-    margin: 0 8px 0 20px;
-    pointer-events: auto;
-  }
-
-  .header-title {
-    display: none;
-  }
-
   a,
   button {
     width: 72px;
     height: 72px;
     padding: 24px;
-    margin: 0;
+    margin: 0 24px 0 0;
     border: none;
     border-radius: 36px;
     display: flex;
@@ -90,7 +79,8 @@ header {
     bottom: unset;
     width: 72px;
     min-height: 100%;
-    padding: 48px 0;
+    margin: 0;
+    padding: 72px 0;
     flex-direction: column;
     justify-content: space-between;
     box-shadow: var(--shadow-deep);
@@ -99,13 +89,6 @@ header {
 
     section {
       flex-direction: column;
-    }
-
-    .text {
-      display: inline-flex;
-      margin: 24px 0 0 0;
-      writing-mode: vertical-lr;
-      letter-spacing: 0.2rem;
     }
 
     a,
@@ -197,8 +180,6 @@ header {
       color: inherit;
 
       svg {
-        transform: scale(1.05);
-
         path {
           height: 22px;
           fill: var(--font-primary);
