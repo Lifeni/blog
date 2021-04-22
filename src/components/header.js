@@ -2,12 +2,13 @@ import { Link, navigate } from "gatsby"
 import React, { useEffect, useRef, useState } from "react"
 import {
   RiArrowLeftLine,
+  RiChat3Line,
   RiCloseLine,
   RiFileListLine,
   RiHomeLine,
   RiInboxLine,
-  RiUserSmileLine,
   RiSearchLine,
+  RiUserSmileLine,
 } from "react-icons/ri"
 import "./header.less"
 import Search from "./search"
@@ -51,6 +52,19 @@ const FriendsButton = () => {
   return (
     <Link to="/friends" className="auto-width" aria-label="朋友" title="朋友">
       <RiUserSmileLine aria-label="Friends Icon" size={24} />
+    </Link>
+  )
+}
+
+const CommentButton = () => {
+  return (
+    <Link
+      to="#comment"
+      className="mobile-only auto-width"
+      aria-label="评论"
+      title="评论"
+    >
+      <RiChat3Line aria-label="Comment Icon" size={24} />
     </Link>
   )
 }
@@ -111,7 +125,7 @@ const SidebarButton = ({ type }) => {
   )
 }
 
-const Header = ({ app, back, aside, friends }) => {
+const Header = ({ app, back, aside, friends, comment }) => {
   const [backWay, setBackWay] = useState("direct")
 
   const headerRef = useRef()
@@ -139,7 +153,10 @@ const Header = ({ app, back, aside, friends }) => {
         {friends && <FriendsButton />}
       </section>
 
-      <section>{aside && <SidebarButton type={aside.type} />}</section>
+      <section>
+        {comment && <CommentButton />}
+        {aside && <SidebarButton type={aside.type} />}
+      </section>
     </header>
   )
 }

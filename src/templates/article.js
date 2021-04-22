@@ -84,7 +84,7 @@ const BlogArticle = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.descriptions.join(" / ")}
       />
-      <Header back aside={{ type: "toc" }} />
+      <Header back aside={{ type: "toc" }} comment />
       <Main
         aside={
           <nav

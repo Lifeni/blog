@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import {
-  RiAlertLine,
+  RiErrorWarningLine,
   RiCloseLine,
   RiCupLine,
   RiRefreshLine,
@@ -24,7 +24,7 @@ const UpdateNow = () => {
       </section>
       <section>
         <p className="title">
-          <RiCupLine aria-label="Beaker Icon" size={16} />
+          <RiCupLine aria-label="Beaker Icon" size={18} />
           Update Now
         </p>
       </section>
@@ -54,7 +54,7 @@ const OutdatedContent = ({ date }) => {
       </section>
       <section>
         <p className="title">
-          <RiAlertLine aria-label="Alert Icon" size={16} />
+          <RiErrorWarningLine aria-label="Alert Icon" size={18} />
           Outdated Content
         </p>
       </section>
