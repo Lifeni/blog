@@ -28,42 +28,37 @@ const BlogArticle = ({ data }) => {
       <h1>{post.frontmatter.title}</h1>
 
       <section className="article-meta" id="article-meta">
-        <div>
-          <span title={`创建日期：${date.create}`}>{date.create}</span>
-          <span> / </span>
-          <span title={`修改日期：${date.modify}`}>
-            {date.create.slice(0, 4) === date.modify.slice(0, 4)
-              ? date.modify.slice(7)
-              : date.modify}
-          </span>
-        </div>
-
-        <div>
-          {post.frontmatter.license === "CC-BY-SA-4.0" ? (
-            <a
-              href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`署名-相同方式共享 4.0 国际`}
-              className="article-license"
-            >
-              © {post.frontmatter.license}
-            </a>
-          ) : (
-            <span
-              className="article-license"
-              title={`共享协议：${post.frontmatter.license}`}
-            >
-              © {post.frontmatter.license}
-            </span>
-          )}
-        </div>
+        <span title={`创建日期：${date.create}`}>{date.create}</span>
+        <span> / </span>
+        <span title={`修改日期：${date.modify}`}>
+          {date.create.slice(0, 4) === date.modify.slice(0, 4)
+            ? date.modify.slice(7)
+            : date.modify}
+        </span>
       </section>
     </>
   )
 
-  const htmlEnd = ReactDOMServer.renderToStaticMarkup(
+  const Footer = () => (
     <section className="article-info">
+      {post.frontmatter.license === "CC-BY-SA-4.0" ? (
+        <a
+          href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
+          target="_blank"
+          rel="noopener noreferrer"
+          title={`署名-相同方式共享 4.0 国际`}
+          className="article-license"
+        >
+          {post.frontmatter.license}
+        </a>
+      ) : (
+        <span
+          className="article-license"
+          title={`共享协议：${post.frontmatter.license}`}
+        >
+          {post.frontmatter.license}
+        </span>
+      )}
       <p className="tags">
         {post.frontmatter.tags.map(tag => (
           <Link
@@ -99,10 +94,11 @@ const BlogArticle = ({ data }) => {
             <article
               id="main-content"
               dangerouslySetInnerHTML={{
-                __html: html + post.html.split("</h1>")[1] + htmlEnd,
+                __html: html + post.html.split("</h1>")[1],
               }}
             ></article>
             <Utterances />
+            <Footer />
           </>
         }
       />

@@ -41,7 +41,9 @@ const OutdatedContent = ({ date }) => {
       id="outdated-content"
     >
       <section>
-        <p>这篇文章修改于 {date} ，其中有些信息可能已经过时</p>
+        <p>
+          这篇文章修改于 <strong>{date}</strong>，其中有些信息可能已经过时
+        </p>
         <button
           className="close-notification"
           id="close-notification"

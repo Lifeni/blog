@@ -276,7 +276,7 @@ article {
     position: relative;
     width: 100%;
     margin: 24px 0;
-    padding: 4px 24px;
+    padding: 2px 24px;
     color: var(--font-secondary);
     border-left: solid 8px var(--border-0);
     border-radius: 4px;
@@ -285,6 +285,13 @@ article {
     @media (max-width: 480px) {
       width: calc(100% + 24px);
       margin: 20px -12px;
+
+      img,
+      .gatsby-highlight {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
     }
 
     a {
@@ -316,7 +323,7 @@ article {
     }
 
     pre[class*="language-"].line-numbers {
-      padding-left: 3.4rem;
+      padding-left: 3.2rem;
       border-radius: 4px;
       transition: background-color 0.2s;
 
@@ -402,10 +409,6 @@ section + p + p {
   border-radius: 0;
   transition: all 0.2s;
 
-  div {
-    display: flex;
-  }
-
   span,
   a.article-license {
     width: fit-content;
@@ -433,9 +436,37 @@ section + p + p {
 }
 
 .article-info {
-  padding: 2rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5rem 0 0 0;
+  font-size: 1rem;
+  line-height: 2rem;
 
   p {
     margin: 0;
+  }
+}
+
+.article-license {
+  width: fit-content;
+  margin: 0 1.5rem 0 0;
+  padding: 2px 0;
+  display: flex;
+  font-size: inherit;
+  line-height: inherit;
+  color: var(--font-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &::before {
+    content: "©";
+    padding: 0 0.5rem 0 0;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--font-primary);
+    text-decoration: none;
   }
 }

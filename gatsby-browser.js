@@ -96,7 +96,7 @@ const onRouteUpdate = ({ location, prevLocation }) => {
 }
 
 const onServiceWorkerUpdateReady = () => {
-  document.querySelector("#update-card").classList.add("show")
+  document.querySelector("#update-now").classList.add("show")
 }
 
 export { onRouteUpdate, onServiceWorkerUpdateReady }
