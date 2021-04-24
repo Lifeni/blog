@@ -36,7 +36,8 @@ const domOperation = location => {
   }
 
   const comment = document.querySelector("#comment")
-  if (comment) {
+  const exist = document.querySelector(".utterances-frame")
+  if (comment && !exist) {
     const utterances = document.createElement("script")
     utterances.setAttribute("src", "https://utteranc.es/client.js")
     utterances.setAttribute("repo", "Lifeni-Site/Comment")

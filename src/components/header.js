@@ -71,6 +71,7 @@ const CommentButton = () => {
 
 const BackButton = () => {
   const handleBack = e => {
+    e.preventDefault()
     if (e.button === 0 && !e.ctrlKey) {
       window.history.back()
     } else if (e.button === 1 || (e.button === 0 && e.ctrlKey)) {
