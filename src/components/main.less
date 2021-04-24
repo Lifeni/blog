@@ -20,7 +20,7 @@ main {
   flex-direction: column;
   background: var(--background-0);
   box-shadow: var(--shadow-normal);
-  transition: all 0.4s;
+  transition: all 0.2s;
 
   @media (max-width: 1120px) {
     padding: 48px;
@@ -31,6 +31,7 @@ main {
     left: 0;
     width: 100%;
     padding: 48px 48px 48px calc(72px + 48px);
+    transition: all 0.4s;
 
     &.expand {
       transform: translateX(416px);
@@ -121,8 +122,8 @@ aside {
     min-height: unset;
     z-index: 3000;
     padding: 0 48px;
-    background-color: var(--background-4);
-    box-shadow: none;
+    background-color: var(--background-0);
+    box-shadow: var(--shadow-press);
     overflow: hidden;
 
     &::after {
@@ -134,7 +135,7 @@ aside {
       height: calc(100% - 72px);
       padding: 48px 48px 0 48px;
       background-color: var(--background-0);
-      box-shadow: none;
+      box-shadow: var(--shadow-normal);
 
       &::after {
         min-height: 48px;

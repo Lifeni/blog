@@ -18,21 +18,21 @@ const FriendList = () => (
     <ul>
       {friends.map((friend, index) => (
         <li key={index}>
+          <img
+            src={friend.icon}
+            alt={friend.name}
+            aria-label={friend.name}
+            title={friend.name}
+            className="favicon"
+          />
           <a
             href={friend.url}
             target="_blank"
             rel="noopener noreferrer"
             className="friend"
           >
-            <img
-              src={friend.icon}
-              alt={friend.name}
-              aria-label={friend.name}
-              title={friend.name}
-              className="favicon"
-            />
-            {friend.name}
-            <small>{friend.link}</small>
+            <span>{friend.name}</span>
+            <sub>{friend.link}</sub>
           </a>
         </li>
       ))}

@@ -29,9 +29,8 @@ const NotFoundPage = () => (
                 )
               }}
             />
-            <p className="article-subtitle">404 PAGE NOT FOUND</p>
-
-            <h1>你要找的页面不在这里</h1>
+            <h1 className="not-found-title">你要找的页面不在这里</h1>
+            <p className="article-subtitle">// 404 PAGE NOT FOUND</p>
           </article>
         </>
       }
