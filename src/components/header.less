@@ -70,6 +70,10 @@ header {
       fill: var(--font-primary);
       transition: all 0.2s;
     }
+
+    &:focus-visible {
+      outline: solid 2px var(--font-link);
+    }
   }
 
   @media (max-width: 824px) {
@@ -263,11 +267,19 @@ header {
   text-decoration: none;
   opacity: 0;
   transition: all 0.2s;
-}
 
-.skip-link:active,
-.skip-link:focus {
-  top: 16px;
-  opacity: 1;
-  background-color: var(--background-0);
+  &:active,
+  &:focus {
+    top: 16px;
+    opacity: 1;
+    background-color: var(--background-0);
+  }
+
+  &:focus-visible {
+    top: 16px;
+    opacity: 1;
+    background-color: var(--background-0);
+    border: none;
+    outline: solid 2px var(--font-link);
+  }
 }

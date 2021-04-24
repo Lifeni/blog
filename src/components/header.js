@@ -144,7 +144,7 @@ const Header = ({ app, back, aside, friends, comment }) => {
 
   return (
     <header ref={headerRef}>
-      <a href="#main-content" className="skip-link">
+      <a href="#main-content" className="skip-link" aria-label="跳转到主要内容">
         Skip to main content | 跳转到主要内容
       </a>
 

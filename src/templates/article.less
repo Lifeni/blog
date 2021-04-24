@@ -160,6 +160,10 @@ article {
       transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1) !important;
     }
 
+    &:focus-visible {
+      outline: solid 2px var(--font-link);
+    }
+
     @media (max-width: 480px) {
       max-width: calc(100% + 24px);
       margin: 20px -12px;

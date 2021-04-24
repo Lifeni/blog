@@ -3,8 +3,17 @@ import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 
 const domOperation = location => {
   if (location.pathname.startsWith("/article/")) {
+    const imgs = document.querySelectorAll("article img")
+    imgs.forEach(e => {
+      e.setAttribute("tabindex", "0")
+      e.onkeypress = event => {
+        if (event.key === "Enter") {
+          e.click()
+        }
+      }
+    })
     setTimeout(() => {
-      mediumZoom(document.querySelectorAll("article img"), {
+      mediumZoom(imgs, {
         background: "rgba(0, 0, 0, .8)",
       })
     }, 300)

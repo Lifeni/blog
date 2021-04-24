@@ -128,7 +128,10 @@ const Search = () => {
       if (e.key === "/") {
         handleSearch(true)
         focusSearchInput()
-      } else if (e.key === "Enter") {
+      } else if (
+        e.key === "Enter" &&
+        searchRef.current?.classList.contains("show")
+      ) {
         if (
           searchRef.current?.querySelectorAll("ul > li > a") &&
           searchRef.current?.querySelectorAll("ul > li > a")[0]
@@ -140,7 +143,7 @@ const Search = () => {
 
     // 监听按键，实现 <Esc> 关闭搜索框
     const keydown = window.addEventListener("keydown", e => {
-      if (e.key === "Escape") {
+      if (e.key === "Escape" && searchRef.current.classList.contains("show")) {
         handleSearch(false)
       }
     })
