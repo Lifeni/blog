@@ -1,12 +1,10 @@
 import { graphql } from "gatsby"
 import React from "react"
 import BlogPost from "../components/blog-post"
-import Footer from "../components/footer"
 import Header from "../components/header"
 import Main from "../components/main"
 import Seo from "../components/seo"
 import "./tag.less"
-
 const BlogTag = ({ data, pageContext }) => {
   const { tag } = pageContext
   const count = data.allMarkdownRemark.edges.length
@@ -39,7 +37,6 @@ const BlogTag = ({ data, pageContext }) => {
                 />
               ))}
             </div>
-            <Footer />
           </>
         }
       />

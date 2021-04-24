@@ -76,16 +76,6 @@ const domOperation = location => {
 }
 
 const onRouteUpdate = ({ location, prevLocation }) => {
-  if (prevLocation && location.pathname === prevLocation.pathname) {
-    // Hash 锚点的情况
-    const aside = document.querySelector("aside")
-    const header = document.querySelector("header")
-    if (aside.classList.contains("expand")) {
-      aside.classList.remove("expand")
-      header.classList.remove("expand")
-    }
-  }
-
   if (!prevLocation) {
     // 第一次进入页面
     domOperation(location)
@@ -101,6 +91,20 @@ const onRouteUpdate = ({ location, prevLocation }) => {
     const header = document.querySelector("header")
     if (header) {
       header.dataset.ref = prevLocation.pathname
+    }
+  }
+
+  if (prevLocation && location.pathname === prevLocation.pathname) {
+    // Hash 锚点的情况
+    const body = document.querySelector("body")
+    const aside = document.querySelector("aside")
+    const main = document.querySelector("main")
+    const header = document.querySelector("header")
+    if (aside.classList.contains("expand")) {
+      body.classList.remove("expand")
+      aside.classList.remove("expand")
+      header.classList.remove("expand")
+      main.classList.remove("expand")
     }
   }
 }

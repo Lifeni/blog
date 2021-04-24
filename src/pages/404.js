@@ -1,6 +1,5 @@
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
-import Footer from "../components/footer"
 import Header from "../components/header"
 import Main from "../components/main"
 import Seo from "../components/seo"
@@ -30,10 +29,10 @@ const NotFoundPage = () => (
                 )
               }}
             />
-            <h1>你要找的页面不在这里</h1>
             <p className="article-subtitle">404 PAGE NOT FOUND</p>
+
+            <h1>你要找的页面不在这里</h1>
           </article>
-          <Footer />
         </>
       }
     />

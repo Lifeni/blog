@@ -58,14 +58,14 @@ const FriendsButton = () => {
 
 const CommentButton = () => {
   return (
-    <Link
-      to="#comment"
+    <a
+      href="#comment"
       className="mobile-only auto-width"
       aria-label="评论"
       title="评论"
     >
       <RiChat3Line aria-label="Comment Icon" size={24} />
-    </Link>
+    </a>
   )
 }
 
@@ -96,9 +96,13 @@ const SidebarButton = ({ type }) => {
 
   useEffect(() => {
     if (openSidebar !== null) {
+      const body = document.querySelector("body")
       const aside = document.querySelector("aside")
+      const main = document.querySelector("main")
       const header = document.querySelector("header")
+      body.classList.toggle("expand")
       aside.classList.toggle("expand")
+      main.classList.toggle("expand")
       header.classList.toggle("expand")
     }
   }, [openSidebar])
@@ -151,11 +155,11 @@ const Header = ({ app, back, aside, friends, comment }) => {
       <section>
         {app && <SearchButton />}
         {back && (backWay === "direct" ? <HomeButton /> : <BackButton />)}
-        {friends && <FriendsButton />}
       </section>
 
       <section>
         {comment && <CommentButton />}
+        {friends && <FriendsButton />}
         {aside && <SidebarButton type={aside.type} />}
       </section>
     </header>
