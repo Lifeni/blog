@@ -41,7 +41,9 @@
     background-color: var(--background-0);
     opacity: 0;
     visibility: hidden;
-    transform: rotateX(15deg) scaleX(0.9) scaleY(0.95);
+    transform: rotateX(10deg) scaleX(0.95) scaleY(0.95);
+    transform-origin: bottom center;
+    perspective: 2000px;
     transition: all 0.4s;
     pointer-events: initial;
   }
@@ -55,7 +57,7 @@
     .dialog {
       opacity: 1;
       visibility: visible;
-      transform: rotateX(0) scaleX(1) scaleY(1);
+      transform: rotateX(0) rotateY(0) scaleX(1) scaleY(1);
     }
   }
 
@@ -103,6 +105,7 @@
     button {
       width: 64px;
       height: 64px;
+      margin: 0;
       padding: 18px;
       border-radius: 0 4px 0 0;
       background-color: var(--background-4);
