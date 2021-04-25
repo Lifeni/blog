@@ -27,17 +27,12 @@
   }
 
   @media (max-width: 824px) {
-    position: relative;
-    top: unset;
-    right: unset;
-    width: 100%;
-    max-width: unset;
-    margin: 0 0 36px 0;
+    max-width: calc(100% - 72px - 96px);
   }
 
   @media (max-width: 480px) {
-    width: calc(100% + 24px);
-    margin: -8px -12px 36px -12px;
+    margin: 16px;
+    max-width: unset;
   }
 
   section {
@@ -49,7 +44,6 @@
 
   p {
     margin: 0;
-    // font-weight: bold;
 
     svg {
       min-width: 16px;
@@ -72,7 +66,6 @@
     display: flex;
     align-items: center;
     color: var(--font-secondary);
-    // font-family: var(--font-mono);
     font-size: 1rem;
     font-weight: normal;
   }
