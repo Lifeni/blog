@@ -39,6 +39,7 @@ main {
 
     &.expand {
       transform: translateX(416px);
+      transition: all 0.4s;
     }
   }
 
@@ -99,6 +100,7 @@ aside {
     overflow: hidden;
     pointer-events: none;
     transition: all 0.4s;
+    box-shadow: var(--shadow-inset);
 
     &::after {
       min-height: 72px;
@@ -107,11 +109,10 @@ aside {
     &.expand {
       width: calc(360px + 128px);
       padding: 72px 64px 0 136px;
-      background-color: var(--background-1);
-      box-shadow: var(--shadow-inset);
       overflow-x: hidden;
       overflow-y: auto;
       pointer-events: initial;
+      transition: all 0.4s;
 
       &::after {
         min-height: 72px;
