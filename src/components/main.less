@@ -5,6 +5,10 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 }
 
 main {
@@ -43,15 +47,16 @@ main {
   }
 
   @media (max-width: 480px) {
-    padding: 112px 36px 42px 36px;
+    padding: 114px 36px 42px 36px;
 
     &.expand {
-      transform: none;
+      transform: translateY(66vh);
+      min-height: unset;
     }
   }
 
   @media (max-width: 420px) {
-    padding: 104px 32px 36px 32px;
+    padding: 108px 32px 36px 32px;
   }
 }
 
@@ -115,14 +120,13 @@ aside {
   }
 
   @media (max-width: 480px) {
-    bottom: 0;
-    top: unset;
+    bottom: unset;
+    top: 72px;
     width: 100%;
     height: 0;
     min-height: unset;
-    z-index: 3000;
+    z-index: 100;
     padding: 0 48px;
-    background-color: var(--background-0);
     box-shadow: var(--shadow-press);
     overflow: hidden;
 
@@ -132,10 +136,9 @@ aside {
 
     &.expand {
       width: 100%;
-      height: calc(100% - 72px);
+      height: 66vh;
       padding: 48px 48px 0 48px;
-      background-color: var(--background-0);
-      box-shadow: var(--shadow-normal);
+      box-shadow: var(--shadow-inset-side);
 
       &::after {
         min-height: 48px;
