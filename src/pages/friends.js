@@ -8,6 +8,11 @@ import "./friends.less"
 
 const FriendList = () => (
   <article className="friend-list" id="friend-list">
+    <p className="article-subtitle">
+      {friends.length > 1
+        ? `${friends.length} links`
+        : `${friends.length} link`}
+    </p>
     <h1>朋友的网站</h1>
     <ul>
       {friends.map((friend, index) => (
@@ -34,7 +39,7 @@ const FriendList = () => (
   </article>
 )
 
-const OpenSourcePage = () => (
+const FriendPage = () => (
   <>
     <Seo title="朋友" />
     <Header back />
@@ -49,4 +54,4 @@ const OpenSourcePage = () => (
   </>
 )
 
-export default OpenSourcePage
+export default FriendPage

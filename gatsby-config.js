@@ -111,8 +111,7 @@ module.exports = {
         google: {
           families: [
             "Inter:300,400,600",
-            "JetBrains Mono:400,600",
-            "Noto Sans SC:400,700&display=swap",
+            "JetBrains Mono:400,600&display=swap",
           ],
         },
       },

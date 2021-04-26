@@ -79,19 +79,11 @@ const onRouteUpdate = ({ location, prevLocation }) => {
   if (!prevLocation) {
     // 第一次进入页面
     domOperation(location)
-    const header = document.querySelector("header")
-    if (header) {
-      header.dataset.ref = "null"
-    }
   }
 
   if (prevLocation && location.pathname !== prevLocation.pathname) {
     // 站内页面跳转
     domOperation(location)
-    const header = document.querySelector("header")
-    if (header) {
-      header.dataset.ref = prevLocation.pathname
-    }
   }
 
   if (prevLocation && location.pathname === prevLocation.pathname) {

@@ -1,14 +1,11 @@
-import { Link, navigate } from "gatsby"
-import React, { useEffect, useRef, useState } from "react"
+import { Link } from "gatsby"
+import React, { useEffect, useState } from "react"
 import {
-  RiArrowLeftLine,
-  RiChat3Line,
   RiCloseLine,
   RiFileListLine,
-  RiHomeLine,
+  RiHome2Line,
   RiInboxLine,
   RiSearchLine,
-  RiUserSmileLine,
 } from "react-icons/ri"
 import "./header.less"
 import Search from "./search"
@@ -34,6 +31,7 @@ const SearchButton = () => {
         onClick={handleSearch}
       >
         <RiSearchLine aria-label="Search Icon" size={24} />
+        <span className="text">搜索</span>
       </button>
       <Search />
     </>
@@ -43,51 +41,9 @@ const SearchButton = () => {
 const HomeButton = () => {
   return (
     <Link to="/" className="auto-width" aria-label="返回主页" title="返回主页">
-      <RiHomeLine aria-label="Home Icon" size={24} />
+      <RiHome2Line aria-label="Home Icon" size={24} />
+      <span className="text">主页</span>
     </Link>
-  )
-}
-
-const FriendsButton = () => {
-  return (
-    <Link to="/friends" className="auto-width" aria-label="朋友" title="朋友">
-      <RiUserSmileLine aria-label="Friends Icon" size={24} />
-    </Link>
-  )
-}
-
-const CommentButton = () => {
-  return (
-    <a
-      href="#comment"
-      className="mobile-only auto-width"
-      aria-label="评论"
-      title="评论"
-    >
-      <RiChat3Line aria-label="Comment Icon" size={24} />
-    </a>
-  )
-}
-
-const BackButton = () => {
-  const handleBack = e => {
-    e.preventDefault()
-    if (e.button === 0 && !e.ctrlKey) {
-      window.history.back()
-    } else if (e.button === 1 || (e.button === 0 && e.ctrlKey)) {
-      navigate("/")
-    }
-  }
-
-  return (
-    <button
-      className="auto-width"
-      aria-label="点击返回上一页，鼠标中键 或 Ctrl + 鼠标左键 返回主页"
-      title="点击返回上一页，鼠标中键 或 Ctrl + 鼠标左键 返回主页"
-      onMouseDown={handleBack}
-    >
-      <RiArrowLeftLine aria-label="Back Icon" size={24} />
-    </button>
   )
 }
 
@@ -130,38 +86,19 @@ const SidebarButton = ({ type }) => {
   )
 }
 
-const Header = ({ app, back, aside, friends, comment }) => {
-  const [backWay, setBackWay] = useState("direct")
-
-  const headerRef = useRef()
-
-  useEffect(() => {
-    if (back) {
-      const ref = headerRef.current.dataset.ref
-      if (ref === "null") {
-        setBackWay("direct")
-      } else {
-        setBackWay(ref)
-      }
-    }
-  }, [back, setBackWay])
-
+const Header = ({ app, back, aside }) => {
   return (
-    <header ref={headerRef}>
+    <header>
       <a href="#main-content" className="skip-link" aria-label="跳转到主要内容">
         Skip to main content | 跳转到主要内容
       </a>
 
       <section>
         {app && <SearchButton />}
-        {back && (backWay === "direct" ? <HomeButton /> : <BackButton />)}
+        {back && <HomeButton />}
       </section>
 
-      <section>
-        {comment && <CommentButton />}
-        {friends && <FriendsButton />}
-        {aside && <SidebarButton type={aside.type} />}
-      </section>
+      <section>{aside && <SidebarButton type={aside.type} />}</section>
     </header>
   )
 }

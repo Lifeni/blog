@@ -126,6 +126,9 @@ const Search = () => {
     // 监听按键，实现 / 打开搜索框，<Enter> 打开结果第一项
     const keypress = window.addEventListener("keypress", e => {
       if (e.key === "/") {
+        if (!searchRef.current?.classList.contains("show")) {
+          e.preventDefault()
+        }
         handleSearch(true)
         focusSearchInput()
       } else if (

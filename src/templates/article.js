@@ -31,7 +31,7 @@ const BlogArticle = ({ data }) => {
 
       <section className="article-meta" id="article-meta">
         <span title={`创建日期：${date.create}`}>{date.create}</span>
-        <span> / </span>
+        <span>/</span>
         <span title={`修改日期：${date.modify}`}>
           {date.create.slice(0, 4) === date.modify.slice(0, 4)
             ? date.modify.slice(7)
@@ -81,7 +81,7 @@ const BlogArticle = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.descriptions.join(" / ")}
       />
-      <Header back aside={{ type: "toc" }} comment />
+      <Header back aside={{ type: "toc" }} />
       <Main
         aside={
           <nav

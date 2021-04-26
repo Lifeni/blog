@@ -1,36 +1,32 @@
 .friend-list {
   ul {
-    margin: 28px 0 12px 0;
+    margin: 1.75rem 0 0 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     transition: all 0.2s;
 
-    @media (max-width: 824px) {
-      margin: 28px 0 4px 0;
-    }
-
-    @media (max-width: 480px) {
-      margin: 20px 0 4px 0;
-    }
-
     li {
       position: relative;
       width: fit-content;
       max-width: 100%;
-      margin: 0.75rem 2rem 0.75rem 0;
+      margin: 1rem 2.5rem 1rem 0;
       padding: 0;
       display: flex;
       align-items: center;
       list-style: none;
 
+      @media (max-width: 480px) {
+        margin: 0.875rem 2rem 0.875rem 0;
+      }
+
       img {
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        min-height: 44px;
-        border-radius: 44px;
-        margin: 0 1rem 0 0;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+        border-radius: 48px;
+        margin: 0 1.5rem 0 0;
         overflow: hidden;
       }
 
@@ -59,49 +55,6 @@
           font-weight: normal;
           font-family: var(--font-mono);
         }
-      }
-    }
-  }
-
-  .my-site {
-    display: flex;
-    align-items: center;
-    overflow-x: auto;
-
-    img {
-      width: 56px;
-      height: 56px;
-      min-width: 56px;
-      min-height: 56px;
-      margin: 0 24px 0 0;
-    }
-
-    div {
-      display: flex;
-      flex-direction: column;
-    }
-
-    span {
-      font-size: 1rem;
-      line-height: 1.75rem;
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-
-      a {
-        margin: 0 0 0 1rem;
-        cursor: pointer;
-        color: var(--font-secondary);
-        font-family: var(--font-mono);
-        font-weight: normal;
-        font-size: 1rem;
-        text-decoration: none;
-      }
-
-      &.name {
-        font-size: 1.15rem;
-        line-height: 2.25rem;
-        font-weight: bold;
       }
     }
   }

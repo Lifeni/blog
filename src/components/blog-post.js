@@ -3,8 +3,8 @@ import { Link } from "gatsby"
 import React from "react"
 import "./blog-post.less"
 
-const BlogPost = ({ title, name, date, descriptions, tags }) => (
-  <div className="post">
+const BlogPost = ({ title, name, date, descriptions, tags, className }) => (
+  <div className={`post ${className}`}>
     <span className="date">{date}</span>
 
     <Link to={`/article/${name}`}>

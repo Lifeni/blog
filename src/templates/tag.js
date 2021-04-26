@@ -7,6 +7,7 @@ import Seo from "../components/seo"
 import "./tag.less"
 const BlogTag = ({ data, pageContext }) => {
   const { tag } = pageContext
+  const count = data.allMarkdownRemark.edges.length
 
   return (
     <>
@@ -16,6 +17,9 @@ const BlogTag = ({ data, pageContext }) => {
         main={
           <>
             <article id="tag-list">
+              <p className="article-subtitle">
+                {count > 1 ? `${count} articles` : `${count} article`}
+              </p>
               <h1>标签：{tag}</h1>
             </article>
             <div className="post-list tag-list" id="main-content">
