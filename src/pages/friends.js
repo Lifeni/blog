@@ -1,5 +1,4 @@
 import React from "react"
-import Utterances from "../components/comment"
 import Header from "../components/header"
 import Main from "../components/main"
 import { UpdateNow } from "../components/notification"
@@ -9,11 +8,6 @@ import "./friends.less"
 
 const FriendList = () => (
   <article className="friend-list" id="friend-list">
-    <p className="article-subtitle">
-      {friends.length > 1
-        ? `${friends.length} sites`
-        : `${friends.length} site`}
-    </p>
     <h1>朋友的网站</h1>
     <ul>
       {friends.map((friend, index) => (
@@ -49,7 +43,6 @@ const OpenSourcePage = () => (
         <>
           <UpdateNow />
           <FriendList />
-          <Utterances />
         </>
       }
     />
