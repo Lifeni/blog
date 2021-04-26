@@ -29,7 +29,7 @@ const NotFoundPage = () => (
                 )
               }}
             />
-            <h2 role="h1" className="not-found-title">
+            <h2 className="not-found-title">
               你要找的页面不在这里，去 <Link to="/">主页</Link> 看看吧。
             </h2>
           </article>
