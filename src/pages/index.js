@@ -4,9 +4,10 @@ import BlogPost from "../components/blog-post"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import Main from "../components/main"
+import { FriendsNote, HomeNote } from "../components/notes"
 import { UpdateNow } from "../components/notification"
 import Seo from "../components/seo"
-import { HomeNote } from "../components/notes"
+import FriendList from "../components/friends"
 import "./global.less"
 import "./highlight.less"
 import "./index.less"
@@ -45,6 +46,7 @@ const IndexPage = () => (
       aside={
         <>
           <HomeNote />
+          <FriendsNote />
         </>
       }
       main={

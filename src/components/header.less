@@ -17,6 +17,7 @@ header {
 
   section {
     position: relative;
+    z-index: 10;
     display: flex;
     align-items: center;
   }
@@ -36,6 +37,7 @@ header {
     height: 72px;
     padding: 24px;
     margin: 0 24px 0 0;
+    z-index: 10;
     border: none;
     border-radius: 36px;
     display: flex;
@@ -53,14 +55,6 @@ header {
     box-shadow: var(--shadow-normal);
     font-family: inherit;
     transition: all 0.2s;
-
-    &.go-top {
-      margin: 0 0 0 24px;
-
-      @media (max-width: 1280px) {
-        display: none;
-      }
-    }
 
     &.mobile-only {
       display: none;
@@ -88,6 +82,7 @@ header {
     right: unset;
     bottom: unset;
     width: 72px;
+    min-width: unset;
     min-height: 100%;
     margin: 0;
     padding: 72px 0;

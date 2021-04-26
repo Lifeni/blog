@@ -1,11 +1,13 @@
 import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
 import {
+  RiChat3Line,
   RiCloseLine,
   RiFileListLine,
   RiHome2Line,
   RiInboxLine,
   RiSearchLine,
+  RiUserSmileLine,
 } from "react-icons/ri"
 import "./header.less"
 import Search from "./search"
@@ -44,6 +46,27 @@ const HomeButton = () => {
       <RiHome2Line aria-label="Home Icon" size={24} />
       <span className="text">主页</span>
     </Link>
+  )
+}
+
+const FriendsButton = () => {
+  return (
+    <Link to="/friends" className="auto-width" aria-label="朋友" title="朋友">
+      <RiUserSmileLine aria-label="Friends Icon" size={24} />
+    </Link>
+  )
+}
+
+const CommentButton = () => {
+  return (
+    <a
+      href="#comment"
+      className="mobile-only auto-width"
+      aria-label="评论"
+      title="评论"
+    >
+      <RiChat3Line aria-label="Comment Icon" size={24} />
+    </a>
   )
 }
 
@@ -86,7 +109,7 @@ const SidebarButton = ({ type }) => {
   )
 }
 
-const Header = ({ app, back, aside }) => {
+const Header = ({ app, back, aside, comment }) => {
   return (
     <header>
       <a href="#main-content" className="skip-link" aria-label="跳转到主要内容">
@@ -98,7 +121,10 @@ const Header = ({ app, back, aside }) => {
         {back && <HomeButton />}
       </section>
 
-      <section>{aside && <SidebarButton type={aside.type} />}</section>
+      <section>
+        {comment && <CommentButton />}
+        {aside && <SidebarButton type={aside.type} />}
+      </section>
     </header>
   )
 }

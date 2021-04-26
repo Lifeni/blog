@@ -1,19 +1,9 @@
 import React from "react"
-import Header from "../components/header"
-import Main from "../components/main"
-import { UpdateNow } from "../components/notification"
-import Seo from "../components/seo"
 import friends from "../data/friends.json"
 import "./friends.less"
 
 const FriendList = () => (
   <article className="friend-list" id="friend-list">
-    <p className="article-subtitle">
-      {friends.length > 1
-        ? `${friends.length} links`
-        : `${friends.length} link`}
-    </p>
-    <h1>朋友的网站</h1>
     <ul>
       {friends.map((friend, index) => (
         <li key={index}>
@@ -28,10 +18,9 @@ const FriendList = () => (
             href={friend.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="friend"
+            className="friend link"
           >
             <span>{friend.name}</span>
-            <sub>{friend.link}</sub>
           </a>
         </li>
       ))}
@@ -39,19 +28,4 @@ const FriendList = () => (
   </article>
 )
 
-const FriendPage = () => (
-  <>
-    <Seo title="朋友" />
-    <Header back />
-    <Main
-      main={
-        <>
-          <UpdateNow />
-          <FriendList />
-        </>
-      }
-    />
-  </>
-)
-
-export default FriendPage
+export default FriendList
