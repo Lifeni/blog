@@ -7,7 +7,6 @@ import {
   RiHome2Line,
   RiInboxLine,
   RiSearchLine,
-  RiUserSmileLine,
 } from "react-icons/ri"
 import "./header.less"
 import Search from "./search"
@@ -45,14 +44,6 @@ const HomeButton = () => {
     <Link to="/" className="auto-width" aria-label="返回主页" title="返回主页">
       <RiHome2Line aria-label="Home Icon" size={24} />
       <span className="text">主页</span>
-    </Link>
-  )
-}
-
-const FriendsButton = () => {
-  return (
-    <Link to="/friends" className="auto-width" aria-label="朋友" title="朋友">
-      <RiUserSmileLine aria-label="Friends Icon" size={24} />
     </Link>
   )
 }

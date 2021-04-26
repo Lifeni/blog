@@ -17,7 +17,6 @@ header {
 
   section {
     position: relative;
-    z-index: 10;
     display: flex;
     align-items: center;
   }
@@ -107,11 +106,6 @@ header {
       background-color: transparent;
       box-shadow: none;
       transition: all 0.4s;
-
-      &.go-top {
-        margin: 0;
-        display: initial;
-      }
 
       &.mobile-only {
         display: flex;
@@ -203,10 +197,6 @@ header {
       flex-direction: row;
       border-radius: 0;
       pointer-events: initial;
-
-      &.go-top {
-        display: none;
-      }
 
       &.auto-width {
         width: auto;

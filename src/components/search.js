@@ -60,7 +60,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
                 hit={hit}
                 attribute="tags"
                 tagName="mark"
-                separator="&nbsp;&nbsp;/&nbsp;&nbsp;"
+                separator="&nbsp;&nbsp;|&nbsp;&nbsp;"
               />
             </p>
             <h6 className="title">
