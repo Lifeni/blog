@@ -25,7 +25,7 @@ const BlogArticle = ({ data }) => {
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
       <p className="article-subtitle">
-        {post.frontmatter.name.replaceAll("-", " ")}
+        {post.frontmatter.name?.replaceAll("-", " ")}
       </p>
       <h1>{post.frontmatter.title}</h1>
 

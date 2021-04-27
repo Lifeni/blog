@@ -1,10 +1,10 @@
 import { Link } from "gatsby"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import {
   RiChat3Line,
   RiCloseLine,
   RiFileListLine,
-  RiHome2Line,
+  RiHomeLine,
   RiInboxLine,
   RiSearchLine,
 } from "react-icons/ri"
@@ -42,7 +42,7 @@ const SearchButton = () => {
 const HomeButton = () => {
   return (
     <Link to="/" className="auto-width" aria-label="返回主页" title="返回主页">
-      <RiHome2Line aria-label="Home Icon" size={24} />
+      <RiHomeLine aria-label="Home Icon" size={24} />
       <span className="text">主页</span>
     </Link>
   )
@@ -62,20 +62,12 @@ const CommentButton = () => {
 }
 
 const SidebarButton = ({ type }) => {
-  const [openSidebar, setOpenSidebar] = useState(null)
-
-  useEffect(() => {
-    if (openSidebar !== null) {
-      const body = document.querySelector("body")
-      const aside = document.querySelector("aside")
-      const main = document.querySelector("main")
-      const header = document.querySelector("header")
-      body.classList.toggle("expand")
-      aside.classList.toggle("expand")
-      main.classList.toggle("expand")
-      header.classList.toggle("expand")
-    }
-  }, [openSidebar])
+  const handleToggleSideber = () => {
+    document.querySelector("body")?.classList.toggle("expand")
+    document.querySelector("aside")?.classList.toggle("expand")
+    document.querySelector("main")?.classList.toggle("expand")
+    document.querySelector("header")?.classList.toggle("expand")
+  }
 
   return (
     <button
@@ -83,7 +75,7 @@ const SidebarButton = ({ type }) => {
       className="mobile-only expand-aside"
       aria-label="展开侧栏"
       title="展开侧栏"
-      onClick={() => setOpenSidebar(!openSidebar)}
+      onClick={handleToggleSideber}
     >
       {type === "toc" ? (
         <RiFileListLine
