@@ -3,7 +3,7 @@ import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
-import { RiCopyrightLine, RiBookmarkLine } from "react-icons/ri"
+import { RiBookmarkLine, RiCopyrightLine } from "react-icons/ri"
 import Utterances from "../components/comment"
 import Header from "../components/header"
 import Main from "../components/main"
@@ -52,7 +52,7 @@ const ArticleFooter = ({ post }) => (
   </section>
 )
 
-const BlogArticle = ({ data }) => {
+const BlogArticle = ({ data, pageContext }) => {
   const post = data.markdownRemark
   const date = {
     create: dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日"),
@@ -63,11 +63,10 @@ const BlogArticle = ({ data }) => {
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
       <p className="article-subtitle">
-        {"// "}
+        {"|| "}
         {post.frontmatter.name}
       </p>
       <h1>{post.frontmatter.title}</h1>
-
       <section className="article-meta" id="article-meta">
         <span title={`创建日期：${date.create}`}>{date.create}</span>
         <span className="divider">{"->"}</span>
@@ -101,7 +100,7 @@ const BlogArticle = ({ data }) => {
             <article
               id="main-content"
               dangerouslySetInnerHTML={{
-                __html: html + post.html.split("</h1>")[1],
+                __html: html + pageContext.dom,
               }}
             ></article>
             <Utterances />

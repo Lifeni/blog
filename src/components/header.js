@@ -5,7 +5,7 @@ import {
   RiCloseLine,
   RiFileListLine,
   RiFilterOffLine,
-  RiHomeLine,
+  RiHome2Line,
   RiInboxLine,
   RiSearchLine,
 } from "react-icons/ri"
@@ -43,7 +43,7 @@ const SearchButton = () => {
 const HomeButton = () => {
   return (
     <Link to="/" className="auto-width" aria-label="返回主页" title="返回主页">
-      <RiHomeLine aria-label="Home Icon" size={24} />
+      <RiHome2Line aria-label="Home Icon" size={24} />
     </Link>
   )
 }

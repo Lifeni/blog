@@ -411,10 +411,13 @@ section + p,
 section + p + p {
   margin: 0.25rem 0;
   font-size: inherit;
-  font-weight: bold;
+  // font-weight: bold;
   color: inherit;
   font-family: inherit;
   transition: all 0.2s;
+  line-break: auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
 
   a {
     font-weight: inherit;
@@ -459,7 +462,7 @@ section + p + p {
 
 .article-subtitle {
   position: relative;
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.25rem -1px;
   font-size: 0.975rem;
   font-weight: bold;
   font-family: var(--font-mono);
@@ -509,4 +512,9 @@ section + p + p {
     color: var(--font-primary);
     text-decoration: none;
   }
+}
+
+span.emoji::after {
+  content: " ";
+  font-family: var(--font-mono);
 }
