@@ -4,10 +4,12 @@ import {
   RiChat3Line,
   RiCloseLine,
   RiFileListLine,
+  RiFilterOffLine,
   RiHomeLine,
   RiInboxLine,
   RiSearchLine,
 } from "react-icons/ri"
+import { StringParam, useQueryParam } from "use-query-params"
 import "./header.less"
 import Search from "./search"
 
@@ -32,7 +34,6 @@ const SearchButton = () => {
         onClick={handleSearch}
       >
         <RiSearchLine aria-label="Search Icon" size={24} />
-        <span className="text">搜索</span>
       </button>
       <Search />
     </>
@@ -43,7 +44,15 @@ const HomeButton = () => {
   return (
     <Link to="/" className="auto-width" aria-label="返回主页" title="返回主页">
       <RiHomeLine aria-label="Home Icon" size={24} />
-      <span className="text">主页</span>
+    </Link>
+  )
+}
+
+const FilterOffButton = () => {
+  return (
+    <Link to="/" className="auto-width" aria-label="清除筛选" title="清除筛选">
+      <RiFilterOffLine aria-label="Filter Off Icon" size={24} />
+      <span className="text">清除筛选</span>
     </Link>
   )
 }
@@ -93,6 +102,8 @@ const SidebarButton = ({ type }) => {
 }
 
 const Header = ({ app, back, aside, comment }) => {
+  const tag = useQueryParam("tag", StringParam)[0]
+
   return (
     <header>
       <a href="#main-content" className="skip-link" aria-label="跳转到主要内容">
@@ -100,13 +111,13 @@ const Header = ({ app, back, aside, comment }) => {
       </a>
 
       <section>
-        {app && <SearchButton />}
+        {app && (tag ? <FilterOffButton /> : <SearchButton />)}
         {back && <HomeButton />}
       </section>
 
       <section>
         {comment && <CommentButton />}
-        {aside && <SidebarButton type={aside.type} />}
+        {!tag && aside && <SidebarButton type={aside.type} />}
       </section>
     </header>
   )

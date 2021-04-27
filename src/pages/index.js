@@ -1,5 +1,6 @@
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
+import { StringParam, useQueryParam } from "use-query-params"
 import BlogPost from "../components/blog-post"
 import Footer from "../components/footer"
 import Header from "../components/header"
@@ -12,52 +13,92 @@ import "./highlight.less"
 import "./index.less"
 import "./variables.less"
 
-const PostList = () => (
-  <StaticQuery
-    query={IndexQuery}
-    render={data => {
-      return (
-        <div className="post-list" id="main-content">
-          {data.allMarkdownRemark.edges.map(({ node }) => (
-            <BlogPost
-              title={node.frontmatter.title}
-              name={node.frontmatter.name}
-              descriptions={node.frontmatter.descriptions}
-              date={node.frontmatter.date}
-              create_date={node.frontmatter.create_date}
-              tags={node.frontmatter.tags}
-              license={node.frontmatter.license}
-              excerpt={node.excerpt}
-              key={node.frontmatter.title}
-            />
-          ))}
-        </div>
-      )
-    }}
-  />
-)
+const PostList = ({ tag }) => {
+  return (
+    <StaticQuery
+      query={IndexQuery}
+      render={data => {
+        let hrFlag = false
+        return (
+          <div className="post-list" id="main-content">
+            {data.allMarkdownRemark.edges.map(({ node }) => {
+              const postTags = node.frontmatter.tags.map(tag =>
+                tag.toLowerCase().replace(" ", "-")
+              )
 
-const IndexPage = () => (
-  <>
-    <Seo title="主页" />
-    <Header app aside={{ type: "note" }} />
-    <Main
-      aside={
-        <>
-          <HomeNote />
-          <FriendsNote />
-        </>
-      }
-      main={
-        <>
-          <UpdateNow />
-          <PostList />
-          <Footer />
-        </>
-      }
+              if (!tag || postTags.includes(tag)) {
+                let Hr = null
+                if (hrFlag) {
+                  Hr = <hr />
+                }
+
+                hrFlag = true
+                return (
+                  <React.Fragment key={node.frontmatter.title}>
+                    {Hr}
+                    <BlogPost
+                      title={node.frontmatter.title}
+                      name={node.frontmatter.name}
+                      descriptions={node.frontmatter.descriptions}
+                      date={node.frontmatter.date}
+                      create_date={node.frontmatter.create_date}
+                      tags={node.frontmatter.tags}
+                      license={node.frontmatter.license}
+                      excerpt={node.excerpt}
+                    />
+                  </React.Fragment>
+                )
+              }
+
+              return (
+                <BlogPost
+                  hide="true"
+                  title={node.frontmatter.title}
+                  name={node.frontmatter.name}
+                  descriptions={node.frontmatter.descriptions}
+                  date={node.frontmatter.date}
+                  create_date={node.frontmatter.create_date}
+                  tags={node.frontmatter.tags}
+                  license={node.frontmatter.license}
+                  excerpt={node.excerpt}
+                  key={node.frontmatter.title}
+                />
+              )
+            })}
+          </div>
+        )
+      }}
     />
-  </>
-)
+  )
+}
+
+const IndexPage = () => {
+  const tag = useQueryParam("tag", StringParam)[0]
+
+  return (
+    <>
+      <Seo title="主页" />
+      <Header app aside={{ type: "note" }} />
+      <Main
+        aside={
+          !tag && (
+            <>
+              <HomeNote />
+              <FriendsNote />
+            </>
+          )
+        }
+        main={
+          <>
+            <UpdateNow />
+            <PostList tag={tag} />
+            <Footer />
+          </>
+        }
+      />
+    </>
+  )
+}
 
 export default IndexPage
 

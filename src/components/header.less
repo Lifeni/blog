@@ -25,10 +25,6 @@ header {
     padding: 48px;
   }
 
-  .text {
-    display: none;
-  }
-
   a,
   button {
     position: relative;
@@ -72,6 +68,15 @@ header {
 
     &:focus-visible {
       outline: solid 2px var(--font-link);
+    }
+
+    .text {
+      align-items: center;
+      writing-mode: initial;
+      letter-spacing: initial;
+      margin: 0 8px 0 1rem;
+      font-size: 1.125rem;
+      font-weight: bold;
     }
   }
 
@@ -117,6 +122,10 @@ header {
 
       svg.action-close {
         display: none !important;
+      }
+
+      .text {
+        display: none;
       }
     }
 
@@ -164,16 +173,6 @@ header {
       color: inherit;
     }
 
-    .text {
-      display: none;
-      align-items: center;
-      writing-mode: initial;
-      letter-spacing: initial;
-      margin: 0 8px 0 1rem;
-      font-size: 1.125rem;
-      font-weight: bold;
-    }
-
     .header-title {
       display: flex;
       align-items: center;
@@ -208,6 +207,10 @@ header {
 
       svg.action-close {
         display: none;
+      }
+
+      .text {
+        display: inline-flex;
       }
     }
 

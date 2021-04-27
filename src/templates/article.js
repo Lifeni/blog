@@ -24,9 +24,7 @@ const BlogArticle = ({ data }) => {
 
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
-      <p className="article-subtitle">
-        {post.frontmatter.name?.replaceAll("-", " ")}
-      </p>
+      <p className="article-subtitle">{post.frontmatter.name}</p>
       <h1>{post.frontmatter.title}</h1>
 
       <section className="article-meta" id="article-meta">
@@ -66,7 +64,7 @@ const BlogArticle = ({ data }) => {
           <Link
             key={tag}
             className="tag"
-            to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}
+            to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
           >
             {tag}
           </Link>

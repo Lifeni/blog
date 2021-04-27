@@ -119,6 +119,7 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-less`,
     `gatsby-plugin-offline`,
+    `gatsby-plugin-use-query-params`,
     {
       resolve: `gatsby-plugin-algolia`,
       options: {

@@ -19,6 +19,7 @@
     "gatsby-plugin-react-helmet": "^4.3.0",
     "gatsby-plugin-sharp": "^3.3.1",
     "gatsby-plugin-sitemap": "^3.3.0",
+    "gatsby-plugin-use-query-params": "^1.0.1",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-autolink-headers": "^4.0.0",
     "gatsby-remark-code-buttons": "^2.0.7",
@@ -37,7 +38,8 @@
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
-    "react-instantsearch-dom": "^6.10.3"
+    "react-instantsearch-dom": "^6.10.3",
+    "use-query-params": "^1.2.2"
   },
   "devDependencies": {
     "eslint": "^7.25.0",

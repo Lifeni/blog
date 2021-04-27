@@ -3,8 +3,11 @@ import { Link } from "gatsby"
 import React from "react"
 import "./blog-post.less"
 
-const BlogPost = ({ title, name, date, descriptions, tags }) => (
-  <div className={`post`}>
+const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
+  <div
+    className={`post ${hide ? "hide" : ""}`}
+    data-tags={tags.map(tag => tag.toLowerCase().replace(" ", "-")).join(",")}
+  >
     <span className="date">{date}</span>
 
     <Link to={`/article/${name}`}>
@@ -25,7 +28,7 @@ const BlogPost = ({ title, name, date, descriptions, tags }) => (
           <Link
             key={tag}
             className="tag"
-            to={`/tag/${tag.toLowerCase().replace(" ", "-")}`}
+            to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
           >
             {tag}
           </Link>

@@ -40,24 +40,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
-
   for (let i = 0; i < posts.length; i++) {
     createPage({
       path: `article/${posts[i].node.fields.slug}`,
       component: BlogArticle,
       context: {
         slug: posts[i].node.fields.slug,
-      },
-    })
-  }
-
-  const tags = result.data.allMarkdownRemark.group
-  for (let i = 0; i < tags.length; i++) {
-    createPage({
-      path: `tag/${tags[i].fieldValue.toLowerCase().replace(" ", "-")}`,
-      component: BlogTag,
-      context: {
-        tag: tags[i].fieldValue,
       },
     })
   }
