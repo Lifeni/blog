@@ -3,6 +3,7 @@ import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
+import { RiCopyrightLine, RiPriceTag3Line } from "react-icons/ri"
 import Utterances from "../components/comment"
 import Header from "../components/header"
 import Main from "../components/main"
@@ -24,7 +25,10 @@ const BlogArticle = ({ data }) => {
 
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
-      <p className="article-subtitle">{post.frontmatter.name}</p>
+      <p className="article-subtitle">
+        {"> "}
+        {post.frontmatter.name}
+      </p>
       <h1>{post.frontmatter.title}</h1>
 
       <section className="article-meta" id="article-meta">
@@ -49,6 +53,7 @@ const BlogArticle = ({ data }) => {
           title={`署名-相同方式共享 4.0 国际`}
           className="article-license"
         >
+          <RiCopyrightLine aria-label="Copyright Icon" size="18" />
           {post.frontmatter.license}
         </a>
       ) : (
@@ -56,6 +61,7 @@ const BlogArticle = ({ data }) => {
           className="article-license"
           title={`共享协议：${post.frontmatter.license}`}
         >
+          <RiCopyrightLine aria-label="Copyright Icon" size="18" />
           {post.frontmatter.license}
         </span>
       )}
@@ -66,6 +72,7 @@ const BlogArticle = ({ data }) => {
             className="tag"
             to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
           >
+            <RiPriceTag3Line aria-label="Tag Icon" size={18} />
             {tag}
           </Link>
         ))}

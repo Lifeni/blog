@@ -92,7 +92,7 @@ const onRouteUpdate = ({ location, prevLocation }) => {
     const aside = document.querySelector("aside")
     const main = document.querySelector("main")
     const header = document.querySelector("header")
-    if (aside.classList.contains("expand")) {
+    if (aside?.classList.contains("expand")) {
       body.classList.remove("expand")
       aside.classList.remove("expand")
       header.classList.remove("expand")

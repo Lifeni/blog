@@ -1,10 +1,5 @@
 import React, { useState } from "react"
-import {
-  RiErrorWarningLine,
-  RiCloseLine,
-  RiCupLine,
-  RiRefreshLine,
-} from "react-icons/ri"
+import { RiCloseLine, RiRefreshLine } from "react-icons/ri"
 import "./notification.less"
 
 const UpdateNow = () => {
@@ -21,12 +16,6 @@ const UpdateNow = () => {
         >
           <RiRefreshLine aria-label="Refresh Icon" size={24} />
         </button>
-      </section>
-      <section>
-        <p className="title">
-          <RiCupLine aria-label="Beaker Icon" size={18} />
-          Update Now
-        </p>
       </section>
     </div>
   )
@@ -53,12 +42,6 @@ const OutdatedContent = ({ date }) => {
         >
           <RiCloseLine aria-label="Close Icon" size={24} />
         </button>
-      </section>
-      <section>
-        <p className="title">
-          <RiErrorWarningLine aria-label="Alert Icon" size={18} />
-          Outdated Content
-        </p>
       </section>
     </div>
   )

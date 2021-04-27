@@ -17,7 +17,7 @@ article {
 
   p,
   address {
-    margin: 0.75rem 0;
+    margin: 0.5rem 0;
     font-size: inherit;
     line-height: inherit;
     color: inherit;
@@ -103,7 +103,7 @@ article {
   h1 {
     position: relative;
     margin: 0;
-    padding: 0.1rem 0;
+    padding: 0;
     font-size: 1.75rem;
     line-height: 2.75rem;
   }
@@ -246,7 +246,7 @@ article {
   table {
     max-width: 100%;
     width: fit-content;
-    margin: 1em 0;
+    margin: 1.25rem 0;
     padding: 0;
     border-radius: 4px;
     display: block;
@@ -306,9 +306,21 @@ article {
       color: var(--font-link-light);
     }
 
-    ul li,
-    ol li {
-      margin: 0.2rem 0;
+    p {
+      margin: 0.25rem 0;
+    }
+
+    ul,
+    ol {
+      margin: 8px 0 8px 1.5rem;
+
+      li {
+        margin: 0;
+
+        p {
+          margin: 0.1rem 0;
+        }
+      }
     }
 
     code,
@@ -403,46 +415,18 @@ section + p + p {
   color: inherit;
   font-family: inherit;
   transition: none;
+  // display: none;
 
   a {
     font-weight: inherit;
     color: var(--font-link-light);
     transition: color 0.2s, border 0.2s;
   }
-}
 
-p.tags {
-  display: flex;
-  align-items: center;
-  overflow-x: auto;
-
-  a.tag {
-    width: auto;
-    margin: 0 1.5rem 0 0;
-    padding: 2px 0;
-    display: flex;
-    align-items: center;
-    color: var(--font-secondary);
-    font-family: var(--font-sans);
-    text-decoration: none;
-    white-space: nowrap;
-    transition: all 0.2s;
-    cursor: pointer;
-
-    &:last-of-type {
-      margin: 0;
-    }
-
-    &::before {
-      content: "#";
-      padding: 0 0.5rem 0 2px;
-    }
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: var(--font-primary);
-    }
+  & + pre,
+  & + blockquote,
+  & + table {
+    margin-top: 2.5rem;
   }
 }
 
@@ -474,9 +458,9 @@ p.tags {
 .article-subtitle {
   position: relative;
   margin: 0 0 0.25rem 0;
-  font-size: inherit;
+  font-size: 0.975rem;
   font-weight: bold;
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   color: inherit;
   text-transform: uppercase;
   transition: all 0.2s;
@@ -505,6 +489,7 @@ p.tags {
   margin: 0 1.5rem 0 0;
   padding: 2px 0;
   display: flex;
+  align-items: center;
   font-size: inherit;
   line-height: inherit;
   color: var(--font-secondary);
@@ -512,9 +497,8 @@ p.tags {
   white-space: nowrap;
   transition: all 0.2s;
 
-  &::before {
-    content: "©";
-    padding: 0 0.5rem 0 0;
+  svg {
+    margin: 0 0.5rem 0 2px;
   }
 
   &:hover,

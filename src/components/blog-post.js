@@ -1,7 +1,8 @@
-import { RiArrowRightLine } from "react-icons/ri"
 import { Link } from "gatsby"
 import React from "react"
+import { RiArrowRightLine, RiPriceTag3Line } from "react-icons/ri"
 import "./blog-post.less"
+import "./tag.less"
 
 const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
   <div
@@ -27,9 +28,10 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
         {tags.map(tag => (
           <Link
             key={tag}
-            className="tag"
+            className={`tag ${tag.toLowerCase().replace(" ", "-")}`}
             to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
           >
+            <RiPriceTag3Line aria-label="Tag Icon" size={18} />
             {tag}
           </Link>
         ))}
