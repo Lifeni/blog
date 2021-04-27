@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import { RiArrowRightLine, RiPriceTag3Line } from "react-icons/ri"
+import { RiArrowRightLine, RiBookmarkLine } from "react-icons/ri"
 import "./blog-post.less"
 import "./tag.less"
 
@@ -31,7 +31,7 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
             className={`tag ${tag.toLowerCase().replace(" ", "-")}`}
             to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
           >
-            <RiPriceTag3Line aria-label="Tag Icon" size={18} />
+            <RiBookmarkLine aria-label="Tag Icon" size={18} />
             {tag}
           </Link>
         ))}

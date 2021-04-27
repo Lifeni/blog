@@ -92,7 +92,7 @@ const IndexPage = () => {
           <>
             <UpdateNow />
             <PostList tag={tag} />
-            <Footer />
+            {!tag && <Footer />}
           </>
         }
       />

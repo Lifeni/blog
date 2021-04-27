@@ -284,7 +284,7 @@ article {
     position: relative;
     width: 100%;
     margin: 24px 0;
-    padding: 2px 24px;
+    padding: 4px 24px;
     color: var(--font-secondary);
     border-left: solid 8px var(--border-0);
     border-radius: 4px;
@@ -307,7 +307,7 @@ article {
     }
 
     p {
-      margin: 0.25rem 0;
+      margin: 0.5rem 0;
     }
 
     ul,
@@ -373,8 +373,8 @@ article {
 
     .code-copy-button {
       position: absolute;
-      right: 14px;
-      top: 14px;
+      right: 16px;
+      top: 16px;
       z-index: 1;
       width: 32px;
       height: 32px;
@@ -409,13 +409,12 @@ article {
 
 section + p,
 section + p + p {
-  margin: 0;
+  margin: 0.25rem 0;
   font-size: inherit;
-  font-weight: normal;
+  font-weight: bold;
   color: inherit;
   font-family: inherit;
-  transition: none;
-  // display: none;
+  transition: all 0.2s;
 
   a {
     font-weight: inherit;
@@ -434,10 +433,9 @@ section + p + p {
   position: relative;
   z-index: 300;
   width: 100%;
-  margin: 2px 0 24px 0;
+  margin: 2px 0;
   padding: 4px 0;
   border-radius: 0;
-  overflow-x: auto;
   transition: all 0.2s;
 
   span {
@@ -452,6 +450,10 @@ section + p + p {
     text-overflow: ellipsis;
     overflow: hidden;
     transition: all 0.2s;
+
+    &.divider {
+      font-family: var(--font-mono);
+    }
   }
 }
 

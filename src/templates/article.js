@@ -3,7 +3,7 @@ import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
-import { RiCopyrightLine, RiPriceTag3Line } from "react-icons/ri"
+import { RiCopyrightLine, RiBookmarkLine } from "react-icons/ri"
 import Utterances from "../components/comment"
 import Header from "../components/header"
 import Main from "../components/main"
@@ -14,6 +14,43 @@ import "./article.less"
 const relativeTime = require("dayjs/plugin/relativeTime")
 dayjs.extend(relativeTime)
 dayjs.locale("zh-cn")
+
+const ArticleFooter = ({ post }) => (
+  <section className="article-info">
+    {post.frontmatter.license === "CC-BY-SA-4.0" ? (
+      <a
+        href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`署名-相同方式共享 4.0 国际`}
+        className="article-license"
+      >
+        <RiCopyrightLine aria-label="Copyright Icon" size="18" />
+        {post.frontmatter.license}
+      </a>
+    ) : (
+      <span
+        className="article-license"
+        title={`共享协议：${post.frontmatter.license}`}
+      >
+        <RiCopyrightLine aria-label="Copyright Icon" size="18" />
+        {post.frontmatter.license}
+      </span>
+    )}
+    <p className="tags">
+      {post.frontmatter.tags.map(tag => (
+        <Link
+          key={tag}
+          className="tag"
+          to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
+        >
+          <RiBookmarkLine aria-label="Tag Icon" size={18} />
+          {tag}
+        </Link>
+      ))}
+    </p>
+  </section>
+)
 
 const BlogArticle = ({ data }) => {
   const post = data.markdownRemark
@@ -26,14 +63,14 @@ const BlogArticle = ({ data }) => {
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
       <p className="article-subtitle">
-        {"> "}
+        {"// "}
         {post.frontmatter.name}
       </p>
       <h1>{post.frontmatter.title}</h1>
 
       <section className="article-meta" id="article-meta">
         <span title={`创建日期：${date.create}`}>{date.create}</span>
-        <span>/</span>
+        <span className="divider">{"->"}</span>
         <span title={`修改日期：${date.modify}`}>
           {date.create.slice(0, 4) === date.modify.slice(0, 4)
             ? date.modify.slice(7)
@@ -41,43 +78,6 @@ const BlogArticle = ({ data }) => {
         </span>
       </section>
     </>
-  )
-
-  const Footer = () => (
-    <section className="article-info">
-      {post.frontmatter.license === "CC-BY-SA-4.0" ? (
-        <a
-          href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
-          target="_blank"
-          rel="noopener noreferrer"
-          title={`署名-相同方式共享 4.0 国际`}
-          className="article-license"
-        >
-          <RiCopyrightLine aria-label="Copyright Icon" size="18" />
-          {post.frontmatter.license}
-        </a>
-      ) : (
-        <span
-          className="article-license"
-          title={`共享协议：${post.frontmatter.license}`}
-        >
-          <RiCopyrightLine aria-label="Copyright Icon" size="18" />
-          {post.frontmatter.license}
-        </span>
-      )}
-      <p className="tags">
-        {post.frontmatter.tags.map(tag => (
-          <Link
-            key={tag}
-            className="tag"
-            to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
-          >
-            <RiPriceTag3Line aria-label="Tag Icon" size={18} />
-            {tag}
-          </Link>
-        ))}
-      </p>
-    </section>
   )
 
   return (
@@ -105,7 +105,7 @@ const BlogArticle = ({ data }) => {
               }}
             ></article>
             <Utterances />
-            <Footer />
+            <ArticleFooter post={post} />
           </>
         }
       />
