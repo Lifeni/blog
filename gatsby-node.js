@@ -63,6 +63,17 @@ exports.createPages = async ({ graphql, actions }) => {
     replaceEmoji(p1)
     replaceEmoji(p2)
 
+    const insertElement = p => {
+      const hr = dom.window.document.createElement("hr")
+      p.parentNode.insertBefore(hr, p.nextSibling)
+    }
+
+    if (p2) {
+      insertElement(p2)
+    } else if (p1) {
+      insertElement(p1)
+    }
+
     createPage({
       path: `article/${posts[i].node.fields.slug}`,
       component: BlogArticle,

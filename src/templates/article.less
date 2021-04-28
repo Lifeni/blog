@@ -74,17 +74,9 @@ article {
   }
 
   hr {
-    margin: 0;
-    height: calc(3rem + 12px);
-    min-height: calc(3rem + 12px);
-    width: 100%;
-    max-width: 10rem;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--border-1);
-    border: none;
-    border-top: solid 1.5rem var(--background-0);
-    border-bottom: solid 1.5rem var(--background-0);
+    // margin: 2rem 0 0 0;
+    display: none;
+    visibility: hidden;
   }
 
   h1,
@@ -114,7 +106,7 @@ article {
     line-height: 2.5rem;
 
     &:first-of-type {
-      margin: 0.75rem 0 0 0;
+      margin: 0.5rem 0 0 0;
     }
   }
 
@@ -411,7 +403,7 @@ section + p,
 section + p + p {
   margin: 0.25rem 0;
   font-size: inherit;
-  // font-weight: bold;
+  font-weight: bold;
   color: inherit;
   font-family: inherit;
   transition: all 0.2s;
@@ -462,13 +454,18 @@ section + p + p {
 
 .article-subtitle {
   position: relative;
-  margin: 0 0 0.25rem -1px;
+  margin: 0;
+  padding: 0 0 0.25rem 0;
   font-size: 0.975rem;
   font-weight: bold;
   font-family: var(--font-mono);
   color: inherit;
   text-transform: uppercase;
   transition: all 0.2s;
+
+  &::before {
+    content: "// ";
+  }
 }
 
 .article-info {

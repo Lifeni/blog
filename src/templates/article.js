@@ -62,10 +62,7 @@ const BlogArticle = ({ data, pageContext }) => {
 
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
-      <p className="article-subtitle">
-        {"|| "}
-        {post.frontmatter.name}
-      </p>
+      <p className="article-subtitle">{post.frontmatter.name}</p>
       <h1>{post.frontmatter.title}</h1>
       <section className="article-meta" id="article-meta">
         <span title={`创建日期：${date.create}`}>{date.create}</span>
