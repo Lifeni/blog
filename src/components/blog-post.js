@@ -15,14 +15,11 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
       <span className="title">{title}</span>
     </Link>
 
-    <p className="description">
+    <ul className="description">
       {descriptions.map((description, index) => (
-        <span key={description}>
-          {description}
-          {index !== descriptions.length - 1 && <br />}
-        </span>
+        <li key={description}>{description}</li>
       ))}
-    </p>
+    </ul>
     <div className="bar">
       <p className="tags">
         {tags.map(tag => (
