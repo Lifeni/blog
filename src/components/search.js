@@ -125,7 +125,7 @@ const Search = () => {
 
     // 监听按键，实现 / 打开搜索框，<Enter> 打开结果第一项
     const keypress = window.addEventListener("keypress", e => {
-      if (e.key === "/") {
+      if (window.location.pathname === "/" && e.key === "/") {
         if (!searchRef.current?.classList.contains("show")) {
           e.preventDefault()
         }
@@ -146,7 +146,11 @@ const Search = () => {
 
     // 监听按键，实现 <Esc> 关闭搜索框
     const keydown = window.addEventListener("keydown", e => {
-      if (e.key === "Escape" && searchRef.current.classList.contains("show")) {
+      if (
+        window.location.pathname === "/" &&
+        e.key === "Escape" &&
+        searchRef.current.classList.contains("show")
+      ) {
         handleSearch(false)
       }
     })
@@ -158,7 +162,7 @@ const Search = () => {
       window.removeEventListener("keypress", keypress)
       window.removeEventListener("keydown", keydown)
     }
-  }, [])
+  }, [searchRef])
 
   return (
     <div

@@ -1,6 +1,5 @@
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
-import FriendList from "./friends"
 import "./notes.less"
 
 const BaseNote = ({ path }) => {
@@ -23,19 +22,9 @@ const BaseNote = ({ path }) => {
   )
 }
 
-const EmptyNote = ({ children }) => (
-  <div className="note append">{children}</div>
-)
-
 const HomeNote = () => <BaseNote path="home" />
-const FriendsNote = () => (
-  <EmptyNote>
-    <h3>朋友</h3>
-    <FriendList />
-  </EmptyNote>
-)
 
-export { HomeNote, FriendsNote }
+export { HomeNote }
 
 export const MarkdownQuery = graphql`
   query {

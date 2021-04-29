@@ -35,7 +35,6 @@ const SearchButton = () => {
       >
         <RiSearchLine aria-label="Search Icon" size={24} />
       </button>
-      <Search />
     </>
   )
 }
@@ -112,6 +111,7 @@ const Header = ({ app, back, aside, comment }) => {
 
       <section>
         {app && (tag ? <FilterOffButton /> : <SearchButton />)}
+        <Search />
         {back && <HomeButton />}
       </section>
 
