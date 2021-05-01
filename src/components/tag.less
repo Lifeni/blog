@@ -25,9 +25,13 @@ p.tags {
     }
 
     &:hover,
-    &:active,
-    &:focus {
+    &:active {
       color: var(--font-primary);
+    }
+
+    &:focus-visible {
+      color: var(--font-primary);
+      outline: solid 2px var(--font-link);
     }
   }
 }

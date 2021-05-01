@@ -74,7 +74,7 @@ header {
       align-items: center;
       writing-mode: initial;
       letter-spacing: initial;
-      margin: 0 8px 0 1rem;
+      margin: 0 0.5rem 0 1rem;
       font-size: 1rem;
       font-weight: bold;
     }
@@ -102,11 +102,12 @@ header {
 
     a,
     button {
-      width: 100%;
+      width: 72px;
       height: auto;
       margin: 0;
       display: flex;
       align-items: center;
+      flex-direction: column;
       border-radius: 0;
       background-color: transparent;
       box-shadow: none;
@@ -125,7 +126,10 @@ header {
       }
 
       .text {
-        display: none;
+        display: inline-flex;
+        align-items: center;
+        writing-mode: vertical-lr;
+        margin: 1rem 0 0.5rem 0;
       }
     }
 
@@ -210,7 +214,7 @@ header {
       }
 
       .text {
-        display: inline-flex;
+        display: none;
       }
     }
 
@@ -254,13 +258,17 @@ header {
   top: -48px;
   left: 16px;
   width: auto;
-  height: 48px;
-  padding: 12px 20px;
+  max-width: calc(100% - 32px);
+  height: auto;
+  padding: 12px 18px;
   border: solid 2px var(--font-link);
   border-radius: 4px;
   color: var(--font-link);
   background-color: var(--background-0);
   text-decoration: none;
+  white-space: pre-wrap;
+  font-size: 1rem;
+  line-height: 1.75rem;
   opacity: 0;
   transition: all 0.2s;
 
