@@ -56,19 +56,6 @@ const FilterOffButton = () => {
   )
 }
 
-const CommentButton = () => {
-  return (
-    <a
-      href="#comment"
-      className="mobile-only auto-width"
-      aria-label="评论"
-      title="评论"
-    >
-      <RiChat3Line aria-label="Comment Icon" size={24} />
-    </a>
-  )
-}
-
 const SidebarButton = ({ type }) => {
   const handleToggleSideber = () => {
     document.querySelector("body")?.classList.toggle("expand")
@@ -100,7 +87,7 @@ const SidebarButton = ({ type }) => {
   )
 }
 
-const Header = ({ app, back, aside, comment }) => {
+const Header = ({ app, back, aside }) => {
   const tag = useQueryParam("tag", StringParam)[0]
 
   return (
@@ -115,10 +102,7 @@ const Header = ({ app, back, aside, comment }) => {
         {back && <HomeButton />}
       </section>
 
-      <section>
-        {comment && <CommentButton />}
-        {!tag && aside && <SidebarButton type={aside.type} />}
-      </section>
+      <section>{!tag && aside && <SidebarButton type={aside.type} />}</section>
     </header>
   )
 }

@@ -75,11 +75,14 @@ article {
 
   hr {
     // display: none;
+    width: 100%;
     border: none;
-    margin: 2.5rem 0 1rem 0;
+    margin: 1.5rem 0 0 0;
+    // border-top: solid 2px var(--border-0);
 
     @media (max-width: 480px) {
       margin: 0;
+      border: none;
     }
   }
 
@@ -127,7 +130,7 @@ article {
 
   ol,
   ul {
-    margin: 12px 0 12px 1.5rem;
+    margin: 12px 0 12px 1.25rem;
     color: inherit;
     font-size: inherit;
     line-height: inherit;
@@ -381,7 +384,7 @@ blockquote {
 
   ul,
   ol {
-    margin: 8px 0 8px 1.5rem;
+    margin: 8px 0 8px 1.25rem;
 
     li {
       margin: 0;
@@ -413,13 +416,17 @@ section + p + p {
   color: inherit;
   font-family: inherit;
   transition: all 0.2s;
+  width: 100%;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: pre-wrap;
   line-break: auto;
-  word-break: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
 
   a {
     font-weight: inherit;
     color: var(--font-link-light);
+    word-break: break-all;
     transition: color 0.2s, border 0.2s;
   }
 
@@ -434,7 +441,7 @@ section + p + p {
   position: relative;
   z-index: 300;
   width: 100%;
-  margin: 0.25rem 0 0.5rem 0;
+  margin: 0.25rem 0 1.5rem 0;
   padding: 0;
   border-radius: 0;
   transition: all 0.2s;
@@ -446,10 +453,6 @@ section + p + p {
     margin: 0 0.75rem 0 0;
     color: inherit;
     font-weight: bold;
-    white-space: nowrap;
-    word-break: keep-all;
-    text-overflow: ellipsis;
-    overflow: hidden;
     transition: all 0.2s;
 
     &.divider {
@@ -467,18 +470,18 @@ section + p + p {
   margin: 0 0 0.25rem 0;
   padding: 0;
   font-size: 0.975rem;
-  // font-weight: bold;
+  font-weight: bold;
   font-family: var(--font-mono);
   color: inherit;
   text-transform: uppercase;
   transition: all 0.2s;
 
   &.article::before {
-    content: "📃 ";
+    content: "// ";
   }
 
   &.error::before {
-    content: "🛸 ";
+    content: "// ";
   }
 }
 
@@ -528,4 +531,30 @@ section + p + p {
 span.emoji::after {
   content: " ";
   font-family: var(--font-mono);
+}
+
+.aside-link {
+  width: fit-content;
+  margin: 0.25rem 0;
+  text-align: start;
+  font-size: 1rem;
+  line-height: 2rem;
+  font-family: inherit;
+  color: var(--font-secondary);
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--font-primary);
+  }
+
+  @media (max-width: 864px) {
+    color: var(--font-primary);
+  }
 }

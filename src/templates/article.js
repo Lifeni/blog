@@ -82,13 +82,24 @@ const BlogArticle = ({ data, pageContext }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.descriptions.join(" / ")}
       />
-      <Header back aside={{ type: "toc" }} comment />
+      <Header back aside={{ type: "toc" }} />
       <Main
         aside={
-          <nav
-            className="toc"
-            dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
-          ></nav>
+          <>
+            <button
+              className="aside-link go-top"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              文章顶部 ↑
+            </button>
+            <nav
+              className="toc"
+              dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+            ></nav>
+            <a className="aside-link go-comment" href="#comment">
+              评论 ↓
+            </a>
+          </>
         }
         main={
           <>
