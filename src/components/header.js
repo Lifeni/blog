@@ -1,7 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
 import {
-  RiChat3Line,
   RiCloseLine,
   RiFileListLine,
   RiFilterOffLine,

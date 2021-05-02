@@ -76,6 +76,21 @@ const BlogArticle = ({ data, pageContext }) => {
     </>
   )
 
+  const handleGoTop = () => {
+    const body = document.querySelector("body")
+    const aside = document.querySelector("aside")
+    const main = document.querySelector("main")
+    const header = document.querySelector("header")
+    if (aside?.classList.contains("expand")) {
+      body.classList.remove("expand")
+      aside.classList.remove("expand")
+      header.classList.remove("expand")
+      main.classList.remove("expand")
+    }
+
+    window.scrollTo(0, 0)
+  }
+
   return (
     <>
       <Seo
@@ -86,10 +101,7 @@ const BlogArticle = ({ data, pageContext }) => {
       <Main
         aside={
           <>
-            <button
-              className="aside-link go-top"
-              onClick={() => window.scrollTo(0, 0)}
-            >
+            <button className="aside-link go-top" onClick={handleGoTop}>
               文章顶部 ↑
             </button>
             <nav

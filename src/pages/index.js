@@ -19,53 +19,81 @@ const PostList = ({ tag }) => {
       query={IndexQuery}
       render={data => {
         let hrFlag = false
-        return (
-          <div className="post-list" id="main-content">
-            {data.allMarkdownRemark.edges.map(({ node }) => {
-              const postTags = node.frontmatter.tags.map(tag =>
-                tag.toLowerCase().replace(" ", "-")
-              )
+        let articleCount = 0
+        const tags = new Map()
 
-              if (!tag || postTags.includes(tag)) {
-                let Hr = null
-                if (hrFlag) {
-                  Hr = <hr />
+        if (tag) {
+          data.allMarkdownRemark.edges.forEach(({ node }) =>
+            node.frontmatter.tags.forEach(nodeTag => {
+              const slug = nodeTag.toLowerCase().replace(" ", "-")
+              tags.set(slug, nodeTag)
+              if (slug === tag) {
+                articleCount++
+              }
+            })
+          )
+        }
+
+        return (
+          <>
+            {tag && (
+              <>
+                <Seo title={`标签：${tags.get(tag) || "Unknown"}`} />
+                <section>
+                  <p className="article-subtitle">{`${articleCount} ${
+                    articleCount > 1 ? "articles" : "article"
+                  }`}</p>
+                  <h1>{`标签：${tags.get(tag) || "Unknown"}`}</h1>
+                </section>
+              </>
+            )}
+            <div className="post-list" id="main-content">
+              {data.allMarkdownRemark.edges.map(({ node }) => {
+                const postTags = node.frontmatter.tags.map(tag =>
+                  tag.toLowerCase().replace(" ", "-")
+                )
+
+                if (!tag || postTags.includes(tag)) {
+                  let Hr = null
+                  if (hrFlag) {
+                    Hr = <hr />
+                  }
+
+                  hrFlag = true
+                  return (
+                    <React.Fragment key={node.frontmatter.title}>
+                      {Hr}
+                      <BlogPost
+                        title={node.frontmatter.title}
+                        name={node.frontmatter.name}
+                        descriptions={node.frontmatter.descriptions}
+                        date={node.frontmatter.date}
+                        create_date={node.frontmatter.create_date}
+                        tags={node.frontmatter.tags}
+                        license={node.frontmatter.license}
+                        excerpt={node.excerpt}
+                      />
+                    </React.Fragment>
+                  )
                 }
 
-                hrFlag = true
                 return (
-                  <React.Fragment key={node.frontmatter.title}>
-                    {Hr}
-                    <BlogPost
-                      title={node.frontmatter.title}
-                      name={node.frontmatter.name}
-                      descriptions={node.frontmatter.descriptions}
-                      date={node.frontmatter.date}
-                      create_date={node.frontmatter.create_date}
-                      tags={node.frontmatter.tags}
-                      license={node.frontmatter.license}
-                      excerpt={node.excerpt}
-                    />
-                  </React.Fragment>
+                  <BlogPost
+                    hide="true"
+                    title={node.frontmatter.title}
+                    name={node.frontmatter.name}
+                    descriptions={node.frontmatter.descriptions}
+                    date={node.frontmatter.date}
+                    create_date={node.frontmatter.create_date}
+                    tags={node.frontmatter.tags}
+                    license={node.frontmatter.license}
+                    excerpt={node.excerpt}
+                    key={node.frontmatter.title}
+                  />
                 )
-              }
-
-              return (
-                <BlogPost
-                  hide="true"
-                  title={node.frontmatter.title}
-                  name={node.frontmatter.name}
-                  descriptions={node.frontmatter.descriptions}
-                  date={node.frontmatter.date}
-                  create_date={node.frontmatter.create_date}
-                  tags={node.frontmatter.tags}
-                  license={node.frontmatter.license}
-                  excerpt={node.excerpt}
-                  key={node.frontmatter.title}
-                />
-              )
-            })}
-          </div>
+              })}
+            </div>
+          </>
         )
       }}
     />
