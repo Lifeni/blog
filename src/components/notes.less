@@ -26,7 +26,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: var(--font-link-hover);
+      color: var(--font-link-hover) !important;
       text-decoration: underline from-font;
       text-underline-offset: 6px;
     }
@@ -73,8 +73,8 @@
   }
 
   ul {
-    width: 100%;
-    margin: 0.75rem 0 0.25rem 0;
+    width: calc(100% + 2rem);
+    margin: 0.75rem -1rem 0.25rem -1rem;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
@@ -83,7 +83,7 @@
     li {
       position: relative;
       width: fit-content;
-      margin: 0.5rem 1.75rem 0.5rem 0;
+      margin: 0.5rem 1rem;
       padding: 0;
       display: flex;
       align-items: center;
@@ -111,12 +111,12 @@
         white-space: nowrap;
         font-weight: normal;
         color: var(--font-secondary);
+        text-decoration: none;
 
         &:hover,
         &:focus,
         &:active {
           color: var(--font-link);
-          text-decoration: none;
         }
 
         sub {

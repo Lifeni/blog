@@ -17,7 +17,7 @@ article {
 
   p,
   address {
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
     font-size: inherit;
     line-height: inherit;
     color: inherit;
@@ -25,6 +25,10 @@ article {
     line-break: auto;
     word-break: break-word;
     overflow-wrap: break-word;
+  }
+
+  p + p {
+    margin-top: 0.5rem;
   }
 
   a {
@@ -74,7 +78,7 @@ article {
   }
 
   hr {
-    // display: none;
+    display: none;
     width: 100%;
     border: none;
     margin: 1.5rem 0 0 0;
@@ -126,6 +130,7 @@ article {
   h4 {
     font-size: 1.125rem;
     line-height: 2rem;
+    padding: 0.25rem 0;
   }
 
   ol,
@@ -136,7 +141,7 @@ article {
     line-height: inherit;
 
     li {
-      margin: 0.4rem 0;
+      margin: 0.5rem 0;
       padding: 0 0 0 0.25rem;
       color: inherit;
       font-size: inherit;
@@ -146,8 +151,7 @@ article {
   }
 
   img {
-    width: auto;
-    max-width: calc(100% + 24px);
+    width: calc(100% + 24px);
     height: auto;
     opacity: 1;
     margin: 24px -12px;
@@ -284,6 +288,7 @@ article {
     position: relative;
     width: calc(100% + 24px);
     margin: 0 -12px;
+    transition: all 0.2s;
 
     & + h2 {
       margin-top: 1.5rem;
@@ -379,7 +384,7 @@ blockquote {
   }
 
   p {
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
   }
 
   ul,
@@ -390,7 +395,7 @@ blockquote {
       margin: 0;
 
       p {
-        margin: 0.1rem 0;
+        margin: 0.25rem 0;
       }
     }
   }
@@ -410,9 +415,9 @@ blockquote {
 
 section + p,
 section + p + p {
-  margin: 0.25rem 0;
+  margin: 0.35rem 0;
   font-size: inherit;
-  // font-weight: bold;
+  font-weight: bold;
   color: inherit;
   font-family: inherit;
   transition: all 0.2s;
@@ -441,7 +446,7 @@ section + p + p {
   position: relative;
   z-index: 300;
   width: 100%;
-  margin: 0.25rem 0 1.5rem 0;
+  margin: 0.25rem 0;
   padding: 0;
   border-radius: 0;
   transition: all 0.2s;
@@ -526,8 +531,9 @@ section + p + p {
 }
 
 span.emoji::after {
-  content: " ";
+  content: "";
   font-family: var(--font-mono);
+  margin: 0 0.75rem 0 0;
 }
 
 .aside-link {
