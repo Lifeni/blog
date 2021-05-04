@@ -415,7 +415,7 @@ blockquote {
 
 section + p,
 section + p + p {
-  margin: 0.35rem 0;
+  margin: 0.25rem 0;
   font-size: inherit;
   font-weight: bold;
   color: inherit;
@@ -446,7 +446,7 @@ section + p + p {
   position: relative;
   z-index: 300;
   width: 100%;
-  margin: 0.25rem 0;
+  margin: 0.25rem 0 1.25rem 0;
   padding: 0;
   border-radius: 0;
   transition: all 0.2s;
@@ -468,6 +468,10 @@ section + p + p {
       margin: 0;
     }
   }
+
+  @media (max-width: 480px) {
+    margin: 0.25rem 0;
+  }
 }
 
 .article-subtitle {
@@ -483,7 +487,16 @@ section + p + p {
   transition: all 0.2s;
 
   &::before {
-    content: "// ";
+    font-family: var(--font-mono);
+    margin: 0 0.75rem 0 0;
+  }
+
+  &.article::before {
+    content: "📖";
+  }
+
+  &.error::before {
+    content: "🛸";
   }
 }
 
