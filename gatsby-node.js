@@ -49,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     h1.parentElement.removeChild(h1)
 
-    const re = /((\ud83c[\udf00-\udfff])|(\ud83d[\udc00-\ude4f\ude80-\udeff])|[\u2600-\u2B55])\s/
+    const re = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/
     const replaceEmoji = p => {
       if (p) {
         const emoji = p.innerHTML.match(re)
@@ -63,16 +63,16 @@ exports.createPages = async ({ graphql, actions }) => {
     replaceEmoji(p1)
     replaceEmoji(p2)
 
-    // const insertElement = p => {
-    //   const hr = dom.window.document.createElement("hr")
-    //   p.parentNode.insertBefore(hr, p.nextSibling)
-    // }
-
-    // if (p2) {
-    //   insertElement(p2)
-    // } else if (p1) {
-    //   insertElement(p1)
-    // }
+    const tables = dom.window.document.querySelectorAll("table")
+    if (tables.length) {
+      tables.forEach(table => {
+        const wrapper = dom.window.document.createElement("div")
+        const clone = table.cloneNode(true)
+        wrapper.className = "table-wrapper"
+        wrapper.appendChild(clone)
+        table.replaceWith(wrapper)
+      })
+    }
 
     createPage({
       path: `article/${posts[i].node.fields.slug}`,

@@ -66,7 +66,7 @@ const BlogArticle = ({ data, pageContext }) => {
       <h1>{post.frontmatter.title}</h1>
       <section className="article-meta" id="article-meta">
         <span title={`创建日期：${date.create}`}>{date.create}</span>
-        <span className="divider">{"->"}</span>
+        <span className="divider">{" -> "}</span>
         <span title={`修改日期：${date.modify}`}>
           {date.create.slice(0, 4) === date.modify.slice(0, 4)
             ? date.modify.slice(7)
@@ -88,6 +88,11 @@ const BlogArticle = ({ data, pageContext }) => {
       main.classList.remove("expand")
     }
 
+    window.history.pushState(
+      "",
+      document.title,
+      window.location.pathname + window.location.search
+    )
     window.scrollTo(0, 0)
   }
 

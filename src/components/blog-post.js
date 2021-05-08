@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import { RiArrowRightLine, RiBookmarkLine } from "react-icons/ri"
+import { RiArrowRightLine, RiArticleLine, RiBookmarkLine } from "react-icons/ri"
 import "./blog-post.less"
 import "./tag.less"
 
@@ -16,11 +16,15 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
     </Link>
 
     <ul className="description">
-      {descriptions.map((description, index) => (
+      {descriptions.map(description => (
         <li key={description}>{description}</li>
       ))}
     </ul>
     <div className="bar">
+      <span>
+        <RiArticleLine aria-label="Article Icon" size={18} />
+        文章
+      </span>
       <p className="tags">
         {tags.map(tag => (
           <Link
@@ -42,7 +46,7 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
         tabIndex="-1"
         aria-hidden="true"
       >
-        <RiArrowRightLine aria-label="Open Article" size={24} />
+        <RiArrowRightLine aria-label="Open Article" size={18} />
       </Link>
     </div>
   </div>
