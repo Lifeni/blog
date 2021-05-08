@@ -33,6 +33,7 @@ const SearchButton = () => {
         onClick={handleSearch}
       >
         <RiSearchLine aria-label="Search Icon" size={24} />
+        <span className="text">搜索</span>
       </button>
     </>
   )
@@ -42,6 +43,7 @@ const HomeButton = () => {
   return (
     <Link to="/" className="auto-width" aria-label="返回主页" title="返回主页">
       <RiHome2Line aria-label="Home Icon" size={24} />
+      <span className="text">主页</span>
     </Link>
   )
 }

@@ -269,7 +269,7 @@ article {
 
     th,
     td {
-      padding: 0.5rem 1rem;
+      padding: 0.375rem 0.75rem;
       color: inherit;
       border: solid 2px var(--border-1);
       font-weight: normal;
@@ -456,6 +456,7 @@ section + p + p {
     font-size: inherit;
     line-height: inherit;
     margin: 0 0.75rem 0 0;
+    padding: 0 1px;
     color: inherit;
     font-weight: bold;
     transition: all 0.2s;
@@ -469,15 +470,15 @@ section + p + p {
     }
   }
 
-  @media (max-width: 480px) {
-    margin: 0.25rem 0;
-  }
+  // @media (max-width: 480px) {
+  //   margin: 0.25rem 0;
+  // }
 }
 
 .article-subtitle {
   position: relative;
   margin: 0 0 0.25rem 0;
-  padding: 0;
+  padding: 0 1px;
   font-size: 0.975rem;
   line-height: 2rem;
   font-weight: bold;
@@ -486,18 +487,18 @@ section + p + p {
   text-transform: uppercase;
   transition: all 0.2s;
 
-  &::before {
-    font-family: var(--font-mono);
-    margin: 0 0.75rem 0 0;
-  }
+  // &::before {
+  //   font-family: var(--font-mono);
+  //   margin: 0 0.75rem 0 0;
+  // }
 
-  &.article::before {
-    content: "📖";
-  }
+  // &.article::before {
+  //   content: "//";
+  // }
 
-  &.error::before {
-    content: "🛸";
-  }
+  // &.error::before {
+  //   content: "<!>";
+  // }
 }
 
 .article-info {
@@ -532,7 +533,7 @@ section + p + p {
   transition: all 0.2s;
 
   svg {
-    margin: 0 0.5rem 0 2px;
+    margin: 0 0.5rem 0 0;
   }
 
   &:hover,

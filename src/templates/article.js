@@ -62,7 +62,7 @@ const BlogArticle = ({ data, pageContext }) => {
 
   const html = ReactDOMServer.renderToStaticMarkup(
     <>
-      <p className="article-subtitle article">{post.frontmatter.name}</p>
+      <p className="article-subtitle article">文章 / {post.frontmatter.name}</p>
       <h1>{post.frontmatter.title}</h1>
       <section className="article-meta" id="article-meta">
         <span title={`创建日期：${date.create}`}>{date.create}</span>
@@ -102,14 +102,14 @@ const BlogArticle = ({ data, pageContext }) => {
         aside={
           <>
             <button className="aside-link go-top" onClick={handleGoTop}>
-              文章顶部 ↑
+              文章顶部
             </button>
             <nav
               className="toc"
               dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
             ></nav>
             <a className="aside-link go-comment" href="#comment">
-              评论 ↓
+              文章评论
             </a>
           </>
         }
