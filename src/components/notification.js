@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { RiCloseLine, RiRefreshLine } from "react-icons/ri"
+import { RiCloseFill, RiRefreshFill } from "react-icons/ri"
 import "./notification.less"
 
 const UpdateNow = () => {
@@ -14,7 +14,7 @@ const UpdateNow = () => {
           aria-label="刷新页面"
           title="刷新页面"
         >
-          <RiRefreshLine aria-label="Refresh Icon" size={24} />
+          <RiRefreshFill aria-label="Refresh Icon" size={24} />
         </button>
       </section>
     </div>
@@ -40,7 +40,7 @@ const OutdatedContent = ({ date }) => {
           aria-label="关闭通知"
           title="关闭通知"
         >
-          <RiCloseLine aria-label="Close Icon" size={24} />
+          <RiCloseFill aria-label="Close Icon" size={24} />
         </button>
       </section>
     </div>

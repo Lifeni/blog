@@ -19,9 +19,7 @@ const NotFoundPage = () => (
             <ul className="not-found-list">
               <li>
                 你正在访问&nbsp;
-                <a href={window.location.href} target="_blank">
-                  {window.location.pathname}
-                </a>
+                <a href={window.location.href}>{window.location.pathname}</a>
                 ，请检查一下链接有没有写错
               </li>
               <li>

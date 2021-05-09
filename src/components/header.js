@@ -1,12 +1,12 @@
 import { Link } from "gatsby"
 import React from "react"
 import {
-  RiCloseLine,
-  RiFileListLine,
-  RiFilterOffLine,
-  RiHome2Line,
-  RiInboxLine,
-  RiSearchLine,
+  RiCloseFill,
+  RiFileListFill,
+  RiFilterOffFill,
+  RiHome2Fill,
+  RiInboxFill,
+  RiSearchFill,
 } from "react-icons/ri"
 import { StringParam, useQueryParam } from "use-query-params"
 import "./header.less"
@@ -29,10 +29,10 @@ const SearchButton = () => {
         className="auto-width"
         id="open-dialog"
         aria-label="搜索文章"
-        title="搜索文章"
+        title="搜索文章（/）"
         onClick={handleSearch}
       >
-        <RiSearchLine aria-label="Search Icon" size={24} />
+        <RiSearchFill aria-label="Search Icon" size={24} />
         <span className="text">搜索</span>
       </button>
     </>
@@ -42,7 +42,7 @@ const SearchButton = () => {
 const HomeButton = () => {
   return (
     <Link to="/" className="auto-width" aria-label="返回主页" title="返回主页">
-      <RiHome2Line aria-label="Home Icon" size={24} />
+      <RiHome2Fill aria-label="Home Icon" size={24} />
       <span className="text">主页</span>
     </Link>
   )
@@ -51,7 +51,7 @@ const HomeButton = () => {
 const FilterOffButton = () => {
   return (
     <Link to="/" className="auto-width" aria-label="清除筛选" title="清除筛选">
-      <RiFilterOffLine aria-label="Filter Off Icon" size={24} />
+      <RiFilterOffFill aria-label="Filter Off Icon" size={24} />
       <span className="text">清除筛选</span>
     </Link>
   )
@@ -74,16 +74,16 @@ const SidebarButton = ({ type }) => {
       onClick={handleToggleSideber}
     >
       {type === "toc" ? (
-        <RiFileListLine
+        <RiFileListFill
           className="action-open"
           aria-label="Box Icon"
           size={24}
         />
       ) : (
-        <RiInboxLine className="action-open" aria-label="Box Icon" size={24} />
+        <RiInboxFill className="action-open" aria-label="Box Icon" size={24} />
       )}
 
-      <RiCloseLine className="action-close" aria-label="Close Icon" size={24} />
+      <RiCloseFill className="action-close" aria-label="Close Icon" size={24} />
     </button>
   )
 }

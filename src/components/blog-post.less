@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  padding: 32px 0;
+  padding: 32px 0 40px 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -17,7 +17,7 @@
   }
 
   @media (max-width: 480px) {
-    padding: 24px 0;
+    padding: 24px 0 32px 0;
   }
 
   &.hide {
@@ -68,29 +68,34 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    p {
-      margin: 0 1rem 0 0;
-    }
-
-    span {
-      margin: 0 1.5rem 0 0;
-      display: flex;
-      align-items: center;
-      color: var(--font-secondary);
-
-      svg {
-        fill: var(--font-secondary);
-        margin: 0 0.5rem 0 0;
-      }
-    }
-
     section {
-      margin: 0 0.5rem 0 0;
       display: flex;
-      align-items: center;
+      overflow-x: auto;
 
-      svg {
-        fill: var(--font-secondary);
+      .tags {
+        overflow-x: initial;
+      }
+
+      p {
+        margin: 0 1rem 0 0;
+      }
+
+      span {
+        margin: 0 0.75rem 0 0;
+        padding: 2px 12px;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        color: var(--font-secondary);
+        background-color: var(--background-4);
+        border-radius: 4px;
+        transition: all 0.2s;
+
+        svg {
+          fill: var(--font-secondary);
+          margin: 0 0.5rem 0 0;
+        }
       }
     }
   }
@@ -109,7 +114,7 @@
 
   .description {
     width: 100%;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 1rem 0;
     padding: 0;
 
     li {

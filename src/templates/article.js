@@ -1,9 +1,9 @@
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
-import React from "react"
+import React, { useEffect } from "react"
 import ReactDOMServer from "react-dom/server"
-import { RiBookmarkLine, RiCopyrightLine } from "react-icons/ri"
+import { RiBookmarkFill, RiCopyrightFill } from "react-icons/ri"
 import Utterances from "../components/comment"
 import Header from "../components/header"
 import Main from "../components/main"
@@ -25,7 +25,7 @@ const ArticleFooter = ({ post }) => (
         title={`署名-相同方式共享 4.0 国际`}
         className="article-license"
       >
-        <RiCopyrightLine aria-label="Copyright Icon" size="18" />
+        <RiCopyrightFill aria-label="Copyright Icon" size={17} />
         {post.frontmatter.license}
       </a>
     ) : (
@@ -33,7 +33,7 @@ const ArticleFooter = ({ post }) => (
         className="article-license"
         title={`共享协议：${post.frontmatter.license}`}
       >
-        <RiCopyrightLine aria-label="Copyright Icon" size="18" />
+        <RiCopyrightFill aria-label="Copyright Icon" size={17} />
         {post.frontmatter.license}
       </span>
     )}
@@ -44,7 +44,7 @@ const ArticleFooter = ({ post }) => (
           className="tag"
           to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
         >
-          <RiBookmarkLine aria-label="Tag Icon" size={18} />
+          <RiBookmarkFill aria-label="Tag Icon" size={17} />
           {tag}
         </Link>
       ))}
@@ -73,6 +73,7 @@ const BlogArticle = ({ data, pageContext }) => {
             : date.modify}
         </span>
       </section>
+      <ArticleFooter post={post} />
     </>
   )
 
@@ -95,6 +96,21 @@ const BlogArticle = ({ data, pageContext }) => {
     )
     window.scrollTo(0, 0)
   }
+
+  useEffect(() => {
+    const info = document.querySelector(".article-info")
+    if (info) {
+      const article = document.querySelector("article")
+      const p1 = document.querySelector("section + p")
+      const p2 = document.querySelector("section + p + p")
+      if (p2) {
+        article.insertBefore(p1, info)
+        article.insertBefore(p2, info)
+      } else {
+        article.insertBefore(p1, info)
+      }
+    }
+  }, [])
 
   return (
     <>
@@ -129,7 +145,6 @@ const BlogArticle = ({ data, pageContext }) => {
               }}
             ></article>
             <Utterances />
-            <ArticleFooter post={post} />
           </>
         }
       />

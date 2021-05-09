@@ -115,10 +115,6 @@ article {
     padding: 1.25rem 0;
     font-size: 1.5rem;
     line-height: 2.5rem;
-
-    &:first-of-type {
-      margin: 1rem 0 0 0;
-    }
   }
 
   h3 {
@@ -491,37 +487,58 @@ section + p + p {
 
 .article-info {
   display: flex;
-  flex-wrap: wrap;
   margin: 0;
-  padding: 1.5rem 0 0 0;
+  padding: 0.75rem 0;
   font-size: 1rem;
   line-height: 2rem;
   transition: all 0.2s;
+  overflow-x: auto;
 
   p {
     margin: 0;
 
     &.tags {
-      flex-wrap: wrap;
+      overflow-x: initial;
+
+      .tag {
+        svg {
+          margin: 0 0.5rem 0 0;
+          fill: var(--font-secondary);
+          transition: all 0.2s;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          svg {
+            fill: var(--font-primary);
+          }
+        }
+      }
     }
   }
 }
 
 .article-license {
   width: fit-content;
-  margin: 0 1.5rem 0 0;
-  padding: 2px 0;
+  margin: 0 0.75rem 0 0;
+  padding: 2px 12px;
   display: flex;
   align-items: center;
-  font-size: inherit;
+  font-size: 0.875rem;
   line-height: inherit;
+  border-radius: 4px;
+  font-weight: bold;
   color: var(--font-secondary);
+  background-color: var(--background-4);
   text-decoration: none;
   white-space: nowrap;
   transition: all 0.2s;
 
   svg {
     margin: 0 0.5rem 0 0;
+    fill: var(--font-secondary);
+    transition: all 0.2s;
   }
 
   &:hover,
@@ -529,6 +546,10 @@ section + p + p {
   &:focus {
     color: var(--font-primary);
     text-decoration: none;
+
+    svg {
+      fill: var(--font-primary);
+    }
   }
 }
 

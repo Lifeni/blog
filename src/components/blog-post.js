@@ -1,13 +1,13 @@
 import { Link } from "gatsby"
 import React from "react"
-import { RiArrowRightLine, RiArticleLine, RiBookmarkLine } from "react-icons/ri"
+import { RiArrowRightFill, RiArticleFill, RiBookmarkFill } from "react-icons/ri"
 import "./blog-post.less"
 import "./tag.less"
 
 const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
   <div
     className={`post ${hide ? "hide" : ""}`}
-    data-tags={tags.map(tag => tag.toLowerCase().replace(" ", "-")).join(",")}
+    // data-tags={tags.map(tag => tag.toLowerCase().replace(" ", "-")).join(",")}
   >
     <span className="date">{date}</span>
 
@@ -21,22 +21,24 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
       ))}
     </ul>
     <div className="bar">
-      <span>
-        <RiArticleLine aria-label="Article Icon" size={18} />
-        文章
-      </span>
-      <p className="tags">
-        {tags.map(tag => (
-          <Link
-            key={tag}
-            className={`tag ${tag.toLowerCase().replace(" ", "-")}`}
-            to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
-          >
-            <RiBookmarkLine aria-label="Tag Icon" size={18} />
-            {tag}
-          </Link>
-        ))}
-      </p>
+      <section>
+        <span>
+          <RiArticleFill aria-label="Article Icon" size={17} />
+          文章
+        </span>
+        <p className="tags">
+          {tags.map(tag => (
+            <Link
+              key={tag}
+              className={`tag ${tag.toLowerCase().replace(" ", "-")}`}
+              to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
+            >
+              <RiBookmarkFill aria-label="Tag Icon" size={17} />
+              {tag}
+            </Link>
+          ))}
+        </p>
+      </section>
 
       <Link
         className="read-more"
@@ -46,7 +48,7 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
         tabIndex="-1"
         aria-hidden="true"
       >
-        <RiArrowRightLine aria-label="Open Article" size={18} />
+        <RiArrowRightFill aria-label="Open Article" size={24} />
       </Link>
     </div>
   </div>

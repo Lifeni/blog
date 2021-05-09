@@ -44,7 +44,7 @@ const domOperation = location => {
     })
   }
 
-  const comment = document.querySelector("#comment")
+  const comment = document.querySelector("#article-comment")
   const exist = document.querySelector(".utterances-frame")
   if (comment && !exist) {
     const utterances = document.createElement("script")
