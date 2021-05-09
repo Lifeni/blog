@@ -40,9 +40,6 @@ const PostList = ({ tag }) => {
               <>
                 <Seo title={`标签：${tags.get(tag) || "Unknown"}`} />
                 <section>
-                  {/* <p className="article-subtitle">{`TAG / ${articleCount} ${
-                    articleCount > 1 ? "articles" : "article"
-                  }`}</p> */}
                   <p className="article-subtitle">标签 / {tag || "Unknown"}</p>
 
                   <h1>{`${articleCount} 篇文章`}</h1>

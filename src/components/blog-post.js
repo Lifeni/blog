@@ -7,7 +7,6 @@ import "./tag.less"
 const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
   <div
     className={`post ${hide ? "hide" : ""}`}
-    // data-tags={tags.map(tag => tag.toLowerCase().replace(" ", "-")).join(",")}
   >
     <span className="date">{date}</span>
 
