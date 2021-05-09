@@ -416,7 +416,7 @@ blockquote {
 
 section + p,
 section + p + p {
-  margin: 0.375rem 0;
+  margin: 0.25rem 0;
   font-size: inherit;
   font-weight: bold;
   color: inherit;
@@ -440,7 +440,7 @@ section + p + p {
   & + blockquote,
   & + table,
   & + .table-wrapper {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
   }
 }
 
@@ -490,6 +490,13 @@ section + p + p {
   line-height: 2rem;
   transition: all 0.2s;
   overflow-x: auto;
+
+  & + pre,
+  & + blockquote,
+  & + table,
+  & + .table-wrapper {
+    margin-top: 2rem;
+  }
 
   p {
     margin: 0;
