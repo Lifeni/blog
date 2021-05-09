@@ -113,7 +113,7 @@ const BlogArticle = ({ data, pageContext }) => {
               className="toc"
               dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
             ></nav>
-            <a className="aside-link go-comment" href="#comment">
+            <a className="aside-link go-comment" href="#article-comment">
               文章评论
             </a>
           </>

@@ -2,7 +2,7 @@ import React from "react"
 import "./comment.less"
 
 const Utterances = () => (
-  <div className="utterances-comment" id="comment">
+  <div className="utterances-comment" id="article-comment">
     <p className="comment-loading" id="comment-loading">
       <span aria-hidden="true">🔮</span> utterances 加载中 ...
     </p>
