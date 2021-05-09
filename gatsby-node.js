@@ -1,6 +1,7 @@
 const { JSDOM } = require("jsdom")
 const path = require(`path`)
 const BlogArticle = path.resolve(`./src/templates/article.js`)
+const emojiRegex = require("emoji-regex/es2015/RGI_Emoji")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -49,12 +50,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
     h1.parentElement.removeChild(h1)
 
-    const re = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/
     const replaceEmoji = p => {
       if (p) {
-        const emoji = p.innerHTML.match(re)
+        const emoji = p.innerHTML.match(emojiRegex())
         p.innerHTML = p.innerHTML.replace(
-          re,
+          emojiRegex(),
           `<span class="emoji" role="img" aria-label="Emoji">${emoji?.[0].trim()}</span>`
         )
       }
