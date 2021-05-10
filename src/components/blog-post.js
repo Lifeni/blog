@@ -5,9 +5,7 @@ import "./blog-post.less"
 import "./tag.less"
 
 const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
-  <div
-    className={`post ${hide ? "hide" : ""}`}
-  >
+  <div className={`post ${hide ? "hide" : ""}`}>
     <span className="date">{date}</span>
 
     <Link to={`/article/${name}`}>
@@ -21,7 +19,7 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
     </ul>
     <div className="bar">
       <section>
-        <span>
+        <span className="pill">
           <RiArticleFill aria-label="Article Icon" size={17} />
           文章
         </span>
@@ -29,7 +27,7 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
           {tags.map(tag => (
             <Link
               key={tag}
-              className={`tag ${tag.toLowerCase().replace(" ", "-")}`}
+              className={`tag ${tag.toLowerCase().replace(" ", "-")} pill`}
               to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
             >
               <RiBookmarkFill aria-label="Tag Icon" size={17} />

@@ -22,15 +22,15 @@ const ArticleFooter = ({ post }) => (
         href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
         target="_blank"
         rel="noopener noreferrer"
-        title={`署名-相同方式共享 4.0 国际`}
-        className="article-license"
+        title={`CC-BY-SA-4.0 署名-相同方式共享 4.0 国际`}
+        className="article-license pill"
       >
         <RiCopyrightFill aria-label="Copyright Icon" size={17} />
-        {post.frontmatter.license}
+        署名-相同方式共享 4.0 国际
       </a>
     ) : (
       <span
-        className="article-license"
+        className="article-license pill"
         title={`共享协议：${post.frontmatter.license}`}
       >
         <RiCopyrightFill aria-label="Copyright Icon" size={17} />
@@ -41,7 +41,7 @@ const ArticleFooter = ({ post }) => (
       {post.frontmatter.tags.map(tag => (
         <Link
           key={tag}
-          className="tag"
+          className="tag pill"
           to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
         >
           <RiBookmarkFill aria-label="Tag Icon" size={17} />
@@ -55,8 +55,18 @@ const ArticleFooter = ({ post }) => (
 const BlogArticle = ({ data, pageContext }) => {
   const post = data.markdownRemark
   const date = {
-    create: dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日"),
-    modify: dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日"),
+    create: {
+      full: dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日"),
+      year: dayjs(post.frontmatter.create_date).year(),
+      month: dayjs(post.frontmatter.create_date).month(),
+      date: dayjs(post.frontmatter.create_date).date(),
+    },
+    modify: {
+      full: dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日"),
+      year: dayjs(post.frontmatter.date).year(),
+      month: dayjs(post.frontmatter.date).month(),
+      date: dayjs(post.frontmatter.date).date(),
+    },
     from: dayjs(post.frontmatter.date).fromNow(),
   }
 
@@ -65,13 +75,22 @@ const BlogArticle = ({ data, pageContext }) => {
       <p className="article-subtitle article">文章 / {post.frontmatter.name}</p>
       <h1>{post.frontmatter.title}</h1>
       <section className="article-meta" id="article-meta">
-        <span title={`创建日期：${date.create}`}>{date.create}</span>
-        <span className="divider">{" -> "}</span>
-        <span title={`修改日期：${date.modify}`}>
-          {date.create.slice(0, 4) === date.modify.slice(0, 4)
-            ? date.modify.slice(7)
-            : date.modify}
+        <span title={`创建日期：${date.create.full}`}>
+          发布于 {date.create.full}
         </span>
+        {date.create.full !== date.modify.full && (
+          <>
+            <span className="divider">{" -> "}</span>
+            <span title={`修改日期：${date.modify.full}`}>
+              最后修改于&nbsp;
+              {date.create.year === date.modify.year
+                ? date.create.month === date.modify.month
+                  ? `${date.modify.date} 日`
+                  : `${date.modify.month} 月 ${date.modify.date} 日`
+                : date.modify.full}
+            </span>
+          </>
+        )}
       </section>
       <ArticleFooter post={post} />
     </>

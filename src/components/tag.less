@@ -1,40 +1,57 @@
 p.tags {
+  margin: 0 0 0 0.75rem;
   display: flex;
   align-items: center;
-  overflow-x: auto;
+}
 
-  a.tag {
-    width: auto;
-    margin: 0 0.75rem 0 0;
-    padding: 2px 12px;
-    display: flex;
-    align-items: center;
-    color: var(--font-secondary);
-    background-color: var(--background-4);
-    border-radius: 4px;
-    font-size: 0.875rem;
-    font-weight: bold;
-    font-family: var(--font-sans);
-    text-decoration: none;
-    white-space: nowrap;
+.pill {
+  width: auto;
+  margin: 0 0.75rem 0 0;
+  padding: 2px 16px;
+  display: flex;
+  align-items: center;
+  color: var(--font-secondary);
+  background-color: var(--background-4);
+  border-radius: 36px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  font-family: var(--font-sans);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:last-of-type {
+    margin: 0;
+  }
+
+  svg {
+    margin: 0 0.5rem 0 0;
+    fill: var(--font-secondary);
     transition: all 0.2s;
-    cursor: pointer;
+  }
 
-    &:last-of-type {
-      margin: 0;
-    }
+  &:hover,
+  &:active {
+    color: var(--font-primary);
+    text-decoration: none;
 
     svg {
-      margin: 0 0.5rem 0 0;
+      fill: var(--font-primary);
     }
+  }
 
-    &:hover {
-      color: var(--font-primary);
-    }
+  &:focus {
+    color: var(--font-secondary);
+    text-decoration: none;
+  }
 
-    &:focus-visible {
-      color: var(--font-primary);
-      outline: solid 2px var(--font-link);
+  &:focus-visible {
+    color: var(--font-primary);
+    outline: solid 2px var(--font-link);
+
+    svg {
+      fill: var(--font-primary);
     }
   }
 }
