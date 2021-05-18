@@ -34,10 +34,15 @@ const SearchButton = () => {
 
 const HomeButton = () => {
   return (
-    <Link to="/" className="auto-width" aria-label="返回主页" title="返回主页">
+    <button
+      className="auto-width"
+      aria-label="返回主页"
+      title="返回主页"
+      onClick={() => window.history.back()}
+    >
       <FiArrowLeft aria-label="Home Icon" size={24} />
       <span className="text">主页</span>
-    </Link>
+    </button>
   )
 }
 

@@ -85,12 +85,12 @@ const BlogArticle = ({ data, pageContext }) => {
               title={`修改日期：${date.modify.full}`}
               className="modify-date"
             >
-              最后修改于&nbsp;
-              {date.create.year === date.modify.year
+              最后修改于 {date.modify.full}
+              {/* {date.create.year === date.modify.year
                 ? date.create.month === date.modify.month
                   ? `${date.modify.date} 日`
                   : `${date.modify.month} 月 ${date.modify.date} 日`
-                : date.modify.full}
+                : date.modify.full} */}
             </span>
           </>
         )}
