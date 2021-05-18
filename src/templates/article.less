@@ -12,7 +12,7 @@ article {
   }
 
   svg {
-    fill: var(--font-primary);
+    // fill: var(--font-primary);
   }
 
   p,
@@ -117,15 +117,21 @@ article {
   }
 
   h3 {
+    margin: 1.5rem 0 0 0;
     font-size: 1.25rem;
     line-height: 2.25rem;
     padding: 0.75rem 0;
   }
 
+  h2 + h3 {
+    margin: 0;
+  }
+
   h4 {
+    margin: 1rem 0 0 0;
     font-size: 1.125rem;
     line-height: 2rem;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
   }
 
   ol,
@@ -418,7 +424,7 @@ section + p,
 section + p + p {
   margin: 0.25rem 0;
   font-size: inherit;
-  font-weight: bold;
+  // font-weight: bold;
   color: inherit;
   font-family: inherit;
   transition: all 0.2s;
@@ -448,7 +454,7 @@ section + p + p {
   position: relative;
   z-index: 300;
   width: 100%;
-  margin: 0.25rem 0 0.5rem 0;
+  margin: 0.5rem 0;
   padding: 0;
   border-radius: 0;
   transition: all 0.2s;
@@ -485,7 +491,7 @@ section + p + p {
 .article-info {
   display: flex;
   margin: 0;
-  padding: 0.75rem 0;
+  padding: 1rem 0;
   font-size: 1rem;
   line-height: 2rem;
   transition: all 0.2s;

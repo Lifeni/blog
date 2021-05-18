@@ -1,7 +1,7 @@
-import { RiArrowUpSFill } from "react-icons/ri"
 import algoliasearch from "algoliasearch/lite"
 import { Link } from "gatsby"
 import React, { useEffect, useRef } from "react"
+import { FiChevronUp } from "react-icons/fi"
 import {
   connectAutoComplete,
   Highlight,
@@ -30,7 +30,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
         aria-label="Search"
       />
       <button id="close-search" title="关闭搜索窗口" aria-label="关闭搜索窗口">
-        <RiArrowUpSFill aria-label="Close Icon" size={24} />
+        <FiChevronUp aria-label="Close Icon" size={24} />
       </button>
     </div>
 

@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import { RiArrowRightFill, RiArticleFill, RiBookmarkFill } from "react-icons/ri"
+import { FiArrowRight, FiBookmark, FiBookOpen } from "react-icons/fi"
 import "./blog-post.less"
 import "./tag.less"
 
@@ -20,7 +20,7 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
     <div className="bar">
       <section>
         <span className="pill">
-          <RiArticleFill aria-label="Article Icon" size={17} />
+          <FiBookOpen aria-label="Article Icon" size={16} />
           文章
         </span>
         <p className="tags">
@@ -30,7 +30,7 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
               className={`tag ${tag.toLowerCase().replace(" ", "-")} pill`}
               to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
             >
-              <RiBookmarkFill aria-label="Tag Icon" size={17} />
+              <FiBookmark aria-label="Tag Icon" size={16} />
               {tag}
             </Link>
           ))}
@@ -45,7 +45,7 @@ const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
         tabIndex="-1"
         aria-hidden="true"
       >
-        <RiArrowRightFill aria-label="Open Article" size={24} />
+        <FiArrowRight aria-label="Open Article" size={24} />
       </Link>
     </div>
   </div>

@@ -3,7 +3,7 @@ import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
 import React, { useEffect } from "react"
 import ReactDOMServer from "react-dom/server"
-import { RiBookmarkFill, RiCopyrightFill } from "react-icons/ri"
+import { FiBookmark, FiInfo } from "react-icons/fi"
 import Utterances from "../components/comment"
 import Header from "../components/header"
 import Main from "../components/main"
@@ -25,7 +25,7 @@ const ArticleFooter = ({ post }) => (
         title={`CC-BY-SA-4.0 署名-相同方式共享 4.0 国际`}
         className="article-license pill"
       >
-        <RiCopyrightFill aria-label="Copyright Icon" size={17} />
+        <FiInfo aria-label="Copyright Icon" size={17} />
         署名-相同方式共享 4.0 国际
       </a>
     ) : (
@@ -33,7 +33,7 @@ const ArticleFooter = ({ post }) => (
         className="article-license pill"
         title={`共享协议：${post.frontmatter.license}`}
       >
-        <RiCopyrightFill aria-label="Copyright Icon" size={17} />
+        <FiInfo aria-label="Copyright Icon" size={17} />
         {post.frontmatter.license}
       </span>
     )}
@@ -44,7 +44,7 @@ const ArticleFooter = ({ post }) => (
           className="tag pill"
           to={`/?tag=${tag.toLowerCase().replace(" ", "-")}`}
         >
-          <RiBookmarkFill aria-label="Tag Icon" size={17} />
+          <FiBookmark aria-label="Tag Icon" size={17} />
           {tag}
         </Link>
       ))}
@@ -75,13 +75,16 @@ const BlogArticle = ({ data, pageContext }) => {
       <p className="article-subtitle article">文章 / {post.frontmatter.name}</p>
       <h1>{post.frontmatter.title}</h1>
       <section className="article-meta" id="article-meta">
-        <span title={`创建日期：${date.create.full}`}>
+        <span title={`创建日期：${date.create.full}`} className="create-date">
           发布于 {date.create.full}
         </span>
         {date.create.full !== date.modify.full && (
           <>
             <span className="divider">{" -> "}</span>
-            <span title={`修改日期：${date.modify.full}`}>
+            <span
+              title={`修改日期：${date.modify.full}`}
+              className="modify-date"
+            >
               最后修改于&nbsp;
               {date.create.year === date.modify.year
                 ? date.create.month === date.modify.month

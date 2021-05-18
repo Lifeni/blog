@@ -1,13 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import {
-  RiCloseFill,
-  RiFileListFill,
-  RiFilterOffFill,
-  RiHome2Fill,
-  RiInboxFill,
-  RiSearchFill,
-} from "react-icons/ri"
+import { FiArrowLeft, FiHome, FiInbox, FiSearch, FiX } from "react-icons/fi"
 import { StringParam, useQueryParam } from "use-query-params"
 import "./header.less"
 import Search from "./search"
@@ -32,7 +25,7 @@ const SearchButton = () => {
         title="搜索文章（/）"
         onClick={handleSearch}
       >
-        <RiSearchFill aria-label="Search Icon" size={24} />
+        <FiSearch aria-label="Search Icon" size={24} />
         <span className="text">搜索</span>
       </button>
     </>
@@ -42,7 +35,7 @@ const SearchButton = () => {
 const HomeButton = () => {
   return (
     <Link to="/" className="auto-width" aria-label="返回主页" title="返回主页">
-      <RiHome2Fill aria-label="Home Icon" size={24} />
+      <FiArrowLeft aria-label="Home Icon" size={24} />
       <span className="text">主页</span>
     </Link>
   )
@@ -51,7 +44,7 @@ const HomeButton = () => {
 const FilterOffButton = () => {
   return (
     <Link to="/" className="auto-width" aria-label="清除筛选" title="清除筛选">
-      <RiFilterOffFill aria-label="Filter Off Icon" size={24} />
+      <FiArrowLeft aria-label="Filter Off Icon" size={24} />
       <span className="text">清除筛选</span>
     </Link>
   )
@@ -73,17 +66,8 @@ const SidebarButton = ({ type }) => {
       title="展开侧栏"
       onClick={handleToggleSideber}
     >
-      {type === "toc" ? (
-        <RiFileListFill
-          className="action-open"
-          aria-label="Box Icon"
-          size={24}
-        />
-      ) : (
-        <RiInboxFill className="action-open" aria-label="Box Icon" size={24} />
-      )}
-
-      <RiCloseFill className="action-close" aria-label="Close Icon" size={24} />
+      <FiInbox className="action-open" aria-label="Box Icon" size={24} />
+      <FiX className="action-close" aria-label="Close Icon" size={24} />
     </button>
   )
 }
