@@ -17,7 +17,7 @@ const pageQuery = `{
           title
           name
           tags
-          descriptions
+          description
         }
         excerpt(pruneLength: 5000)
       }

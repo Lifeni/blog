@@ -67,14 +67,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => (
               <Highlight hit={hit} attribute="title" tagName="mark" />
             </h6>
             {hit._snippetResult.excerpt.matchLevel === "none" ? (
-              <p className="descriptions">
-                {hit.descriptions.map((description, index) => (
-                  <span key={description} className="description">
-                    {description}
-                    {index !== hit.descriptions.length - 1 && <br />}
-                  </span>
-                ))}
-              </p>
+              <p className="description">{hit.description}</p>
             ) : (
               <p className="preview">
                 <Snippet hit={hit} attribute="excerpt" tagName="mark" />

@@ -3,6 +3,7 @@ const path = require(`path`)
 const BlogArticle = path.resolve(`./src/templates/article.js`)
 const remark = require("remark")
 const remarkHTML = require("remark-html")
+const externalLinks = require("remark-external-links")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -83,7 +84,11 @@ exports.onCreateNode = ({ node, actions }) => {
 
     const description = node.frontmatter?.description
     if (description) {
-      const value = remark().use(remarkHTML).processSync(description).toString()
+      const value = remark()
+        .use(externalLinks)
+        .use(remarkHTML)
+        .processSync(description)
+        .toString()
 
       createNodeField({
         name: `description_html`,

@@ -153,8 +153,8 @@ const BlogArticle = ({ data, pageContext }) => {
                 __html: html + pageContext.dom,
               }}
             />
-            <ArticleFooter post={post} />
             <Utterances />
+            <ArticleFooter post={post} />
           </>
         }
       />
