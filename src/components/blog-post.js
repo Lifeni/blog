@@ -4,19 +4,25 @@ import { FiArrowRight, FiBookmark, FiBookOpen } from "react-icons/fi"
 import "./blog-post.less"
 import "./tag.less"
 
-const BlogPost = ({ title, name, date, descriptions, tags, hide }) => (
+const BlogPost = ({
+  title,
+  name,
+  date,
+  description,
+  descriptionHTML,
+  tags,
+  hide,
+}) => (
   <div className={`post ${hide ? "hide" : ""}`}>
     <span className="date">{date}</span>
 
     <Link to={`/article/${name}`}>
       <span className="title">{title}</span>
     </Link>
-
-    <ul className="description">
-      {descriptions.map(description => (
-        <li key={description}>{description}</li>
-      ))}
-    </ul>
+    <p
+      className="description"
+      dangerouslySetInnerHTML={{ __html: descriptionHTML }}
+    ></p>
     <div className="bar">
       <section>
         <span className="pill">

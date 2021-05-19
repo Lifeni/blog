@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import { FiArrowLeft, FiHome, FiInbox, FiSearch, FiX } from "react-icons/fi"
+import { FiArrowLeft, FiInbox, FiSearch, FiX } from "react-icons/fi"
 import { StringParam, useQueryParam } from "use-query-params"
 import "./header.less"
 import Search from "./search"

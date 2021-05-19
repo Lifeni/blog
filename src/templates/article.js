@@ -1,7 +1,7 @@
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
-import React, { useEffect } from "react"
+import React from "react"
 import ReactDOMServer from "react-dom/server"
 import { FiBookmark, FiInfo } from "react-icons/fi"
 import Utterances from "../components/comment"
@@ -58,13 +58,13 @@ const BlogArticle = ({ data, pageContext }) => {
     create: {
       full: dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日"),
       year: dayjs(post.frontmatter.create_date).year(),
-      month: dayjs(post.frontmatter.create_date).month(),
+      month: dayjs(post.frontmatter.create_date).month() + 1,
       date: dayjs(post.frontmatter.create_date).date(),
     },
     modify: {
       full: dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日"),
       year: dayjs(post.frontmatter.date).year(),
-      month: dayjs(post.frontmatter.date).month(),
+      month: dayjs(post.frontmatter.date).month() + 1,
       date: dayjs(post.frontmatter.date).date(),
     },
     from: dayjs(post.frontmatter.date).fromNow(),
@@ -78,24 +78,26 @@ const BlogArticle = ({ data, pageContext }) => {
         <span title={`创建日期：${date.create.full}`} className="create-date">
           发布于 {date.create.full}
         </span>
-        {date.create.full !== date.modify.full && (
-          <>
-            <span className="divider">{" -> "}</span>
-            <span
-              title={`修改日期：${date.modify.full}`}
-              className="modify-date"
-            >
-              最后修改于 {date.modify.full}
-              {/* {date.create.year === date.modify.year
-                ? date.create.month === date.modify.month
-                  ? `${date.modify.date} 日`
-                  : `${date.modify.month} 月 ${date.modify.date} 日`
-                : date.modify.full} */}
-            </span>
-          </>
+        <span className="divider">{" -> "}</span>
+        {date.create.full !== date.modify.full ? (
+          <span title={`修改日期：${date.modify.full}`} className="modify-date">
+            最后修改于{" "}
+            {date.create.year === date.modify.year
+              ? date.create.month === date.modify.month
+                ? `${date.modify.date} 日`
+                : `${date.modify.month} 月 ${date.modify.date} 日`
+              : date.modify.full}
+          </span>
+        ) : (
+          <span title={`修改日期：${date.modify.full}`} className="modify-date">
+            修改于 {date.modify.full}
+          </span>
         )}
       </section>
-      <ArticleFooter post={post} />
+      <section
+        className="article-description"
+        dangerouslySetInnerHTML={{ __html: post.fields.description_html }}
+      ></section>
     </>
   )
 
@@ -119,26 +121,11 @@ const BlogArticle = ({ data, pageContext }) => {
     window.scrollTo(0, 0)
   }
 
-  useEffect(() => {
-    const info = document.querySelector(".article-info")
-    if (info) {
-      const article = document.querySelector("article")
-      const p1 = document.querySelector("section + p")
-      const p2 = document.querySelector("section + p + p")
-      if (p2) {
-        article.insertBefore(p1, info)
-        article.insertBefore(p2, info)
-      } else {
-        article.insertBefore(p1, info)
-      }
-    }
-  }, [])
-
   return (
     <>
       <Seo
         title={post.frontmatter.title}
-        description={post.frontmatter.descriptions.join(" / ")}
+        description={post.frontmatter.description}
       />
       <Header back aside={{ type: "toc" }} />
       <Main
@@ -165,7 +152,8 @@ const BlogArticle = ({ data, pageContext }) => {
               dangerouslySetInnerHTML={{
                 __html: html + pageContext.dom,
               }}
-            ></article>
+            />
+            <ArticleFooter post={post} />
             <Utterances />
           </>
         }
@@ -186,10 +174,13 @@ export const PostQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
+      fields {
+        description_html
+      }
       frontmatter {
         title
         name
-        descriptions
+        description
         tags
         date
         create_date

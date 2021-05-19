@@ -95,14 +95,19 @@
     margin: 0 0 1rem 0;
     padding: 0;
 
-    li {
-      width: 100%;
-      overflow: hidden;
+    a {
+      width: fit-content;
+      display: inline;
+      color: var(--font-link);
       word-break: normal;
-      white-space: pre-wrap;
-      line-break: auto;
-      overflow-wrap: normal;
-      list-style: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: var(--font-link-hover);
+        text-decoration: underline from-font;
+        text-underline-offset: 6px;
+      }
     }
   }
 

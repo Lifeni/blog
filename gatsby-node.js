@@ -1,7 +1,8 @@
 const { JSDOM } = require("jsdom")
 const path = require(`path`)
 const BlogArticle = path.resolve(`./src/templates/article.js`)
-const emojiRegex = require("emoji-regex/es2015/RGI_Emoji")
+const remark = require("remark")
+const remarkHTML = require("remark-html")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -45,23 +46,8 @@ exports.createPages = async ({ graphql, actions }) => {
   for (let i = 0; i < posts.length; i++) {
     const dom = new JSDOM(posts[i].node.html)
     const h1 = dom.window.document.querySelector("h1")
-    const p1 = dom.window.document.querySelector("h1 + p")
-    const p2 = dom.window.document.querySelector("h1 + p + p")
 
     h1.parentElement.removeChild(h1)
-
-    const replaceEmoji = p => {
-      if (p) {
-        const emoji = p.innerHTML.match(emojiRegex())
-        p.innerHTML = p.innerHTML.replace(
-          emojiRegex(),
-          `<span class="emoji" role="img" aria-label="Emoji">${emoji?.[0].trim()}</span>`
-        )
-      }
-    }
-
-    replaceEmoji(p1)
-    replaceEmoji(p2)
 
     const tables = dom.window.document.querySelectorAll("table")
     if (tables.length) {
@@ -94,5 +80,16 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       value: node.frontmatter.name,
     })
+
+    const description = node.frontmatter?.description
+    if (description) {
+      const value = remark().use(remarkHTML).processSync(description).toString()
+
+      createNodeField({
+        name: `description_html`,
+        node,
+        value,
+      })
+    }
   }
 }

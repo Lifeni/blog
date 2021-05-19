@@ -65,7 +65,8 @@ const PostList = ({ tag }) => {
                       <BlogPost
                         title={node.frontmatter.title}
                         name={node.frontmatter.name}
-                        descriptions={node.frontmatter.descriptions}
+                        description={node.frontmatter.description}
+                        descriptionHTML={node.fields.description_html}
                         date={node.frontmatter.date}
                         create_date={node.frontmatter.create_date}
                         tags={node.frontmatter.tags}
@@ -81,7 +82,8 @@ const PostList = ({ tag }) => {
                     hide="true"
                     title={node.frontmatter.title}
                     name={node.frontmatter.name}
-                    descriptions={node.frontmatter.descriptions}
+                    description={node.frontmatter.description}
+                    descriptionHTML={node.fields.description_html}
                     date={node.frontmatter.date}
                     create_date={node.frontmatter.create_date}
                     tags={node.frontmatter.tags}
@@ -134,13 +136,16 @@ const IndexQuery = graphql`
       edges {
         node {
           id
+          fields {
+            description_html
+          }
           frontmatter {
             date(formatString: "YYYY 年 M 月 D 日")
             create_date(formatString: "YYYY 年 M 月 D 日")
             title
             name
             tags
-            descriptions
+            description
             license
           }
           excerpt(format: HTML, pruneLength: 100)

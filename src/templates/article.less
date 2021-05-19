@@ -328,7 +328,7 @@ article {
     .code-copy-button {
       position: absolute;
       right: 16px;
-      top: 16px;
+      top: 14px;
       z-index: 1;
       width: 32px;
       height: 32px;
@@ -416,40 +416,11 @@ blockquote {
   }
 }
 
-section + p,
-section + p + p {
-  margin: 0.25rem 0;
-  font-size: inherit;
-  color: inherit;
-  font-family: inherit;
-  transition: all 0.2s;
-  width: 100%;
-  overflow: hidden;
-  word-break: break-all;
-  white-space: pre-wrap;
-  line-break: auto;
-  overflow-wrap: normal;
-
-  a {
-    font-weight: inherit;
-    color: var(--font-link-light);
-    word-break: break-all;
-    transition: color 0.2s, border 0.2s;
-  }
-
-  & + pre,
-  & + blockquote,
-  & + table,
-  & + .table-wrapper {
-    margin-top: 2rem;
-  }
-}
-
 .article-meta {
   position: relative;
   z-index: 300;
   width: 100%;
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
   padding: 0;
   border-radius: 0;
   transition: all 0.2s;
@@ -458,8 +429,8 @@ section + p + p {
     width: fit-content;
     font-size: inherit;
     line-height: inherit;
-    margin: 0;
-    padding: 0 1px;
+    margin: 0.125rem 0;
+    padding: 0;
     color: inherit;
     font-weight: bold;
     transition: all 0.2s;
@@ -473,8 +444,7 @@ section + p + p {
 .article-subtitle {
   position: relative;
   margin: 0 0 0.25rem 0;
-  padding: 0 1px;
-  font-size: 0.975rem;
+  padding: 0;
   line-height: 2rem;
   font-weight: bold;
   font-family: var(--font-mono);
@@ -485,12 +455,22 @@ section + p + p {
 
 .article-info {
   display: flex;
-  margin: 0 0 0.5rem 0;
+  margin: 1.5rem 0 0 0;
   padding: 0.75rem 0;
   font-size: 1rem;
   line-height: 2rem;
   transition: all 0.2s;
   overflow-x: auto;
+}
+
+.emoji::after {
+  content: "";
+  font-family: var(--font-mono);
+  margin: 0 0.25rem 0 0;
+}
+
+.article-description {
+  margin: 0.25rem 0;
 
   & + pre,
   & + blockquote,
@@ -498,12 +478,6 @@ section + p + p {
   & + .table-wrapper {
     margin-top: 2rem;
   }
-}
-
-.emoji::after {
-  content: "";
-  font-family: var(--font-mono);
-  margin: 0 0.25rem 0 0;
 }
 
 .aside-link {
