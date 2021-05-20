@@ -10,7 +10,7 @@ p.tags {
   padding: 2px 16px;
   display: flex;
   align-items: center;
-  color: var(--font-code);
+  color: var(--font-secondary);
   background-color: var(--background-4);
   border-radius: 36px;
   font-size: 0.925rem;
@@ -37,12 +37,20 @@ p.tags {
   }
 
   &:focus {
-    color: var(--font-code);
+    color: var(--font-secondary);
+    background-color: var(--background-4);
     text-decoration: none;
   }
 
   &:focus-visible {
     color: var(--font-primary);
     outline: solid 2px var(--font-link);
+    background-color: var(--background-9);
+  }
+
+  &.label {
+    cursor: initial;
+    color: var(--font-secondary);
+    background-color: var(--background-4);
   }
 }

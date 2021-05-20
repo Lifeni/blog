@@ -16,17 +16,19 @@ const BlogPost = ({
   <div className={`post ${hide ? "hide" : ""}`}>
     <span className="date">{date}</span>
 
-    <Link to={`/article/${name}`}>
+    <Link to={`/article/${name}`} role="heading" aria-level="2">
       <span className="title">{title}</span>
     </Link>
     <p
       className="description"
       dangerouslySetInnerHTML={{ __html: descriptionHTML }}
       onClick={e => e.target.classList.toggle("show")}
+      onKeyDown={e => e.target.classList.toggle("show")}
+      role="presentation"
     ></p>
     <div className="bar">
       <section>
-        <span className="pill">
+        <span className="pill label">
           <FiBookOpen aria-label="Article Icon" size={16} />
           文章
         </span>
