@@ -92,7 +92,7 @@
 
   .description {
     width: 100%;
-    margin: 0 0 1rem 0;
+    margin: 2px 0 1rem 0;
     padding: 0;
 
     p {
@@ -100,6 +100,8 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       text-overflow: ellipsis;
+      text-align: justify;
+      text-justify: inter-ideograph;
       overflow: hidden;
 
       &::before {
@@ -107,7 +109,7 @@
       }
 
       &.show {
-        display: inline;
+        -webkit-line-clamp: unset;
       }
     }
 

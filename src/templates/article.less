@@ -477,14 +477,18 @@ blockquote {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     text-overflow: ellipsis;
+    text-align: justify;
+    text-justify: inter-ideograph;
     overflow: hidden;
 
     &::before {
-      content: "摘要：";
+      content: "摘要 / ";
+      font-family: var(--font-mono);
+      font-weight: bold;
     }
 
     &.show {
-      display: inline;
+      -webkit-line-clamp: unset;
     }
   }
 
@@ -492,7 +496,7 @@ blockquote {
   & + blockquote,
   & + table,
   & + .table-wrapper {
-    margin-top: 2rem;
+    margin-top: 2.25rem;
   }
 }
 
