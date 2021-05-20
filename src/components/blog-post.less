@@ -101,6 +101,14 @@
       -webkit-line-clamp: 3;
       text-overflow: ellipsis;
       overflow: hidden;
+
+      &::before {
+        content: "摘要：";
+      }
+
+      &.show {
+        display: inline;
+      }
     }
 
     a {

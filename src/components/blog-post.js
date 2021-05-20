@@ -22,6 +22,7 @@ const BlogPost = ({
     <p
       className="description"
       dangerouslySetInnerHTML={{ __html: descriptionHTML }}
+      onClick={e => e.target.classList.toggle("show")}
     ></p>
     <div className="bar">
       <section>

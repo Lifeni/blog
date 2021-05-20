@@ -1,7 +1,7 @@
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
 import { graphql, Link } from "gatsby"
-import React from "react"
+import React, { useEffect } from "react"
 import ReactDOMServer from "react-dom/server"
 import { FiBookmark, FiInfo } from "react-icons/fi"
 import Utterances from "../components/comment"
@@ -76,27 +76,19 @@ const BlogArticle = ({ data, pageContext }) => {
       <h1>{post.frontmatter.title}</h1>
       <section className="article-meta" id="article-meta">
         <span title={`创建日期：${date.create.full}`} className="create-date">
-          发布于 {date.create.full}
+          {date.create.full}
         </span>
         <span className="divider">{" -> "}</span>
-        {date.create.full !== date.modify.full ? (
-          <span title={`修改日期：${date.modify.full}`} className="modify-date">
-            最后修改于{" "}
-            {date.create.year === date.modify.year
-              ? date.create.month === date.modify.month
-                ? `${date.modify.date} 日`
-                : `${date.modify.month} 月 ${date.modify.date} 日`
-              : date.modify.full}
-          </span>
-        ) : (
-          <span title={`修改日期：${date.modify.full}`} className="modify-date">
-            修改于 {date.modify.full}
-          </span>
-        )}
+        <span title={`修改日期：${date.modify.full}`} className="modify-date">
+          {date.modify.full}
+        </span>
       </section>
       <section
         className="article-description"
-        dangerouslySetInnerHTML={{ __html: post.fields.description_html }}
+        dangerouslySetInnerHTML={{
+          __html: post.fields.description_html,
+        }}
+        id="article-description"
       ></section>
     </>
   )
@@ -120,6 +112,16 @@ const BlogArticle = ({ data, pageContext }) => {
     )
     window.scrollTo(0, 0)
   }
+
+  useEffect(() => {
+    const toggleDescription = document
+      .querySelector("#article-description")
+      .addEventListener("click", e => {
+        e.target.classList.toggle("show")
+      })
+
+    return document.removeEventListener("click", toggleDescription)
+  }, [])
 
   return (
     <>

@@ -100,8 +100,8 @@ article {
 
   h1 {
     position: relative;
-    margin: 0.25rem 0;
-    padding: 0;
+    margin: 0;
+    padding: 0 0 0.15rem 0;
     font-size: 1.75rem;
     line-height: 2.75rem;
   }
@@ -471,6 +471,22 @@ blockquote {
 
 .article-description {
   margin: 0.5rem 0;
+
+  p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    &::before {
+      content: "摘要：";
+    }
+
+    &.show {
+      display: inline;
+    }
+  }
 
   & + pre,
   & + blockquote,
