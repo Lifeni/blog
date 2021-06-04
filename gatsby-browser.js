@@ -44,35 +44,7 @@ const domOperation = location => {
     })
   }
 
-  const comment = document.querySelector("#article-comment")
-  const exist = document.querySelector(".utterances-frame")
-  if (comment && !exist) {
-    const utterances = document.createElement("script")
-    utterances.setAttribute("src", "https://utteranc.es/client.js")
-    utterances.setAttribute("repo", "Lifeni-Site/Comment")
-    utterances.setAttribute("issue-term", "pathname")
-    utterances.setAttribute("theme", "preferred-color-scheme")
-    utterances.setAttribute("crossOrigin", "anonymous")
-    utterances.setAttribute("async", "true")
-    comment.appendChild(utterances)
-
-    utterances.onload = () => {
-      const iframe = comment.querySelector("iframe")
-      iframe.onload = () => {
-        comment.querySelector("#comment-loading").classList.add("hide")
-      }
-
-      iframe.onerror = () => {
-        comment.querySelector("#comment-loading").classList.add("hide")
-        comment.querySelector("#comment-error").classList.remove("hide")
-      }
-    }
-
-    utterances.onerror = () => {
-      comment.querySelector("#comment-loading").classList.add("hide")
-      comment.querySelector("#comment-error").classList.remove("hide")
-    }
-  }
+  
 }
 
 const onRouteUpdate = ({ location, prevLocation }) => {

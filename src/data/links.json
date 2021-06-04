@@ -1,12 +1,8 @@
 [
   [
     {
-      "name": "Space",
-      "url": "https://lab.lifeni.life"
-    },
-    {
-      "name": "API",
-      "url": "https://api.lifeni.life"
+      "name": "博客园",
+      "url": "https://www.cnblogs.com/liangfengning/"
     },
     {
       "name": "Status",
@@ -15,20 +11,6 @@
     {
       "name": "Console",
       "url": "https://dev.lifeni.life"
-    }
-  ],
-  [
-    {
-      "name": "博客园",
-      "url": "https://www.cnblogs.com/liangfengning/"
-    },
-    {
-      "name": "Seafile",
-      "url": "https://cloud.lifeni.life"
-    },
-    {
-      "name": "Gitea",
-      "url": "https://git.lifeni.life/liangfengning"
     }
   ],
   [
