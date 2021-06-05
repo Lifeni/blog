@@ -2,15 +2,29 @@ header {
   position: absolute;
   left: 0;
   top: 0;
-  padding: 3rem 4rem;
+  z-index: 1200;
+  padding: 2.5rem 4rem;
 
   h1 {
-    padding: 1.5rem 0;
-
+    padding: 3rem 0 0 0;
     img {
       height: 2rem;
       pointer-events: none;
       user-select: none;
+    }
+  }
+
+  button {
+    margin: 2rem 0 0 -1.5rem;
+    padding: 1.5rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+      stroke-width: 1.5;
     }
   }
 }
@@ -24,7 +38,6 @@ header {
   max-width: calc(100% - 2rem);
   height: auto;
   padding: 0.25rem 0.75rem;
-  border: solid 1px #e0e0e0;
   border-radius: 0.25rem;
   color: #4964ff;
   background-color: #fff;
