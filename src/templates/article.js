@@ -1,10 +1,10 @@
 import { graphql } from "gatsby"
 import React from "react"
 import Comment from "../components/comment"
-import Footer from "../components/footer"
 import Header from "../components/header"
 import Seo from "../components/seo"
 import "./article.less"
+import "./toc.less"
 
 const ArticlePage = ({ data }) => {
   const post = data.markdownRemark
@@ -22,7 +22,6 @@ const ArticlePage = ({ data }) => {
             className="toc"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
           />
-          <Footer />
         </aside>
         <main>
           <section className="meta">
@@ -32,7 +31,7 @@ const ArticlePage = ({ data }) => {
             >
               {post.frontmatter.create_date}
             </span>
-            <span className="divider">{" -> "}</span>
+            <span className="divider">{" / "}</span>
             <span
               title={`修改日期：${post.frontmatter.date}`}
               className="modify-date"

@@ -1,5 +1,6 @@
 .message {
   position: relative;
+  padding: 0;
   display: flex;
   flex-direction: column;
 
@@ -27,12 +28,14 @@
 
       a {
         position: relative;
+        margin: 0;
 
         &::before {
           content: attr(title);
           position: absolute;
           left: 50%;
           top: -3.85rem;
+          width: fit-content;
           padding: 0.125rem 0.5rem;
           border-radius: 0.25rem;
           background-color: #282828;
@@ -41,6 +44,7 @@
           z-index: 10;
           color: #fff;
           font-size: 0.875rem;
+          white-space: nowrap;
           transform: translateX(-50%);
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
           transition: all 0.2s;
@@ -51,6 +55,7 @@
           position: absolute;
           left: 50%;
           top: -2rem;
+          width: fit-content;
           border: solid 0.5rem transparent;
           border-top: solid 0.5rem #282828;
           opacity: 0;
