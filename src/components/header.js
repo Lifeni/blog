@@ -3,6 +3,12 @@ import { FiArrowLeft, FiInbox, FiSearch, FiX } from "react-icons/fi"
 import { emitter } from "../emitter"
 import "./header.less"
 
+const Logo = () => (
+  <h1 aria-label="记录干杯">
+    <img src="/记录干杯.svg" alt="Logo" />
+  </h1>
+)
+
 const SearchButton = () => (
   <button
     id="open-dialog"
@@ -36,11 +42,12 @@ const BackButton = () => (
   </button>
 )
 
-const Header = ({ search, back, sidebar }) => (
+const Header = ({ logo, search, back, sidebar }) => (
   <header>
     <a href="#main-content" className="skip-link" aria-label="跳转到主要内容">
       Skip to main content | 跳转到主要内容
     </a>
+    {logo && <Logo />}
     {search && <SearchButton />}
     {back && <BackButton />}
     {sidebar && <SidebarButton />}
