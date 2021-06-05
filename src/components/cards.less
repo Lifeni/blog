@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, 25rem);
   gap: 1.5rem;
+  color: var(--font-primary);
 
   .card {
     position: relative;
@@ -10,11 +11,12 @@
     display: flex;
     flex-direction: column;
     border-radius: 0.25rem;
-    background-color: #fff;
+    color: inherit;
+    background-color: var(--bg-0);
     transition: all 0.4s;
 
     .date {
-      color: #616161;
+      color: var(--font-secondary);
       font-weight: 700;
     }
 
@@ -24,9 +26,9 @@
       margin: 0 0 0.125rem 0;
       padding: 0.5rem 0;
       flex: 1;
-      color: #000;
       font-size: 1.375rem;
       line-height: 1.625;
+      color: inherit;
       font-weight: 700;
     }
 
@@ -38,6 +40,7 @@
       text-align: justify;
       text-justify: inter-ideograph;
       word-break: break-all;
+      color: inherit;
       overflow: hidden;
     }
 
@@ -50,25 +53,25 @@
       svg {
         width: 1.75rem;
         height: 1.75rem;
-        color: #e0e0e0;
+        color: var(--font-light);
         stroke-width: 1.5;
         transition: all 0.4s;
       }
     }
 
     &:hover {
-      box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow-normal);
 
       .read-more svg {
-        color: #4964ff;
+        color: var(--font-link);
       }
     }
 
     &:focus-visible {
-      outline: solid 0.25rem #4964ff;
+      outline: solid 0.25rem var(--font-link);
 
       .read-more svg {
-        color: #4964ff;
+        color: var(--font-link);
       }
     }
   }

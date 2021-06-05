@@ -15,11 +15,19 @@ header {
   }
 
   button {
-    margin: 2rem 0 0 -1.5rem;
-    padding: 1.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: 2rem 0 0;
+    padding: 1.375rem;
     border: none;
-    background-color: transparent;
+    border-radius: 100%;
+    background-color: var(--bg-0);
     cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      box-shadow: var(--shadow-hover);
+    }
 
     svg {
       width: 1.75rem;
@@ -39,8 +47,8 @@ header {
   height: auto;
   padding: 0.25rem 0.75rem;
   border-radius: 0.25rem;
-  color: #4964ff;
-  background-color: #fff;
+  color: var(--font-link);
+  background-color: var(--bg-0);
   text-decoration: none;
   white-space: pre-wrap;
   font-weight: 700;
@@ -51,6 +59,6 @@ header {
   &:focus-visible {
     top: 1rem;
     opacity: 1;
-    outline: solid 0.25rem #4964ff;
+    outline: solid 0.25rem var(--font-link);
   }
 }
