@@ -1,0 +1,76 @@
+.list {
+  padding: 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 25rem);
+  gap: 1.5rem;
+
+  .card {
+    position: relative;
+    width: 100%;
+    padding: 1.75rem 2rem 5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: all 0.2s;
+
+    .date {
+      color: #616161;
+      font-weight: bold;
+    }
+
+    .title {
+      display: inline-block;
+      width: fit-content;
+      margin: 0 0 0.25rem 0;
+      padding: 0.5rem 0;
+      flex: 1;
+      color: #000;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      font-weight: bold;
+    }
+
+    .description {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      text-overflow: ellipsis;
+      text-align: justify;
+      text-justify: inter-ideograph;
+      word-break: break-all;
+      overflow: hidden;
+    }
+
+    .read-more {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      margin: 1.5rem;
+
+      svg {
+        width: 1.75rem;
+        height: 1.75rem;
+        color: #e0e0e0;
+        stroke-width: 1.5;
+        transition: all 0.2s;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.05);
+
+      .read-more svg {
+        color: #0366d6;
+      }
+    }
+
+    &:focus-visible {
+      outline: solid 4px #0366d6;
+
+      .read-more svg {
+        color: #0366d6;
+      }
+    }
+  }
+}
