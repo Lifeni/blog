@@ -14,6 +14,7 @@ const Message = () => (
     query={MessageQuery}
     render={data => (
       <article
+        className="message"
         dangerouslySetInnerHTML={{
           __html: data.allMarkdownRemark.edges[0].node.html,
         }}
