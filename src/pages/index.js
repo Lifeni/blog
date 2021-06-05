@@ -3,6 +3,7 @@ import React from "react"
 import Cards from "../components/cards"
 import Footer from "../components/footer"
 import Header from "../components/header"
+import "../components/message.less"
 import Seo from "../components/seo"
 import "./global.less"
 import "./highlight.less"
@@ -27,7 +28,7 @@ const IndexPage = () => (
   <>
     <Seo title="主页" />
     <div className="container">
-      <Header app />
+      <Header logo />
       <aside>
         <Message />
         <Footer />
