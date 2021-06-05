@@ -1,6 +1,5 @@
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
-import Header from "../components/header"
 import Seo from "../components/seo"
 
 const Message = () => (
@@ -17,10 +16,9 @@ const Message = () => (
 )
 
 const NotFoundPage = () => (
-  <div className="screen 404">
+  <div className="screen error">
     <Seo title="404 Not found" />
     <div className="container">
-      <Header back />
       <main>
         <Message />
       </main>
