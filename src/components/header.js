@@ -1,11 +1,12 @@
 import React from "react"
 import { FiArrowLeft, FiInbox, FiSearch, FiX } from "react-icons/fi"
+import svg from "../assets/记录干杯.svg"
 import { emitter } from "../emitter"
 import "./header.less"
 
 const Logo = () => (
   <h1 aria-label="记录干杯">
-    <img src="/记录干杯.svg" alt="Logo" />
+    <img src={svg} alt="Logo" />
   </h1>
 )
 

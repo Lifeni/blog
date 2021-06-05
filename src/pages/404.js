@@ -17,7 +17,7 @@ const Message = () => (
 )
 
 const NotFoundPage = () => (
-  <>
+  <div className="screen 404">
     <Seo title="404 Not found" />
     <div className="container">
       <Header back />
@@ -25,7 +25,7 @@ const NotFoundPage = () => (
         <Message />
       </main>
     </div>
-  </>
+  </div>
 )
 
 export default NotFoundPage
