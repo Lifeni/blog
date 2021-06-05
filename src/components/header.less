@@ -1,34 +1,42 @@
+header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 3rem 4rem;
+
+  h1 {
+    padding: 1.5rem 0;
+
+    img {
+      height: 2rem;
+      pointer-events: none;
+    }
+  }
+}
+
 .skip-link {
   position: fixed;
-  z-index: 999999;
-  top: -48px;
-  left: 16px;
+  z-index: 1000;
+  top: -3rem;
+  left: 1rem;
   width: auto;
-  max-width: calc(100% - 32px);
+  max-width: calc(100% - 2rem);
   height: auto;
-  padding: 8px 18px;
-  border: solid 2px #4964ff;
+  padding: 0.25rem 0.75rem;
+  border: solid 1px #e0e0e0;
   border-radius: 0.25rem;
   color: #4964ff;
   background-color: #fff;
   text-decoration: none;
   white-space: pre-wrap;
-  font-size: 1rem;
   font-weight: 700;
-  line-height: 1.75rem;
   opacity: 0;
   outline: none;
   transition: all 0.2s;
 
-  &:active,
-  &:focus {
-    top: 16px;
-    opacity: 1;
-  }
-
   &:focus-visible {
-    top: 16px;
+    top: 1rem;
     opacity: 1;
-    border-width: 0.25rem;
+    outline: solid 0.25rem #4964ff;
   }
 }
