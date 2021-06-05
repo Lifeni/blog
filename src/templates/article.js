@@ -1,39 +1,13 @@
-import dayjs from "dayjs"
-import "dayjs/locale/zh-cn"
 import { graphql } from "gatsby"
 import React from "react"
-import ReactDOMServer from "react-dom/server"
 import Comment from "../components/comment"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import Seo from "../components/seo"
 import "./article.less"
 
-const relativeTime = require("dayjs/plugin/relativeTime")
-dayjs.extend(relativeTime)
-dayjs.locale("zh-cn")
-
-const Article = ({ data }) => {
+const ArticlePage = ({ data }) => {
   const post = data.markdownRemark
-  const date = {
-    create: dayjs(post.frontmatter.create_date).format("YYYY 年 M 月 D 日"),
-    modify: dayjs(post.frontmatter.date).format("YYYY 年 M 月 D 日"),
-    from: dayjs(post.frontmatter.date).fromNow(),
-  }
-
-  const html = ReactDOMServer.renderToStaticMarkup(
-    <>
-      <section className="article-meta" id="article-meta">
-        <span title={`创建日期：${date.create}`} className="create-date">
-          {date.create}
-        </span>
-        <span className="divider">{" -> "}</span>
-        <span title={`修改日期：${date.modify}`} className="modify-date">
-          {date.modify}
-        </span>
-      </section>
-    </>
-  )
 
   return (
     <>
@@ -47,13 +21,28 @@ const Article = ({ data }) => {
           <nav
             className="toc"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
-          ></nav>
+          />
           <Footer />
         </aside>
         <main>
+          <section className="meta">
+            <span
+              title={`创建日期：${post.frontmatter.create_date}`}
+              className="create-date"
+            >
+              {post.frontmatter.create_date}
+            </span>
+            <span className="divider">{" -> "}</span>
+            <span
+              title={`修改日期：${post.frontmatter.date}`}
+              className="modify-date"
+            >
+              {post.frontmatter.date}
+            </span>
+          </section>
           <article
             id="main-content"
-            dangerouslySetInnerHTML={{ __html: html + post.html }}
+            dangerouslySetInnerHTML={{ __html: post.html }}
           />
           <Comment />
         </main>
@@ -62,7 +51,7 @@ const Article = ({ data }) => {
   )
 }
 
-export default Article
+export default ArticlePage
 
 export const PostQuery = graphql`
   query BlogArticleQuery($slug: String!) {
@@ -78,8 +67,8 @@ export const PostQuery = graphql`
         title
         name
         description
-        date
-        create_date
+        date(formatString: "YYYY 年 M 月 D 日")
+        create_date(formatString: "YYYY 年 M 月 D 日")
         license
       }
       tableOfContents(absolute: false, maxDepth: 3)
