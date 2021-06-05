@@ -4,37 +4,24 @@ import { FiArrowRight } from "react-icons/fi"
 import "./cards.less"
 
 const Card = ({ title, name, date, description }) => (
-  <div className="post">
+  <Link className="card" to={`/article/${name}`}>
     <time className="date">{date}</time>
-
-    <Link to={`/article/${name}`} role="heading" aria-level="2">
-      <span className="title">{title}</span>
-    </Link>
-
+    <h2 className="title">{title}</h2>
     <p className="description" role="presentation">
       {description}
     </p>
 
-    <section className="bar">
-      <Link
-        className="read-more"
-        to={`/article/${name}`}
-        aria-label="查看全文"
-        title="查看全文"
-        tabIndex="-1"
-        aria-hidden="true"
-      >
-        <FiArrowRight aria-label="Open Article" size={24} />
-      </Link>
-    </section>
-  </div>
+    <span className="read-more" aria-label="查看全文" title="查看全文">
+      <FiArrowRight aria-label="Open Article" size={24} />
+    </span>
+  </Link>
 )
 
 const Cards = () => (
   <StaticQuery
     query={ArticleQuery}
     render={data => (
-      <div className="post-list" id="main-content">
+      <div className="list" id="main-content">
         {data.allMarkdownRemark.edges.map(({ node }) => {
           return (
             <Card
