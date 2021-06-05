@@ -25,7 +25,7 @@ const Message = () => (
 )
 
 const IndexPage = () => (
-  <>
+  <div className="screen">
     <Seo title="主页" />
     <div className="container">
       <Header logo />
@@ -37,7 +37,7 @@ const IndexPage = () => (
         <Cards />
       </main>
     </div>
-  </>
+  </div>
 )
 
 export default IndexPage

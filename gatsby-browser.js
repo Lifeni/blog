@@ -44,7 +44,7 @@ const domOperation = location => {
     })
   }
 
-  
+
 }
 
 const onRouteUpdate = ({ location, prevLocation }) => {
@@ -57,24 +57,6 @@ const onRouteUpdate = ({ location, prevLocation }) => {
     // 站内页面跳转
     domOperation(location)
   }
-
-  if (prevLocation && location.pathname === prevLocation.pathname) {
-    // Hash 锚点的情况
-    const body = document.querySelector("body")
-    const aside = document.querySelector("aside")
-    const main = document.querySelector("main")
-    const header = document.querySelector("header")
-    if (aside?.classList.contains("expand")) {
-      body.classList.remove("expand")
-      aside.classList.remove("expand")
-      header.classList.remove("expand")
-      main.classList.remove("expand")
-    }
-  }
 }
 
-const onServiceWorkerUpdateReady = () => {
-  document.querySelector("#update-now").classList.add("show")
-}
-
-export { onRouteUpdate, onServiceWorkerUpdateReady }
+export { onRouteUpdate }

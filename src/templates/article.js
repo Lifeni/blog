@@ -10,7 +10,7 @@ const ArticlePage = ({ data }) => {
   const post = data.markdownRemark
 
   return (
-    <>
+    <div className="screen article">
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description}
@@ -47,7 +47,7 @@ const ArticlePage = ({ data }) => {
           <Comment />
         </main>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -1,4 +1,5 @@
 import React from "react"
+import svg from "../assets/又拍云.svg"
 import "./footer.less"
 
 const Footer = () => (
@@ -10,7 +11,7 @@ const Footer = () => (
       className="upyun"
     >
       由
-      <img src="/又拍云.svg" alt="又拍云" title="又拍云" aria-label="又拍云" />
+      <img src={svg} alt="又拍云" title="又拍云" aria-label="又拍云" />
       提供 CDN 加速与云储存服务
     </a>
     <a
