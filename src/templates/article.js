@@ -1,13 +1,50 @@
 import { graphql } from "gatsby"
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import Comment from "../components/comment"
+import Footer from "../components/footer"
 import Header from "../components/header"
 import Seo from "../components/seo"
 import "./article.less"
 import "./toc.less"
 
+const ArticleMeta = ({ frontmatter }) => {
+  let create = frontmatter.create_date
+  let modify = frontmatter.date
+
+  if (create.slice(0, 5) === modify.slice(0, 5)) {
+    modify = modify.slice(6)
+  }
+
+  return (
+    <section className="meta">
+      <span title={`创建日期：${create}`} className="create-date">
+        {create}
+      </span>
+      {frontmatter.create_date !== frontmatter.date && (
+        <>
+          <span className="divider">{" / "}</span>
+          <span title={`修改日期：${modify}`} className="modify-date">
+            {modify}
+          </span>
+        </>
+      )}
+    </section>
+  )
+}
+
 const ArticlePage = ({ data }) => {
   const post = data.markdownRemark
+  const articleRef = useRef()
+  useEffect(() => {
+    const tables = articleRef.current.querySelectorAll("table")
+    tables.forEach(table => {
+      const wrapper = document.createElement("div")
+      const clone = table.cloneNode(true)
+      wrapper.className = "table-wrapper"
+      wrapper.appendChild(clone)
+      table.replaceWith(wrapper)
+    })
+  }, [data])
 
   return (
     <div className="screen article">
@@ -24,22 +61,9 @@ const ArticlePage = ({ data }) => {
           />
         </aside>
         <main>
-          <section className="meta">
-            <span
-              title={`创建日期：${post.frontmatter.create_date}`}
-              className="create-date"
-            >
-              {post.frontmatter.create_date}
-            </span>
-            <span className="divider">{" / "}</span>
-            <span
-              title={`修改日期：${post.frontmatter.date}`}
-              className="modify-date"
-            >
-              {post.frontmatter.date}
-            </span>
-          </section>
+          <ArticleMeta frontmatter={post.frontmatter} />
           <article
+            ref={articleRef}
             id="main-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
