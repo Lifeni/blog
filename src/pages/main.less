@@ -14,7 +14,6 @@
     aside {
       position: relative;
       width: 26rem;
-      margin: 8rem 0 0 0;
       padding: 3rem 4rem;
     }
 
@@ -26,19 +25,30 @@
   }
 
   &.article {
-    main {
-      width: calc(100% - 30rem);
+    background-color: var(--bg-0);
+
+    .container {
+      max-width: 88rem;
+    }
+
+    header {
       padding: 3rem 4rem;
-      background-color: var(--bg-0);
-      box-shadow: var(--shadow-normal);
+    }
+
+    main {
+      width: 44rem;
+      margin: 0 0 0 auto;
+      padding: 3rem 0;
+    }
+
+    aside {
+      margin: 0 auto 0 0;
     }
   }
 
   &.error {
     main {
-      padding: 3rem 4rem;
-      display: flex;
-      align-items: center;
+      padding: 9rem 0 3rem 0;
     }
   }
 }
