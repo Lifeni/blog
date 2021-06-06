@@ -1,5 +1,5 @@
 import React from "react"
-import { FiArrowLeft, FiInbox, FiSearch, FiX } from "react-icons/fi"
+import { FiArrowLeft, FiInbox, FiX } from "react-icons/fi"
 import svg from "../assets/记录干杯.svg"
 import { emitter } from "../emitter"
 import "./header.less"
@@ -34,9 +34,6 @@ const SidebarButton = () => (
 
 const Header = ({ logo, back, sidebar }) => (
   <header>
-    <a href="#main-content" className="skip-link" aria-label="跳转到主要内容">
-      Skip to main content | 跳转到主要内容
-    </a>
     {logo && <Logo />}
     {back && <BackButton />}
     {sidebar && <SidebarButton />}
