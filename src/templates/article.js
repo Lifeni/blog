@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 import "./article.less"
 import "./toc.less"
 
-const ArticleMeta = ({ frontmatter }) => {
+const ArticleHeader = ({ frontmatter }) => {
   let create = frontmatter.create_date
   let modify = frontmatter.date
 
@@ -15,19 +15,24 @@ const ArticleMeta = ({ frontmatter }) => {
   }
 
   return (
-    <section className="meta">
-      <span title={`创建日期：${create}`} className="create-date">
-        {create}
-      </span>
-      {frontmatter.create_date !== frontmatter.date && (
-        <>
-          <span className="divider">{" / "}</span>
-          <span title={`修改日期：${modify}`} className="modify-date">
-            {modify}
+    <div className="header">
+      <div className="wrapper">
+        <div className="meta">
+          <span title={`创建日期：${create}`} className="create-date">
+            {create}
           </span>
-        </>
-      )}
-    </section>
+          {frontmatter.create_date !== frontmatter.date && (
+            <>
+              <span className="divider">{" / "}</span>
+              <span title={`修改日期：${modify}`} className="modify-date">
+                {modify}
+              </span>
+            </>
+          )}
+        </div>
+        <h1>{frontmatter.title}</h1>
+      </div>
+    </div>
   )
 }
 
@@ -97,21 +102,21 @@ const ArticlePage = ({ data }) => {
         description={post.frontmatter.description}
       />
       <div className="container">
+        <ArticleHeader frontmatter={post.frontmatter} />
         <main>
-          <ArticleMeta frontmatter={post.frontmatter} />
           <article
             ref={articleRef}
             id="main-content"
-            dangerouslySetInnerHTML={{ __html: post.html }}
+            dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
           />
-          <Comment />
+          <aside>
+            <nav
+              className="toc"
+              dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+            />
+          </aside>
         </main>
-        <aside>
-          <nav
-            className="toc"
-            dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
-          />
-        </aside>
+        <Comment />
       </div>
     </div>
   )

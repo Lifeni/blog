@@ -1,7 +1,8 @@
 :root {
-  --bg-0: #ffffff;
-  --bg-1: #f6f8fa;
-  --bg-2: #f2f5f8;
+  --background: #f6f8fa;
+  --surface: #ffffff;
+  --field: #f2f5f8;
+  --element: #f6f8fa;
 
   --border: #e6eaee;
 
@@ -10,33 +11,43 @@
   --font-light: #e6eaee;
   --font-link: #0366d6;
 
-  --shadow-normal: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.01);
+  --shadow-normal: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.02);
   --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.08);
+
+  --article-max-width: 42rem;
+  --toc-max-width: 26rem;
+
+  --svg-invert: 0;
 
   --font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
-
   --font-sans: "Inter", -apple-system, "Source Han Sans SC", "Source Han Sans",
     "Noto Sans SC", BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif,
     var(--font-emoji);
-
   --font-serif: "Source Han Serif SC", "Source Han Serif", "Noto Serif SC",
     "Noto Serif", Georgia, "Times New Roman", Times, "Droid Serif", serif,
     var(--font-emoji);
-
   --font-mono: "JetBrains Mono", "Fira Mono", Consolas, var(--font-sans);
 
   font-size: 16px;
 
   @media (prefers-color-scheme: dark) {
-    --bg-0: #0d1117;
-    --bg-1: #161b22;
-    --bg-2: #21262d;
+    --background: #0f1113;
+    --surface: #121416;
+    --field: #0e1011;
+    --element: #151719;
 
-    --font-primary: #e1e4e8;
-    --font-secondary: #6a737d;
+    --border: #161b22;
+
+    --font-primary: #d1d5da;
+    --font-secondary: #8b949e;
     --font-light: #30363d;
     --font-link: #58a6ff;
+
+    --svg-invert: 1;
+
+    --shadow-normal: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.12);
   }
 }

@@ -1,18 +1,33 @@
-.meta {
-  margin: 2.5rem 0 0 0;
-  padding: 0.25rem 1rem;
-  font-weight: 700;
-  color: var(--font-secondary);
+.header {
+  background-color: var(--background);
+  color: var(--font-primary);
 
-  .divider {
-    padding: 0 0.5rem;
+  .wrapper {
+    margin: 0 auto;
+    padding: 4rem 0;
+    max-width: calc(var(--article-max-width) + var(--toc-max-width));
+
+    .meta {
+      padding: 0.25rem 0;
+      font-weight: 700;
+      color: var(--font-secondary);
+
+      .divider {
+        padding: 0 0.5rem;
+      }
+    }
+
+    h1 {
+      font-size: 1.75rem;
+    }
   }
 }
 
 article {
   position: relative;
-  padding: 0 1rem;
   display: flex;
+  max-width: var(--article-max-width);
+  color: var(--font-primary);
   flex-direction: column;
 
   p {
@@ -68,35 +83,37 @@ article {
       display: flex;
       align-items: center;
       justify-content: center;
+      fill: var(--font-primary);
       border: none !important;
     }
   }
 
   img {
-    width: calc(100% + 1.5rem);
-    margin: 0.25rem -0.75rem;
+    width: 100%;
+    margin: 0.25rem 0;
     border-radius: 0.25rem;
+    display: flex;
+    box-shadow: var(--shadow-normal);
   }
 
   code[class*="language-"] {
     font-size: 0.925em;
     padding: 0.175em 0.375em;
     border-radius: 0.25rem;
-    background-color: var(--bg-1);
+    background-color: var(--element);
   }
 
   .gatsby-highlight {
     position: relative;
-    width: calc(100% + 1.5rem);
-    margin: 0 -1rem;
-    padding: 1rem 0;
+    width: 100%;
+    padding: 0.75rem 0;
     border-radius: 0.25rem;
     overflow: hidden;
 
     .copy {
       position: absolute;
       right: 0;
-      top: 1rem;
+      top: 0.75rem;
       z-index: 10;
       width: 2rem;
       height: 2rem;
@@ -106,11 +123,12 @@ article {
       opacity: 0;
       border: none;
       border-radius: 0.25rem;
-      background-color: var(--bg-0);
+      background-color: var(--surface);
       cursor: pointer;
       transition: all 0.2s;
 
       svg {
+        color: var(--font-primary);
         stroke-width: 1.5;
       }
     }
@@ -126,7 +144,7 @@ article {
       margin: 0;
       padding: 1rem;
       border-radius: 0.25rem;
-      background-color: var(--bg-1);
+      background-color: var(--element);
 
       code {
         padding: 0;
@@ -155,8 +173,8 @@ article {
   }
 
   .table-wrapper {
-    width: calc(100% + 1.5rem);
-    margin: 0.75rem -1rem;
+    width: 100%;
+    margin: 0.75rem 0;
     display: flex;
     overflow-x: auto;
     border-radius: 0.25rem;
@@ -183,7 +201,7 @@ article {
 
     th {
       font-weight: 700;
-      background-color: var(--bg-1);
+      background-color: var(--element);
     }
 
     tr {
@@ -191,10 +209,10 @@ article {
     }
 
     tr:nth-child(even) {
-      background-color: var(--bg-1);
+      background-color: var(--element);
 
       code {
-        background-color: var(--bg-2);
+        background-color: var(--surface);
       }
     }
   }
@@ -202,7 +220,7 @@ article {
   blockquote {
     margin: 0.75rem 0;
     padding: 0 1.5rem;
-    border-left: solid 0.5rem #f5f5f5;
+    border-left: solid 0.5rem var(--element);
     display: flex;
     flex-direction: column;
     color: var(--font-secondary);
@@ -242,7 +260,7 @@ article {
       width: fit-content;
       padding: 0.25rem 1rem;
       border-radius: 0.25rem;
-      background-color: var(--bg-1);
+      background-color: var(--element);
       cursor: pointer;
       user-select: none;
     }
