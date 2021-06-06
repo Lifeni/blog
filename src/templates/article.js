@@ -1,8 +1,6 @@
 import { graphql } from "gatsby"
 import React, { useEffect, useRef } from "react"
 import Comment from "../components/comment"
-import Footer from "../components/footer"
-import Header from "../components/header"
 import Seo from "../components/seo"
 import "./article.less"
 import "./toc.less"
@@ -53,13 +51,6 @@ const ArticlePage = ({ data }) => {
         description={post.frontmatter.description}
       />
       <div className="container">
-        <Header back />
-        <aside>
-          <nav
-            className="toc"
-            dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
-          />
-        </aside>
         <main>
           <ArticleMeta frontmatter={post.frontmatter} />
           <article
@@ -69,6 +60,12 @@ const ArticlePage = ({ data }) => {
           />
           <Comment />
         </main>
+        <aside>
+          <nav
+            className="toc"
+            dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+          />
+        </aside>
       </div>
     </div>
   )

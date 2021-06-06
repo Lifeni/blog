@@ -10,14 +10,13 @@ const Logo = () => (
   </h1>
 )
 
-const SearchButton = () => (
+const BackButton = () => (
   <button
-    id="open-dialog"
-    aria-label="搜索文章"
-    title="搜索文章（/）"
-    onClick={() => emitter.emit("search")}
+    aria-label="返回主页"
+    title="返回主页"
+    onClick={() => window.history.back()}
   >
-    <FiSearch aria-label="Search Icon" size={24} />
+    <FiArrowLeft aria-label="Home Icon" size={24} />
   </button>
 )
 
@@ -33,23 +32,12 @@ const SidebarButton = () => (
   </button>
 )
 
-const BackButton = () => (
-  <button
-    aria-label="返回主页"
-    title="返回主页"
-    onClick={() => window.history.back()}
-  >
-    <FiArrowLeft aria-label="Home Icon" size={24} />
-  </button>
-)
-
-const Header = ({ logo, search, back, sidebar }) => (
+const Header = ({ logo, back, sidebar }) => (
   <header>
     <a href="#main-content" className="skip-link" aria-label="跳转到主要内容">
       Skip to main content | 跳转到主要内容
     </a>
     {logo && <Logo />}
-    {search && <SearchButton />}
     {back && <BackButton />}
     {sidebar && <SidebarButton />}
   </header>
