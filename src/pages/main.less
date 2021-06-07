@@ -15,12 +15,20 @@
       position: relative;
       width: 26rem;
       padding: 3rem 4rem;
+
+      @media (max-width: 1344px) {
+        width: 12rem;
+      }
     }
 
     main {
       position: relative;
       width: calc(100% - 26rem);
       padding: 3rem 4rem 3rem 0;
+
+      @media (max-width: 1344px) {
+        width: calc(100% - 12rem);
+      }
     }
   }
 
