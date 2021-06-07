@@ -17,8 +17,12 @@
 
   .header-wrapper {
     margin: 0 auto;
-    padding: 4rem 0;
+    padding: 5rem 0;
     max-width: var(--main-width);
+
+    @media (max-width: 600px) {
+      padding: 4rem 0;
+    }
 
     .meta {
       padding: 0.25rem 0;
@@ -33,10 +37,6 @@
     h1 {
       font-size: 1.75rem;
       line-height: 1.75;
-
-      @media (max-width: 520px) {
-        font-size: 1.625rem;
-      }
     }
   }
 }
@@ -143,6 +143,9 @@ article {
       border: none;
       border-radius: 0.25rem;
       background-color: var(--surface);
+      background-position: center;
+      background-size: 1rem;
+      background-repeat: no-repeat;
       cursor: pointer;
       transition: all 0.2s;
 
@@ -241,7 +244,7 @@ article {
 
   blockquote {
     margin: 0.75rem 0;
-    padding: 0 1.5rem;
+    padding: 0 0 0 1.5rem;
     border-left: solid 0.5rem var(--element);
     display: flex;
     flex-direction: column;

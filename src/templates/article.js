@@ -6,6 +6,9 @@ import Seo from "../components/seo"
 import "./article.less"
 import "./toc.less"
 
+import copyIcon from "../assets/icons/copy.svg"
+import copiedIcon from "../assets/icons/copied.svg"
+
 const ArticleHeader = ({ frontmatter }) => {
   let create = frontmatter.create_date
   let modify = frontmatter.date
@@ -74,15 +77,16 @@ const ArticlePage = ({ data }) => {
       block.forEach(e => {
         const copy = document.createElement("button")
         copy.className = "copy"
-        copy.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`
-        copy.setAttribute("aria-label", "Copy")
-        copy.title = "Copy"
+        copy.style.backgroundImage = `url("${copyIcon}")`
+        copy.setAttribute("aria-label", "复制")
+        copy.title = "复制"
         copy.onclick = () => {
           const code = e.querySelector("pre code")
           navigator.clipboard
             .writeText(code.textContent)
             .then(() => {
-              copy.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"/></svg>`
+              copy.style.backgroundImage = `url("${copiedIcon}")`
+              copy.title = "已复制"
             })
             .catch(err => {
               console.log("复制出错", err)

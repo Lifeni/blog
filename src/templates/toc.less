@@ -1,6 +1,10 @@
 .toc {
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 4rem);
   font-weight: 700;
   color: var(--font-secondary);
+  overflow-y: auto;
 
   li {
     list-style: none;
@@ -8,11 +12,12 @@
     text-overflow: ellipsis;
     overflow: hidden;
 
-    code {
+    code[class*="language-"] {
       font-size: 0.925em;
       padding: 0.175em 0.375em;
       border-radius: 0.25rem;
       background-color: var(--element);
+      white-space: nowrap;
     }
   }
 
