@@ -1,11 +1,32 @@
 .header {
   background-color: var(--background);
   color: var(--font-primary);
+  padding: 0 4rem;
 
-  .wrapper {
+  @media (max-width: 600px) {
+    padding: 0 3rem;
+  }
+
+  @media (max-width: 520px) {
+    padding: 0 2.5rem;
+  }
+
+  @media (max-width: 460px) {
+    padding: 0 2rem;
+  }
+
+  .header-wrapper {
     margin: 0 auto;
     padding: 4rem 0;
-    max-width: calc(var(--article-max-width) + var(--toc-max-width));
+    max-width: var(--main-width);
+
+    @media (max-width: 600px) {
+      padding: 3rem 0;
+    }
+
+    @media (max-width: 520px) {
+      padding: 2rem 0;
+    }
 
     .meta {
       padding: 0.25rem 0;
@@ -19,14 +40,20 @@
 
     h1 {
       font-size: 1.75rem;
+      line-height: 1.75;
+
+      @media (max-width: 520px) {
+        font-size: 1.625rem;
+      }
     }
   }
 }
 
 article {
   position: relative;
+  max-width: 100%;
+  min-width: 0;
   display: flex;
-  max-width: var(--article-max-width);
   color: var(--font-primary);
   flex-direction: column;
 

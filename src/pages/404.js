@@ -19,9 +19,11 @@ const NotFoundPage = () => (
   <div className="screen error">
     <Seo title="404 Not found" />
     <div className="container">
-      <main>
-        <Message />
-      </main>
+      <div className="container-wrapper">
+        <main>
+          <Message />
+        </main>
+      </div>
     </div>
   </div>
 )

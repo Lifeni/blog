@@ -1,11 +1,13 @@
 .utterances-comment {
   width: 100%;
-  max-width: calc(var(--article-max-width) + var(--toc-max-width));
+  max-width: var(--main-width);
   margin: 0 auto;
   padding: 0 0 4rem 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 
   .utterances {
-    max-width: calc(var(--article-max-width));
+    width: 100%;
     margin: 0;
   }
 }
