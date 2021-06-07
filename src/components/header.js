@@ -1,43 +1,13 @@
 import React from "react"
-import { FiArrowLeft, FiInbox, FiX } from "react-icons/fi"
 import svg from "../assets/记录干杯.svg"
-import { emitter } from "../emitter"
 import "./header.less"
 
 const Logo = () => (
-  <h1 aria-label="记录干杯">
+  <h1 aria-label="记录干杯" title="记录干杯">
     <img src={svg} alt="Logo" />
   </h1>
 )
 
-const BackButton = () => (
-  <button
-    aria-label="返回主页"
-    title="返回主页"
-    onClick={() => window.history.back()}
-  >
-    <FiArrowLeft aria-label="Home Icon" size={24} />
-  </button>
-)
-
-const SidebarButton = () => (
-  <button
-    className="mobile-only expand-aside"
-    aria-label="展开侧栏"
-    title="展开侧栏"
-    onClick={() => emitter.emit("sidebar")}
-  >
-    <FiInbox className="action-open" aria-label="Box Icon" size={24} />
-    <FiX className="action-close" aria-label="Close Icon" size={24} />
-  </button>
-)
-
-const Header = ({ logo, back, sidebar }) => (
-  <header>
-    {logo && <Logo />}
-    {back && <BackButton />}
-    {sidebar && <SidebarButton />}
-  </header>
-)
+const Header = ({ logo }) => <header>{logo && <Logo />}</header>
 
 export default Header
