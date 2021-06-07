@@ -13,25 +13,13 @@ const ArticleHeader = ({ frontmatter }) => {
   let create = frontmatter.create_date
   let modify = frontmatter.date
 
-  if (create.slice(0, 5) === modify.slice(0, 5)) {
-    modify = modify.slice(6)
-  }
-
   return (
     <div className="header">
       <div className="header-wrapper">
         <div className="meta">
-          <span title={`创建日期：${create}`} className="create-date">
-            {create}
+          <span title={`创建日期：${create} \n最后修改日期：${modify}`}>
+            {modify}
           </span>
-          {frontmatter.create_date !== frontmatter.date && (
-            <>
-              <span className="divider">{" / "}</span>
-              <span title={`修改日期：${modify}`} className="modify-date">
-                {modify}
-              </span>
-            </>
-          )}
         </div>
         <h1>{frontmatter.title}</h1>
       </div>
