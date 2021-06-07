@@ -16,7 +16,7 @@ const ArticleHeader = ({ frontmatter }) => {
 
   return (
     <div className="header">
-      <div className="wrapper">
+      <div className="header-wrapper">
         <div className="meta">
           <span title={`创建日期：${create}`} className="create-date">
             {create}
@@ -104,17 +104,19 @@ const ArticlePage = ({ data }) => {
       <div className="container">
         <ArticleHeader frontmatter={post.frontmatter} />
         <main>
-          <article
-            ref={articleRef}
-            id="main-content"
-            dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
-          />
-          <aside>
-            <nav
-              className="toc"
-              dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+          <div className="container-wrapper">
+            <article
+              ref={articleRef}
+              id="main-content"
+              dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
             />
-          </aside>
+            <aside>
+              <nav
+                className="toc"
+                dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+              />
+            </aside>
+          </div>
         </main>
         <Comment />
       </div>

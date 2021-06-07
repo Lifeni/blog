@@ -1,8 +1,20 @@
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, var(--card-max-width));
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   color: var(--font-primary);
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 520px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 460px) {
+    gap: 1rem;
+  }
 
   .card {
     position: relative;
