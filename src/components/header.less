@@ -3,12 +3,20 @@ header {
   padding: 3rem 0;
 
   @media (max-width: 600px) {
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
   }
 
   h1 {
     margin: 0.5rem 0;
     display: flex;
+
+    @media (max-width: 1000px) {
+      padding: 0 1rem;
+    }
+
+    @media (max-width: 800px) {
+      padding: 1.5rem 0 0 0;
+    }
 
     img {
       height: 2rem;
