@@ -57,7 +57,7 @@
         }
 
         @media (max-width: 520px) {
-          padding: 1rem 0.5rem;
+          padding: 1rem 0.5rem 1.5rem 0.5rem;
         }
       }
     }
@@ -121,12 +121,16 @@
         @media (max-width: 600px) {
           padding: 0 1rem;
         }
-      }
-    }
 
-    aside {
-      margin: 0;
-      padding: 1.25rem 0;
+        aside {
+          margin: 0;
+          padding: 1.25rem 0;
+
+          @media (max-width: 1000px) {
+            display: none;
+          }
+        }
+      }
     }
   }
 

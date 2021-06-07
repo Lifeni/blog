@@ -20,14 +20,6 @@
     padding: 4rem 0;
     max-width: var(--main-width);
 
-    @media (max-width: 600px) {
-      padding: 4.5rem 0 3rem 0;
-    }
-
-    @media (max-width: 520px) {
-      padding: 4rem 0 2rem 0;
-    }
-
     .meta {
       padding: 0.25rem 0;
       font-weight: 700;
@@ -224,6 +216,10 @@ article {
       white-space: nowrap;
       text-align: start;
       transition: all 0.2s;
+
+      code[class*="language-"] {
+        white-space: nowrap;
+      }
     }
 
     th {
