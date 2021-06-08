@@ -3,7 +3,7 @@
   color: var(--font-primary);
   padding: 0 4rem;
 
-  @media (max-width: 600px) {
+  @media (max-width: 1200px) {
     padding: 0 3rem;
   }
 
@@ -22,6 +22,10 @@
     display: grid;
     grid-template-columns: 6fr 16fr;
     column-gap: 4rem;
+
+    @media (max-width: 1200px) {
+      column-gap: 3rem;
+    }
 
     @media (max-width: 1000px) {
       display: flex;

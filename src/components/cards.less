@@ -4,7 +4,7 @@
   gap: 1.5rem;
   color: var(--font-primary);
 
-  @media (max-width: 800px) {
+  @media (max-width: 760px) {
     grid-template-columns: 1fr;
   }
 
@@ -27,6 +27,10 @@
     background-color: var(--surface);
     box-shadow: var(--shadow-normal);
     transition: all 0.2s;
+
+    @media (max-width: 460px) {
+      padding: 1.5rem 1.75rem 4.5rem 1.75rem;
+    }
 
     .date {
       color: var(--font-secondary);
@@ -62,7 +66,11 @@
       position: absolute;
       right: 0;
       bottom: 0;
-      margin: 1.5rem;
+      margin: 1.5rem 1.75rem;
+
+      @media (max-width: 460px) {
+        margin: 1.25rem 1.5rem;
+      }
 
       svg {
         width: 1.75rem;
