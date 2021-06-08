@@ -1,13 +1,13 @@
 import { graphql } from "gatsby"
 import mediumZoom from "medium-zoom"
 import React, { useEffect, useRef } from "react"
+import copiedIcon from "../assets/icons/copied.svg"
+import copyIcon from "../assets/icons/copy.svg"
 import Comment from "../components/comment"
+import Header from "../components/header"
 import Seo from "../components/seo"
 import "./article.less"
 import "./toc.less"
-
-import copyIcon from "../assets/icons/copy.svg"
-import copiedIcon from "../assets/icons/copied.svg"
 
 const ArticleHeader = ({ frontmatter }) => {
   let create = frontmatter.create_date
@@ -16,12 +16,15 @@ const ArticleHeader = ({ frontmatter }) => {
   return (
     <div className="header">
       <div className="header-wrapper">
-        <div className="meta">
-          <span title={`创建日期：${create} \n最后修改日期：${modify}`}>
-            {modify}
-          </span>
+        <Header back />
+        <div>
+          <div className="meta">
+            <span title={`创建日期：${create} \n最后修改日期：${modify}`}>
+              {modify}
+            </span>
+          </div>
+          <h1>{frontmatter.title}</h1>
         </div>
-        <h1>{frontmatter.title}</h1>
       </div>
     </div>
   )
@@ -97,17 +100,17 @@ const ArticlePage = ({ data }) => {
         <ArticleHeader frontmatter={post.frontmatter} />
         <main>
           <div className="container-wrapper">
-            <article
-              ref={articleRef}
-              id="main-content"
-              dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
-            />
             <aside>
               <nav
                 className="toc"
                 dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
               />
             </aside>
+            <article
+              ref={articleRef}
+              id="main-content"
+              dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
+            />
           </div>
         </main>
         <Comment />

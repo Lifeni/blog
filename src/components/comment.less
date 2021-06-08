@@ -1,4 +1,4 @@
-.comment-wrapper {
+.comment {
   padding: 0 4rem;
 
   @media (max-width: 600px) {
@@ -13,13 +13,13 @@
     padding: 0 1rem;
   }
 
-  .utterances-comment {
+  .comment-wrapper {
     width: 100%;
     max-width: var(--main-width);
     margin: 0 auto;
     padding: 0 0 4rem 0;
     display: grid;
-    grid-template-columns: 5fr 2fr;
+    grid-template-columns: 6fr 16fr;
     column-gap: 4rem;
 
     @media (max-width: 1000px) {
@@ -33,6 +33,7 @@
     .utterances {
       width: 100%;
       margin: 0;
+      max-width: unset;
     }
   }
 }

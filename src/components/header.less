@@ -1,6 +1,7 @@
 header {
   z-index: 800;
-  padding: 3rem 0;
+  display: flex;
+  align-items: center;
 
   @media (max-width: 600px) {
     padding: 1rem 1.5rem;
@@ -8,6 +9,7 @@ header {
 
   h1 {
     margin: 2rem 0;
+    padding: 1.75rem 0;
     display: flex;
 
     @media (max-width: 1000px) {
@@ -33,11 +35,10 @@ header {
   button {
     width: 4.5rem;
     height: 4.5rem;
-    margin: 2rem 0 0;
     padding: 1.375rem;
     border: none;
     border-radius: 100%;
-    background-color: var(--background);
+    background-color: var(--surface);
     cursor: pointer;
     box-shadow: var(--shadow-normal);
     transition: all 0.2s;
@@ -50,6 +51,7 @@ header {
       width: 1.75rem;
       height: 1.75rem;
       stroke-width: 1.5;
+      color: var(--font-primary);
     }
   }
 }
