@@ -21,12 +21,21 @@ footer {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    transition: all 0.2s;
 
     img {
       height: 1.125rem;
       margin: -0.2rem 0.5rem;
       filter: grayscale(1);
       transition: all 0.2s;
+    }
+
+    &:hover {
+      color: var(--font-primary);
+
+      img {
+        filter: grayscale(0);
+      }
     }
   }
 }

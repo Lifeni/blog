@@ -50,16 +50,43 @@
     }
 
     ul ul {
+      position: relative;
       padding: 0 0 0 1.5rem;
 
       li {
         font-weight: 400;
         padding: 0.25rem 0;
+        list-style: circle;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          width: 0.25rem;
+          height: 0.25rem;
+          margin: 0.875rem 0.5rem;
+          border-radius: 100%;
+          background-color: var(--font-light);
+          transform: translateY(-50%);
+          transition: all 0.2s;
+        }
+
+        &:hover::before {
+          background-color: var(--font-secondary);
+        }
 
         p {
           display: initial;
         }
       }
+    }
+  }
+
+  a {
+    transition: all 0.2s;
+
+    &:hover {
+      color: var(--font-primary);
     }
   }
 }
