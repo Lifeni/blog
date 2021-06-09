@@ -23,7 +23,9 @@ const ArticleHeader = ({ frontmatter }) => {
               {modify}
             </span>
           </div>
-          <h1>{frontmatter.title}</h1>
+          <h1 id={frontmatter.title.toLowerCase().replace(" ", "-")}>
+            {frontmatter.title}
+          </h1>
         </div>
       </div>
     </div>

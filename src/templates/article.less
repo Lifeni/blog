@@ -67,7 +67,7 @@ article {
   flex-direction: column;
 
   p {
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
   }
 
   h1 {
@@ -126,7 +126,7 @@ article {
 
   img {
     width: 100%;
-    margin: 0.25rem 0;
+    margin: 0.5rem 0;
     border-radius: 0.25rem;
     display: flex;
     box-shadow: var(--shadow-normal);
@@ -160,17 +160,14 @@ article {
       opacity: 0;
       border: none;
       border-radius: 0.25rem;
-      background-color: var(--surface);
+      background-color: transparent;
       background-position: center;
       background-size: 1rem;
       background-repeat: no-repeat;
       cursor: pointer;
       transition: all 0.2s;
-
-      svg {
-        color: var(--font-primary);
-        stroke-width: 1.5;
-      }
+      filter: invert(var(--svg-invert));
+      stroke-width: 1.5;
     }
 
     &:hover {
@@ -267,10 +264,6 @@ article {
     display: flex;
     flex-direction: column;
     color: var(--font-secondary);
-
-    p {
-      padding: 0.25rem 0;
-    }
 
     .table-wrapper,
     .gatsby-highlight {

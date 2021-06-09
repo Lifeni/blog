@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import React from "react"
 import { FiArrowLeft } from "react-icons/fi"
 import svg from "../assets/记录干杯.svg"
@@ -10,13 +11,9 @@ const Logo = () => (
 )
 
 const BackButton = () => (
-  <button
-    aria-label="返回上一页"
-    title="返回上一页"
-    onClick={() => window.history.back()}
-  >
+  <Link to="/" aria-label="返回主页" title="返回主页">
     <FiArrowLeft aria-label="Back Icon" size={24} />
-  </button>
+  </Link>
 )
 
 const Header = ({ logo, back }) => (
