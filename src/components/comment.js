@@ -18,7 +18,7 @@ const Comment = () => {
   }, [commentRef])
 
   return (
-    <div className="comment">
+    <div className="article-comment">
       <div className="comment-wrapper">
         <div className="space"></div>
         <div

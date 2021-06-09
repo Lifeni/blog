@@ -23,7 +23,7 @@ const ArticleHeader = ({ frontmatter }) => {
               {modify}
             </span>
           </div>
-          <h1 id={frontmatter.title.toLowerCase().replace(" ", "-")}>
+          <h1 id={frontmatter.title.toLowerCase().replaceAll(" ", "-")}>
             {frontmatter.title}
           </h1>
         </div>
@@ -69,8 +69,11 @@ const ArticlePage = ({ data }) => {
     if (block.length) {
       block.forEach(e => {
         const copy = document.createElement("button")
+        const copyImage = document.createElement("span")
+        copy.append(copyImage)
         copy.className = "copy"
-        copy.style.backgroundImage = `url("${copyIcon}")`
+        copyImage.className = "copy-image"
+        copyImage.style.backgroundImage = `url("${copyIcon}")`
         copy.setAttribute("aria-label", "复制")
         copy.title = "复制"
         copy.onclick = () => {
@@ -78,7 +81,7 @@ const ArticlePage = ({ data }) => {
           navigator.clipboard
             .writeText(code.textContent)
             .then(() => {
-              copy.style.backgroundImage = `url("${copiedIcon}")`
+              copyImage.style.backgroundImage = `url("${copiedIcon}")`
               copy.title = "已复制"
             })
             .catch(err => {

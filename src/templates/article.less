@@ -152,22 +152,27 @@ article {
       right: 0;
       top: 0.75rem;
       z-index: 10;
-      width: 2rem;
-      height: 2rem;
       margin: 0.85rem;
-      padding: 0.5rem;
       visibility: hidden;
       opacity: 0;
       border: none;
       border-radius: 0.25rem;
-      background-color: transparent;
-      background-position: center;
-      background-size: 1rem;
-      background-repeat: no-repeat;
+      background-color: var(--surface);
       cursor: pointer;
-      transition: all 0.2s;
-      filter: invert(var(--svg-invert));
-      stroke-width: 1.5;
+      overflow: hidden;
+
+      .copy-image {
+        width: 2rem;
+        height: 2rem;
+        padding: 0.5rem;
+        display: block;
+        filter: invert(var(--svg-invert));
+        background-position: center;
+        background-size: 1rem;
+        background-repeat: no-repeat;
+        stroke-width: 1.5;
+        transition: all 0.2s;
+      }
     }
 
     &:hover {
