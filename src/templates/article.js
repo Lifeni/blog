@@ -12,7 +12,7 @@ import "./toc.less"
 const ArticleHeader = ({ frontmatter }) => {
   const create = frontmatter.create_date
   const modify = frontmatter.date
-  const titleId = frontmatter.title?.toLowerCase()?.replaceAll(" ", "-") || ""
+  const titleId = frontmatter.title.replaceAll(" ", "-").toLowerCase() || ""
 
   return (
     <div className="header">
