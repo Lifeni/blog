@@ -1,31 +1,32 @@
 .list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  width: 100%;
+  padding: 4rem 0;
+  // gap: 1.5rem;
   color: var(--font-primary);
 
-  @media (max-width: 760px) {
-    grid-template-columns: 1fr;
-  }
+  // @media (max-width: 760px) {
+  //   grid-template-columns: 1fr;
+  // }
 
-  @media (max-width: 520px) {
-    gap: 1.5rem;
-  }
+  // @media (max-width: 520px) {
+  //   gap: 1.5rem;
+  // }
 
-  @media (max-width: 460px) {
-    gap: 1.25rem;
-  }
+  // @media (max-width: 460px) {
+  //   gap: 1.25rem;
+  // }
 
   .card {
     position: relative;
     width: 100%;
-    padding: 1.75rem 2rem 5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.25rem;
+    max-width: var(--main-width);
+    margin: 0 auto;
+    padding: 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 5rem;
+    align-items: flex-start;
     color: inherit;
-    background-color: var(--surface);
-    box-shadow: var(--shadow-normal);
     transition: all 0.2s;
 
     @media (max-width: 460px) {
@@ -33,9 +34,22 @@
     }
 
     .date {
-      color: var(--font-secondary);
       font-weight: 700;
       font-size: 0.925rem;
+    }
+
+    .name {
+      font-weight: 700;
+      font-size: 0.925rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+
+    .link {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
     }
 
     .title {
@@ -44,19 +58,16 @@
       margin: 0 0 0.125rem 0;
       padding: 0.5rem 0;
       flex: 1;
-      font-size: 1.375rem;
+      font-size: 1.25rem;
       line-height: 1.625;
       color: inherit;
       font-weight: 700;
     }
 
     .description {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
       text-overflow: ellipsis;
       text-align: justify;
-      text-justify: inter-ideograph;
+      text-justify: auto;
       word-break: break-all;
       color: inherit;
       overflow: hidden;
@@ -81,14 +92,14 @@
       }
     }
 
-    &:hover {
-      box-shadow: var(--shadow-hover);
-      background-color: var(--surface-hover);
+    // &:hover {
+    //   box-shadow: var(--shadow-hover);
+    //   background-color: var(--surface-hover);
 
-      .read-more svg {
-        color: var(--font-link);
-      }
-    }
+    //   .read-more svg {
+    //     color: var(--font-link);
+    //   }
+    // }
 
     &:focus-visible {
       outline: solid 0.25rem var(--font-link);

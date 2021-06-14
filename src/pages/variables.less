@@ -1,5 +1,6 @@
 :root {
   --background: #f6f8fa;
+  --background-hover: #f2f5f8;
   --surface: #ffffff;
   --surface-hover: #ffffff;
   --field: #f2f5f8;
@@ -12,10 +13,11 @@
   --font-light: #e6eaee;
   --font-link: #0366d6;
 
-  --shadow-normal: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.02);
-  --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.08);
+  --shadow-normal: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.01);
+  --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.06);
 
   --main-width: 72rem;
+  --article-width: 45rem;
 
   --svg-invert: 0;
 
@@ -34,9 +36,10 @@
 
   @media (prefers-color-scheme: dark) {
     --background: #121416;
+    --background-hover: #1a1e1f;
     --surface: #16181a;
     --surface-hover: #181a1c;
-    --field: #0f1113;
+    --field: #1a1e1f;
     --element: #181a1c;
 
     --border: solid 1px #1a1e1f;
@@ -48,7 +51,7 @@
 
     --svg-invert: 0.85;
 
-    --shadow-normal: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.04);
+    --shadow-normal: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.02);
     --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.12);
   }
 }

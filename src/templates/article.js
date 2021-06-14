@@ -1,38 +1,47 @@
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import mediumZoom from "medium-zoom"
 import React, { useEffect, useRef } from "react"
-import copiedIcon from "../assets/icons/copied.svg"
-import copyIcon from "../assets/icons/copy.svg"
 import Comment from "../components/comment"
-import Header from "../components/header"
 import Seo from "../components/seo"
 import "./article.less"
 import "./toc.less"
+import Han from "han-css/dist/han.min.js"
 
-const ArticleHeader = ({ frontmatter }) => {
+const Meta = ({ frontmatter }) => {
   const create = frontmatter.create_date
   const modify = frontmatter.date
   const titleId = frontmatter.title.replace(/[" "]/g, "-").toLowerCase()
 
   return (
-    <div className="header">
-      <div className="header-wrapper">
-        <Header back />
+    <section className="meta">
+      <div className="meta-wrapper">
         <div>
-          <div className="meta">
-            <span title={`创建日期：${create} \n最后修改日期：${modify}`}>
-              {modify}
-            </span>
-          </div>
+          <time title={`创建日期：${create} \n最后修改日期：${modify}`}>
+            {modify}
+          </time>
           <h1 id={titleId}>{frontmatter.title}</h1>
+          {/* <p>{frontmatter.description}</p> */}
         </div>
+        <div className="space"></div>
       </div>
-    </div>
+    </section>
+  )
+}
+
+const TOC = ({ toc }) => {
+  return (
+    <section className="toc">
+      <div className="toc-wrapper">
+        <h2>目录</h2>
+        <nav dangerouslySetInnerHTML={{ __html: toc }}></nav>
+      </div>
+    </section>
   )
 }
 
 const ArticlePage = ({ data }) => {
   const post = data.markdownRemark
+
   const articleRef = useRef()
 
   useEffect(() => {
@@ -63,62 +72,27 @@ const ArticlePage = ({ data }) => {
     }, 300)
   }, [data])
 
-  useEffect(() => {
-    const block = articleRef.current.querySelectorAll(".gatsby-highlight")
-    if (block.length) {
-      block.forEach(e => {
-        const copy = document.createElement("button")
-        const copyImage = document.createElement("span")
-        copy.append(copyImage)
-        copy.className = "copy"
-        copyImage.className = "copy-image"
-        copyImage.style.backgroundImage = `url("${copyIcon}")`
-        copy.setAttribute("aria-label", "复制")
-        copy.title = "复制"
-        copy.onclick = () => {
-          const code = e.querySelector("pre code")
-          navigator.clipboard
-            .writeText(code.textContent)
-            .then(() => {
-              copyImage.style.backgroundImage = `url("${copiedIcon}")`
-              copy.title = "已复制"
-            })
-            .catch(err => {
-              console.log("复制出错", err)
-            })
-        }
-
-        const inner = e.firstElementChild
-        e.insertBefore(copy, inner)
-      })
-    }
-  }, [data])
+  // useEffect(() => {
+  //   Han.init()
+  // }, [])
 
   return (
-    <div className="screen article">
+    <div className="container">
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description}
       />
-      <div className="container">
-        <ArticleHeader frontmatter={post.frontmatter} />
-        <main>
-          <div className="container-wrapper">
-            <aside>
-              <nav
-                className="toc"
-                dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
-              />
-            </aside>
-            <article
-              ref={articleRef}
-              id="main-content"
-              dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
-            />
-          </div>
-        </main>
-        <Comment />
+      <Meta frontmatter={post.frontmatter} />
+      <div className="article-wrapper">
+        <article
+          className="content"
+          ref={articleRef}
+          id="main-content"
+          dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
+        />
+        {post.html.includes("</h2>") && <TOC toc={post.tableOfContents} />}
       </div>
+      <Comment />
     </div>
   )
 }

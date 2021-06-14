@@ -14,9 +14,6 @@ export default function HTML(props) {
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
-        <noscript>
-          <div className="top-bar">JavaScript 已被禁用，部分功能不可用</div>
-        </noscript>
         {props.preBodyComponents}
         <div
           key={`body`}

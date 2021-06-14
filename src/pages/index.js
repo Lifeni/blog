@@ -28,16 +28,14 @@ const IndexPage = () => (
   <div className="screen">
     <Seo title="主页" />
     <div className="container">
-      <div className="container-wrapper">
-        <aside>
+      {/* <aside>
           <Header logo />
           <Message />
           <Footer />
-        </aside>
-        <main>
-          <Cards />
-        </main>
-      </div>
+        </aside> */}
+      <main>
+        <Cards />
+      </main>
     </div>
   </div>
 )
