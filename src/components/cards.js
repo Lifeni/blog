@@ -4,17 +4,20 @@ import { FiArrowRight } from "react-icons/fi"
 import "./cards.less"
 
 const Card = ({ title, name, date, description }) => (
-  <Link className="card" to={`/article/${name}`}>
+  <div className="card">
     <time className="date">{date}</time>
-    <h2 className="title">{title}</h2>
-    <p className="description" role="presentation">
-      {description}
-    </p>
+    <Link className="link" to={`/article/${name}`}>
+      <sub className="name">{name}</sub>
+      <h2 className="title">{title}</h2>
+      <p className="description" role="presentation">
+        {description}
+      </p>
 
-    <span className="read-more" aria-label="查看全文" title="查看全文">
-      <FiArrowRight aria-label="Open Article" size={24} />
-    </span>
-  </Link>
+      {/* <span className="read-more" aria-label="查看全文" title="查看全文">
+        <FiArrowRight aria-label="Open Article" size={24} />
+      </span> */}
+    </Link>
+  </div>
 )
 
 const Cards = () => (

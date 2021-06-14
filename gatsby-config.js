@@ -3,7 +3,7 @@ module.exports = {
     title: `记录干杯`,
     description: `个人网站「 记录干杯 」，在这里记录一些技术相关的文章、尝试一些新的技术。`,
     author: `Lifeni`,
-    siteLanguage: "zh-cn",
+    siteLanguage: "zh-hans",
     siteUrl: `https://lifeni.life`,
   },
   plugins: [
@@ -53,12 +53,12 @@ module.exports = {
           },
           {
             resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: null,
-              showLineNumbers: true,
-              noInlineHighlight: false,
-            },
+            // options: {
+            //   classPrefix: "language-",
+            //   // inlineCodeMarker: null,
+            //   showLineNumbers: true,
+            //   noInlineHighlight: false,
+            // },
           },
           `gatsby-remark-images`,
           `gatsby-remark-responsive-iframe`,
