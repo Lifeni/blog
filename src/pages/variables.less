@@ -1,23 +1,32 @@
 :root {
-  --background: #f6f8fa;
-  --background-hover: #f2f5f8;
-  --surface: #ffffff;
-  --surface-hover: #ffffff;
-  --field: #f2f5f8;
-  --element: #f6f8fa;
+  --gray-0: #ffffff;
+  --gray-1: #f6f8fa;
+  --gray-2: #f2f5f8;
+  --gray-3: #e6eaee;
+  --gray-4: #67707a;
+  --gray-5: #000000;
 
-  --border: solid 1px #e6eaee;
+  --blue-0: #0366d6;
+  --blue-1: #065bbd;
 
-  --font-primary: #000000;
-  --font-secondary: #67707a;
-  --font-light: #e6eaee;
-  --font-link: #0366d6;
+  --header-background: var(--gray-1);
+  --article-background: var(--gray-0);
+  --article-block-background: var(--gray-1);
+  --article-code-background: var(--gray-2);
+
+  --border: solid 1px var(--gray-3);
+  --border-block-color: var(--gray-2);
+
+  --font-primary: var(--gray-5);
+  --font-secondary: var(--gray-4);
+  --font-light: var(--gray-3);
+  --font-link: var(--blue-0);
+  --font-link-hover: var(--blue-1);
 
   --shadow-normal: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.01);
   --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.06);
 
-  --main-width: 72rem;
-  --article-width: 45rem;
+  --main-width: 45rem;
 
   --svg-invert: 0;
 
@@ -32,7 +41,7 @@
     var(--font-emoji);
   --font-mono: "JetBrains Mono", "Fira Mono", Consolas, var(--font-sans);
 
-  font-size: 16px;
+  font-size: 17px;
 
   @media (prefers-color-scheme: dark) {
     --background: #121416;

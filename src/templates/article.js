@@ -1,13 +1,13 @@
 import { graphql, Link } from "gatsby"
 import mediumZoom from "medium-zoom"
 import React, { useEffect, useRef } from "react"
+import { RiHome2Line, RiCopyrightLine, RiFileList2Line } from "react-icons/ri"
 import Comment from "../components/comment"
 import Seo from "../components/seo"
 import "./article.less"
 import "./toc.less"
-import Han from "han-css/dist/han.min.js"
 
-const Meta = ({ frontmatter }) => {
+const Meta = ({ frontmatter, html }) => {
   const create = frontmatter.create_date
   const modify = frontmatter.date
   const titleId = frontmatter.title.replace(/[" "]/g, "-").toLowerCase()
@@ -16,11 +16,31 @@ const Meta = ({ frontmatter }) => {
     <section className="meta">
       <div className="meta-wrapper">
         <div>
-          <time title={`创建日期：${create} \n最后修改日期：${modify}`}>
-            {modify}
-          </time>
           <h1 id={titleId}>{frontmatter.title}</h1>
-          {/* <p>{frontmatter.description}</p> */}
+          <time title={`创建日期：${create} \n最后修改日期：${modify}`}>
+            {create === modify ? "创建于" : "编辑于"} {modify}
+          </time>
+          <p>{frontmatter.description}</p>
+          <section className="actions">
+            <Link to="/">
+              <RiHome2Line aria-label="Back Icon" /> 返回主页
+            </Link>
+            {html.includes("</h2>") && (
+              <Link to="/">
+                <RiFileList2Line aria-label="Table of Contents Icon" /> 查看目录
+              </Link>
+            )}
+            <a
+              href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`CC-BY-SA-4.0 署名-相同方式共享 4.0 国际`}
+              className="article-license pill"
+            >
+              <RiCopyrightLine aria-label="Copyright Icon" />
+              CC-BY-SA-4.0
+            </a>
+          </section>
         </div>
         <div className="space"></div>
       </div>
@@ -28,13 +48,14 @@ const Meta = ({ frontmatter }) => {
   )
 }
 
-const TOC = ({ toc }) => {
+const TOC = ({ toc, html }) => {
   return (
     <section className="toc">
-      <div className="toc-wrapper">
-        <h2>目录</h2>
-        <nav dangerouslySetInnerHTML={{ __html: toc }}></nav>
-      </div>
+      {html.includes("</h2>") && (
+        <div className="toc-wrapper">
+          <nav dangerouslySetInnerHTML={{ __html: toc }}></nav>
+        </div>
+      )}
     </section>
   )
 }
@@ -72,27 +93,26 @@ const ArticlePage = ({ data }) => {
     }, 300)
   }, [data])
 
-  // useEffect(() => {
-  //   Han.init()
-  // }, [])
-
   return (
     <div className="container">
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description}
       />
-      <Meta frontmatter={post.frontmatter} />
-      <div className="article-wrapper">
+      {/* <aside>
+        <Header back />
+        <TOC toc={post.tableOfContents} html={post.html} />
+      </aside> */}
+      <main>
+        <Meta frontmatter={post.frontmatter} html={post.html} />
         <article
           className="content"
           ref={articleRef}
           id="main-content"
           dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
         />
-        {post.html.includes("</h2>") && <TOC toc={post.tableOfContents} />}
-      </div>
-      <Comment />
+        <Comment />
+      </main>
     </div>
   )
 }
