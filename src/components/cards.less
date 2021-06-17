@@ -21,9 +21,9 @@
     width: 100%;
     max-width: var(--main-width);
     margin: 0 auto;
-    padding: 2rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+    padding: 2rem 0;
+    // display: grid;
+    // grid-template-columns: 1fr 3fr;
     column-gap: 5rem;
     align-items: flex-start;
     color: inherit;
@@ -33,9 +33,15 @@
       padding: 1.5rem 1.75rem 4.5rem 1.75rem;
     }
 
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
     .date {
+      display: block;
       font-weight: 700;
-      font-size: 0.925rem;
+      font-size: 1rem;
     }
 
     .name {
@@ -55,13 +61,14 @@
     .title {
       display: inline-block;
       width: fit-content;
-      margin: 0 0 0.125rem 0;
       padding: 0.5rem 0;
-      flex: 1;
-      font-size: 1.25rem;
-      line-height: 1.625;
       color: inherit;
       font-weight: 700;
+
+      h2 {
+        font-size: 1.375rem;
+        line-height: 1.75;
+      }
     }
 
     .description {
@@ -74,21 +81,25 @@
     }
 
     .read-more {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      margin: 1.5rem 1.75rem;
-
-      @media (max-width: 460px) {
-        margin: 1.25rem 1.5rem;
-      }
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0;
+      cursor: pointer;
+      color: var(--font-link);
+      transition: all 0.2s;
 
       svg {
-        width: 1.75rem;
-        height: 1.75rem;
-        color: var(--font-light);
-        stroke-width: 1.5;
-        transition: all 0.2s;
+        width: 1.125rem;
+        height: 1.125rem;
+        margin: 0 0.5rem 0 0;
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: var(--font-link-hover);
+        text-decoration: underline from-font var(--font-link-hover);
+        text-underline-offset: 0.375em;
       }
     }
 

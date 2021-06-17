@@ -1,22 +1,34 @@
 import { graphql, Link, StaticQuery } from "gatsby"
 import React from "react"
 import { FiArrowRight } from "react-icons/fi"
+import { RiArrowRightLine, RiEyeLine } from "react-icons/ri"
 import "./cards.less"
 
 const Card = ({ title, name, date, description }) => (
   <div className="card">
-    <time className="date">{date}</time>
-    <Link className="link" to={`/article/${name}`}>
-      <sub className="name">{name}</sub>
-      <h2 className="title">{title}</h2>
+    <div className="card-wrapper">
+      <time className="date">{date}</time>
+      <Link
+        className="title"
+        to={`/article/${name}`}
+        aria-label={title}
+        title={title}
+      >
+        <h2>{title}</h2>
+      </Link>
       <p className="description" role="presentation">
         {description}
       </p>
-
-      {/* <span className="read-more" aria-label="查看全文" title="查看全文">
-        <FiArrowRight aria-label="Open Article" size={24} />
-      </span> */}
-    </Link>
+      <Link
+        className="read-more"
+        to={`/article/${name}`}
+        aria-label="查看全文"
+        title="查看全文"
+      >
+        <RiEyeLine aria-label="Open Article" />
+        查看全文
+      </Link>
+    </div>
   </div>
 )
 

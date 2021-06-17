@@ -1,42 +1,27 @@
 .meta {
   position: relative;
   width: 100%;
-  color: var(--font-light);
-  background-color: var(--background);
+  background-color: var(--header-background);
   overflow: hidden;
 
   .meta-wrapper {
     position: relative;
-    max-width: var(--main-width);
+    padding: 4rem 0;
+    max-width: 45rem;
     margin: 0 auto;
-    padding: 5rem 4rem;
-    display: grid;
-    grid-template-columns: 7fr 3fr;
-    column-gap: 5rem;
     color: var(--font-primary);
-  }
 
-  .line {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-
-    .divider {
-      display: inline-block;
-      margin: 0 0.5rem;
+    p {
+      margin: 1.5rem 0 0 0;
+      // color: var(--font-secondary);
     }
   }
 
-  sub {
-    text-transform: uppercase;
-    font-size: 1rem;
-    font-family: var(--font-mono);
-  }
-
   time {
+    width: fit-content;
     display: block;
     font-weight: 700;
-    padding: 0.25rem 1px;
+    padding: 0.125rem 0;
   }
 
   p {
@@ -45,26 +30,49 @@
     text-justify: inter-ideograph;
   }
 
+  .actions {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+
+    a,
+    button {
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      padding: 0.25rem 0;
+      cursor: pointer;
+      color: var(--font-link);
+      transition: all 0.2s;
+
+      svg {
+        width: 1.125rem;
+        height: 1.125rem;
+        margin: 0 0.5rem 0 0;
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: var(--font-link-hover);
+        text-decoration: underline from-font var(--font-link-hover);
+        text-underline-offset: 0.375em;
+      }
+    }
+  }
+
   h1 {
+    width: fit-content;
     padding: 0.25rem 0;
     font-size: 1.65rem;
     line-height: 1.65;
   }
 }
 
-.article-wrapper {
-  width: 100%;
-  max-width: var(--main-width);
-  margin: 0 auto;
-  padding: 0 4rem;
-  display: grid;
-  grid-template-columns: 7fr 3fr;
-  column-gap: 5rem;
-}
-
 article {
   position: relative;
   min-width: 0;
+  max-width: 45rem;
+  margin: 0 auto;
   padding: 2rem 0;
   display: flex;
   color: var(--font-primary);
@@ -105,14 +113,13 @@ article {
     color: var(--font-link);
     word-break: break-word;
     white-space: normal;
-
     transition: all 0.2s;
 
     &:hover,
-    &:active,
-    &:focus {
-      text-decoration: underline from-font var(--font-link);
-      text-underline-offset: 5px;
+    &:focus-visible {
+      color: var(--font-link-hover);
+      text-decoration: underline from-font var(--font-link-hover);
+      text-underline-offset: 0.375em;
     }
 
     &.anchor.before {
@@ -146,12 +153,13 @@ article {
       margin: 0;
       padding: 1rem 1.25rem;
       border-radius: 0.25rem;
-      background-color: var(--element);
+      background-color: var(--article-block-background);
 
       code {
         padding: 0;
         border: none;
         line-height: 1.875;
+        background-color: inherit;
       }
 
       &::after {
@@ -194,22 +202,18 @@ article {
 
     th {
       font-weight: 700;
-      background-color: var(--element);
+      background-color: var(--article-block-background);
     }
 
     tr:nth-child(even) {
-      background-color: var(--element);
-
-      code {
-        background-color: var(--surface);
-      }
+      background-color: var(--article-block-background);
     }
   }
 
   blockquote {
     margin: 0.75rem 0;
     padding: 0 0 0 1.5rem;
-    border-left: solid 0.5rem var(--field);
+    border-left: solid 0.5rem var(--border-block-color);
     display: flex;
     flex-direction: column;
     color: var(--font-secondary);
@@ -243,9 +247,8 @@ article {
 code[class*="language-"] {
   font-size: 0.925em;
   padding: 0.125em 0.375em;
-  // border: var(--border);
   border-radius: 0.25rem;
-  background-color: var(--element);
+  background-color: var(--article-code-background);
 }
 
 details {
@@ -254,9 +257,8 @@ details {
   summary {
     width: fit-content;
     padding: 0.25rem 1rem;
-    // border: var(--border);
     border-radius: 0.25rem;
-    background-color: var(--element);
+    background-color: var(--article-block-background);
     cursor: pointer;
     user-select: none;
   }
