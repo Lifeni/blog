@@ -1,21 +1,10 @@
 .meta {
   position: relative;
   width: 100%;
-  background-color: var(--header-background);
+  max-width: var(--main-width);
+  padding: 6rem 0 2rem 0;
+  color: var(--font-primary);
   overflow: hidden;
-
-  .meta-wrapper {
-    position: relative;
-    padding: 4rem 0;
-    max-width: 45rem;
-    margin: 0 auto;
-    color: var(--font-primary);
-
-    p {
-      margin: 1.5rem 0 0 0;
-      // color: var(--font-secondary);
-    }
-  }
 
   time {
     width: fit-content;
@@ -24,47 +13,11 @@
     padding: 0.125rem 0;
   }
 
-  p {
-    padding: 0.25rem 0;
-    text-align: justify;
-    text-justify: inter-ideograph;
-  }
-
-  .actions {
-    display: flex;
-    align-items: center;
-    column-gap: 1.5rem;
-
-    a,
-    button {
-      width: fit-content;
-      display: flex;
-      align-items: center;
-      padding: 0.25rem 0;
-      cursor: pointer;
-      color: var(--font-link);
-      transition: all 0.2s;
-
-      svg {
-        width: 1.125rem;
-        height: 1.125rem;
-        margin: 0 0.5rem 0 0;
-      }
-
-      &:hover,
-      &:focus-visible {
-        color: var(--font-link-hover);
-        text-decoration: underline from-font var(--font-link-hover);
-        text-underline-offset: 0.375em;
-      }
-    }
-  }
-
   h1 {
     width: fit-content;
     padding: 0.25rem 0;
-    font-size: 1.65rem;
-    line-height: 1.65;
+    font-size: 1.75rem;
+    line-height: 1.75;
   }
 }
 
@@ -72,7 +25,6 @@ article {
   position: relative;
   min-width: 0;
   max-width: 45rem;
-  margin: 0 auto;
   padding: 2rem 0;
   display: flex;
   color: var(--font-primary);
@@ -136,7 +88,7 @@ article {
   img {
     width: calc(100% + 2rem);
     margin: 0.5rem -1rem;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     display: flex;
     box-shadow: var(--shadow-normal);
   }
@@ -146,13 +98,13 @@ article {
     width: calc(100% + 2rem);
     margin: 0 -1rem;
     padding: 0.75rem 0;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     overflow: hidden;
 
     pre {
       margin: 0;
-      padding: 1rem 1.25rem;
-      border-radius: 0.25rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: 0.5rem;
       background-color: var(--article-block-background);
 
       code {
@@ -172,7 +124,7 @@ article {
     width: calc(100% + 2rem);
     margin: 0.75rem -1rem;
     display: flex;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     overflow-x: auto;
   }
 
@@ -246,8 +198,8 @@ article {
 
 code[class*="language-"] {
   font-size: 0.925em;
-  padding: 0.125em 0.375em;
-  border-radius: 0.25rem;
+  padding: 0.185em 0.5em;
+  border-radius: 0.5rem !important;
   background-color: var(--article-code-background);
 }
 
@@ -256,8 +208,8 @@ details {
 
   summary {
     width: fit-content;
-    padding: 0.25rem 1rem;
-    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
     background-color: var(--article-block-background);
     cursor: pointer;
     user-select: none;

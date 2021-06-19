@@ -1,34 +1,32 @@
 import { graphql, Link, StaticQuery } from "gatsby"
 import React from "react"
-import { FiArrowRight } from "react-icons/fi"
-import { RiArrowRightLine, RiEyeLine } from "react-icons/ri"
+import { RiArrowRightLine } from "react-icons/ri"
 import "./cards.less"
+import Masonry from "react-masonry-css"
 
-const Card = ({ title, name, date, description }) => (
+const Card = ({ title, name, create_date, date, description }) => (
   <div className="card">
-    <div className="card-wrapper">
-      <time className="date">{date}</time>
-      <Link
-        className="title"
-        to={`/article/${name}`}
-        aria-label={title}
-        title={title}
-      >
-        <h2>{title}</h2>
-      </Link>
-      <p className="description" role="presentation">
-        {description}
-      </p>
-      <Link
-        className="read-more"
-        to={`/article/${name}`}
-        aria-label="查看全文"
-        title="查看全文"
-      >
-        <RiEyeLine aria-label="Open Article" />
-        查看全文
-      </Link>
-    </div>
+    <time className="date">{date}</time>
+    <Link
+      className="title"
+      to={`/article/${name}`}
+      aria-label={title}
+      title={title}
+    >
+      <h2>{title}</h2>
+    </Link>
+    <p className="description" role="presentation">
+      {description}
+    </p>
+    <Link
+      className="read-more"
+      to={`/article/${name}`}
+      aria-label="查看全文"
+      title="查看全文"
+    >
+      查看全文
+      <RiArrowRightLine aria-label="Open Article" />
+    </Link>
   </div>
 )
 
@@ -36,21 +34,28 @@ const Cards = () => (
   <StaticQuery
     query={ArticleQuery}
     render={data => (
-      <div className="list" id="main-content">
-        {data.allMarkdownRemark.edges.map(({ node }) => {
-          return (
-            <Card
-              title={node.frontmatter.title}
-              name={node.frontmatter.name}
-              description={node.frontmatter.description}
-              date={node.frontmatter.date}
-              create_date={node.frontmatter.create_date}
-              license={node.frontmatter.license}
-              key={node.frontmatter.title}
-            />
-          )
-        })}
-      </div>
+      <>
+        <Masonry
+          breakpointCols={2}
+          className="list"
+          id="main-content"
+          columnClassName="list-column"
+        >
+          {data.allMarkdownRemark.edges.map(({ node }) => {
+            return (
+              <Card
+                title={node.frontmatter.title}
+                name={node.frontmatter.name}
+                description={node.frontmatter.description}
+                date={node.frontmatter.date}
+                create_date={node.frontmatter.create_date}
+                license={node.frontmatter.license}
+                key={node.frontmatter.title}
+              />
+            )
+          })}
+        </Masonry>
+      </>
     )}
   />
 )
