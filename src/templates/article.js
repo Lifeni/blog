@@ -1,8 +1,8 @@
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import mediumZoom from "medium-zoom"
 import React, { useEffect, useRef } from "react"
-import { RiHome2Line, RiCopyrightLine, RiFileList2Line } from "react-icons/ri"
 import Comment from "../components/comment"
+import Header from "../components/header"
 import Seo from "../components/seo"
 import "./article.less"
 import "./toc.less"
@@ -14,13 +14,14 @@ const Meta = ({ frontmatter, html }) => {
 
   return (
     <section className="meta">
-      <div className="meta-wrapper">
-        <div>
-          <h1 id={titleId}>{frontmatter.title}</h1>
-          <time title={`创建日期：${create} \n最后修改日期：${modify}`}>
-            {create === modify ? "创建于" : "编辑于"} {modify}
-          </time>
-          <p>{frontmatter.description}</p>
+      {/* <div className="meta-wrapper"> */}
+      {/* <div> */}
+      <time title={`创建日期：${create} \n最后修改日期：${modify}`}>
+        {create === modify ? "创建于" : "编辑于"} {modify}
+      </time>
+      <h1 id={titleId}>{frontmatter.title}</h1>
+      {/* <p>{frontmatter.description}</p> */}
+      {/*
           <section className="actions">
             <Link to="/">
               <RiHome2Line aria-label="Back Icon" /> 返回主页
@@ -40,10 +41,10 @@ const Meta = ({ frontmatter, html }) => {
               <RiCopyrightLine aria-label="Copyright Icon" />
               CC-BY-SA-4.0
             </a>
-          </section>
-        </div>
+          </section> */}
+      {/* </div>
         <div className="space"></div>
-      </div>
+      </div> */}
     </section>
   )
 }
@@ -99,10 +100,9 @@ const ArticlePage = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description}
       />
-      {/* <aside>
-        <Header back />
-        <TOC toc={post.tableOfContents} html={post.html} />
-      </aside> */}
+      <aside>
+        <Header back toc comment />
+      </aside>
       <main>
         <Meta frontmatter={post.frontmatter} html={post.html} />
         <article

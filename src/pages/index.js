@@ -28,11 +28,9 @@ const IndexPage = () => (
   <div className="screen">
     <Seo title="主页" />
     <div className="container">
-      {/* <aside>
-          <Header logo />
-          <Message />
-          <Footer />
-        </aside> */}
+      <aside>
+        <Header app menu search />
+      </aside>
       <main>
         <Cards />
       </main>

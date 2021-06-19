@@ -1,11 +1,20 @@
 header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 5.5rem 5rem;
+  width: 100%;
+  height: 100vh;
+  padding: 6rem 0;
   z-index: 800;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  background-color: var(--header-background);
+
+  section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   h1 {
     margin: 2rem 0;
@@ -30,27 +39,27 @@ header {
 
   a,
   button {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    // border: var(--border);
     border: none;
-    border-radius: 100%;
-    background-color: var(--surface);
+    border-radius: 0.5rem;
+    background-color: var(--header-button-background);
     cursor: pointer;
-    box-shadow: var(--shadow-normal);
+    // box-shadow: var(--shadow-normal);
     transition: all 0.2s;
 
     &:hover {
-      box-shadow: var(--shadow-hover);
+      // box-shadow: var(--shadow-hover);
+      background-color: var(--header-button-background-hover);
     }
 
     svg {
-      width: 1.75rem;
-      height: 1.75rem;
-      stroke-width: 1.5;
+      width: 1.5rem;
+      height: 1.5rem;
       color: var(--font-primary);
     }
   }
@@ -65,7 +74,7 @@ header {
   max-width: calc(100% - 2rem);
   height: auto;
   padding: 0.25rem 0.75rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   color: var(--font-link);
   background-color: var(--background);
   text-decoration: none;
@@ -78,6 +87,6 @@ header {
   &:focus-visible {
     top: 1rem;
     opacity: 1;
-    outline: solid 0.25rem var(--font-link);
+    outline: solid 0.5rem var(--font-link);
   }
 }
