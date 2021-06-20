@@ -26,7 +26,7 @@ const TableOfContents = ({ toc }) => {
   return (
     <section className="toc" id="table-of-contents">
       <details className="toc-wrapper">
-        <summary>文章目录</summary>
+        <summary>目录</summary>
         <nav dangerouslySetInnerHTML={{ __html: toc }}></nav>
       </details>
     </section>

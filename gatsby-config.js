@@ -51,15 +51,7 @@ module.exports = {
               elements: [`h2`, `h3`],
             },
           },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            // options: {
-            //   classPrefix: "language-",
-            //   // inlineCodeMarker: null,
-            //   showLineNumbers: true,
-            //   noInlineHighlight: false,
-            // },
-          },
+          `gatsby-remark-prismjs`,
           `gatsby-remark-images`,
           `gatsby-remark-responsive-iframe`,
           `gatsby-remark-external-links`,

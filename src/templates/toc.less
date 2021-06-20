@@ -7,19 +7,23 @@
 
   nav {
     width: calc(100% + 2rem);
-    max-height: calc(100vh - 8rem);
+    max-height: 60vh;
     margin: 1rem -1rem;
     padding: 1.5rem 2rem;
     border-radius: 0.5rem;
     background-color: var(--toc-background);
-    font-size: 0.925rem;
     overflow-y: auto;
+  }
+
+  nav > ul > li > p,
+  nav > ul > li > a {
+    font-weight: 700;
+    padding: 0;
   }
 
   li {
     width: fit-content;
     max-width: 100%;
-    // list-style: none;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -30,11 +34,6 @@
       white-space: nowrap;
     }
   }
-
-  // nav > ul > li > p,
-  // nav > ul > li > a {
-  //   display: none;
-  // }
 
   ul {
     li p {
@@ -47,7 +46,8 @@
     ul,
     ul ul {
       position: relative;
-      padding: 0 0 0 1.25rem;
+      margin: 0 0 -0.25rem 0;
+      padding: 0.25rem 0 0 1.25rem;
 
       li {
         padding: 0.25rem 0;

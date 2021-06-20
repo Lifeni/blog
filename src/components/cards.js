@@ -4,7 +4,7 @@ import { RiArrowRightLine } from "react-icons/ri"
 import "./cards.less"
 import Masonry from "react-masonry-css"
 
-const Card = ({ title, name, create_date, date, description }) => (
+const Card = ({ title, name, tabindex, date, description }) => (
   <div className="card">
     <time className="date">{date}</time>
     <Link
@@ -12,6 +12,7 @@ const Card = ({ title, name, create_date, date, description }) => (
       to={`/article/${name}`}
       aria-label={title}
       title={title}
+      tabIndex={tabindex}
     >
       <h2>{title}</h2>
     </Link>
@@ -23,6 +24,7 @@ const Card = ({ title, name, create_date, date, description }) => (
       to={`/article/${name}`}
       aria-label="查看全文"
       title="查看全文"
+      tabIndex="-1"
     >
       查看全文
       <RiArrowRightLine aria-label="Open Article" />
@@ -41,7 +43,7 @@ const Cards = () => (
           id="main-content"
           columnClassName="list-column"
         >
-          {data.allMarkdownRemark.edges.map(({ node }) => {
+          {data.allMarkdownRemark.edges.map(({ node }, index) => {
             return (
               <Card
                 title={node.frontmatter.title}
@@ -51,6 +53,7 @@ const Cards = () => (
                 create_date={node.frontmatter.create_date}
                 license={node.frontmatter.license}
                 key={node.frontmatter.title}
+                tabindex={index + 10}
               />
             )
           })}

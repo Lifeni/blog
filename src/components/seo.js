@@ -70,7 +70,12 @@ function SEO({ description, lang, meta, title }) {
           },
         ].concat(meta)}
       />
-      <a href="#main-content" className="skip-link" aria-label="跳转到主要内容">
+      <a
+        href="#main-content"
+        className="skip-link"
+        aria-label="跳转到主要内容"
+        tabIndex="1"
+      >
         Skip to main content | 跳转到主要内容
       </a>
     </>
