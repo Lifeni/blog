@@ -1,5 +1,6 @@
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
+import Header from "../components/header"
 import Seo from "../components/seo"
 
 const Message = () => (
@@ -7,6 +8,7 @@ const Message = () => (
     query={MessageQuery}
     render={data => (
       <article
+        className="message"
         dangerouslySetInnerHTML={{
           __html: data.allMarkdownRemark.edges[0].node.html,
         }}
@@ -16,15 +18,14 @@ const Message = () => (
 )
 
 const NotFoundPage = () => (
-  <div className="screen error">
+  <div className="container">
     <Seo title="404 Not found" />
-    <div className="container">
-      <div className="container-wrapper">
-        <main>
-          <Message />
-        </main>
-      </div>
-    </div>
+    <aside>
+      <Header back />
+    </aside>
+    <main>
+      <Message />
+    </main>
   </div>
 )
 

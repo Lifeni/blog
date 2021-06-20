@@ -14,6 +14,7 @@ const Footer = () => (
       <img src={svg} alt="又拍云" title="又拍云" aria-label="又拍云" />
       提供 CDN 加速与云储存服务
     </a>
+    <span className="spacer"></span>
     <a
       href="http://www.beian.miit.gov.cn/"
       target="_blank"

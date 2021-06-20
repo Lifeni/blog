@@ -25,16 +25,15 @@ const Message = () => (
 )
 
 const IndexPage = () => (
-  <div className="screen">
+  <div className="container">
     <Seo title="主页" />
-    <div className="container">
-      <aside>
-        <Header app menu search />
-      </aside>
-      <main>
-        <Cards />
-      </main>
-    </div>
+    <aside>
+      <Header app menu search />
+    </aside>
+    <main>
+      <Cards />
+      <Footer />
+    </main>
   </div>
 )
 

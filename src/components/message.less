@@ -1,17 +1,10 @@
 .message {
   position: relative;
-  padding: 0;
+  width: 100%;
+  max-width: var(--main-width);
+  padding: 6rem 4rem;
   display: flex;
   flex-direction: column;
-  line-height: 2;
-
-  @media (max-width: 1000px) {
-    padding: 0 1rem;
-  }
-
-  @media (max-width: 760px) {
-    padding: 0;
-  }
 
   h4 {
     padding: 1.5rem 0 0.5rem 0;
@@ -23,7 +16,7 @@
     text-justify: inter-ideograph;
   }
 
-  ul {
+  .friends {
     margin: 0 -0.5rem;
     padding: 0.5rem 0;
     display: flex;
