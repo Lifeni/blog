@@ -16,27 +16,6 @@ header {
     align-items: center;
   }
 
-  h1 {
-    margin: 2rem 0;
-    padding: 1.75rem 0;
-    display: flex;
-
-    @media (max-width: 1000px) {
-      padding: 0 1rem;
-    }
-
-    @media (max-width: 760px) {
-      padding: 1.5rem 0 0.5rem 0;
-    }
-
-    img {
-      height: 2rem;
-      pointer-events: none;
-      user-select: none;
-      filter: invert(var(--svg-invert));
-    }
-  }
-
   a,
   button {
     width: 4rem;
@@ -49,11 +28,9 @@ header {
     border-radius: 0.5rem;
     background-color: var(--header-button-background);
     cursor: pointer;
-    // box-shadow: var(--shadow-normal);
     transition: all 0.2s;
 
     &:hover {
-      // box-shadow: var(--shadow-hover);
       background-color: var(--header-button-background-hover);
     }
 
@@ -87,6 +64,6 @@ header {
   &:focus-visible {
     top: 1rem;
     opacity: 1;
-    outline: solid 0.5rem var(--font-link);
+    outline: solid 0.25rem var(--font-link);
   }
 }
