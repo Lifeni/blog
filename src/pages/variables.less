@@ -1,31 +1,23 @@
 :root {
-  --gray-0: #ffffff;
-  --gray-1: #f6f8fa;
-  --gray-2: #f2f5f8;
-  --gray-3: #e6eaee;
-  --gray-4: #67707a;
-  --gray-5: #000000;
+  --card-background: #f6f8fa;
+  --toc-background: #f6f8fa;
+  --header-background: #f6f8fa;
+  --header-button-background: #f6f8fa;
+  --header-button-background-hover: #f2f5f8;
+  --main-background: #ffffff;
+  --article-background: #ffffff;
+  --article-block-background: #f6f8fa;
+  --article-code-background: #f6f8fa;
 
-  --blue-0: #0366d6;
-  --blue-1: #065bbd;
+  --border: solid 1px#e6eaee;
+  --border-table: solid 0.125rem#f2f5f8;
+  --border-block-color: #f2f5f8;
 
-  --card-background: var(--gray-1);
-  --toc-background: var(--gray-1);
-  --header-background: var(--gray-1);
-  --header-button-background: var(--gray-1);
-  --header-button-background-hover: var(--gray-2);
-  --article-background: var(--gray-0);
-  --article-block-background: var(--gray-1);
-  --article-code-background: var(--gray-1);
-
-  --border: solid 1px var(--gray-3);
-  --border-block-color: var(--gray-2);
-
-  --font-primary: var(--gray-5);
-  --font-secondary: var(--gray-4);
-  --font-light: var(--gray-3);
-  --font-link: var(--blue-0);
-  --font-link-hover: var(--blue-1);
+  --font-primary: #282828;
+  --font-secondary: #67707a;
+  --font-light: #e6eaee;
+  --font-link: #0366d6;
+  --font-link-hover: #065bbd;
 
   --shadow-normal: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.01);
   --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.06);
@@ -48,19 +40,25 @@
   font-size: 18px;
 
   @media (prefers-color-scheme: dark) {
-    --background: #121416;
-    --background-hover: #1a1e1f;
-    --surface: #16181a;
-    --surface-hover: #181a1c;
-    --field: #1a1e1f;
-    --element: #181a1c;
+    --card-background: #16181a;
+    --toc-background: #16181a;
+    --header-background: #16181a;
+    --header-button-background: #16181a;
+    --header-button-background-hover: #181a1c;
+    --main-background: #121416;
+    --article-background: #121416;
+    --article-block-background: #16181a;
+    --article-code-background: #16181a;
 
-    --border: solid 1px #1a1e1f;
+    --border: solid 1px#1a1e1f;
+    --border-table: solid 0.125rem#181a1c;
+    --border-block-color: #181a1c;
 
     --font-primary: #d1d5da;
     --font-secondary: #8b949e;
     --font-light: #30363d;
     --font-link: #58a6ff;
+    --font-link-hover: #71b4ff;
 
     --svg-invert: 0.85;
 
