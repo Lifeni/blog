@@ -5486,13 +5486,6 @@ fd@~0.0.2:
   resolved "https://registry.yarnpkg.com/fd/-/fd-0.0.3.tgz#b3240de86dbf5a345baae7382a07d4713566ff0c"
   integrity sha512-iAHrIslQb3U68OcMSP0kkNWabp7sSN6d2TBSb2JO3gcLJVDd4owr/hKM4SFJovFOUeeXeItjYgouEDTMWiVAnA==
 
-fibre.js@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/fibre.js/-/fibre.js-0.2.1.tgz#132bdaf740b2b891ce28b9ed78fadaef9cf85f16"
-  integrity sha1-Eyva90CyuJHOKLntePra75z4XxY=
-  dependencies:
-    findandreplacedomtext "^0.4.3"
-
 figures@^1.3.5:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
@@ -5681,11 +5674,6 @@ find-versions@^3.0.0:
   integrity sha512-P8WRou2S+oe222TOCHitLy8zj+SIsVJh52VP4lvXkaFVnOFFdoWv1H1Jjvel1aI6NCFOAaeAVm8qrI0odiLcww==
   dependencies:
     semver-regex "^2.0.0"
-
-findandreplacedomtext@^0.4.3:
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/findandreplacedomtext/-/findandreplacedomtext-0.4.6.tgz#aafec3049adba195e7e93c050c2abb7823a5835f"
-  integrity sha512-CVRIKbEwfWoKTSnLrmyX26WjMY7o0aUUTm0RXN47fF/eHINJa8C+YHZxGagC7gMWVaAEBFwH7uVXuhwZcylWOQ==
 
 flat-cache@^3.0.4:
   version "3.0.4"
@@ -6875,14 +6863,6 @@ gzip-size@5.1.1:
   dependencies:
     duplexer "^0.1.1"
     pify "^4.0.1"
-
-han-css@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/han-css/-/han-css-3.3.0.tgz#b8f68686fe6a69e51de7a352293edaa83d1304e3"
-  integrity sha1-uPaGhv5qaeUd56NSKT7aqD0TBOM=
-  dependencies:
-    fibre.js "^0.2.1"
-    normalize.css "^4.0.0"
 
 handle-thing@^2.0.0:
   version "2.0.1"
@@ -9433,11 +9413,6 @@ normalize-url@^4.5.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-4.5.1.tgz#0dd90cf1288ee1d1313b87081c9a5932ee48518a"
   integrity sha512-9UZCFRHQdNrfTpGg8+1INIg93B6zE0aXMVFkw1WFwvO4SlZywU6aLg5Of0Ap/PgcbSw4LNxvMWXMeugwMCX0AA==
 
-normalize.css@^4.0.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-4.2.0.tgz#21d66cc557154d4379fd1e079ec7de58a379b099"
-  integrity sha1-IdZsxVcVTUN5/R4HnsfeWKN5sJk=
-
 not@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/not/-/not-0.1.0.tgz#c9691c1746c55dcfbe54cbd8bd4ff041bc2b519d"
@@ -10154,11 +10129,6 @@ path-type@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
-
-pattern.css@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/pattern.css/-/pattern.css-1.0.0.tgz#91ee9e4ca99300c8ab1a47348e325333840d9f4b"
-  integrity sha512-2bW2rCCdLGgvJPpiSJGrg44onxRWTMQpn6tooAayomsCHiso3nehlp5OugNYHSXxYuFfQ1vtDXtGbq6H206qLw==
 
 peek-readable@^3.1.3:
   version "3.1.3"
