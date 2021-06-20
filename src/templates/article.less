@@ -1,7 +1,10 @@
 .article-wrapper {
-  width: fit-content;
+  width: 100%;
   margin: 0 auto;
   padding: 0 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media (max-width: 900px) {
     padding: 0 3rem;
@@ -55,7 +58,7 @@ article {
   position: relative;
   min-width: 0;
   width: 100%;
-  max-width: 45rem;
+  max-width: var(--main-width);
   padding: 0 0 2rem 0;
   display: flex;
   color: var(--font-primary);

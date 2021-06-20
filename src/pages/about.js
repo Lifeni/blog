@@ -1,5 +1,6 @@
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
+import Comment from "../components/comment"
 import Header from "../components/header"
 import Seo from "../components/seo"
 
@@ -14,16 +15,17 @@ const Message = () => (
             __html: data.allMarkdownRemark.edges[0].node.html,
           }}
         ></article>
+        <Comment />
       </div>
     )}
   />
 )
 
-const NotFoundPage = () => (
+const AboutPage = () => (
   <div className="container">
-    <Seo title="404 Not found" />
+    <Seo title="关于我和这个网站" />
     <aside>
-      <Header back about menu />
+      <Header back comment menu />
     </aside>
     <main>
       <Message />
@@ -31,16 +33,13 @@ const NotFoundPage = () => (
   </div>
 )
 
-export default NotFoundPage
+export default AboutPage
 
 const MessageQuery = graphql`
   {
-    allMarkdownRemark(filter: { frontmatter: { path: { eq: "404" } } }) {
+    allMarkdownRemark(filter: { frontmatter: { path: { eq: "about" } } }) {
       edges {
         node {
-          frontmatter {
-            path
-          }
           html
         }
       }
