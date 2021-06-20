@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import {
   RiArrowUpLine,
-  RiDashboardLine,
+  RiAtLine,
   RiDiscussLine,
   RiFileList2Line,
   RiHome2Line,
@@ -40,10 +40,10 @@ const GoTopButton = () => (
   </button>
 )
 
-const AppButton = () => (
-  <button onClick={() => {}} aria-label="应用" title="应用" tabIndex="1">
-    <RiDashboardLine aria-label="App Icon" />
-  </button>
+const AboutButton = () => (
+  <Link to="/about" aria-label="关于" title="关于" tabIndex="1">
+    <RiAtLine aria-label="About Icon" />
+  </Link>
 )
 
 const TOCButton = () => (
@@ -68,7 +68,7 @@ const CommentButton = () => (
   </Link>
 )
 
-const Header = ({ app, menu, search, back, toc, top, comment }) => (
+const Header = ({ about, menu, search, back, toc, top, comment }) => (
   <header>
     <section>
       {back && <BackButton />}
@@ -76,10 +76,10 @@ const Header = ({ app, menu, search, back, toc, top, comment }) => (
     </section>
     <section>
       {top && <GoTopButton />}
-      {app && <AppButton />}
-      {menu && <MenuButton />}
+      {about && <AboutButton />}
       {toc && <TOCButton />}
       {comment && <CommentButton />}
+      {menu && <MenuButton />}
     </section>
   </header>
 )

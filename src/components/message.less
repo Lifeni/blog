@@ -1,14 +1,17 @@
 .message {
-  position: relative;
-  width: 100%;
-  max-width: var(--main-width);
-  padding: 6rem 4rem;
-  display: flex;
-  flex-direction: column;
+  padding: 6rem 0;
+  max-width: var(--message-width);
 
-  h4 {
-    padding: 1.5rem 0 0.5rem 0;
-    font-size: 1rem;
+  @media (max-width: 640px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 450px) {
+    padding: 3rem 0;
+  }
+
+  h3 {
+    margin: 1rem 0 0 0;
   }
 
   p {
@@ -16,27 +19,32 @@
     text-justify: inter-ideograph;
   }
 
-  .friends {
+  .friends ul {
+    position: relative;
     margin: 0 -0.5rem;
     padding: 0.5rem 0;
     display: flex;
     flex-wrap: wrap;
 
     li {
-      width: 2rem;
-      height: 2rem;
+      position: relative;
+      width: 2.25rem;
+      height: 2.25rem;
       margin: 0.5rem;
       list-style: none;
 
       a {
         position: relative;
+        width: 2.25rem;
+        height: 2.25rem;
         margin: 0;
+        display: block;
 
         &::before {
           content: attr(title);
           position: absolute;
-          left: 1rem;
-          top: -2.75rem;
+          left: 50%;
+          top: -2.6rem;
           width: fit-content;
           padding: 0.125rem 0.5rem;
           border-radius: 0.25rem;
@@ -55,7 +63,7 @@
         &::after {
           content: "";
           position: absolute;
-          left: 1rem;
+          left: 50%;
           top: -0.75rem;
           width: fit-content;
           border: solid 0.5rem transparent;
@@ -76,8 +84,8 @@
       }
 
       img {
-        width: 2rem;
-        height: 2rem;
+        width: 2.25rem;
+        height: 2.25rem;
         margin: 0;
         border-radius: 100%;
         box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.08);

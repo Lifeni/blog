@@ -18,15 +18,13 @@ const Comment = () => {
   }, [commentRef])
 
   return (
-
-      <div className="comment-wrapper">
-        <div
-          ref={commentRef}
-          className="utterances-comment"
-          id="article-comment"
-        ></div>
-        <div className="space"></div>
-      </div>
+    <div className="comment-wrapper">
+      <div
+        ref={commentRef}
+        className="utterances-comment"
+        id="article-comment"
+      ></div>
+    </div>
   )
 }
 
