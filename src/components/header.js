@@ -23,11 +23,45 @@ const SearchButton = () => (
   </button>
 )
 
-const MenuButton = () => (
-  <button onClick={() => {}} aria-label="菜单" title="菜单" tabIndex="1">
-    <RiMenuLine aria-label="Menu Icon" />
-  </button>
-)
+const MenuButton = () => {
+  const links = [
+    { name: "博客园", url: "https://www.cnblogs.com/liangfengning" },
+    { name: "Seafile", url: "https://cloud.lifeni.life" },
+    { name: "Gitea", url: "https://git.lifeni.life/liangfengning" },
+  ]
+
+  return (
+    <>
+      <input id="menu-checkbox" type="checkbox" />
+      <label
+        aria-label="菜单"
+        title="菜单"
+        tabIndex="1"
+        className="menu-button"
+        for="menu-checkbox"
+      >
+        <RiMenuLine aria-label="Menu Icon" />
+      </label>
+      <label
+        className="menu-wrapper"
+        for="menu-checkbox"
+        title="点击任意处关闭菜单"
+      ></label>
+      <menu className="menu">
+        {links.map((link, index) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={index}
+          >
+            {link.name}
+          </a>
+        ))}
+      </menu>
+    </>
+  )
+}
 
 const GoTopButton = () => (
   <button

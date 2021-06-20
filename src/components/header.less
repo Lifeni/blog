@@ -24,6 +24,7 @@ header {
   }
 
   section {
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -36,7 +37,8 @@ header {
   }
 
   a,
-  button {
+  button,
+  .menu-button {
     width: 4rem;
     height: 4rem;
     margin: 0.5rem 0;
@@ -67,6 +69,89 @@ header {
         width: 1.375rem;
         height: 1.375rem;
       }
+    }
+  }
+
+  input,
+  .menu,
+  .menu-wrapper {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .menu {
+    position: absolute;
+    top: 75%;
+    left: 100%;
+    z-index: 120;
+    margin: 0 0.75rem;
+    padding: 0.75rem 0;
+    border-radius: 0.25rem;
+    background-color: var(--popover-background);
+    box-shadow: var(--shadow-normal);
+    transform: translateY(-50%);
+    transition: all 0.2s;
+
+    a {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0.25rem 1.25rem;
+      border-radius: 0;
+      color: var(--popover-color);
+      background-color: transparent;
+
+      &:hover {
+        background-color: var(--popover-background-hover);
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -1rem;
+      width: fit-content;
+      border: solid 0.5rem transparent;
+      border-right: solid 0.5rem var(--popover-background);
+      z-index: 10;
+      transform: translateY(-50%);
+      box-shadow: var(--shadow-normal);
+      transition: all 0.2s;
+    }
+
+    @media (max-width: 540px) {
+      top: 100%;
+      left: unset;
+      right: 0;
+      margin: 0.75rem 0;
+      transform: unset;
+
+      &::after {
+        left: 50%;
+        top: -1rem;
+        border: solid 0.5rem transparent;
+        border-bottom: solid 0.5rem var(--popover-background);
+        transform: unset;
+      }
+    }
+  }
+
+  .menu-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+  }
+
+  input[type="checkbox"]:checked {
+    & ~ .menu,
+    & ~ .menu-wrapper {
+      opacity: 1;
+      visibility: visible;
     }
   }
 }
