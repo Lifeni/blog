@@ -15,8 +15,10 @@ header {
 
   @media (max-width: 520px) {
     height: auto;
+    margin: 0 0 -1rem 0;
     padding: 0 1.5rem;
     flex-direction: row;
+    background-color: var(--article-background);
   }
 
   @media (max-width: 450px) {
@@ -47,7 +49,7 @@ header {
     justify-content: center;
     border: none;
     border-radius: 0.5rem;
-    background-color: var(--header-button-background);
+    background-color: inherit;
     cursor: pointer;
     transition: all 0.2s;
 
@@ -93,7 +95,7 @@ header {
     z-index: 120;
     margin: 0 0.75rem;
     padding: 0.75rem 0;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     background-color: var(--popover-background);
     box-shadow: var(--shadow-normal);
     font-size: 0.925rem;

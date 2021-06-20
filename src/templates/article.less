@@ -21,32 +21,37 @@
 
 .meta {
   position: relative;
-  width: 100%;
-  max-width: var(--main-width);
-  padding: 6rem 0 3rem 0;
+  width: calc(100% + 2rem);
+  max-width: calc(var(--main-width) + 2rem);
+  margin: 4rem -1rem 0.5rem -1rem;
+  padding: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--header-background);
   color: var(--font-primary);
   overflow: hidden;
 
   @media (max-width: 640px) {
-    padding: 4rem 0 2rem 0;
+    margin: 1.5rem -1rem 0.5rem -1rem;
+    padding: 2rem;
   }
 
   @media (max-width: 450px) {
-    padding: 3rem 0 2rem 0;
+    margin: 1rem -1rem 0 -1rem;
+    padding: 1.5rem 1.75rem;
   }
 
   time {
     width: fit-content;
     display: block;
     font-weight: 700;
-    padding: 0.125rem 0;
+    padding: 0.25rem 0;
   }
 
   h1 {
     width: fit-content;
-    padding: 0.25rem 0;
-    font-size: 1.75rem;
-    line-height: 1.75;
+    padding: 0.125rem 0;
+    font-size: 1.625rem;
+    line-height: 1.625;
   }
 }
 
