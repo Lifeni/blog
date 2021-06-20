@@ -131,13 +131,14 @@ article {
     width: calc(100% + 2rem);
     margin: 0.75rem -1rem;
     display: flex;
+    border: var(--border-table);
+    border-radius: 0.5rem;
     overflow-x: auto;
   }
 
   table {
     width: 100%;
     display: table;
-    border: var(--border);
     border-collapse: collapse;
     table-layout: auto;
     text-align: center;
@@ -151,7 +152,6 @@ article {
       white-space: nowrap;
       text-align: start;
       transition: all 0.2s;
-      border: var(--border);
 
       code[class*="language-"] {
         white-space: nowrap;
@@ -211,6 +211,7 @@ code[class*="language-"] {
 
 details {
   margin: 1rem 0;
+  color: var(--font-primary);
 
   summary {
     width: fit-content;

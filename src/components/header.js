@@ -6,8 +6,8 @@ import {
   RiDiscussLine,
   RiFileList2Line,
   RiHome2Line,
+  RiMenuLine,
   RiSearchLine,
-  RiUserSmileLine,
 } from "react-icons/ri"
 import "./header.less"
 
@@ -23,10 +23,10 @@ const SearchButton = () => (
   </button>
 )
 
-const AboutButton = () => (
-  <Link to="/about" aria-label="关于" title="关于">
-    <RiUserSmileLine aria-label="About Icon" />
-  </Link>
+const MenuButton = () => (
+  <button onClick={() => {}} aria-label="菜单" title="菜单">
+    <RiMenuLine aria-label="Menu Icon" />
+  </button>
 )
 
 const GoTopButton = () => (
@@ -66,7 +66,7 @@ const Header = ({ app, menu, search, back, toc, top, comment }) => (
     <section>
       {top && <GoTopButton />}
       {app && <AppButton />}
-      {menu && <AboutButton />}
+      {menu && <MenuButton />}
       {toc && <TOCButton />}
       {comment && <CommentButton />}
     </section>
