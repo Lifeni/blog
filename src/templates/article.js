@@ -76,19 +76,19 @@ const ArticlePage = ({ data }) => {
         <Header back toc comment />
       </aside>
       <main>
-        <Meta frontmatter={post.frontmatter} />
-
-        {post.html.includes("</h2>") && (
-          <TableOfContents toc={post.tableOfContents} />
-        )}
-
-        <article
-          className="content"
-          ref={articleRef}
-          id="main-content"
-          dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
-        />
-        <Comment />
+        <div className="article-wrapper">
+          <Meta frontmatter={post.frontmatter} />
+          {post.html.includes("</h2>") && (
+            <TableOfContents toc={post.tableOfContents} />
+          )}
+          <article
+            className="content"
+            ref={articleRef}
+            id="main-content"
+            dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
+          />
+          <Comment />
+        </div>
       </main>
     </div>
   )

@@ -38,7 +38,7 @@ const Cards = () => (
     render={data => (
       <>
         <Masonry
-          breakpointCols={2}
+          breakpointCols={{ default: 3, 1600: 2, 900: 1 }}
           className="list"
           id="main-content"
           columnClassName="list-column"
