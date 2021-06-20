@@ -23,7 +23,7 @@ const IndexPage = () => (
   <div className="container">
     <Seo title="主页" />
     <aside>
-      <Header about menu search />
+      <Header about links search />
     </aside>
     <main>
       {/* <Hero /> */}

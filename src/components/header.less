@@ -72,7 +72,14 @@ header {
     }
   }
 
-  input,
+  input {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
   .menu,
   .menu-wrapper {
     opacity: 0;
@@ -89,6 +96,7 @@ header {
     border-radius: 0.25rem;
     background-color: var(--popover-background);
     box-shadow: var(--shadow-normal);
+    font-size: 0.925rem;
     transform: translateY(-50%);
     transition: all 0.2s;
 
@@ -96,7 +104,7 @@ header {
       width: 100%;
       height: auto;
       margin: 0;
-      padding: 0.25rem 1.25rem;
+      padding: 0.125rem 1.25rem;
       border-radius: 0;
       color: var(--popover-color);
       background-color: transparent;

@@ -25,7 +25,7 @@ const AboutPage = () => (
   <div className="container">
     <Seo title="关于我和这个网站" />
     <aside>
-      <Header back comment menu />
+      <Header back comment links />
     </aside>
     <main>
       <Message />

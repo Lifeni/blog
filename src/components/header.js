@@ -3,10 +3,10 @@ import React from "react"
 import {
   RiArrowUpLine,
   RiAtLine,
-  RiDiscussLine,
+  RiChat1Line,
   RiFileList2Line,
   RiHome2Line,
-  RiMenuLine,
+  RiLinksLine,
   RiSearchLine,
 } from "react-icons/ri"
 import "./header.less"
@@ -23,7 +23,7 @@ const SearchButton = () => (
   </button>
 )
 
-const MenuButton = () => {
+const LinksButton = () => {
   const links = [
     { name: "博客园", url: "https://www.cnblogs.com/liangfengning" },
     { name: "Seafile", url: "https://cloud.lifeni.life" },
@@ -34,13 +34,13 @@ const MenuButton = () => {
     <>
       <input id="menu-checkbox" type="checkbox" />
       <label
-        aria-label="菜单"
-        title="菜单"
+        aria-label="更多链接"
+        title="更多链接"
         tabIndex="1"
         className="menu-button"
         for="menu-checkbox"
       >
-        <RiMenuLine aria-label="Menu Icon" />
+        <RiLinksLine aria-label="Menu Icon" />
       </label>
       <label
         className="menu-wrapper"
@@ -98,11 +98,11 @@ const CommentButton = () => (
     title="文章评论"
     tabIndex="1"
   >
-    <RiDiscussLine aria-label="Comment Icon" />
+    <RiChat1Line aria-label="Comment Icon" />
   </Link>
 )
 
-const Header = ({ about, menu, search, back, toc, top, comment }) => (
+const Header = ({ about, links, search, back, toc, top, comment }) => (
   <header>
     <section>
       {back && <BackButton />}
@@ -111,9 +111,9 @@ const Header = ({ about, menu, search, back, toc, top, comment }) => (
     <section>
       {top && <GoTopButton />}
       {about && <AboutButton />}
-      {toc && <TOCButton />}
       {comment && <CommentButton />}
-      {menu && <MenuButton />}
+      {links && <LinksButton />}
+      {toc && <TOCButton />}
     </section>
   </header>
 )

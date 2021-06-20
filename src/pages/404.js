@@ -23,7 +23,7 @@ const NotFoundPage = () => (
   <div className="container">
     <Seo title="404 Not found" />
     <aside>
-      <Header back about menu />
+      <Header back about links />
     </aside>
     <main>
       <Message />
