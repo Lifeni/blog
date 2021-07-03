@@ -38,13 +38,13 @@ const LinksButton = () => {
         title="更多链接"
         tabIndex="1"
         className="menu-button"
-        for="menu-checkbox"
+        htmlFor="menu-checkbox"
       >
         <RiLinksLine aria-label="Menu Icon" />
       </label>
       <label
         className="menu-wrapper"
-        for="menu-checkbox"
+        htmlFor="menu-checkbox"
         title="点击任意处关闭菜单"
       ></label>
       <menu className="menu">

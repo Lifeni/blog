@@ -21,22 +21,21 @@
 
 .meta {
   position: relative;
-  width: calc(100% + 2rem);
-  max-width: calc(var(--main-width) + 2rem);
-  margin: 4rem -1rem 0.5rem -1rem;
-  padding: 2.5rem;
+  width: 100%;
+  max-width: var(--main-width);
+  margin: 4rem 0 0.5rem 0;
+  padding: 2.5rem 0;
   border-radius: 0.5rem;
-  background-color: var(--header-background);
   color: var(--font-primary);
   overflow: hidden;
 
   @media (max-width: 640px) {
-    margin: 1.5rem -1rem 0.5rem -1rem;
+    margin: 1.5rem 0 0.5rem 0;
     padding: 2rem;
   }
 
   @media (max-width: 450px) {
-    margin: 1rem -1rem 0 -1rem;
+    margin: 1rem 0 0 0;
     padding: 1.5rem 1.75rem;
   }
 
@@ -128,8 +127,8 @@ article {
   }
 
   img {
-    width: calc(100% + 2rem);
-    margin: 0.5rem -1rem;
+    width: calc(100% + 1.5rem);
+    margin: 0.5rem -0.75rem;
     border-radius: 0.5rem;
     display: flex;
     box-shadow: var(--shadow-normal);
@@ -137,8 +136,8 @@ article {
 
   .gatsby-highlight {
     position: relative;
-    width: calc(100% + 2rem);
-    margin: 0 -1rem;
+    width: calc(100% + 1.5rem);
+    margin: 0 -0.75rem;
     padding: 0.75rem 0;
     border-radius: 0.5rem;
     overflow: hidden;
@@ -163,8 +162,8 @@ article {
   }
 
   .table-wrapper {
-    width: calc(100% + 2rem);
-    margin: 0.75rem -1rem;
+    width: calc(100% + 1.5rem);
+    margin: 0.75rem -0.75rem;
     display: flex;
     border: var(--border-block);
     border-radius: 0.5rem;
