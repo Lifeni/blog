@@ -1,12 +1,13 @@
 import styled from "@emotion/styled"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import * as React from "react"
 import { useState } from "react"
 import { Helmet } from "react-helmet"
+import { RiAtLine } from "react-icons/ri"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 import PostCard from "../components/PostCard"
-import Search from "../components/Search"
+import SearchBar from "../components/SearchBar"
 import ArticleSearch from "../utils/article-search"
 
 const Container = styled("div")`
@@ -18,6 +19,7 @@ const Container = styled("div")`
   flex-direction: column;
 
   @media (max-width: 800px) {
+    margin: -1.25rem 0 0 0;
     padding: 0 0 2rem 0;
   }
 `
@@ -85,7 +87,10 @@ const IndexPage = ({ data }) => {
         ></meta>
       </Helmet>
       <Header>
-        <Search search={handleSearch} />
+        <SearchBar search={handleSearch} />
+        <Link to="about">
+          <RiAtLine size="1.125rem" />
+        </Link>
       </Header>
       <ArticleList>
         {articles.length !== 0 ? (

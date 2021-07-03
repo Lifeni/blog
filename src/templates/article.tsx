@@ -4,7 +4,7 @@ import * as React from "react"
 import ReactDOMServer from "react-dom/server"
 import { Helmet } from "react-helmet"
 import { RiCopyrightLine } from "react-icons/ri"
-import AppMenu from "../components/AppMenu"
+import ActionBar from "../components/ActionBar"
 import Article from "../components/Article"
 import Comment from "../components/Comment"
 import Header from "../components/Header"
@@ -51,7 +51,7 @@ const ArticlePage = ({ data }) => {
         <meta name="description" content={frontmatter.description}></meta>
       </Helmet>
       <Header>
-        <AppMenu />
+        <ActionBar />
       </Header>
       <Article {...frontmatter}>
         {meta(frontmatter) +
