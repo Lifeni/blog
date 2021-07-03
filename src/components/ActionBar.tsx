@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
 import * as React from "react"
-import { RiDownloadLine, RiFileListLine, RiHome2Line } from "react-icons/ri"
+import { RiDownloadLine, RiHome2Line } from "react-icons/ri"
 
 const ActionBarWrapper = styled("div")`
   display: flex;
