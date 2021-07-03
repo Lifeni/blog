@@ -7,7 +7,13 @@ module.exports = {
     siteUrl: `https://lifeni.life`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-emotion",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: { icon: "static/favicon.svg" },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -15,22 +21,6 @@ module.exports = {
         path: `${__dirname}/content/`,
       },
     },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `记录干杯 - Lifeni`,
-        short_name: `记录干杯`,
-        start_url: `/`,
-        background_color: `#feec44`,
-        theme_color: `#feec44`,
-        display: `minimal-ui`,
-        icon: `static/favicon.png`,
-        icon_options: {
-          purpose: `any maskable`,
-        },
-      },
-    },
-    `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -41,38 +31,18 @@ module.exports = {
               loading: "lazy",
             },
           },
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              offsetY: `84`,
-              maintainCase: false,
-              removeAccents: true,
-              isIconAfterHeader: false,
-              elements: [`h2`, `h3`],
-            },
-          },
           `gatsby-remark-prismjs`,
-          `gatsby-remark-images`,
-          `gatsby-remark-responsive-iframe`,
           `gatsby-remark-external-links`,
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: [
-            "Inter:300,400,600",
-            "JetBrains Mono:400,700",
-            "Noto Sans SC:300,400,700&display=swap",
-          ],
+          families: ["Inter:300,400,600", "JetBrains Mono:400,700"],
         },
       },
     },
-    `gatsby-plugin-sitemap`,
-    `gatsby-plugin-less`,
   ],
 }

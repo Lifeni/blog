@@ -1,8 +1,14 @@
-import React, { useEffect, useRef } from "react"
-import "./comment.less"
+import styled from "@emotion/styled"
+import React, { MutableRefObject, useEffect, useRef } from "react"
+
+const CommentWrapper = styled("div")`
+  width: calc(100% + 1.5rem);
+  margin: 0 -0.75rem;
+  padding: 2.5rem 0;
+`
 
 const Comment = () => {
-  const commentRef = useRef()
+  const commentRef: MutableRefObject<HTMLDivElement> = useRef()
 
   useEffect(() => {
     const utterances = document.createElement("script")
@@ -18,13 +24,13 @@ const Comment = () => {
   }, [commentRef])
 
   return (
-    <div className="comment-wrapper">
+    <CommentWrapper>
       <div
         ref={commentRef}
         className="utterances-comment"
         id="article-comment"
-      ></div>
-    </div>
+      />
+    </CommentWrapper>
   )
 }
 
