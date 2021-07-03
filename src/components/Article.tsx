@@ -42,7 +42,7 @@ const ArticleWrapper = styled("main")`
   }
 
   h1 {
-    margin: 0.75rem 0 2.5rem 0;
+    margin: 1.25rem 0 3rem 0;
     font-size: 1.625rem;
     line-height: 1.75;
   }
@@ -244,7 +244,7 @@ const Article = ({ children }) => {
 
   useEffect(() => {
     const imgs = articleRef.current.querySelectorAll("img")
-    if (imgs.length !== 0) {
+    if (imgs.length !== 0 && window.location.pathname.startsWith("/article/")) {
       imgs.forEach(e => {
         e.setAttribute("tabindex", "0")
         e.onkeypress = event => {
