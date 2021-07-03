@@ -13,8 +13,8 @@ const Header = styled("header")`
   pointer-events: none;
 
   @media (max-width: 800px) {
-    top: -2rem;
-    padding: 2rem 1.25rem 0 1.25rem;
+    top: -1.5rem;
+    padding: 2.5rem 1.25rem 0 1.25rem;
   }
 
   @media (max-width: 720px) {

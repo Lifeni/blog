@@ -31,11 +31,21 @@ const FooterWrapper = styled("footer")`
     font-size: 1rem;
     line-height: 2.25;
     text-decoration: none;
+    transition: all 0.2s;
 
     img {
       margin: 0 0.5rem;
       height: 1.25rem;
       filter: grayscale(1);
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      color: var(--font-primary);
+
+      img {
+        filter: grayscale(0);
+      }
     }
   }
 `
