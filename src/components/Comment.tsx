@@ -2,9 +2,10 @@ import styled from "@emotion/styled"
 import React, { MutableRefObject, useEffect, useRef } from "react"
 
 const CommentWrapper = styled("div")`
-  width: calc(100% + 1.5rem);
-  margin: 0 -0.75rem;
-  padding: 2.5rem 0;
+  width: calc(var(--article-width) + 1.5rem);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem 1rem;
 `
 
 const Comment = () => {
@@ -21,7 +22,7 @@ const Comment = () => {
     utterances.setAttribute("async", "true")
 
     commentRef.current.appendChild(utterances)
-  }, [commentRef])
+  }, [])
 
   return (
     <CommentWrapper>

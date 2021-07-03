@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet"
 import { RiCopyrightLine } from "react-icons/ri"
 import AppMenu from "../components/AppMenu"
 import Article from "../components/Article"
+import Comment from "../components/Comment"
 import Header from "../components/Header"
 
 const Meta = styled("section")`
@@ -57,6 +58,7 @@ const ArticlePage = ({ data }) => {
           post.html.split("</h1>")[1] +
           copyright(frontmatter)}
       </Article>
+      <Comment />
     </>
   )
 }
