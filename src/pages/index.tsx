@@ -95,7 +95,7 @@ const IndexPage = ({ data }) => {
         ) : (
           <section className="null">
             <h2>没有找到相关文章</h2>
-            <p>换个关键词试试看吧，比如「标题：记录」</p>
+            <p>换个关键词试试看吧，比如「标题：记录」。</p>
           </section>
         )}
       </ArticleList>

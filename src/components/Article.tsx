@@ -2,7 +2,6 @@ import styled from "@emotion/styled"
 import mediumZoom from "medium-zoom"
 import * as React from "react"
 import { MutableRefObject, useEffect, useRef } from "react"
-import Comment from "./Comment"
 
 const ArticleWrapper = styled("main")`
   position: relative;
@@ -69,11 +68,11 @@ const ArticleWrapper = styled("main")`
   ul,
   ol {
     margin: 0.5rem 0;
-    padding: 0 0 0 1.5rem;
+    padding: 0 0 0 1.25rem;
 
     li {
       margin: 0.375rem 0;
-      padding: 0 0 0 0.5rem;
+      padding: 0 0 0 0.375rem;
     }
   }
 
@@ -232,30 +231,34 @@ const Article = ({ children }) => {
 
   useEffect(() => {
     const tables = articleRef.current.querySelectorAll("table")
-    tables.forEach(table => {
-      const wrapper = document.createElement("div")
-      const clone = table.cloneNode(true)
-      wrapper.className = "table-wrapper"
-      wrapper.appendChild(clone)
-      table.replaceWith(wrapper)
-    })
+    if (tables.length !== 0) {
+      tables.forEach(table => {
+        const wrapper = document.createElement("div")
+        const clone = table.cloneNode(true)
+        wrapper.className = "table-wrapper"
+        wrapper.appendChild(clone)
+        table.replaceWith(wrapper)
+      })
+    }
   }, [])
 
   useEffect(() => {
     const imgs = articleRef.current.querySelectorAll("img")
-    imgs.forEach(e => {
-      e.setAttribute("tabindex", "0")
-      e.onkeypress = event => {
-        if (event.key === "Enter") {
-          e.click()
+    if (imgs.length !== 0) {
+      imgs.forEach(e => {
+        e.setAttribute("tabindex", "0")
+        e.onkeypress = event => {
+          if (event.key === "Enter") {
+            e.click()
+          }
         }
-      }
-    })
-    setTimeout(() => {
-      mediumZoom(imgs, {
-        background: "rgba(0, 0, 0, .8)",
       })
-    }, 300)
+      setTimeout(() => {
+        mediumZoom(imgs, {
+          background: "rgba(0, 0, 0, .8)",
+        })
+      }, 300)
+    }
   }, [])
 
   return (
@@ -264,7 +267,6 @@ const Article = ({ children }) => {
         ref={articleRef}
         dangerouslySetInnerHTML={{ __html: children }}
       />
-      <Comment />
     </ArticleWrapper>
   )
 }
