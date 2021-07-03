@@ -6,7 +6,7 @@
 
 ## 技术
 
-使用 GatsbyJS 进行搭建，生成静态页面。
+使用 [Gatsby](https://www.gatsbyjs.com/) 进行搭建，生成静态页面。
 
 使用 Nginx 作为网页服务器，部署在阿里云 ECS 上。
 
