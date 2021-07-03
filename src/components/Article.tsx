@@ -42,7 +42,7 @@ const ArticleWrapper = styled("main")`
   }
 
   h1 {
-    margin: 0.5rem 0 2.5rem 0;
+    margin: 0.75rem 0 2.5rem 0;
     font-size: 1.625rem;
     line-height: 1.75;
   }
