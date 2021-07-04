@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import * as React from "react"
 import ReactDOMServer from "react-dom/server"
 import { Helmet } from "react-helmet"
-import { RiCopyrightLine } from "react-icons/ri"
+import { RiCopyrightLine, RiTimeLine } from "react-icons/ri"
 import ActionBar from "../components/ActionBar"
 import Article from "../components/Article"
 import Comment from "../components/Comment"
@@ -12,7 +12,11 @@ import Header from "../components/Header"
 const Meta = styled("section")`
   time {
     display: flex;
+    align-items: center;
+    font-size: 1rem;
+    line-height: 2;
     color: var(--font-secondary);
+    gap: 0.5rem;
   }
 `
 
@@ -20,8 +24,11 @@ const meta = ({ title, description, create_date, date }) =>
   ReactDOMServer.renderToString(
     <Meta>
       <h1>{title}</h1>
-      <time>{(create_date === date ? "创建于 " : "最后编辑于 ") + date}</time>
       <p>{description}</p>
+      <time>
+        <RiTimeLine aria-label="时间图标" size="1.125rem" />
+        {(create_date === date ? "创建于 " : "最后编辑于 ") + date}
+      </time>
     </Meta>
   )
 

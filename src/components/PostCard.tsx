@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
 import * as React from "react"
+import { RiEyeLine, RiTimeLine } from "react-icons/ri"
 
 const Card = styled("div")`
   width: 100%;
@@ -24,6 +25,7 @@ const Time = styled("time")`
   font-size: 1rem;
   line-height: 2;
   color: var(--font-secondary);
+  gap: 0.5rem;
 `
 
 const Title = styled("h2")`
@@ -63,10 +65,7 @@ const Action = styled("section")`
     text-decoration: none;
     border: none;
     color: var(--font-link);
-
-    &::after {
-      content: " →";
-    }
+    gap: 0.5rem;
 
     &:hover {
       color: var(--font-link-hover);
@@ -88,8 +87,14 @@ const PostCard = ({ create_date, date, title, description, name }) => {
       </Title>
       <Description>{description}</Description>
       <Action>
-        <Time>{(create_date === date ? "创建于 " : "最后编辑于 ") + date}</Time>
-        <Link to={`/article/${name}`}>查看全文&nbsp;</Link>
+        <Link to={`/article/${name}`}>
+          <RiEyeLine aria-label="查看图标" size="1.125rem" />
+          查看全文
+        </Link>
+        <Time>
+          <RiTimeLine aria-label="时间图标" size="1.125rem" />
+          {(create_date === date ? "创建于 " : "最后编辑于 ") + date}
+        </Time>
       </Action>
     </Card>
   )

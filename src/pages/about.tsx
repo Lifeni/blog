@@ -14,13 +14,14 @@ const AboutWrapper = styled("div")`
     }
 
     h2 {
+      margin: 1rem 0;
       font-size: 1.25rem;
     }
   }
 
   .friends ul {
     position: relative;
-    margin: 0;
+    margin: 0.5rem 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
