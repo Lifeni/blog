@@ -48,7 +48,7 @@ const ArticleWrapper = styled("main")`
   }
 
   h2 {
-    margin: 1.25rem 0 1rem 0;
+    margin: 1.25rem 0;
     font-size: 1.375rem;
     line-height: 1.75;
   }

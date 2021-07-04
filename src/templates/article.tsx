@@ -10,6 +10,8 @@ import Comment from "../components/Comment"
 import Header from "../components/Header"
 
 const Meta = styled("section")`
+  margin: 0 0 0.5rem 0;
+
   time {
     display: flex;
     align-items: center;

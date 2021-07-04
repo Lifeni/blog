@@ -31,7 +31,7 @@ const Time = styled("time")`
 const Title = styled("h2")`
   padding: 0.5rem 0;
   font-size: 1.375rem;
-  line-height: 1.875;
+  line-height: 1.75;
   font-weight: 600;
 
   a {

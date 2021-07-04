@@ -28,10 +28,6 @@ const SearchBar = styled("form")`
     transition: all 0.2s;
     pointer-events: initial;
 
-    @media (max-width: 400px) {
-      padding: 0.75rem 0 0.75rem 3.5rem;
-    }
-
     &:focus {
       background-color: var(--element-blur-background-hover);
     }
