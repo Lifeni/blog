@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { graphql, Link } from "gatsby"
+import { graphql, Link, navigate } from "gatsby"
 import * as React from "react"
 import { useState } from "react"
 import { Helmet } from "react-helmet"
@@ -35,7 +35,7 @@ const ArticleList = styled("main")`
   .null {
     width: 100%;
     max-width: var(--main-width);
-    padding: 2.5rem 1rem;
+    padding: 2rem 1rem;
 
     @media (max-width: 800px) {
       padding: 1.5rem 1rem;
@@ -77,6 +77,13 @@ const IndexPage = ({ data }) => {
     }
   }
 
+  const handleEnter = (e: Event) => {
+    e.preventDefault()
+    if (articles.length !== 0) {
+      navigate(`/article/${articles[0].name}`)
+    }
+  }
+
   return (
     <Container>
       <Helmet>
@@ -87,7 +94,7 @@ const IndexPage = ({ data }) => {
         ></meta>
       </Helmet>
       <Header>
-        <SearchBar search={handleSearch} />
+        <SearchBar search={handleSearch} enter={handleEnter} />
         <Link to="about">
           <RiAtLine size="1.125rem" />
         </Link>

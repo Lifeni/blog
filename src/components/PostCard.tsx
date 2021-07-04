@@ -5,7 +5,7 @@ import * as React from "react"
 const Card = styled("div")`
   width: 100%;
   max-width: var(--main-width);
-  padding: 2.5rem 1rem;
+  padding: 2rem 1rem;
   border-bottom: var(--border);
   transition: all 0.2s;
 

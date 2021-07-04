@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { RiSearchLine } from "react-icons/ri"
 
-const SearchBar = styled("div")`
+const SearchBar = styled("form")`
   display: flex;
   align-items: center;
   flex: 1;
@@ -21,15 +21,11 @@ const SearchBar = styled("div")`
     transition: all 0.2s;
     pointer-events: initial;
   }
-
-  &:hover {
-    background-color: var(--element-blur-background-hover);
-  }
 `
 
-const Search = ({ search }) => {
+const Search = ({ search, enter }) => {
   return (
-    <SearchBar>
+    <SearchBar onSubmit={enter}>
       <RiSearchLine size="1.125em" />
       <input
         type="search"
