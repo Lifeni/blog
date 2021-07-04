@@ -93,7 +93,7 @@ const PostCard = ({ create_date, date, title, description, name }) => {
         </Link>
         <Time>
           <RiTimeLine aria-label="时间图标" size="1.125rem" />
-          {(create_date === date ? "创建于 " : "最后编辑于 ") + date}
+          {(create_date === date ? "创建于 " : "编辑于 ") + date}
         </Time>
       </Action>
     </Card>

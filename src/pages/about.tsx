@@ -96,7 +96,11 @@ const AboutWrapper = styled("div")`
 const AboutPage = ({ data }) => {
   return (
     <>
-      <Helmet>
+      <Helmet
+        htmlAttributes={{
+          lang: "zh-hans",
+        }}
+      >
         <title>关于我和这个网站 | 记录干杯</title>
         <meta
           name="description"

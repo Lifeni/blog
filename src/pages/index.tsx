@@ -86,7 +86,11 @@ const IndexPage = ({ data }) => {
 
   return (
     <Container>
-      <Helmet>
+      <Helmet
+        htmlAttributes={{
+          lang: "zh-hans",
+        }}
+      >
         <title>记录干杯</title>
         <meta
           name="description"

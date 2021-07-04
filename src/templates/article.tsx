@@ -27,7 +27,7 @@ const meta = ({ title, description, create_date, date }) =>
       <p>{description}</p>
       <time>
         <RiTimeLine aria-label="时间图标" size="1.125rem" />
-        {(create_date === date ? "创建于 " : "最后编辑于 ") + date}
+        {(create_date === date ? "创建于 " : "编辑于 ") + date}
       </time>
     </Meta>
   )
@@ -53,7 +53,11 @@ const ArticlePage = ({ data }) => {
   const frontmatter = post.frontmatter
   return (
     <>
-      <Helmet>
+      <Helmet
+        htmlAttributes={{
+          lang: "zh-hans",
+        }}
+      >
         <title>{frontmatter.title} | 记录干杯</title>
         <meta name="description" content={frontmatter.description}></meta>
       </Helmet>

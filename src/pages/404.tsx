@@ -5,12 +5,31 @@ import { Helmet } from "react-helmet"
 import Article from "../components/Article"
 
 const NotFoundWrapper = styled("div")`
-  padding: 4rem 0;
+  min-height: 100vh;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  article {
+    h1 {
+      margin: 0 0 3rem 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.125rem;
+    }
+  }
 `
 const NotFoundPage = ({ data }) => {
   return (
     <NotFoundWrapper>
-      <Helmet>
+      <Helmet
+        htmlAttributes={{
+          lang: "zh-hans",
+        }}
+      >
         <title>找不到页面 | 记录干杯</title>
         <meta name="description" content="你要找的页面不在这里。"></meta>
       </Helmet>
