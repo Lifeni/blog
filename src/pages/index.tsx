@@ -95,8 +95,12 @@ const IndexPage = ({ data }) => {
       </Helmet>
       <Header>
         <SearchBar search={handleSearch} enter={handleEnter} />
-        <Link to="about">
-          <RiAtLine size="1.125rem" />
+        <Link
+          title="关于我和这个网站"
+          aria-label="关于我和这个网站"
+          to="/about"
+        >
+          <RiAtLine aria-label="关于图标" size="1.125rem" />
         </Link>
       </Header>
       <ArticleList>

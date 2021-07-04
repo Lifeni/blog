@@ -14,11 +14,11 @@ const ActionBar = () => {
   return (
     <ActionBarWrapper>
       <Link to="/">
-        <RiHome2Line size="1.125em" />
+        <RiHome2Line aria-label="主页图标" size="1.125em" />
         <span className="text">回到「记录干杯」</span>
       </Link>
       <button className="reverse" onClick={() => window.scrollTo(0, 0)}>
-        <RiDownloadLine size="1.125em" />
+        <RiDownloadLine aria-label="回到顶部图标" size="1.125em" />
       </button>
     </ActionBarWrapper>
   )

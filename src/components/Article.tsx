@@ -219,11 +219,6 @@ const ArticleWrapper = styled("main")`
       user-select: none;
     }
   }
-
-  .medium-zoom-overlay,
-  .medium-zoom-image.medium-zoom-image--opened {
-    z-index: 800;
-  }
 `
 
 const Article = ({ children }) => {

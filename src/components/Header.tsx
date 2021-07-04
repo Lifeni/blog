@@ -5,22 +5,23 @@ const HeaderWrapper = styled("header")`
   top: -2.25rem;
   z-index: 10;
   width: 100%;
-  margin: 1.25rem 0;
-  padding: 3.5rem 1.25rem 0 1.25rem;
+  margin: 0;
+  padding: 4.25rem 1.25rem 1.25rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   pointer-events: none;
+  transition: all 0.2s;
 
   @media (max-width: 800px) {
-    top: -0.25rem;
-    padding: 2.5rem 1.25rem 0 1.25rem;
+    top: -1.25rem;
+    padding: 3.75rem 1.25rem 1.25rem 1.25rem;
   }
 
   @media (max-width: 720px) {
-    top: 1.25rem;
-    padding: 0 1.25rem;
+    top: 0;
+    padding: 1.25rem;
   }
 `
 
@@ -62,6 +63,8 @@ const HeaderBar = styled("div")`
       transform: rotate(-180deg);
     }
 
+    &:focus,
+    &:focus-visible,
     &:hover {
       background-color: var(--element-blur-background-hover);
     }

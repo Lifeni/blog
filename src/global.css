@@ -86,3 +86,19 @@ body {
   background-color: var(--background);
   transition: all 0.2s;
 }
+
+.medium-zoom--opened header {
+  top: -8rem;
+}
+
+@media (max-width: 800px) {
+  .medium-zoom--opened header {
+    top: -7.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .medium-zoom--opened header {
+    top: -5rem;
+  }
+}

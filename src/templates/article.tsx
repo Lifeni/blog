@@ -36,7 +36,7 @@ const Copyright = styled("span")`
 const copyright = ({ license }) =>
   ReactDOMServer.renderToString(
     <Copyright>
-      <RiCopyrightLine size="1.125em" />
+      <RiCopyrightLine aria-label="版权图标" size="1.125em" />
       {license}
     </Copyright>
   )
