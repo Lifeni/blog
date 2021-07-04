@@ -7,6 +7,7 @@ import { RiAtLine } from "react-icons/ri"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 import PostCard from "../components/PostCard"
+import ScrollBar from "../components/ScrollBar"
 import SearchBar from "../components/SearchBar"
 import ArticleSearch from "../utils/article-search"
 
@@ -107,6 +108,7 @@ const IndexPage = ({ data }) => {
           <RiAtLine aria-label="关于图标" size="1.125rem" />
         </Link>
       </Header>
+      <ScrollBar />
       <ArticleList>
         {articles.length !== 0 ? (
           articles.map((article, index) => (
