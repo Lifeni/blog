@@ -8,7 +8,6 @@ import ActionBar from "../components/ActionBar"
 import Article from "../components/Article"
 import Comment from "../components/Comment"
 import Header from "../components/Header"
-import ScrollBar from "../components/ScrollBar"
 
 const Meta = styled("section")`
   margin: 0 0 0.5rem 0;
@@ -67,7 +66,6 @@ const ArticlePage = ({ data }) => {
       <Header>
         <ActionBar />
       </Header>
-      <ScrollBar />
       <Article {...frontmatter}>
         {meta(frontmatter) +
           post.html.split("</h1>")[1] +
