@@ -19,6 +19,7 @@
     "gatsby-plugin-react-helmet": "^4.8.0",
     "gatsby-plugin-sitemap": "^4.4.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-remark-autolink-headers": "^4.5.0",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images-native-lazy-load": "^1.0.0",
     "gatsby-remark-prismjs": "^5.5.0",

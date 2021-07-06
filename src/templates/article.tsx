@@ -67,7 +67,7 @@ const ArticlePage = ({ data }) => {
         <meta name="description" content={frontmatter.description}></meta>
       </Helmet>
       <Header>
-        <ArticleBar />
+        <ArticleBar toc={post.tableOfContents} />
       </Header>
       <Article {...frontmatter}>
         {meta(frontmatter) + post.html.split("</h1>")[1]}

@@ -94,6 +94,7 @@ const AboutWrapper = styled("div")`
   }
 `
 const AboutPage = ({ data }) => {
+  const post = data.allMarkdownRemark.edges[0].node
   return (
     <>
       <Helmet
@@ -108,10 +109,10 @@ const AboutPage = ({ data }) => {
         ></meta>
       </Helmet>
       <Header>
-        <ArticleBar />
+        <ArticleBar toc={post.tableOfContents} />
       </Header>
       <AboutWrapper>
-        <Article>{data.allMarkdownRemark.edges[0].node.html}</Article>
+        <Article>{post.html}</Article>
       </AboutWrapper>
       <ArticleComment />
     </>
@@ -129,6 +130,7 @@ export const query = graphql`
             path
           }
           html
+          tableOfContents(absolute: false, maxDepth: 3)
         }
       }
     }

@@ -35,12 +35,12 @@ const HeaderBar = styled("div")`
   border-radius: 0.5rem;
   background-color: var(--element-blur-background);
   backdrop-filter: blur(0.5rem);
-  overflow: hidden;
   transition: all 0.2s;
   pointer-events: none;
 
   a,
-  button {
+  button,
+  summary {
     min-width: 3.5rem;
     height: 3.5rem;
     padding: 0.75rem 1.25rem;

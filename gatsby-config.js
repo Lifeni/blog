@@ -44,6 +44,14 @@ module.exports = {
               loading: "lazy",
             },
           },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: "120",
+              icon: false,
+              elements: [`h2`, `h3`],
+            },
+          },
           `gatsby-remark-prismjs`,
           `gatsby-remark-external-links`,
         ],
