@@ -40,7 +40,7 @@ const SearchBar = styled("form")`
 
 const Search = ({ search, enter }) => {
   return (
-    <SearchBar onSubmit={enter}>
+    <SearchBar className="round-left" onSubmit={enter}>
       <RiSearchLine aria-label="搜索图标" size="1.125em" />
       <input
         type="search"

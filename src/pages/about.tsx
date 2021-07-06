@@ -4,10 +4,11 @@ import * as React from "react"
 import { Helmet } from "react-helmet"
 import Article from "../components/Article"
 import ArticleBar from "../components/ArticleBar"
-import ArticleComment from "../components/ArticleComment"
 import Header from "../components/Header"
 
 const AboutWrapper = styled("div")`
+  padding: 0 0 4rem 0;
+
   article {
     h1 + h2 {
       margin-top: 0;
@@ -114,7 +115,6 @@ const AboutPage = ({ data }) => {
       <AboutWrapper>
         <Article>{post.html}</Article>
       </AboutWrapper>
-      <ArticleComment />
     </>
   )
 }

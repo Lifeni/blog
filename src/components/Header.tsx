@@ -36,7 +36,7 @@ const HeaderBar = styled("div")`
   background-color: var(--element-blur-background);
   backdrop-filter: blur(0.5rem);
   transition: all 0.2s;
-  pointer-events: none;
+  pointer-events: initial;
 
   a,
   button,

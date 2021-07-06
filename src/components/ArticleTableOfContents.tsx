@@ -79,7 +79,7 @@ const TableOfContents = styled("nav")`
 const ArticleTableOfContents = ({ toc }) => {
   return (
     <Wrapper>
-      <summary>
+      <summary className="round-right">
         <RiFileListLine size="1.125rem" />
       </summary>
       <TableOfContents
