@@ -9,10 +9,11 @@ import Article from "../components/Article"
 import Comment from "../components/Comment"
 import Header from "../components/Header"
 
-const Meta = styled("section")`
+const Meta = styled("div")`
   margin: 0 0 0.5rem 0;
 
-  time {
+  time,
+  span {
     display: flex;
     align-items: center;
     font-size: 1rem;
@@ -20,34 +21,36 @@ const Meta = styled("section")`
     color: var(--font-secondary);
     gap: 0.5rem;
   }
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 1rem;
+    white-space: nowrap;
+
+    svg {
+      min-width: 1.125rem;
+    }
+  }
 `
 
-const meta = ({ title, description, create_date, date }) =>
+const meta = ({ title, description, create_date, date, license }) =>
   ReactDOMServer.renderToString(
     <Meta>
       <h1>{title}</h1>
       <p>{description}</p>
-      <time>
-        <RiTimeLine aria-label="时间图标" size="1.125rem" />
-        {(create_date === date ? "创建于 " : "编辑于 ") + date}
-      </time>
+      <section>
+        <time>
+          <RiTimeLine aria-label="时间图标" size="1.125rem" />
+          {(create_date === date ? "创建于 " : "编辑于 ") + date}
+        </time>
+        <span>
+          <RiCopyrightLine aria-label="版权图标" size="1.125em" />
+          {license}
+        </span>
+      </section>
     </Meta>
-  )
-
-const Copyright = styled("span")`
-  margin: 1.75rem 0 0 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--font-secondary);
-`
-
-const copyright = ({ license }) =>
-  ReactDOMServer.renderToString(
-    <Copyright>
-      <RiCopyrightLine aria-label="版权图标" size="1.125em" />
-      {license}
-    </Copyright>
   )
 
 const ArticlePage = ({ data }) => {
@@ -67,9 +70,7 @@ const ArticlePage = ({ data }) => {
         <ActionBar />
       </Header>
       <Article {...frontmatter}>
-        {meta(frontmatter) +
-          post.html.split("</h1>")[1] +
-          copyright(frontmatter)}
+        {meta(frontmatter) + post.html.split("</h1>")[1]}
       </Article>
       <Comment />
     </>

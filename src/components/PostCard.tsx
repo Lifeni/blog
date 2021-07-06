@@ -6,7 +6,7 @@ import { RiEyeLine, RiTimeLine } from "react-icons/ri"
 const Card = styled("div")`
   width: 100%;
   max-width: var(--main-width);
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem;
   border-bottom: var(--border);
   transition: all 0.2s;
 
@@ -15,6 +15,10 @@ const Card = styled("div")`
   }
 
   @media (max-width: 800px) {
+    padding: 2rem 1rem;
+  }
+
+  @media (max-width: 720px) {
     padding: 1.5rem 1rem;
   }
 `

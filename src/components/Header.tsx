@@ -2,11 +2,11 @@ import styled from "@emotion/styled"
 
 const HeaderWrapper = styled("header")`
   position: sticky;
-  top: -2.25rem;
+  top: -3.5rem;
   z-index: 10;
   width: 100%;
   margin: 0;
-  padding: 4.25rem 1.25rem 1.25rem 1.25rem;
+  padding: 4.75rem 1.25rem 1.25rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
