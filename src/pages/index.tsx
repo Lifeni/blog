@@ -4,9 +4,10 @@ import * as React from "react"
 import { useState } from "react"
 import { Helmet } from "react-helmet"
 import { RiAtLine } from "react-icons/ri"
+import ArticleCard from "../components/ArticleCard"
+import ArticleList from "../components/ArticleList"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import PostCard from "../components/PostCard"
 import SearchBar from "../components/SearchBar"
 import ArticleSearch from "../utils/article-search"
 
@@ -21,37 +22,6 @@ const Container = styled("div")`
   @media (max-width: 800px) {
     margin: -1.25rem 0 0 0;
     padding: 0 0 2rem 0;
-  }
-`
-
-const ArticleList = styled("main")`
-  position: relative;
-  width: 100%;
-  padding: 0 1.25rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  .null {
-    width: 100%;
-    max-width: var(--main-width);
-    padding: 2.5rem 1rem;
-
-    @media (max-width: 800px) {
-      padding: 1.5rem 1rem;
-    }
-
-    h2 {
-      font-size: 1.375rem;
-      padding: 0.5rem 0;
-      line-height: 1.875;
-      font-weight: 600;
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 2;
-    }
   }
 `
 
@@ -110,7 +80,7 @@ const IndexPage = ({ data }) => {
       <ArticleList>
         {articles.length !== 0 ? (
           articles.map((article, index) => (
-            <PostCard {...article} key={index} />
+            <ArticleCard {...article} key={index} />
           ))
         ) : (
           <section className="null">

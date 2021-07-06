@@ -83,7 +83,7 @@ const Action = styled("section")`
   }
 `
 
-const PostCard = ({ create_date, date, title, description, name }) => {
+const ArticleCard = ({ create_date, date, title, description, name }) => {
   return (
     <Card>
       <Title>
@@ -104,4 +104,4 @@ const PostCard = ({ create_date, date, title, description, name }) => {
   )
 }
 
-export default PostCard
+export default ArticleCard

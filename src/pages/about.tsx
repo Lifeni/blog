@@ -2,9 +2,9 @@ import styled from "@emotion/styled"
 import { graphql } from "gatsby"
 import * as React from "react"
 import { Helmet } from "react-helmet"
-import ActionBar from "../components/ActionBar"
 import Article from "../components/Article"
-import Comment from "../components/Comment"
+import ArticleBar from "../components/ArticleBar"
+import ArticleComment from "../components/ArticleComment"
 import Header from "../components/Header"
 
 const AboutWrapper = styled("div")`
@@ -108,12 +108,12 @@ const AboutPage = ({ data }) => {
         ></meta>
       </Helmet>
       <Header>
-        <ActionBar />
+        <ArticleBar />
       </Header>
       <AboutWrapper>
         <Article>{data.allMarkdownRemark.edges[0].node.html}</Article>
       </AboutWrapper>
-      <Comment />
+      <ArticleComment />
     </>
   )
 }

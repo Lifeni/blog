@@ -4,9 +4,9 @@ import * as React from "react"
 import ReactDOMServer from "react-dom/server"
 import { Helmet } from "react-helmet"
 import { RiCopyrightLine, RiTimeLine } from "react-icons/ri"
-import ActionBar from "../components/ActionBar"
 import Article from "../components/Article"
-import Comment from "../components/Comment"
+import ArticleBar from "../components/ArticleBar"
+import ArticleComment from "../components/ArticleComment"
 import Header from "../components/Header"
 
 const Meta = styled("div")`
@@ -67,12 +67,12 @@ const ArticlePage = ({ data }) => {
         <meta name="description" content={frontmatter.description}></meta>
       </Helmet>
       <Header>
-        <ActionBar />
+        <ArticleBar />
       </Header>
       <Article {...frontmatter}>
         {meta(frontmatter) + post.html.split("</h1>")[1]}
       </Article>
-      <Comment />
+      <ArticleComment />
     </>
   )
 }

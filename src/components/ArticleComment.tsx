@@ -1,14 +1,14 @@
 import styled from "@emotion/styled"
 import React, { MutableRefObject, useEffect, useRef } from "react"
 
-const CommentWrapper = styled("div")`
+const ArticleCommentWrapper = styled("div")`
   width: calc(var(--article-width) + 1.5rem);
   max-width: 100%;
   margin: 0 auto;
   padding: 1rem 1rem 3rem 1rem;
 `
 
-const Comment = () => {
+const ArticleComment = () => {
   const commentRef: MutableRefObject<HTMLDivElement> = useRef()
 
   useEffect(() => {
@@ -25,14 +25,14 @@ const Comment = () => {
   }, [])
 
   return (
-    <CommentWrapper>
+    <ArticleCommentWrapper>
       <div
         ref={commentRef}
         className="utterances-comment"
         id="article-comment"
       />
-    </CommentWrapper>
+    </ArticleCommentWrapper>
   )
 }
 
-export default Comment
+export default ArticleComment
