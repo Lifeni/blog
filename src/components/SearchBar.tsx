@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { useEffect, useRef } from "react"
 import { RiSearchLine } from "react-icons/ri"
 
 const SearchBar = styled("form")`
@@ -39,6 +40,21 @@ const SearchBar = styled("form")`
 `
 
 const Search = ({ search, enter }) => {
+  const searchRef = useRef<HTMLInputElement>()
+
+  useEffect(() => {
+    const listener = (e: KeyboardEvent) => {
+      if (e.key === "/" && searchRef) {
+        if (searchRef.current.value === "") {
+          e.preventDefault()
+          searchRef.current.focus()
+        }
+      }
+    }
+    window.addEventListener("keypress", listener)
+    return () => window.removeEventListener("keypress", listener)
+  }, [])
+
   return (
     <SearchBar className="round-left" onSubmit={enter}>
       <RiSearchLine aria-label="搜索图标" size="1.125em" />
@@ -46,6 +62,7 @@ const Search = ({ search, enter }) => {
         type="search"
         placeholder="在「记录干杯」中搜索"
         onChange={search}
+        ref={searchRef}
       />
     </SearchBar>
   )
