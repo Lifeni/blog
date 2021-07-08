@@ -19,12 +19,12 @@ const FooterWrapper = styled("footer")`
 
   section {
     display: flex;
-    gap: 1.5rem;
   }
 
   a {
     width: fit-content;
     max-width: 100%;
+    margin: 0 1rem 0 0;
     display: flex;
     align-items: center;
     color: var(--font-secondary);

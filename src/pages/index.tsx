@@ -73,7 +73,7 @@ const IndexPage = ({ data }) => {
           title="关于我和这个网站"
           aria-label="关于我和这个网站"
           to="/about"
-          className="round-right"
+          className="round-right icon-only"
         >
           <RiAtLine aria-label="关于图标" size="1.125rem" />
         </Link>

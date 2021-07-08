@@ -47,7 +47,6 @@ const HeaderBar = styled("div")`
     border: none;
     display: flex;
     align-items: center;
-    gap: 1rem;
     color: var(--font-secondary);
     background-color: transparent;
     font-size: 1rem;
@@ -58,6 +57,18 @@ const HeaderBar = styled("div")`
     pointer-events: initial;
     cursor: pointer;
     text-decoration: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    svg {
+      margin: 0 1.5rem 0 0;
+    }
+
+    &.icon-only svg {
+      margin: 0;
+    }
 
     &.reverse {
       transform: rotate(-180deg);

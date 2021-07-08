@@ -25,12 +25,11 @@ const AboutWrapper = styled("div")`
     margin: 0.5rem 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    align-items: center;
 
     li {
       position: relative;
-      margin: 0;
+      margin: 0 1rem 0 0;
       padding: 0.5rem 0;
       list-style: none;
 

@@ -29,7 +29,10 @@ const Time = styled("time")`
   font-size: 1rem;
   line-height: 2;
   color: var(--font-secondary);
-  gap: 0.5rem;
+
+  svg {
+    margin: 0 0.5rem 0 0;
+  }
 `
 
 const Title = styled("h2")`
@@ -58,18 +61,20 @@ const Description = styled("p")`
 const Action = styled("section")`
   padding: 0.5rem 0;
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  align-items: center;
   white-space: nowrap;
 
   a {
+    margin: 0 1rem 0 0;
     display: flex;
     align-items: center;
-    vertical-align: middle;
     text-decoration: none;
     border: none;
     color: var(--font-link);
-    gap: 0.5rem;
+
+    svg {
+      margin: 0 0.5rem 0 0;
+    }
 
     &:hover {
       color: var(--font-link-hover);

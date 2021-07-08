@@ -98,14 +98,10 @@ const ArticleWrapper = styled("main")`
   h3 {
     position: relative;
     max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
+    width: fit-content;
 
     code[class*="language-"] {
       max-width: 100%;
-      display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

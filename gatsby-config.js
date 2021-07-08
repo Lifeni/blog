@@ -49,7 +49,7 @@ module.exports = {
             options: {
               offsetY: "120",
               icon: false,
-              elements: [`h2`, `h3`],
+              elements: [`h1`, `h2`, `h3`],
             },
           },
           `gatsby-remark-prismjs`,

@@ -14,19 +14,22 @@ const Meta = styled("div")`
 
   time,
   span {
-    display: flex;
-    align-items: center;
+    margin: 0 1rem 0 0;
     font-size: 1rem;
     line-height: 2;
     color: var(--font-secondary);
-    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin: 0 0.5rem 0 0;
+    }
   }
 
   section {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     align-items: center;
-    gap: 0 1rem;
     white-space: nowrap;
 
     svg {

@@ -2,6 +2,7 @@ import styled from "@emotion/styled"
 import { RiFileListLine } from "react-icons/ri"
 
 const Wrapper = styled("details")`
+  position: relative;
   pointer-events: initial;
   transition: all 0.2s;
 `
@@ -11,10 +12,10 @@ const TableOfContents = styled("nav")`
   top: 4.5rem;
   right: 0;
   z-index: 200;
-  width: 100%;
+  width: calc(100vw - 2.5rem);
   max-width: var(--toc-width);
   height: auto;
-  max-height: 75vh;
+  max-height: 65vh;
   padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -51,7 +52,6 @@ const TableOfContents = styled("nav")`
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        gap: 0;
         line-height: 2.5;
         display: inline-block;
 
@@ -79,7 +79,7 @@ const TableOfContents = styled("nav")`
 const ArticleTableOfContents = ({ toc }) => {
   return (
     <Wrapper>
-      <summary className="round-right">
+      <summary className="round-right icon-only">
         <RiFileListLine size="1.125rem" />
       </summary>
       <TableOfContents
