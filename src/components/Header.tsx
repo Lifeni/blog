@@ -1,8 +1,7 @@
 import styled from "@emotion/styled"
 
 const HeaderWrapper = styled("header")`
-  position: sticky;
-  top: -3.5rem;
+  position: relative;
   z-index: 10;
   width: 100%;
   margin: 0;
@@ -15,13 +14,11 @@ const HeaderWrapper = styled("header")`
   transition: all 0.2s;
 
   @media (max-width: 800px) {
-    top: -1.25rem;
-    padding: 3.75rem 1.25rem 1.25rem 1.25rem;
+    padding: 3.75rem 1.25rem 0.75rem 1.25rem;
   }
 
   @media (max-width: 720px) {
-    top: 0;
-    padding: 1.25rem;
+    padding: 1.25rem 1.25rem 0 1.25rem;
   }
 `
 
@@ -33,8 +30,7 @@ const HeaderBar = styled("div")`
   justify-content: space-between;
   color: var(--font-secondary);
   border-radius: 0.5rem;
-  background-color: var(--element-blur-background);
-  backdrop-filter: blur(0.5rem);
+  background-color: var(--element-background);
   transition: all 0.2s;
   pointer-events: initial;
 
@@ -77,7 +73,7 @@ const HeaderBar = styled("div")`
     &:focus,
     &:focus-visible,
     &:hover {
-      background-color: var(--element-blur-background-hover);
+      background-color: var(--element-background-hover);
     }
   }
 `

@@ -56,7 +56,7 @@ const AboutWrapper = styled("div")`
           font-size: 0.925rem;
           white-space: nowrap;
           transform: translateX(-50%);
-          box-shadow: var(--shadow-normal);
+          box-shadow: var(--shadow);
           transition: all 0.2s;
         }
 
@@ -72,7 +72,7 @@ const AboutWrapper = styled("div")`
           visibility: hidden;
           z-index: 10;
           transform: translateX(-50%);
-          box-shadow: var(--shadow-normal);
+          box-shadow: var(--shadow);
           transition: all 0.2s;
         }
 

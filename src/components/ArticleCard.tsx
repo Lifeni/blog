@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
 import * as React from "react"
-import { RiEyeLine, RiTimeLine } from "react-icons/ri"
+import { RiBookOpenLine, RiCalendarLine } from "react-icons/ri"
 
 const Card = styled("div")`
   width: 100%;
@@ -97,11 +97,11 @@ const ArticleCard = ({ create_date, date, title, description, name }) => {
       <Description>{description}</Description>
       <Action>
         <Link to={`/article/${name}`}>
-          <RiEyeLine aria-label="查看图标" size="1.125rem" />
+          <RiBookOpenLine aria-label="查看图标" size="1.125rem" />
           查看全文
         </Link>
         <Time>
-          <RiTimeLine aria-label="时间图标" size="1.125rem" />
+          <RiCalendarLine aria-label="日期图标" size="1.125rem" />
           {(create_date === date ? "创建于 " : "编辑于 ") + date}
         </Time>
       </Action>

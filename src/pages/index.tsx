@@ -18,11 +18,6 @@ const Container = styled("div")`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-  @media (max-width: 800px) {
-    margin: -1.25rem 0 0 0;
-    padding: 0 0 2rem 0;
-  }
 `
 
 const IndexPage = ({ data }) => {

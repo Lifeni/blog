@@ -42,9 +42,26 @@ const ArticleWrapper = styled("main")`
   }
 
   h1 {
-    margin: 1.25rem 0 2.5rem 0;
-    font-size: 1.625rem;
+    margin: 1.5rem 0 0.25rem 0;
+    font-size: 1.5rem;
     line-height: 1.75;
+
+    @media (max-width: 800px) {
+      margin: 1.5rem 0 0.25rem 0;
+    }
+
+    @media (max-width: 720px) {
+      margin: 1.5rem 0 0.25rem 0;
+      font-size: 1.625rem;
+    }
+
+    & + h2 {
+      padding: 2.5rem 0 0 0;
+
+      @media (max-width: 720px) {
+        padding: 2rem 0 0 0;
+      }
+    }
   }
 
   h2 {
@@ -102,6 +119,8 @@ const ArticleWrapper = styled("main")`
 
     code[class*="language-"] {
       max-width: 100%;
+      display: inline-block;
+      vertical-align: middle;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
