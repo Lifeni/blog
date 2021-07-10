@@ -1,8 +1,8 @@
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
 import * as React from "react"
-import { RiDownloadLine, RiHome2Line } from "react-icons/ri"
-import ArticleTableOfContents from "./ArticleTableOfContents"
+import { RiHome2Line } from "react-icons/ri"
+import ArticleTableOfContents from "./TableOfContents"
 
 const ArticleBarWrapper = styled("div")`
   display: flex;

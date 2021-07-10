@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { graphql } from "gatsby"
 import * as React from "react"
 import { Helmet } from "react-helmet"
-import Article from "../components/Article"
+import Article from "../components/article/Article"
 
 const NotFoundWrapper = styled("div")`
   min-height: 100vh;

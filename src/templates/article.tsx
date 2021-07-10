@@ -4,9 +4,9 @@ import * as React from "react"
 import ReactDOMServer from "react-dom/server"
 import { Helmet } from "react-helmet"
 import { RiCalendarLine, RiCopyrightLine } from "react-icons/ri"
-import Article from "../components/Article"
-import ArticleBar from "../components/ArticleBar"
-import ArticleComment from "../components/ArticleComment"
+import Article from "../components/article/Article"
+import ArticleBar from "../components/article/Bar"
+import ArticleComment from "../components/article/Comment"
 import Header from "../components/Header"
 
 const Meta = styled("div")`

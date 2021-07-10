@@ -38,20 +38,8 @@ const TableOfContents = styled("nav")`
   border-radius: 0.5rem;
   background-color: var(--background);
   box-shadow: var(--shadow-hover);
+  overflow: auto;
   transition: all 0.2s;
-
-  &::before {
-    content: " ";
-    position: absolute;
-    right: 1.125rem;
-    top: -1.5rem;
-    width: auto;
-    border: solid 0.75rem transparent;
-    border-bottom: solid 0.75rem var(--background);
-    z-index: 10;
-    filter: drop-shadow(var(--drop-shadow));
-    transition: all 0.2s;
-  }
 
   li,
   p {

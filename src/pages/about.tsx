@@ -2,8 +2,8 @@ import styled from "@emotion/styled"
 import { graphql } from "gatsby"
 import * as React from "react"
 import { Helmet } from "react-helmet"
-import Article from "../components/Article"
-import ArticleBar from "../components/ArticleBar"
+import Article from "../components/article/Article"
+import ArticleBar from "../components/article/Bar"
 import Header from "../components/Header"
 
 const AboutWrapper = styled("div")`
