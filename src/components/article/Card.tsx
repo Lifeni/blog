@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
-import * as React from "react"
+import React from "react"
 import { RiBookOpenLine, RiCalendarLine } from "react-icons/ri"
 
 const Card = styled("div")`

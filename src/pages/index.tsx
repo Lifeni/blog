@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { graphql, Link, navigate } from "gatsby"
-import * as React from "react"
+import React from "react"
 import { useState } from "react"
 import { Helmet } from "react-helmet"
 import { RiAtLine } from "react-icons/ri"
@@ -20,14 +20,15 @@ const Container = styled("div")`
   flex-direction: column;
 `
 
-const IndexPage = ({ data }) => {
-  const documents = data.allMarkdownRemark.edges.map(article => ({
-    name: article.node.frontmatter.name,
-    title: article.node.frontmatter.title,
-    description: article.node.frontmatter.description,
-    date: article.node.frontmatter.date,
-    create_date: article.node.frontmatter.create_date,
-  }))
+const IndexPage = ({ data }: ArticleListGraphQL) => {
+  const documents: Array<ArticleFrontmatterGraphQL> =
+    data.allMarkdownRemark.edges.map(article => ({
+      name: article.node.frontmatter.name,
+      title: article.node.frontmatter.title,
+      description: article.node.frontmatter.description,
+      date: article.node.frontmatter.date,
+      create_date: article.node.frontmatter.create_date,
+    }))
   const [articles, setArticles] = useState(documents)
   const search = new ArticleSearch(documents)
 

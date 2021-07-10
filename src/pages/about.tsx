@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { graphql } from "gatsby"
-import * as React from "react"
+import React from "react"
 import { Helmet } from "react-helmet"
 import Article from "../components/article/Article"
 import ArticleBar from "../components/article/Bar"
@@ -93,7 +93,7 @@ const AboutWrapper = styled("div")`
     }
   }
 `
-const AboutPage = ({ data }) => {
+const AboutPage = ({ data }: MessageListGraphQL) => {
   const post = data.allMarkdownRemark.edges[0].node
   return (
     <>

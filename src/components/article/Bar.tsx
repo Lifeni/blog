@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
-import * as React from "react"
+import React from "react"
 import { RiHome2Line } from "react-icons/ri"
 import ArticleTableOfContents from "./TableOfContents"
 
@@ -11,7 +11,11 @@ const ArticleBarWrapper = styled("div")`
   flex: 1;
 `
 
-const ArticleBar = ({ toc }) => {
+interface TableOfContentsProps {
+  toc: string
+}
+
+const ArticleBar = ({ toc }: TableOfContentsProps) => {
   return (
     <ArticleBarWrapper>
       <Link to="/" className="round-left">

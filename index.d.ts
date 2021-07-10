@@ -3,7 +3,53 @@ declare module "*.svg" {
   export default svg
 }
 
-interface IScrollBarProps {
-  heightRatio: number
-  topRatio: number
+interface ArticleListGraphQL {
+  data: {
+    allMarkdownRemark: {
+      edges: Array<{ node: ArticleGraphQL }>
+    }
+  }
+}
+
+interface ArticlePageGraphQL {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+    markdownRemark: ArticleGraphQL
+  }
+}
+
+interface ArticleGraphQL {
+  id: string
+  html: string
+  frontmatter: ArticleFrontmatterGraphQL
+  tableOfContents: string
+}
+
+interface ArticleFrontmatterGraphQL {
+  title: string
+  name: string
+  description: string
+  date: string
+  create_date: string
+  license?: string
+}
+
+interface MessageListGraphQL {
+  data: {
+    allMarkdownRemark: {
+      edges: Array<{ node: MessageGraphQL }>
+    }
+  }
+}
+
+interface MessageGraphQL {
+  frontmatter: {
+    path: string
+  }
+  html: string
+  tableOfContents: string
 }

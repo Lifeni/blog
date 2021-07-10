@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { graphql } from "gatsby"
-import * as React from "react"
+import React from "react"
 import ReactDOMServer from "react-dom/server"
 import { Helmet } from "react-helmet"
 import { RiCalendarLine, RiCopyrightLine } from "react-icons/ri"
@@ -40,7 +40,13 @@ const Meta = styled("div")`
   }
 `
 
-const meta = ({ title, description, create_date, date, license }) =>
+const meta = ({
+  title,
+  description,
+  create_date,
+  date,
+  license,
+}: ArticleFrontmatterGraphQL) =>
   ReactDOMServer.renderToString(
     <Meta>
       <h1>{title}</h1>
@@ -58,7 +64,7 @@ const meta = ({ title, description, create_date, date, license }) =>
     </Meta>
   )
 
-const ArticlePage = ({ data }) => {
+const ArticlePage = ({ data }: ArticlePageGraphQL) => {
   const post = data.markdownRemark
   const frontmatter = post.frontmatter
   return (

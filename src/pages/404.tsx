@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { graphql } from "gatsby"
-import * as React from "react"
+import React from "react"
 import { Helmet } from "react-helmet"
 import Article from "../components/article/Article"
 
@@ -18,7 +18,7 @@ const NotFoundWrapper = styled("div")`
     }
   }
 `
-const NotFoundPage = ({ data }) => {
+const NotFoundPage = ({ data }: MessageListGraphQL) => {
   return (
     <NotFoundWrapper>
       <Helmet
@@ -45,6 +45,7 @@ export const query = graphql`
             path
           }
           html
+          tableOfContents(absolute: false, maxDepth: 3)
         }
       }
     }

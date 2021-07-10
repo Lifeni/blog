@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import mediumZoom from "medium-zoom"
-import * as React from "react"
+import React from "react"
 import { MutableRefObject, useEffect, useRef } from "react"
 
 const ArticleWrapper = styled("main")`
@@ -236,38 +236,49 @@ const ArticleWrapper = styled("main")`
   }
 `
 
-const Article = ({ children }) => {
-  const articleRef: MutableRefObject<HTMLElement> = useRef()
+interface ArticleHTML {
+  children: string
+}
+
+const Article = ({ children }: ArticleHTML) => {
+  const articleRef: MutableRefObject<HTMLElement | null> = useRef(null)
 
   useEffect(() => {
-    const tables = articleRef.current.querySelectorAll("table")
-    if (tables.length !== 0) {
-      tables.forEach(table => {
-        const wrapper = document.createElement("div")
-        const clone = table.cloneNode(true)
-        wrapper.className = "table-wrapper"
-        wrapper.appendChild(clone)
-        table.replaceWith(wrapper)
-      })
+    if (articleRef.current) {
+      const tables = articleRef.current.querySelectorAll("table")
+      if (tables.length !== 0) {
+        tables.forEach(table => {
+          const wrapper = document.createElement("div")
+          const clone = table.cloneNode(true)
+          wrapper.className = "table-wrapper"
+          wrapper.appendChild(clone)
+          table.replaceWith(wrapper)
+        })
+      }
     }
   }, [])
 
   useEffect(() => {
-    const imgs = articleRef.current.querySelectorAll("img")
-    if (imgs.length !== 0 && window.location.pathname.startsWith("/article/")) {
-      imgs.forEach(e => {
-        e.setAttribute("tabindex", "0")
-        e.onkeypress = event => {
-          if (event.key === "Enter") {
-            e.click()
+    if (articleRef.current) {
+      const imgs = articleRef.current.querySelectorAll("img")
+      if (
+        imgs.length !== 0 &&
+        window.location.pathname.startsWith("/article/")
+      ) {
+        imgs.forEach(e => {
+          e.setAttribute("tabindex", "0")
+          e.onkeypress = event => {
+            if (event.key === "Enter") {
+              e.click()
+            }
           }
-        }
-      })
-      setTimeout(() => {
-        mediumZoom(imgs, {
-          background: "rgba(0, 0, 0, .8)",
         })
-      }, 300)
+        setTimeout(() => {
+          mediumZoom(imgs, {
+            background: "rgba(0, 0, 0, .8)",
+          })
+        }, 300)
+      }
     }
   }, [])
 

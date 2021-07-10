@@ -1,10 +1,10 @@
 class ArticleSearch {
-  private documents = []
-  constructor(documents) {
+  private documents: Array<ArticleFrontmatterGraphQL> = []
+  constructor(documents: Array<ArticleFrontmatterGraphQL>) {
     this.documents = documents
   }
 
-  search(text: string) {
+  search(text: string): Array<ArticleFrontmatterGraphQL> {
     if (!text.trim()) return this.documents
 
     const [prefix, target] = text.split(/:|：/)
@@ -46,14 +46,13 @@ class ArticleSearch {
           })
         }
       }
-    } else {
-      return this.documents.filter(document =>
-        JSON.stringify(document)
-          .trim()
-          .toLowerCase()
-          .includes(text.trim().toLowerCase())
-      )
     }
+    return this.documents.filter(document =>
+      JSON.stringify(document)
+        .trim()
+        .toLowerCase()
+        .includes(text.trim().toLowerCase())
+    )
   }
 }
 

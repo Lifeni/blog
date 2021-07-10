@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import React from "react"
 import { RiFileListLine } from "react-icons/ri"
 
 const Wrapper = styled("details")`
@@ -92,7 +93,11 @@ const TableOfContents = styled("nav")`
   }
 `
 
-const ArticleTableOfContents = ({ toc }) => {
+interface TableOfContentsProps {
+  toc: string
+}
+
+const ArticleTableOfContents = ({ toc }: TableOfContentsProps) => {
   return (
     <Wrapper>
       <summary className="round-right icon-only">
