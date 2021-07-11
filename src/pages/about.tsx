@@ -10,12 +10,12 @@ import Header from "../components/Header"
 const AboutWrapper = styled("div")`
   article {
     h1 + h2 {
-      margin-top: 0;
+      padding-top: 0;
     }
 
     h2 {
-      margin: 1rem 0;
-      font-size: 1.25rem;
+      padding: 1rem 0;
+      font-size: 1.125rem;
     }
   }
 

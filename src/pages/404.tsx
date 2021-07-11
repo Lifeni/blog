@@ -12,8 +12,12 @@ const NotFoundWrapper = styled("div")`
   justify-content: center;
 
   article {
+    h1 {
+      padding: 0;
+    }
+
     h2 {
-      margin: 0;
+      padding: 0;
       font-size: 1.125rem;
     }
   }
