@@ -52,7 +52,6 @@ const ArticleWrapper = styled("main")`
 
     @media (max-width: 720px) {
       margin: 1.5rem 0 0.25rem 0;
-      font-size: 1.625rem;
     }
 
     & + h2 {

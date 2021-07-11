@@ -1,14 +1,13 @@
 import styled from "@emotion/styled"
 import { graphql, Link, navigate } from "gatsby"
-import React from "react"
-import { useState } from "react"
+import React, { useState } from "react"
 import { Helmet } from "react-helmet"
 import { RiAtLine } from "react-icons/ri"
 import ArticleCard from "../components/article/Card"
 import ArticleList from "../components/article/List"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import SearchBar from "../components/SearchBar"
+import SearchBar from "../components/Search"
 import ArticleSearch from "../utils/article-search"
 
 const Container = styled("div")`
