@@ -1,15 +1,29 @@
 import styled from "@emotion/styled"
 import React from "react"
-import { RiFileListLine } from "react-icons/ri"
+import { RiCloseLine, RiFileListLine } from "react-icons/ri"
 
 const Wrapper = styled("details")`
   position: relative;
   pointer-events: initial;
   transition: all 0.2s;
 
-  &[open] nav {
-    animation: show 0.2s;
-    transform-origin: right top;
+  .close {
+    display: none;
+  }
+
+  &[open] {
+    nav {
+      animation: show 0.2s;
+      transform-origin: right top;
+    }
+
+    .open {
+      display: none;
+    }
+
+    .close {
+      display: initial;
+    }
   }
 
   @keyframes show {
@@ -101,7 +115,8 @@ const ArticleTableOfContents = ({ toc }: TableOfContentsProps) => {
   return (
     <Wrapper>
       <summary className="round-right icon-only">
-        <RiFileListLine size="1.125rem" />
+        <RiFileListLine size="1.125rem" className="open" />
+        <RiCloseLine size="1.125rem" className="close" />
       </summary>
       <TableOfContents
         dangerouslySetInnerHTML={{ __html: toc }}

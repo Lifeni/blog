@@ -4,10 +4,14 @@ import { RiCalendarLine, RiCopyrightLine } from "react-icons/ri"
 
 const Meta = styled("div")`
   width: calc(100% + 2rem);
-  margin: 0 -1rem 2rem -1rem;
-  padding: 0.25rem 1rem 3.25rem 1rem;
+  margin: 0 -1rem 1.75rem -1rem;
+  padding: 0.25rem 1rem 3rem 1rem;
   border-bottom: var(--border);
   transition: all 0.2s;
+
+  & + p {
+    margin: 1.5rem 0 0 0 !important;
+  }
 
   @media (max-width: 800px) {
     padding: 0 1rem 3rem 1rem;
@@ -20,7 +24,8 @@ const Meta = styled("div")`
   }
 
   time,
-  span {
+  span,
+  a {
     margin: 0 1rem 0 0;
     font-size: 1rem;
     line-height: 2;
@@ -61,12 +66,23 @@ const ArticleMeta = ({
       <section>
         <time>
           <RiCalendarLine aria-label="日期图标" size="1.125rem" />
-          {(create_date === date ? "创建于 " : "最后编辑于 ") + date}
+          {(create_date === date ? "创建于 " : "编辑于 ") + date}
         </time>
-        <span>
-          <RiCopyrightLine aria-label="版权图标" size="1.125em" />
-          {license}
-        </span>
+        {license === "CC-BY-SA-4.0" ? (
+          <a
+            href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <RiCopyrightLine aria-label="版权图标" size="1.125em" />
+            {license}
+          </a>
+        ) : (
+          <span>
+            <RiCopyrightLine aria-label="版权图标" size="1.125em" />
+            {license}
+          </span>
+        )}
       </section>
     </Meta>
   )

@@ -16,7 +16,7 @@ const HeaderWrapper = styled("header")`
   transition: all 0.2s;
 
   @media (max-width: 800px) {
-    padding: 3.75rem 1.25rem 0.75rem 1.25rem;
+    padding: 2.5rem 1.25rem 0.75rem 1.25rem;
   }
 
   @media (max-width: 720px) {

@@ -5,10 +5,22 @@ import { RiHome2Line } from "react-icons/ri"
 import ArticleTableOfContents from "./TableOfContents"
 
 const ArticleBarWrapper = styled("div")`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex: 1;
+
+  svg {
+    min-width: 1.125rem;
+  }
+
+  .text {
+    max-width: max-content;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 `
 
 interface TableOfContentsProps {

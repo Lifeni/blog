@@ -44,6 +44,12 @@ const Title = styled("h2")`
   a {
     color: inherit;
     text-decoration: none;
+    transition: all 0.2s;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--font-link);
+    }
   }
 `
 
@@ -65,6 +71,11 @@ const Action = styled("section")`
   white-space: nowrap;
   flex-wrap: wrap;
   line-height: 2.375rem;
+
+  @media (max-width: 450px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   a {
     margin: 0 1rem 0 0;
@@ -106,7 +117,7 @@ const ArticleCard = ({
         </Link>
         <Time>
           <RiCalendarLine aria-label="日期图标" size="1.125rem" />
-          {(create_date === date ? "创建于 " : "最后编辑于 ") + date}
+          {(create_date === date ? "创建于 " : "编辑于 ") + date}
         </Time>
       </Action>
     </Card>

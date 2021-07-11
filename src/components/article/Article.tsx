@@ -67,6 +67,10 @@ const ArticleWrapper = styled("main")`
     padding: 1.25rem 0;
     font-size: 1.375rem;
     line-height: 1.75;
+
+    & + h3 {
+      padding: 0.5rem 0 1rem 0;
+    }
   }
 
   h3 {
@@ -76,14 +80,14 @@ const ArticleWrapper = styled("main")`
   }
 
   h4 {
-    padding: 0.5rem 0;
+    padding: 0.75rem 0 0.375rem 0;
     font-size: 1.125rem;
     line-height: 1.75;
   }
 
   ul,
   ol {
-    margin: 0.5rem 0;
+    margin: 0.375rem 0;
     padding: 0 0 0 1.25rem;
 
     li {
