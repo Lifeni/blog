@@ -51,7 +51,7 @@ const ArticleWrapper = styled("main")`
     }
 
     @media (max-width: 720px) {
-      padding: 1.5rem 0 0.5rem 0;
+      padding: 1.5rem 0 0.25rem 0;
     }
 
     & + h2 {

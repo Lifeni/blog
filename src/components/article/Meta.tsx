@@ -28,8 +28,7 @@ const Meta = styled("div")`
   a {
     margin: 0 1rem 0 0;
     font-size: 1rem;
-    line-height: 2;
-    color: var(--font-secondary);
+    line-height: 2.25;
     display: flex;
     align-items: center;
 
@@ -38,8 +37,13 @@ const Meta = styled("div")`
     }
   }
 
+  time,
+  span {
+    color: var(--font-secondary);
+  }
+
   section {
-    padding: 0.125rem 0;
+    padding: 0;
     display: flex;
     flex-wrap: wrap-reverse;
     align-items: center;

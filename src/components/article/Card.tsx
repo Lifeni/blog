@@ -27,7 +27,7 @@ const Time = styled("time")`
   display: flex;
   align-items: center;
   font-size: 1rem;
-  line-height: 2;
+  line-height: 2.25;
   color: var(--font-secondary);
 
   svg {
@@ -70,7 +70,6 @@ const Action = styled("section")`
   align-items: center;
   white-space: nowrap;
   flex-wrap: wrap;
-  line-height: 2.375rem;
 
   @media (max-width: 450px) {
     flex-direction: column;
@@ -84,6 +83,7 @@ const Action = styled("section")`
     text-decoration: none;
     border: none;
     color: var(--font-link);
+    line-height: 2.25;
 
     svg {
       margin: 0 0.5rem 0 0;
