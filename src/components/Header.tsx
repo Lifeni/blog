@@ -1,11 +1,13 @@
 import styled from "@emotion/styled"
+import React, { ReactChildren } from "react"
+import { ReactElement } from "react"
 
 const HeaderWrapper = styled("header")`
   position: relative;
   z-index: 10;
   width: 100%;
   margin: 0;
-  padding: 4.75rem 1.25rem 1.25rem 1.25rem;
+  padding: 4.75rem 1.25rem 1rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +20,7 @@ const HeaderWrapper = styled("header")`
   }
 
   @media (max-width: 720px) {
-    padding: 1.25rem 1.25rem 0 1.25rem;
+    padding: 1.25rem 1.25rem 0.25rem 1.25rem;
   }
 `
 
@@ -78,7 +80,11 @@ const HeaderBar = styled("div")`
   }
 `
 
-const Header = ({ children }) => {
+interface HeaderProps {
+  children: ReactElement | ReactElement[]
+}
+
+const Header = ({ children }: HeaderProps) => {
   return (
     <HeaderWrapper>
       <HeaderBar>{children}</HeaderBar>

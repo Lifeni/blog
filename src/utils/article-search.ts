@@ -1,10 +1,10 @@
 class ArticleSearch {
-  private documents: Array<ArticleFrontmatterGraphQL> = []
-  constructor(documents: Array<ArticleFrontmatterGraphQL>) {
+  private documents: ArticleFrontmatterGraphQL[] = []
+  constructor(documents: ArticleFrontmatterGraphQL[]) {
     this.documents = documents
   }
 
-  search(text: string): Array<ArticleFrontmatterGraphQL> {
+  search(text: string): ArticleFrontmatterGraphQL[] {
     if (!text.trim()) return this.documents
 
     const [prefix, target] = text.split(/:|：/)

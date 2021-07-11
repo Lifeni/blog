@@ -69,7 +69,7 @@ const TableOfContents = styled("nav")`
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        line-height: 2.5;
+        line-height: 2.375;
         display: inline-block;
 
         code {

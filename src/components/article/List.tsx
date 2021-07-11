@@ -21,7 +21,7 @@ const ArticleList = styled("main")`
       font-size: 1.375rem;
       padding: 0.5rem 0;
       line-height: 1.875;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     p {

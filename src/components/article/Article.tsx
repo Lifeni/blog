@@ -27,7 +27,7 @@ const ArticleWrapper = styled("main")`
 
     &:hover {
       color: var(--font-link-hover);
-      text-underline-offset: 0.25rem;
+      text-underline-offset: 0.25em;
       text-decoration: underline;
     }
   }
@@ -51,7 +51,7 @@ const ArticleWrapper = styled("main")`
     }
 
     @media (max-width: 720px) {
-      margin: 1.5rem 0 0.25rem 0;
+      margin: 1.5rem 0 0.5rem 0;
     }
 
     & + h2 {
@@ -235,11 +235,11 @@ const ArticleWrapper = styled("main")`
   }
 `
 
-interface ArticleHTML {
+interface ArticleHTMLProps {
   children: string
 }
 
-const Article = ({ children }: ArticleHTML) => {
+const Article = ({ children }: ArticleHTMLProps) => {
   const articleRef: MutableRefObject<HTMLElement | null> = useRef(null)
 
   useEffect(() => {

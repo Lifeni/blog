@@ -4,9 +4,20 @@ import { RiCalendarLine, RiCopyrightLine } from "react-icons/ri"
 
 const Meta = styled("div")`
   width: calc(100% + 2rem);
-  margin: 0 -1rem 1.5rem -1rem;
-  padding: 0 1rem 3rem 1rem;
+  margin: 0 -1rem 1.75rem -1rem;
+  padding: 0.25rem 1rem 3.25rem 1rem;
   border-bottom: var(--border);
+  transition: all 0.2s;
+
+  @media (max-width: 800px) {
+    padding: 0 1rem 3rem 1rem;
+  }
+
+  @media (max-width: 720px) {
+    margin: 0 -1rem 1.25rem -1rem;
+    padding: 0 1rem;
+    border-bottom: none;
+  }
 
   time,
   span {
@@ -24,9 +35,10 @@ const Meta = styled("div")`
 
   section {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     align-items: center;
     white-space: nowrap;
+    line-height: 2.375rem;
 
     svg {
       min-width: 1.125rem;
@@ -48,7 +60,7 @@ const ArticleMeta = ({
       <section>
         <time>
           <RiCalendarLine aria-label="日期图标" size="1.125rem" />
-          {(create_date === date ? "创建于 " : "编辑于 ") + date}
+          {(create_date === date ? "创建于 " : "最后编辑于 ") + date}
         </time>
         <span>
           <RiCopyrightLine aria-label="版权图标" size="1.125em" />

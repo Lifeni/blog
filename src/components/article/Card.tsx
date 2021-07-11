@@ -39,7 +39,7 @@ const Title = styled("h2")`
   padding: 0.5rem 0;
   font-size: 1.375rem;
   line-height: 1.75;
-  font-weight: 600;
+  font-weight: 700;
 
   a {
     color: inherit;
@@ -59,10 +59,12 @@ const Description = styled("p")`
 `
 
 const Action = styled("section")`
-  padding: 0.5rem 0;
+  padding: 0.375rem 0;
   display: flex;
   align-items: center;
   white-space: nowrap;
+  flex-wrap: wrap;
+  line-height: 2.375rem;
 
   a {
     margin: 0 1rem 0 0;
@@ -79,16 +81,18 @@ const Action = styled("section")`
     &:hover {
       color: var(--font-link-hover);
       text-decoration: underline;
-      text-underline-offset: 0.25rem;
-    }
-
-    @media (max-width: 480px) {
-      display: none;
+      text-underline-offset: 0.25em;
     }
   }
 `
 
-const ArticleCard = ({ create_date, date, title, description, name }) => {
+const ArticleCard = ({
+  create_date,
+  date,
+  title,
+  description,
+  name,
+}: ArticleFrontmatterGraphQL) => {
   return (
     <Card>
       <Title>
@@ -102,7 +106,7 @@ const ArticleCard = ({ create_date, date, title, description, name }) => {
         </Link>
         <Time>
           <RiCalendarLine aria-label="日期图标" size="1.125rem" />
-          {(create_date === date ? "创建于 " : "编辑于 ") + date}
+          {(create_date === date ? "创建于 " : "最后编辑于 ") + date}
         </Time>
       </Action>
     </Card>

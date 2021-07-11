@@ -6,7 +6,7 @@ declare module "*.svg" {
 interface ArticleListGraphQL {
   data: {
     allMarkdownRemark: {
-      edges: Array<{ node: ArticleGraphQL }>
+      edges: { node: ArticleGraphQL }[]
     }
   }
 }
@@ -41,7 +41,7 @@ interface ArticleFrontmatterGraphQL {
 interface MessageListGraphQL {
   data: {
     allMarkdownRemark: {
-      edges: Array<{ node: MessageGraphQL }>
+      edges: { node: MessageGraphQL }[]
     }
   }
 }

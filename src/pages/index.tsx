@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { graphql, Link, navigate } from "gatsby"
-import React, { useState } from "react"
+import React, { ChangeEvent, FormEvent, useState } from "react"
 import { Helmet } from "react-helmet"
 import { RiAtLine } from "react-icons/ri"
 import ArticleCard from "../components/article/Card"
@@ -20,7 +20,7 @@ const Container = styled("div")`
 `
 
 const IndexPage = ({ data }: ArticleListGraphQL) => {
-  const documents: Array<ArticleFrontmatterGraphQL> =
+  const documents: ArticleFrontmatterGraphQL[] =
     data.allMarkdownRemark.edges.map(article => ({
       name: article.node.frontmatter.name,
       title: article.node.frontmatter.title,
@@ -31,7 +31,7 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
   const [articles, setArticles] = useState(documents)
   const search = new ArticleSearch(documents)
 
-  const handleSearch = (e: Event) => {
+  const handleSearch = (e: ChangeEvent) => {
     const target = e.target as HTMLInputElement
     const text = target.value
 
@@ -42,7 +42,7 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
     }
   }
 
-  const handleEnter = (e: Event) => {
+  const handleEnter = (e: FormEvent) => {
     e.preventDefault()
     if (articles.length !== 0) {
       navigate(`/article/${articles[0].name}`)

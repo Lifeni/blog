@@ -58,9 +58,9 @@
     --element-blur-background: #16181add;
     --element-blur-background-hover: #181a1cdd;
 
-    --border: solid 1px #1a1e1f;
+    --border: solid 1px #1e2224;
     --border-block: solid 0.5rem #181a1c;
-    --border-color: #1a1e1f;
+    --border-color: #1e2224;
 
     --shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.04);
     --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.18);

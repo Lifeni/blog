@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { useEffect, useRef } from "react"
+import React, { ChangeEvent, FormEvent, useEffect, useRef } from "react"
 import { RiSearchLine } from "react-icons/ri"
 
 const SearchBar = styled("form")`
@@ -39,14 +39,20 @@ const SearchBar = styled("form")`
   }
 `
 
-const Search = ({ search, enter }) => {
-  const searchRef = useRef<HTMLInputElement>()
+interface SearchProps {
+  search: (e: ChangeEvent) => void
+  enter: (e: FormEvent) => void
+}
+
+const Search = ({ search, enter }: SearchProps) => {
+  const searchRef = useRef<HTMLInputElement | null>(null)
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
-      if (e.key === "/" && searchRef) {
+      if (e.key === "/" && searchRef.current) {
         if (searchRef.current.value === "") {
           e.preventDefault()
+          window.scrollTo(0, 0)
           searchRef.current.focus()
         }
       }

@@ -4,11 +4,10 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import Article from "../components/article/Article"
 import ArticleBar from "../components/article/Bar"
+import ArticleComment from "../components/article/Comment"
 import Header from "../components/Header"
 
 const AboutWrapper = styled("div")`
-  padding: 0 0 4rem 0;
-
   article {
     h1 + h2 {
       margin-top: 0;
@@ -113,6 +112,7 @@ const AboutPage = ({ data }: MessageListGraphQL) => {
       </Header>
       <AboutWrapper>
         <Article>{post.html}</Article>
+        <ArticleComment />
       </AboutWrapper>
     </>
   )
