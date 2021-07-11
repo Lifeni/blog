@@ -44,7 +44,7 @@ const ArticleWrapper = styled("main")`
   h1 {
     margin: 1.5rem 0 0.25rem 0;
     font-size: 1.5rem;
-    line-height: 1.75;
+    line-height: 1.875;
 
     @media (max-width: 800px) {
       margin: 1.5rem 0 0.25rem 0;
