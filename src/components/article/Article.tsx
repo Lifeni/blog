@@ -42,41 +42,41 @@ const ArticleWrapper = styled("main")`
   }
 
   h1 {
-    margin: 1.5rem 0 0.25rem 0;
+    padding: 1.5rem 0 0 0;
     font-size: 1.5rem;
     line-height: 1.875;
 
     @media (max-width: 800px) {
-      margin: 1.5rem 0 0.25rem 0;
+      padding: 1.5rem 0 0 0;
     }
 
     @media (max-width: 720px) {
-      margin: 1.5rem 0 0.5rem 0;
+      padding: 1.5rem 0 0.5rem 0;
     }
 
     & + h2 {
-      padding: 2.5rem 0 0 0;
+      margin: 2.5rem 0 0 0;
 
       @media (max-width: 720px) {
-        padding: 2rem 0 0 0;
+        margin: 2rem 0 0 0;
       }
     }
   }
 
   h2 {
-    margin: 1.25rem 0;
+    padding: 1.25rem 0;
     font-size: 1.375rem;
     line-height: 1.75;
   }
 
   h3 {
-    margin: 1rem 0;
+    padding: 1rem 0;
     font-size: 1.25rem;
     line-height: 1.75;
   }
 
   h4 {
-    margin: 0.5rem 0;
+    padding: 0.5rem 0;
     font-size: 1.125rem;
     line-height: 1.75;
   }

@@ -56,7 +56,7 @@ const ArticleMeta = ({
 }: ArticleFrontmatterGraphQL) => {
   return (
     <Meta>
-      <h1>{title}</h1>
+      <h1 id={title.toLowerCase().replace(/\s/g, "-")}>{title}</h1>
       <p>{description}</p>
       <section>
         <time>
