@@ -114,7 +114,11 @@ interface TableOfContentsProps {
 const ArticleTableOfContents = ({ toc }: TableOfContentsProps) => {
   return (
     <Wrapper>
-      <summary className="round-right icon-only">
+      <summary
+        className="round-right icon-only"
+        title="文章目录"
+        aria-label="文章目录"
+      >
         <RiFileListLine size="1.125rem" className="open" />
         <RiCloseLine size="1.125rem" className="close" />
       </summary>

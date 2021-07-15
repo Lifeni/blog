@@ -61,7 +61,7 @@ const HeaderBar = styled("div")`
     }
 
     svg {
-      margin: 0 1.5rem 0 0;
+      margin: 0 1.25rem 0 0;
     }
 
     &.icon-only svg {
