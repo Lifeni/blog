@@ -9,28 +9,31 @@ const ArticleCommentWrapper = styled("div")`
 `
 
 const ArticleComment = () => {
-  const commentRef: MutableRefObject<HTMLDivElement> = useRef()
+  const commentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const utterances = document.createElement("script")
+    if (commentRef.current) {
+      const comment = document.createElement("script")
 
-    utterances.setAttribute("src", "https://utteranc.es/client.js")
-    utterances.setAttribute("repo", "Lifeni-Site/Comment")
-    utterances.setAttribute("issue-term", "pathname")
-    utterances.setAttribute("theme", "preferred-color-scheme")
-    utterances.setAttribute("crossOrigin", "anonymous")
-    utterances.setAttribute("async", "true")
+      comment.setAttribute("src", "https://giscus.app/client.js")
+      comment.setAttribute("data-repo", "Lifeni-Space/Blog")
+      comment.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkyOTY0ODMwNDU=")
+      comment.setAttribute("data-category", "Comment")
+      comment.setAttribute("data-category-id", "DIC_kwDOEav45c4B-c6k")
+      comment.setAttribute("data-mapping", "pathname")
+      comment.setAttribute("data-reactions-enabled", "1")
+      comment.setAttribute("data-emit-metadata", "0")
+      comment.setAttribute("data-theme", "preferred_color_scheme")
+      comment.setAttribute("crossOrigin", "anonymous")
+      comment.setAttribute("async", "true")
 
-    commentRef.current.appendChild(utterances)
-  }, [])
+      commentRef.current.appendChild(comment)
+    }
+  }, [commentRef])
 
   return (
     <ArticleCommentWrapper>
-      <div
-        ref={commentRef}
-        className="utterances-comment"
-        id="article-comment"
-      />
+      <div ref={commentRef} id="article-comment" />
     </ArticleCommentWrapper>
   )
 }
