@@ -6,12 +6,12 @@
 
 ## 技术
 
-使用 [Gatsby](https://www.gatsbyjs.com/) 进行搭建，生成静态页面。
+使用 [Gatsby](https://www.gatsbyjs.com/) 进行搭建，借助 GitHub Actions 自动生成静态页面。
 
-使用 Nginx 作为网页服务器，部署在阿里云 ECS 上。
+网络方面，CDN 和图片储存用的是又拍云。
 
 ## 协议相关
 
 本项目以 MIT License 开放源代码。
 
-网站内所有知识性内容，如无特殊说明，均遵循 CC-BY-SA-4.0。
+网站内所有知识性内容，如无特殊说明，均遵循 CC-BY-SA-4.0 。

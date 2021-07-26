@@ -1,3 +1,4 @@
+const { log } = require("console")
 const path = require(`path`)
 const Article = path.resolve(`./src/templates/article.tsx`)
 
@@ -9,7 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
       `
         {
           allMarkdownRemark(
-            filter: { fileAbsolutePath: { regex: "/notebook/" } }
+            filter: { fileAbsolutePath: { regex: "/articles/" } }
             sort: {
               fields: [frontmatter___date, frontmatter___create_date]
               order: [DESC, DESC]
@@ -32,7 +33,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const articles = result.data.allMarkdownRemark.edges
     for (let i = 0; i < articles.length; i++) {
-      createPage({
+    console.log(articles[i].node.fields.slug)
+    createPage({
         path: `article/${articles[i].node.fields.slug}`,
         component: Article,
         context: {

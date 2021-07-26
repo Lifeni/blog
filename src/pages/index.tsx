@@ -95,7 +95,7 @@ export default IndexPage
 export const query = graphql`
   query {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/notebook/" } }
+      filter: { fileAbsolutePath: { regex: "/articles/" } }
       sort: {
         fields: [frontmatter___date, frontmatter___create_date]
         order: [DESC, DESC]
