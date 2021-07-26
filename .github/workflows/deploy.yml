@@ -24,6 +24,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          source: "public/*.*"
-          target: "/home/github/webapp"
+          source: "public/*"
+          target: "/home/github/blog"
           overwrite: true
+          rm: true
+          strip_components: 1

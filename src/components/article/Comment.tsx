@@ -23,7 +23,13 @@ const ArticleComment = () => {
       comment.setAttribute("data-mapping", "pathname")
       comment.setAttribute("data-reactions-enabled", "1")
       comment.setAttribute("data-emit-metadata", "0")
-      comment.setAttribute("data-theme", "preferred_color_scheme")
+
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        comment.setAttribute("data-theme", "transparent_dark")
+      } else {
+        comment.setAttribute("data-theme", "light")
+      }
+
       comment.setAttribute("crossOrigin", "anonymous")
       comment.setAttribute("async", "true")
 
