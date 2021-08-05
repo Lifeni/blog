@@ -34,7 +34,7 @@ const ArticleBar = ({ toc }: TableOfContentsProps) => {
         <RiHome2Line aria-label="主页图标" size="1.125em" />
         <span className="text">回到「记录干杯」</span>
       </Link>
-      <ArticleTableOfContents toc={toc} />
+      {/* <ArticleTableOfContents toc={toc} /> */}
     </ArticleBarWrapper>
   )
 }

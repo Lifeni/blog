@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import React, { MutableRefObject, useEffect, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 
 const ArticleCommentWrapper = styled("div")`
   width: calc(var(--article-width) + 1.5rem);
@@ -8,11 +8,13 @@ const ArticleCommentWrapper = styled("div")`
   padding: 1rem 1rem 3rem 1rem;
 `
 
+const hasComment = false
+
 const ArticleComment = () => {
   const commentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (commentRef.current) {
+    if (hasComment && commentRef.current) {
       const comment = document.createElement("script")
 
       comment.setAttribute("src", "https://giscus.app/client.js")
