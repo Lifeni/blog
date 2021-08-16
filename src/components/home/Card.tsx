@@ -77,7 +77,7 @@ const Action = styled("section")`
   }
 
   a {
-    margin: 0 1rem 0 0;
+    margin: 0 1.375rem 0 0;
     display: flex;
     align-items: center;
     text-decoration: none;

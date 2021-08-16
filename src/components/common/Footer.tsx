@@ -24,12 +24,13 @@ const FooterWrapper = styled("footer")`
   a {
     width: fit-content;
     max-width: 100%;
-    margin: 0 1rem 0 0;
+    margin: 0 1.375rem 0 0;
+    padding: 0.1875rem 0;
     display: flex;
     align-items: center;
     color: var(--font-secondary);
     font-size: 1rem;
-    line-height: 2.25;
+    line-height: 2;
     text-decoration: none;
     transition: all 0.2s;
 

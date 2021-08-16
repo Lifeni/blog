@@ -26,7 +26,7 @@ const Meta = styled("div")`
   time,
   span,
   a {
-    margin: 0 1rem 0 0;
+    margin: 0 1.375rem 0 0;
     font-size: 1rem;
     line-height: 2.25;
     display: flex;
