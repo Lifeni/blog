@@ -107,3 +107,19 @@ body {
   border-radius: 0 0.5rem 0.5rem 0;
   overflow: hidden;
 }
+
+body.medium-zoom--opened header {
+  top: -8.5rem;
+}
+
+@media (max-width: 800px) {
+  body.medium-zoom--opened header {
+    top: -6.25rem;
+  }
+}
+
+@media (max-width: 720px) {
+  body.medium-zoom--opened header {
+    top: -5rem;
+  }
+}
