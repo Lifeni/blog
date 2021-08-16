@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import React from "react"
-import svg from "../assets/upyun-logo.svg"
+import svg from "../../assets/upyun-logo.svg"
 
 const FooterWrapper = styled("footer")`
   position: relative;

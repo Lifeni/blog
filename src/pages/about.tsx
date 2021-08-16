@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet"
 import Article from "../components/article/Article"
 import ArticleBar from "../components/article/Bar"
 import ArticleComment from "../components/article/Comment"
-import Header from "../components/Header"
+import Header from "../components/common/Header"
 
 const AboutWrapper = styled("div")`
   article {

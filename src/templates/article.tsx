@@ -6,7 +6,7 @@ import Article from "../components/article/Article"
 import ArticleBar from "../components/article/Bar"
 import ArticleComment from "../components/article/Comment"
 import ArticleMeta from "../components/article/Meta"
-import Header from "../components/Header"
+import Header from "../components/common/Header"
 
 const ArticlePage = ({ data }: ArticlePageGraphQL) => {
   const post = data.markdownRemark

@@ -8,7 +8,7 @@ const ArticleCommentWrapper = styled("div")`
   padding: 1rem 1rem 3rem 1rem;
 `
 
-const hasComment = false
+const hasComment = true
 
 const ArticleComment = () => {
   const commentRef = useRef<HTMLDivElement>(null)
