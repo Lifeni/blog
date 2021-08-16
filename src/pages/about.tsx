@@ -87,7 +87,9 @@ const AboutWrapper = styled("div")`
         height: 2.25rem;
         margin: 0;
         border-radius: 100%;
-        box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.08);
+        background-color: var(--element-background);
+        overflow: hidden;
+        font-size: 0.875rem;
       }
     }
   }

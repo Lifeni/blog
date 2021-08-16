@@ -1,59 +1,37 @@
 import styled from "@emotion/styled"
-import React from "react"
-import { RiCloseLine, RiFileListLine } from "react-icons/ri"
+import React, { useState } from "react"
+import { RiFileListLine } from "react-icons/ri"
 
-const Wrapper = styled("details")`
-  position: relative;
-  pointer-events: initial;
+interface IWrapper {
+  open: boolean
+}
+
+const Wrapper = styled("div")<IWrapper>`
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: ${props => (props.open ? "visible" : "hidden")};
+  opacity: ${props => (props.open ? 1 : 0)};
   transition: all 0.2s;
-
-  .close {
-    display: none;
-  }
-
-  &[open] {
-    nav {
-      animation: show 0.2s;
-      transform-origin: right top;
-    }
-
-    .open {
-      display: none;
-    }
-
-    .close {
-      display: initial;
-    }
-  }
-
-  @keyframes show {
-    from {
-      opacity: 0;
-      transform: scale(0.98);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 `
 
 const TableOfContents = styled("nav")`
-  position: absolute;
-  top: 4.75rem;
-  right: 0;
-  z-index: 200;
-  width: calc(100vw - 2.5rem);
+  width: calc(100% - 2.5rem);
   max-width: var(--toc-width);
   height: auto;
   max-height: 65vh;
-  padding: 1.5rem 2rem;
+  z-index: 200;
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
   background-color: var(--background);
-  box-shadow: var(--shadow-hover);
-  overflow: auto;
+  overflow: hidden;
   transition: all 0.2s;
 
   li,
@@ -66,6 +44,8 @@ const TableOfContents = styled("nav")`
     position: relative;
     width: 100%;
     height: auto;
+    padding: 1.5rem 2rem;
+    overflow: auto;
 
     li {
       max-width: 100%;
@@ -107,25 +87,46 @@ const TableOfContents = styled("nav")`
   }
 `
 
+const Overlay = styled("div")`
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+`
+
 interface TableOfContentsProps {
   toc: string
 }
 
 const ArticleTableOfContents = ({ toc }: TableOfContentsProps) => {
+  const [open, setOpen] = useState(false)
+
   return (
-    <Wrapper>
-      <summary
+    <>
+      <button
         className="round-right icon-only"
         title="文章目录"
         aria-label="文章目录"
+        onClick={() => setOpen(true)}
       >
         <RiFileListLine size="1.125rem" className="open" />
-        <RiCloseLine size="1.125rem" className="close" />
-      </summary>
-      <TableOfContents
-        dangerouslySetInnerHTML={{ __html: toc }}
-      ></TableOfContents>
-    </Wrapper>
+      </button>
+
+      <Wrapper open={open}>
+        <TableOfContents
+          dangerouslySetInnerHTML={{ __html: toc }}
+          onClick={e => {
+            const target = e.target as HTMLElement
+            if (target?.tagName === "A") {
+              setOpen(false)
+            }
+          }}
+        />
+        <Overlay onClick={() => setOpen(false)} />
+      </Wrapper>
+    </>
   )
 }
 

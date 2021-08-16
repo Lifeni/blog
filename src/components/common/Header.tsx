@@ -1,9 +1,9 @@
 import styled from "@emotion/styled"
-import React, { ReactChildren } from "react"
-import { ReactElement } from "react"
+import React, { ReactElement } from "react"
 
 const HeaderWrapper = styled("header")`
-  position: relative;
+  position: sticky;
+  top: -3.5rem;
   z-index: 10;
   width: 100%;
   margin: 0;
@@ -16,10 +16,12 @@ const HeaderWrapper = styled("header")`
   transition: all 0.2s;
 
   @media (max-width: 800px) {
+    top: -1.25rem;
     padding: 2.5rem 1.25rem 0.75rem 1.25rem;
   }
 
   @media (max-width: 720px) {
+    top: 0;
     padding: 1.25rem 1.25rem 0.25rem 1.25rem;
   }
 `
@@ -37,8 +39,7 @@ const HeaderBar = styled("div")`
   pointer-events: initial;
 
   a,
-  button,
-  summary {
+  button {
     min-width: 3.5rem;
     height: 3.5rem;
     padding: 0.75rem 1.25rem;
