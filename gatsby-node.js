@@ -1,4 +1,3 @@
-const { log } = require("console")
 const path = require(`path`)
 const Article = path.resolve(`./src/templates/article.tsx`)
 
@@ -33,8 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const articles = result.data.allMarkdownRemark.edges
     for (let i = 0; i < articles.length; i++) {
-    console.log(articles[i].node.fields.slug)
-    createPage({
+      createPage({
         path: `article/${articles[i].node.fields.slug}`,
         component: Article,
         context: {

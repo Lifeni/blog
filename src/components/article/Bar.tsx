@@ -24,7 +24,7 @@ const ArticleBarWrapper = styled("div")`
 `
 
 interface TableOfContentsProps {
-  toc: string
+  toc?: string
 }
 
 const ArticleBar = ({ toc }: TableOfContentsProps) => {
@@ -34,7 +34,7 @@ const ArticleBar = ({ toc }: TableOfContentsProps) => {
         <RiHome2Line aria-label="主页图标" size="1.125em" />
         <span className="text">回到「记录干杯」</span>
       </Link>
-      <ArticleTableOfContents toc={toc} />
+      {toc && <ArticleTableOfContents toc={toc} />}
     </ArticleBarWrapper>
   )
 }

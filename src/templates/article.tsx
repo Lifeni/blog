@@ -24,7 +24,7 @@ const ArticlePage = ({ data }: ArticlePageGraphQL) => {
       <Header>
         <ArticleBar toc={post.tableOfContents} />
       </Header>
-      <Article {...frontmatter}>
+      <Article {...frontmatter} html>
         {ReactDOMServer.renderToString(<ArticleMeta {...frontmatter} />) +
           post.html.split("</h1>")[1]}
       </Article>

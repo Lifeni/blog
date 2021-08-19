@@ -37,10 +37,11 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `site`,
-        path: `${__dirname}/src/markdown/`,
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
       },
     },
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -54,7 +55,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              offsetY: "120",
+              offsetY: "96",
               icon: false,
               elements: [`h1`, `h2`, `h3`],
             },

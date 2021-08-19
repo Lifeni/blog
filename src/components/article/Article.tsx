@@ -55,10 +55,10 @@ const ArticleWrapper = styled("main")`
     }
 
     & + h2 {
-      margin: 2.5rem 0 0 0;
+      margin: 2rem 0 0 0;
 
       @media (max-width: 720px) {
-        margin: 2rem 0 0 0;
+        margin: 1.25rem 0 0 0;
       }
     }
   }
@@ -83,6 +83,18 @@ const ArticleWrapper = styled("main")`
     padding: 0.75rem 0 0.375rem 0;
     font-size: 1.125rem;
     line-height: 1.75;
+  }
+
+  h1,
+  h2,
+  h3 {
+    &::before {
+      display: block;
+      position: relative;
+      content: " ";
+      top: 8rem;
+      visibility: hidden;
+    }
   }
 
   ul,
@@ -241,11 +253,12 @@ const ArticleWrapper = styled("main")`
   }
 `
 
-interface ArticleHTMLProps {
+interface ArticleProps {
+  html?: boolean
   children: string
 }
 
-const Article = ({ children }: ArticleHTMLProps) => {
+const Article = ({ html, children }: ArticleProps) => {
   const articleRef: MutableRefObject<HTMLElement | null> = useRef(null)
 
   useEffect(() => {
@@ -289,10 +302,14 @@ const Article = ({ children }: ArticleHTMLProps) => {
 
   return (
     <ArticleWrapper>
-      <article
-        ref={articleRef}
-        dangerouslySetInnerHTML={{ __html: children }}
-      />
+      {html ? (
+        <article
+          ref={articleRef}
+          dangerouslySetInnerHTML={{ __html: children }}
+        />
+      ) : (
+        <article ref={articleRef}>{children}</article>
+      )}
     </ArticleWrapper>
   )
 }

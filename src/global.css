@@ -86,6 +86,7 @@ html {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: overlay;
+  scroll-padding: 5.5rem 0 0 0;
 }
 
 body {

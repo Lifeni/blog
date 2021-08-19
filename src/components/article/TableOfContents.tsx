@@ -2,11 +2,11 @@ import styled from "@emotion/styled"
 import React, { useState } from "react"
 import { RiFileListLine } from "react-icons/ri"
 
-interface IWrapper {
+interface WrapperProps {
   open: boolean
 }
 
-const Wrapper = styled("div")<IWrapper>`
+const Wrapper = styled("div")<WrapperProps>`
   position: fixed;
   left: 0;
   top: 0;

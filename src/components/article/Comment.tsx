@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import React, { useEffect, useRef } from "react"
 
 const ArticleCommentWrapper = styled("div")`
-  width: calc(var(--article-width) + 1.5rem);
+  width: var(--article-width);
   max-width: 100%;
   margin: 0 auto;
   padding: 1rem 1rem 3rem 1rem;

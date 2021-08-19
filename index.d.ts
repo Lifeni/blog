@@ -37,19 +37,3 @@ interface ArticleFrontmatterGraphQL {
   create_date: string
   license?: string
 }
-
-interface MessageListGraphQL {
-  data: {
-    allMarkdownRemark: {
-      edges: { node: MessageGraphQL }[]
-    }
-  }
-}
-
-interface MessageGraphQL {
-  frontmatter: {
-    path: string
-  }
-  html: string
-  tableOfContents: string
-}
