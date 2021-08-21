@@ -41,7 +41,14 @@ module.exports = {
         path: `${__dirname}/src/pages/`,
       },
     },
-    `gatsby-plugin-mdx`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve("./src/components/common/Layout.tsx"),
+        },
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

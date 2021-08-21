@@ -251,6 +251,11 @@ const ArticleWrapper = styled("main")`
       user-select: none;
     }
   }
+
+  hr {
+    border: none;
+    padding: 1.25rem 0;
+  }
 `
 
 interface ArticleProps {

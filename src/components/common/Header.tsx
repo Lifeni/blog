@@ -62,11 +62,7 @@ const HeaderBar = styled("div")`
     }
 
     svg {
-      margin: 0 1.25rem 0 0;
-    }
-
-    &.icon-only svg {
-      margin: 0;
+      margin: 0 1rem 0 0;
     }
 
     &.reverse {
@@ -82,7 +78,7 @@ const HeaderBar = styled("div")`
 `
 
 interface HeaderProps {
-  children: ReactElement | ReactElement[]
+  children: ReactElement | ReactElement[] | boolean | undefined
 }
 
 const Header = ({ children }: HeaderProps) => {
