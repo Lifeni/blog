@@ -63,10 +63,20 @@ const HeaderBar = styled("div")`
 
     svg {
       margin: 0 1rem 0 0;
+
+      &.reverse {
+        transform: rotate(-180deg);
+      }
     }
 
-    &.reverse {
-      transform: rotate(-180deg);
+    &.icon-only svg {
+      margin: 0;
+    }
+
+    &.desktop-only {
+      @media (max-width: 720px) {
+        display: none;
+      }
     }
 
     &:focus,

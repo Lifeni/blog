@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
 import React, { useState } from "react"
-import { RiFileListLine, RiHome2Line } from "react-icons/ri"
+import { RiDownloadLine, RiFileListLine, RiHome2Line } from "react-icons/ri"
 
 const ArticleBarWrapper = styled("div")`
   width: 100%;
@@ -22,9 +22,9 @@ const ArticleBarWrapper = styled("div")`
   }
 `
 
-interface TableOfContentsProps {
-  toc?: string
-}
+const ArticleBarSpacer = styled("div")`
+  flex: 1;
+`
 
 const ArticleBar = ({ toc }: TableOfContentsProps) => {
   return (
@@ -33,7 +33,17 @@ const ArticleBar = ({ toc }: TableOfContentsProps) => {
         <RiHome2Line aria-label="主页图标" size="1.125em" />
         <span className="text">回到「记录干杯」</span>
       </Link>
+      <ArticleBarSpacer />
       {toc && <ArticleTableOfContents toc={toc} />}
+      <button
+        className="round-right desktop-only"
+        title="回到顶部"
+        aria-label="回到顶部"
+        onClick={() => window.scrollTo(0, 0)}
+      >
+        <RiDownloadLine className="reverse" size="1.125rem" />
+        回到顶部
+      </button>
     </ArticleBarWrapper>
   )
 }
@@ -58,6 +68,10 @@ const TableOfContentsWrapper = styled("div")<TableOfContentsWrapperProps>`
   opacity: ${props => (props.open ? 1 : 0)};
   transition: all 0.2s;
 `
+
+interface TableOfContentsProps {
+  toc?: string
+}
 
 const TableOfContents = styled("nav")`
   width: calc(100% - 2.5rem);
@@ -140,7 +154,6 @@ const ArticleTableOfContents = ({ toc }: TableOfContentsProps) => {
   return (
     <>
       <button
-        className="round-right"
         title="文章目录"
         aria-label="文章目录"
         onClick={() => setOpen(true)}

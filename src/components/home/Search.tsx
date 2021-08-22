@@ -18,7 +18,7 @@ const SearchBar = styled("form")`
 
   input {
     width: 100%;
-    padding: 0.75rem 1.25rem 0.75rem 3.5rem;
+    padding: 0.75rem 0 0.75rem 3.5rem;
     border: none;
     color: var(--font-primary);
     background-color: transparent;
