@@ -6,7 +6,7 @@ const Wrapper = styled("div")`
   position: fixed;
   left: 4rem;
   top: 50%;
-  width: 1px;
+  width: 0.1rem;
   height: 40vh;
   background-color: var(--border-color);
   transform: translateY(-50%);

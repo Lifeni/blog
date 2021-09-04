@@ -14,7 +14,7 @@
   --popover-background: #181a1c;
   --popover-background-hover: #1e2022;
 
-  --border: solid 1px #e6eaee;
+  --border: solid 0.1rem #e6eaee;
   --border-block: solid 0.5rem #f2f5f8;
   --border-color: #e6eaee;
 
@@ -58,7 +58,7 @@
     --element-blur-background: #16181add;
     --element-blur-background-hover: #181a1cdd;
 
-    --border: solid 1px #1e2224;
+    --border: solid 0.1rem #1e2224;
     --border-block: solid 0.5rem #181a1c;
     --border-color: #1e2224;
 

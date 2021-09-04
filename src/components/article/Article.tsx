@@ -85,18 +85,6 @@ const ArticleWrapper = styled("main")`
     line-height: 1.75;
   }
 
-  h1,
-  h2,
-  h3 {
-    &::before {
-      display: block;
-      position: relative;
-      content: " ";
-      top: 8rem;
-      visibility: hidden;
-    }
-  }
-
   ul,
   ol {
     margin: 0.375rem 0;
@@ -131,6 +119,15 @@ const ArticleWrapper = styled("main")`
     position: relative;
     max-width: 100%;
     width: fit-content;
+    vertical-align: middle;
+
+    &::before {
+      display: block;
+      position: relative;
+      content: " ";
+      top: 8rem;
+      visibility: hidden;
+    }
 
     code[class*="language-"] {
       max-width: 100%;
