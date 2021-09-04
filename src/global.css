@@ -86,7 +86,7 @@ html {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: overlay;
-  scroll-padding: 5.5rem 0 0 0;
+  scroll-padding: 6.5rem 0 0 0;
 }
 
 body {
@@ -120,6 +120,10 @@ body.medium-zoom--opened header {
 }
 
 @media (max-width: 720px) {
+  html {
+    scroll-padding: 5.5rem 0 0 0;
+  }
+
   body.medium-zoom--opened header {
     top: -5rem;
   }

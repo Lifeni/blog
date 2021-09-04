@@ -8,7 +8,7 @@ interface HeaderWrapperProps {
 
 const HeaderWrapper = styled("header")<HeaderWrapperProps>`
   position: sticky;
-  top: ${props => (props.direction === "up" ? "-3.5rem" : "-8.5rem")};
+  top: ${props => (props.direction === "up" ? "-2.5rem" : "-8.5rem")};
   z-index: 10;
   width: 100%;
   margin: 0;
@@ -21,7 +21,7 @@ const HeaderWrapper = styled("header")<HeaderWrapperProps>`
   transition: all 0.2s;
 
   @media (max-width: 800px) {
-    top: ${props => (props.direction === "up" ? " -1.25rem" : "-6.25rem")};
+    top: ${props => (props.direction === "up" ? "-0.25rem" : "-6.25rem")};
     padding: 2.5rem 1.25rem 0.75rem 1.25rem;
   }
 
