@@ -255,6 +255,10 @@ const ArticleWrapper = styled("main")`
   hr {
     border: none;
     padding: 1.25rem 0;
+
+    @media (max-width: 720px) {
+      padding: 0.75rem;
+    }
   }
 `
 
