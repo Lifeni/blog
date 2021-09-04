@@ -6,6 +6,7 @@ import Article from "../components/article/Article"
 import ArticleBar from "../components/article/Bar"
 import ArticleComment from "../components/article/Comment"
 import ArticleMeta from "../components/article/Meta"
+import Position from "../components/article/widget/Position"
 import Header from "../components/common/Header"
 
 const ArticlePage = ({ data }: ArticlePageGraphQL) => {
@@ -29,6 +30,7 @@ const ArticlePage = ({ data }: ArticlePageGraphQL) => {
           post.html.split("</h1>")[1]}
       </Article>
       <ArticleComment />
+      <Position />
     </>
   )
 }

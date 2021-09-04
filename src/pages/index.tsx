@@ -3,6 +3,7 @@ import { graphql, Link, navigate } from "gatsby"
 import React, { ChangeEvent, FormEvent, useState } from "react"
 import { Helmet } from "react-helmet"
 import { RiAtLine } from "react-icons/ri"
+import Position from "../components/article/widget/Position"
 import Footer from "../components/common/Footer"
 import Header from "../components/common/Header"
 import ArticleCard from "../components/home/Card"
@@ -86,6 +87,7 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
           </section>
         )}
       </ArticleList>
+      <Position />
       <Footer />
     </Container>
   )
