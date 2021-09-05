@@ -38,20 +38,7 @@ const ArticleBar = ({ toc }: TableOfContentsProps) => {
         <span className="text">回到「记录干杯」</span>
       </Link>
       <ArticleBarSpacer />
-      {toc && (
-        <>
-          <ArticleTableOfContents toc={toc} />
-          <button
-            className="round-right desktop-only"
-            title="回到顶部"
-            aria-label="回到顶部"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <RiDownloadLine className="reverse" size="1.125rem" />
-            回到顶部
-          </button>
-        </>
-      )}
+      {toc && <ArticleTableOfContents toc={toc} />}
     </ArticleBarWrapper>
   )
 }
@@ -160,6 +147,7 @@ const ArticleTableOfContents = ({ toc }: TableOfContentsProps) => {
       <button
         title="文章目录"
         aria-label="文章目录"
+        className="round-right"
         onClick={() => setOpen(true)}
       >
         <RiFileListLine size="1.125rem" className="open" />

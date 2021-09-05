@@ -34,8 +34,12 @@ const FooterWrapper = styled("footer")`
     text-decoration: none;
     transition: all 0.2s;
 
+    svg {
+      margin: 0 0.75rem 0 0;
+    }
+
     img {
-      margin: 0 0.5rem;
+      margin: 0 0.75rem;
       height: 1.25rem;
       filter: grayscale(1);
       transition: all 0.2s;
@@ -54,16 +58,19 @@ const FooterWrapper = styled("footer")`
 const Footer = () => {
   return (
     <FooterWrapper>
-      <a
-        href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="upyun"
-      >
-        由
-        <img src={svg} alt="又拍云" title="又拍云" aria-label="又拍云" />
-        提供 CDN 加速与云储存服务
-      </a>
+      <section>
+        <a
+          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="upyun"
+        >
+          由
+          <img src={svg} alt="又拍云" title="又拍云" aria-label="又拍云" />
+          提供 CDN 加速与云储存服务
+        </a>
+      </section>
+
       <section>
         <a
           href="https://beian.miit.gov.cn/"

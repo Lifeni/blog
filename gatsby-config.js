@@ -45,7 +45,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve("./src/components/common/Layout.tsx"),
+          default: require.resolve("./src/components/common/Page.tsx"),
         },
       },
     },
@@ -62,7 +62,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              offsetY: "96",
+              offsetY: "18",
               icon: false,
               elements: [`h1`, `h2`, `h3`],
             },

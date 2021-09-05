@@ -31,7 +31,7 @@ const Time = styled("time")`
   color: var(--font-secondary);
 
   svg {
-    margin: 0 0.5rem 0 0;
+    margin: 0 0.75rem 0 0;
   }
 `
 
@@ -86,7 +86,7 @@ const Action = styled("section")`
     line-height: 2.25;
 
     svg {
-      margin: 0 0.5rem 0 0;
+      margin: 0 0.75rem 0 0;
     }
 
     &:hover {

@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import Article from "../article/Article"
 import ArticleBar from "../article/Bar"
 import ArticleComment from "../article/Comment"
-import Header from "../common/Header"
+import Header from "./Header"
 
 const Spacer = styled("div")`
   padding: 2rem 0;
@@ -22,7 +22,7 @@ interface LayoutProps {
   }
 }
 
-const Layout = ({ children, pageContext }: LayoutProps) => {
+const Page = ({ children, pageContext }: LayoutProps) => {
   const { title, description, bar, comment } = pageContext.frontmatter
 
   return (
@@ -42,4 +42,4 @@ const Layout = ({ children, pageContext }: LayoutProps) => {
   )
 }
 
-export default Layout
+export default Page

@@ -1,18 +1,13 @@
 import styled from "@emotion/styled"
-import React, { ReactElement, useEffect, useState } from "react"
-import { useWindowScroll } from "react-use"
+import React, { ReactElement } from "react"
 
-interface HeaderWrapperProps {
-  direction: "up" | "down"
-}
-
-const HeaderWrapper = styled("header")<HeaderWrapperProps>`
-  position: sticky;
-  top: ${props => (props.direction === "up" ? "-2.5rem" : "-8.5rem")};
+const HeaderWrapper = styled("header")`
+  position: relative;
+  top: 0;
   z-index: 10;
   width: 100%;
   margin: 0;
-  padding: 4.75rem 1.25rem 1rem 1.25rem;
+  padding: 4.25rem 1.25rem 0.5rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,12 +16,10 @@ const HeaderWrapper = styled("header")<HeaderWrapperProps>`
   transition: all 0.2s;
 
   @media (max-width: 800px) {
-    top: ${props => (props.direction === "up" ? "-0.25rem" : "-6.25rem")};
     padding: 2.5rem 1.25rem 0.75rem 1.25rem;
   }
 
   @media (max-width: 720px) {
-    top: 0;
     padding: 1.25rem 1.25rem 0.25rem 1.25rem;
   }
 `
@@ -97,23 +90,8 @@ interface HeaderProps {
 }
 
 const Header = ({ children }: HeaderProps) => {
-  const { y } = useWindowScroll()
-  const [preWheel, setPreWheel] = useState(y)
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down")
-
-  useEffect(() => {
-    window.requestAnimationFrame(() => {
-      if (y > preWheel) {
-        setScrollDirection("down")
-      } else if (y < preWheel) {
-        setScrollDirection("up")
-      }
-      setPreWheel(y)
-    })
-  }, [y])
-
   return (
-    <HeaderWrapper direction={scrollDirection}>
+    <HeaderWrapper>
       <HeaderBar>{children}</HeaderBar>
     </HeaderWrapper>
   )

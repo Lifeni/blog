@@ -40,7 +40,7 @@
   --font-mono: "JetBrains Mono", "Fira Mono", Consolas, "Courier New",
     "Droid Sans Mono", var(--font-sans);
 
-  font-size: 16px;
+  font-size: 18px;
 }
 
 @media (max-width: 600px) {
@@ -86,7 +86,7 @@ html {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: overlay;
-  scroll-padding: 6.5rem 0 0 0;
+  scroll-padding: 1rem 0 0 0;
 }
 
 body {
@@ -107,24 +107,4 @@ body {
 .round-right {
   border-radius: 0 0.5rem 0.5rem 0;
   overflow: hidden;
-}
-
-body.medium-zoom--opened header {
-  top: -8.5rem;
-}
-
-@media (max-width: 800px) {
-  body.medium-zoom--opened header {
-    top: -6.25rem;
-  }
-}
-
-@media (max-width: 720px) {
-  html {
-    scroll-padding: 5.5rem 0 0 0;
-  }
-
-  body.medium-zoom--opened header {
-    top: -5rem;
-  }
 }
