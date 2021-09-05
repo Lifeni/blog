@@ -5,7 +5,11 @@ const ArticleCommentWrapper = styled("div")`
   width: var(--article-width);
   max-width: 100%;
   margin: 0 auto;
-  padding: 1rem 1rem 3rem 1rem;
+  padding: 2rem 1rem 4rem 1rem;
+
+  @media (max-width: 720px) {
+    padding: 1rem 1rem 3rem 1rem;
+  }
 `
 
 const hasComment = true

@@ -26,6 +26,10 @@ const ArticleBarSpacer = styled("div")`
   flex: 1;
 `
 
+interface TableOfContentsProps {
+  toc?: string
+}
+
 const ArticleBar = ({ toc }: TableOfContentsProps) => {
   return (
     <ArticleBarWrapper>
@@ -34,16 +38,20 @@ const ArticleBar = ({ toc }: TableOfContentsProps) => {
         <span className="text">回到「记录干杯」</span>
       </Link>
       <ArticleBarSpacer />
-      {toc && <ArticleTableOfContents toc={toc} />}
-      <button
-        className="round-right desktop-only"
-        title="回到顶部"
-        aria-label="回到顶部"
-        onClick={() => window.scrollTo(0, 0)}
-      >
-        <RiDownloadLine className="reverse" size="1.125rem" />
-        回到顶部
-      </button>
+      {toc && (
+        <>
+          <ArticleTableOfContents toc={toc} />
+          <button
+            className="round-right desktop-only"
+            title="回到顶部"
+            aria-label="回到顶部"
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <RiDownloadLine className="reverse" size="1.125rem" />
+            回到顶部
+          </button>
+        </>
+      )}
     </ArticleBarWrapper>
   )
 }
@@ -68,10 +76,6 @@ const TableOfContentsWrapper = styled("div")<TableOfContentsWrapperProps>`
   opacity: ${props => (props.open ? 1 : 0)};
   transition: all 0.2s;
 `
-
-interface TableOfContentsProps {
-  toc?: string
-}
 
 const TableOfContents = styled("nav")`
   width: calc(100% - 2.5rem);

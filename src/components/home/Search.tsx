@@ -18,10 +18,11 @@ const SearchBar = styled("form")`
 
   input {
     width: 100%;
-    padding: 0.75rem 0 0.75rem 3.5rem;
+    padding: 0.75rem 1.5rem 0.75rem 3.5rem;
     border: none;
     color: var(--font-primary);
     background-color: transparent;
+    border-radius: 0.5rem;
     font-size: 1rem;
     font-family: inherit;
     line-height: 2;
@@ -62,11 +63,11 @@ const Search = ({ search, enter }: SearchProps) => {
   }, [])
 
   return (
-    <SearchBar className="round-left" onSubmit={enter}>
+    <SearchBar onSubmit={enter}>
       <RiSearchLine aria-label="搜索图标" size="1.125em" />
       <input
         type="search"
-        placeholder="在「记录干杯」中搜索"
+        placeholder="在「记录干杯」中搜索 ..."
         onChange={search}
         ref={searchRef}
       />

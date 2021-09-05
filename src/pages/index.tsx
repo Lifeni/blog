@@ -1,8 +1,7 @@
 import styled from "@emotion/styled"
-import { graphql, Link, navigate } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import React, { ChangeEvent, FormEvent, useState } from "react"
 import { Helmet } from "react-helmet"
-import { RiAtLine } from "react-icons/ri"
 import Position from "../components/article/widget/Position"
 import Footer from "../components/common/Footer"
 import Header from "../components/common/Header"
@@ -65,15 +64,6 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
       </Helmet>
       <Header>
         <SearchBar search={handleSearch} enter={handleEnter} />
-        <Link
-          title="关于我和这个网站"
-          aria-label="关于我和这个网站"
-          to="/about"
-          className="round-right"
-        >
-          <RiAtLine aria-label="关于图标" size="1.125rem" />
-          关于
-        </Link>
       </Header>
       <ArticleList>
         {articles.length !== 0 ? (

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import React, { ReactElement, useEffect, useState } from "react"
-import { useMouseWheel, useWindowScroll } from "react-use"
+import { useWindowScroll } from "react-use"
 
 interface HeaderWrapperProps {
   direction: "up" | "down"
@@ -97,7 +97,7 @@ interface HeaderProps {
 }
 
 const Header = ({ children }: HeaderProps) => {
-  const { y} = useWindowScroll()
+  const { y } = useWindowScroll()
   const [preWheel, setPreWheel] = useState(y)
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down")
 

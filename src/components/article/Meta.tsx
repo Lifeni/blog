@@ -5,7 +5,7 @@ import { RiCalendarLine, RiCopyrightLine } from "react-icons/ri"
 const Meta = styled("div")`
   width: calc(100% + 2rem);
   margin: 0 -1rem 1.75rem -1rem;
-  padding: 0.25rem 1rem 3rem 1rem;
+  padding: 0.25rem 1rem 2.875rem 1rem;
   border-bottom: var(--border);
   transition: all 0.2s;
 
@@ -14,7 +14,7 @@ const Meta = styled("div")`
   }
 
   @media (max-width: 800px) {
-    padding: 0 1rem 3rem 1rem;
+    padding: 0 1rem 2.875 1rem;
   }
 
   @media (max-width: 720px) {
