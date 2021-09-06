@@ -40,7 +40,7 @@
   --font-mono: "JetBrains Mono", "Fira Mono", Consolas, "Courier New",
     "Droid Sans Mono", var(--font-sans);
 
-  font-size: 18px;
+  font-size: 17px;
 }
 
 @media (max-width: 600px) {
@@ -93,6 +93,7 @@ body {
   position: relative;
   font-family: var(--font-sans);
   font-size: 1rem;
+  font-weight: 500;
   line-height: 1.875;
   color: var(--font-primary);
   background-color: var(--background);

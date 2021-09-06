@@ -1,24 +1,63 @@
 import styled from "@emotion/styled"
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
+import { RiDiscussLine } from "react-icons/ri"
 
-const ArticleCommentWrapper = styled("div")`
-  width: var(--article-width);
-  max-width: 100%;
+const CommentWrapper = styled("div")`
+  width: 100%;
+  max-width: calc(var(--main-width) + 2.5rem);
   margin: 0 auto;
-  padding: 2rem 1rem 4rem 1rem;
+  padding: 2rem 1.25rem 4.5rem 1.25rem;
 
   @media (max-width: 720px) {
-    padding: 1rem 1rem 3rem 1rem;
+    padding: 1.25rem;
+  }
+`
+
+const CommentButton = styled("button")`
+  width: 100%;
+  height: 3.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  color: var(--font-secondary);
+  background-color: var(--element-background);
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 2;
+  outline: none;
+  transition: all 0.2s;
+  pointer-events: initial;
+  cursor: pointer;
+  text-decoration: none;
+
+  svg {
+    margin: 0 1rem 0 0;
+  }
+
+  &:focus,
+  &:focus-visible,
+  &:hover {
+    background-color: var(--element-background-hover);
+  }
+
+  small {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
   }
 `
 
 const hasComment = true
 
 const ArticleComment = () => {
+  const [showComment, setShowComment] = useState(false)
   const commentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (hasComment && commentRef.current) {
+    if (hasComment && showComment && commentRef.current) {
       const comment = document.createElement("script")
 
       comment.setAttribute("src", "https://giscus.app/client.js")
@@ -41,12 +80,19 @@ const ArticleComment = () => {
 
       commentRef.current.appendChild(comment)
     }
-  }, [commentRef])
+  }, [commentRef, hasComment, showComment])
 
   return (
-    <ArticleCommentWrapper>
-      <div ref={commentRef} id="article-comment" />
-    </ArticleCommentWrapper>
+    <CommentWrapper>
+      {showComment ? (
+        <div ref={commentRef} id="article-comment" />
+      ) : (
+        <CommentButton onClick={() => setShowComment(true)}>
+          <RiDiscussLine aria-label="评论图标" size="1.125em" /> 点击加载评论
+          <small>powered by giscus</small>
+        </CommentButton>
+      )}
+    </CommentWrapper>
   )
 }
 
