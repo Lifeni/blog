@@ -87,6 +87,16 @@ const Footer = () => {
           鲁公网安备37132102371392号
         </a>
       </section>
+
+      <section>
+        <a
+          href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          署名-相同方式共享 4.0 国际 (CC BY-SA 4.0)
+        </a>
+      </section>
     </FooterWrapper>
   )
 }
