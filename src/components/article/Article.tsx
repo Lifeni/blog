@@ -234,6 +234,11 @@ const ArticleWrapper = styled("main")`
     border-left: var(--border-block);
     color: var(--font-secondary);
     transition: all 0.2s;
+
+    .gatsby-highlight {
+      width: 100%;
+      margin: 0.75rem 0;
+    }
   }
 
   details {

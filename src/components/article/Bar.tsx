@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
-import React, { useState } from "react"
-import { RiDownloadLine, RiFileListLine, RiHome2Line } from "react-icons/ri"
+import React, { useEffect, useState } from "react"
+import { RiFileListLine, RiHome2Line } from "react-icons/ri"
 
 const ArticleBarWrapper = styled("div")`
   width: 100%;
@@ -141,6 +141,18 @@ const TableOfContentsOverlay = styled("div")`
 
 const ArticleTableOfContents = ({ toc }: TableOfContentsProps) => {
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const listener = (e: KeyboardEvent) => {
+      if (e.key === "/") {
+        e.preventDefault()
+        setOpen(open => !open)
+      }
+    }
+
+    window.addEventListener("keypress", listener)
+    return () => window.removeEventListener("keypress", listener)
+  }, [])
 
   return (
     <>
