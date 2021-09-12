@@ -31,7 +31,7 @@ const HeaderBar = styled("div")`
   align-items: center;
   justify-content: space-between;
   color: var(--font-secondary);
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   background-color: var(--element-background);
   transition: all 0.2s;
   pointer-events: initial;
@@ -48,6 +48,7 @@ const HeaderBar = styled("div")`
     background-color: transparent;
     font-size: 1rem;
     font-family: inherit;
+    font-weight: inherit;
     line-height: 2;
     outline: none;
     transition: all 0.2s;

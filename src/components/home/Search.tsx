@@ -22,9 +22,10 @@ const SearchBar = styled("form")`
     border: none;
     color: var(--font-primary);
     background-color: transparent;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius);
     font-size: 1rem;
     font-family: inherit;
+    font-weight: inherit;
     line-height: 2;
     outline: none;
     transition: all 0.2s;
@@ -37,6 +38,8 @@ const SearchBar = styled("form")`
 
   ::placeholder {
     color: var(--font-secondary);
+    font-weight: inherit;
+    opacity: 1;
   }
 `
 

@@ -72,7 +72,7 @@ const TableOfContents = styled("nav")`
   z-index: 200;
   display: flex;
   flex-direction: column;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   background-color: var(--background);
   overflow: hidden;
   transition: all 0.2s;
@@ -112,7 +112,7 @@ const TableOfContents = styled("nav")`
         code {
           font-size: 0.875em;
           padding: 0.185em 0.5em;
-          border-radius: 0.5rem;
+          border-radius: var(--border-radius);
           white-space: nowrap;
           background-color: var(--element-background);
           font-family: var(--font-mono);

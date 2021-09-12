@@ -17,7 +17,7 @@ const CommentButton = styled("button")`
   width: 100%;
   height: 3.5rem;
   padding: 0.75rem 1.25rem;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   border: none;
   display: flex;
   align-items: center;

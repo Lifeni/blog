@@ -2,11 +2,11 @@ import styled from "@emotion/styled"
 import { graphql, navigate } from "gatsby"
 import React, { ChangeEvent, FormEvent, useState } from "react"
 import { Helmet } from "react-helmet"
-import Position from "../components/common/Position"
 import Footer from "../components/common/Footer"
 import Header from "../components/common/Header"
-import ArticleCard from "../components/home/Card"
-import ArticleList from "../components/home/List"
+import Position from "../components/common/Position"
+import ArticlePost from "../components/home/Post"
+import ArticleList from "../components/home/PostList"
 import SearchBar from "../components/home/Search"
 import ArticleSearch from "../utils/article-search"
 
@@ -68,7 +68,7 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
       <ArticleList>
         {articles.length !== 0 ? (
           articles.map((article, index) => (
-            <ArticleCard {...article} key={index} />
+            <ArticlePost {...article} key={index} />
           ))
         ) : (
           <section className="null">
@@ -77,8 +77,8 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
           </section>
         )}
       </ArticleList>
-      <Position />
       <Footer />
+      <Position />
     </Container>
   )
 }

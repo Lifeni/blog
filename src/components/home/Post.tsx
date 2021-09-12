@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import React from "react"
 import { RiBookOpenLine, RiCalendarLine } from "react-icons/ri"
 
-const Card = styled("div")`
+const Post = styled("div")`
   width: 100%;
   max-width: var(--main-width);
   padding: 2.5rem 1rem;
@@ -97,7 +97,7 @@ const Action = styled("section")`
   }
 `
 
-const ArticleCard = ({
+const ArticlePost = ({
   create_date,
   date,
   title,
@@ -105,7 +105,7 @@ const ArticleCard = ({
   name,
 }: ArticleFrontmatterGraphQL) => {
   return (
-    <Card>
+    <Post>
       <Title>
         <Link to={`/article/${name}`}>{title}</Link>
       </Title>
@@ -120,8 +120,8 @@ const ArticleCard = ({
           {(create_date === date ? "创建于 " : "编辑于 ") + date}
         </Time>
       </Action>
-    </Card>
+    </Post>
   )
 }
 
-export default ArticleCard
+export default ArticlePost

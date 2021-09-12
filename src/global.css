@@ -17,8 +17,9 @@
   --border: solid 0.1rem #e6eaee;
   --border-block: solid 0.5rem #f2f5f8;
   --border-color: #e6eaee;
+  --border-radius: 0.5rem;
 
-  --shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.01);
+  --shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.06);
   --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.08);
   --more-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.12);
 
@@ -101,11 +102,11 @@ body {
 }
 
 .round-left {
-  border-radius: 0.5rem 0 0 0.5rem;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
   overflow: hidden;
 }
 
 .round-right {
-  border-radius: 0 0.5rem 0.5rem 0;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
   overflow: hidden;
 }

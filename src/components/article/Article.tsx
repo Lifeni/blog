@@ -99,14 +99,14 @@ const ArticleWrapper = styled("main")`
   img {
     width: calc(100% + 2rem);
     margin: 0.75rem -1rem;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius);
     display: flex;
   }
 
   code[class*="language-"] {
     font-size: 0.875em;
     padding: 0.185em 0.5em;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius);
     background-color: var(--element-background);
     font-family: var(--font-mono);
     transition: all 0.2s;
@@ -143,7 +143,7 @@ const ArticleWrapper = styled("main")`
     position: relative;
     width: calc(100% + 2rem);
     margin: 0.75rem -1rem;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius);
     overflow: hidden;
 
     pre {
@@ -174,7 +174,7 @@ const ArticleWrapper = styled("main")`
     width: calc(100% + 2rem);
     margin: 0.75rem -1rem;
     display: flex;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius);
     transition: all 0.2s;
     border: var(--border);
     overflow-x: auto;
@@ -247,7 +247,7 @@ const ArticleWrapper = styled("main")`
     summary {
       width: fit-content;
       padding: 0.375rem 1rem;
-      border-radius: 0.5rem;
+      border-radius: var(--border-radius);
       background-color: var(--element-background);
       cursor: pointer;
       user-select: none;
