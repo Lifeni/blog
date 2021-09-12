@@ -111,12 +111,16 @@ const TableOfContents = styled("nav")`
 
         code {
           font-size: 0.875em;
-          padding: 0.185em 0.5em;
+          padding: 0.25em 0.5em;
           border-radius: var(--border-radius);
           white-space: nowrap;
           background-color: var(--element-background);
           font-family: var(--font-mono);
           transition: all 0.2s;
+
+          &:hover {
+            background-color: var(--element-background-hover);
+          }
         }
 
         &:focus,

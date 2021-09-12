@@ -11,10 +11,10 @@ const ArticleList = styled("main")`
   .null {
     width: 100%;
     max-width: var(--main-width);
-    padding: 2.5rem 1rem;
+    padding: 2.5rem 1rem 3rem 1rem;
 
     @media (max-width: 800px) {
-      padding: 1.5rem 1rem;
+      padding: 1.5rem 1rem 2rem 1rem;
     }
 
     h2 {

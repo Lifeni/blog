@@ -89,7 +89,7 @@ const ArticleComment = () => {
       ) : (
         <CommentButton onClick={() => setShowComment(true)}>
           <RiDiscussLine aria-label="评论图标" size="1.125em" /> 点击加载评论
-          <small>powered by giscus</small>
+          <small>Powered By Giscus</small>
         </CommentButton>
       )}
     </CommentWrapper>

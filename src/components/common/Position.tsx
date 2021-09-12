@@ -4,7 +4,7 @@ import { useWindowScroll, useWindowSize } from "react-use"
 
 const Wrapper = styled("div")`
   position: fixed;
-  left: 4rem;
+  left: 4.25rem;
   top: 50%;
   width: 0.1rem;
   height: 40vh;

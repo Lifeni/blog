@@ -105,12 +105,16 @@ const ArticleWrapper = styled("main")`
 
   code[class*="language-"] {
     font-size: 0.875em;
-    padding: 0.185em 0.5em;
+    padding: 0.25em 0.5em;
     border-radius: var(--border-radius);
     background-color: var(--element-background);
     font-family: var(--font-mono);
     transition: all 0.2s;
     overflow-wrap: break-word;
+
+    &:hover {
+      background-color: var(--element-background-hover);
+    }
   }
 
   h1,
@@ -166,6 +170,10 @@ const ArticleWrapper = styled("main")`
         line-height: 1.875;
         background-color: inherit;
         font-family: var(--font-mono);
+      }
+
+      &:hover {
+        background-color: var(--element-background-hover);
       }
     }
   }

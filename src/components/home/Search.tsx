@@ -32,7 +32,7 @@ const SearchBar = styled("form")`
     pointer-events: initial;
 
     &:focus {
-      background-color: var(--element-blur-background-hover);
+      background-color: var(--element-background-hover);
     }
   }
 

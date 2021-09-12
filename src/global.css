@@ -7,21 +7,10 @@
   --element-background: #f6f8fa;
   --element-background-hover: #f2f5f8;
 
-  --element-blur-background: #f6f8fadd;
-  --element-blur-background-hover: #f2f5f8dd;
-
-  --popover-color: #ffffff;
-  --popover-background: #181a1c;
-  --popover-background-hover: #1e2022;
-
   --border: solid 0.1rem #e6eaee;
   --border-block: solid 0.5rem #f2f5f8;
   --border-color: #e6eaee;
   --border-radius: 0.5rem;
-
-  --shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.06);
-  --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.08);
-  --more-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.12);
 
   --font-primary: #282828;
   --font-secondary: #67707a;
@@ -41,7 +30,7 @@
   --font-mono: "JetBrains Mono", "Fira Mono", Consolas, "Courier New",
     "Droid Sans Mono", var(--font-sans);
 
-  font-size: 17px;
+  font-size: 18px;
 }
 
 @media (max-width: 600px) {
@@ -52,20 +41,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #121416;
-    --element-background: #16181a;
-    --element-background-hover: #181a1c;
+    --background: #16181a;
+    --element-background: #1a1c1e;
+    --element-background-hover: #1e2224;
 
-    --element-blur-background: #16181add;
-    --element-blur-background-hover: #181a1cdd;
-
-    --border: solid 0.1rem #1e2224;
-    --border-block: solid 0.5rem #181a1c;
-    --border-color: #1e2224;
-
-    --shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.04);
-    --shadow-hover: 0 0.5rem 2rem rgba(0, 0, 0, 0.18);
-    --more-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.24);
+    --border: solid 0.1rem #202426;
+    --border-block: solid 0.5rem #1e2224;
+    --border-color: #202426;
 
     --font-primary: #d1d5da;
     --font-secondary: #8b949e;
