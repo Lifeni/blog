@@ -47,6 +47,7 @@ class ArticleSearch {
         }
       }
     }
+
     return this.documents.filter(document =>
       JSON.stringify(document)
         .trim()

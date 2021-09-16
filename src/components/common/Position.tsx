@@ -32,7 +32,11 @@ const Bar = styled("div")<BarProps>`
   transition: background 0.2s;
 `
 
-const Position = () => {
+interface PositionProps {
+  deps?: string | number
+}
+
+const Position = ({ deps }: PositionProps) => {
   const { width, height } = useWindowSize()
   const { y } = useWindowScroll()
 
@@ -40,14 +44,14 @@ const Position = () => {
   const [ratio, setRatio] = useState(0)
 
   useEffect(() => {
-    window.requestAnimationFrame(() => {
-      if (width >= 960) {
+    if (width >= 960) {
+      window.requestAnimationFrame(() => {
         const size = document.documentElement.scrollHeight
         setPosition(y / size)
         setRatio(height / size)
-      }
-    })
-  }, [height, y])
+      })
+    }
+  }, [height, y, deps])
 
   return (
     <Wrapper>

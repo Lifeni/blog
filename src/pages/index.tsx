@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet"
 import Footer from "../components/common/Footer"
 import Header from "../components/common/Header"
 import Position from "../components/common/Position"
+import About from "../components/home/About"
 import ArticlePost from "../components/home/Post"
 import ArticleList from "../components/home/PostList"
 import SearchBar from "../components/home/Search"
@@ -29,6 +30,7 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
       create_date: article.node.frontmatter.create_date,
     }))
   const [articles, setArticles] = useState(documents)
+  const [searchText, setSearchText] = useState("")
   const search = new ArticleSearch(documents)
 
   const handleSearch = (e: ChangeEvent) => {
@@ -37,8 +39,10 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
 
     if (text) {
       setArticles(search.search(text))
+      setSearchText(text)
     } else {
       setArticles(documents)
+      setSearchText("")
     }
   }
 
@@ -65,6 +69,7 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
       <Header>
         <SearchBar search={handleSearch} enter={handleEnter} />
       </Header>
+      {!searchText && <About />}
       <ArticleList>
         {articles.length !== 0 ? (
           articles.map((article, index) => (
@@ -78,7 +83,7 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
         )}
       </ArticleList>
       <Footer />
-      <Position />
+      <Position deps={searchText} />
     </Container>
   )
 }

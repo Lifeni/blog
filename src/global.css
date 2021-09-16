@@ -30,7 +30,7 @@
   --font-mono: "JetBrains Mono", "Fira Mono", Consolas, "Courier New",
     "Droid Sans Mono", var(--font-sans);
 
-  font-size: 18px;
+  font-size: 16px;
 }
 
 @media (max-width: 600px) {

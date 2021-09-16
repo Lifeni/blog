@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import React from "react"
-import { RiAtLine, RiTerminalBoxLine } from "react-icons/ri"
+import { RiArchiveLine, RiTerminalBoxLine } from "react-icons/ri"
 import svg from "../../assets/upyun-logo.svg"
 
 const FooterWrapper = styled("footer")`
@@ -122,9 +122,9 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <RiAtLine aria-label="@ 图标" size="1.125em" />
-          关于我和这个网站
-          <small>About Me</small>
+          <RiArchiveLine aria-label="箱子图标" size="1.125em" />
+          没意思页面的存档
+          <small>Shelter</small>
         </FooterLink>
         <FooterLink
           href="https://lab.lifeni.life"
