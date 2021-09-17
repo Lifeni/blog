@@ -20,7 +20,7 @@ const AboutWrapper = styled("div")`
   article {
     width: 100%;
     max-width: var(--article-width);
-    padding: 2.5rem 1rem;
+    padding: 2.5rem 1rem 2.625rem 1rem;
     display: flex;
     flex-direction: column;
     border-bottom: var(--border);
@@ -78,24 +78,27 @@ const Friends = styled("section")`
     }
 
     span {
-      display: none;
       position: absolute;
       left: 50%;
       bottom: 3rem;
       padding: 0.125rem 0.625rem;
+      visibility: hidden;
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: var(--border-radius);
       color: var(--font-light);
       background-color: var(--font-primary);
-      font-size: 0.75rem;
+      font-size: 0.875rem;
       transform: translateX(-50%);
       transition: all 0.2s;
     }
 
     &:hover {
       span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        visibility: visible;
+        opacity: 1;
       }
     }
   }
@@ -105,7 +108,7 @@ const About = () => {
   return (
     <AboutWrapper>
       <article>
-        <h1>你好</h1>
+        <h1>Hello</h1>
         <p>
           我是 <strong>梁峰宁</strong>，这是我的个人网站「记录干杯」。
         </p>

@@ -54,7 +54,7 @@ const Position = ({ deps }: PositionProps) => {
   }, [height, y, deps])
 
   return (
-    <Wrapper>
+    <Wrapper aria-hidden>
       <Bar position={position} ratio={ratio} />
     </Wrapper>
   )
