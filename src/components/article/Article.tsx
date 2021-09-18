@@ -101,6 +101,10 @@ const ArticleWrapper = styled("main")`
     margin: 0.75rem -1rem;
     border-radius: var(--border-radius);
     display: flex;
+
+    & + img {
+      margin-top: 0.25rem;
+    }
   }
 
   code[class*="language-"] {
@@ -149,6 +153,10 @@ const ArticleWrapper = styled("main")`
     margin: 0.75rem -1rem;
     border-radius: var(--border-radius);
     overflow: hidden;
+
+    & + .gatsby-highlight {
+      margin-top: 0.25rem;
+    }
 
     pre {
       margin: 0;
