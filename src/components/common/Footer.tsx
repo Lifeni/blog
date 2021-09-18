@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import React from "react"
 import svg from "../../assets/upyun-logo.svg"
 
-const FooterWrapper = styled("footer")`
+const Wrapper = styled("footer")`
   position: relative;
   width: 100%;
   padding: 1.25rem 1.25rem 4rem 1.25rem;
@@ -65,7 +65,7 @@ const FooterWrapper = styled("footer")`
 const Footer = () => {
   return (
     <>
-      <FooterWrapper>
+      <Wrapper>
         <section>
           <a
             href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
@@ -105,7 +105,7 @@ const Footer = () => {
             署名-相同方式共享 4.0 国际 (CC BY-SA 4.0)
           </a>
         </section>
-      </FooterWrapper>
+      </Wrapper>
     </>
   )
 }

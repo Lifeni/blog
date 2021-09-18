@@ -1,6 +1,5 @@
 import styled from "@emotion/styled"
 import React from "react"
-import { RiArchiveLine, RiTerminalBoxLine } from "react-icons/ri"
 
 const 朋友 = [
   { name: "Nanako", url: "https://tanakarino.cn/" },
@@ -9,7 +8,7 @@ const 朋友 = [
   { name: "YueChen", url: "http://www.yuechen.xyz/" },
 ]
 
-const AboutWrapper = styled("div")`
+const Wrapper = styled("div")`
   position: relative;
   padding: 0 1.25rem;
   display: flex;
@@ -24,6 +23,7 @@ const AboutWrapper = styled("div")`
     padding: 2.5rem 1rem 2.625rem 1rem;
     display: flex;
     flex-direction: column;
+    border-bottom: var(--border);
     transition: all 0.2s;
 
     @media (max-width: 800px) {
@@ -59,7 +59,7 @@ const AboutWrapper = styled("div")`
   }
 `
 
-const Friends = styled("section")`
+const Friend = styled("section")`
   padding: 0.75rem 0;
   display: flex;
 
@@ -104,56 +104,14 @@ const Friends = styled("section")`
   }
 `
 
-const AboutLink = styled("a")`
-  width: 100%;
-  max-width: var(--main-width);
-  height: 3.5rem;
-  margin: 0.5rem 0;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--border-radius);
-  border: none;
-  display: flex;
-  align-items: center;
-  color: var(--font-secondary);
-  background-color: var(--element-background);
-  font-size: 1rem;
-  font-family: inherit;
-  font-weight: inherit;
-  line-height: 2;
-  outline: none;
-  transition: all 0.2s;
-  pointer-events: initial;
-  cursor: pointer;
-  text-decoration: none;
-
-  @media (max-width: 800px) {
-    margin: 1rem 0 0 0;
-  }
-
-  svg {
-    margin: 0 1rem 0 0;
-  }
-
-  &:focus,
-  &:focus-visible,
-  &:hover {
-    background-color: var(--element-background-hover);
-  }
-
-  small {
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-  }
-`
-
 const About = () => {
   return (
-    <AboutWrapper>
+    <Wrapper>
       <article>
         <h1>Hello</h1>
         <p>
-          我是 <strong>梁峰宁</strong>，这是我的个人网站「记录干杯」。
+          我是 <strong>梁峰宁</strong>
+          ，这是我的个人网站「记录干杯」。
         </p>
         <p>
           我比较感兴趣的方向是 Web 前端，喜欢好看的设计，在&nbsp;
@@ -165,10 +123,7 @@ const About = () => {
           >
             GitHub
           </a>
-          &nbsp;上可以找到我和我的项目，以及关于我的其他信息。
-        </p>
-        <p>
-          如果你有一些问题或者好的想法，可以通过&nbsp;
+          &nbsp;上可以找到我和我的项目，以及关于我的其他信息。如果你有一些问题或者好的想法，可以通过&nbsp;
           <a
             href="mailto:liangfengning@foxmail.com"
             title="liangfengning@foxmail.com"
@@ -179,7 +134,8 @@ const About = () => {
           </a>
           &nbsp;联系我。
         </p>
-        <Friends>
+        <p>另外，这些都是我的朋友，有时间可以去他们的网站看看。</p>
+        <Friend>
           {朋友.map((friend, index) => (
             <a
               href={friend.url}
@@ -193,30 +149,9 @@ const About = () => {
               <span>{friend.name}</span>
             </a>
           ))}
-        </Friends>
-        <p>这些都是我的朋友，欢迎去他们的网站看看。</p>
+        </Friend>
       </article>
-
-      <AboutLink
-        href="https://lab.lifeni.life"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <RiTerminalBoxLine aria-label="茶杯图标" size="1.125em" />
-        并不存在的实验室
-        <small>Hello World</small>
-      </AboutLink>
-
-      <AboutLink
-        href="https://dev.lifeni.life"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <RiArchiveLine aria-label="箱子图标" size="1.125em" />
-        一些自己做的东西
-        <small>Code Sandbox</small>
-      </AboutLink>
-    </AboutWrapper>
+    </Wrapper>
   )
 }
 

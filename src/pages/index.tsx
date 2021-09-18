@@ -6,6 +6,7 @@ import Footer from "../components/common/Footer"
 import Header from "../components/common/Header"
 import Position from "../components/common/Position"
 import About from "../components/home/About"
+import NavLink from "../components/home/NavLink"
 import ArticlePost from "../components/home/Post"
 import ArticleList from "../components/home/PostList"
 import SearchBar from "../components/home/Search"
@@ -82,6 +83,7 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
           </section>
         )}
       </ArticleList>
+      {!searchText && <NavLink />}
       <Footer />
       <Position deps={searchText} />
     </Container>

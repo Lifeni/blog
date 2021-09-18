@@ -3,7 +3,7 @@ import mediumZoom from "medium-zoom"
 import React from "react"
 import { MutableRefObject, useEffect, useRef } from "react"
 
-const ArticleWrapper = styled("main")`
+const Wrapper = styled("main")`
   position: relative;
   padding: 0 1.25rem;
   display: flex;
@@ -328,7 +328,7 @@ const Article = ({ html, children }: ArticleProps) => {
   }, [])
 
   return (
-    <ArticleWrapper>
+    <Wrapper>
       {html ? (
         <article
           ref={articleRef}
@@ -337,7 +337,7 @@ const Article = ({ html, children }: ArticleProps) => {
       ) : (
         <article ref={articleRef}>{children}</article>
       )}
-    </ArticleWrapper>
+    </Wrapper>
   )
 }
 
