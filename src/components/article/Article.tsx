@@ -115,10 +115,6 @@ const Wrapper = styled("main")`
     font-family: var(--font-mono);
     transition: all 0.2s;
     overflow-wrap: break-word;
-
-    &:hover {
-      background-color: var(--element-background-hover);
-    }
   }
 
   h1,
@@ -178,10 +174,6 @@ const Wrapper = styled("main")`
         line-height: 1.875;
         background-color: transparent !important;
         font-family: var(--font-mono);
-      }
-
-      &:hover {
-        background-color: var(--element-background-hover);
       }
     }
   }

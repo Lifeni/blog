@@ -21,7 +21,7 @@ const Wrapper = styled("div")`
   article {
     width: 100%;
     max-width: var(--article-width);
-    padding: 2.5rem 1rem 2.625rem 1rem;
+    padding: 2.5rem 1rem;
     display: flex;
     flex-direction: column;
     border-bottom: var(--border);
@@ -61,7 +61,7 @@ const Wrapper = styled("div")`
 `
 
 const Friend = styled("section")`
-  padding: 0.75rem 1px;
+  padding: 0.875rem 1px;
   display: flex;
 
   a {

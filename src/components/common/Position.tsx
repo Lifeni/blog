@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 import React, { useEffect, useState } from "react"
-import { useWindowScroll, useWindowSize } from "react-use"
+import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri"
+import { useDebounce, useWindowScroll, useWindowSize } from "react-use"
 
 const Wrapper = styled("div")`
   position: fixed;
@@ -17,6 +18,40 @@ const Wrapper = styled("div")`
   }
 `
 
+interface ActionProps {
+  light: boolean
+}
+
+const Action = styled("button")<ActionProps>`
+  position: absolute;
+  left: calc((-2rem + 0.1rem) / 2);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  border: none;
+  color: ${props =>
+    props.light ? "var(--font-primary)" : "var(--border-color)"};
+  background-color: var(--background);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--font-primary);
+    background-color: var(--element-background);
+  }
+`
+
+const Up = styled(Action)`
+  top: -3rem;
+`
+
+const Down = styled(Action)`
+  bottom: -3rem;
+`
+
 interface BarProps {
   position: number
   ratio: number
@@ -29,7 +64,8 @@ const Bar = styled("div")<BarProps>`
   width: 100%;
   height: ${props => `${props.ratio * 100}%`};
   background-color: var(--font-primary);
-  transition: background 0.2s;
+  transition: background 0.2s, top 0.4s cubic-bezier(0.17, 0.89, 0.3, 1),
+    height 0.4s cubic-bezier(0.17, 0.89, 0.3, 1);
 `
 
 interface PositionProps {
@@ -42,20 +78,44 @@ const Position = ({ deps }: PositionProps) => {
 
   const [position, setPosition] = useState(0)
   const [ratio, setRatio] = useState(0)
+  const [bottom, setBottom] = useState(false)
 
-  useEffect(() => {
-    if (width >= 960) {
-      window.requestAnimationFrame(() => {
+  useDebounce(
+    () => {
+      if (width >= 960) {
         const size = document.documentElement.scrollHeight
         setPosition(y / size)
         setRatio(height / size)
-      })
-    }
-  }, [height, y, deps])
+
+        if (y + height >= size - 1) setBottom(true)
+        else setBottom(false)
+      }
+    },
+    100,
+    [height, y, deps]
+  )
 
   return (
     <Wrapper aria-hidden>
+      <Up light={position === 0}>
+        <RiArrowUpSLine
+          aria-label="页面顶部"
+          title="页面顶部"
+          size="1.125rem"
+          onClick={() => window.scrollTo(0, 0)}
+        />
+      </Up>
       <Bar position={position} ratio={ratio} />
+      <Down light={bottom}>
+        <RiArrowDownSLine
+          aria-label="页面底部"
+          title="页面底部"
+          size="1.125rem"
+          onClick={() =>
+            window.scrollTo(0, document.documentElement.scrollHeight)
+          }
+        />
+      </Down>
     </Wrapper>
   )
 }
