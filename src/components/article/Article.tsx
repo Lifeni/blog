@@ -33,7 +33,7 @@ const Wrapper = styled("main")`
   }
 
   p {
-    margin: 0.375rem 0;
+    margin: 0.5rem 0;
     font-size: inherit;
     line-height: inherit;
     text-align: justify;
@@ -76,18 +76,18 @@ const Wrapper = styled("main")`
   h3 {
     padding: 1rem 0;
     font-size: 1.25rem;
-    line-height: 1.75;
+    line-height: 2;
   }
 
   h4 {
     padding: 0.75rem 0 0.375rem 0;
     font-size: 1.125rem;
-    line-height: 1.75;
+    line-height: 2;
   }
 
   ul,
   ol {
-    margin: 0.375rem 0;
+    margin: 0.5rem 0;
     padding: 0 0 0 1.5rem;
 
     li {
