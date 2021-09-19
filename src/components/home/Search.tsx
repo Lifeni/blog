@@ -73,6 +73,7 @@ const Search = ({ search, enter }: SearchProps) => {
         placeholder="在「记录干杯」中搜索 ..."
         onChange={search}
         ref={searchRef}
+        title="使用 / 键聚焦搜索框"
       />
     </SearchBar>
   )

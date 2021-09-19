@@ -3,9 +3,10 @@ import React from "react"
 
 const 朋友 = [
   { name: "Nanako", url: "https://tanakarino.cn/" },
-  { name: "bluebonnet27", url: "https://bluebonnet27.github.io" },
+  { name: "bluebonnet27", url: "https://bluebonnet27.github.io/" },
   { name: "GluttonK", url: "https://blog.csdn.net/GluttonK/" },
   { name: "YueChen", url: "http://www.yuechen.xyz/" },
+  { name: "开往", url: "https://travellings.link/" },
 ]
 
 const Wrapper = styled("div")`
@@ -60,7 +61,7 @@ const Wrapper = styled("div")`
 `
 
 const Friend = styled("section")`
-  padding: 0.75rem 0;
+  padding: 0.75rem 1px;
   display: flex;
 
   a {
@@ -91,6 +92,7 @@ const Friend = styled("section")`
       color: var(--font-light);
       background-color: var(--font-primary);
       font-size: 0.875rem;
+      white-space: nowrap;
       transform: translateX(-50%);
       transition: all 0.2s;
     }
@@ -108,7 +110,7 @@ const About = () => {
   return (
     <Wrapper>
       <article>
-        <h1>Hello</h1>
+        <h1>你好</h1>
         <p>
           我是 <strong>梁峰宁</strong>
           ，这是我的个人网站「记录干杯」。
@@ -141,6 +143,7 @@ const About = () => {
               href={friend.url}
               target="_blank"
               rel="nofollow noopener noreferrer"
+              key={index}
             >
               <img
                 src={`https://file.lifeni.life/avatar/friends/${friend.name}.webp`}

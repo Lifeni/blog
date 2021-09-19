@@ -88,7 +88,7 @@ const Wrapper = styled("main")`
   ul,
   ol {
     margin: 0.375rem 0;
-    padding: 0 0 0 1.25rem;
+    padding: 0 0 0 1.5rem;
 
     li {
       margin: 0.25rem 0;
@@ -98,7 +98,7 @@ const Wrapper = styled("main")`
 
   img {
     width: calc(100% + 2rem);
-    margin: 0.75rem -1rem;
+    margin: 1rem -1rem;
     border-radius: var(--border-radius);
     display: flex;
 
@@ -150,7 +150,7 @@ const Wrapper = styled("main")`
   .gatsby-highlight {
     position: relative;
     width: calc(100% + 2rem);
-    margin: 0.75rem -1rem;
+    margin: 1rem -1rem;
     border-radius: var(--border-radius);
     overflow: hidden;
 
@@ -176,7 +176,7 @@ const Wrapper = styled("main")`
         padding: 0;
         border: none;
         line-height: 1.875;
-        background-color: inherit;
+        background-color: transparent !important;
         font-family: var(--font-mono);
       }
 
@@ -188,7 +188,7 @@ const Wrapper = styled("main")`
 
   .table-wrapper {
     width: calc(100% + 2rem);
-    margin: 0.75rem -1rem;
+    margin: 1rem -1rem;
     display: flex;
     border-radius: var(--border-radius);
     transition: all 0.2s;
@@ -245,8 +245,8 @@ const Wrapper = styled("main")`
   }
 
   blockquote {
-    margin: 0.75rem 0;
-    padding: 0.25rem 1.5rem;
+    margin: 1rem 0;
+    padding: 0.25rem 0 0.25rem 1.5rem;
     border-left: var(--border-block);
     color: var(--font-secondary);
     transition: all 0.2s;
@@ -258,7 +258,7 @@ const Wrapper = styled("main")`
   }
 
   details {
-    margin: 0.75rem 0;
+    margin: 1rem 0;
 
     summary {
       width: fit-content;
@@ -267,6 +267,10 @@ const Wrapper = styled("main")`
       background-color: var(--element-background);
       cursor: pointer;
       user-select: none;
+    }
+
+    &[open] summary {
+      margin-bottom: 1.75rem;
     }
   }
 

@@ -161,10 +161,10 @@ const ArticleTableOfContents = ({ toc }: TableOfContentsProps) => {
   return (
     <>
       <button
-        title="文章目录"
         aria-label="文章目录"
         className="round-right"
         onClick={() => setOpen(true)}
+        title="使用 / 键切换目录窗口"
       >
         <RiFileListLine size="1.125rem" className="open" />
         目录

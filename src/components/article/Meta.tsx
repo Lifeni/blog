@@ -18,9 +18,8 @@ const Meta = styled("div")`
   }
 
   @media (max-width: 720px) {
-    margin: 0 -1rem 1.25rem -1rem;
-    padding: 0 1rem;
-    border-bottom: none;
+    margin: -0.5rem -1rem 1rem -1rem;
+    padding: 0 1rem 2.25rem 1rem;
   }
 
   time,
