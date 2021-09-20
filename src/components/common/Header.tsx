@@ -55,6 +55,7 @@ const HeaderBar = styled("div")`
     pointer-events: initial;
     cursor: pointer;
     text-decoration: none;
+    white-space: nowrap;
 
     &::-webkit-details-marker {
       display: none;

@@ -51,7 +51,7 @@ const Meta = styled("div")`
   section {
     padding: 0;
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     align-items: center;
     white-space: nowrap;
     line-height: 2.375rem;
