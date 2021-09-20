@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri"
 import { useDebounce, useWindowScroll, useWindowSize } from "react-use"
 

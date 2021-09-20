@@ -1,5 +1,6 @@
 import styled from "@emotion/styled"
-import React from "react"
+import React, { useState } from "react"
+import { RiHeartFill, RiHeartLine, RiShareLine } from "react-icons/ri"
 
 const 朋友 = [
   { name: "Nanako", url: "https://tanakarino.cn/" },
@@ -56,6 +57,9 @@ const Wrapper = styled("div")`
     h1 {
       font-size: 1.375rem;
       padding: 0 0 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 `
@@ -106,11 +110,84 @@ const Friend = styled("section")`
   }
 `
 
+interface ActionProps {
+  like?: boolean
+}
+
+const Action = styled("button")<ActionProps>`
+  float: right;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0 0 0 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--font-secondary);
+  background-color: var(--background);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--font-primary);
+    background-color: var(--element-background);
+  }
+
+  svg {
+    color: ${props => (props.like ? "var(--red)" : "inhert")};
+    animation: ${props => (props.like ? "like 0.2s" : "none")};
+    transition: all 0.2s;
+  }
+
+  @keyframes like {
+    0% {
+      transform: scale(0.95);
+    }
+
+    50% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+`
+
 const About = () => {
+  const [like, setLike] = useState(false)
+
   return (
     <Wrapper>
       <article>
-        <h1>你好</h1>
+        <h1>
+          你好
+          <span>
+            <Action
+              like={like}
+              title={like ? "取消点赞" : "点赞"}
+              onClick={() => setLike(!like)}
+            >
+              {like ? (
+                <RiHeartFill aria-label="取消点赞" size="1.125rem" />
+              ) : (
+                <RiHeartLine aria-label="点赞" size="1.125rem" />
+              )}
+            </Action>
+            <Action
+              onClick={() =>
+                navigator.share({
+                  title: "记录干杯",
+                  text: "个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。",
+                  url: window.location.href,
+                })
+              }
+            >
+              <RiShareLine aria-label="分享" title="分享" size="1.125rem" />
+            </Action>
+          </span>
+        </h1>
         <p>
           我是 <strong>梁峰宁</strong>
           ，这是我的个人网站「记录干杯」。
@@ -125,7 +202,7 @@ const About = () => {
           >
             GitHub
           </a>
-          &nbsp;上可以找到我和我的项目，以及关于我的其他信息。如果你有一些问题或者好的想法，可以通过&nbsp;
+          &nbsp;上可以找到我和我的项目。如果你有一些问题或者想法，也可以通过&nbsp;
           <a
             href="mailto:liangfengning@foxmail.com"
             title="liangfengning@foxmail.com"
