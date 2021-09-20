@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { RiHeartFill, RiHeartLine, RiShareLine } from "react-icons/ri"
 
 const 朋友 = [
@@ -161,6 +161,22 @@ const Action = styled("button")<ActionProps>`
 
 const About = () => {
   const [like, setLike] = useState(false)
+  const [share, setShare] = useState(false)
+
+  useEffect(() => {
+    // @ts-ignore
+    if (window?.navigator?.share) setShare(true)
+  }, [])
+
+  const handleShare = () => {
+    if (share) {
+      window.navigator.share({
+        title: "记录干杯",
+        text: "个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。",
+        url: "https://lifeni.life",
+      })
+    }
+  }
 
   return (
     <Wrapper>
@@ -180,17 +196,8 @@ const About = () => {
               )}
             </Action>
 
-            {navigator?.share ? (
-              <Action
-                title="分享"
-                onClick={() =>
-                  navigator.share({
-                    title: "记录干杯",
-                    text: "个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。",
-                    url: "https://lifeni.life",
-                  })
-                }
-              >
+            {share ? (
+              <Action title="分享" onClick={handleShare}>
                 <RiShareLine aria-label="分享" size="1.125rem" />
               </Action>
             ) : (

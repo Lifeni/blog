@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { RiBookOpenLine, RiCalendarLine, RiShareLine } from "react-icons/ri"
 
 const Post = styled("div")`
@@ -119,6 +119,23 @@ const ArticlePost = ({
   description,
   name,
 }: ArticleFrontmatterGraphQL) => {
+  const [share, setShare] = useState(false)
+
+  useEffect(() => {
+    // @ts-ignore
+    if (window?.navigator?.share) setShare(true)
+  }, [])
+
+  const handleShare = () => {
+    if (share) {
+      window.navigator.share({
+        title: `${title} | 记录干杯`,
+        text: description,
+        url: `https://lifeni.life/article/${name}`,
+      })
+    }
+  }
+
   return (
     <Post>
       <Title>
@@ -135,17 +152,8 @@ const ArticlePost = ({
           {(create_date === date ? "创建于 " : "编辑于 ") + date}
         </Time>
 
-        {navigator?.share && (
-          <Share
-            title="分享文章"
-            onClick={() =>
-              navigator.share({
-                title: `${title} | 记录干杯`,
-                text: description,
-                url: `https://lifeni.life/article/${name}`,
-              })
-            }
-          >
+        {share && (
+          <Share title="分享文章" onClick={handleShare}>
             <RiShareLine aria-label="分享文章" size="1.125rem" />
           </Share>
         )}

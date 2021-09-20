@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { RiCalendarLine, RiCopyrightLine, RiShareLine } from "react-icons/ri"
 
 const Meta = styled("div")`
@@ -90,6 +90,23 @@ const ArticleMeta = ({
   date,
   license,
 }: ArticleFrontmatterGraphQL) => {
+  const [share, setShare] = useState(false)
+
+  useEffect(() => {
+    // @ts-ignore
+    if (window?.navigator?.share) setShare(true)
+  }, [])
+
+  const handleShare = () => {
+    if (share) {
+      window.navigator.share({
+        title: `${title} | 记录干杯`,
+        text: description,
+        url: `https://lifeni.life/article/${name}`,
+      })
+    }
+  }
+
   return (
     <Meta>
       <h1 id={title.toLowerCase().replace(/\s/g, "-")}>{title}</h1>
@@ -115,17 +132,8 @@ const ArticleMeta = ({
           </span>
         )}
 
-        {navigator?.share && (
-          <Share
-            title="分享文章"
-            onClick={() =>
-              navigator.share({
-                title: `${title} | 记录干杯`,
-                text: description,
-                url: `https://lifeni.life/article/${name}`,
-              })
-            }
-          >
+        {share && (
+          <Share title="分享文章" onClick={handleShare}>
             <RiShareLine aria-label="分享文章" size="1.125rem" />
           </Share>
         )}
