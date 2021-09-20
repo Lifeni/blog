@@ -97,7 +97,10 @@ const Position = ({ deps }: PositionProps) => {
 
   return (
     <Wrapper aria-hidden>
-      <Up light={position === 0} onClick={() => window.scrollTo(0, 0)}>
+      <Up
+        light={position === 0 && ratio !== 0}
+        onClick={() => window.scrollTo(0, 0)}
+      >
         <RiArrowUpSLine
           aria-label="页面顶部"
           title="页面顶部"

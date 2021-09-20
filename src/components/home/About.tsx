@@ -118,7 +118,7 @@ const Action = styled("button")<ActionProps>`
   float: right;
   width: 2.25rem;
   height: 2.25rem;
-  margin: 0 0 0 0.25rem;
+  margin: 0 -0.5rem 0 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,6 +132,10 @@ const Action = styled("button")<ActionProps>`
   &:hover {
     color: var(--font-primary);
     background-color: var(--element-background);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 
   svg {
@@ -175,17 +179,25 @@ const About = () => {
                 <RiHeartLine aria-label="点赞" size="1.125rem" />
               )}
             </Action>
-            <Action
-              onClick={() =>
-                navigator.share({
-                  title: "记录干杯",
-                  text: "个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。",
-                  url: window.location.href,
-                })
-              }
-            >
-              <RiShareLine aria-label="分享" title="分享" size="1.125rem" />
-            </Action>
+
+            {navigator?.share ? (
+              <Action
+                title="分享"
+                onClick={() =>
+                  navigator.share({
+                    title: "记录干杯",
+                    text: "个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。",
+                    url: "https://lifeni.life",
+                  })
+                }
+              >
+                <RiShareLine aria-label="分享" size="1.125rem" />
+              </Action>
+            ) : (
+              <Action title="你的浏览器不支持 Web Share API" disabled>
+                <RiShareLine aria-label="分享" size="1.125rem" />
+              </Action>
+            )}
           </span>
         </h1>
         <p>

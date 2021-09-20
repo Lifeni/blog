@@ -1,7 +1,6 @@
 import styled from "@emotion/styled"
 import mediumZoom from "medium-zoom"
-import React from "react"
-import { MutableRefObject, useEffect, useRef } from "react"
+import React, { MutableRefObject, ReactElement, useEffect, useRef } from "react"
 
 interface WrapperProps {
   serif?: boolean
@@ -289,11 +288,10 @@ const Wrapper = styled("main")<WrapperProps>`
 
 interface ArticleProps {
   serif?: boolean
-  html?: boolean
-  children: string
+  children: string | ReactElement | ReactElement[]
 }
 
-const Article = ({ serif, html, children }: ArticleProps) => {
+const Article = ({ serif, children }: ArticleProps) => {
   const articleRef: MutableRefObject<HTMLElement | null> = useRef(null)
 
   useEffect(() => {
@@ -337,14 +335,7 @@ const Article = ({ serif, html, children }: ArticleProps) => {
 
   return (
     <Wrapper serif={serif}>
-      {html ? (
-        <article
-          ref={articleRef}
-          dangerouslySetInnerHTML={{ __html: children }}
-        />
-      ) : (
-        <article ref={articleRef}>{children}</article>
-      )}
+      <article ref={articleRef}>{children}</article>
     </Wrapper>
   )
 }

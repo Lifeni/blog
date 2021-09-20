@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
 import React from "react"
-import { RiBookOpenLine, RiCalendarLine } from "react-icons/ri"
+import { RiBookOpenLine, RiCalendarLine, RiShareLine } from "react-icons/ri"
 
 const Post = styled("div")`
   width: 100%;
@@ -71,11 +71,6 @@ const Action = styled("section")`
   white-space: nowrap;
   flex-wrap: wrap;
 
-  @media (max-width: 450px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   a {
     margin: 0 1.375rem 0 0;
     display: flex;
@@ -94,6 +89,26 @@ const Action = styled("section")`
       text-decoration: underline;
       text-underline-offset: 0.25em;
     }
+  }
+`
+
+const Share = styled("button")`
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0 -0.5rem 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--font-secondary);
+  background-color: var(--background);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--font-primary);
+    background-color: var(--element-background);
   }
 `
 
@@ -119,6 +134,21 @@ const ArticlePost = ({
           <RiCalendarLine aria-label="日期图标" size="1.125rem" />
           {(create_date === date ? "创建于 " : "编辑于 ") + date}
         </Time>
+
+        {navigator?.share && (
+          <Share
+            title="分享文章"
+            onClick={() =>
+              navigator.share({
+                title: `${title} | 记录干杯`,
+                text: description,
+                url: `https://lifeni.life/article/${name}`,
+              })
+            }
+          >
+            <RiShareLine aria-label="分享文章" size="1.125rem" />
+          </Share>
+        )}
       </Action>
     </Post>
   )

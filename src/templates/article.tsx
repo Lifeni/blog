@@ -25,9 +25,11 @@ const ArticlePage = ({ data }: ArticlePageGraphQL) => {
       <Header>
         <ArticleBar toc={post.tableOfContents} />
       </Header>
-      <Article {...frontmatter} html>
-        {ReactDOMServer.renderToString(<ArticleMeta {...frontmatter} />) +
-          post.html.split("</h1>")[1]}
+      <Article {...frontmatter}>
+        <ArticleMeta {...frontmatter} />
+        <div
+          dangerouslySetInnerHTML={{ __html: post.html.split("</h1>")[1] }}
+        />
       </Article>
       <ArticleComment />
       <Position />

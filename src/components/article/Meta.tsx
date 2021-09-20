@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import React from "react"
-import { RiCalendarLine, RiCopyrightLine } from "react-icons/ri"
+import { RiCalendarLine, RiCopyrightLine, RiShareLine } from "react-icons/ri"
 
 const Meta = styled("div")`
   width: calc(100% + 2rem);
@@ -62,7 +62,28 @@ const Meta = styled("div")`
   }
 `
 
+const Share = styled("button")`
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0 -0.5rem 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--font-secondary);
+  background-color: var(--background);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--font-primary);
+    background-color: var(--element-background);
+  }
+`
+
 const ArticleMeta = ({
+  name,
   title,
   description,
   create_date,
@@ -92,6 +113,21 @@ const ArticleMeta = ({
             <RiCopyrightLine aria-label="版权图标" size="1.125em" />
             {license}
           </span>
+        )}
+
+        {navigator?.share && (
+          <Share
+            title="分享文章"
+            onClick={() =>
+              navigator.share({
+                title: `${title} | 记录干杯`,
+                text: description,
+                url: `https://lifeni.life/article/${name}`,
+              })
+            }
+          >
+            <RiShareLine aria-label="分享文章" size="1.125rem" />
+          </Share>
         )}
       </section>
     </Meta>
