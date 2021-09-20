@@ -91,29 +91,30 @@ const Position = ({ deps }: PositionProps) => {
         else setBottom(false)
       }
     },
-    100,
+    50,
     [height, y, deps]
   )
 
   return (
     <Wrapper aria-hidden>
-      <Up light={position === 0}>
+      <Up light={position === 0} onClick={() => window.scrollTo(0, 0)}>
         <RiArrowUpSLine
           aria-label="页面顶部"
           title="页面顶部"
           size="1.125rem"
-          onClick={() => window.scrollTo(0, 0)}
         />
       </Up>
       <Bar position={position} ratio={ratio} />
-      <Down light={bottom}>
+      <Down
+        light={bottom}
+        onClick={() =>
+          window.scrollTo(0, document.documentElement.scrollHeight)
+        }
+      >
         <RiArrowDownSLine
           aria-label="页面底部"
           title="页面底部"
           size="1.125rem"
-          onClick={() =>
-            window.scrollTo(0, document.documentElement.scrollHeight)
-          }
         />
       </Down>
     </Wrapper>
