@@ -80,7 +80,8 @@ module.exports = {
           families: [
             "Inter:500,700",
             "JetBrains Mono:500,700",
-            "Noto Sans SC:500,700&display=swap",
+            "Noto Sans SC:500,700",
+            "Noto Serif SC:500,700&display=swap",
           ],
         },
       },

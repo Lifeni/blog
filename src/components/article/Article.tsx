@@ -3,7 +3,11 @@ import mediumZoom from "medium-zoom"
 import React from "react"
 import { MutableRefObject, useEffect, useRef } from "react"
 
-const Wrapper = styled("main")`
+interface WrapperProps {
+  serif?: boolean
+}
+
+const Wrapper = styled("main")<WrapperProps>`
   position: relative;
   padding: 0 1.25rem;
   display: flex;
@@ -18,6 +22,8 @@ const Wrapper = styled("main")`
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    font-family: ${props => (props.serif ? "var(--font-serif)" : "inherit")};
+    line-height: ${props => (props.serif ? "2.25" : "inherit")};
   }
 
   a {
@@ -33,12 +39,17 @@ const Wrapper = styled("main")`
   }
 
   p {
-    margin: 0.5rem 0;
+    margin: ${props => (props.serif ? "0" : "0.5rem 0")};
     font-size: inherit;
     line-height: inherit;
     text-align: justify;
     text-justify: auto;
     overflow-wrap: break-word;
+    text-indent: ${props => (props.serif ? "2rem" : "unset")};
+
+    &:first-of-type {
+      text-indent: unset;
+    }
   }
 
   h1 {
@@ -238,7 +249,7 @@ const Wrapper = styled("main")`
 
   blockquote {
     margin: 1rem 0;
-    padding: 0.25rem 0 0.25rem 1.5rem;
+    padding: 0.25rem 1.5rem;
     border-left: var(--border-block);
     color: var(--font-secondary);
     transition: all 0.2s;
@@ -277,11 +288,12 @@ const Wrapper = styled("main")`
 `
 
 interface ArticleProps {
+  serif?: boolean
   html?: boolean
   children: string
 }
 
-const Article = ({ html, children }: ArticleProps) => {
+const Article = ({ serif, html, children }: ArticleProps) => {
   const articleRef: MutableRefObject<HTMLElement | null> = useRef(null)
 
   useEffect(() => {
@@ -308,11 +320,11 @@ const Article = ({ html, children }: ArticleProps) => {
       ) {
         imgs.forEach(e => {
           e.setAttribute("tabindex", "0")
-          e.onkeypress = event => {
+          e.addEventListener("keypress", event => {
             if (event.key === "Enter") {
               e.click()
             }
-          }
+          })
         })
         setTimeout(() => {
           mediumZoom(imgs, {
@@ -324,7 +336,7 @@ const Article = ({ html, children }: ArticleProps) => {
   }, [])
 
   return (
-    <Wrapper>
+    <Wrapper serif={serif}>
       {html ? (
         <article
           ref={articleRef}

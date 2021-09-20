@@ -7,7 +7,14 @@ const Meta = styled("div")`
   margin: 0 -1rem 1.75rem -1rem;
   padding: 0.25rem 1rem 2.875rem 1rem;
   border-bottom: var(--border);
+  font-family: var(--font-sans);
   transition: all 0.2s;
+
+  p {
+    line-height: 2 !important;
+    text-indent: unset !important;
+    margin: 0.5rem 0 !important;
+  }
 
   & + p {
     margin: 1.5rem 0 0 0 !important;

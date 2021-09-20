@@ -54,6 +54,7 @@ export const PostQuery = graphql`
         date(formatString: "YYYY 年 M 月 D 日")
         create_date(formatString: "YYYY 年 M 月 D 日")
         license
+        serif
       }
       tableOfContents(absolute: false, maxDepth: 3)
     }
