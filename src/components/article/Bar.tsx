@@ -66,7 +66,7 @@ const TableOfContentsWrapper = styled("div")<TableOfContentsWrapperProps>`
 
 const TableOfContents = styled("nav")`
   width: calc(100% - 2.5rem);
-  max-width: var(--toc-width);
+  max-width: var(--widget-width);
   height: auto;
   max-height: 65vh;
   z-index: 200;

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
-import React, { useEffect, useState } from "react"
-import { RiCalendarLine, RiCopyrightLine, RiShareLine } from "react-icons/ri"
+import React from "react"
+import { RiCalendarLine, RiCopyrightLine } from "react-icons/ri"
+import Info from "../common/Info"
 
 const Meta = styled("div")`
   width: calc(100% + 2rem);
@@ -62,26 +63,6 @@ const Meta = styled("div")`
   }
 `
 
-const Share = styled("button")`
-  width: 2.25rem;
-  height: 2.25rem;
-  margin: 0 -0.5rem 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: var(--border-radius);
-  color: var(--font-secondary);
-  background-color: var(--background);
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    color: var(--font-primary);
-    background-color: var(--element-background);
-  }
-`
-
 const ArticleMeta = ({
   name,
   title,
@@ -90,23 +71,6 @@ const ArticleMeta = ({
   date,
   license,
 }: ArticleFrontmatterGraphQL) => {
-  const [share, setShare] = useState(false)
-
-  useEffect(() => {
-    // @ts-ignore
-    if (window?.navigator?.share) setShare(true)
-  }, [])
-
-  const handleShare = () => {
-    if (share) {
-      window.navigator.share({
-        title: `${title} | 记录干杯`,
-        text: description,
-        url: `https://lifeni.life/article/${name}`,
-      })
-    }
-  }
-
   return (
     <Meta>
       <h1 id={title.toLowerCase().replace(/\s/g, "-")}>{title}</h1>
@@ -132,11 +96,7 @@ const ArticleMeta = ({
           </span>
         )}
 
-        {share && (
-          <Share title="分享文章" onClick={handleShare}>
-            <RiShareLine aria-label="分享文章" size="1.125rem" />
-          </Share>
-        )}
+        <Info create_date={create_date} date={date} title={title} name={name} />
       </section>
     </Meta>
   )

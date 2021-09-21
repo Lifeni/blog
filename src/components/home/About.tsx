@@ -118,7 +118,7 @@ const Action = styled("button")<ActionProps>`
   float: right;
   width: 2.25rem;
   height: 2.25rem;
-  margin: 0 -0.5rem 0 0.75rem;
+  margin: 0 -0.5rem 0 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
