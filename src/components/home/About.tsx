@@ -59,20 +59,20 @@ const Wrapper = styled("div")`
       padding: 0 0 1rem 0;
       display: flex;
       align-items: center;
-      justify-content: space-between;
     }
   }
 `
 
-const Friend = styled("section")`
+const Friend = styled("div")`
   padding: 0.875rem 1px;
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 
   a {
     position: relative;
     width: 2.25rem;
     height: 2.25rem;
-    margin: 0 1rem 0 0;
     border-radius: 100%;
 
     img {
@@ -107,6 +107,12 @@ const Friend = styled("section")`
         opacity: 1;
       }
     }
+  }
+
+  section {
+    margin: 0 0 0 auto;
+    display: flex;
+    align-items: center;
   }
 `
 
@@ -181,32 +187,7 @@ const About = () => {
   return (
     <Wrapper>
       <article>
-        <h1>
-          你好
-          <span>
-            <Action
-              like={like}
-              title={like ? "取消点赞" : "点赞"}
-              onClick={() => setLike(!like)}
-            >
-              {like ? (
-                <RiHeartFill aria-label="取消点赞" size="1.125rem" />
-              ) : (
-                <RiHeartLine aria-label="点赞" size="1.125rem" />
-              )}
-            </Action>
-
-            {share ? (
-              <Action title="分享" onClick={handleShare}>
-                <RiShareLine aria-label="分享" size="1.125rem" />
-              </Action>
-            ) : (
-              <Action title="你的浏览器不支持 Web Share API" disabled>
-                <RiShareLine aria-label="分享" size="1.125rem" />
-              </Action>
-            )}
-          </span>
-        </h1>
+        <h1>你好</h1>
         <p>
           我是 <strong>梁峰宁</strong>
           ，这是我的个人网站「记录干杯」。
@@ -248,6 +229,30 @@ const About = () => {
               <span>{friend.name}</span>
             </a>
           ))}
+
+          <section>
+            {share ? (
+              <Action title="分享" onClick={handleShare}>
+                <RiShareLine aria-label="分享" size="1.125rem" />
+              </Action>
+            ) : (
+              <Action title="你的浏览器不支持 Web Share API" disabled>
+                <RiShareLine aria-label="分享" size="1.125rem" />
+              </Action>
+            )}
+
+            <Action
+              like={like}
+              title={like ? "取消点赞" : "点赞"}
+              onClick={() => setLike(!like)}
+            >
+              {like ? (
+                <RiHeartFill aria-label="取消点赞" size="1.125rem" />
+              ) : (
+                <RiHeartLine aria-label="点赞" size="1.125rem" />
+              )}
+            </Action>
+          </section>
         </Friend>
       </article>
     </Wrapper>
