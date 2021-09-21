@@ -72,7 +72,7 @@ const InfoContent = styled("article")`
     margin: 1rem 0 !important;
     padding: 0 !important;
     border: none;
-    border-top: var(--border);
+    border-top: var(--border) !important;
   }
 
   time {
