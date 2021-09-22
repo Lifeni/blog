@@ -21,8 +21,22 @@ const Wrapper = styled("main")<WrapperProps>`
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    font-family: ${props => (props.serif ? "var(--font-serif)" : "inherit")};
-    line-height: ${props => (props.serif ? "2.25" : "inherit")};
+
+    & > div:last-of-type {
+      display: flex;
+      flex-direction: column;
+      font-family: ${props => (props.serif ? "var(--font-serif)" : "inherit")};
+      line-height: ${props => (props.serif ? "2.25" : "inherit")};
+
+      p {
+        margin: ${props => (props.serif ? "0" : "0.375rem 0")};
+        text-indent: ${props => (props.serif ? "2rem" : "unset")};
+
+        &:first-of-type {
+          text-indent: unset;
+        }
+      }
+    }
   }
 
   a {
@@ -38,17 +52,11 @@ const Wrapper = styled("main")<WrapperProps>`
   }
 
   p {
-    margin: ${props => (props.serif ? "0" : "0.5rem 0")};
     font-size: inherit;
     line-height: inherit;
     text-align: justify;
     text-justify: auto;
     overflow-wrap: break-word;
-    text-indent: ${props => (props.serif ? "2rem" : "unset")};
-
-    &:first-of-type {
-      text-indent: unset;
-    }
   }
 
   h1 {
@@ -90,14 +98,14 @@ const Wrapper = styled("main")<WrapperProps>`
   }
 
   h4 {
-    padding: 0.75rem 0 0.375rem 0;
+    padding: 0.375rem 0;
     font-size: 1.125rem;
     line-height: 2;
   }
 
   ul,
   ol {
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
     padding: 0 0 0 1.5rem;
 
     li {
@@ -252,6 +260,8 @@ const Wrapper = styled("main")<WrapperProps>`
     border-left: var(--border-block);
     color: var(--font-secondary);
     transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
 
     .gatsby-highlight {
       width: 100%;
@@ -261,6 +271,8 @@ const Wrapper = styled("main")<WrapperProps>`
 
   details {
     margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
 
     summary {
       width: fit-content;

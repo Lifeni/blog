@@ -46,7 +46,7 @@ const Wrapper = styled("div")`
     }
 
     p {
-      margin: 0.5rem 0;
+      margin: 0.375rem 0;
       font-size: inherit;
       line-height: inherit;
       text-align: justify;
@@ -190,7 +190,7 @@ const About = () => {
         <h1>你好</h1>
         <p>
           我是 <strong>梁峰宁</strong>
-          ，这是我的个人网站「记录干杯」。
+          ，这里是我的个人网站「记录干杯」。
         </p>
         <p>
           我比较感兴趣的方向是 Web 前端，喜欢好看的设计，在&nbsp;
@@ -202,7 +202,7 @@ const About = () => {
           >
             GitHub
           </a>
-          &nbsp;上可以找到我和我的项目。如果你有一些问题或者想法，也可以通过&nbsp;
+          &nbsp;上可以找到我和我的项目，以及关于我的其他信息。如果你有一些问题或者好的想法，也可以通过&nbsp;
           <a
             href="mailto:liangfengning@foxmail.com"
             title="liangfengning@foxmail.com"

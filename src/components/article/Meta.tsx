@@ -14,7 +14,7 @@ const Meta = styled("div")`
   p {
     line-height: 2 !important;
     text-indent: unset !important;
-    margin: 0.5rem 0 !important;
+    margin: 0.375rem 0 !important;
   }
 
   & + p {
