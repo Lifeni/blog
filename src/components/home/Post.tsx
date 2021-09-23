@@ -65,12 +65,19 @@ const Description = styled("p")`
   overflow-wrap: break-word;
 `
 
-const Action = styled("section")`
+const Action = styled("div")`
   padding: 0.375rem 0;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: space-between;
   white-space: nowrap;
-  flex-wrap: wrap;
+
+  section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 
   a {
     margin: 0 1.375rem 0 0;
@@ -80,6 +87,7 @@ const Action = styled("section")`
     border: none;
     color: var(--font-link);
     line-height: 2.25;
+    transition: all 0.2s;
 
     svg {
       margin: 0 0.75rem 0 0;
@@ -107,14 +115,16 @@ const ArticlePost = ({
       </Title>
       <Description>{description}</Description>
       <Action>
-        <Link to={`/article/${name}`}>
-          <RiBookOpenLine aria-label="查看图标" size="1.125rem" />
-          查看全文
-        </Link>
-        <Time>
-          <RiCalendarLine aria-label="日期图标" size="1.125rem" />
-          {(create_date === date ? "创建于 " : "编辑于 ") + date}
-        </Time>
+        <section>
+          <Link to={`/article/${name}`}>
+            <RiBookOpenLine aria-label="查看图标" size="1.125rem" />
+            查看全文
+          </Link>
+          <Time>
+            <RiCalendarLine aria-label="日期图标" size="1.125rem" />
+            {(create_date === date ? "创建于 " : "编辑于 ") + date}
+          </Time>
+        </section>
 
         <Info create_date={create_date} date={date} title={title} name={name} />
       </Action>

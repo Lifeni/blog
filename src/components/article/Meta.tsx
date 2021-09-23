@@ -49,13 +49,20 @@ const Meta = styled("div")`
     color: var(--font-secondary);
   }
 
-  section {
+  & > div {
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: space-between;
     white-space: nowrap;
     line-height: 2.375rem;
+
+    section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap-reverse;
+    }
 
     svg {
       min-width: 1.125rem;
@@ -75,29 +82,31 @@ const ArticleMeta = ({
     <Meta>
       <h1 id={title.toLowerCase().replace(/\s/g, "-")}>{title}</h1>
       <p>{description}</p>
-      <section>
-        <time>
-          <RiCalendarLine aria-label="日期图标" size="1.125rem" />
-          {(create_date === date ? "创建于 " : "编辑于 ") + date}
-        </time>
-        {license === "CC-BY-SA-4.0" ? (
-          <a
-            href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <RiCopyrightLine aria-label="版权图标" size="1.125em" />
-            {license}
-          </a>
-        ) : (
-          <span>
-            <RiCopyrightLine aria-label="版权图标" size="1.125em" />
-            {license}
-          </span>
-        )}
+      <div>
+        <section>
+          <time>
+            <RiCalendarLine aria-label="日期图标" size="1.125rem" />
+            {(create_date === date ? "创建于 " : "编辑于 ") + date}
+          </time>
+          {license === "CC-BY-SA-4.0" ? (
+            <a
+              href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <RiCopyrightLine aria-label="版权图标" size="1.125em" />
+              {license}
+            </a>
+          ) : (
+            <span>
+              <RiCopyrightLine aria-label="版权图标" size="1.125em" />
+              {license}
+            </span>
+          )}
+        </section>
 
         <Info create_date={create_date} date={date} title={title} name={name} />
-      </section>
+      </div>
     </Meta>
   )
 }

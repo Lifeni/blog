@@ -4,18 +4,20 @@
   --widget-width: 24rem;
 
   --red: #ff3745;
+  --yellow: #feec44;
 
   --background: #ffffff;
   --element-background: #f6f8fa;
   --element-background-hover: #f2f5f8;
 
-  --border: solid 0.1rem #e6eaee;
-  --border-block: solid 0.5rem #f2f5f8;
+  --border-width: 0.1rem;
   --border-color: #e6eaee;
+  --border: solid var(--border-width) var(--border-color);
+  --border-block: solid 0.5rem #f2f5f8;
   --border-radius: 0.5rem;
 
   --font-primary: #282828;
-  --font-secondary: #67707a;
+  --font-secondary: #6a737d;
   --font-light: #e6eaee;
   --font-link: #0366d6;
   --font-link-hover: #065bbd;

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import React, { useEffect, useState } from "react"
-import { RiHeartFill, RiHeartLine, RiShareLine } from "react-icons/ri"
+import { RiHeart3Fill, RiHeart3Line, RiShareLine } from "react-icons/ri"
 
 const 朋友 = [
   { name: "Nanako", url: "https://tanakarino.cn/" },
@@ -56,7 +56,7 @@ const Wrapper = styled("div")`
 
     h1 {
       font-size: 1.375rem;
-      padding: 0 0 1rem 0;
+      padding: 0 0 0.75rem 0;
       display: flex;
       align-items: center;
     }
@@ -64,10 +64,14 @@ const Wrapper = styled("div")`
 `
 
 const Friend = styled("div")`
-  padding: 0.875rem 1px;
+  padding: 0.75rem 1px;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+
+  @media (max-width: 400px) {
+    padding: 0.75rem 1px 0 1px;
+  }
 
   a {
     position: relative;
@@ -146,21 +150,21 @@ const Action = styled("button")<ActionProps>`
 
   svg {
     color: ${props => (props.like ? "var(--red)" : "inhert")};
-    animation: ${props => (props.like ? "like 0.2s" : "none")};
+    animation: ${props => (props.like ? "like 0.2s forwards" : "none")};
     transition: all 0.2s;
   }
 
   @keyframes like {
     0% {
-      transform: scale(0.95);
+      transform: scale(0.9);
     }
 
     50% {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
 
     100% {
-      transform: scale(1);
+      transform: scale(1.05);
     }
   }
 `
@@ -247,9 +251,9 @@ const About = () => {
               onClick={() => setLike(!like)}
             >
               {like ? (
-                <RiHeartFill aria-label="取消点赞" size="1.125rem" />
+                <RiHeart3Fill aria-label="取消点赞" size="1.125rem" />
               ) : (
-                <RiHeartLine aria-label="点赞" size="1.125rem" />
+                <RiHeart3Line aria-label="点赞" size="1.125rem" />
               )}
             </Action>
           </section>

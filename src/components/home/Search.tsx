@@ -2,7 +2,11 @@ import styled from "@emotion/styled"
 import React, { ChangeEvent, FormEvent, useEffect, useRef } from "react"
 import { RiSearchLine } from "react-icons/ri"
 
-const SearchBar = styled("form")`
+interface SearchBarProps {
+  shortcut?: boolean
+}
+
+const SearchBar = styled("form")<SearchBarProps>`
   position: relative;
   display: flex;
   align-items: center;
@@ -41,6 +45,33 @@ const SearchBar = styled("form")`
     font-weight: inherit;
     opacity: 1;
   }
+
+  .message {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 3.5rem;
+    margin: 0;
+    padding: 0 1.25rem;
+    display: ${props => (props.shortcut ? "none" : "flex")};
+    align-items: center;
+    font-size: 0.875rem;
+    font-family: var(--font-mono);
+    color: inherit;
+    user-select: none;
+    pointer-events: none;
+    transition: all 0.2s;
+
+    &::before {
+      content: "[";
+      padding: 0 0.125rem 0 0;
+    }
+
+    &::after {
+      content: " ]";
+      padding: 0 0 0 0.125rem;
+    }
+  }
 `
 
 interface SearchProps {
@@ -66,7 +97,7 @@ const Search = ({ search, enter }: SearchProps) => {
   }, [])
 
   return (
-    <SearchBar onSubmit={enter}>
+    <SearchBar onSubmit={enter} shortcut={!!searchRef.current?.value}>
       <RiSearchLine aria-label="搜索图标" size="1.125em" />
       <input
         type="search"
@@ -75,6 +106,7 @@ const Search = ({ search, enter }: SearchProps) => {
         ref={searchRef}
         title="使用 / 键聚焦搜索框"
       />
+      <span className="message">/</span>
     </SearchBar>
   )
 }

@@ -5,7 +5,7 @@ import { RiMore2Line } from "react-icons/ri"
 const Action = styled("button")`
   width: 2.25rem;
   height: 2.25rem;
-  margin: 0 -0.5rem 0 auto;
+  margin: 0 -0.5rem 0 0;
   display: flex;
   align-items: center;
   justify-content: center;

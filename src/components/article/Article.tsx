@@ -23,6 +23,7 @@ const Wrapper = styled("main")<WrapperProps>`
     flex-direction: column;
 
     & > div:last-of-type {
+      padding: ${props => (props.serif ? "1.5rem 0 0.5rem 0" : "0")};
       display: flex;
       flex-direction: column;
       font-family: ${props => (props.serif ? "var(--font-serif)" : "inherit")};
@@ -125,6 +126,7 @@ const Wrapper = styled("main")<WrapperProps>`
     }
   }
 
+  code,
   code[class*="language-"] {
     font-size: 0.875em;
     padding: 0.25em 0.5em;
@@ -290,11 +292,15 @@ const Wrapper = styled("main")<WrapperProps>`
 
   hr {
     border: none;
-    padding: 1.25rem 0;
+    padding: 1rem 0;
 
     @media (max-width: 720px) {
       padding: 0.75rem;
     }
+  }
+
+  del {
+    color: var(--font-secondary);
   }
 `
 

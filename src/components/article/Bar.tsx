@@ -20,17 +20,42 @@ const ArticleBarWrapper = styled("div")`
     white-space: nowrap;
     overflow: hidden;
   }
+
+  .message {
+    min-width: 3.5rem;
+    height: 3.5rem;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-family: var(--font-mono);
+    color: inherit;
+    user-select: none;
+    pointer-events: none;
+    transition: all 0.2s;
+
+    &::before {
+      content: "[";
+      padding: 0 0.125rem 0 0;
+    }
+
+    &::after {
+      content: "]";
+      padding: 0 0 0 0.125rem;
+    }
+  }
 `
 
 const ArticleBarSpacer = styled("div")`
   flex: 1;
 `
 
-interface TableOfContentsProps {
+interface BarProps {
   toc?: string
+  message?: string
 }
 
-const ArticleBar = ({ toc }: TableOfContentsProps) => {
+const ArticleBar = ({ toc, message }: BarProps) => {
   return (
     <ArticleBarWrapper>
       <Link to="/" className="round-left">
@@ -39,6 +64,7 @@ const ArticleBar = ({ toc }: TableOfContentsProps) => {
       </Link>
       <ArticleBarSpacer />
       {toc && <ArticleTableOfContents toc={toc} />}
+      {message && <span className="message">{message}</span>}
     </ArticleBarWrapper>
   )
 }
@@ -143,7 +169,7 @@ const TableOfContentsOverlay = styled("div")`
   background-color: rgba(0, 0, 0, 0.4);
 `
 
-const ArticleTableOfContents = ({ toc }: TableOfContentsProps) => {
+const ArticleTableOfContents = ({ toc }: BarProps) => {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {

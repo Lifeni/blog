@@ -16,6 +16,7 @@ interface LayoutProps {
     frontmatter: {
       title: string
       description: string
+      message?: string
       bar?: boolean
       comment?: boolean
     }
@@ -23,7 +24,7 @@ interface LayoutProps {
 }
 
 const Page = ({ children, pageContext }: LayoutProps) => {
-  const { title, description, bar, comment } = pageContext.frontmatter
+  const { title, description, message, bar, comment } = pageContext.frontmatter
 
   return (
     <>
@@ -35,8 +36,10 @@ const Page = ({ children, pageContext }: LayoutProps) => {
         <title>{title} | 记录干杯</title>
         <meta name="description" content={description}></meta>
       </Helmet>
-      <Header>{bar && <ArticleBar />}</Header>
-      <Article>{children}</Article>
+      <Header>{bar && <ArticleBar message={message} />}</Header>
+      <Article>
+        <div>{children}</div>
+      </Article>
       {comment ? <ArticleComment /> : <Spacer />}
     </>
   )

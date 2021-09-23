@@ -19,7 +19,7 @@ const ArticleList = styled("main")`
 
     h2 {
       font-size: 1.375rem;
-      padding: 0.5rem 0;
+      padding: 0 0 0.5rem 0;
       line-height: 1.875;
       font-weight: 700;
     }
