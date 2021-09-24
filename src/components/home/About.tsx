@@ -1,6 +1,11 @@
 import styled from "@emotion/styled"
 import React, { useEffect, useState } from "react"
-import { RiHeart3Fill, RiHeart3Line, RiShareLine } from "react-icons/ri"
+import {
+  RiHeart3Fill,
+  RiHeart3Line,
+  RiPushpinFill,
+  RiShareLine,
+} from "react-icons/ri"
 
 const 朋友 = [
   { name: "Nanako", url: "https://tanakarino.cn/" },
@@ -57,9 +62,18 @@ const Wrapper = styled("div")`
     h1 {
       font-size: 1.375rem;
       font-weight: 700;
-      padding: 0 0 0.875rem 0;
+      padding: 0 0 0.75rem 0;
       display: flex;
       align-items: center;
+
+      @media (max-width: 720px) {
+        padding: 0 0 1rem 0;
+      }
+
+      svg {
+        margin: 0 0.75rem 0 0;
+        color: var(--red);
+      }
     }
   }
 `
@@ -85,6 +99,7 @@ const Friend = styled("div")`
       height: 100%;
       border-radius: 100%;
       background-color: var(--element-background);
+      color: transparent;
     }
 
     span {
@@ -192,10 +207,12 @@ const About = () => {
   return (
     <Wrapper>
       <article>
-        <h1>你好</h1>
+        <h1>
+          <RiPushpinFill aria-label="置顶" size="1.125em" /> 你好
+        </h1>
         <p>
           我是 <strong>梁峰宁</strong>
-          ，这里是我的个人网站 <strong>记录干杯</strong>。
+          ，这里是个人网站 <strong>记录干杯</strong>。
         </p>
         <p>
           我比较感兴趣的方向是 Web 前端，喜欢好看的设计，在&nbsp;
@@ -219,7 +236,7 @@ const About = () => {
           &nbsp;联系我。
         </p>
         <p>
-          另外，这些都是我的朋友，有时间可以去他们的网站看看，或者&nbsp;
+          另外，这些都是我的朋友，可以去他们的网站看看，或者&nbsp;
           <a
             href="https://github.com/volfclub/travellings"
             title="开往 - 友链接力"
