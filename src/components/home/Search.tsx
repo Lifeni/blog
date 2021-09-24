@@ -38,12 +38,13 @@ const SearchBar = styled("form")<SearchBarProps>`
     &:focus {
       background-color: var(--element-background-hover);
     }
-  }
 
-  ::placeholder {
-    color: var(--font-secondary);
-    font-weight: inherit;
-    opacity: 1;
+    &::placeholder,
+    &::-moz-placeholder {
+      color: var(--font-secondary);
+      font-weight: inherit;
+      opacity: 1;
+    }
   }
 
   .message {

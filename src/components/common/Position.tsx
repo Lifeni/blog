@@ -96,7 +96,7 @@ const Position = ({ deps }: PositionProps) => {
   )
 
   return (
-    <Wrapper aria-hidden>
+    <Wrapper aria-label="页面位置指示">
       <Up
         light={position === 0 && ratio !== 0}
         onClick={() => window.scrollTo(0, 0)}

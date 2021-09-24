@@ -56,7 +56,8 @@ const Wrapper = styled("div")`
 
     h1 {
       font-size: 1.375rem;
-      padding: 0 0 0.75rem 0;
+      font-weight: 700;
+      padding: 0 0 0.875rem 0;
       display: flex;
       align-items: center;
     }
@@ -64,7 +65,7 @@ const Wrapper = styled("div")`
 `
 
 const Friend = styled("div")`
-  padding: 0.75rem 1px;
+  padding: 0.875rem 1px;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -194,7 +195,7 @@ const About = () => {
         <h1>你好</h1>
         <p>
           我是 <strong>梁峰宁</strong>
-          ，这里是我的个人网站「记录干杯」。
+          ，这里是我的个人网站 <strong>记录干杯</strong>。
         </p>
         <p>
           我比较感兴趣的方向是 Web 前端，喜欢好看的设计，在&nbsp;
@@ -206,7 +207,7 @@ const About = () => {
           >
             GitHub
           </a>
-          &nbsp;上可以找到我和我的项目，以及关于我的其他信息。如果你有一些问题或者好的想法，也可以通过&nbsp;
+          &nbsp;上可以找到我做过的一些项目，以及关于我的其他信息。如果你有一些问题或者好的想法，欢迎通过&nbsp;
           <a
             href="mailto:liangfengning@foxmail.com"
             title="liangfengning@foxmail.com"
@@ -217,7 +218,18 @@ const About = () => {
           </a>
           &nbsp;联系我。
         </p>
-        <p>另外，这些都是我的朋友，有时间可以去他们的网站看看。</p>
+        <p>
+          另外，这些都是我的朋友，有时间可以去他们的网站看看，或者&nbsp;
+          <a
+            href="https://github.com/volfclub/travellings"
+            title="开往 - 友链接力"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
+            开往
+          </a>
+          &nbsp;下一站。
+        </p>
         <Friend>
           {朋友.map((friend, index) => (
             <a
