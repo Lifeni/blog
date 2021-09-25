@@ -78,8 +78,22 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
           ))
         ) : (
           <section className="null">
-            <h2>没有找到相关文章</h2>
-            <p>换个关键词试试看吧，比如「标题：记录」。</p>
+            <h1>没有找到相关文章</h1>
+            <p>换个关键词试试看吧，或者用下面的语法进行进一步搜索。</p>
+            <ul>
+              <li>
+                根据 <strong>标题</strong> 搜索 <code>标题：算法</code>
+                &nbsp;<code>title: linux</code>
+              </li>
+              <li>
+                根据 <strong>描述</strong> 搜索 <code>描述：记录</code>
+                &nbsp;<code>desc: github actions</code>
+              </li>
+              <li>
+                根据 <strong>日期</strong> 搜索 <code>日期：2021.9</code>
+                &nbsp;<code>date: 2020.12.31</code>
+              </li>
+            </ul>
           </section>
         )}
       </ArticleList>

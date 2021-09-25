@@ -81,7 +81,7 @@ body {
   font-family: var(--font-sans);
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1.875;
+  line-height: 2;
   color: var(--font-primary);
   background-color: var(--background);
   transition: all 0.2s;

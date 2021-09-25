@@ -12,6 +12,11 @@ interface ArticleListGraphQL {
 }
 
 interface ArticlePageGraphQL {
+  location?: {
+    state: {
+      [key: string]: boolean
+    }
+  }
   data: {
     site: {
       siteMetadata: {

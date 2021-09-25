@@ -111,12 +111,14 @@ const ArticlePost = ({
   return (
     <Post>
       <Title>
-        <Link to={`/article/${name}`}>{title}</Link>
+        <Link to={`/article/${name}`} state={{ fromHome: true }}>
+          {title}
+        </Link>
       </Title>
       <Description>{description}</Description>
       <Action>
         <section>
-          <Link to={`/article/${name}`}>
+          <Link to={`/article/${name}`} state={{ fromHome: true }}>
             <RiBookOpenLine aria-label="查看图标" size="1.125rem" />
             查看全文
           </Link>

@@ -1,17 +1,24 @@
 import { graphql } from "gatsby"
-import React from "react"
-import ReactDOMServer from "react-dom/server"
+import React, { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import Article from "../components/article/Article"
 import ArticleBar from "../components/article/Bar"
 import ArticleComment from "../components/article/Comment"
 import ArticleMeta from "../components/article/Meta"
-import Position from "../components/common/Position"
 import Header from "../components/common/Header"
+import Position from "../components/common/Position"
 
-const ArticlePage = ({ data }: ArticlePageGraphQL) => {
+const ArticlePage = ({ location, data }: ArticlePageGraphQL) => {
   const post = data.markdownRemark
   const frontmatter = post.frontmatter
+  const [fromHome, setFromHome] = useState(false)
+
+  useEffect(() => {
+    if (location?.state) {
+      setFromHome(location.state.fromHome)
+    }
+  }, [])
+
   return (
     <>
       <Helmet
@@ -23,7 +30,7 @@ const ArticlePage = ({ data }: ArticlePageGraphQL) => {
         <meta name="description" content={frontmatter.description}></meta>
       </Helmet>
       <Header>
-        <ArticleBar toc={post.tableOfContents} />
+        <ArticleBar back={fromHome} toc={post.tableOfContents} />
       </Header>
       <Article {...frontmatter}>
         <ArticleMeta {...frontmatter} />

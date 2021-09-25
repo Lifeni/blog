@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import React, { useEffect, useState } from "react"
 import { RiFileListLine, RiHome2Line } from "react-icons/ri"
 
@@ -51,17 +51,25 @@ const ArticleBarSpacer = styled("div")`
 `
 
 interface BarProps {
+  back?: boolean
   toc?: string
   message?: string
 }
 
-const ArticleBar = ({ toc, message }: BarProps) => {
+const ArticleBar = ({ back, toc, message }: BarProps) => {
   return (
     <ArticleBarWrapper>
-      <Link to="/" className="round-left">
-        <RiHome2Line aria-label="主页图标" size="1.125em" />
-        <span className="text">回到「记录干杯」</span>
-      </Link>
+      {back ? (
+        <button onClick={() => window.history.back()} className="round-left">
+          <RiHome2Line aria-label="主页图标" size="1.125em" />
+          <span className="text">回到「记录干杯」</span>
+        </button>
+      ) : (
+        <Link to="/" className="round-left">
+          <RiHome2Line aria-label="主页图标" size="1.125em" />
+          <span className="text">回到「记录干杯」</span>
+        </Link>
+      )}
       <ArticleBarSpacer />
       {toc && <ArticleTableOfContents toc={toc} />}
       {message && <span className="message">{message}</span>}
@@ -201,8 +209,17 @@ const ArticleTableOfContents = ({ toc }: BarProps) => {
           dangerouslySetInnerHTML={{ __html: toc || "" }}
           onClick={e => {
             const target = e.target as HTMLElement
+
             if (target?.tagName === "A") {
               setOpen(false)
+              history.replaceState(null, "", (target as HTMLAnchorElement).href)
+            } else if (target?.tagName === "CODE") {
+              setOpen(false)
+              history.replaceState(
+                null,
+                "",
+                (target.parentElement as HTMLAnchorElement).href
+              )
             }
           }}
         />

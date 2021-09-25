@@ -10,6 +10,21 @@ const Spacer = styled("div")`
   padding: 2rem 0;
 `
 
+const Wrapper = styled("div")`
+  h1 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    padding: 1.5rem 0 0.75rem 0;
+    display: flex;
+    align-items: center;
+    line-height: 2;
+
+    @media (max-width: 720px) {
+      padding: 0 0 1rem 0;
+    }
+  }
+`
+
 interface LayoutProps {
   children: string
   pageContext: {
@@ -38,7 +53,7 @@ const Page = ({ children, pageContext }: LayoutProps) => {
       </Helmet>
       <Header>{bar && <ArticleBar message={message} />}</Header>
       <Article>
-        <div>{children}</div>
+        <Wrapper>{children}</Wrapper>
       </Article>
       {comment ? <ArticleComment /> : <Spacer />}
     </>

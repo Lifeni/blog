@@ -80,8 +80,8 @@ const Friend = styled("div")`
 
   a {
     position: relative;
-    width: 2.25rem;
-    height: 2.25rem;
+    max-width: 2.25rem;
+    max-height: 2.25rem;
     border-radius: 100%;
 
     img {
