@@ -37,6 +37,9 @@ const Link = styled("a")`
   pointer-events: initial;
   cursor: pointer;
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   @media (max-width: 800px) {
     margin: 1rem 0 0 0;
@@ -56,6 +59,9 @@ const Link = styled("a")`
     display: flex;
     flex: 1;
     justify-content: flex-end;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `
 

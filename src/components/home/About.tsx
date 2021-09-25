@@ -57,7 +57,7 @@ const Wrapper = styled("div")`
     h1 {
       font-size: 1.375rem;
       font-weight: 700;
-      padding: 0 0 0.75rem 0;
+      padding: 0.5rem 0 0.75rem 0;
       display: flex;
       align-items: center;
 

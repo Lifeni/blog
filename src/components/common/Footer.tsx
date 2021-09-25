@@ -14,6 +14,10 @@ const Wrapper = styled("footer")`
 
   @media (max-width: 800px) {
     margin: -0.5rem 0 0 0;
+    padding: 0 1.25rem 4rem 1.25rem;
+  }
+
+  @media (max-width: 720px) {
     padding: 0 1.25rem 1.25rem 1.25rem;
   }
 
@@ -38,6 +42,9 @@ const Wrapper = styled("footer")`
       font-size: 1rem;
       line-height: 2;
       text-decoration: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       transition: all 0.2s;
 
       svg {

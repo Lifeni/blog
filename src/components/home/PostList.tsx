@@ -21,7 +21,7 @@ const ArticleList = styled("main")`
 
     h1 {
       font-size: 1.375rem;
-      padding: 0 0 0.75rem 0;
+      padding: 0.5rem 0 0.75rem 0;
       font-weight: 700;
       display: flex;
       align-items: center;
