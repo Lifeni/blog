@@ -80,17 +80,18 @@ const Wrapper = styled("div")`
 `
 
 const Friend = styled("div")`
-  padding: 0.875rem 0 0.875rem 1px;
+  padding: 0.875rem 0 0.5rem 1px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
 
   @media (max-width: 400px) {
-    padding: 0.75rem 1px 0 1px;
+    padding: 0.75rem 0 0.5rem 1px;
   }
 
   section {
+    width: 100%;
+    padding: 0 0 1.5rem 0;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
