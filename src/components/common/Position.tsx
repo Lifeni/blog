@@ -8,7 +8,7 @@ const Wrapper = styled("div")`
   left: 4.25rem;
   top: 50%;
   width: 0.1rem;
-  height: 38vh;
+  height: 40vh;
   background-color: var(--border-color);
   transform: translateY(-50%);
   transition: all 0.2s;

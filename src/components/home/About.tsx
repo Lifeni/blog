@@ -1,6 +1,11 @@
 import styled from "@emotion/styled"
 import React, { useEffect, useState } from "react"
-import { RiHeart3Fill, RiHeart3Line, RiShareLine } from "react-icons/ri"
+import {
+  RiHeart3Fill,
+  RiHeart3Line,
+  RiPushpinLine,
+  RiShareLine,
+} from "react-icons/ri"
 
 const 朋友 = [
   { name: "Nanako", url: "https://tanakarino.cn/" },
@@ -61,6 +66,12 @@ const Wrapper = styled("div")`
       display: flex;
       align-items: center;
 
+      span {
+        margin: 0 0 0 auto;
+        display: flex;
+        align-items: center;
+      }
+
       @media (max-width: 720px) {
         padding: 0 0 1rem 0;
       }
@@ -69,13 +80,39 @@ const Wrapper = styled("div")`
 `
 
 const Friend = styled("div")`
-  padding: 0.875rem 1px;
+  padding: 0.875rem 0 0.875rem 1px;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
 
   @media (max-width: 400px) {
     padding: 0.75rem 1px 0 1px;
+  }
+
+  section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  code {
+    height: auto;
+    margin: 0 0 0 auto;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5em;
+    display: flex;
+    align-items: center;
+    color: var(--font-secondary);
+    font-family: var(--font-mono);
+    transition: all 0.2s;
+    overflow-wrap: break-word;
+
+    svg {
+      margin: 0 0.75rem 0 0;
+    }
   }
 
   a {
@@ -117,12 +154,6 @@ const Friend = styled("div")`
         opacity: 1;
       }
     }
-  }
-
-  section {
-    margin: 0 0 0 auto;
-    display: flex;
-    align-items: center;
   }
 `
 
@@ -197,7 +228,32 @@ const About = () => {
   return (
     <Wrapper>
       <article>
-        <h1>你好</h1>
+        <h1>
+          你好
+          <span>
+            {share ? (
+              <Action title="分享" onClick={handleShare}>
+                <RiShareLine aria-label="分享" size="1.125rem" />
+              </Action>
+            ) : (
+              <Action title="你的浏览器不支持 Web Share API" disabled>
+                <RiShareLine aria-label="分享" size="1.125rem" />
+              </Action>
+            )}
+
+            <Action
+              like={like}
+              title={like ? "取消点赞" : "点赞"}
+              onClick={() => setLike(!like)}
+            >
+              {like ? (
+                <RiHeart3Fill aria-label="取消点赞" size="1.125rem" />
+              ) : (
+                <RiHeart3Line aria-label="点赞" size="1.125rem" />
+              )}
+            </Action>
+          </span>
+        </h1>
         <p>
           我是 <strong>梁峰宁</strong>
           ，这里是我的个人网站 <strong>记录干杯</strong>。
@@ -236,44 +292,31 @@ const About = () => {
           &nbsp;下一站。
         </p>
         <Friend>
-          {朋友.map((friend, index) => (
-            <a
-              href={friend.url}
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              key={index}
-            >
-              <img
-                src={`https://file.lifeni.life/avatar/friends/${friend.name}.webp`}
-                alt={friend.name}
-              />
-              <span>{friend.name}</span>
-            </a>
-          ))}
-
           <section>
-            {share ? (
-              <Action title="分享" onClick={handleShare}>
-                <RiShareLine aria-label="分享" size="1.125rem" />
-              </Action>
-            ) : (
-              <Action title="你的浏览器不支持 Web Share API" disabled>
-                <RiShareLine aria-label="分享" size="1.125rem" />
-              </Action>
-            )}
-
-            <Action
-              like={like}
-              title={like ? "取消点赞" : "点赞"}
-              onClick={() => setLike(!like)}
-            >
-              {like ? (
-                <RiHeart3Fill aria-label="取消点赞" size="1.125rem" />
-              ) : (
-                <RiHeart3Line aria-label="点赞" size="1.125rem" />
-              )}
-            </Action>
+            {朋友.map((friend, index) => (
+              <a
+                href={friend.url}
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                key={index}
+              >
+                <img
+                  src={`https://file.lifeni.life/avatar/friends/${friend.name}.webp`}
+                  alt={friend.name}
+                />
+                <span>{friend.name}</span>
+              </a>
+            ))}
           </section>
+
+          <code>
+            <RiPushpinLine
+              title="置顶消息"
+              aria-label="置顶图标"
+              size="1.125rem"
+            />
+            README.mdx
+          </code>
         </Friend>
       </article>
     </Wrapper>
