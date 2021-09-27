@@ -106,11 +106,11 @@ const Wrapper = styled("main")<WrapperProps>`
 
   ul,
   ol {
-    margin: 0.375rem 0;
+    margin: 0.125rem 0;
     padding: 0 0 0 1.5rem;
 
     li {
-      margin: 0;
+      margin: 0.375rem 0;
       padding: 0 0 0 0.5rem;
     }
   }

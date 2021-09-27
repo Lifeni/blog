@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import {
   RiHeart3Fill,
   RiHeart3Line,
-  RiPushpinLine,
+  RiPushpin2Line,
   RiShareLine,
 } from "react-icons/ri"
 
@@ -59,22 +59,61 @@ const Wrapper = styled("div")`
       overflow-wrap: break-word;
     }
 
-    h1 {
-      font-size: 1.375rem;
+    strong {
       font-weight: 700;
-      padding: 0.5rem 0 0.75rem 0;
+    }
+  }
+`
+
+const Title = styled("div")`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    padding: 0.5rem 0 0.75rem 0;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 720px) {
+      padding: 0 0 1rem 0;
+    }
+
+    section {
+      margin: 0 0 0 auto;
       display: flex;
       align-items: center;
+      justify-content: center;
 
-      span {
-        margin: 0 0 0 auto;
+      button {
         display: flex;
         align-items: center;
       }
+    }
+  }
+`
 
-      @media (max-width: 720px) {
-        padding: 0 0 1rem 0;
-      }
+const Footer = styled("div")`
+  width: 100%;
+  margin: 0 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  code {
+    font-size: 0.875rem;
+    font-weight: 400;
+
+    color: var(--font-secondary);
+    font-family: var(--font-mono);
+    transition: all 0.2s;
+    overflow-wrap: break-word;
+
+    svg {
+      margin: 0 0.75rem 0 0;
     }
   }
 `
@@ -91,32 +130,14 @@ const Friend = styled("div")`
 
   section {
     width: 100%;
-    padding: 0 0 1.5rem 0;
+    padding: 0 0 0.75rem 0;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
 
     @media (max-width: 720px) {
-      padding: 0 0 2rem 0;
-    }
-  }
-
-  code {
-    height: auto;
-    margin: 0 0 0 auto;
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 1.5em;
-    display: flex;
-    align-items: center;
-    color: var(--font-secondary);
-    font-family: var(--font-mono);
-    transition: all 0.2s;
-    overflow-wrap: break-word;
-
-    svg {
-      margin: 0 0.75rem 0 0;
+      padding: 0 0 1rem 0;
     }
   }
 
@@ -233,9 +254,9 @@ const About = () => {
   return (
     <Wrapper>
       <article>
-        <h1>
-          你好
-          <span>
+        <Title>
+          <h1>你好</h1>
+          <section>
             {share ? (
               <Action title="分享" onClick={handleShare}>
                 <RiShareLine aria-label="分享" size="1.125rem" />
@@ -257,8 +278,9 @@ const About = () => {
                 <RiHeart3Line aria-label="点赞" size="1.125rem" />
               )}
             </Action>
-          </span>
-        </h1>
+          </section>
+        </Title>
+
         <p>
           我是 <strong>梁峰宁</strong>
           ，这里是我的个人网站 <strong>记录干杯</strong>。
@@ -313,16 +335,11 @@ const About = () => {
               </a>
             ))}
           </section>
-
-          <code>
-            <RiPushpinLine
-              title="置顶消息"
-              aria-label="置顶图标"
-              size="1.125rem"
-            />
-            README.mdx
-          </code>
         </Friend>
+
+        <Footer>
+          <code># BLOG / README.mdx</code>
+        </Footer>
       </article>
     </Wrapper>
   )
