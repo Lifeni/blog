@@ -96,6 +96,10 @@ const Friend = styled("div")`
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+
+    @media (max-width: 720px) {
+      padding: 0 0 2rem 0;
+    }
   }
 
   code {
