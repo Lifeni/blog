@@ -42,10 +42,17 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `snippets`,
+        path: `${__dirname}/src/markdown/`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve("./src/components/common/Page.tsx"),
+          default: require.resolve("./src/templates/page.tsx"),
         },
       },
     },

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import mediumZoom from "medium-zoom"
-import React, { MutableRefObject, ReactElement, useEffect, useRef } from "react"
+import React, { MutableRefObject, ReactNode, useEffect, useRef } from "react"
 
 interface WrapperProps {
   serif?: boolean
@@ -8,6 +8,7 @@ interface WrapperProps {
 
 const Wrapper = styled("main")<WrapperProps>`
   position: relative;
+  width: 100%;
   padding: 0 1.25rem;
   display: flex;
   flex-direction: column;
@@ -306,7 +307,7 @@ const Wrapper = styled("main")<WrapperProps>`
 
 interface ArticleProps {
   serif?: boolean
-  children: string | ReactElement | ReactElement[]
+  children: string | ReactNode | ReactNode[]
 }
 
 const Article = ({ serif, children }: ArticleProps) => {

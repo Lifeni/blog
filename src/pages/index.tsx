@@ -2,14 +2,15 @@ import styled from "@emotion/styled"
 import { graphql, navigate } from "gatsby"
 import React, { ChangeEvent, FormEvent, useState } from "react"
 import { Helmet } from "react-helmet"
-import Footer from "../components/common/Footer"
-import Header from "../components/common/Header"
-import Position from "../components/common/Position"
-import About from "../components/home/About"
-import NavLink from "../components/home/NavLink"
-import ArticlePost from "../components/home/Post"
-import ArticleList from "../components/home/PostList"
-import SearchBar from "../components/home/Search"
+import Footer from "../components/common/layout/footer/Footer"
+import Header from "../components/common/layout/header/Header"
+import SearchBar from "../components/common/layout/header/Search"
+import Nav from "../components/common/layout/Nav"
+import Position from "../components/common/widget/position/Position"
+import About from "../components/home/about-section/About"
+import PostList from "../components/home/post-list/List"
+import NoResult from "../components/home/post-list/NoResult"
+import PostCard from "../components/home/post-list/post-card/Card"
 import ArticleSearch from "../utils/article-search"
 
 const Container = styled("div")`
@@ -71,33 +72,14 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
         <SearchBar search={handleSearch} enter={handleEnter} />
       </Header>
       {!searchText && <About />}
-      <ArticleList>
+      <PostList>
         {articles.length !== 0 ? (
-          articles.map((article, index) => (
-            <ArticlePost {...article} key={index} />
-          ))
+          articles.map(article => <PostCard {...article} key={article.name} />)
         ) : (
-          <section className="null">
-            <h1>没有找到相关文章</h1>
-            <p>换个关键词试试看吧，或者用下面的语法进行进一步搜索。</p>
-            <ul>
-              <li>
-                根据 <strong>标题</strong> 搜索 <code>标题：算法</code>
-                &nbsp;<code>title: linux</code>
-              </li>
-              <li>
-                根据 <strong>描述</strong> 搜索 <code>描述：记录</code>
-                &nbsp;<code>desc: github actions</code>
-              </li>
-              <li>
-                根据 <strong>日期</strong> 搜索 <code>日期：2021.9</code>
-                &nbsp;<code>date: 2020.12.31</code>
-              </li>
-            </ul>
-          </section>
+          <NoResult />
         )}
-      </ArticleList>
-      {!searchText && <NavLink />}
+      </PostList>
+      {!searchText && <Nav />}
       <Footer />
       <Position deps={searchText} />
     </Container>

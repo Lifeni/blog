@@ -1,10 +1,10 @@
 import styled from "@emotion/styled"
 import React from "react"
 import { Helmet } from "react-helmet"
-import Article from "../article/Article"
-import ArticleBar from "../article/Bar"
-import ArticleComment from "../article/Comment"
-import Header from "./Header"
+import Article from "../components/article/Article"
+import ArticleBar from "../components/article/Bar"
+import ArticleComment from "../components/article/Comment"
+import Header from "../components/common/layout/header/Header"
 
 const Spacer = styled("div")`
   padding: 2rem 0;
@@ -25,7 +25,7 @@ const Wrapper = styled("div")`
   }
 `
 
-interface LayoutProps {
+interface PageProps {
   children: string
   pageContext: {
     frontmatter: {
@@ -38,7 +38,7 @@ interface LayoutProps {
   }
 }
 
-const Page = ({ children, pageContext }: LayoutProps) => {
+const Page = ({ children, pageContext }: PageProps) => {
   const { title, description, message, bar, comment } = pageContext.frontmatter
 
   return (

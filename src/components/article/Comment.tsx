@@ -50,7 +50,7 @@ const CommentButton = styled("button")`
   }
 `
 
-const hasComment = true
+const hasComment = false
 
 const ArticleComment = () => {
   const [showComment, setShowComment] = useState(false)

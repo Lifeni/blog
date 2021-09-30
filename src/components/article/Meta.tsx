@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import React from "react"
 import { RiCalendarLine, RiCopyrightLine } from "react-icons/ri"
-import Info from "../common/Info"
+import MoreInfo from "../common/widget/modal/MoreInfo"
 
 const Meta = styled("div")`
   width: calc(100% + 2rem);
@@ -105,7 +105,12 @@ const ArticleMeta = ({
           )}
         </section>
 
-        <Info create_date={create_date} date={date} title={title} name={name} />
+        <MoreInfo
+          create_date={create_date}
+          date={date}
+          title={title}
+          name={name}
+        />
       </div>
     </Meta>
   )

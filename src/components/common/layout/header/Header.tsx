@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import React, { ReactElement } from "react"
+import React, { ReactNode } from "react"
 
 const HeaderWrapper = styled("header")`
   position: relative;
@@ -88,7 +88,7 @@ const HeaderBar = styled("div")`
 `
 
 interface HeaderProps {
-  children: ReactElement | ReactElement[] | boolean | undefined
+  children: ReactNode | ReactNode[] | boolean | undefined
 }
 
 const Header = ({ children }: HeaderProps) => {

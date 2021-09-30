@@ -5,8 +5,8 @@ import Article from "../components/article/Article"
 import ArticleBar from "../components/article/Bar"
 import ArticleComment from "../components/article/Comment"
 import ArticleMeta from "../components/article/Meta"
-import Header from "../components/common/Header"
-import Position from "../components/common/Position"
+import Header from "../components/common/layout/header/Header"
+import Position from "../components/common/widget/position/Position"
 
 const ArticlePage = ({ location, data }: ArticlePageGraphQL) => {
   const post = data.markdownRemark
