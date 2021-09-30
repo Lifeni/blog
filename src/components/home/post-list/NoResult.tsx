@@ -1,8 +1,7 @@
-import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
-import Article from "../../article/Article"
+import Markdown from "../../common/typography/Markdown"
 
 const query = graphql`
   query {
@@ -21,9 +20,9 @@ const NoResult = () => {
   const data = useStaticQuery(query)
 
   return (
-    <Article>
+    <Markdown>
       <MDXRenderer>{data.allMdx.edges[0].node.body}</MDXRenderer>
-    </Article>
+    </Markdown>
   )
 }
 

@@ -27,8 +27,8 @@ const IconAction = styled("button")<BaseProps>`
   }
 
   svg {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.125rem;
+    height: 1.125rem;
     color: ${props => (props.toggle ? "var(--red)" : "inhert")};
     animation: ${props => (props.toggle ? "beat 0.2s forwards" : "none")};
     transition: all 0.2s;

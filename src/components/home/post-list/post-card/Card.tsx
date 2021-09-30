@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import React from "react"
-import Spacer from "../../../common/widget/Spacer"
+import Spacer from "../../../common/layout/tool/Spacer"
 import Action from "./action-bar/Action"
 import Bar from "./action-bar/Bar"
 import MoreInfo from "../../../common/widget/modal/MoreInfo"

@@ -10,7 +10,7 @@ const Container = styled("div")`
   justify-content: space-between;
 `
 
-const H1 = styled("h1")`
+const H2 = styled("h2")`
   font-size: 1.375rem;
   font-weight: 700;
   padding: 0.5rem 0 0.75rem 0;
@@ -37,7 +37,7 @@ interface HeaderProps {
 const Header = ({ children }: HeaderProps) => {
   return (
     <Container>
-      <H1>{children}</H1>
+      <H2>{children}</H2>
       <Action>
         <Share />
         <Like />
