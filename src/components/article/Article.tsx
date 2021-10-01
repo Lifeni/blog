@@ -1,7 +1,14 @@
+import styled from "@emotion/styled"
 import mediumZoom from "medium-zoom"
 import React, { MutableRefObject, useEffect, useRef } from "react"
 import Markdown from "../common/typography/Markdown"
 import ArticleCard from "../common/widget/article-card/Card"
+
+const Container = styled("div")`
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+`
 
 interface ArticleProps {
   frontmatter: IFrontMatter
@@ -53,7 +60,7 @@ const Article = ({ frontmatter, children }: ArticleProps) => {
   return (
     <Markdown ref={articleRef}>
       <ArticleCard from="article" frontmatter={frontmatter} />
-      <div dangerouslySetInnerHTML={{ __html: children }} />
+      <Container dangerouslySetInnerHTML={{ __html: children }} />
     </Markdown>
   )
 }

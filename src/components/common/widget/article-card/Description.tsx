@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 
-const Description = styled("p")`
+const Description = styled("span")`
   font-size: 1rem;
   line-height: 2;
   width: fit-content;

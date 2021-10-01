@@ -29,9 +29,13 @@ interface TitleProps {
 const Title = ({ from, name, children }: TitleProps) => {
   return (
     <Container as={from === "article" ? "h1" : "h2"}>
-      <Link to={`/article/${name}`} state={{ fromHome: true }}>
-        {children}
-      </Link>
+      {from === "article" ? (
+        children
+      ) : (
+        <Link to={`/article/${name}`} state={{ fromHome: true }}>
+          {children}
+        </Link>
+      )}
     </Container>
   )
 }

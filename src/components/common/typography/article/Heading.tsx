@@ -1,31 +1,14 @@
 import { css } from "@emotion/react"
 
 const H1 = css`
-  padding: 1.5rem 0 0 0;
   font-size: 1.5rem;
   line-height: 1.875;
-
-  @media (max-width: 800px) {
-    padding: 1.5rem 0 0 0;
-  }
-
-  @media (max-width: 720px) {
-    padding: 1.5rem 0 0.25rem 0;
-  }
-
-  & + h2 {
-    margin: 2rem 0 0 0;
-
-    @media (max-width: 720px) {
-      margin: 1.25rem 0 0 0;
-    }
-  }
 `
 
 const H2 = css`
   padding: 1.25rem 0;
   font-size: 1.375rem;
-  line-height: 1.75;
+  line-height: 2;
 
   & + h3 {
     padding: 0.5rem 0 1rem 0;

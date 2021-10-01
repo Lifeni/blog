@@ -1,7 +1,5 @@
 import styled from "@emotion/styled"
 import React from "react"
-import Like from "../action/Like"
-import Share from "../action/Share"
 
 const Container = styled("div")`
   width: 100%;
@@ -20,14 +18,6 @@ const H2 = styled("h2")`
   @media (max-width: 720px) {
     padding: 0 0 1rem 0;
   }
-`
-
-const Action = styled("div")`
-  margin: 0 0 -0.5rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
 `
 
 interface HeaderProps {
