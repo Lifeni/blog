@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import Article from "../components/article/Article"
 import ArticleBar from "../components/article/Bar"
-import ArticleComment from "../components/article/Comment"
+import Comment from "../components/article/Comment"
 import Header from "../components/common/layout/header/Header"
 import Position from "../components/common/widget/position/Position"
+
+const hasComment = false
 
 const Container = styled("div")`
   position: relative;
@@ -16,6 +18,10 @@ const Container = styled("div")`
   padding: 0 1.25rem;
   display: flex;
   flex-direction: column;
+`
+
+const Spacer = styled("div")`
+  padding: 2rem 0;
 `
 
 interface ArticleProps {
@@ -59,7 +65,7 @@ const ArticlePage = ({ location, data }: ArticleProps) => {
         <ArticleBar back={fromHome} toc={post.tableOfContents} />
       </Header>
       <Article frontmatter={frontmatter}>{post.html.split("</h1>")[1]}</Article>
-      <ArticleComment />
+      {hasComment ? <Comment /> : <Spacer />}
       <Position />
     </Container>
   )

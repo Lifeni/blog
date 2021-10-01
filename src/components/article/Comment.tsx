@@ -14,7 +14,7 @@ const Container = styled("div")`
   }
 `
 
-const ArticleComment = () => {
+const Comment = () => {
   const [showComment, setShowComment] = useState(false)
   const commentRef = useRef<HTMLDivElement>(null)
 
@@ -56,11 +56,11 @@ const ArticleComment = () => {
           icon={RiDiscussLine}
           label="评论图标"
         >
-          点击加载评论
+          点击加载更多
         </BarAction>
       )}
     </Container>
   )
 }
 
-export default ArticleComment
+export default Comment

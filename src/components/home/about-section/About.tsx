@@ -25,6 +25,7 @@ const Container = styled("div")`
   flex-direction: column;
   padding: 1.625rem 1rem 2rem 1rem;
   border-bottom: var(--border);
+  transition: all 0.2s;
 `
 
 const About = () => {

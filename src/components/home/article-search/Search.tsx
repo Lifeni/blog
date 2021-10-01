@@ -20,13 +20,20 @@ const Icon = styled("svg")`
   margin: 1.25rem;
 `
 
-const Input = styled("input")`
+interface InputProps {
+  round?: boolean
+}
+
+const Input = styled("input")<InputProps>`
   width: 100%;
   padding: 0.75rem 1.5rem 0.75rem 3.5rem;
   border: none;
   color: var(--font-primary);
   background-color: transparent;
-  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  border-radius: ${props =>
+    props.round
+      ? "var(--border-radius)"
+      : "var(--border-radius) 0 0 var(--border-radius)"};
   font-size: 1rem;
   font-family: inherit;
   font-weight: inherit;
@@ -78,6 +85,7 @@ const Search = ({ search, enter }: SearchProps) => {
         onChange={search}
         ref={searchRef}
         title="使用 / 键聚焦搜索框"
+        round={!!searchRef.current?.value}
       />
       {!searchRef.current?.value && <Message>/</Message>}
     </SearchBar>

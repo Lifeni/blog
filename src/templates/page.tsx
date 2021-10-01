@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import React from "react"
 import { Helmet } from "react-helmet"
 import ArticleBar from "../components/article/Bar"
-import ArticleComment from "../components/article/Comment"
+import Comment from "../components/article/Comment"
 import Header from "../components/common/layout/header/Header"
 import Markdown from "../components/common/typography/Markdown"
 
@@ -54,7 +54,7 @@ const Page = ({ children, pageContext }: PageProps) => {
       <Markdown>
         <Content>{children}</Content>
       </Markdown>
-      {comment ? <ArticleComment /> : <Spacer />}
+      {comment ? <Comment /> : <Spacer />}
     </Container>
   )
 }
