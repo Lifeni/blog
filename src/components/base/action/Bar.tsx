@@ -55,7 +55,8 @@ const Description = styled("small")`
 
 interface ActionProps {
   as: "a" | "button"
-  link: string
+  link?: string
+  action?: () => void
   description: string
   icon: IconType
   label: string
@@ -65,13 +66,20 @@ interface ActionProps {
 const BarAction = ({
   as,
   link,
+  action,
   description,
   icon,
   label,
   children,
 }: ActionProps) => {
-  return (
+  return as === "a" ? (
     <Container as={as} href={link} target="_blank" rel="noopener noreferrer">
+      <Icon as={icon} aria-label={label} />
+      {children}
+      <Description>{description}</Description>
+    </Container>
+  ) : (
+    <Container as={as} onClick={action}>
       <Icon as={icon} aria-label={label} />
       {children}
       <Description>{description}</Description>

@@ -2,9 +2,9 @@ import styled from "@emotion/styled"
 import React from "react"
 import { Link } from "gatsby"
 
-const Container = styled("h2")`
+const Container = styled("h1")`
   padding: 0.5rem 0;
-  font-size: 1.375rem;
+  font-size: ${props => (props.as === "h1" ? "1.5rem" : "1.375rem")};
   line-height: 1.75;
   font-weight: 700;
 
@@ -21,13 +21,14 @@ const Container = styled("h2")`
 `
 
 interface TitleProps {
+  from: "home" | "article"
   name: string
   children: string
 }
 
-const Title = ({ name, children }: TitleProps) => {
+const Title = ({ from, name, children }: TitleProps) => {
   return (
-    <Container>
+    <Container as={from === "article" ? "h1" : "h2"}>
       <Link to={`/article/${name}`} state={{ fromHome: true }}>
         {children}
       </Link>

@@ -1,10 +1,11 @@
 import styled from "@emotion/styled"
 import React from "react"
-import Spacer from "../../../common/layout/tool/Spacer"
-import Action from "./action-bar/Action"
-import Bar from "./action-bar/Bar"
-import MoreInfo from "../../../common/widget/modal/MoreInfo"
-import Time from "./action-bar/Time"
+import Spacer from "../../layout/tool/Spacer"
+import MoreInfo from "../modal/MoreInfo"
+import Action from "./bar/Action"
+import Bar from "./bar/Bar"
+import License from "./bar/License"
+import Time from "./bar/Time"
 import Description from "./Description"
 import Title from "./Title"
 
@@ -29,28 +30,28 @@ const Container = styled("div")`
 `
 
 interface PostCardProps {
-  create_date: string
-  date: string
-  title: string
-  description: string
-  name: string
+  from: "home" | "article"
+  frontmatter: IFrontMatter
 }
 
-const PostCard = (props: PostCardProps) => {
-  const { create_date, date, title, description, name } = props
+const ArticleCard = ({ from, frontmatter }: PostCardProps) => {
+  const { create_date, date, title, description, name } = frontmatter
 
   return (
     <Container>
-      <Title name={name}>{title}</Title>
+      <Title from={from} name={name}>
+        {title}
+      </Title>
       <Description>{description}</Description>
       <Bar>
-        <Action name={name} />
+        {from === "home" && <Action name={name} />}
         <Time>{(create_date === date ? "创建于 " : "编辑于 ") + date}</Time>
+        {from === "article" && <License>{frontmatter.license || ""}</License>}
         <Spacer />
-        <MoreInfo {...props} />
+        <MoreInfo {...frontmatter} />
       </Bar>
     </Container>
   )
 }
 
-export default PostCard
+export default ArticleCard

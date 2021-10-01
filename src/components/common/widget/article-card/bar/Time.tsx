@@ -3,6 +3,7 @@ import React from "react"
 import { RiCalendarLine } from "react-icons/ri"
 
 const Container = styled("time")`
+  margin: 0 1.375rem 0 0;
   display: flex;
   align-items: center;
   font-size: 1rem;

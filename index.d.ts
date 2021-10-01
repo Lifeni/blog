@@ -3,42 +3,18 @@ declare module "*.svg" {
   export default svg
 }
 
-interface ArticleListGraphQL {
-  data: {
-    allMarkdownRemark: {
-      edges: { node: ArticleGraphQL }[]
-    }
-  }
-}
-
-interface ArticlePageGraphQL {
-  location?: {
-    state: {
-      [key: string]: boolean
-    }
-  }
-  data: {
-    site: {
-      siteMetadata: {
-        title: string
-      }
-    }
-    markdownRemark: ArticleGraphQL
-  }
-}
-
-interface ArticleGraphQL {
-  id: string
-  html: string
-  frontmatter: ArticleFrontmatterGraphQL
-  tableOfContents: string
-}
-
-interface ArticleFrontmatterGraphQL {
+interface IFrontMatter {
   title: string
   name: string
   description: string
   date: string
   create_date: string
   license?: string
+}
+
+interface IMarkdown {
+  id: string
+  html: string
+  frontmatter: IFrontMatter
+  tableOfContents: string
 }

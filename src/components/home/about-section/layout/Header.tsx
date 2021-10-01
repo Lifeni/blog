@@ -38,10 +38,6 @@ const Header = ({ children }: HeaderProps) => {
   return (
     <Container>
       <H2>{children}</H2>
-      <Action>
-        <Share />
-        <Like />
-      </Action>
     </Container>
   )
 }

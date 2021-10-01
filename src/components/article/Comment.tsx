@@ -1,8 +1,9 @@
 import styled from "@emotion/styled"
 import React, { useEffect, useRef, useState } from "react"
 import { RiDiscussLine } from "react-icons/ri"
+import BarAction from "../base/action/Bar"
 
-const CommentWrapper = styled("div")`
+const Container = styled("div")`
   width: 100%;
   max-width: calc(var(--main-width) + 2.5rem);
   margin: 0 auto;
@@ -13,51 +14,12 @@ const CommentWrapper = styled("div")`
   }
 `
 
-const CommentButton = styled("button")`
-  width: 100%;
-  height: 3.5rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--border-radius);
-  border: none;
-  display: flex;
-  align-items: center;
-  color: var(--font-secondary);
-  background-color: var(--element-background);
-  font-size: 1rem;
-  font-family: inherit;
-  font-weight: inherit;
-  line-height: 2;
-  outline: none;
-  transition: all 0.2s;
-  pointer-events: initial;
-  cursor: pointer;
-  text-decoration: none;
-
-  svg {
-    margin: 0 1rem 0 0;
-  }
-
-  &:focus,
-  &:focus-visible,
-  &:hover {
-    background-color: var(--element-background-hover);
-  }
-
-  small {
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-  }
-`
-
-const hasComment = false
-
 const ArticleComment = () => {
   const [showComment, setShowComment] = useState(false)
   const commentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (hasComment && showComment && commentRef.current) {
+    if (showComment && commentRef.current) {
       const comment = document.createElement("script")
 
       comment.setAttribute("src", "https://giscus.app/client.js")
@@ -80,19 +42,24 @@ const ArticleComment = () => {
 
       commentRef.current.appendChild(comment)
     }
-  }, [commentRef, hasComment, showComment])
+  }, [commentRef, showComment])
 
   return (
-    <CommentWrapper>
+    <Container>
       {showComment ? (
         <div ref={commentRef} id="article-comment" />
       ) : (
-        <CommentButton onClick={() => setShowComment(true)}>
-          <RiDiscussLine aria-label="评论图标" size="1.125em" /> 点击加载评论
-          <small>Powered By Giscus</small>
-        </CommentButton>
+        <BarAction
+          as="button"
+          action={() => setShowComment(true)}
+          description="Powered By Giscus"
+          icon={RiDiscussLine}
+          label="评论图标"
+        >
+          点击加载评论
+        </BarAction>
       )}
-    </CommentWrapper>
+    </Container>
   )
 }
 

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 
-const PostList = styled("main")`
+const ArticleList = styled("main")`
   position: relative;
   width: 100%;
   padding: 0 1.25rem;
@@ -9,4 +9,4 @@ const PostList = styled("main")`
   align-items: center;
 `
 
-export default PostList
+export default ArticleList

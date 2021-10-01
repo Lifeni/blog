@@ -5,24 +5,10 @@ import Article from "../components/article/Article"
 import ArticleBar from "../components/article/Bar"
 import ArticleComment from "../components/article/Comment"
 import Header from "../components/common/layout/header/Header"
+import Markdown from "../components/common/typography/Markdown"
 
 const Spacer = styled("div")`
   padding: 2rem 0;
-`
-
-const Wrapper = styled("div")`
-  h1 {
-    font-size: 1.375rem;
-    font-weight: 700;
-    padding: 1.5rem 0 0.75rem 0;
-    display: flex;
-    align-items: center;
-    line-height: 2;
-
-    @media (max-width: 720px) {
-      padding: 0 0 1rem 0;
-    }
-  }
 `
 
 interface PageProps {
@@ -51,10 +37,8 @@ const Page = ({ children, pageContext }: PageProps) => {
         <title>{title} | 记录干杯</title>
         <meta name="description" content={description}></meta>
       </Helmet>
-      <Header>{bar && <ArticleBar message={message} />}</Header>
-      <Article>
-        <Wrapper>{children}</Wrapper>
-      </Article>
+      <Header>{bar && <ArticleBar message={message} back />}</Header>
+      <Markdown>{children}</Markdown>
       {comment ? <ArticleComment /> : <Spacer />}
     </>
   )

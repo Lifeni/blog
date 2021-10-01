@@ -4,13 +4,13 @@ import React, { ChangeEvent, FormEvent, useState } from "react"
 import { Helmet } from "react-helmet"
 import Footer from "../components/common/layout/footer/Footer"
 import Header from "../components/common/layout/header/Header"
-import SearchBar from "../components/common/layout/header/Search"
 import Nav from "../components/common/layout/Nav"
+import ArticleCard from "../components/common/widget/article-card/Card"
 import Position from "../components/common/widget/position/Position"
 import About from "../components/home/about-section/About"
-import PostList from "../components/home/post-list/List"
-import NoResult from "../components/home/post-list/NoResult"
-import PostCard from "../components/home/post-list/post-card/Card"
+import ArticleList from "../components/home/article-list/List"
+import NoResult from "../components/home/article-list/NoResult"
+import SearchBar from "../components/home/article-search/Search"
 import ArticleSearch from "../utils/article-search"
 
 const Container = styled("div")`
@@ -22,15 +22,18 @@ const Container = styled("div")`
   flex-direction: column;
 `
 
-const IndexPage = ({ data }: ArticleListGraphQL) => {
-  const documents: ArticleFrontmatterGraphQL[] =
-    data.allMarkdownRemark.edges.map(article => ({
-      name: article.node.frontmatter.name,
-      title: article.node.frontmatter.title,
-      description: article.node.frontmatter.description,
-      date: article.node.frontmatter.date,
-      create_date: article.node.frontmatter.create_date,
-    }))
+interface IndexProps {
+  data: {
+    allMarkdownRemark: {
+      edges: { node: IMarkdown }[]
+    }
+  }
+}
+
+const IndexPage = ({ data }: IndexProps) => {
+  const documents: IFrontMatter[] = data.allMarkdownRemark.edges.map(
+    article => article.node.frontmatter
+  )
   const [articles, setArticles] = useState(documents)
   const [searchText, setSearchText] = useState("")
   const search = new ArticleSearch(documents)
@@ -72,13 +75,15 @@ const IndexPage = ({ data }: ArticleListGraphQL) => {
         <SearchBar search={handleSearch} enter={handleEnter} />
       </Header>
       {!searchText && <About />}
-      <PostList>
+      <ArticleList>
         {articles.length !== 0 ? (
-          articles.map(article => <PostCard {...article} key={article.name} />)
+          articles.map(article => (
+            <ArticleCard from="home" frontmatter={article} key={article.name} />
+          ))
         ) : (
           <NoResult />
         )}
-      </PostList>
+      </ArticleList>
       {!searchText && <Nav />}
       <Footer />
       <Position deps={searchText} />

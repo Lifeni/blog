@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import React, { ReactNode } from "react"
 
-const HeaderWrapper = styled("header")`
+const Container = styled("header")`
   position: relative;
   top: 0;
   z-index: 10;
@@ -24,7 +24,7 @@ const HeaderWrapper = styled("header")`
   }
 `
 
-const HeaderBar = styled("div")`
+const Bar = styled("div")`
   width: 100%;
   max-width: var(--main-width);
   display: flex;
@@ -35,67 +35,17 @@ const HeaderBar = styled("div")`
   background-color: var(--element-background);
   transition: all 0.2s;
   pointer-events: initial;
-
-  a,
-  button {
-    min-width: 3.5rem;
-    height: 3.5rem;
-    padding: 0.75rem 1.25rem;
-    border: none;
-    display: flex;
-    align-items: center;
-    color: var(--font-secondary);
-    background-color: transparent;
-    font-size: 1rem;
-    font-family: inherit;
-    font-weight: inherit;
-    line-height: 2;
-    outline: none;
-    transition: all 0.2s;
-    pointer-events: initial;
-    cursor: pointer;
-    text-decoration: none;
-    white-space: nowrap;
-
-    &::-webkit-details-marker {
-      display: none;
-    }
-
-    svg {
-      margin: 0 1rem 0 0;
-
-      &.reverse {
-        transform: rotate(-180deg);
-      }
-    }
-
-    &.icon-only svg {
-      margin: 0;
-    }
-
-    &.desktop-only {
-      @media (max-width: 720px) {
-        display: none;
-      }
-    }
-
-    &:focus,
-    &:focus-visible,
-    &:hover {
-      background-color: var(--element-background-hover);
-    }
-  }
 `
 
 interface HeaderProps {
-  children: ReactNode | ReactNode[] | boolean | undefined
+  children: ReactNode | ReactNode[]
 }
 
 const Header = ({ children }: HeaderProps) => {
   return (
-    <HeaderWrapper>
-      <HeaderBar>{children}</HeaderBar>
-    </HeaderWrapper>
+    <Container>
+      <Bar>{children}</Bar>
+    </Container>
   )
 }
 
