@@ -6,6 +6,7 @@ const Bar = styled("div")`
   align-items: flex-end;
   justify-content: space-between;
   white-space: nowrap;
+  flex-wrap: wrap;
 
   section {
     width: 100%;

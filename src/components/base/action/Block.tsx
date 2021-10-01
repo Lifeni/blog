@@ -60,6 +60,8 @@ interface ActionProps {
   icon: IconType
   label: string
   title?: string
+  left?: boolean
+  right?: boolean
   children: ReactNode | ReactNode[]
 }
 
@@ -70,18 +72,28 @@ const BlockAction = ({
   icon,
   label,
   title,
+  left,
+  right,
   children,
 }: ActionProps) => {
+  const className = `round-${left ? "left" : right ? "right" : ""}`
+
   return as === "a" ? (
-    <A href={link} target="_blank" rel="noopener noreferrer" title={title}>
+    <A
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={title}
+      className={className}
+    >
       <Icon as={icon} aria-label={label} /> {children}
     </A>
   ) : as === "button" ? (
-    <Button onClick={action} title={title}>
+    <Button onClick={action} title={title} className={className}>
       <Icon as={icon} aria-label={label} /> {children}
     </Button>
   ) : (
-    <Link to={link || "/"} title={title}>
+    <Link to={link || "/"} title={title} className={className}>
       <Icon as={icon} aria-label={label} /> {children}
     </Link>
   )

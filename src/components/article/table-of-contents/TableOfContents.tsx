@@ -32,6 +32,7 @@ const TableOfContents = ({ content }: TableOfContentsProps) => {
         icon={RiFileListLine}
         label="文章目录"
         title="使用 / 键切换目录窗口"
+        right
       >
         目录
       </BlockAction>

@@ -20,11 +20,18 @@ const ArticleBar = ({ back, toc, message }: BarProps) => {
           action={() => window.history.back()}
           icon={RiHome2Line}
           label="主页图标"
+          left
         >
           回到「记录干杯」
         </BlockAction>
       ) : (
-        <BlockAction as="link" link="/" icon={RiHome2Line} label="主页图标">
+        <BlockAction
+          as="link"
+          link="/"
+          icon={RiHome2Line}
+          label="主页图标"
+          left
+        >
           回到「记录干杯」
         </BlockAction>
       )}

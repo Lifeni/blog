@@ -23,7 +23,7 @@ const query = graphql`
 const Container = styled("div")`
   display: flex;
   flex-direction: column;
-  padding: 1.625rem 1rem 2.5rem 1rem;
+  padding: 1.625rem 1rem 2rem 1rem;
   border-bottom: var(--border);
 `
 

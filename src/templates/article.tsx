@@ -1,3 +1,4 @@
+import styled from "@emotion/styled"
 import { graphql } from "gatsby"
 import React, { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
@@ -6,6 +7,16 @@ import ArticleBar from "../components/article/Bar"
 import ArticleComment from "../components/article/Comment"
 import Header from "../components/common/layout/header/Header"
 import Position from "../components/common/widget/position/Position"
+
+const Container = styled("div")`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+`
 
 interface ArticleProps {
   location?: {
@@ -35,7 +46,7 @@ const ArticlePage = ({ location, data }: ArticleProps) => {
   }, [])
 
   return (
-    <>
+    <Container>
       <Helmet
         htmlAttributes={{
           lang: "zh-hans",
@@ -50,7 +61,7 @@ const ArticlePage = ({ location, data }: ArticleProps) => {
       <Article frontmatter={frontmatter}>{post.html.split("</h1>")[1]}</Article>
       <ArticleComment />
       <Position />
-    </>
+    </Container>
   )
 }
 

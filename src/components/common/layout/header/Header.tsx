@@ -7,7 +7,7 @@ const Container = styled("header")`
   z-index: 10;
   width: 100%;
   margin: 0;
-  padding: 4.25rem 1.25rem 0 1.25rem;
+  padding: 4.25rem 0 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,11 +16,11 @@ const Container = styled("header")`
   transition: all 0.2s;
 
   @media (max-width: 800px) {
-    padding: 4rem 1.25rem 0.75rem 1.25rem;
+    padding: 4rem 0 0.75rem 0;
   }
 
   @media (max-width: 720px) {
-    padding: 1.25rem 1.25rem 0.25rem 1.25rem;
+    padding: 1.25rem 0 0.25rem 0;
   }
 `
 

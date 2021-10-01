@@ -7,6 +7,16 @@ import Header from "../components/common/layout/header/Header"
 import Markdown from "../components/common/typography/Markdown"
 
 const Container = styled("div")`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+`
+
+const Content = styled("div")`
   padding: 1.625rem 1rem 2.5rem 1rem;
 `
 
@@ -31,7 +41,7 @@ const Page = ({ children, pageContext }: PageProps) => {
   const { title, description, message, bar, comment } = pageContext.frontmatter
 
   return (
-    <>
+    <Container>
       <Helmet
         htmlAttributes={{
           lang: "zh-hans",
@@ -42,10 +52,10 @@ const Page = ({ children, pageContext }: PageProps) => {
       </Helmet>
       <Header>{bar && <ArticleBar message={message} back />}</Header>
       <Markdown>
-        <Container>{children}</Container>
+        <Content>{children}</Content>
       </Markdown>
       {comment ? <ArticleComment /> : <Spacer />}
-    </>
+    </Container>
   )
 }
 
