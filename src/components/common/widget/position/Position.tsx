@@ -24,7 +24,7 @@ interface ActionProps {
 
 const Action = styled("button")<ActionProps>`
   position: absolute;
-  left: calc((-2rem + (var(--border-width))) / 2);
+  left: 50%;
   width: 2rem;
   height: 2rem;
   display: flex;
@@ -37,6 +37,7 @@ const Action = styled("button")<ActionProps>`
   background-color: var(--background);
   cursor: pointer;
   transition: all 0.2s;
+  transform: translateX(-50%);
 
   &:hover {
     color: var(--font-primary);

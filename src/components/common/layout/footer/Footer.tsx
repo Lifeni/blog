@@ -22,6 +22,10 @@ const Container = styled("footer")`
   @media (max-width: 720px) {
     padding: 0 1.25rem 1.25rem 1.25rem;
   }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem 1rem 1rem;
+  }
 `
 
 const Section = styled("section")`

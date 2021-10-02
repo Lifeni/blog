@@ -6,6 +6,7 @@ const NewLine = styled("span")`
   @media (max-width: 480px) {
     display: flex;
     margin: 0.375rem 0;
+    visibility: hidden;
   }
 `
 

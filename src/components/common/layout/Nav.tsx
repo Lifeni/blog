@@ -5,7 +5,7 @@ import BarAction from "../../base/action/Bar"
 
 const Container = styled("section")`
   position: relative;
-  padding: 0 1.25rem 1.5rem 1.25rem;
+  padding: 0 0 1.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,7 @@ const Container = styled("section")`
   line-height: 2;
 
   @media (max-width: 720px) {
-    padding: 0 1.25rem 0.5rem 1.25rem;
+    padding: 0 0 0.5rem 0;
   }
 `
 
