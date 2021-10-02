@@ -1,7 +1,7 @@
 import React from "react"
 import { RiHome2Line } from "react-icons/ri"
 import BlockAction from "../base/action/Block"
-import Spacer from "../common/layout/tool/Spacer"
+import Spacer from "../common/layout/Spacer"
 import Message from "../common/typography/Message"
 import TableOfContents from "./table-of-contents/TableOfContents"
 

@@ -10,6 +10,7 @@ interface IFrontMatter {
   date: string
   create_date: string
   license?: string
+  serif?: boolean
 }
 
 interface IMarkdown {

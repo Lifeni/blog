@@ -1,6 +1,5 @@
 import styled from "@emotion/styled"
-import React, { ReactNode, useEffect } from "react"
-import { useState } from "react"
+import React, { ReactNode } from "react"
 import Overlay from "./Overlay"
 
 interface ContainerProps {
@@ -30,12 +29,10 @@ interface ModalProps {
 
 const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   return (
-    <>
-      <Container open={isOpen}>
-        {children}
-        <Overlay onClick={onClose} />
-      </Container>
-    </>
+    <Container open={isOpen}>
+      {children}
+      <Overlay onClick={onClose} />
+    </Container>
   )
 }
 

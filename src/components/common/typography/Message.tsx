@@ -1,6 +1,9 @@
 import styled from "@emotion/styled"
 
 const Message = styled("span")`
+  position: absolute;
+  right: 0;
+  top: 0;
   min-width: 3.5rem;
   height: 3.5rem;
   padding: 0.75rem 1.25rem;

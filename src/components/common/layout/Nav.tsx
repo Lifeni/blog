@@ -21,7 +21,7 @@ const Nav = () => {
   return (
     <Container>
       {links.map(link => (
-        <BarAction as="a" {...link}>
+        <BarAction as="a" {...link} key={link.title}>
           {link.title}
         </BarAction>
       ))}

@@ -14,7 +14,7 @@ import Table from "./article/Table"
 
 const Markdown = styled("article")`
   width: 100%;
-  max-width: var(--article-width);
+  max-width: var(--main-width);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -27,7 +27,8 @@ const Markdown = styled("article")`
 
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     ${Heading}
   }
 

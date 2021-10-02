@@ -3,7 +3,7 @@ import { graphql, navigate } from "gatsby"
 import React, { ChangeEvent, FormEvent, useState } from "react"
 import { Helmet } from "react-helmet"
 import Footer from "../components/common/layout/footer/Footer"
-import Header from "../components/common/layout/header/Header"
+import Header from "../components/common/layout/Header"
 import Nav from "../components/common/layout/Nav"
 import ArticleCard from "../components/common/widget/article-card/Card"
 import Position from "../components/common/widget/position/Position"
@@ -21,6 +21,10 @@ const Container = styled("div")`
   padding: 0 1.25rem;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
 `
 
 interface IndexProps {

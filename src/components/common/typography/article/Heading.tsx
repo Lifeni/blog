@@ -22,7 +22,7 @@ const H3 = css`
 `
 
 const H4 = css`
-  padding: 0.375rem 0;
+  padding: 0.75rem 0;
   font-size: 1.125rem;
   line-height: 2;
 `

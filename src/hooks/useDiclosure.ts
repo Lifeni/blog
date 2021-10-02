@@ -5,6 +5,7 @@ const useDiclosure = () => {
 
   return {
     isOpen: open,
+    onToggle: () => setOpen(open => !open),
     onOpen: () => setOpen(true),
     onClose: () => setOpen(false),
   }

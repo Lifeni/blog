@@ -1,6 +1,5 @@
 :root {
   --main-width: 38rem;
-  --article-width: 38rem;
   --widget-width: 24rem;
 
   --red: #ff3745;
@@ -34,13 +33,7 @@
   --font-mono: "JetBrains Mono", "Fira Mono", Consolas, "Courier New",
     "Droid Sans Mono", var(--font-sans);
 
-  font-size: 16px;
-}
-
-@media (max-width: 600px) {
-  :root {
-    font-size: 16px;
-  }
+  font-size: 15px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -72,7 +65,7 @@ html {
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
-  overflow-y: overlay;
+  overflow-y: scroll;
   scroll-padding: 1rem 0 0 0;
 }
 
@@ -80,7 +73,7 @@ body {
   position: relative;
   font-family: var(--font-sans);
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 2;
   color: var(--font-primary);
   background-color: var(--background);

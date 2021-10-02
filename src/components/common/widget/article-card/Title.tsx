@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
-import React from "react"
 import { Link } from "gatsby"
+import React from "react"
 
 const Container = styled("h1")`
   padding: 0.5rem 0;

@@ -22,9 +22,14 @@ const Container = styled("header")`
   @media (max-width: 720px) {
     padding: 1.25rem 0 0.25rem 0;
   }
+
+  @media (max-width: 480px) {
+    padding: 1rem 0 0.25rem 0;
+  }
 `
 
 const Bar = styled("div")`
+  position: relative;
   width: 100%;
   max-width: var(--main-width);
   display: flex;

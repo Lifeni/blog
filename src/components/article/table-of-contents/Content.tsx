@@ -33,6 +33,7 @@ const Link = css`
 
   code {
     ${Code}
+    white-space: nowrap;
   }
 
   &:focus,

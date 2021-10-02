@@ -3,7 +3,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import ArticleBar from "../components/article/Bar"
 import Comment from "../components/article/Comment"
-import Header from "../components/common/layout/header/Header"
+import Header from "../components/common/layout/Header"
 import Markdown from "../components/common/typography/Markdown"
 
 const Container = styled("div")`
@@ -14,10 +14,29 @@ const Container = styled("div")`
   padding: 0 1.25rem;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
 `
 
 const Content = styled("div")`
-  padding: 1.625rem 1rem 2.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.625rem 1rem 2.25rem 1rem;
+  transition: all 0.2s;
+
+  @media (max-width: 800px) {
+    padding: 1.125rem 1rem 1.75rem 1rem;
+  }
+
+  @media (max-width: 720px) {
+    padding: 0.625rem 1rem 1.25rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.625rem 0.75rem 1.25rem 0.75rem;
+  }
 `
 
 const Spacer = styled("div")`

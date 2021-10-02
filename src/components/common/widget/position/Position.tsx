@@ -7,8 +7,8 @@ const Wrapper = styled("div")`
   position: fixed;
   left: 4.25rem;
   top: 50%;
-  width: 0.1rem;
-  height: 40vh;
+  width: var(--border-width);
+  height: 42vh;
   background-color: var(--border-color);
   transform: translateY(-50%);
   transition: all 0.2s;
@@ -24,7 +24,7 @@ interface ActionProps {
 
 const Action = styled("button")<ActionProps>`
   position: absolute;
-  left: calc((-2rem + 0.1rem) / 2);
+  left: calc((-2rem + (var(--border-width))) / 2);
   width: 2rem;
   height: 2rem;
   display: flex;

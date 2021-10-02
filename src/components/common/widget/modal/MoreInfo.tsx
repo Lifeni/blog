@@ -85,7 +85,7 @@ const MoreInfo = ({ title, create_date, date }: MoreInfoProps) => {
 
   return (
     <>
-      <Action onClick={onOpen}>
+      <Action onClick={onOpen} title="更多信息">
         <RiMore2Line aria-label="更多信息" />
       </Action>
       <Modal isOpen={isOpen} onClose={onClose}>

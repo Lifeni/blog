@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import React from "react"
-import svg from "../../../../assets/upyun-logo.svg"
+import upyun from "../../../../assets/upyun-logo.svg"
 import Link from "./Link"
 import Logo from "./Logo"
 
@@ -41,7 +41,7 @@ const Footer = () => {
       <Section>
         <Link link="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
           由
-          <Logo src={svg} alt="又拍云" title="又拍云" aria-label="又拍云" />
+          <Logo src={upyun} alt="又拍云" title="又拍云" aria-label="又拍云" />
           提供 CDN 加速与云储存服务
         </Link>
       </Section>

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 
 const Bar = styled("div")`
-  padding: 0.375rem 0;
+  padding: 0.5rem 0;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;

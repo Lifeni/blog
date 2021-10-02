@@ -10,13 +10,13 @@ interface TableOfContentsProps {
 }
 
 const TableOfContents = ({ content }: TableOfContentsProps) => {
-  const { isOpen, onOpen, onClose } = useDiclosure()
+  const { isOpen, onOpen, onClose, onToggle } = useDiclosure()
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
       if (e.key === "/") {
         e.preventDefault()
-        isOpen ? onClose() : onOpen()
+        onToggle()
       }
     }
 

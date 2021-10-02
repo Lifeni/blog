@@ -23,9 +23,17 @@ const query = graphql`
 const Container = styled("div")`
   display: flex;
   flex-direction: column;
-  padding: 1.625rem 1rem 2rem 1rem;
+  padding: 1.625rem 1rem 2.25rem 1rem;
   border-bottom: var(--border);
   transition: all 0.2s;
+
+  @media (max-width: 800px) {
+    padding: 1.125rem 1rem 1.75rem 1rem;
+  }
+
+  @media (max-width: 720px) {
+    padding: 0.625rem 1rem 1.25rem 1rem;
+  }
 `
 
 const About = () => {
@@ -37,7 +45,7 @@ const About = () => {
         <Header>你好</Header>
         <MDXRenderer>{data.allMdx.edges[0].node.body}</MDXRenderer>
         <Friends />
-        <Footer># BLOG / README.mdx</Footer>
+        <Footer># BLOG / ABOUT.mdx</Footer>
       </Container>
     </Markdown>
   )

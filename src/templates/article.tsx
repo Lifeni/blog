@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet"
 import Article from "../components/article/Article"
 import ArticleBar from "../components/article/Bar"
 import Comment from "../components/article/Comment"
-import Header from "../components/common/layout/header/Header"
+import Header from "../components/common/layout/Header"
 import Position from "../components/common/widget/position/Position"
 
 const hasComment = false
@@ -18,6 +18,10 @@ const Container = styled("div")`
   padding: 0 1.25rem;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
 `
 
 const Spacer = styled("div")`
@@ -90,6 +94,7 @@ export const PostQuery = graphql`
         date(formatString: "YYYY 年 M 月 D 日")
         create_date(formatString: "YYYY 年 M 月 D 日")
         license
+        serif
       }
       tableOfContents(absolute: false, maxDepth: 3)
     }
