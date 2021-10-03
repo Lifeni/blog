@@ -74,7 +74,8 @@ const IndexPage = ({ data }: IndexProps) => {
         <meta
           name="description"
           content="个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。"
-        ></meta>
+        />
+        <link href="https://file.lifeni.life" rel="preconnect" />
       </Helmet>
       <Header>
         <SearchBar search={handleSearch} enter={handleEnter} />

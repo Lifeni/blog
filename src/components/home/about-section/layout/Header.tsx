@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import React from "react"
+import React, { ReactNode } from "react"
 
 const Container = styled("div")`
   width: 100%;
@@ -9,6 +9,7 @@ const Container = styled("div")`
 `
 
 const H2 = styled("h2")`
+  width: 100% !important;
   font-size: 1.375rem;
   font-weight: 700;
   padding: 0.5rem 0 0.75rem 0;
@@ -21,7 +22,7 @@ const H2 = styled("h2")`
 `
 
 interface HeaderProps {
-  children: string
+  children: ReactNode | ReactNode[]
 }
 
 const Header = ({ children }: HeaderProps) => {

@@ -10,7 +10,7 @@ const Image = styled("img")`
   color: transparent;
 `
 
-const ToolTip = styled("span")`
+const ToolTip = styled("figcaption")`
   position: absolute;
   left: 50%;
   bottom: 3rem;
@@ -25,6 +25,7 @@ const ToolTip = styled("span")`
   background-color: var(--font-primary);
   font-size: 0.875rem;
   white-space: nowrap;
+  user-select: none;
   transform: translateX(-50%);
   transition: all 0.2s;
 `
@@ -34,6 +35,7 @@ const Link = styled("a")`
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 100%;
+  user-select: none;
 
   &:hover ${ToolTip} {
     visibility: visible;
@@ -49,11 +51,13 @@ interface AvatarProps {
 const Avatar = ({ link, name }: AvatarProps) => {
   return (
     <Link href={link} target="_blank" rel="nofollow noopener noreferrer">
-      <Image
-        src={`https://file.lifeni.life/avatar/friends/${name}.webp`}
-        alt={name}
-      />
-      <ToolTip>{name}</ToolTip>
+      <figure>
+        <Image
+          src={`https://file.lifeni.life/avatar/friends/${name}.webp`}
+          alt={name}
+        />
+        <ToolTip>{name}</ToolTip>
+      </figure>
     </Link>
   )
 }

@@ -4,7 +4,7 @@ import { friends } from "../../../../data/friends"
 import Avatar from "./Avatar"
 
 const List = styled("div")`
-  padding: 0.875rem 0 0.5rem 1px;
+  padding: 0.875rem 1px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;

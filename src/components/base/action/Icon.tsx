@@ -7,6 +7,7 @@ interface BaseProps {
 const IconAction = styled("button")<BaseProps>`
   width: 2.25rem;
   height: 2.25rem;
+  margin: 0 -0.5rem 0 0;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -79,7 +79,6 @@ const Search = ({ search, enter }: SearchProps) => {
         ref={searchRef}
         title="使用 / 键聚焦搜索框"
       />
-      {!searchRef.current?.value && <Message>/</Message>}
     </SearchBar>
   )
 }

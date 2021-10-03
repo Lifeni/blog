@@ -63,7 +63,7 @@ const ArticlePage = ({ location, data }: ArticleProps) => {
         }}
       >
         <title>{frontmatter.title} | 记录干杯</title>
-        <meta name="description" content={frontmatter.description}></meta>
+        <meta name="description" content={frontmatter.description} />
       </Helmet>
       <Header>
         <ArticleBar back={fromHome} toc={post.tableOfContents} />

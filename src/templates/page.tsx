@@ -67,7 +67,7 @@ const Page = ({ children, pageContext }: PageProps) => {
         }}
       >
         <title>{title} | 记录干杯</title>
-        <meta name="description" content={description}></meta>
+        <meta name="description" content={description} />
       </Helmet>
       <Header>{bar && <ArticleBar message={message} back />}</Header>
       <Markdown>
