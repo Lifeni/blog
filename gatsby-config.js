@@ -1,10 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `记录干杯`,
-    description: `个人网站「 记录干杯 」，在这里记录一些技术相关的文章、尝试一些新的技术。`,
-    author: `Lifeni`,
+    title: "记录干杯",
+    description:
+      "个人网站「 记录干杯 」，在这里记录一些技术相关的文章、尝试一些新的技术。",
+    author: "Lifeni",
     siteLanguage: "zh-hans",
-    siteUrl: `https://lifeni.life`,
+    siteUrl: "https://lifeni.life",
   },
   plugins: [
     "gatsby-plugin-emotion",
@@ -13,85 +14,52 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: `记录干杯 - Lifeni`,
-        short_name: `记录干杯`,
+        name: "记录干杯 - Lifeni",
+        short_name: "记录干杯",
         description:
           "个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。",
-        start_url: `/`,
-        background_color: `#feec44`,
-        theme_color: `#feec44`,
-        display: `minimal-ui`,
-        icon: `static/favicon.svg`,
-        icon_options: {
-          purpose: `any maskable`,
-        },
+        start_url: "/",
+        background_color: "#feec44",
+        theme_color: "#feec44",
+        display: "minimal-ui",
+        icon: "static/favicon.svg",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `notebook`,
-        path: `${__dirname}/notebook/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `snippets`,
+        name: "pages",
         path: `${__dirname}/src/markdown/`,
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        defaultLayouts: {
-          default: require.resolve("./src/templates/page.tsx"),
-        },
-        gatsbyRemarkPlugins: [`gatsby-remark-external-links`],
+        name: "articles",
+        path: `${__dirname}/notebook/articles/`,
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-plugin-mdx",
       options: {
-        plugins: [
-          `gatsby-remark-unwrap-images`,
+        extensions: [".md", ".mdx"],
+        gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images-native-lazy-load`,
+            resolve: "gatsby-remark-autolink-headers",
             options: {
-              loading: "lazy",
+              className: "link-anchor",
+              isIconAfterHeader: true,
+              elements: ["h2", "h3"],
             },
           },
           {
-            resolve: `gatsby-remark-autolink-headers`,
+            resolve: "gatsby-remark-prismjs",
             options: {
-              offsetY: "18",
-              icon: false,
-              elements: [`h1`, `h2`, `h3`],
+              noInlineHighlight: true,
             },
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-external-links`,
+          "gatsby-remark-unwrap-images",
         ],
-      },
-    },
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        google: {
-          families: [
-            "Inter:500,700",
-            "JetBrains Mono:500,700",
-            "Noto Sans SC:500,700",
-            "Noto Serif SC:500,700&display=swap",
-          ],
-        },
       },
     },
   ],

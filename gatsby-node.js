@@ -1,58 +1,41 @@
 const path = require(`path`)
-const Article = path.resolve(`./src/templates/article.tsx`)
+const Article = path.resolve(`./src/components/app/article/Article.tsx`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-
   try {
-    const result = await graphql(
-      `
-        {
-          allMarkdownRemark(
-            filter: { fileAbsolutePath: { regex: "/articles/" } }
-            sort: {
-              fields: [frontmatter___date, frontmatter___create_date]
-              order: [DESC, DESC]
-            }
-          ) {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-                frontmatter {
-                  title
-                }
+    const result = await graphql(`
+      {
+        allMdx(
+          filter: { fileAbsolutePath: { regex: "/articles/" } }
+          sort: {
+            fields: [frontmatter___date, frontmatter___create_date]
+            order: [DESC, DESC]
+          }
+        ) {
+          edges {
+            node {
+              frontmatter {
+                name
               }
+              id
             }
           }
         }
-      `
-    )
+      }
+    `)
 
-    const articles = result.data.allMarkdownRemark.edges
+    const articles = result.data.allMdx.edges
     for (let i = 0; i < articles.length; i++) {
       createPage({
-        path: `article/${articles[i].node.fields.slug}`,
+        path: `article/${articles[i].node.frontmatter.name}`,
         component: Article,
         context: {
-          slug: articles[i].node.fields.slug,
+          id: articles[i].node.id,
         },
       })
     }
   } catch (error) {
     console.error(error)
-  }
-}
-
-exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    createNodeField({
-      name: `slug`,
-      node,
-      value: node.frontmatter.name,
-    })
   }
 }

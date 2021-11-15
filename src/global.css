@@ -1,91 +1,39 @@
 :root {
-  --main-width: 38rem;
-  --widget-width: 24rem;
-
-  --red: #ff3745;
-  --yellow: #feec44;
-
-  --background: #ffffff;
-  --element-background: #f6f8fa;
-  --element-background-hover: #f2f5f8;
-
-  --border-width: 0.1rem;
-  --border-color: #e6eaee;
-  --border: solid var(--border-width) var(--border-color);
-  --border-block: solid 0.5rem #f2f5f8;
-  --border-radius: 0.5rem;
-
-  --font-primary: #282828;
-  --font-secondary: #6a737d;
-  --font-light: #e6eaee;
-  --font-link: #0366d6;
-  --font-link-hover: #065bbd;
-
-  --font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
-  --font-sans: "Inter", -apple-system, "HarmonyOS Sans SC", "Source Han Sans SC",
-    "Source Han Sans", "Noto Sans SC", BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif, var(--font-emoji);
-  --font-serif: "Source Han Serif SC", "Source Han Serif", "Noto Serif SC",
-    "Noto Serif", Georgia, "Times New Roman", Times, "Droid Serif", serif,
-    var(--font-emoji);
-  --font-mono: "JetBrains Mono", "Fira Mono", Consolas, "Courier New",
-    "Droid Sans Mono", var(--font-sans);
-
-  font-size: 15px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #16181a;
-    --element-background: #1a1c1e;
-    --element-background-hover: #1e2224;
-
-    --border: solid 0.1rem #202426;
-    --border-block: solid 0.5rem #1e2224;
-    --border-color: #202426;
-
-    --font-primary: #d1d5da;
-    --font-secondary: #8b949e;
-    --font-light: #30363d;
-    --font-link: #58a6ff;
-    --font-link-hover: #71b4ff;
-  }
+  font-size: var(--font-size);
 }
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+  position: relative;
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
-  scroll-padding: 1rem 0 0 0;
+  scroll-behavior: smooth;
 }
 
 body {
   position: relative;
   font-family: var(--font-sans);
   font-size: 1rem;
-  font-weight: 500;
-  line-height: 2;
   color: var(--font-primary);
   background-color: var(--background);
+  font-weight: 500;
+  line-height: 2;
+  text-align: justify;
+  text-justify: auto;
+  overflow-wrap: break-word;
   transition: all 0.2s;
 }
 
-.round-left {
-  border-radius: var(--border-radius) 0 0 var(--border-radius);
-  overflow: hidden;
-}
-
-.round-right {
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
-  overflow: hidden;
+.link-anchor {
+  float: right;
+  margin: 0 0 0 0.5rem;
+  padding: 0.1rem 0 0 0;
+  color: var(--font-primary);
 }

@@ -1,27 +1,26 @@
 {
-    "include": [
-        "index.d.ts",
-        "./src/**/*"
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "esnext"
     ],
-    "exclude": [
-        "node_modules"
-    ],
-    "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
-        "moduleResolution": "node",
-        "lib": [
-            "dom",
-            "esnext"
-        ],
-        "allowJs": true,
-        "checkJs": true,
-        "jsx": "react",
-        "strict": true,
-        "esModuleInterop": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "noEmit": true,
-        "skipLibCheck": true
-    }
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmit": true,
+    "skipLibCheck": true
+  }
 }

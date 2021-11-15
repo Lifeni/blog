@@ -11,8 +11,6 @@ pre[class*="language-"] {
   word-break: normal;
   word-wrap: normal;
   font-family: var(--font-mono);
-  font-size: 1em;
-  line-height: 1.5em;
 
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -32,8 +30,6 @@ pre[class*="language-"] {
 pre[class*="language-"] {
   overflow: auto;
   position: relative;
-  margin: 0.5em 0;
-  padding: 1.25em 1em;
 }
 
 .language-css > code,
@@ -201,8 +197,6 @@ pre[class*="language-"] {
     word-break: normal;
     word-wrap: normal;
     font-family: var(--font-mono);
-    font-size: 1em;
-    line-height: 1.5em;
 
     -moz-tab-size: 4;
     -o-tab-size: 4;
@@ -222,8 +216,6 @@ pre[class*="language-"] {
   pre[class*="language-"] {
     overflow: auto;
     position: relative;
-    margin: 0.5em 0;
-    padding: 1.25em 1em;
   }
 
   .language-css > code,
