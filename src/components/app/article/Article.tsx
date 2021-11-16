@@ -2,6 +2,7 @@ import styled from "@emotion/styled"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout, { Main, Sidebar } from "../../layout/Layout"
+import Comment from "./comment/Comment"
 import Contents from "./Contents"
 import Meta from "./Meta"
 import Provider from "./provider/Provider"
@@ -60,6 +61,7 @@ const Article = ({ data }: ArticleProps) => {
           <Provider>
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
           </Provider>
+          <Comment />
         </Container>
       </Main>
       <Sidebar>
