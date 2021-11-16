@@ -26,14 +26,6 @@ interface PostQuery {
   }
 }
 
-interface AboutQuery {
-  allMdx: {
-    edges: {
-      node: { body: string }
-    }[]
-  }
-}
-
 interface ArticleQuery {
   mdx: {
     frontmatter: {
@@ -49,12 +41,12 @@ interface ArticleQuery {
   }
 }
 
-type SidebarState = "show" | "hide" | null
-
-type LayoutContext = {
-  sidebar: SidebarState
-  show: () => void
-  hide: () => void
+interface AboutQuery {
+  allMdx: {
+    edges: {
+      node: { body: string }
+    }[]
+  }
 }
 
 interface NotFoundQuery {
@@ -63,4 +55,12 @@ interface NotFoundQuery {
       node: { body: string }
     }[]
   }
+}
+
+type SidebarState = "show" | "hide" | null
+
+type LayoutContext = {
+  sidebar: SidebarState
+  show: () => void
+  hide: () => void
 }

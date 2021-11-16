@@ -9,6 +9,7 @@ const Container = styled("footer")`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  column-gap: 1rem;
   row-gap: 0.25rem;
   background-color: var(--element-background);
   border-top: var(--border);

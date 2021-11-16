@@ -4,7 +4,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout, { Main, Sidebar } from "../../layout/Layout"
 import Contents from "./Contents"
 import Meta from "./Meta"
-import Provider from "./Provider"
+import Provider from "./provider/Provider"
 
 const Container = styled("article")`
   position: relative;

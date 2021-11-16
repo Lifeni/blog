@@ -1,7 +1,14 @@
 import styled from "@emotion/styled"
 import { MDXProvider } from "@mdx-js/react"
-import { graphql, Link as GatsbyLink } from "gatsby"
+import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import {
+  Code,
+  ExternalLink,
+  List,
+  ListItem,
+  Paragraph,
+} from "../components/app/article/provider/Component"
 import Layout, { Main, Sidebar } from "../components/layout/Layout"
 
 const Container = styled("article")`
@@ -26,52 +33,14 @@ const Container = styled("article")`
 `
 
 const H1 = styled("h1")`
-  padding: 0.5rem 0 2.5rem 0;
+  padding: 0.375rem 0 2.5rem 0;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.75;
 
   @media (max-width: 36rem) {
-    padding: 0.5rem 0 2rem 0;
+    padding: 0.375rem 0 2rem 0;
   }
-`
-
-const Paragraph = styled("p")`
-  font-size: 1rem;
-  padding: 0.375rem 0;
-`
-
-const Link = styled(GatsbyLink)`
-  color: var(--font-link);
-  text-decoration: none;
-  transition: all 0.2s;
-
-  &:hover {
-    color: var(--font-link-hover);
-    text-decoration: underline;
-    text-underline-offset: 0.25em;
-  }
-`
-
-const List = styled("ul")`
-  margin: 0.125rem 0;
-  padding: 0 0 0 1.125rem;
-`
-
-const ListItem = styled("li")`
-  margin: 0.375rem 0;
-  padding: 0 0 0 0.5rem;
-`
-
-const Code = styled("code")`
-  font-size: 0.875em;
-  padding: 0.2em 0.4em;
-  border: var(--border);
-  border-radius: var(--border-radius);
-  background-color: var(--element-background);
-  font-family: var(--font-mono);
-  transition: all 0.2s;
-  overflow-wrap: break-word;
 `
 
 interface NotFoundProps {
@@ -87,7 +56,7 @@ const NotFoundPage = ({ data }: NotFoundProps) => {
             components={{
               h1: H1,
               p: Paragraph,
-              a: Link,
+              a: ExternalLink,
               ul: List,
               li: ListItem,
               inlineCode: Code,

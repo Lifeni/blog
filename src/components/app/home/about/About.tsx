@@ -2,12 +2,14 @@ import styled from "@emotion/styled"
 import { MDXProvider } from "@mdx-js/react"
 import { graphql, useStaticQuery } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { AnchorHTMLAttributes, DetailedHTMLProps } from "react"
+import { ExternalLink, Paragraph } from "../../article/provider/Component"
 
 const Container = styled("article")`
   position: relative;
   width: 100%;
   padding: 2.25rem 1rem;
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: 36rem) {
     padding: 1.5rem 1rem;
@@ -33,35 +35,6 @@ const Strong = styled("strong")`
   font-size: 1rem;
   font-weight: 700;
 `
-
-const Paragraph = styled("p")`
-  font-size: 1rem;
-  padding: 0.375rem 0;
-`
-
-const Link = styled("a")`
-  color: var(--font-link);
-  text-decoration: none;
-  transition: all 0.2s;
-
-  &:hover {
-    color: var(--font-link-hover);
-    text-decoration: underline;
-    text-underline-offset: 0.25em;
-  }
-`
-
-const ExternalLink = (
-  props: DetailedHTMLProps<
-    AnchorHTMLAttributes<HTMLAnchorElement>,
-    HTMLAnchorElement
-  >
-) =>
-  props.href?.startsWith("#") ? (
-    <Link {...props} />
-  ) : (
-    <Link {...props} target="_blank" rel="noopener noreferrer" />
-  )
 
 const Hr = styled("hr")`
   width: calc(100% + 2rem);

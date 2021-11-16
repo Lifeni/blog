@@ -1,19 +1,16 @@
 import styled from "@emotion/styled"
-import { MDXProvider } from "@mdx-js/react"
 import {
   AnchorHTMLAttributes,
   DetailedHTMLProps,
   Fragment,
   ImgHTMLAttributes,
-  ReactNode,
   TableHTMLAttributes,
 } from "react"
 import Zoom from "react-medium-image-zoom"
-import "react-medium-image-zoom/dist/styles.css"
 
-const Null = () => <Fragment />
+export const Null = () => <Fragment />
 
-const H2 = styled("h2")`
+export const H2 = styled("h2")`
   width: fit-content;
   padding: 1.25rem 0;
   font-size: 1.25rem;
@@ -25,21 +22,21 @@ const H2 = styled("h2")`
   }
 `
 
-const H3 = styled("h3")`
+export const H3 = styled("h3")`
   width: fit-content;
   padding: 1rem 0;
   font-size: 1.125rem;
   line-height: 2;
 `
 
-const H4 = styled("h4")`
+export const H4 = styled("h4")`
   width: fit-content;
   padding: 0.75rem 0;
   font-size: 1rem;
   line-height: 2;
 `
 
-const Paragraph = styled("p")`
+export const Paragraph = styled("p")`
   margin: 0.375rem 0;
   font-size: inherit;
   line-height: inherit;
@@ -48,7 +45,7 @@ const Paragraph = styled("p")`
   overflow-wrap: break-word;
 `
 
-const Link = styled("a")`
+export const Link = styled("a")`
   color: var(--font-link);
   text-decoration: none;
   overflow-wrap: break-word;
@@ -61,29 +58,29 @@ const Link = styled("a")`
   }
 `
 
-const ExternalLink = (
+export const ExternalLink = (
   props: DetailedHTMLProps<
     AnchorHTMLAttributes<HTMLAnchorElement>,
     HTMLAnchorElement
   >
 ) =>
-  props.href?.startsWith("#") ? (
+  props.href?.startsWith("#") || props.href === "/" ? (
     <Link {...props} />
   ) : (
     <Link {...props} target="_blank" rel="noopener noreferrer" />
   )
 
-const List = styled("ul")`
+export const List = styled("ul")`
   margin: 0.125rem 0;
   padding: 0 0 0 1.125rem;
 `
 
-const ListItem = styled("li")`
+export const ListItem = styled("li")`
   margin: 0.375rem 0;
   padding: 0 0 0 0.5rem;
 `
 
-const Code = styled("code")`
+export const Code = styled("code")`
   font-size: 0.875em;
   padding: 0.2em 0.4em;
   border: var(--border);
@@ -94,7 +91,7 @@ const Code = styled("code")`
   overflow-wrap: break-word;
 `
 
-const Pre = styled("pre")`
+export const Pre = styled("pre")`
   position: relative;
   width: calc(100% + 2rem);
   margin: 1rem -1rem;
@@ -117,7 +114,7 @@ const Pre = styled("pre")`
   }
 `
 
-const PreCode = styled("code")`
+export const PreCode = styled("code")`
   padding: 0;
   display: inline-block;
   border: none;
@@ -127,12 +124,12 @@ const PreCode = styled("code")`
   transition: all 0.2s;
 `
 
-const Image = styled("img")`
+export const Image = styled("img")`
   width: 100%;
   display: flex;
 `
 
-const LazyImage = (
+export const LazyImage = (
   props: DetailedHTMLProps<
     ImgHTMLAttributes<HTMLImageElement>,
     HTMLImageElement
@@ -151,7 +148,7 @@ const LazyImage = (
   </Zoom>
 )
 
-const BlockQuote = styled("blockquote")`
+export const BlockQuote = styled("blockquote")`
   margin: 1rem 0;
   padding: 0.25rem 0 0.25rem 1.5rem;
   border-left: var(--border-block);
@@ -225,7 +222,7 @@ const TableWrapper = styled("div")`
   overflow-x: auto;
 `
 
-const Table = (
+export const Table = (
   props: DetailedHTMLProps<
     TableHTMLAttributes<HTMLTableElement>,
     HTMLTableElement
@@ -236,11 +233,11 @@ const Table = (
   </TableWrapper>
 )
 
-const Delete = styled("del")`
+export const Delete = styled("del")`
   color: var(--font-secondary);
 `
 
-const Details = styled("details")`
+export const Details = styled("details")`
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
@@ -259,36 +256,8 @@ const Details = styled("details")`
   }
 `
 
-interface ProviderProps {
-  children: ReactNode | ReactNode[]
-}
-
-const Provider = ({ children }: ProviderProps) => {
-  return (
-    <MDXProvider
-      components={{
-        h1: Null,
-        h2: H2,
-        h3: H3,
-        h4: H4,
-        p: Paragraph,
-        a: ExternalLink,
-        ul: List,
-        ol: List,
-        li: ListItem,
-        inlineCode: Code,
-        pre: Pre,
-        code: PreCode,
-        img: LazyImage,
-        blockquote: BlockQuote,
-        delete: Delete,
-        details: Details,
-        table: Table,
-      }}
-    >
-      {children}
-    </MDXProvider>
-  )
-}
-
-export default Provider
+export const Hr = styled("hr")`
+  height: 1rem;
+  margin: 0.375rem 0;
+  border: none;
+`

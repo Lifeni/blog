@@ -53,7 +53,7 @@ const List = styled("ul")`
 
   ul {
     margin: 0;
-    padding: 0 0 0 1rem;
+    padding: 0.25rem 0 0 1rem;
   }
 
   @media (max-width: 56rem) {
@@ -64,7 +64,7 @@ const List = styled("ul")`
 const ListItem = styled("li")`
   max-width: 100%;
   width: fit-content;
-  margin: 0.125rem 0;
+  padding: 0.125rem 0;
   display: flex;
   flex-direction: column;
 `

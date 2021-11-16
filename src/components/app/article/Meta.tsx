@@ -38,6 +38,7 @@ const H3 = styled("h3")`
 
 const Time = styled("time")`
   margin: 0 1.5rem 0 0;
+  padding: 0.125rem 0;
   display: flex;
   align-items: center;
   font-size: inherit;
@@ -48,6 +49,7 @@ const Copyright = styled("a")`
   display: flex;
   align-items: center;
   margin: 0 1.5rem 0 0;
+  padding: 0.125rem 0;
   color: var(--font-link);
   font-size: inherit;
   text-decoration: none;

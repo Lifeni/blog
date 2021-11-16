@@ -15,6 +15,7 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
+  scroll-padding: 0.75rem;
 }
 
 body {
