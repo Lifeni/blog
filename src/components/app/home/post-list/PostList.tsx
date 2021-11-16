@@ -5,6 +5,7 @@ import Post from "./Post"
 const Container = styled("ul")`
   position: relative;
   width: 100%;
+  padding: 0.125rem 0;
   display: flex;
   flex-direction: column;
 `

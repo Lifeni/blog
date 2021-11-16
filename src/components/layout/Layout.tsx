@@ -63,7 +63,11 @@ const Layout = ({ noSidebar, title, description, children }: LayoutProps) => {
 
   return (
     <Container>
-      <Helmet>
+      <Helmet
+        htmlAttributes={{
+          lang: "zh-hans",
+        }}
+      >
         <title>{title ? `${title} | 记录干杯` : "记录干杯"}</title>
         <meta
           name="description"

@@ -100,7 +100,6 @@ const About = () => {
         }}
       >
         <MDXRenderer>{about.allMdx.edges[0].node.body}</MDXRenderer>
-        <a />
       </MDXProvider>
     </Container>
   )

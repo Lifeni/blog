@@ -27,7 +27,7 @@
   --border-width: 1px;
   --border-color: #e6eaee;
   --border: solid var(--border-width) var(--border-color);
-  --border-block: solid 0.5rem #f2f5f8;
+  --border-block: solid 0.5rem var(--border-color);
   --border-radius: 0.5rem;
 
   --font-primary: #282828;
@@ -45,9 +45,9 @@
     --element-background: #1a1c1e;
     --element-background-hover: #1e2224;
 
-    --border: solid var(--border-width) #202426;
-    --border-block: solid 0.5rem #1e2224;
     --border-color: #202426;
+    --border: solid var(--border-width) var(--border-color);
+    --border-block: solid 0.5rem var(--border-color);
 
     --font-primary: #d1d5da;
     --font-secondary: #8b949e;

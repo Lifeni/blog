@@ -38,7 +38,7 @@ const Section = styled("section")`
 `
 
 const Logo = styled("img")`
-  height: 1.375rem;
+  height: 1.25rem;
   margin: 0 0.5rem;
   filter: grayscale(100%);
   transition: all 0.2s;

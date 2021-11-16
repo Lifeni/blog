@@ -28,13 +28,13 @@ const Container = styled("article")`
 `
 
 const H1 = styled("h1")`
-  padding: 0.5rem 0 2.5rem 0;
+  padding: 0.375rem 0 2.5rem 0;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.75;
 
   @media (max-width: 36rem) {
-    padding: 0.5rem 0 2rem 0;
+    padding: 0.375rem 0 2rem 0;
   }
 `
 
