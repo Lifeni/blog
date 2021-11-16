@@ -35,6 +35,7 @@ const Link = styled("a")`
   text-overflow: ellipsis;
   overflow: hidden;
   text-decoration: none;
+  cursor: pointer;
   transition: all 0.2s;
 
   &:hover {
@@ -44,20 +45,14 @@ const Link = styled("a")`
 
 const List = styled("ul")`
   width: 100%;
-  margin: 0.25rem 0 0.5rem 0;
+  margin: 0.25rem 0 0.25rem 0;
   display: flex;
   flex-direction: column;
   list-style: none;
-  font-size: 1rem;
-  font-family: var(--font-mono);
 
   ul {
     margin: 0;
     padding: 0.25rem 0 0 1rem;
-  }
-
-  @media (max-width: 56rem) {
-    font-size: 1rem;
   }
 `
 

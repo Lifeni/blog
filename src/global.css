@@ -38,3 +38,7 @@ body {
   padding: 0.1rem 0 0 0;
   color: var(--font-primary);
 }
+
+.link-anchor svg {
+  fill: var(--font-primary);
+}

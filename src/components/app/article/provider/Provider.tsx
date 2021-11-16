@@ -42,7 +42,7 @@ const Provider = ({ children }: ProviderProps) => {
         code: PreCode,
         img: LazyImage,
         blockquote: BlockQuote,
-        delete: Delete,
+        del: Delete,
         details: Details,
         table: Table,
         hr: Hr,

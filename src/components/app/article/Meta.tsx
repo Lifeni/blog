@@ -9,6 +9,7 @@ const Container = styled("section")`
   flex-direction: column;
   border-bottom: var(--border);
   font-size: 1rem;
+  transition: all 0.2s;
 
   svg {
     width: 1.125em;

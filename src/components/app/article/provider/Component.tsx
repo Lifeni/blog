@@ -136,7 +136,7 @@ export const LazyImage = (
   >
 ) => (
   <Zoom
-    overlayBgColorEnd="rgba(0, 0, 0, 0.6)"
+    overlayBgColorEnd="rgba(0, 0, 0, 0.5)"
     wrapStyle={{
       width: "calc(100% + 2rem)",
       margin: "1rem -1rem",

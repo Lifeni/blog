@@ -10,6 +10,7 @@ const Container = styled("article")`
   padding: 2.25rem 1rem;
   display: flex;
   flex-direction: column;
+  transition: all 0.2s;
 
   @media (max-width: 36rem) {
     padding: 1.5rem 1rem;

@@ -107,12 +107,13 @@ interface MainElementProps {
 
 const MainElement = styled("main")<MainElementProps>`
   position: relative;
-  width: 100%;
-  max-width: ${props =>
+  width: ${props =>
     props.sidebar === "hide" ? "var(--focus-width)" : "var(--main-width)"};
+  max-width: 100%;
   z-index: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `
 
 export const Main = (
@@ -128,8 +129,8 @@ interface SidebarElementProps {
 
 const SidebarElement = styled("aside")<SidebarElementProps>`
   position: relative;
-  width: 100%;
-  max-width: var(--sidebar-width);
+  width: var(--sidebar-width);
+  max-width: 100%;
   display: ${props => (props.sidebar === "hide" ? "none" : "flex")};
   flex-direction: column;
 

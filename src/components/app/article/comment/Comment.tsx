@@ -39,7 +39,7 @@ const Comment = () => {
   const [showComment, setShowComment] = useState(false)
 
   return (
-    <Container>
+    <Container id="giscus">
       {showComment ? (
         <Giscus
           repo="Lifeni-Space/Blog"

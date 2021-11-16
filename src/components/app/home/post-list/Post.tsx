@@ -8,6 +8,7 @@ const Container = styled("li")`
   padding: 2.25rem 1rem;
   border-bottom: var(--border);
   list-style: none;
+  transition: all 0.2s;
 
   &:last-of-type {
     margin: 0;
@@ -80,6 +81,7 @@ const Time = styled("time")`
   align-items: center;
   font-size: 1rem;
   color: var(--font-secondary);
+  transition: all 0.2s;
 `
 
 interface PostProps {
