@@ -18,6 +18,7 @@ import {
   Details,
   Table,
   Hr,
+  OrderedList,
 } from "./Component"
 
 interface ProviderProps {
@@ -35,7 +36,7 @@ const Provider = ({ children }: ProviderProps) => {
         p: Paragraph,
         a: ExternalLink,
         ul: List,
-        ol: List,
+        ol: OrderedList,
         li: ListItem,
         inlineCode: Code,
         pre: Pre,

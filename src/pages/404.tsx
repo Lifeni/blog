@@ -21,12 +21,6 @@ const Container = styled("article")`
   font-size: 1rem;
   line-height: 2;
 
-  svg {
-    width: 1.125rem;
-    height: 1.125rem;
-    margin: 0 0.75rem 0 0;
-  }
-
   @media (max-width: 36rem) {
     padding: 2rem 0.75rem;
   }

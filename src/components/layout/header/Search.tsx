@@ -11,7 +11,7 @@ interface ContainerProps {
 
 const Container = styled("form")<ContainerProps>`
   position: fixed;
-  top: 30%;
+  top: 50%;
   left: 50%;
   z-index: 2000;
   width: calc(100vw - 2rem);
@@ -25,12 +25,8 @@ const Container = styled("form")<ContainerProps>`
   overflow-y: auto;
   visibility: ${props => (props.isOpen ? "visible" : "hidden")};
   opacity: ${props => (props.isOpen ? "1" : "0")};
-  transform: translate(-50%, 0);
+  transform: translate(-50%, -50%);
   transition: all 0.2s;
-
-  @media (max-width: 36rem) {
-    top: 1rem;
-  }
 `
 
 const Input = styled("input")`
@@ -51,8 +47,18 @@ const Search = () => {
   const [isOpen, setIsOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  useKey("/", () => setIsOpen(true))
-  useKey("Escape", () => setIsOpen(false))
+  useKey(
+    "/",
+    e => {
+      e.preventDefault()
+      if (isOpen) setIsOpen(false)
+      else setIsOpen(true)
+    },
+    {},
+    [isOpen]
+  )
+
+  useKey("Escape", () => setIsOpen(false), {}, [isOpen])
 
   useEffect(() => {
     if (isOpen && inputRef.current) {

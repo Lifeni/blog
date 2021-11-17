@@ -31,6 +31,7 @@ const Title = styled("h2")`
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.75;
+  text-align: start;
 `
 
 const TitleLink = styled(GatsbyLink)`

@@ -16,9 +16,9 @@
   --font-mono: "JetBrains Mono", "Fira Mono", Consolas, "Courier New",
     "Droid Sans Mono", var(--font-sans);
 
-  --main-width: 37rem;
-  --sidebar-width: 20.5rem;
-  --focus-width: 37rem;
+  --main-width: 600px;
+  --sidebar-width: 306px;
+  --focus-width: 600px;
 
   --background: #ffffff;
   --element-background: #f6f8fa;

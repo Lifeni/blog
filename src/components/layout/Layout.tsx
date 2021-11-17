@@ -154,7 +154,7 @@ const SidebarElement = styled("aside")<SidebarElementProps>`
     transform: translate(-50%, -50%);
     transition: ${props =>
       props.sidebar === "show"
-        ? "opacity 0.2s, background-color 0.2s, visibility 0.2"
+        ? "opacity 0.2s, background-color 0.2s, visibility 0.2s, border 0.2s"
         : "none"};
   }
 

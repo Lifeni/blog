@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri"
 import Layout, { Main, Sidebar } from "../../layout/Layout"
 import Comment from "./comment/Comment"
 import Contents from "./Contents"
@@ -16,12 +17,9 @@ const Container = styled("article")`
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 2;
-
-  svg {
-    width: 1.125rem;
-    height: 1.125rem;
-    margin: 0 0.75rem 0 0;
-  }
+  text-align: justify;
+  text-justify: auto;
+  overflow-wrap: break-word;
 
   @media (max-width: 36rem) {
     padding: 2rem 0.75rem;
@@ -29,19 +27,26 @@ const Container = styled("article")`
 `
 
 const H1 = styled("h1")`
-  padding: 0.375rem 0 2.5rem 0;
+  padding: 0.5rem 0 2.75rem 0;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.75;
+  text-align: start;
 
   @media (max-width: 36rem) {
-    padding: 0.375rem 0 2rem 0;
+    padding: 0.5rem 0 2rem 0;
   }
 `
 
 const Description = styled("p")`
   font-size: 1rem;
-  padding: 0 0 0.375rem 0;
+  margin: 0 0 0.375rem 0;
+
+  svg {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.625em -0.25rem 0;
+  }
 `
 
 interface ArticleProps {
@@ -57,7 +62,10 @@ const Article = ({ data }: ArticleProps) => {
       <Main>
         <Container>
           <H1>{data.mdx.frontmatter.title}</H1>
-          <Description>{data.mdx.frontmatter.description}</Description>
+          <Description>
+            <RiDoubleQuotesL className="left" aria-label="引号" />
+            {data.mdx.frontmatter.description}
+          </Description>
           <Provider>
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
           </Provider>

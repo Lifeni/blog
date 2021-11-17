@@ -24,7 +24,6 @@ const H3 = styled("h3")`
   align-items: center;
   font-size: 1.125rem;
   line-height: 2;
-  font-family: var(--font-mono);
   font-weight: 700;
 
   @media (max-width: 36rem) {
@@ -43,6 +42,7 @@ const Hr = styled("hr")`
   margin: 1.875rem -1rem 1.5rem -1rem;
   border: none;
   border-top: var(--border);
+  transition: all 0.2s;
 
   @media (max-width: 36rem) {
     margin: 1.375rem -1rem 1rem -1rem;

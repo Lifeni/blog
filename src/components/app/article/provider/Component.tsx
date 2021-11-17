@@ -27,6 +27,7 @@ export const H3 = styled("h3")`
   padding: 1rem 0;
   font-size: 1.125rem;
   line-height: 2;
+  font-weight: 700;
 `
 
 export const H4 = styled("h4")`
@@ -34,6 +35,7 @@ export const H4 = styled("h4")`
   padding: 0.75rem 0;
   font-size: 1rem;
   line-height: 2;
+  font-weight: 700;
 `
 
 export const Paragraph = styled("p")`
@@ -48,7 +50,7 @@ export const Paragraph = styled("p")`
 export const Link = styled("a")`
   color: var(--font-link);
   text-decoration: none;
-  overflow-wrap: break-word;
+  word-break: break-all;
   transition: all 0.2s;
 
   &:hover {
@@ -75,8 +77,10 @@ export const List = styled("ul")`
   padding: 0 0 0 1.125rem;
 `
 
+export const OrderedList = List.withComponent("ol")
+
 export const ListItem = styled("li")`
-  margin: 0.375rem 0;
+  margin: 0.25rem 0;
   padding: 0 0 0 0.5rem;
 `
 

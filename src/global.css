@@ -18,6 +18,12 @@ html {
   scroll-padding: 0.75rem;
 }
 
+@media (max-width: 56rem) {
+  html {
+    scroll-padding: 5.5rem;
+  }
+}
+
 body {
   position: relative;
   font-family: var(--font-sans);
