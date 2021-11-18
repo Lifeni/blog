@@ -1,12 +1,12 @@
 import styled from "@emotion/styled"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { RiDoubleQuotesL } from "react-icons/ri"
 import Layout, { Main, Sidebar } from "../../layout/Layout"
-import Comment from "./widget/Comment"
-import Contents from "./widget/Contents"
 import Meta from "./Meta"
 import Provider from "./provider/Provider"
+import Comment from "./widget/Comment"
+import Contents from "./widget/Contents"
+import Information from "./widget/Information"
 
 const Container = styled("article")`
   position: relative;
@@ -26,29 +26,6 @@ const Container = styled("article")`
   }
 `
 
-const H1 = styled("h1")`
-  padding: 0.5rem 0 2.75rem 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.75;
-  text-align: start;
-
-  @media (max-width: 36rem) {
-    padding: 0.5rem 0 2rem 0;
-  }
-`
-
-const Description = styled("p")`
-  font-size: 1rem;
-  margin: 0 0 0.375rem 0;
-
-  svg {
-    width: 1.25em;
-    height: 1.25em;
-    margin: 0 0.75em -0.25rem 0;
-  }
-`
-
 interface ArticleProps {
   data: IArticleQuery
 }
@@ -61,11 +38,7 @@ const Article = ({ data }: ArticleProps) => {
     >
       <Main>
         <Container>
-          <H1>{data.mdx.frontmatter.title}</H1>
-          <Description>
-            <RiDoubleQuotesL className="left" aria-label="引号" />
-            {data.mdx.frontmatter.description}
-          </Description>
+          <Meta frontmatter={data.mdx.frontmatter} />
           <Provider>
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
           </Provider>
@@ -73,7 +46,7 @@ const Article = ({ data }: ArticleProps) => {
         </Container>
       </Main>
       <Sidebar>
-        <Meta frontmatter={data.mdx.frontmatter} />
+        <Information frontmatter={data.mdx.frontmatter} />
         <Contents items={data.mdx.tableOfContents.items[0]} />
       </Sidebar>
     </Layout>

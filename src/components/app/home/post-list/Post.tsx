@@ -55,7 +55,6 @@ const Bar = styled("section")`
   display: flex;
   flex-wrap: wrap;
   white-space: nowrap;
-  gap: 0.25rem;
 
   @media (max-width: 36rem) {
     flex-direction: column;

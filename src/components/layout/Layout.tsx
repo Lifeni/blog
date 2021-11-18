@@ -119,6 +119,10 @@ const MainElement = styled("main")<MainElementProps>`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  @media (max-width: 36rem) {
+    overflow: unset;
+  }
 `
 
 export const Main = (

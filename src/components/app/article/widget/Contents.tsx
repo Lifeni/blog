@@ -96,21 +96,25 @@ const List = styled("ul")`
   display: flex;
   flex-direction: column;
   list-style: none;
+  font-weight: 700;
 
   ul {
     margin: 0;
     padding: 0.25rem 0 0 1.25rem;
+    font-weight: 500;
 
     li {
       &::before {
-        content: "-";
+        content: "•";
         position: absolute;
         left: -1.25rem;
         color: inherit;
         font-family: var(--font-mono);
+        transition: all 0.2s;
       }
 
       &:hover::before {
+        content: "→";
         color: var(--font-link-hover);
       }
     }
