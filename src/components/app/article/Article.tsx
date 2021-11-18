@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri"
+import { RiDoubleQuotesL } from "react-icons/ri"
 import Layout, { Main, Sidebar } from "../../layout/Layout"
 import Comment from "./comment/Comment"
 import Contents from "./Contents"

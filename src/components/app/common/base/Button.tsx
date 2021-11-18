@@ -42,7 +42,7 @@ const Button = styled("button")<ButtonProps>`
       padding: 0.125rem 0.625rem;
       display: flex;
       border-radius: var(--border-radius);
-      font-size: 0.875rem;
+      font-size: 0.925rem;
       color: var(--font-light);
       background-color: var(--font-primary);
       white-space: nowrap;

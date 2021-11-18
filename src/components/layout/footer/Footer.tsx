@@ -4,7 +4,7 @@ import { links } from "../../../data/links"
 const Container = styled("footer")`
   position: relative;
   width: 100%;
-  padding: 1.375rem 3rem;
+  padding: 1.375rem 2.875rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,7 +26,7 @@ const Container = styled("footer")`
   }
 
   @media (max-width: 48rem) {
-    padding: 1.375rem 1.875rem;
+    padding: 1.375rem 1.5rem;
   }
 `
 

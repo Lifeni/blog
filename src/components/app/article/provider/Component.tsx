@@ -85,7 +85,7 @@ export const ListItem = styled("li")`
 `
 
 export const Code = styled("code")`
-  font-size: 0.875em;
+  font-size: 0.925em;
   padding: 0.2em 0.4em;
   border: var(--border);
   border-radius: var(--border-radius);
@@ -122,8 +122,8 @@ export const PreCode = styled("code")`
   padding: 0;
   display: inline-block;
   border: none;
-  font-size: 0.875em;
-  line-height: 1.875;
+  font-size: 0.925em;
+  line-height: 1.75;
   font-family: var(--font-mono);
   transition: all 0.2s;
 `
@@ -133,23 +133,33 @@ export const Image = styled("img")`
   display: flex;
 `
 
+const ImageWrapper = styled("div")`
+  display: flex;
+
+  button {
+    outline: none;
+  }
+`
+
 export const LazyImage = (
   props: DetailedHTMLProps<
     ImgHTMLAttributes<HTMLImageElement>,
     HTMLImageElement
   >
 ) => (
-  <Zoom
-    overlayBgColorEnd="rgba(0, 0, 0, 0.5)"
-    wrapStyle={{
-      width: "calc(100% + 2rem)",
-      margin: "1rem -1rem",
-      borderRadius: "var(--border-radius)",
-      overflow: "hidden",
-    }}
-  >
-    <Image {...props} loading="lazy" />
-  </Zoom>
+  <ImageWrapper className="compress-spacing">
+    <Zoom
+      overlayBgColorEnd="rgba(0, 0, 0, 0.5)"
+      wrapStyle={{
+        width: "calc(100% + 2rem)",
+        margin: "1rem -1rem",
+        borderRadius: "var(--border-radius)",
+        overflow: "hidden",
+      }}
+    >
+      <Image {...props} loading="lazy" />
+    </Zoom>
+  </ImageWrapper>
 )
 
 export const BlockQuote = styled("blockquote")`
@@ -264,4 +274,10 @@ export const Hr = styled("hr")`
   height: 1rem;
   margin: 0.375rem 0;
   border: none;
+`
+
+export const Iframe = styled("iframe")`
+  width: calc(100% + 2rem) !important;
+  margin: 1rem -1rem;
+  border-radius: var(--border-radius);
 `

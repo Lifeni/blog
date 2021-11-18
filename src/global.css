@@ -48,3 +48,8 @@ body {
 .link-anchor svg {
   fill: var(--font-primary);
 }
+
+.compress-spacing + .compress-spacing,
+.gatsby-highlight + .gatsby-highlight {
+  margin-top: -0.725rem;
+}

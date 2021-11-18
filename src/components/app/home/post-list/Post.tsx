@@ -5,7 +5,7 @@ import { RiBookOpenLine, RiCalendarLine } from "react-icons/ri"
 const Container = styled("li")`
   position: relative;
   width: 100%;
-  padding: 2.25rem 1rem;
+  padding: 2rem 1rem;
   border-bottom: var(--border);
   list-style: none;
   transition: all 0.2s;
@@ -22,7 +22,7 @@ const Container = styled("li")`
   }
 
   @media (max-width: 36rem) {
-    padding: 1.75rem 0.75rem;
+    padding: 1.5rem 0.75rem;
   }
 `
 

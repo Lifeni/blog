@@ -19,6 +19,7 @@ import {
   Table,
   Hr,
   OrderedList,
+  Iframe,
 } from "./Component"
 
 interface ProviderProps {
@@ -47,6 +48,7 @@ const Provider = ({ children }: ProviderProps) => {
         details: Details,
         table: Table,
         hr: Hr,
+        iframe: Iframe,
       }}
     >
       {children}
