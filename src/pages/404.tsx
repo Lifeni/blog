@@ -38,12 +38,16 @@ const H1 = styled("h1")`
 `
 
 interface NotFoundProps {
-  data: NotFoundQuery
+  data: INotFoundQuery
 }
 
 const NotFoundPage = ({ data }: NotFoundProps) => {
   return (
-    <Layout noSidebar title="找不到页面" description="你要找的页面不在这里。">
+    <Layout
+      hasSidebar={false}
+      title="找不到页面"
+      description="你要找的页面不在这里。"
+    >
       <Main>
         <Container>
           <MDXProvider

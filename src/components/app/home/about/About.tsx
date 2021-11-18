@@ -50,7 +50,7 @@ const Hr = styled("hr")`
 `
 
 const About = () => {
-  const about = useStaticQuery<AboutQuery>(graphql`
+  const about = useStaticQuery<IAboutQuery>(graphql`
     query {
       allMdx(filter: { fileAbsolutePath: { regex: "/about.mdx/" } }) {
         edges {

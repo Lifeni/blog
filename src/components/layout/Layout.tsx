@@ -15,7 +15,7 @@ import GoTop from "../app/common/global/GoTop"
 import Footer from "./footer/Footer"
 import Header from "./header/Header"
 
-export const Context = createContext<LayoutContext>({
+export const Context = createContext<ISidebarContext>({
   sidebar: null,
   show: () => {},
   hide: () => {},
@@ -52,13 +52,18 @@ const Content = styled("div")`
 `
 
 interface LayoutProps {
-  noSidebar?: boolean
+  hasSidebar?: boolean
   title?: string
   description?: string
   children: ReactNode | ReactNode[]
 }
 
-const Layout = ({ noSidebar, title, description, children }: LayoutProps) => {
+const Layout = ({
+  hasSidebar = true,
+  title,
+  description,
+  children,
+}: LayoutProps) => {
   const [sidebar, setSidebar] = useState<SidebarState>(null)
 
   return (
@@ -91,7 +96,7 @@ const Layout = ({ noSidebar, title, description, children }: LayoutProps) => {
           hide: () => setSidebar("hide"),
         }}
       >
-        <Header noSidebar={noSidebar} />
+        <Header hasSidebar={hasSidebar} />
         <Content>{children}</Content>
         <Footer />
       </Context.Provider>

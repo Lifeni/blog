@@ -37,10 +37,10 @@ const Section = styled("section")`
 `
 
 interface HeaderProps {
-  noSidebar?: boolean
+  hasSidebar?: boolean
 }
 
-const Header = ({ noSidebar }: HeaderProps) => {
+const Header = ({ hasSidebar }: HeaderProps) => {
   const Link = Button.withComponent(GatsbyLink)
   return (
     <Container>
@@ -51,7 +51,7 @@ const Header = ({ noSidebar }: HeaderProps) => {
       </Section>
       <Section>
         <Search />
-        {noSidebar ? null : <Nav />}
+        {hasSidebar && <Nav />}
       </Section>
     </Container>
   )

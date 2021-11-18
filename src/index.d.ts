@@ -18,7 +18,7 @@ type TableOfContents = {
   items?: TableOfContents[]
 }
 
-interface PostQuery {
+interface IPostQuery {
   allMdx: {
     edges: {
       node: { frontmatter: Frontmatter }
@@ -26,7 +26,7 @@ interface PostQuery {
   }
 }
 
-interface ArticleQuery {
+interface IArticleQuery {
   mdx: {
     frontmatter: {
       date: string
@@ -41,7 +41,7 @@ interface ArticleQuery {
   }
 }
 
-interface AboutQuery {
+interface IAboutQuery {
   allMdx: {
     edges: {
       node: { body: string }
@@ -49,7 +49,7 @@ interface AboutQuery {
   }
 }
 
-interface NotFoundQuery {
+interface INotFoundQuery {
   allMdx: {
     edges: {
       node: { body: string }
@@ -59,7 +59,7 @@ interface NotFoundQuery {
 
 type SidebarState = "show" | "hide" | null
 
-type LayoutContext = {
+interface ISidebarContext {
   sidebar: SidebarState
   show: () => void
   hide: () => void

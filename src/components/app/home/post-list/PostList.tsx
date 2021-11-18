@@ -11,7 +11,7 @@ const Container = styled("ul")`
 `
 
 const PostList = () => {
-  const posts = useStaticQuery<PostQuery>(graphql`
+  const posts = useStaticQuery<IPostQuery>(graphql`
     query {
       allMdx(
         filter: { fileAbsolutePath: { regex: "/articles/" } }

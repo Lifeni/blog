@@ -3,8 +3,8 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { RiDoubleQuotesL } from "react-icons/ri"
 import Layout, { Main, Sidebar } from "../../layout/Layout"
-import Comment from "./comment/Comment"
-import Contents from "./Contents"
+import Comment from "./widget/Comment"
+import Contents from "./widget/Contents"
 import Meta from "./Meta"
 import Provider from "./provider/Provider"
 
@@ -45,12 +45,12 @@ const Description = styled("p")`
   svg {
     width: 1.25em;
     height: 1.25em;
-    margin: 0 0.625em -0.25rem 0;
+    margin: 0 0.75em -0.25rem 0;
   }
 `
 
 interface ArticleProps {
-  data: ArticleQuery
+  data: IArticleQuery
 }
 
 const Article = ({ data }: ArticleProps) => {

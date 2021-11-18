@@ -4,7 +4,7 @@ import { useWindowScroll } from "react-use"
 import Button from "../base/Button"
 
 interface ContainerProps {
-  hidden: boolean
+  isHidden: boolean
 }
 
 const Container = styled("div")<ContainerProps>`
@@ -14,8 +14,8 @@ const Container = styled("div")<ContainerProps>`
   z-index: 100;
   border-radius: 100%;
   display: flex;
-  visibility: ${props => (props.hidden ? "hidden" : "visible")};
-  opacity: ${props => (props.hidden ? 0 : 1)};
+  visibility: ${props => (props.isHidden ? "hidden" : "visible")};
+  opacity: ${props => (props.isHidden ? 0 : 1)};
   transition: all 0.2s;
 
   svg {
@@ -35,7 +35,7 @@ const GoTop = () => {
   const { y } = useWindowScroll()
 
   return (
-    <Container hidden={y === 0}>
+    <Container isHidden={y === 0}>
       <Button
         hasBackground
         data-name="回到顶部"
