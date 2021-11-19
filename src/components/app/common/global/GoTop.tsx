@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { RiDownloadLine } from "react-icons/ri"
+import { RiDownloadLine, RiPlayFill } from "react-icons/ri"
 import { useWindowScroll } from "react-use"
 import Button from "../base/Button"
 
@@ -10,7 +10,7 @@ interface ContainerProps {
 const Container = styled("div")<ContainerProps>`
   position: fixed;
   right: 2rem;
-  bottom: 3.5rem;
+  bottom: 4rem;
   z-index: 100;
   border-radius: 100%;
   display: flex;
@@ -19,7 +19,7 @@ const Container = styled("div")<ContainerProps>`
   transition: all 0.2s;
 
   svg {
-    transform: rotate(180deg);
+    transform: rotate(-90deg) scale(1.375) translateX(-1px);
   }
 
   @media (max-width: 64rem) {
@@ -36,12 +36,8 @@ const GoTop = () => {
 
   return (
     <Container isHidden={y === 0}>
-      <Button
-        hasBackground
-        data-name="回到顶部"
-        onClick={() => window.scrollTo(0, 0)}
-      >
-        <RiDownloadLine aria-label="回到顶部图标" />
+      <Button data-name="回到顶部" onClick={() => window.scrollTo(0, 0)}>
+        <RiPlayFill aria-label="回到顶部图标" />
       </Button>
     </Container>
   )

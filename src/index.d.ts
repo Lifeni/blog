@@ -57,10 +57,8 @@ interface INotFoundQuery {
   }
 }
 
-type SidebarState = "show" | "hide" | null
-
 interface ISidebarContext {
-  sidebar: SidebarState
-  show: () => void
-  hide: () => void
+  showSidebar: boolean
+  setShow: () => void
+  setHide: () => void
 }

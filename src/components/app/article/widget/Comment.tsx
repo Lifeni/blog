@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { Giscus } from "@giscus/react"
 import { useState } from "react"
-import { RiDiscussLine } from "react-icons/ri"
+import { RiDiscussFill } from "react-icons/ri"
 
 const Container = styled("div")`
   width: 100%;
@@ -29,9 +29,9 @@ const Action = styled("button")`
   }
 
   svg {
-    width: 1.125rem;
-    height: 1.125rem;
-    margin: 0 0.75rem 0 0;
+    width: 1.125em;
+    height: 1.125em;
+    margin: 0 0.75em 0 0;
   }
 `
 
@@ -57,7 +57,7 @@ const Comment = () => {
         />
       ) : (
         <Action onClick={() => setShowComment(true)}>
-          <RiDiscussLine aria-label="评论图标" />
+          <RiDiscussFill aria-label="评论图标" />
           打开 Giscus
         </Action>
       )}

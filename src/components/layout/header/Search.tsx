@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { FormEvent, Fragment, useEffect, useRef, useState } from "react"
-import { RiSearchLine } from "react-icons/ri"
+import { RiSearchFill } from "react-icons/ri"
 import { useKey } from "react-use"
 import Button from "../../app/common/base/Button"
 import Overlay from "../../app/common/base/Overlay"
@@ -79,7 +79,7 @@ const Search = () => {
   return (
     <Fragment>
       <Button data-name="搜索" onClick={() => setIsOpen(true)}>
-        <RiSearchLine aria-label="搜索图标" />
+        <RiSearchFill aria-label="搜索图标" />
       </Button>
 
       <Container isOpen={isOpen} onSubmit={handleSearch}>

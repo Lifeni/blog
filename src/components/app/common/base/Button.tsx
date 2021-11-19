@@ -1,10 +1,6 @@
 import styled from "@emotion/styled"
 
-interface ButtonProps {
-  hasBackground?: boolean
-}
-
-const Button = styled("button")<ButtonProps>`
+const Button = styled("button")`
   position: relative;
   width: 3rem;
   height: 3rem;
@@ -13,13 +9,9 @@ const Button = styled("button")<ButtonProps>`
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  border: ${props =>
-    props.hasBackground
-      ? "var(--border)"
-      : "solid var(--border-width) transparent"};
+  border: solid var(--border-width) transparent;
   color: var(--font-primary);
-  background-color: ${props =>
-    props.hasBackground ? "var(--element-background)" : "transparent"};
+  background-color: transparent;
   font-family: inherit;
   font-weight: inherit;
   line-height: inherit;

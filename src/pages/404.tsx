@@ -4,9 +4,8 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import {
   Code,
-  ExternalLink,
-  List,
   ListItem,
+  OrderedList,
   Paragraph,
 } from "../components/app/article/provider/Component"
 import Layout, { Main, Sidebar } from "../components/layout/Layout"
@@ -54,13 +53,12 @@ const NotFoundPage = ({ data }: NotFoundProps) => {
             components={{
               h1: H1,
               p: Paragraph,
-              a: ExternalLink,
-              ul: List,
+              ol: OrderedList,
               li: ListItem,
               inlineCode: Code,
             }}
           >
-            <MDXRenderer>{data.allMdx.edges[0].node.body}</MDXRenderer>
+            <MDXRenderer>{data.allMdx.edges[0]?.node.body}</MDXRenderer>
           </MDXProvider>
         </Container>
       </Main>

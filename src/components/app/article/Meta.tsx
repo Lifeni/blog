@@ -1,10 +1,11 @@
 import styled from "@emotion/styled"
 import { Fragment } from "react"
-import { RiMarkupLine, RiTimeLine } from "react-icons/ri"
+import { RiCopyrightFill, RiMarkupFill } from "react-icons/ri"
+import { ExternalLink } from "./provider/Component"
 
 const H1 = styled("h1")`
-  padding: 0.5rem 0 2.75rem 0;
-  font-size: 1.5rem;
+  padding: 0.5rem 0 1rem 0;
+  font-size: 1.375rem;
   font-weight: 700;
   line-height: 1.75;
   text-align: start;
@@ -17,19 +18,31 @@ const H1 = styled("h1")`
 const Description = styled("p")`
   display: flex;
   align-items: flex-start;
-  padding: 0.125rem 0 0.25rem 0;
-  line-height: 2.125;
-  font-size: 1rem;
-  font-weight: 700;
+  line-height: inherit;
+  font-size: inherit;
 
   svg {
-    min-width: 1.125em;
-    min-height: 1.125em;
+    min-width: 1.25em;
+    min-height: 1.25em;
     margin: 0.375rem 0.75em 0 0;
   }
 `
 
+const Bar = styled("section")`
+  position: relative;
+  width: 100%;
+  padding: 0.375rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  white-space: nowrap;
+
+  @media (max-width: 36rem) {
+    flex-direction: column;
+  }
+`
+
 const Time = styled("time")`
+  width: fit-content;
   margin: 0 1.5rem 0 0;
   padding: 0.125rem 0;
   display: flex;
@@ -41,8 +54,21 @@ const Time = styled("time")`
   overflow: hidden;
 
   svg {
-    width: 1.125em;
-    height: 1.125em;
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.75em 0 0;
+  }
+`
+
+const Link = styled(ExternalLink)`
+  width: fit-content;
+  padding: 0.125rem 0;
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 1.25em;
+    height: 1.25em;
     margin: 0 0.75em 0 0;
   }
 `
@@ -50,7 +76,7 @@ const Time = styled("time")`
 const Hr = styled("hr")`
   width: calc(100% + 2rem);
   height: 0;
-  margin: 2.5rem -1rem 1rem -1rem;
+  margin: 2rem -1rem 1rem -1rem;
   border: none;
   border-top: var(--border);
   transition: all 0.2s;
@@ -65,16 +91,27 @@ const Meta = ({ frontmatter }: MetaProps) => {
     <Fragment>
       <H1>{frontmatter.title}</H1>
       <Description>{frontmatter.description}</Description>
-      <Time>
-        <RiTimeLine aria-label="日期图标" />
-        创建于 {frontmatter.create_date}
-      </Time>
-
-      <Time>
-        <RiMarkupLine aria-label="编辑图标" />
-        最后编辑于 {frontmatter.date}
-      </Time>
-
+      <Bar>
+        <Time>
+          <RiMarkupFill aria-label="编辑图标" />
+          {frontmatter.date === frontmatter.create_date
+            ? "创建于"
+            : "编辑于"}{" "}
+          {frontmatter.date}
+        </Time>
+        <Link
+          href={
+            frontmatter.license === "CC-BY-SA-4.0"
+              ? "https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
+              : ""
+          }
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <RiCopyrightFill aria-label="版权图标" />
+          {frontmatter.license}
+        </Link>
+      </Bar>
       <Hr />
     </Fragment>
   )

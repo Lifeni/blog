@@ -3,59 +3,12 @@ import styled from "@emotion/styled"
 const Container = styled("div")`
   position: relative;
   width: 100%;
-
-  @media (min-width: 56rem) {
-    position: sticky;
-    top: 0;
-    overflow: hidden;
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: -2rem;
-      left: 0;
-      z-index: 10;
-      width: 100%;
-      height: 2rem;
-      box-shadow: 0 0 2rem 2rem var(--background);
-      pointer-events: none;
-      transition: all 0.2s;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -2rem;
-      left: 0;
-      z-index: 10;
-      width: 100%;
-      height: 2rem;
-      box-shadow: 0 0 2rem 2rem var(--background);
-      pointer-events: none;
-      transition: all 0.2s;
-    }
-  }
-`
-
-const ContentsWrapper = styled("div")`
-  position: relative;
-  width: 100%;
-  padding: 2.25rem 1rem;
+  padding: 2.75rem 1rem 1.75rem 1rem;
   color: inherit;
   transition: all 0.2s;
 
-  @media (min-width: 56rem) {
-    max-height: 100vh;
-    overflow-y: auto;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
   @media (max-width: 36rem) {
-    padding: 1.5rem 1rem;
+    padding: 2rem 1rem 1.625rem 1rem;
   }
 `
 
@@ -67,10 +20,6 @@ const H3 = styled("h3")`
   line-height: 2;
   font-weight: 700;
   transition: all 0.2s;
-
-  @media (max-width: 36rem) {
-    padding: 0 0 0.5rem 0;
-  }
 `
 
 const Link = styled("a")`
@@ -96,12 +45,10 @@ const List = styled("ul")`
   display: flex;
   flex-direction: column;
   list-style: none;
-  font-weight: 700;
 
   ul {
     margin: 0;
     padding: 0.25rem 0 0 1.25rem;
-    font-weight: 500;
 
     li {
       &::before {
@@ -165,14 +112,12 @@ interface ContentsProps {
 const Contents = ({ items }: ContentsProps) => {
   return (
     <Container>
-      <ContentsWrapper>
-        <H3>目录</H3>
-        {items.items ? (
-          <Recursion data={items.items} />
-        ) : (
-          <Null>这篇文章没有目录</Null>
-        )}
-      </ContentsWrapper>
+      <H3>目录</H3>
+      {items.items ? (
+        <Recursion data={items.items} />
+      ) : (
+        <Null>这篇文章没有目录</Null>
+      )}
     </Container>
   )
 }

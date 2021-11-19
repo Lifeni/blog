@@ -6,7 +6,7 @@ import Meta from "./Meta"
 import Provider from "./provider/Provider"
 import Comment from "./widget/Comment"
 import Contents from "./widget/Contents"
-import Information from "./widget/Information"
+import Reference from "./widget/Reference"
 
 const Container = styled("article")`
   position: relative;
@@ -46,8 +46,8 @@ const Article = ({ data }: ArticleProps) => {
         </Container>
       </Main>
       <Sidebar>
-        <Information frontmatter={data.mdx.frontmatter} />
         <Contents items={data.mdx.tableOfContents.items[0]} />
+        <Reference frontmatter={data.mdx.frontmatter} />
       </Sidebar>
     </Layout>
   )

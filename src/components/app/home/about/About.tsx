@@ -13,7 +13,7 @@ const Container = styled("article")`
   transition: all 0.2s;
 
   @media (max-width: 36rem) {
-    padding: 1.5rem 1rem;
+    padding: 2rem 1rem 1.75rem 1rem;
   }
 `
 
@@ -27,7 +27,7 @@ const H3 = styled("h3")`
   font-weight: 700;
 
   @media (max-width: 36rem) {
-    padding: 0.5rem 0;
+    padding: 0 0 0.75rem 0;
   }
 `
 
@@ -45,7 +45,7 @@ const Hr = styled("hr")`
   transition: all 0.2s;
 
   @media (max-width: 36rem) {
-    margin: 1.375rem -1rem 1rem -1rem;
+    margin: 1.625rem -1rem 2rem -1rem;
   }
 `
 

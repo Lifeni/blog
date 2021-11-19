@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { Link as GatsbyLink } from "gatsby"
-import { RiBookOpenLine, RiCalendarLine } from "react-icons/ri"
+import { RiEyeFill, RiMarkupFill } from "react-icons/ri"
 
 const Container = styled("li")`
   position: relative;
@@ -16,9 +16,9 @@ const Container = styled("li")`
   }
 
   svg {
-    width: 1.125rem;
-    height: 1.125rem;
-    margin: 0 0.75rem 0 0;
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.75em 0 0;
   }
 
   @media (max-width: 36rem) {
@@ -51,7 +51,7 @@ const Description = styled("p")`
 const Bar = styled("section")`
   position: relative;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.375rem 0;
   display: flex;
   flex-wrap: wrap;
   white-space: nowrap;
@@ -62,9 +62,11 @@ const Bar = styled("section")`
 `
 
 const Link = styled(GatsbyLink)`
+  width: fit-content;
   display: flex;
   align-items: center;
   margin: 0 1.5rem 0 0;
+  padding: 0.125rem 0;
   color: var(--font-link);
   text-decoration: none;
   transition: all 0.2s;
@@ -77,6 +79,8 @@ const Link = styled(GatsbyLink)`
 `
 
 const Time = styled("time")`
+  width: fit-content;
+  padding: 0.125rem 0;
   display: flex;
   align-items: center;
   font-size: 1rem;
@@ -97,11 +101,11 @@ const Post = ({ post }: PostProps) => {
       <Description>{post.description}</Description>
       <Bar>
         <Link to={`/article/${post.name}`}>
-          <RiBookOpenLine aria-label="查看图标" />
+          <RiEyeFill aria-label="查看图标" />
           查看全文
         </Link>
         <Time>
-          <RiCalendarLine aria-label="日期图标" />
+          <RiMarkupFill aria-label="日期图标" />
           {post.date === post.create_date ? "创建于" : "编辑于"} {post.date}
         </Time>
       </Bar>

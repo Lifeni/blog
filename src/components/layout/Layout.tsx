@@ -15,10 +15,10 @@ import GoTop from "../app/common/global/GoTop"
 import Footer from "./footer/Footer"
 import Header from "./header/Header"
 
-export const Context = createContext<ISidebarContext>({
-  sidebar: null,
-  show: () => {},
-  hide: () => {},
+export const SidebarContext = createContext<ISidebarContext>({
+  showSidebar: false,
+  setShow: () => {},
+  setHide: () => {},
 })
 
 const Container = styled("div")`
@@ -34,6 +34,7 @@ const Content = styled("div")`
   width: 100%;
   padding: 1.25rem 2rem;
   display: flex;
+  align-items: flex-start;
   justify-content: center;
   flex: 1;
   gap: 4rem;
@@ -64,7 +65,7 @@ const Layout = ({
   description,
   children,
 }: LayoutProps) => {
-  const [sidebar, setSidebar] = useState<SidebarState>(null)
+  const [showSidebar, setSidebar] = useState(false)
 
   return (
     <Container>
@@ -89,31 +90,26 @@ const Layout = ({
         />
       </Helmet>
       <GoTop />
-      <Context.Provider
+      <SidebarContext.Provider
         value={{
-          sidebar,
-          show: () => setSidebar("show"),
-          hide: () => setSidebar("hide"),
+          showSidebar,
+          setShow: () => setSidebar(true),
+          setHide: () => setSidebar(false),
         }}
       >
         <Header hasSidebar={hasSidebar} />
         <Content>{children}</Content>
         <Footer />
-      </Context.Provider>
+      </SidebarContext.Provider>
     </Container>
   )
 }
 
 export default Layout
 
-interface MainElementProps {
-  sidebar: SidebarState
-}
-
-const MainElement = styled("main")<MainElementProps>`
+export const Main = styled("main")`
   position: relative;
-  width: ${props =>
-    props.sidebar === "hide" ? "var(--focus-width)" : "var(--main-width)"};
+  width: var(--main-width);
   max-width: 100%;
   z-index: 1;
   display: flex;
@@ -125,29 +121,52 @@ const MainElement = styled("main")<MainElementProps>`
   }
 `
 
-export const Main = (
-  props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
-) => {
-  const { sidebar } = useContext(Context)
-  return <MainElement {...props} sidebar={sidebar} />
-}
-
 interface SidebarElementProps {
-  sidebar: SidebarState
+  showSidebar: boolean
 }
 
-const SidebarElement = styled("aside")<SidebarElementProps>`
-  position: relative;
+const SidebarWrapper = styled("aside")<SidebarElementProps>`
+  position: sticky;
+  top: 0;
+  overflow: hidden;
   width: var(--sidebar-width);
   max-width: 100%;
-  display: ${props => (props.sidebar === "hide" ? "none" : "flex")};
+  display: flex;
   flex-direction: column;
+
+  @media (min-width: 56rem) {
+    &::before {
+      content: "";
+      position: absolute;
+      top: -1.5rem;
+      left: 0;
+      z-index: 10;
+      width: 100%;
+      height: 1.5rem;
+      box-shadow: 0 0 1.5rem 1.5rem var(--background);
+      pointer-events: none;
+      transition: all 0.2s;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1.5rem;
+      left: 0;
+      z-index: 10;
+      width: 100%;
+      height: 1.5rem;
+      box-shadow: 0 0 1.5rem 1.5rem var(--background);
+      pointer-events: none;
+      transition: all 0.2s;
+    }
+  }
 
   @media (max-width: 56rem) {
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: ${props => (props.sidebar === "show" ? 2000 : 1)};
+    z-index: ${props => (props.showSidebar ? 2000 : 1)};
     width: 32rem;
     max-width: calc(100vw - 2rem);
     height: auto;
@@ -158,11 +177,11 @@ const SidebarElement = styled("aside")<SidebarElementProps>`
     border: var(--border);
     background-color: var(--background);
     overflow-y: auto;
-    visibility: ${props => (props.sidebar === "show" ? "visible" : "hidden")};
-    opacity: ${props => (props.sidebar === "show" ? "1" : "0")};
+    visibility: ${props => (props.showSidebar ? "visible" : "hidden")};
+    opacity: ${props => (props.showSidebar ? "1" : "0")};
     transform: translate(-50%, -50%);
     transition: ${props =>
-      props.sidebar === "show"
+      props.showSidebar
         ? "opacity 0.2s, background-color 0.2s, visibility 0.2s, border 0.2s"
         : "none"};
   }
@@ -172,16 +191,28 @@ const SidebarElement = styled("aside")<SidebarElementProps>`
   }
 `
 
+const SidebarElement = styled("div")`
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
 export const Sidebar = (
   props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
 ) => {
   const isMobile = useMedia("(max-width: 56rem)")
-  const { sidebar, hide } = useContext(Context)
+  const { showSidebar, setHide } = useContext(SidebarContext)
 
   return (
     <Fragment>
-      <SidebarElement {...props} sidebar={sidebar} />
-      <Overlay isOpen={isMobile && sidebar === "show"} onClick={hide} />
+      <SidebarWrapper {...props} showSidebar={showSidebar}>
+        <SidebarElement>{props.children}</SidebarElement>
+      </SidebarWrapper>
+      <Overlay isOpen={isMobile && showSidebar} onClick={setHide} />
     </Fragment>
   )
 }
