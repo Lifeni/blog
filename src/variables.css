@@ -27,7 +27,7 @@
   --border-width: 1px;
   --border-color: #e6eaee;
   --border: solid var(--border-width) var(--border-color);
-  --border-block: solid 0.5rem #f2f5f8;
+  --border-block: solid 0.5rem var(--element-background-hover);
   --border-radius: 0.5rem;
 
   --font-primary: #363636;
@@ -35,8 +35,6 @@
   --font-light: #e6eaee;
   --font-link: #0366d6;
   --font-link-hover: #065bbd;
-
-  --shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,8 +44,6 @@
     --element-background-hover: #1e2224;
 
     --border-color: #202426;
-    --border: solid var(--border-width) var(--border-color);
-    --border-block: solid 0.5rem #1e2224;
 
     --font-primary: #c1c5ca;
     --font-secondary: #8b949e;
