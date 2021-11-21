@@ -4,7 +4,7 @@ import { RiDoubleQuotesL, RiGithubFill, RiHashtag } from "react-icons/ri"
 const Container = styled("div")`
   position: relative;
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 2.75rem 1rem;
   display: flex;
   flex-direction: column;
   border-top: var(--border);
@@ -15,6 +15,10 @@ const Container = styled("div")`
     width: 1.25em;
     height: 1.25em;
     margin: 0 0.75em 0 0;
+  }
+
+  @media (max-width: 36rem) {
+    padding: 2rem 1rem;
   }
 `
 

@@ -1,7 +1,3 @@
-:root {
-  font-size: var(--font-size);
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -52,4 +48,22 @@ body {
 .compress-spacing + .compress-spacing,
 .gatsby-highlight + .gatsby-highlight {
   margin-top: -0.725rem;
+}
+
+.light {
+  display: initial;
+}
+
+.dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .light {
+    display: none;
+  }
+
+  .dark {
+    display: initial;
+  }
 }

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { Fragment } from "react"
 import { friends } from "../../../../data/friends"
 
 const Container = styled("div")`
@@ -44,7 +45,7 @@ const AvatarLink = styled("a")`
 const Friend = () => {
   return (
     <Container>
-      {friends.map(({ name, link }) => (
+      {friends.map(({ name, link, theme }) => (
         <AvatarLink
           key={name}
           href={link}
@@ -52,10 +53,25 @@ const Friend = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Avatar
-            src={`https://file.lifeni.life/avatar/friends/${name}.webp`}
-            alt={name}
-          />
+          {theme ? (
+            <Fragment>
+              <Avatar
+                src={`https://file.lifeni.life/avatar/friends/${name}-light.webp`}
+                alt={name}
+                className="light"
+              />
+              <Avatar
+                src={`https://file.lifeni.life/avatar/friends/${name}-dark.webp`}
+                alt={name}
+                className="dark"
+              />
+            </Fragment>
+          ) : (
+            <Avatar
+              src={`https://file.lifeni.life/avatar/friends/${name}.webp`}
+              alt={name}
+            />
+          )}
         </AvatarLink>
       ))}
     </Container>
