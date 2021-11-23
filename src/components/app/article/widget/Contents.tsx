@@ -42,6 +42,7 @@ const Link = styled("a")`
 const List = styled("ul")`
   width: 100%;
   margin: 0.25rem 0 0.25rem 0;
+  padding: 0 1px;
   display: flex;
   flex-direction: column;
   list-style: none;

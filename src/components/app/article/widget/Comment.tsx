@@ -6,6 +6,7 @@ import { RiDiscussFill } from "react-icons/ri"
 const Container = styled("div")`
   width: 100%;
   margin: 2.5rem 0 0 0;
+  padding: 0 1px;
 
   @media (max-width: 36rem) {
     margin: 1.5rem 0 0 0;

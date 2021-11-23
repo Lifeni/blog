@@ -5,7 +5,7 @@ import { RiEyeFill, RiMarkupFill } from "react-icons/ri"
 const Container = styled("li")`
   position: relative;
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 1.75rem 1rem;
   border-bottom: var(--border);
   list-style: none;
   transition: all 0.2s;
