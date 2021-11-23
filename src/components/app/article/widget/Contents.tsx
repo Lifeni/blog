@@ -55,7 +55,7 @@ const List = styled("ul")`
       &::before {
         content: "•";
         position: absolute;
-        left: -1.25rem;
+        left: -1.375rem;
         color: inherit;
         font-family: var(--font-mono);
         transition: all 0.2s;

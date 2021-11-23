@@ -13,7 +13,7 @@ const Overlay = styled("div")<OverlayProps>`
   height: 100vh;
   visibility: ${props => (props.isOpen ? "visible" : "hidden")};
   opacity: ${props => (props.isOpen ? 1 : 0)};
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   transition: opacity 0.2s, visibility 0.2s;
 `
 

@@ -149,7 +149,7 @@ export const LazyImage = (
 ) => (
   <ImageWrapper className="compress-spacing">
     <Zoom
-      overlayBgColorEnd="rgba(0, 0, 0, 0.5)"
+      overlayBgColorEnd="rgba(0, 0, 0, 0.4)"
       wrapStyle={{
         width: "calc(100% + 2rem)",
         margin: "1rem -1rem",

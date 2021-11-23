@@ -29,12 +29,16 @@ const Container = styled("div")`
   flex-direction: column;
 `
 
-const Content = styled("div")`
+interface ContentProps {
+  isCentered?: boolean
+}
+
+const Content = styled("div")<ContentProps>`
   position: relative;
   width: 100%;
   padding: 1.25rem 2rem;
   display: flex;
-  align-items: flex-start;
+  align-items: ${props => (props.isCentered ? "center" : "flex-start")};
   justify-content: center;
   flex: 1;
   gap: 4rem;
@@ -54,6 +58,7 @@ const Content = styled("div")`
 
 interface LayoutProps {
   hasSidebar?: boolean
+  isCentered?: boolean
   title?: string
   description?: string
   children: ReactNode | ReactNode[]
@@ -61,6 +66,7 @@ interface LayoutProps {
 
 const Layout = ({
   hasSidebar = true,
+  isCentered = false,
   title,
   description,
   children,
@@ -98,7 +104,7 @@ const Layout = ({
         }}
       >
         <Header hasSidebar={hasSidebar} />
-        <Content>{children}</Content>
+        <Content isCentered={isCentered}>{children}</Content>
         <Footer />
       </SidebarContext.Provider>
     </Container>

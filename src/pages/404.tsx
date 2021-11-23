@@ -1,24 +1,19 @@
 import styled from "@emotion/styled"
-import { MDXProvider } from "@mdx-js/react"
-import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import {
-  Code,
-  ListItem,
-  OrderedList,
-  Paragraph,
-} from "../components/app/article/provider/Component"
-import Layout, { Main, Sidebar } from "../components/layout/Layout"
+import Layout from "../components/layout/Layout"
 
 const Container = styled("article")`
   position: relative;
   width: 100%;
+  height: 100%;
   padding: 2.25rem 1rem;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 2;
+  flex: 1;
 
   @media (max-width: 36rem) {
     padding: 2rem 0.75rem;
@@ -26,57 +21,24 @@ const Container = styled("article")`
 `
 
 const H1 = styled("h1")`
-  padding: 0.375rem 0 2.5rem 0;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-family: var(--font-mono);
   font-weight: 700;
-  line-height: 1.75;
-
-  @media (max-width: 36rem) {
-    padding: 0.375rem 0 2rem 0;
-  }
 `
 
-interface NotFoundProps {
-  data: INotFoundQuery
-}
-
-const NotFoundPage = ({ data }: NotFoundProps) => {
+const NotFoundPage = () => {
   return (
     <Layout
       hasSidebar={false}
+      isCentered={true}
       title="找不到页面"
       description="你要找的页面不在这里。"
     >
-      <Main>
-        <Container>
-          <MDXProvider
-            components={{
-              h1: H1,
-              p: Paragraph,
-              ol: OrderedList,
-              li: ListItem,
-              inlineCode: Code,
-            }}
-          >
-            <MDXRenderer>{data.allMdx.edges[0]?.node.body}</MDXRenderer>
-          </MDXProvider>
-        </Container>
-      </Main>
-      <Sidebar />
+      <Container>
+        <H1>[&nbsp;找不到页面&nbsp;]</H1>
+      </Container>
     </Layout>
   )
 }
-
-export const query = graphql`
-  query {
-    allMdx(filter: { fileAbsolutePath: { regex: "/404.mdx/" } }) {
-      edges {
-        node {
-          body
-        }
-      }
-    }
-  }
-`
 
 export default NotFoundPage
