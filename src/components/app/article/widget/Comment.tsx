@@ -8,8 +8,12 @@ const Container = styled("div")`
   margin: 2.5rem 0 0 0;
   padding: 0 1px;
 
+  @media (max-width: 48rem) {
+    margin: 2rem 0 0.25rem 0;
+  }
+
   @media (max-width: 36rem) {
-    margin: 1.5rem 0 0 0;
+    margin: 1.5rem 0 0.25rem 0;
   }
 `
 
@@ -27,6 +31,8 @@ const Action = styled("button")`
 
   &:hover {
     color: var(--font-link-hover);
+    text-underline-offset: 0.375em;
+    text-decoration: underline;
   }
 
   svg {

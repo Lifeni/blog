@@ -52,6 +52,10 @@ const Content = styled("div")<ContentProps>`
   }
 
   @media (max-width: 48rem) {
+    padding: 0.75rem 1.25rem;
+  }
+
+  @media (max-width: 36rem) {
     padding: 0.25rem 1.25rem;
   }
 `

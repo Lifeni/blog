@@ -8,7 +8,7 @@ const Container = styled("div")`
   transition: all 0.2s;
 
   @media (max-width: 36rem) {
-    padding: 2rem 1rem 1.625rem 1rem;
+    padding: 2rem 1rem 1.5rem 1rem;
   }
 `
 
@@ -41,7 +41,7 @@ const Link = styled("a")`
 
 const List = styled("ul")`
   width: 100%;
-  margin: 0.25rem 0 0.25rem 0;
+  margin: 0.375rem 0;
   padding: 0 1px;
   display: flex;
   flex-direction: column;

@@ -74,7 +74,7 @@ const Link = styled(GatsbyLink)`
   &:hover {
     color: var(--font-link-hover);
     text-decoration: underline;
-    text-underline-offset: 0.25em;
+    text-underline-offset: 0.375em;
   }
 `
 

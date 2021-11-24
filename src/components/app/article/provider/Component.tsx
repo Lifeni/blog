@@ -55,7 +55,7 @@ export const Link = styled("a")`
 
   &:hover {
     color: var(--font-link-hover);
-    text-underline-offset: 0.25em;
+    text-underline-offset: 0.375em;
     text-decoration: underline;
   }
 `

@@ -23,7 +23,7 @@ const Container = styled("div")`
 `
 
 const H3 = styled("h3")`
-  padding: 0 0 1rem 0;
+  padding: 0 0 1.125rem 0;
   display: flex;
   align-items: center;
   font-size: 1.125rem;
@@ -48,7 +48,7 @@ const Link = styled("a")`
   &:hover {
     color: var(--font-link-hover);
     text-decoration: underline;
-    text-underline-offset: 0.25em;
+    text-underline-offset: 0.375em;
   }
 `
 
