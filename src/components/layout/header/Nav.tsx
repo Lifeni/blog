@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { RiFileListFill } from "react-icons/ri"
+import { RiFileListLine } from "react-icons/ri"
 import { useMedia } from "react-use"
 import Button from "../../app/common/base/Button"
 import { SidebarContext } from "../Layout"
@@ -10,7 +10,7 @@ const Nav = () => {
 
   return isMobile ? (
     <Button onClick={setShow}>
-      <RiFileListFill aria-label="菜单图标" />
+      <RiFileListLine aria-label="菜单图标" />
     </Button>
   ) : null
 }

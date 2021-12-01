@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { Link as GatsbyLink } from "gatsby"
-import { RiHome2Fill } from "react-icons/ri"
+import { RiHome2Line } from "react-icons/ri"
 import Button from "../../app/common/base/Button"
 import Nav from "./Nav"
 import Search from "./Search"
@@ -46,7 +46,7 @@ const Header = ({ hasSidebar }: HeaderProps) => {
     <Container>
       <Section>
         <Link to="/" data-name="主页">
-          <RiHome2Fill aria-label="主页图标" />
+          <RiHome2Line aria-label="主页图标" />
         </Link>
       </Section>
       <Section>

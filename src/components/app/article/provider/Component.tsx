@@ -279,5 +279,7 @@ export const Hr = styled("hr")`
 export const Iframe = styled("iframe")`
   width: calc(100% + 2rem) !important;
   margin: 1rem -1rem;
+  border: var(--border);
   border-radius: var(--border-radius);
+  background-color: var(--element-background);
 `

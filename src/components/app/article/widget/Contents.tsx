@@ -18,7 +18,7 @@ const Container = styled("div")`
     &::before {
       content: "";
       position: absolute;
-      top: 4.75rem;
+      top: 4.625rem;
       left: 0;
       z-index: 10;
       width: 100%;
@@ -60,6 +60,7 @@ const Wrapper = styled("div")`
   }
 
   &::-webkit-scrollbar-thumb {
+    margin: 1rem 0;
     background-color: var(--border-color);
   }
 `

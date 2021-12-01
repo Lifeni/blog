@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { Link as GatsbyLink } from "gatsby"
-import { RiEyeFill, RiMarkupFill } from "react-icons/ri"
+import { RiEyeLine, RiMarkupLine } from "react-icons/ri"
 
 const Container = styled("li")`
   position: relative;
@@ -101,11 +101,11 @@ const Post = ({ post }: PostProps) => {
       <Description>{post.description}</Description>
       <Bar>
         <Link to={`/article/${post.name}`}>
-          <RiEyeFill aria-label="查看图标" />
+          <RiEyeLine aria-label="查看图标" />
           查看全文
         </Link>
         <Time>
-          <RiMarkupFill aria-label="日期图标" />
+          <RiMarkupLine aria-label="日期图标" />
           {post.date === post.create_date ? "创建于" : "编辑于"} {post.date}
         </Time>
       </Bar>

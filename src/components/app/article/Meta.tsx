@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { Fragment } from "react"
-import { RiCopyrightFill, RiMarkupFill } from "react-icons/ri"
+import { RiCopyrightLine, RiMarkupLine } from "react-icons/ri"
 import { ExternalLink } from "./provider/Component"
 
 const H1 = styled("h1")`
@@ -93,7 +93,7 @@ const Meta = ({ frontmatter }: MetaProps) => {
       <Description>{frontmatter.description}</Description>
       <Bar>
         <Time>
-          <RiMarkupFill aria-label="编辑图标" />
+          <RiMarkupLine aria-label="编辑图标" />
           {frontmatter.date === frontmatter.create_date
             ? "创建于"
             : "编辑于"}{" "}
@@ -108,7 +108,7 @@ const Meta = ({ frontmatter }: MetaProps) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <RiCopyrightFill aria-label="版权图标" />
+          <RiCopyrightLine aria-label="版权图标" />
           {frontmatter.license}
         </Link>
       </Bar>

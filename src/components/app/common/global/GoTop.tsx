@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { RiDownloadLine, RiPlayFill } from "react-icons/ri"
+import { RiDownloadLine } from "react-icons/ri"
 import { useWindowScroll } from "react-use"
 import Button from "../base/Button"
 
@@ -19,7 +19,7 @@ const Container = styled("div")<ContainerProps>`
   transition: all 0.2s;
 
   svg {
-    transform: rotate(-90deg) scale(1.375) translateX(-1px);
+    transform: rotate(180deg);
   }
 
   @media (max-width: 64rem) {
@@ -37,7 +37,7 @@ const GoTop = () => {
   return (
     <Container isHidden={y === 0}>
       <Button data-name="回到顶部" onClick={() => window.scrollTo(0, 0)}>
-        <RiPlayFill aria-label="回到顶部图标" />
+        <RiDownloadLine aria-label="回到顶部图标" />
       </Button>
     </Container>
   )

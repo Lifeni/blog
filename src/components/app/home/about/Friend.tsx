@@ -23,6 +23,7 @@ const AvatarLink = styled("a")`
   height: 2.25rem;
   border-radius: 100%;
   display: flex;
+  background-color: var(--element-background);
   user-select: none;
   color: transparent;
 
