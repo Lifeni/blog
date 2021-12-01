@@ -4,11 +4,12 @@ import { RiDoubleQuotesL, RiGithubFill, RiHashtag } from "react-icons/ri"
 const Container = styled("div")`
   position: relative;
   width: 100%;
-  padding: 2rem 1rem 2.75rem 1rem;
+  padding: 1.75rem 1rem 2.5rem 1rem;
   display: flex;
   flex-direction: column;
   border-top: var(--border);
   font-size: 1rem;
+  flex: 1;
   transition: all 0.2s;
 
   svg {
@@ -18,12 +19,14 @@ const Container = styled("div")`
   }
 
   @media (max-width: 36rem) {
-    padding: 2rem 1rem;
+    padding: 1.75rem 1rem 2rem 1rem;
   }
 `
 
 const H3 = styled("h3")`
-  padding: 0 0 1.125rem 0;
+  width: fit-content;
+  margin: 0 0 0.375rem 0;
+  padding: 0.25rem 0 0.75rem 0;
   display: flex;
   align-items: center;
   font-size: 1.125rem;

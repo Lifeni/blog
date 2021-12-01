@@ -144,34 +144,6 @@ const SidebarWrapper = styled("aside")<SidebarElementProps>`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 56rem) {
-    &::before {
-      content: "";
-      position: absolute;
-      top: -1.5rem;
-      left: 0;
-      z-index: 10;
-      width: 100%;
-      height: 1.5rem;
-      box-shadow: 0 0 1.5rem 1.5rem var(--background);
-      pointer-events: none;
-      transition: all 0.2s;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -1.5rem;
-      left: 0;
-      z-index: 10;
-      width: 100%;
-      height: 1.5rem;
-      box-shadow: 0 0 1.5rem 1.5rem var(--background);
-      pointer-events: none;
-      transition: all 0.2s;
-    }
-  }
-
   @media (max-width: 56rem) {
     position: fixed;
     top: 50%;
@@ -198,16 +170,17 @@ const SidebarWrapper = styled("aside")<SidebarElementProps>`
 
   @media (max-width: 36rem) {
     padding: 0 1.25rem;
+    max-height: calc(75vh - 2rem);
   }
 `
 
 const SidebarElement = styled("div")`
   max-height: 100vh;
-  overflow-y: auto;
-  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
 
-  &::-webkit-scrollbar {
-    display: none;
+  @media (max-width: 56rem) {
+    max-height: unset;
   }
 `
 

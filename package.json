@@ -5,14 +5,14 @@
   "description": "个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。",
   "author": "LFN",
   "scripts": {
-    "develop": "gatsby develop  --host 0.0.0.0 --port 8000",
+    "develop": "gatsby develop --host 0.0.0.0 --port 8000",
     "start": "gatsby develop --host 0.0.0.0 --port 8000",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@emotion/react": "^11.6.0",
+    "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "@giscus/react": "^1.0.1",
     "@mdx-js/mdx": "^1.6.22",
