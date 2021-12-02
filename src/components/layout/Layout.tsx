@@ -62,6 +62,7 @@ const Content = styled("div")<ContentProps>`
 
 interface LayoutProps {
   hasSidebar?: boolean
+  hasFooter?: boolean
   isCentered?: boolean
   title?: string
   description?: string
@@ -70,6 +71,7 @@ interface LayoutProps {
 
 const Layout = ({
   hasSidebar = true,
+  hasFooter = true,
   isCentered = false,
   title,
   description,
@@ -109,7 +111,7 @@ const Layout = ({
       >
         <Header hasSidebar={hasSidebar} />
         <Content isCentered={isCentered}>{children}</Content>
-        <Footer />
+        {hasFooter && <Footer />}
       </SidebarContext.Provider>
     </Container>
   )

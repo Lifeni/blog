@@ -9,6 +9,7 @@ const Container = styled("header")`
   position: relative;
   width: 100%;
   padding: 0.75rem 2rem;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -37,8 +37,8 @@ const Action = styled("button")`
   }
 
   svg {
-    width: 1.125em;
-    height: 1.125em;
+    width: 1.25em;
+    height: 1.25em;
     margin: 0 0.75em 0 0;
   }
 `

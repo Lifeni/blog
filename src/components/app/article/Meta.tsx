@@ -4,7 +4,7 @@ import { RiCopyrightLine, RiMarkupLine } from "react-icons/ri"
 import { ExternalLink } from "./provider/Component"
 
 const H1 = styled("h1")`
-  padding: 0.375rem 0 1.125rem 0;
+  padding: 0.375rem 0 1.25rem 0;
   font-size: 1.375rem;
   font-weight: 700;
   line-height: 1.75;

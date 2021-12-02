@@ -27,7 +27,7 @@
   --border-width: 1px;
   --border-color: #e6eaee;
   --border: solid var(--border-width) var(--border-color);
-  --border-block: solid 0.5rem var(--element-background-hover);
+  --border-block: solid 0.5rem var(--border-color);
   --border-radius: 0.5rem;
 
   --font-primary: #363636;

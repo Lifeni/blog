@@ -51,17 +51,20 @@ const Wrapper = styled("div")`
   flex: 1;
   scrollbar-width: thin;
   scrollbar-color: var(--border-color) var(--element-background);
+  transition: all 0.2s;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
     height: 100%;
     background-color: var(--element-background);
+    transition: all 0.2s;
   }
 
   &::-webkit-scrollbar-thumb {
     margin: 1rem 0;
     background-color: var(--border-color);
+    transition: all 0.2s;
   }
 `
 
@@ -106,12 +109,13 @@ const List = styled("ul")`
   ul {
     margin: 0;
     padding: 0.25rem 0 0 1.25rem;
+    transition: all 0.2s;
 
     li {
       &::before {
         content: "•";
         position: absolute;
-        left: -1.375rem;
+        left: -1.25rem;
         color: inherit;
         font-family: var(--font-mono);
         transition: all 0.2s;

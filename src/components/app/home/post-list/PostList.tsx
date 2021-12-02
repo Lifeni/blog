@@ -15,7 +15,7 @@ const Container = styled("ul")`
 const Action = styled("button")`
   position: relative;
   width: fit-content;
-  margin: 0.5rem 1rem 1.75rem 1rem;
+  margin: 0.625rem 1rem 2rem 1rem;
   display: flex;
   align-items: center;
   border: none;
@@ -35,17 +35,17 @@ const Action = styled("button")`
   }
 
   svg {
-    width: 1.125em;
-    height: 1.125em;
+    width: 1.25em;
+    height: 1.25em;
     margin: 0 0.75em 0 0;
   }
 
   @media (max-width: 48rem) {
-    margin: 0 1rem 1.5rem 1rem;
+    margin: 0 1rem 1.875rem 1rem;
   }
 
   @media (max-width: 36rem) {
-    margin: -0.25rem 0.75rem 1.5rem 0.75rem;
+    margin: -0.125rem 0.75rem 1.625rem 0.75rem;
   }
 `
 

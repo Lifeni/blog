@@ -2,9 +2,12 @@ import styled from "@emotion/styled"
 import Layout from "../components/layout/Layout"
 
 const Container = styled("article")`
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
+  z-index: 10;
   padding: 2.25rem 1rem;
   display: flex;
   align-items: center;
@@ -30,6 +33,7 @@ const NotFoundPage = () => {
   return (
     <Layout
       hasSidebar={false}
+      hasFooter={false}
       isCentered={true}
       title="找不到页面"
       description="你要找的页面不在这里。"
