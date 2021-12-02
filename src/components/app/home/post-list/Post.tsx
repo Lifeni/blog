@@ -6,13 +6,13 @@ const Container = styled("li")`
   position: relative;
   width: 100%;
   padding: 1.75rem 1rem;
-  border-bottom: var(--border);
+  border-top: var(--border);
   list-style: none;
   transition: all 0.2s;
 
-  &:last-of-type {
+  &:first-of-type {
     margin: 0;
-    border-bottom: none;
+    border-top: none;
   }
 
   svg {

@@ -178,6 +178,12 @@ const SidebarElement = styled("div")`
   max-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media (max-width: 56rem) {
     max-height: unset;

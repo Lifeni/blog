@@ -22,6 +22,7 @@ const Action = styled("button")`
   align-items: center;
   border: none;
   font-size: inherit;
+  font-weight: inherit;
   line-height: inherit;
   font-family: inherit;
   background-color: transparent;

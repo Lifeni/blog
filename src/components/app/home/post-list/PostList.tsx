@@ -1,5 +1,7 @@
 import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
+import { useState } from "react"
+import { RiFileList3Line } from "react-icons/ri"
 import Post from "./Post"
 
 const Container = styled("ul")`
@@ -10,7 +12,46 @@ const Container = styled("ul")`
   flex-direction: column;
 `
 
+const Action = styled("button")`
+  position: relative;
+  width: fit-content;
+  margin: 0.5rem 1rem 1.75rem 1rem;
+  display: flex;
+  align-items: center;
+  border: none;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  background-color: transparent;
+  color: var(--font-link);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--font-link-hover);
+    text-underline-offset: 0.375em;
+    text-decoration: underline;
+  }
+
+  svg {
+    width: 1.125em;
+    height: 1.125em;
+    margin: 0 0.75em 0 0;
+  }
+
+  @media (max-width: 48rem) {
+    margin: 0 1rem 1.5rem 1rem;
+  }
+
+  @media (max-width: 36rem) {
+    margin: -0.25rem 0.75rem 1.5rem 0.75rem;
+  }
+`
+
 const PostList = () => {
+  const [showAllPosts, setShowAllPosts] = useState(false)
+
   const posts = useStaticQuery<IPostQuery>(graphql`
     query {
       allMdx(
@@ -38,9 +79,25 @@ const PostList = () => {
 
   return (
     <Container>
-      {posts.allMdx.edges.map(post => (
+      {posts.allMdx.edges.slice(0, 4).map(post => (
         <Post post={post.node.frontmatter} key={post.node.frontmatter.name} />
       ))}
+      {posts.allMdx.edges.length > 4 &&
+        (showAllPosts ? (
+          posts.allMdx.edges
+            .slice(4)
+            .map(post => (
+              <Post
+                post={post.node.frontmatter}
+                key={post.node.frontmatter.name}
+              />
+            ))
+        ) : (
+          <Action onClick={() => setShowAllPosts(true)}>
+            <RiFileList3Line aria-label="文章图标" />
+            其余 {posts.allMdx.edges.length - 4} 篇文章 ...
+          </Action>
+        ))}
     </Container>
   )
 }

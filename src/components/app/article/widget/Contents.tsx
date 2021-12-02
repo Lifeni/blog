@@ -18,12 +18,12 @@ const Container = styled("div")`
     &::before {
       content: "";
       position: absolute;
-      top: 4.625rem;
-      left: 0;
+      top: 5.625rem;
+      right: 1.5rem;
       z-index: 10;
       width: 100%;
       height: 1rem;
-      box-shadow: 0 0 0 1rem var(--background);
+      background-color: var(--background);
       pointer-events: none;
       transition: all 0.2s;
     }
@@ -31,12 +31,12 @@ const Container = styled("div")`
     &::after {
       content: "";
       position: absolute;
-      bottom: 0.625rem;
-      left: 0;
+      bottom: 1.625rem;
+      right: 1.5rem;
       z-index: 10;
       width: 100%;
       height: 1rem;
-      box-shadow: 0 0 0 1rem var(--background);
+      background-color: var(--background);
       pointer-events: none;
       transition: all 0.2s;
     }
