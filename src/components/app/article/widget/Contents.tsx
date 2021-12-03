@@ -7,7 +7,6 @@ const Container = styled("div")`
   display: flex;
   flex-direction: column;
   color: inherit;
-  overflow: hidden;
   transition: all 0.2s;
 
   @media (max-width: 36rem) {
@@ -15,6 +14,8 @@ const Container = styled("div")`
   }
 
   @media (min-width: 56rem) {
+    overflow: hidden;
+
     &::before {
       content: "";
       position: absolute;
@@ -31,7 +32,7 @@ const Container = styled("div")`
     &::after {
       content: "";
       position: absolute;
-      bottom: 1.625rem;
+      bottom: 1.75rem;
       right: 1.5rem;
       z-index: 10;
       width: 100%;
@@ -104,6 +105,7 @@ const List = styled("ul")`
   padding: 0 1px;
   display: flex;
   flex-direction: column;
+  font-family: var(--font-mono);
   list-style: none;
 
   ul {

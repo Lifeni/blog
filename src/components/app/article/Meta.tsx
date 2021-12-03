@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { Fragment } from "react"
-import { RiCopyrightLine, RiMarkupLine } from "react-icons/ri"
+import { RiCalendarLine, RiCopyrightLine } from "react-icons/ri"
 import { ExternalLink } from "./provider/Component"
 
 const H1 = styled("h1")`
@@ -20,12 +20,7 @@ const Description = styled("p")`
   align-items: flex-start;
   line-height: inherit;
   font-size: inherit;
-
-  svg {
-    min-width: 1.25em;
-    min-height: 1.25em;
-    margin: 0.375rem 0.75em 0 0;
-  }
+  word-break: break-all;
 `
 
 const Bar = styled("section")`
@@ -37,7 +32,7 @@ const Bar = styled("section")`
   white-space: nowrap;
 
   @media (max-width: 36rem) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 `
 
@@ -54,8 +49,8 @@ const Time = styled("time")`
   overflow: hidden;
 
   svg {
-    width: 1.25em;
-    height: 1.25em;
+    width: 1.2em;
+    height: 1.2em;
     margin: 0 0.75em 0 0;
   }
 `
@@ -67,8 +62,8 @@ const Link = styled(ExternalLink)`
   align-items: center;
 
   svg {
-    width: 1.25em;
-    height: 1.25em;
+    width: 1.2em;
+    height: 1.2em;
     margin: 0 0.75em 0 0;
   }
 `
@@ -93,7 +88,7 @@ const Meta = ({ frontmatter }: MetaProps) => {
       <Description>{frontmatter.description}</Description>
       <Bar>
         <Time>
-          <RiMarkupLine aria-label="编辑图标" />
+          <RiCalendarLine aria-label="日期图标" />
           {frontmatter.date === frontmatter.create_date
             ? "创建于"
             : "编辑于"}{" "}

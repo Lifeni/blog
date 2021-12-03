@@ -13,8 +13,8 @@ const Container = styled("div")`
   transition: all 0.2s;
 
   svg {
-    width: 1.25em;
-    height: 1.25em;
+    width: 1.2em;
+    height: 1.2em;
     margin: 0 0.75em 0 0;
   }
 

@@ -73,15 +73,33 @@ export const ExternalLink = (
   )
 
 export const List = styled("ul")`
+  position: relative;
   margin: 0.125rem 0;
   padding: 0 0 0 1.125rem;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+
+  li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: inherit;
+    font-family: var(--font-mono);
+    transition: all 0.2s;
+  }
 `
 
-export const OrderedList = List.withComponent("ol")
+export const OrderedList = styled("ol")`
+  margin: 0.125rem 0;
+  padding: 0 0 0 1.125rem;
+  display: flex;
+  flex-direction: column;
+`
 
 export const ListItem = styled("li")`
-  margin: 0.25rem 0;
-  padding: 0 0 0 0.5rem;
+  margin: 0.125rem 0;
+  padding: 0 0 0 0.375rem;
 `
 
 export const Code = styled("code")`

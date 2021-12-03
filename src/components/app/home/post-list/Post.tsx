@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { Link as GatsbyLink } from "gatsby"
-import { RiEyeLine, RiMarkupLine } from "react-icons/ri"
+import { RiBookOpenLine, RiCalendarLine } from "react-icons/ri"
 
 const Container = styled("li")`
   position: relative;
@@ -16,8 +16,8 @@ const Container = styled("li")`
   }
 
   svg {
-    width: 1.25em;
-    height: 1.25em;
+    width: 1.2em;
+    height: 1.2em;
     margin: 0 0.75em 0 0;
   }
 
@@ -101,11 +101,11 @@ const Post = ({ post }: PostProps) => {
       <Description>{post.description}</Description>
       <Bar>
         <Link to={`/article/${post.name}`}>
-          <RiEyeLine aria-label="查看图标" />
+          <RiBookOpenLine aria-label="查看图标" />
           查看全文
         </Link>
         <Time>
-          <RiMarkupLine aria-label="日期图标" />
+          <RiCalendarLine aria-label="日期图标" />
           {post.date === post.create_date ? "创建于" : "编辑于"} {post.date}
         </Time>
       </Bar>

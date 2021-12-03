@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { RiDownloadLine } from "react-icons/ri"
+import { RiArrowUpLine } from "react-icons/ri"
 import { useWindowScroll } from "react-use"
 import Button from "../base/Button"
 
@@ -18,10 +18,6 @@ const Container = styled("div")<ContainerProps>`
   opacity: ${props => (props.isHidden ? 0 : 1)};
   transition: all 0.2s;
 
-  svg {
-    transform: rotate(180deg);
-  }
-
   @media (max-width: 64rem) {
     right: 1.5rem;
   }
@@ -31,14 +27,19 @@ const Container = styled("div")<ContainerProps>`
   }
 `
 
+const Action = styled(Button)`
+  border: var(--border);
+  background-color: var(--background);
+`
+
 const GoTop = () => {
   const { y } = useWindowScroll()
 
   return (
     <Container isHidden={y === 0}>
-      <Button data-name="回到顶部" onClick={() => window.scrollTo(0, 0)}>
-        <RiDownloadLine aria-label="回到顶部图标" />
-      </Button>
+      <Action data-name="回到顶部" onClick={() => window.scrollTo(0, 0)}>
+        <RiArrowUpLine aria-label="回到顶部图标" />
+      </Action>
     </Container>
   )
 }

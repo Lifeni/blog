@@ -31,10 +31,12 @@ const Button = styled("button")`
       position: absolute;
       left: 50%;
       top: calc(100% + 0.5rem);
-      padding: 0.125rem 0.625rem;
+      padding: 0.375rem 0.625rem;
       display: flex;
+      align-items: center;
       border-radius: var(--border-radius);
       font-size: 0.925rem;
+      line-height: 1.5;
       color: var(--font-light);
       background-color: var(--font-primary);
       white-space: nowrap;

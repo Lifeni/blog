@@ -15,10 +15,12 @@ import GoTop from "../app/common/global/GoTop"
 import Footer from "./footer/Footer"
 import Header from "./header/Header"
 
-export const SidebarContext = createContext<ISidebarContext>({
+export const GlobalContext = createContext<IGlobalContext>({
+  showMorePosts: false,
+  setShowMorePosts: () => {},
   showSidebar: false,
-  setShow: () => {},
-  setHide: () => {},
+  setShowSidebar: () => {},
+  setHideSidebar: () => {},
 })
 
 const Container = styled("div")`
@@ -77,6 +79,7 @@ const Layout = ({
   description,
   children,
 }: LayoutProps) => {
+  const [showMorePosts, setShowMorePosts] = useState(false)
   const [showSidebar, setSidebar] = useState(false)
 
   return (
@@ -102,17 +105,19 @@ const Layout = ({
         />
       </Helmet>
       <GoTop />
-      <SidebarContext.Provider
+      <GlobalContext.Provider
         value={{
+          showMorePosts,
+          setShowMorePosts: () => setShowMorePosts(true),
           showSidebar,
-          setShow: () => setSidebar(true),
-          setHide: () => setSidebar(false),
+          setShowSidebar: () => setSidebar(true),
+          setHideSidebar: () => setSidebar(false),
         }}
       >
         <Header hasSidebar={hasSidebar} />
         <Content isCentered={isCentered}>{children}</Content>
         {hasFooter && <Footer />}
-      </SidebarContext.Provider>
+      </GlobalContext.Provider>
     </Container>
   )
 }
@@ -196,7 +201,7 @@ export const Sidebar = (
   props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
 ) => {
   const isMobile = useMedia("(max-width: 56rem)")
-  const { showSidebar, setHide } = useContext(SidebarContext)
+  const { showSidebar, setHideSidebar: setHide } = useContext(GlobalContext)
 
   return (
     <Fragment>

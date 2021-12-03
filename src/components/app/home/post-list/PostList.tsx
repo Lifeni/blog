@@ -1,7 +1,8 @@
 import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
-import { useState } from "react"
-import { RiFileList3Line } from "react-icons/ri"
+import { useContext } from "react"
+import { RiEyeLine } from "react-icons/ri"
+import { GlobalContext } from "../../../layout/Layout"
 import Post from "./Post"
 
 const Container = styled("ul")`
@@ -35,8 +36,8 @@ const Action = styled("button")`
   }
 
   svg {
-    width: 1.25em;
-    height: 1.25em;
+    width: 1.2em;
+    height: 1.2em;
     margin: 0 0.75em 0 0;
   }
 
@@ -50,7 +51,7 @@ const Action = styled("button")`
 `
 
 const PostList = () => {
-  const [showAllPosts, setShowAllPosts] = useState(false)
+  const { showMorePosts, setShowMorePosts } = useContext(GlobalContext)
 
   const posts = useStaticQuery<IPostQuery>(graphql`
     query {
@@ -83,7 +84,7 @@ const PostList = () => {
         <Post post={post.node.frontmatter} key={post.node.frontmatter.name} />
       ))}
       {posts.allMdx.edges.length > 4 &&
-        (showAllPosts ? (
+        (showMorePosts ? (
           posts.allMdx.edges
             .slice(4)
             .map(post => (
@@ -93,8 +94,8 @@ const PostList = () => {
               />
             ))
         ) : (
-          <Action onClick={() => setShowAllPosts(true)}>
-            <RiFileList3Line aria-label="文章图标" />
+          <Action onClick={setShowMorePosts}>
+            <RiEyeLine aria-label="列表图标" />
             其余 {posts.allMdx.edges.length - 4} 篇文章 ...
           </Action>
         ))}

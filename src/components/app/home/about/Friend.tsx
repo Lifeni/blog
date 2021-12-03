@@ -8,7 +8,7 @@ const Container = styled("div")`
   padding: 0.75rem 1px 1.25rem 1px;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.925rem;
+  gap: 0.95rem;
 `
 
 const Avatar = styled("img")`
@@ -32,10 +32,12 @@ const AvatarLink = styled("a")`
     position: absolute;
     left: 50%;
     bottom: calc(100% + 0.5rem);
-    padding: 0.125rem 0.625rem;
+    padding: 0.375rem 0.625rem;
     display: flex;
+    align-items: center;
     border-radius: var(--border-radius);
     font-size: 0.925rem;
+    line-height: 1.5;
     color: var(--font-light);
     background-color: var(--font-primary);
     white-space: nowrap;

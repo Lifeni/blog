@@ -57,8 +57,10 @@ interface INotFoundQuery {
   }
 }
 
-interface ISidebarContext {
+interface IGlobalContext {
+  showMorePosts: boolean
+  setShowMorePosts: () => void
   showSidebar: boolean
-  setShow: () => void
-  setHide: () => void
+  setShowSidebar: () => void
+  setHideSidebar: () => void
 }
