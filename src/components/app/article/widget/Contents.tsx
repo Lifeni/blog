@@ -20,7 +20,7 @@ const Container = styled("div")`
       content: "";
       position: absolute;
       top: 5.625rem;
-      right: 1.5rem;
+      right: 1.625rem;
       z-index: 10;
       width: 100%;
       height: 1rem;
@@ -32,8 +32,8 @@ const Container = styled("div")`
     &::after {
       content: "";
       position: absolute;
-      bottom: 1.75rem;
-      right: 1.5rem;
+      bottom: 1.625rem;
+      right: 1.625rem;
       z-index: 10;
       width: 100%;
       height: 1rem;
@@ -95,7 +95,7 @@ const Link = styled("a")`
   transition: all 0.2s;
 
   &:hover {
-    color: var(--font-link-hover);
+    color: var(--font-primary);
   }
 `
 
@@ -105,27 +105,28 @@ const List = styled("ul")`
   padding: 0 1px;
   display: flex;
   flex-direction: column;
-  font-family: var(--font-mono);
   list-style: none;
 
   ul {
     margin: 0;
     padding: 0.25rem 0 0 1.25rem;
     transition: all 0.2s;
+    color: var(--font-secondary);
 
     li {
       &::before {
-        content: "•";
+        content: "|";
         position: absolute;
         left: -1.25rem;
         color: inherit;
+        font-size: 0.925rem;
         font-family: var(--font-mono);
         transition: all 0.2s;
       }
 
       &:hover::before {
-        content: "→";
-        color: var(--font-link-hover);
+        content: "#";
+        color: var(--font-primary);
       }
     }
   }

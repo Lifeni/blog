@@ -8,7 +8,7 @@ const Container = styled("div")`
   padding: 0.75rem 1px 1.25rem 1px;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.95rem;
+  gap: calc((var(--sidebar-width) - 2rem - 2px - (2.25rem * 6)) / 5);
 `
 
 const Avatar = styled("img")`

@@ -43,10 +43,10 @@ const Content = styled("div")<ContentProps>`
   align-items: ${props => (props.isCentered ? "center" : "flex-start")};
   justify-content: center;
   flex: 1;
-  gap: 4rem;
+  gap: 2rem;
 
   @media (max-width: 72rem) {
-    gap: 2.5rem;
+    gap: 1rem;
   }
 
   @media (max-width: 56rem) {
@@ -64,6 +64,7 @@ const Content = styled("div")<ContentProps>`
 
 interface LayoutProps {
   hasSidebar?: boolean
+  hasHeader?: boolean
   hasFooter?: boolean
   isCentered?: boolean
   title?: string
@@ -73,6 +74,7 @@ interface LayoutProps {
 
 const Layout = ({
   hasSidebar = true,
+  hasHeader = true,
   hasFooter = true,
   isCentered = false,
   title,
@@ -114,7 +116,7 @@ const Layout = ({
           setHideSidebar: () => setSidebar(false),
         }}
       >
-        <Header hasSidebar={hasSidebar} />
+        {hasHeader && <Header hasSidebar={hasSidebar} />}
         <Content isCentered={isCentered}>{children}</Content>
         {hasFooter && <Footer />}
       </GlobalContext.Provider>
@@ -140,16 +142,23 @@ export const Main = styled("main")`
 
 interface SidebarElementProps {
   showSidebar: boolean
+  isPinned: boolean
 }
 
 const SidebarWrapper = styled("aside")<SidebarElementProps>`
-  position: sticky;
+  position: ${props => (props.isPinned ? "sticky" : "relative")};
   top: 0;
-  overflow: hidden;
-  width: var(--sidebar-width);
+  overflow: ${props => (props.isPinned ? "hidden" : "initial")};
+  width: calc(var(--sidebar-width) + 4rem);
   max-width: 100%;
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 72rem) {
+    width: calc(var(--sidebar-width) + 2rem);
+    padding: 0 1rem;
+  }
 
   @media (max-width: 56rem) {
     position: fixed;
@@ -185,7 +194,6 @@ const SidebarElement = styled("div")`
   max-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: auto;
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
@@ -197,15 +205,22 @@ const SidebarElement = styled("div")`
   }
 `
 
-export const Sidebar = (
-  props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
-) => {
+interface SidebarProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
+  isPinned?: boolean
+}
+
+export const Sidebar = (props: SidebarProps) => {
   const isMobile = useMedia("(max-width: 56rem)")
   const { showSidebar, setHideSidebar: setHide } = useContext(GlobalContext)
 
   return (
     <Fragment>
-      <SidebarWrapper {...props} showSidebar={showSidebar}>
+      <SidebarWrapper
+        {...props}
+        isPinned={!!props.isPinned}
+        showSidebar={showSidebar}
+      >
         <SidebarElement>{props.children}</SidebarElement>
       </SidebarWrapper>
       <Overlay isOpen={isMobile && showSidebar} onClick={setHide} />

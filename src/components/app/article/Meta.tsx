@@ -32,7 +32,7 @@ const Bar = styled("section")`
   white-space: nowrap;
 
   @media (max-width: 36rem) {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 `
 

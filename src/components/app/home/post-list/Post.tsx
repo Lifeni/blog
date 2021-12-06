@@ -46,6 +46,10 @@ const TitleLink = styled(GatsbyLink)`
 
 const Description = styled("p")`
   font-size: 1rem;
+
+  @media (max-width: 36rem) {
+    text-align: initial;
+  }
 `
 
 const Bar = styled("section")`
@@ -57,7 +61,7 @@ const Bar = styled("section")`
   white-space: nowrap;
 
   @media (max-width: 36rem) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 `
 

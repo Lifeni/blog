@@ -14,7 +14,7 @@ const Container = styled("article")`
   padding: 2.25rem 1rem;
   display: flex;
   flex-direction: column;
-  font-family: var(--font-sans);
+  font-family: inherit;
   font-size: 1rem;
   line-height: 2;
   text-align: justify;
@@ -45,7 +45,7 @@ const Article = ({ data }: ArticleProps) => {
           <Comment />
         </Container>
       </Main>
-      <Sidebar>
+      <Sidebar isPinned={true}>
         <Contents items={data.mdx.tableOfContents.items[0]} />
         <Reference frontmatter={data.mdx.frontmatter} />
       </Sidebar>

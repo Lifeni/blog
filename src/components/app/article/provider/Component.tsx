@@ -78,16 +78,6 @@ export const List = styled("ul")`
   padding: 0 0 0 1.125rem;
   display: flex;
   flex-direction: column;
-  list-style: none;
-
-  li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: inherit;
-    font-family: var(--font-mono);
-    transition: all 0.2s;
-  }
 `
 
 export const OrderedList = styled("ol")`

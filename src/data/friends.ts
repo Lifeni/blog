@@ -5,5 +5,6 @@ export const friends = [
   { name: "YueChen", link: "https://www.yuechen.xyz/" },
   { name: "Wumbuk", link: "https://blog.csdn.net/qq_48081868/" },
   { name: "ss967", link: "https://ssblog.top/" },
+  { name: "Bakapiano", link: "https://bakapiano.github.io/" },
   { name: "开往", link: "https://travellings.link/", theme: true },
 ]

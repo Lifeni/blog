@@ -8,7 +8,7 @@ const IndexPage = () => {
       <Main>
         <PostList />
       </Main>
-      <Sidebar>
+      <Sidebar isPinned={true}>
         <About />
       </Sidebar>
     </Layout>

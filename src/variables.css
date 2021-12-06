@@ -1,5 +1,5 @@
 :root {
-  font-size: 15px;
+  font-size: 14px;
 
   --font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
@@ -16,15 +16,14 @@
   --font-mono: "JetBrains Mono", "Fira Mono", Consolas, "Courier New",
     "Droid Sans Mono", var(--font-sans);
 
-  --main-width: 600px;
-  --sidebar-width: 306px;
-  --focus-width: 600px;
+  --main-width: 39.5rem;
+  --sidebar-width: 20.5rem;
 
   --background: #ffffff;
   --element-background: #f6f8fa;
   --element-background-hover: #f2f5f8;
 
-  --border-width: 1px;
+  --border-width: 0.1rem;
   --border-color: #e6eaee;
   --border: solid var(--border-width) var(--border-color);
   --border-block: solid 0.5rem var(--border-color);

@@ -45,6 +45,11 @@ body {
   fill: var(--font-primary);
 }
 
+.gatsby-highlight {
+  display: flex;
+  flex-direction: column;
+}
+
 .compress-spacing + .compress-spacing,
 .gatsby-highlight + .gatsby-highlight {
   margin-top: -0.725rem;
