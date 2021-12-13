@@ -1,7 +1,6 @@
 import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
 import { useContext } from "react"
-import { RiEyeLine } from "react-icons/ri"
 import { GlobalContext } from "../../../layout/Layout"
 import Post from "./Post"
 
@@ -11,43 +10,6 @@ const Container = styled("ul")`
   padding: 0.625rem 0;
   display: flex;
   flex-direction: column;
-`
-
-const Action = styled("button")`
-  position: relative;
-  width: fit-content;
-  margin: 0.625rem 1rem 2rem 1rem;
-  display: flex;
-  align-items: center;
-  border: none;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  font-family: inherit;
-  background-color: transparent;
-  color: var(--font-link);
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    color: var(--font-link-hover);
-    text-underline-offset: 0.375em;
-    text-decoration: underline;
-  }
-
-  svg {
-    width: 1.2em;
-    height: 1.2em;
-    margin: 0 0.75em 0 0;
-  }
-
-  @media (max-width: 48rem) {
-    margin: 0 1rem 1.875rem 1rem;
-  }
-
-  @media (max-width: 36rem) {
-    margin: -0.125rem 0.75rem 1.625rem 0.75rem;
-  }
 `
 
 const PostList = () => {
@@ -80,25 +42,9 @@ const PostList = () => {
 
   return (
     <Container>
-      {posts.allMdx.edges.slice(0, 4).map(post => (
+      {posts.allMdx.edges.map(post => (
         <Post post={post.node.frontmatter} key={post.node.frontmatter.name} />
       ))}
-      {posts.allMdx.edges.length > 4 &&
-        (showMorePosts ? (
-          posts.allMdx.edges
-            .slice(4)
-            .map(post => (
-              <Post
-                post={post.node.frontmatter}
-                key={post.node.frontmatter.name}
-              />
-            ))
-        ) : (
-          <Action onClick={setShowMorePosts}>
-            <RiEyeLine aria-label="列表图标" />
-            其余 {posts.allMdx.edges.length - 4} 篇文章 ...
-          </Action>
-        ))}
     </Container>
   )
 }

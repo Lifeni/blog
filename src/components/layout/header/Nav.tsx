@@ -10,7 +10,7 @@ const Nav = () => {
 
   return (
     isMobile && (
-      <Button onClick={setShow}>
+      <Button onClick={setShow} data-name="导航">
         <RiFileListLine aria-label="菜单图标" />
       </Button>
     )

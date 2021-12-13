@@ -55,6 +55,7 @@ const Description = styled("p")`
 const Bar = styled("section")`
   position: relative;
   width: 100%;
+  margin: 0 -0.05px;
   padding: 0.375rem 0;
   display: flex;
   flex-wrap: wrap;
