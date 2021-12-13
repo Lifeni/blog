@@ -74,7 +74,13 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          由 <Logo src="https://file.lifeni.life/upyun-logo.svg" alt="又拍云" />{" "}
+          由
+          <Logo
+            src="https://file.lifeni.life/upyun-logo.svg"
+            alt="又拍云"
+            width="50px"
+            height="17.5px"
+          />
           提供 CDN 加速与云储存服务
         </Link>
       </Section>

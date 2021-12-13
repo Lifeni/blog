@@ -15,6 +15,8 @@ const Avatar = styled("img")`
   width: 100%;
   height: 100%;
   border-radius: 100%;
+  box-shadow: 0 0 0 calc(var(--border-width) / 2) var(--border-color);
+  transition: all 0.2s;
 `
 
 const AvatarLink = styled("a")`
@@ -26,6 +28,7 @@ const AvatarLink = styled("a")`
   background-color: var(--element-background);
   user-select: none;
   color: transparent;
+  transition: all 0.2s;
 
   &:hover::after {
     content: attr(data-name);

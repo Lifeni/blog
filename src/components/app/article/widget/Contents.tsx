@@ -51,8 +51,6 @@ const Wrapper = styled("div")`
   flex-direction: column;
   flex: 1;
   scrollbar-width: thin;
-  scrollbar-color: var(--border-color) var(--element-background);
-  transition: all 0.2s;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
@@ -95,7 +93,7 @@ const Link = styled("a")`
   transition: all 0.2s;
 
   &:hover {
-    color: var(--font-primary);
+    color: var(--font-link-hover);
   }
 `
 
@@ -111,7 +109,6 @@ const List = styled("ul")`
     margin: 0;
     padding: 0.25rem 0 0 1.25rem;
     transition: all 0.2s;
-    color: var(--font-secondary);
 
     li {
       &::before {
@@ -126,7 +123,7 @@ const List = styled("ul")`
 
       &:hover::before {
         content: "#";
-        color: var(--font-primary);
+        color: var(--font-link-hover);
       }
     }
   }

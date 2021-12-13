@@ -90,11 +90,15 @@ export const OrderedList = styled("ol")`
 export const ListItem = styled("li")`
   margin: 0.125rem 0;
   padding: 0 0 0 0.375rem;
+
+  p {
+    margin: 0;
+  }
 `
 
 export const Code = styled("code")`
   font-size: 0.925em;
-  padding: 0.2em 0.4em;
+  padding: 0.175em 0.4em;
   border: var(--border);
   border-radius: var(--border-radius);
   background-color: var(--element-background);

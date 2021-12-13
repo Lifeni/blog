@@ -26,7 +26,6 @@ const Description = styled("p")`
 const Bar = styled("section")`
   position: relative;
   width: 100%;
-  margin: 0 -0.05px;
   padding: 0.375rem 0;
   display: flex;
   flex-wrap: wrap;
@@ -90,9 +89,7 @@ const Meta = ({ frontmatter }: MetaProps) => {
       <Bar>
         <Time>
           <RiCalendarLine aria-label="日期图标" />
-          {frontmatter.date === frontmatter.create_date
-            ? "创建于"
-            : "编辑于"}{" "}
+          {frontmatter.date === frontmatter.create_date ? "创建于 " : "编辑于 "}
           {frontmatter.date}
         </Time>
         <Link
