@@ -1,0 +1,248 @@
+---
+import Layout from "component:Layout"
+import { Icon } from "astro-icon"
+
+export interface Props {
+  article: Article
+}
+
+const { article } = Astro.props as Props
+
+export async function getStaticPaths() {
+  const files = Astro.fetchContent(
+    "../../../contents/articles/*.md"
+  ) as Article[]
+
+  return files.map(file => ({
+    params: { name: file.name },
+    props: { article: file },
+  }))
+}
+
+const date = `${article.date.slice(0, 4)} 年 ${article.date.slice(
+  5,
+  7
+)} 月 ${article.date.slice(8, 10)} 日`
+---
+
+<Layout
+  title={article.title}
+  description={article.description}
+  name="文章"
+  path="/articles"
+  icon="ri:folder-line"
+>
+  <article data-serif={article.serif}>
+    <h1 id={article.title.toLowerCase().replace(/\s/g,"-")}>{article.title}</h1>
+
+    {article.astro.html.replace(/\<h1.*\>.*\<\/h1\>/,"")}
+
+    <section>
+      <time>
+        <Icon name="ri:time-line" aria-label="时间" />
+        编辑于 {date}
+      </time>
+
+      <a
+        href={article.license === "CC-BY-SA-4.0"
+          ? "https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
+          : `https://www.google.com.hk/search?q=${article.license}`}
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+      >
+        <Icon name="ri:copyright-line" aria-label="版权" />
+        {article.license}
+      </a>
+    </section>
+
+    {article.astro.headers.length !== 1 && (
+      <button data-tooltip="目录" data-left>
+        <Icon
+          name="ri:file-list-line"
+          aria-label="目录"
+          data-tooltip-transform
+        />
+        <ul role="navigation">
+          {article.astro.headers.map(
+            header =>
+              (header.depth === 1 ||
+                header.depth === 2 ||
+                header.depth === 3) && (
+                <li data-depth={header.depth}>
+                  <a href={`#${header.slug}`}>{header.text}</a>
+                </li>
+              )
+          )}
+        </ul>
+      </button>
+    )}
+
+    <button
+      data-tooltip="顶部"
+      onclick="window.scrollTo(0, 0)"
+      data-right
+      data-pointer
+    >
+      <Icon
+        name="ri:download-line"
+        aria-label="顶部"
+        data-rotate
+        data-tooltip-transform
+      />
+    </button>
+  </article>
+</Layout>
+
+<script src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js"
+></script>
+<script>
+  mediumZoom("article img", { background: "rgba(0, 0, 0, 0.8)" })
+</script>
+
+<style lang="less">
+  article {
+    margin: 1rem 0 3rem 0;
+    font-family: var(--font-sans);
+
+    &[data-serif] {
+      font-family: var(--font-serif);
+
+      :global(p) {
+        margin: 0;
+        line-height: 2;
+        text-indent: 2rem;
+
+        &:first-of-type {
+          text-indent: 0;
+        }
+
+        &:last-of-type {
+          margin: 0 0 0.5rem 0;
+        }
+      }
+    }
+
+    section {
+      display: flex;
+      align-items: center;
+      width: calc(100% + 3rem);
+      margin: 2rem -1.5rem 0 -1.5rem;
+      padding: 2.5rem 1.5rem 0 1.5rem;
+      border-top: var(--border);
+      color: var(--font-secondary);
+      font-family: var(--font-sans);
+
+      time,
+      a {
+        margin-right: 1.5rem;
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: 0.625rem;
+          width: 1.125rem;
+          height: 1.125rem;
+        }
+      }
+    }
+
+    button {
+      position: fixed;
+      bottom: 2rem;
+      z-index: 100;
+      width: auto;
+      margin: 0;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-normal);
+      background-color: var(--background);
+      cursor: pointer;
+      font-weight: 500;
+
+      &[data-left] {
+        left: 2.5rem;
+      }
+
+      &[data-right] {
+        right: 2.5rem;
+      }
+
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      ul[role="navigation"] {
+        position: absolute;
+        left: 0;
+        bottom: 3.25rem;
+        z-index: 100;
+        width: calc(100vw - 3rem);
+        max-width: var(--modal-width);
+        max-height: 66vh;
+        margin: 0;
+        padding: 0.875rem;
+        background-color: var(--background);
+        border: var(--border);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(0.25rem);
+        list-style: none;
+        overflow-y: auto;
+        transition: all 0.2s;
+
+        li {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          border-radius: var(--border-radius);
+          transition: all 0.2s;
+
+          &:hover {
+            background-color: var(--background-subtle);
+          }
+
+          a {
+            width: 100%;
+            padding: 0.175rem 0.75rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-decoration: none;
+            color: var(--font-primary);
+            text-align: left;
+          }
+        }
+
+        li[data-depth="1"] a {
+          font-weight: 800;
+          padding: 0.25rem 0.75rem;
+        }
+
+        li[data-depth="2"] a {
+          padding-left: 1.5rem;
+        }
+
+        li[data-depth="3"] a {
+          padding-left: 2.25rem;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--font-link);
+
+        ul[role="navigation"] {
+          visibility: visible;
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+</style>

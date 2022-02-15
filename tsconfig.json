@@ -1,26 +1,12 @@
 {
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
     "moduleResolution": "node",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
-    "allowJs": true,
-    "checkJs": true,
-    "jsx": "react-jsx",
-    "strict": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "noEmit": true,
-    "skipLibCheck": true
+    "baseUrl": ".",
+    "paths": {
+      "asset:*": ["src/assets/*?url"],
+      "component:*": ["src/components/*.astro"],
+      "util:*": ["src/utils/*.ts"]
+    },
+    "noEmit": true
   }
 }

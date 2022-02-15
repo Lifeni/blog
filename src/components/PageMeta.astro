@@ -1,0 +1,24 @@
+---
+const Markdown = Astro.resolve("../markdown.less")
+const Global = Astro.resolve("../global.less")
+const Highlight = Astro.resolve("../highlight.css")
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="theme-color" content="#feec44" />
+<link rel="manifest" href="/manifest.webmanifest" />
+
+<link rel="stylesheet" href={Global} />
+<link rel="stylesheet" href={Highlight} />
+<link rel="stylesheet" href={Markdown} />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;700&family=Noto+Sans+SC:wght@500;800&family=JetBrains+Mono:wght@500;800&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="icon" href="/favicon.svg" />
+<link rel="preconnect" href="https://file.lifeni.life" />

@@ -1,0 +1,72 @@
+---
+import UpyunLogo from "asset:upyun-logo.svg"
+---
+
+<footer>
+  <section>
+    <a
+      href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referral"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      由
+      <img src={UpyunLogo} alt="又拍云" />
+      提供 CDN 加速与云储存服务
+    </a>
+  </section>
+  <section>
+    <a
+      href="https://beian.miit.gov.cn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      鲁ICP备19006085号
+    </a>
+    <a
+      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      鲁公网安备37132102371392号
+    </a>
+  </section>
+</footer>
+
+<style lang="less">
+  footer {
+    padding: 0 3.5rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        color: var(--font-secondary);
+
+        img {
+          height: 1.25rem;
+          margin: 0 0.5rem;
+          filter: grayscale(100%);
+          transition: all 0.2s;
+        }
+
+        &:hover {
+          color: var(--font-link);
+          text-decoration: none;
+
+          img {
+            filter: grayscale(0%);
+          }
+        }
+      }
+    }
+  }
+</style>

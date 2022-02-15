@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn
-      - run: yarn clean
-      - run: yarn build
+      - run: npm i -g pnpm
+      - run: pnpm
+      - run: pnpm run build
 
       - uses: appleboy/scp-action@master
         with:
@@ -24,7 +24,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          source: "public/*"
+          source: "dist/*"
           target: "/home/github/blog"
           overwrite: true
           rm: true

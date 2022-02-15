@@ -6,7 +6,7 @@
 
 ## 技术
 
-使用 [Gatsby](https://www.gatsbyjs.com/) 进行搭建，借助 GitHub Actions 自动生成静态页面。
+使用 [Astro](https://astro.build/) 进行搭建，借助 GitHub Actions 自动生成静态页面。
 
 网络方面，CDN 和图片储存用的是又拍云。
 
