@@ -1,0 +1,125 @@
+:root {
+  --main-width: 42rem;
+  --modal-width: 21rem;
+  --extra-margin: 1rem;
+  --font-base: 16px;
+
+  --font-normal: var(--font-base);
+  --font-small: 0.925rem;
+
+  --font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-sans: "Readex Pro", -apple-system, "HarmonyOS Sans SC",
+    "Source Han Sans SC", "Source Han Sans", "Noto Sans SC", BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif, var(--font-emoji);
+  --font-serif: "Source Han Serif SC", "Source Han Serif", "Noto Serif SC",
+    "Noto Serif", STZhongsong, Georgia, "Times New Roman", Times, "Droid Serif",
+    serif, var(--font-emoji);
+  --font-mono: "JetBrains Mono", "Roboto Mono", "Fira Mono", Consolas,
+    "Courier New", "Droid Sans Mono", var(--font-sans);
+
+  --background: #ffffff;
+  --background-subtle: #f6f8fa;
+
+  --font-primary: #24292f;
+  --font-secondary: #6e7781;
+  --font-link: #0969da;
+
+  --shadow: 0 12px 28px rgba(140, 149, 159, 0.3);
+
+  --border: solid 1px var(--border-color);
+  --border-color: rgba(27, 31, 36, 0.1);
+  --border-radius: 0.25rem;
+
+  @media (prefers-color-scheme: dark) {
+    --background: #0d1117;
+    --background-subtle: #161b22;
+
+    --font-primary: #c9d1d9;
+    --font-secondary: #8b949e;
+    --font-link: #58a6ff;
+
+    --shadow: 0 12px 48px #010409;
+    --border-color: rgba(240, 246, 252, 0.1);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--font-link);
+  text-decoration: none;
+  transition: all 0.2s;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+}
+
+[data-tooltip] {
+  position: relative;
+
+  &::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0.25rem 0.75rem;
+    display: flex;
+    align-items: center;
+    color: inherit;
+    font-family: var(--font-sans);
+    transform: translate(-50%, -40%);
+    visibility: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    transition: all 0.2s;
+    pointer-events: none;
+  }
+
+  [data-tooltip-transform] {
+    transition: all 0.2s;
+  }
+
+  &:hover [data-tooltip-transform] {
+    transform: translateY(-30%);
+    opacity: 0;
+
+    &[data-rotate] {
+      transform: translateY(-30%) rotate(180deg);
+    }
+  }
+
+  &:hover::after {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+[data-rotate] {
+  transform: rotate(180deg);
+}
+
+[data-pointer] {
+  cursor: pointer;
+}
+
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 99999;
+}
