@@ -82,7 +82,7 @@ article {
     }
 
     &::after {
-      content: "";
+      content: '';
       display: inline-block;
       width: 1.25rem;
     }
@@ -101,6 +101,7 @@ article {
     text-align: right;
     border: var(--border);
     border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
 
     & + img,
     & + table,
@@ -231,7 +232,7 @@ article {
       list-style: none;
 
       &::before {
-        content: "|>";
+        content: '|>';
         display: inline-block;
         font-family: var(--font-mono);
         margin-right: 0.5rem;

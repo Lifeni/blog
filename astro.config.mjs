@@ -27,17 +27,7 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
         rehypePlugins: [
           "rehype-external-links",
           "rehype-slug",
-          [
-            "rehype-rewrite",
-            {
-              selector: "img",
-              rewrite: node => {
-                if (node.type === "element") {
-                  node.properties.loading = "lazy"
-                }
-              },
-            },
-          ],
+          "rehype-plugin-image-native-lazy-loading",
         ],
       },
     ],

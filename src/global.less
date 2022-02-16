@@ -1,46 +1,51 @@
 :root {
   --main-width: 42rem;
   --modal-width: 21rem;
-  --extra-margin: 1rem;
+
   --font-base: 16px;
 
-  --font-normal: var(--font-base);
+  --font-normal: 1rem;
   --font-small: 0.925rem;
 
-  --font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
-  --font-sans: "Readex Pro", -apple-system, "HarmonyOS Sans SC",
-    "Source Han Sans SC", "Source Han Sans", "Noto Sans SC", BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif, var(--font-emoji);
-  --font-serif: "Source Han Serif SC", "Source Han Serif", "Noto Serif SC",
-    "Noto Serif", STZhongsong, Georgia, "Times New Roman", Times, "Droid Serif",
+  --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-sans: Inter, -apple-system, MISans, 'HarmonyOS Sans SC',
+    'Source Han Sans SC', 'Source Han Sans', 'Noto Sans SC', BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif, var(--font-emoji);
+  --font-serif: 'Source Han Serif SC', 'Source Han Serif', 'Noto Serif SC',
+    'Noto Serif', STZhongsong, Georgia, 'Times New Roman', Times, 'Droid Serif',
     serif, var(--font-emoji);
-  --font-mono: "JetBrains Mono", "Roboto Mono", "Fira Mono", Consolas,
-    "Courier New", "Droid Sans Mono", var(--font-sans);
+  --font-mono: 'JetBrains Mono', 'Roboto Mono', 'Fira Mono', Consolas,
+    'Courier New', 'Droid Sans Mono', var(--font-sans);
 
   --background: #ffffff;
   --background-subtle: #f6f8fa;
+  --background-transparent: #ffffff22;
 
   --font-primary: #24292f;
   --font-secondary: #6e7781;
   --font-link: #0969da;
 
-  --shadow: 0 12px 28px rgba(140, 149, 159, 0.3);
+  --shadown-color: rgba(140, 149, 159, 0.3);
+  --shadow: 0 12px 28px var(--shadown-color);
+  --shadow-none: 0 0 0 var(--shadown-color);
 
-  --border: solid 1px var(--border-color);
+  --border-width: 1px;
+  --border: solid var(--border-width) var(--border-color);
   --border-color: rgba(27, 31, 36, 0.1);
-  --border-radius: 0.25rem;
+  --border-radius: 0.375rem;
 
   @media (prefers-color-scheme: dark) {
     --background: #0d1117;
     --background-subtle: #161b22;
+    --background-transparent: #0d1117dd;
 
     --font-primary: #c9d1d9;
     --font-secondary: #8b949e;
     --font-link: #58a6ff;
 
-    --shadow: 0 12px 48px #010409;
+    --shadown-color: #010409;
     --border-color: rgba(240, 246, 252, 0.1);
   }
 }
@@ -68,6 +73,8 @@ button {
   color: inherit;
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 [data-tooltip] {
@@ -83,7 +90,7 @@ button {
     align-items: center;
     color: inherit;
     font-family: var(--font-sans);
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -20%) rotate3d(1, 0, 0, 75deg);
     visibility: hidden;
     opacity: 0;
     white-space: nowrap;
@@ -91,32 +98,40 @@ button {
     pointer-events: none;
   }
 
-  [data-tooltip-transform] {
+  & > svg {
+    transform: rotate3d(1, 0, 0, 0);
     transition: all 0.2s;
   }
 
-  &:hover [data-tooltip-transform] {
-    transform: translateY(-30%);
+  &:hover > svg {
+    transform: translateY(-50%) rotate3d(1, 0, 0, -75deg);
     opacity: 0;
-
-    &[data-rotate] {
-      transform: translateY(-30%) rotate(180deg);
-    }
   }
 
   &:hover::after {
     visibility: visible;
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate3d(1, 0, 0, 0);
   }
 }
 
-[data-rotate] {
-  transform: rotate(180deg);
+[data-spacer] {
+  flex: 1;
 }
 
-[data-pointer] {
-  cursor: pointer;
+[data-remove] {
+  display: none !important;
+}
+
+[data-hide='true'] {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+[data-hide='false'] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.2s, visibility 0.2s;
 }
 
 .medium-zoom-overlay,
