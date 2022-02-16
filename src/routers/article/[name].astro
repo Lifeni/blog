@@ -58,13 +58,12 @@ const date = `${article.date.slice(0, 4)} 年 ${article.date.slice(
     </article>
 
     {article.astro.headers.length !== 1 && (
-      <nav data-contents data-hide="true">
-        <span aria-hidden="true" data-scrollbar></span>
+      <nav data-contents data-hide>
         <ul>
           {article.astro.headers.map(
             header =>
               (header.depth === 2 || header.depth === 3) && (
-                <li data-depth={header.depth}>
+                <li data-depth={header.depth} data-slug={header.slug}>
                   <a href={`#${header.slug}`}>{header.text}</a>
                 </li>
               )
@@ -89,34 +88,64 @@ const date = `${article.date.slice(0, 4)} 年 ${article.date.slice(
   const contents = document.querySelector('[data-contents]')
   if (contents) {
     const debounce = await import('https://cdn.skypack.dev/lodash.debounce')
+    const h2s = document.querySelectorAll('article h2')
+    const h3s = document.querySelectorAll('article h3')
+    const headers = [...h2s, ...h3s]
 
-    let documentHeight = document.documentElement.scrollHeight
-    let windowHeight = window.innerHeight
-    let heightPercent = windowHeight / documentHeight
-
-    const scrollbar = document.querySelector('[data-scrollbar]')
+    const links = document.querySelectorAll('[data-contents] li')
 
     const calc = () => {
-      windowHeight = window.innerHeight
-      documentHeight = document.documentElement.scrollHeight
-      heightPercent = windowHeight / documentHeight
+      const top = window.scrollY
+      const height = window.innerHeight
 
-      const scrollY = window.scrollY
-      const topPercent = scrollY / documentHeight
-
-      scrollbar.style.setProperty('--scrollbar-top', `${topPercent * 100}%`)
-      scrollbar.style.setProperty(
-        '--scrollbar-height',
-        `${heightPercent * 100}%`
-      )
-
-      if (scrollY < 100) contents.setAttribute('data-hide', 'true')
+      if (top < 100) contents.setAttribute('data-hide', 'true')
       else contents.setAttribute('data-hide', 'false')
+
+      const up = {
+        element: null,
+        value: height,
+      }
+
+      const down = {
+        element: null,
+        value: -height,
+      }
+
+      headers.forEach(header => {
+        const top = header.getBoundingClientRect().top
+
+        if (top >= 0) {
+          if (top < height / 2 && top <= up.value) {
+            up.element = header
+            up.value = top
+          }
+        } else {
+          if (top > down.value) {
+            down.element = header
+            down.value = top
+          }
+        }
+      })
+
+      let id = null
+      if (up.element) id = up.element.id
+      else if (down.element) id = down.element.id
+
+      if (id) {
+        links.forEach(link => link.removeAttribute('data-active'))
+        const active = [...links].find(link => link.dataset.slug === id)
+        active.setAttribute('data-active', 'true')
+        active.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'center',
+        })
+      }
     }
 
     calc()
 
-    if (debounce) {
+    if (debounce && headers.length !== 0) {
       window.addEventListener('scroll', debounce.default(calc, 100))
       window.addEventListener('resize', debounce.default(calc, 100))
     }
@@ -172,33 +201,21 @@ const date = `${article.date.slice(0, 4)} 年 ${article.date.slice(
   nav[data-contents] {
     position: fixed;
     top: 50%;
-    left: 4rem;
+    left: 4.075rem;
     width: 18rem;
-    border-left: var(--border);
     color: var(--font-secondary);
-    opacity: 0;
     transform: translateY(-50%);
-
-    [data-scrollbar] {
-      position: absolute;
-      left: calc(var(--border-width) * -1);
-      top: var(--scrollbar-top);
-      z-index: 1;
-      height: var(--scrollbar-height);
-      width: var(--border-width);
-      display: flex;
-      background-color: var(--font-primary);
-      opacity: 1;
-      transition: top 0.4s cubic-bezier(0.29, 1, 0.46, 1), opacity 0.2s 0.3s;
-    }
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
 
     ul {
       max-height: calc(100vh - 18rem);
       height: 100%;
-      padding: 0.25rem 1.5rem;
+      padding: 0.25rem 0;
       overflow-y: auto;
       scrollbar-width: none;
-      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      scroll-behavior: smooth;
 
       &::-webkit-scrollbar {
         display: none;
@@ -206,11 +223,20 @@ const date = `${article.date.slice(0, 4)} 年 ${article.date.slice(
 
       li {
         width: 100%;
-        padding: 0.125rem 0;
+        padding: 0.125rem 1.5rem;
         list-style: none;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        border-left: var(--border);
+        transition: border-left 0.2s;
+
+        &[data-active] {
+          border-left: solid 1px var(--font-primary);
+          color: var(--font-primary);
+          font-weight: 800;
+          transition: border-left 0.2s;
+        }
 
         a {
           width: 100%;
