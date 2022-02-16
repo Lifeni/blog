@@ -1,7 +1,10 @@
-<section data-comments></section>
+<section data-comments>
+  <div data-remove></div>
+</section>
 
 <script>
   const giscus = document.querySelector('[data-comments]')
+  const container = document.querySelector('[data-comments] div')
   const io = new IntersectionObserver(entires => {
     entires.forEach(entry => {
       if (entry.isIntersecting) {
@@ -19,14 +22,13 @@
         script.setAttribute('data-lang', 'en')
         script.src = 'https://giscus.app/client.js'
 
-        giscus.appendChild(script)
-        giscus.setAttribute('data-remove', 'true')
+        container.appendChild(script)
         io.disconnect()
 
         script.onload = () => {
           const iframe = document.querySelector('[data-comments] iframe')
           if (iframe)
-            iframe.onload = () => giscus.removeAttribute('data-remove')
+            iframe.onload = () => container.removeAttribute('data-remove')
         }
       }
     })
@@ -36,15 +38,17 @@
 
 <style lang="less">
   section {
-    width: calc(100% + 3rem);
-    margin: 0 -1.5rem 2.5rem -1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    div[data-comment] {
+      width: calc(100% + 3rem);
+      margin: 0 -1.5rem 2.5rem -1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-    &[data-remove] {
-      margin: 0;
+      &[data-remove] {
+        margin: 0;
+      }
     }
   }
 </style>
