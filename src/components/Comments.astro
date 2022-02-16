@@ -1,0 +1,50 @@
+<section data-comments></section>
+
+<script>
+  const giscus = document.querySelector('[data-comments]')
+  const io = new IntersectionObserver(entires => {
+    entires.forEach(entry => {
+      if (entry.isIntersecting) {
+        const script = document.createElement('script')
+
+        script.setAttribute('data-repo', 'Lifeni/blog')
+        script.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkyOTY0ODMwNDU=')
+        script.setAttribute('data-category', 'Comment')
+        script.setAttribute('data-category-id', 'DIC_kwDOEav45c4B-c6k')
+        script.setAttribute('data-mapping', 'pathname')
+        script.setAttribute('data-reactions-enabled', '1')
+        script.setAttribute('data-emit-metadata', '0')
+        script.setAttribute('data-input-position', 'top')
+        script.setAttribute('data-theme', 'preferred_color_scheme')
+        script.setAttribute('data-lang', 'en')
+        script.src = 'https://giscus.app/client.js'
+
+        giscus.appendChild(script)
+        giscus.setAttribute('data-remove', 'true')
+        io.disconnect()
+
+        script.onload = () => {
+          const iframe = document.querySelector('[data-comments] iframe')
+          if (iframe)
+            iframe.onload = () => giscus.removeAttribute('data-remove')
+        }
+      }
+    })
+  })
+  io.observe(giscus)
+</script>
+
+<style lang="less">
+  section {
+    width: calc(100% + 3rem);
+    margin: 0 -1.5rem 2.5rem -1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &[data-remove] {
+      margin: 0;
+    }
+  }
+</style>

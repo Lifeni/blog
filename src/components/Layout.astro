@@ -1,31 +1,28 @@
 ---
-import Footer from "component:Footer"
-import Header from "component:Header"
-import PageMeta from "component:PageMeta"
+import Footer from 'component:Footer'
+import Header from 'component:Header'
+import PageMeta from 'component:PageMeta'
 
 export interface Props {
   title?: string
   description?: string
-  name?: string
-  path?: string
-  icon?: string
 }
 
 const desc =
-  "个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。"
+  '个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。'
 
-const { title, description = desc, name, path, icon } = Astro.props as Props
+const { title, description = desc } = Astro.props as Props
 ---
 
 <html lang="zh-hans">
   <head>
-    <title>{title ? `${title} | 记录干杯` : "记录干杯"}</title>
+    <title>{title ? `${title} | 记录干杯` : '记录干杯'}</title>
     <meta name="description" content={description} />
     <PageMeta />
   </head>
 
   <body>
-    <Header {name} {path} {icon} />
+    <Header />
     <main>
       <slot />
     </main>
@@ -58,15 +55,7 @@ const { title, description = desc, name, path, icon } = Astro.props as Props
       text-justify: auto;
       overflow-wrap: break-word;
 
-      main {
-        width: 100%;
-        max-width: var(--main-width);
-        margin: 0 auto;
-        padding: 1.5rem 3.5rem;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
+ 
     }
   }
 </style>

@@ -1,8 +1,7 @@
 {
   "arrowParens": "avoid",
   "semi": false,
-  "printWidth": 80,
-  "tabWidth": 2,
+  "singleQuote": true,
   "overrides": [
     {
       "files": "**/*.astro",
@@ -11,7 +10,5 @@
       }
     }
   ],
-  "plugins": [
-    "./node_modules/prettier-plugin-astro"
-  ]
+  "plugins": ["./node_modules/prettier-plugin-astro"]
 }
