@@ -2,7 +2,7 @@
   <div data-remove></div>
 </section>
 
-<script>
+<script defer>
   const giscus = document.querySelector('[data-comments]')
   const container = document.querySelector('[data-comments] div')
   const io = new IntersectionObserver(entires => {
@@ -38,9 +38,10 @@
 
 <style lang="less">
   section {
+    width: calc(100% + 3rem);
+    margin: 0 -1.5rem 2.5rem -1.5rem;
+
     div[data-comment] {
-      width: calc(100% + 3rem);
-      margin: 0 -1.5rem 2.5rem -1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;

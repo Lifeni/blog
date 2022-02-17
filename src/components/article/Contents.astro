@@ -1,0 +1,155 @@
+---
+export interface Props {
+  headers: Header[]
+}
+
+const { headers } = Astro.props as Props
+---
+
+<nav data-contents data-hide>
+  <ul>
+    {headers.map(
+      header =>
+        (header.depth === 2 || header.depth === 3) && (
+          <li
+            title={header.text}
+            data-depth={header.depth}
+            data-slug={header.slug}
+          >
+            <a href={`#${header.slug}`}>{header.text}</a>
+          </li>
+        )
+    )}
+  </ul>
+</nav>
+
+<script type="module" async>
+  const contents = document.querySelector('[data-contents]')
+
+  if (contents) {
+    const debounce = await import('https://cdn.skypack.dev/lodash.debounce')
+
+    const h1 = document.querySelector('article h1')
+    const offset = h1.offsetTop + h1.offsetHeight + 32
+
+    const h2s = document.querySelectorAll('article h2')
+    const h3s = document.querySelectorAll('article h3')
+    const headers = [...h2s, ...h3s]
+
+    const links = document.querySelectorAll('[data-contents] li')
+
+    const show = () =>
+      window.requestAnimationFrame(() => {
+        if (window.scrollY < offset) contents.setAttribute('data-hide', 'true')
+        else contents.setAttribute('data-hide', 'false')
+      })
+
+    const calc = debounce.default(() => {
+      const screen = window.innerHeight
+      const page = document.documentElement.scrollHeight
+      let up = { top: page }
+      let down = { top: -page }
+
+      headers.forEach(element => {
+        const top = element.getBoundingClientRect().top
+        if (top >= 0 && top < screen / 2 && top <= up.top) up = { element, top }
+        else if (top < 0 && top > down.top) down = { element, top }
+      })
+
+      const id = up.element?.id || down.element?.id
+
+      if (id) {
+        links.forEach(link => link.removeAttribute('data-active'))
+        const active = [...links].find(link => link.dataset.slug === id)
+
+        if (active) {
+          active.setAttribute('data-active', 'true')
+          active.scrollIntoView({ block: 'center', inline: 'center' })
+        }
+      }
+    }, 100)
+
+    show()
+    calc()
+
+    if (debounce && headers.length !== 0) {
+      const run = () => {
+        show()
+        calc()
+      }
+      window.addEventListener('scroll', run)
+      window.addEventListener('resize', run)
+    }
+  }
+</script>
+
+<style lang="less">
+  nav[data-contents] {
+    position: fixed;
+    top: 50%;
+    left: 4.075rem;
+    width: 18rem;
+    color: var(--font-secondary);
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+
+    ul {
+      max-height: calc(100vh - 18rem);
+      height: 100%;
+      padding: 0.25rem 0;
+      overflow-y: auto;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      li {
+        width: 100%;
+        padding: 0.125rem 1.5rem;
+        list-style: none;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        color: inherit;
+        border-left: var(--border);
+        font-size: 0.925rem;
+        transition: border-left 0.2s, color 0.2s, font-size 0.2s;
+
+        &[data-active] {
+          border-left: solid 1px var(--font-primary);
+          color: var(--font-primary);
+          font-weight: var(--font-bold);
+          font-size: 1.125rem;
+          transition: border-left 0.2s, color 0.2s, font-size 0.2s;
+        }
+
+        a {
+          width: 100%;
+          margin: 0.5rem 0;
+          color: inherit;
+
+          &:focus-visible {
+            outline-color: var(--font-link);
+            outline-width: 0.25rem;
+            outline-offset: 0.25rem;
+            outline-style: solid;
+          }
+
+          &:hover,
+          &:focus-visible {
+            text-decoration: none;
+            color: var(--font-link);
+          }
+        }
+
+        &[data-depth='2'] {
+          font-weight: var(--font-bold);
+        }
+      }
+    }
+  }
+</style>

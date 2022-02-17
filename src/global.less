@@ -1,11 +1,10 @@
 :root {
   --main-width: 42rem;
-  --modal-width: 21rem;
 
   --font-base: 16px;
 
-  --font-normal: 1rem;
-  --font-small: 0.925rem;
+  --font-normal: 500;
+  --font-bold: 800;
 
   --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
@@ -19,27 +18,37 @@
   --font-mono: 'JetBrains Mono', 'Roboto Mono', 'Fira Mono', Consolas,
     'Courier New', 'Droid Sans Mono', var(--font-sans);
 
+  --background-transparent: #ffffff22;
   --background: #ffffff;
   --background-subtle: #f6f8fa;
-  --background-transparent: #ffffff22;
+
+  --background-r: #f6f8fa;
+  --background-subtle-r: #ffffff;
 
   --font-primary: #24292f;
   --font-secondary: #6e7781;
   --font-link: #0969da;
 
-  --shadown-color: rgba(140, 149, 159, 0.3);
-  --shadow: 0 12px 28px var(--shadown-color);
+  --shadown-color: rgba(140, 149, 159, 0.2);
+  --shadow: 0 8px 24px var(--shadown-color);
   --shadow-none: 0 0 0 var(--shadown-color);
+  --shadow-lite: 0 3px 6px rgba(140, 149, 159, 0.15);
 
   --border-width: 1px;
   --border: solid var(--border-width) var(--border-color);
   --border-color: rgba(27, 31, 36, 0.1);
   --border-radius: 0.375rem;
 
+  --dark: #24292f;
+  --light: #f6f8fa;
+
   @media (prefers-color-scheme: dark) {
     --background: #0d1117;
     --background-subtle: #161b22;
     --background-transparent: #0d1117dd;
+
+    --background-r: #0d1117;
+    --background-subtle-r: #161b22;
 
     --font-primary: #c9d1d9;
     --font-secondary: #8b949e;
@@ -47,6 +56,9 @@
 
     --shadown-color: #010409;
     --border-color: rgba(240, 246, 252, 0.1);
+    --shadow-lite: 0 3px 6px #010409;
+
+    --light: #c9d1d9;
   }
 }
 
@@ -59,10 +71,17 @@
 a {
   color: var(--font-link);
   text-decoration: none;
-  transition: all 0.2s;
+  transition: color 0.2s;
 
   &:hover {
     text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline-color: var(--font-link);
+    outline-width: 0.25rem;
+    outline-offset: 0.25rem;
+    outline-style: solid;
   }
 }
 
@@ -74,7 +93,14 @@ button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s, background 0.2s;
+
+  &:focus-visible {
+    outline-color: var(--font-link);
+    outline-width: 0.25rem;
+    outline-offset: 0.25rem;
+    outline-style: solid;
+  }
 }
 
 [data-tooltip] {
@@ -103,12 +129,14 @@ button {
     transition: all 0.2s;
   }
 
-  &:hover > svg {
+  &:hover > svg,
+  &:focus-visible > svg {
     transform: translateY(-50%) rotate3d(1, 0, 0, -75deg);
     opacity: 0;
   }
 
-  &:hover::after {
+  &:hover::after,
+  &:focus-visible::after {
     visibility: visible;
     opacity: 1;
     transform: translate(-50%, -50%) rotate3d(1, 0, 0, 0);

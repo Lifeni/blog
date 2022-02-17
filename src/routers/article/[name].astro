@@ -1,11 +1,14 @@
 ---
-import Comments from 'component:Comments'
-import Layout from 'component:Layout'
-import { Icon } from 'astro-icon'
-
 export interface Props {
   article: Article
 }
+
+import Layout from 'component:Layout'
+
+import Article from 'component:article/Markdown'
+import Meta from 'component:article/Meta'
+import Comments from 'component:article/Comments'
+import Contents from 'component:article/Contents'
 
 const { article } = Astro.props as Props
 
@@ -19,240 +22,19 @@ export async function getStaticPaths() {
     props: { article: file },
   }))
 }
-
-console.log(article.astro.headers)
-
-const date = `${article.date.slice(0, 4)} 年 ${article.date.slice(
-  5,
-  7
-)} 月 ${article.date.slice(8, 10)} 日`
 ---
 
-<Layout title={article.title} description={article.description}>
-  <main>
-    <article data-serif={article.serif}>
-      {article.astro.html}
-
-      <section>
-        <time>
-          <Icon name="mdi:clock-outline" aria-label="时间" />
-          编辑于 {date}
-        </time>
-
-        <a
-          href={article.license === 'CC-BY-SA-4.0'
-            ? 'https://creativecommons.org/licenses/by-sa/4.0/deed.zh'
-            : `https://www.google.com.hk/search?q=${article.license}`}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-        >
-          <Icon name="mdi:copyright" aria-label="版权" />
-          {article.license}
-        </a>
-        <span data-spacer></span>
-        <button onclick="window.scrollTo(0, 0)">
-          <Icon name="mdi:arrow-up" aria-label="顶部" />
-          返回顶部
-        </button>
-      </section>
-    </article>
-
-    {article.astro.headers.length !== 1 && (
-      <nav data-contents data-hide>
-        <ul>
-          {article.astro.headers.map(
-            header =>
-              (header.depth === 2 || header.depth === 3) && (
-                <li data-depth={header.depth} data-slug={header.slug}>
-                  <a href={`#${header.slug}`}>{header.text}</a>
-                </li>
-              )
-          )}
-        </ul>
-      </nav>
-    )}
-
-    <Comments />
-  </main>
+<Layout title={article.title} description={article.description} highlight>
+  <Article html={article.astro.html} />
+  <Meta date={article.date} license={article.license} />
+  {article.astro.headers.length !== 1 && (
+    <Contents headers={article.astro.headers} />
+  )}
+  <Comments />
 </Layout>
 
-<script type="module">
-  const images = document.querySelectorAll('article img')
-  if (images.length !== 0) {
-    const zoom = await import('https://cdn.skypack.dev/medium-zoom')
-    zoom.default(images, { background: 'rgba(0, 0, 0, 0.8)' })
-  }
-</script>
-
-<script type="module">
-  const contents = document.querySelector('[data-contents]')
-  if (contents) {
-    const debounce = await import('https://cdn.skypack.dev/lodash.debounce')
-    const h2s = document.querySelectorAll('article h2')
-    const h3s = document.querySelectorAll('article h3')
-    const headers = [...h2s, ...h3s]
-
-    const links = document.querySelectorAll('[data-contents] li')
-
-    const calc = () => {
-      const top = window.scrollY
-      const height = window.innerHeight
-
-      if (top < 100) contents.setAttribute('data-hide', 'true')
-      else contents.setAttribute('data-hide', 'false')
-
-      const up = {
-        element: null,
-        value: height,
-      }
-
-      const down = {
-        element: null,
-        value: -height,
-      }
-
-      headers.forEach(header => {
-        const top = header.getBoundingClientRect().top
-
-        if (top >= 0) {
-          if (top < height / 2 && top <= up.value) {
-            up.element = header
-            up.value = top
-          }
-        } else {
-          if (top > down.value) {
-            down.element = header
-            down.value = top
-          }
-        }
-      })
-
-      let id = null
-      if (up.element) id = up.element.id
-      else if (down.element) id = down.element.id
-
-      if (id) {
-        links.forEach(link => link.removeAttribute('data-active'))
-        const active = [...links].find(link => link.dataset.slug === id)
-        active.setAttribute('data-active', 'true')
-        active.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-          inline: 'center',
-        })
-      }
-    }
-
-    calc()
-
-    if (debounce && headers.length !== 0) {
-      window.addEventListener('scroll', debounce.default(calc, 100))
-      window.addEventListener('resize', debounce.default(calc, 100))
-    }
-  }
-</script>
-
 <style lang="less">
-  main {
-    width: 100%;
-    max-width: var(--main-width);
-    margin: 0 auto;
-    padding: 1.5rem 3.5rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  article {
-    margin: 1rem 0 3rem 0;
-    font-family: var(--font-sans);
-
-    section {
-      display: flex;
-      align-items: center;
-      width: calc(100% + 3rem);
-      margin: 2rem -1.5rem 0 -1.5rem;
-      padding: 2.5rem 1.5rem 0 1.5rem;
-      border-top: var(--border);
-      color: var(--font-secondary);
-      font-family: var(--font-sans);
-      gap: 1.5rem;
-
-      a,
-      button,
-      time {
-        display: flex;
-        align-items: center;
-        font-size: 1rem;
-
-        svg {
-          margin-right: 0.625rem;
-          width: 1.125rem;
-          height: 1.125rem;
-        }
-      }
-
-      button:hover {
-        color: var(--font-link);
-      }
-    }
-  }
-
-  nav[data-contents] {
-    position: fixed;
-    top: 50%;
-    left: 4.075rem;
-    width: 18rem;
-    color: var(--font-secondary);
-    transform: translateY(-50%);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s, visibility 0.2s;
-
-    ul {
-      max-height: calc(100vh - 18rem);
-      height: 100%;
-      padding: 0.25rem 0;
-      overflow-y: auto;
-      scrollbar-width: none;
-      scroll-behavior: smooth;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      li {
-        width: 100%;
-        padding: 0.125rem 1.5rem;
-        list-style: none;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        border-left: var(--border);
-        transition: border-left 0.2s;
-
-        &[data-active] {
-          border-left: solid 1px var(--font-primary);
-          color: var(--font-primary);
-          font-weight: 800;
-          transition: border-left 0.2s;
-        }
-
-        a {
-          width: 100%;
-          padding: 0.5rem 0;
-          color: inherit;
-
-          &:hover {
-            text-decoration: none;
-            color: var(--font-link);
-          }
-        }
-
-        &[data-depth='2'] {
-          font-weight: 800;
-        }
-      }
-    }
+  :global(body) {
+    background-color: var(--background) !important;
   }
 </style>
