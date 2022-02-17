@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon'
-import ExternalLink from 'component:ExternalLink'
+import ExternalLink from 'component:base/ExternalLink'
 ---
 
 <header>
@@ -10,20 +10,15 @@ import ExternalLink from 'component:ExternalLink'
     </a>
   </h1>
   <nav role="list">
-    <ExternalLink
-      role="listitem"
-      href="https://travellings.link/"
-      data-tooltip="开往"
-      aria-label="开往"
-    >
+    <a role="listitem" href="/explore" data-tooltip="探索" aria-label="探索">
       <Icon name="mdi:triangle-outline" />
-    </ExternalLink>
+    </a>
 
     <ExternalLink
       role="listitem"
       href="https://dev.lifeni.life"
-      data-tooltip="项目"
-      aria-label="项目"
+      data-tooltip="何处"
+      aria-label="何处"
     >
       <Icon name="mdi:square-outline" />
     </ExternalLink>
@@ -36,13 +31,14 @@ import ExternalLink from 'component:ExternalLink'
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 0.75rem;
 
     h1 {
       display: flex;
       align-items: center;
       font-size: 1rem;
       line-height: initial;
-      font-weight: 500;
+      font-weight: var(--font-normal);
       gap: 0.75rem;
 
       a {
@@ -50,9 +46,12 @@ import ExternalLink from 'component:ExternalLink'
         display: flex;
         align-items: center;
         color: var(--font-primary);
-        transition: all 0.2s;
+        border-radius: 50%;
+        transition: color 0.2s;
+        outline-offset: 0;
 
-        &:hover {
+        &:hover,
+        &:focus-visible {
           text-decoration: none;
           color: var(--font-link);
         }
@@ -89,8 +88,11 @@ import ExternalLink from 'component:ExternalLink'
         color: var(--font-primary);
         cursor: pointer;
         transition: all 0.2s;
+        border-radius: 50%;
+        outline-offset: 0;
 
-        &:hover {
+        &:hover,
+        &:focus-visible {
           text-decoration: none;
           color: var(--font-link);
         }
@@ -98,11 +100,6 @@ import ExternalLink from 'component:ExternalLink'
         & > svg {
           width: 1.25rem;
           height: 1.25rem;
-        }
-
-        &:hover,
-        &:focus {
-          color: var(--font-link);
         }
       }
     }

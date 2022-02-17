@@ -10,7 +10,9 @@
   },
   "devDependencies": {
     "astro": "^0.22.20",
+    "autoprefixer": "^10.4.2",
     "less": "^4.1.2",
+    "postcss": "^8.4.6",
     "prettier": "^2.5.1",
     "prettier-plugin-astro": "^0.0.12",
     "rehype-external-links": "^1.0.1",

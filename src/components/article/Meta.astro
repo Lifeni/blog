@@ -1,0 +1,73 @@
+---
+import { Icon } from 'astro-icon'
+
+export interface Props {
+  date: string
+  license: string
+}
+
+const { date, license } = Astro.props as Props
+
+const year = date.slice(0, 4)
+const month = date.slice(5, 7)
+const day = date.slice(8, 10)
+const time = `${year} 年 ${month} 月 ${day} 日`
+---
+
+<section>
+  <time>
+    <Icon name="mdi:clock-outline" aria-label="时间" />
+    编辑于 {time}
+  </time>
+
+  <a
+    href={license === 'CC-BY-SA-4.0'
+      ? 'https://creativecommons.org/licenses/by-sa/4.0/deed.zh'
+      : `https://www.google.com.hk/search?q=${license}`}
+    target="_blank"
+    rel="nofollow noopener noreferrer"
+  >
+    <Icon name="mdi:copyright" aria-label="版权" />
+    {license}
+  </a>
+
+  <span data-spacer></span>
+
+  <button onclick="window.scrollTo(0, 0)">
+    <Icon name="mdi:arrow-up" aria-label="顶部" />
+    返回顶部
+  </button>
+</section>
+
+<style lang="less">
+  section {
+    display: flex;
+    align-items: center;
+    width: calc(100% + 3rem);
+    margin: 2rem -1.5rem 3rem -1.5rem;
+    padding: 2.75rem 1.5rem 0 1.75rem;
+    border-top: var(--border);
+    color: var(--font-secondary);
+    font-family: var(--font-sans);
+    gap: 1.5rem;
+
+    a,
+    button,
+    time {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      line-height: 1.25;
+
+      svg {
+        margin-right: 0.625rem;
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+    }
+
+    button:hover {
+      color: var(--font-link);
+    }
+  }
+</style>

@@ -1,6 +1,6 @@
 ---
 import UpyunLogo from 'asset:upyun-logo.svg'
-import ExternalLink from 'component:ExternalLink'
+import ExternalLink from 'component:base/ExternalLink'
 ---
 
 <footer>
@@ -27,7 +27,7 @@ import ExternalLink from 'component:ExternalLink'
 
 <style lang="less">
   footer {
-    padding: 0 3.5rem 2.25rem;
+    padding: 0 3.5rem 2.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,6 +42,7 @@ import ExternalLink from 'component:ExternalLink'
       a {
         display: flex;
         align-items: center;
+        line-height: 1.25;
         color: var(--font-secondary);
 
         img {
@@ -51,7 +52,8 @@ import ExternalLink from 'component:ExternalLink'
           transition: all 0.2s;
         }
 
-        &:hover {
+        &:hover,
+        &:focus-visible {
           color: var(--font-link);
           text-decoration: none;
 

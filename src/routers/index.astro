@@ -1,85 +1,17 @@
 ---
 import Layout from 'component:Layout'
 
-const files = Astro.fetchContent('../../contents/articles/*.md') as Article[]
-
-const groups = files
-  .sort((a, b) => {
-    const unix = (str: string) => new Date(str).getTime()
-    return unix(b['create-date']) - unix(a['create-date'])
-  })
-  .reduce((pre, cur) => {
-    const year = cur['create-date'].slice(0, 4)
-    const obj = pre
-    if (obj.hasOwnProperty(year)) obj[year].push(cur)
-    else obj[year] = [cur]
-    return obj
-  }, {}) as Group
+import Articles from 'component:home/Articles'
+import Hero from 'component:home/Hero'
 ---
 
 <Layout>
-  <main>
-    <article></article>
-    <aside>
-      {Object.keys(groups)
-        .sort((a, b) => Number(b) - Number(a))
-        .map(year => (
-          <section>
-            <h2>{year}</h2>
-            <ul>
-              {groups[year].map(article => (
-                <li>
-                  <time>
-                    {article['create-date'].slice(5, 7)}
-                    <span>/</span>
-                    {article['create-date'].slice(8, 10)}
-                  </time>
-                  <a href={`/article/${article.name}`}>{article.title}</a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-    </aside>
-  </main>
+  <Hero />
+  <Articles />
 </Layout>
 
 <style lang="less">
-  main {
-    width: 100%;
-    max-width: var(--main-width);
-    margin: 0 auto;
-    padding: 1.5rem 3.5rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  section {
-    margin: 1.5rem 0;
-
-    h2 {
-      display: flex;
-      font-size: 1.25rem;
-      font-family: var(--font-mono);
-      font-weight: 800;
-    }
-
-    ul {
-      margin: 1.5rem 0 0 0;
-
-      li {
-        padding: 0.125rem 0;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-
-        time {
-          display: flex;
-          font-family: var(--font-mono);
-        }
-      }
-    }
+  :global(body) {
+    background-color: var(--background-r) !important;
   }
 </style>

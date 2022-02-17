@@ -1,24 +1,44 @@
 ---
-import Footer from 'component:Footer'
-import Header from 'component:Header'
-import PageMeta from 'component:PageMeta'
-
 export interface Props {
   title?: string
   description?: string
+  highlight?: boolean
 }
+
+import Footer from 'component:base/Footer'
+import Header from 'component:base/Header'
+
+const Global = Astro.resolve('../global.less')
+const Highlight = Astro.resolve('../assets/highlight.css')
 
 const desc =
   '个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。'
 
-const { title, description = desc } = Astro.props as Props
+const { title, description = desc, highlight } = Astro.props as Props
 ---
 
 <html lang="zh-hans">
   <head>
     <title>{title ? `${title} | 记录干杯` : '记录干杯'}</title>
     <meta name="description" content={description} />
-    <PageMeta />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#feec44" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <link rel="stylesheet" href={Global} />
+    {highlight && <link rel="stylesheet" href={Highlight} />}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;800&family=Noto+Sans+SC:wght@500;800&family=JetBrains+Mono:wght@500;800&display=auto"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preconnect" href="https://file.lifeni.life" />
   </head>
 
   <body>
@@ -30,14 +50,22 @@ const { title, description = desc } = Astro.props as Props
   </body>
 </html>
 
+<script
+  async
+  src="https://ackee-app.dist.run/tracker.js"
+  data-ackee-server="https://ackee-app.dist.run"
+  data-ackee-domain-id="5d2ccced-6733-4379-899f-f54d09dc4b04"
+>
+</script>
+
 <style lang="less">
   html {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow-x: hidden;
-    overflow-y: auto;
-    font-size: var(--font-normal);
+    overflow-y: scroll;
+    font-size: 1rem;
     scroll-behavior: smooth;
     scroll-padding: 2.5rem;
 
@@ -48,14 +76,22 @@ const { title, description = desc } = Astro.props as Props
       flex-direction: column;
       font-family: var(--font-sans);
       color: var(--font-primary);
-      background-color: var(--background);
-      font-weight: 500;
+      background-color: var(--background-r);
+      font-weight: var(--font-normal);
       line-height: 2;
       text-align: justify;
       text-justify: auto;
       overflow-wrap: break-word;
 
- 
+      main {
+        width: 100%;
+        max-width: var(--main-width);
+        margin: 0 auto;
+        padding: 1.5rem 3.5rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
     }
   }
 </style>
