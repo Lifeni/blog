@@ -1,21 +1,52 @@
 ---
 const files = Astro.fetchContent('../../../contents/articles/*.md') as Article[]
 
+const key: 'date' | 'create-date' = 'create-date'
+
 const groups = files
   .sort((a, b) => {
     const unix = (str: string) => new Date(str).getTime()
-    return unix(b['create-date']) - unix(a['create-date'])
+    return unix(b[key]) - unix(a[key])
   })
   .reduce((pre, cur) => {
-    const year = cur['create-date'].slice(0, 4)
+    const year = cur[key].slice(0, 4)
     const obj = pre
     if (obj.hasOwnProperty(year)) obj[year].push(cur)
     else obj[year] = [cur]
     return obj
   }, {}) as Group
+
+const updates = files
+  .sort((a, b) => {
+    const unix = (str: string) => new Date(str).getTime()
+    return unix(b['date']) - unix(a['date'])
+  })
+  .slice(0, 4)
+
+const formatter = (article: Article) =>
+  `创建时间：${article['create-date'].slice(0, 10)}
+修改时间：${article['date'].slice(0, 10)}`
 ---
 
 <div>
+  <section>
+    <h2>最近更新</h2>
+    <ul>
+      {updates.map(article => (
+        <li>
+          <a href={`/article/${article.name}`}>
+            <time title={formatter(article)}>
+              {article['date'].slice(5, 7)}
+              <span>/</span>
+              {article['date'].slice(8, 10)}
+            </time>
+            <h3 title={article.description}>{article.title}</h3>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
   {Object.keys(groups)
     .sort((a, b) => Number(b) - Number(a))
     .map(year => (
@@ -25,12 +56,12 @@ const groups = files
           {groups[year].map(article => (
             <li>
               <a href={`/article/${article.name}`}>
-                <time>
-                  {article['create-date'].slice(5, 7)}
+                <time title={formatter(article)}>
+                  {article[key].slice(5, 7)}
                   <span>/</span>
-                  {article['create-date'].slice(8, 10)}
+                  {article[key].slice(8, 10)}
                 </time>
-                {article.title}
+                <h3 title={article.description}>{article.title}</h3>
               </a>
             </li>
           ))}
@@ -43,6 +74,14 @@ const groups = files
   section {
     &:last-of-type {
       margin: 0 0 3rem 0;
+
+      @media (max-width: 36rem) {
+        margin: 0 0 2rem 0;
+      }
+
+      @media (max-width: 28rem) {
+        margin: 0 0 1rem 0;
+      }
     }
 
     h2 {
@@ -50,32 +89,52 @@ const groups = files
       display: flex;
       font-size: 1.5rem;
       font-weight: var(--font-bold);
+
+      @media (max-width: 36rem) {
+        font-size: 1.375rem;
+      }
+
+      @media (max-width: 28rem) {
+        margin: 1rem 0;
+      }
     }
 
     ul {
-      width: calc(100% + 3rem);
-      margin: 0 -1.5rem;
+      width: calc(100% + var(--extra-margin) * 2);
+      margin: 0 calc(var(--extra-margin) * -1);
       padding: 0.75rem;
       border-radius: var(--border-radius);
       border: var(--border);
       background-color: var(--background-subtle-r);
 
       li {
+        width: 100%;
         list-style: none;
 
         a {
+          width: 100%;
           padding: 0.25rem 0.75rem;
           display: flex;
           align-items: center;
           color: var(--font-primary);
           border-radius: var(--border-radius);
           border: solid var(--border-width) var(--background-subtle-r);
+          transition: border 0.2s;
           gap: 1.5rem;
 
           time {
             display: flex;
             color: var(--font-secondary);
             font-family: var(--font-mono);
+          }
+
+          h3 {
+            font-size: inherit;
+            font-weight: inherit;
+            flex: 1;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
           }
 
           &:after {
@@ -87,6 +146,10 @@ const groups = files
             visibility: hidden;
             transform: translateX(-0.5rem);
             transition: all 0.2s;
+
+            @media (max-width: 36rem) {
+              display: none;
+            }
           }
 
           &:hover,

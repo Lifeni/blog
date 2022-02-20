@@ -43,13 +43,26 @@ const time = `${year} 年 ${month} 月 ${day} 日`
   section {
     display: flex;
     align-items: center;
-    width: calc(100% + 3rem);
-    margin: 2rem -1.5rem 3rem -1.5rem;
-    padding: 2.75rem 1.5rem 0 1.75rem;
+    width: calc(100% + var(--extra-margin) * 2);
+    margin: 2rem calc(var(--extra-margin) * -1) 3rem
+      calc(var(--extra-margin) * -1);
+    padding: 2.75rem 1.5rem 0;
     border-top: var(--border);
     color: var(--font-secondary);
     font-family: var(--font-sans);
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+
+    @media (max-width: 36rem) {
+      margin: 1.5rem calc(var(--extra-margin) * -1) 2rem
+        calc(var(--extra-margin) * -1);
+    }
+
+    @media (max-width: 28rem) {
+      margin: 1.5rem calc(var(--extra-margin) * -1) 1.5rem
+        calc(var(--extra-margin) * -1);
+      padding: 2.25rem 1rem 0;
+    }
 
     a,
     button,

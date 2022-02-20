@@ -5,12 +5,9 @@ export interface Props {
 
 import Layout from 'component:Layout'
 
-import Article from 'component:article/Markdown'
-import Meta from 'component:article/Meta'
+import Actions from 'component:article/Actions'
 import Comments from 'component:article/Comments'
-import Contents from 'component:article/Contents'
-
-const { article } = Astro.props as Props
+import Indexes from 'component:article/Indexes'
 
 export async function getStaticPaths() {
   const files = Astro.fetchContent(
@@ -22,16 +19,34 @@ export async function getStaticPaths() {
     props: { article: file },
   }))
 }
+
+const { article } = Astro.props as Props
+
+const highlight = Astro.resolve('../../assets/highlight.css')
+const markdown = Astro.resolve('../../markdown.less')
 ---
 
-<Layout title={article.title} description={article.description} highlight>
-  <Article html={article.astro.html} />
-  <Meta date={article.date} license={article.license} />
+<Layout title={article.title} description={article.description}>
+  <Fragment slot="head">
+    <link rel="stylesheet" href={highlight} />
+    <link rel="stylesheet" href={markdown} />
+  </Fragment>
+
+  <article set:html={article.astro.html}></article>
+  <Actions date={article.date} license={article.license} />
   {article.astro.headers.length !== 1 && (
-    <Contents headers={article.astro.headers} />
+    <Indexes headers={article.astro.headers} />
   )}
-  <Comments />
+  <!-- <Comments /> -->
 </Layout>
+
+<script type="module" defer>
+  const images = document.querySelectorAll('article img')
+  if (images.length !== 0) {
+    const zoom = await import('https://cdn.skypack.dev/medium-zoom')
+    zoom.default(images, { background: 'rgba(0, 0, 0, 0.8)' })
+  }
+</script>
 
 <style lang="less">
   :global(body) {

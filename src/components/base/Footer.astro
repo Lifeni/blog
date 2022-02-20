@@ -4,62 +4,68 @@ import ExternalLink from 'component:base/ExternalLink'
 ---
 
 <footer>
-  <section>
-    <ExternalLink
-      href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referral"
-    >
-      由
-      <img src={UpyunLogo} alt="又拍云" />
-      提供 CDN 加速与云储存服务
-    </ExternalLink>
-  </section>
-  <section>
-    <ExternalLink href="https://beian.miit.gov.cn">
-      鲁ICP备19006085号
-    </ExternalLink>
-    <ExternalLink
-      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
-    >
-      鲁公网安备37132102371392号
-    </ExternalLink>
-  </section>
+  <ExternalLink
+    href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referral"
+  >
+    由
+    <img src={UpyunLogo} alt="又拍云" />
+    提供 CDN 加速与云储存服务
+  </ExternalLink>
+  <span data-divider></span>
+  <ExternalLink href="https://beian.miit.gov.cn">
+    鲁ICP备19006085号
+  </ExternalLink>
+  <ExternalLink
+    href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392"
+  >
+    鲁公网安备37132102371392号
+  </ExternalLink>
 </footer>
 
 <style lang="less">
   footer {
-    padding: 0 3.5rem 2.5rem;
+    padding: 0 3.5rem 2.75rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
+    gap: 1rem 2rem;
 
-    section {
+    @media (max-width: 36rem) {
+      padding: 0 3rem 2.5rem;
+    }
+
+    @media (max-width: 28rem) {
+      padding: 0 2rem 2rem;
+    }
+
+    span[data-divider] {
+      flex: 1;
+    }
+
+    a {
+      max-width: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 2rem;
+      line-height: 1.25;
+      color: var(--font-secondary);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
 
-      a {
-        display: flex;
-        align-items: center;
-        line-height: 1.25;
-        color: var(--font-secondary);
+      img {
+        height: 1.25rem;
+        margin: 0 0.5rem;
+        filter: grayscale(100%);
+        transition: all 0.2s;
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: var(--font-link);
+        text-decoration: none;
 
         img {
-          height: 1.25rem;
-          margin: 0 0.5rem;
-          filter: grayscale(100%);
-          transition: all 0.2s;
-        }
-
-        &:hover,
-        &:focus-visible {
-          color: var(--font-link);
-          text-decoration: none;
-
-          img {
-            filter: grayscale(0%);
-          }
+          filter: grayscale(0%);
         }
       }
     }

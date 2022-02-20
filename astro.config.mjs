@@ -9,25 +9,28 @@
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
   // Comment out "renderers: []" to enable Astro's default component support.
-  pages: "./src/routers",
+  pages: './src/routers',
   renderers: [],
   vite: {
     ssr: {
-      external: ["svgo"],
+      external: ['svgo'],
+    },
+    server: {
+      host: '0.0.0.0',
     },
   },
   buildOptions: {
-    site: "https://lifeni.life",
+    site: 'https://lifeni.life',
   },
   markdownOptions: {
     render: [
-      "@astrojs/markdown-remark",
+      '@astrojs/markdown-remark',
       {
-        remarkPlugins: ["remark-gfm", "remark-unwrap-images"],
+        remarkPlugins: ['remark-gfm', 'remark-unwrap-images'],
         rehypePlugins: [
-          "rehype-external-links",
-          "rehype-slug",
-          "rehype-plugin-image-native-lazy-loading",
+          'rehype-external-links',
+          'rehype-slug',
+          'rehype-plugin-image-native-lazy-loading',
         ],
       },
     ],

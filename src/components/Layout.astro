@@ -2,19 +2,17 @@
 export interface Props {
   title?: string
   description?: string
-  highlight?: boolean
 }
 
 import Footer from 'component:base/Footer'
 import Header from 'component:base/Header'
 
-const Global = Astro.resolve('../global.less')
-const Highlight = Astro.resolve('../assets/highlight.css')
+const global = Astro.resolve('../global.less')
 
 const desc =
   '个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。'
 
-const { title, description = desc, highlight } = Astro.props as Props
+const { title, description = desc } = Astro.props as Props
 ---
 
 <html lang="zh-hans">
@@ -27,8 +25,9 @@ const { title, description = desc, highlight } = Astro.props as Props
     <meta name="theme-color" content="#feec44" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
-    <link rel="stylesheet" href={Global} />
-    {highlight && <link rel="stylesheet" href={Highlight} />}
+    <link rel="stylesheet" href={global} />
+
+    <slot name="head" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,7 +37,7 @@ const { title, description = desc, highlight } = Astro.props as Props
     />
 
     <link rel="icon" href="/favicon.svg" />
-    <link rel="preconnect" href="https://file.lifeni.life" />
+    <link rel="preconnect" href="https://dev.lifeni.life" />
   </head>
 
   <body>
@@ -50,14 +49,6 @@ const { title, description = desc, highlight } = Astro.props as Props
   </body>
 </html>
 
-<script
-  async
-  src="https://ackee-app.dist.run/tracker.js"
-  data-ackee-server="https://ackee-app.dist.run"
-  data-ackee-domain-id="5d2ccced-6733-4379-899f-f54d09dc4b04"
->
-</script>
-
 <style lang="less">
   html {
     position: relative;
@@ -65,7 +56,7 @@ const { title, description = desc, highlight } = Astro.props as Props
     height: 100vh;
     overflow-x: hidden;
     overflow-y: scroll;
-    font-size: 1rem;
+    font-size: var(--font-base);
     scroll-behavior: smooth;
     scroll-padding: 2.5rem;
 
@@ -91,6 +82,14 @@ const { title, description = desc, highlight } = Astro.props as Props
         display: flex;
         flex-direction: column;
         flex: 1;
+
+        @media (max-width: 36rem) {
+          padding: 1.5rem 3rem;
+        }
+
+        @media (max-width: 28rem) {
+          padding: 1.25rem 2rem;
+        }
       }
     }
   }

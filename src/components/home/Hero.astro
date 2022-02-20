@@ -2,16 +2,17 @@
 import { Markdown } from 'astro/components'
 import ExternalLink from 'component:base/ExternalLink'
 
-const items = 'https://directus-api.dist.run/items'
-const assets = 'https://directus-api.dist.run/assets'
+const base = `https://dev.lifeni.life`
+const assets = `${base}/assets`
+const items = `${base}/items`
 
+const about = (await fetch(`${items}/about`).then(r => r.json())) as About
 const friends = (await fetch(`${items}/friends`).then(r => r.json())) as Friends
-const hero = (await fetch(`${items}/hero`).then(r => r.json())) as Hero
 ---
 
 <article>
   <Markdown>
-    <Markdown content={hero.data.markdown} />
+    <Markdown content={about.data.content} />
   </Markdown>
   <section>
     {friends.data.map(friend => (
@@ -36,11 +37,27 @@ const hero = (await fetch(`${items}/hero`).then(r => r.json())) as Hero
     font-family: var(--font-sans);
     line-height: 1.875;
 
+    del {
+      text-decoration: none;
+    }
+
+    @media (max-width: 36rem) {
+      margin: 1rem 0 2.5rem 0;
+    }
+
+    @media (max-width: 28rem) {
+      margin: 1rem 0 2.25rem 0;
+
+      del {
+        display: none;
+      }
+    }
+
     h1 {
       font-weight: var(--font-bold);
       text-justify: none;
       text-align: left;
-      margin: 0 0 4.5rem 0;
+      margin: 0 0 4rem 0;
       font-size: 1.875rem;
       line-height: 1.75;
 
@@ -49,6 +66,19 @@ const hero = (await fetch(`${items}/hero`).then(r => r.json())) as Hero
         margin-right: 1rem;
         margin-left: -0.25rem;
         font-weight: var(--font-normal);
+
+        @media (max-width: 28rem) {
+          margin-left: -0.125rem;
+        }
+      }
+
+      @media (max-width: 36rem) {
+        font-size: 1.75rem;
+      }
+
+      @media (max-width: 28rem) {
+        margin: 0 0 3rem 0;
+        font-size: 1.625rem;
       }
     }
 
@@ -62,9 +92,10 @@ const hero = (await fetch(`${items}/hero`).then(r => r.json())) as Hero
 
     section {
       width: 100%;
-      margin: 0 -1px;
+      margin: 0;
       padding: 1rem 0;
       display: flex;
+      flex-wrap: wrap;
       gap: 1rem;
 
       a {
@@ -78,7 +109,10 @@ const hero = (await fetch(`${items}/hero`).then(r => r.json())) as Hero
           border: var(--border);
           border-radius: 50%;
           box-shadow: var(--shadow-lite);
+          color: transparent;
+          background-color: var(--background-subtle-r);
           transition: all 0.2s;
+          animation: fade-in 0.2s;
         }
 
         &::before {

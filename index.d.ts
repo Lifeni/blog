@@ -31,11 +31,11 @@ interface Friends {
   data: { id: string; name: string; link: string; avatar: string }[]
 }
 
-interface Hero {
+interface About {
   data: {
     id: string
     date_created: string
     date_updated: string | null
-    markdown: string
+    content: string
   }
 }

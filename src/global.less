@@ -1,10 +1,15 @@
 :root {
   --main-width: 42rem;
+  --extra-margin: 1.5rem;
 
   --font-base: 16px;
-
   --font-normal: 500;
   --font-bold: 800;
+
+  @media (max-width: 28rem) {
+    --font-base: 15px;
+    --extra-margin: 1rem;
+  }
 
   --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
@@ -165,4 +170,13 @@ button {
 .medium-zoom-overlay,
 .medium-zoom-image--opened {
   z-index: 99999;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

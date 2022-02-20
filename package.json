@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "astro dev --port 8000",
-    "debug": "astro dev --port 8000 --verbose",
+    "debug": "astro check --verbose",
     "build": "astro build",
-    "preview": "astro preview --port 8000"
+    "preview": "astro preview --port 8000",
+    "reload":"astro check --reload"
   },
   "devDependencies": {
-    "astro": "^0.22.20",
+    "astro": "^0.23.0",
     "autoprefixer": "^10.4.2",
     "less": "^4.1.2",
     "postcss": "^8.4.6",
@@ -21,6 +22,6 @@
     "remark-unwrap-images": "^3.0.1"
   },
   "dependencies": {
-    "astro-icon": "^0.5.3"
+    "astro-icon": "^0.6.0"
   }
 }

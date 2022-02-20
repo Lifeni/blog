@@ -38,8 +38,9 @@
 
 <style lang="less">
   section {
-    width: calc(100% + 3rem);
-    margin: 0 -1.5rem 2.5rem -1.5rem;
+    width: calc(100% + var(--extra-margin) * 2);
+    margin: 0 calc(var(--extra-margin) * -1) 2.5rem
+      calc(var(--extra-margin) * -1);
 
     div[data-comment] {
       display: flex;

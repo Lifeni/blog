@@ -8,6 +8,16 @@ const { headers } = Astro.props as Props
 
 <nav data-contents data-hide>
   <ul>
+    <li
+      title={headers[0].text}
+      data-depth={headers[0].depth}
+      data-slug={headers[0].slug}
+    >
+      <a href={`#${headers[0].slug}`}>{headers[0].text}</a>
+    </li>
+
+    <li aria-hidden><hr /></li>
+
     {headers.map(
       header =>
         (header.depth === 2 || header.depth === 3) && (
@@ -28,6 +38,7 @@ const { headers } = Astro.props as Props
 
   if (contents) {
     const debounce = await import('https://cdn.skypack.dev/lodash.debounce')
+    let disabled = window.matchMedia('(max-width: 72rem)').matches
 
     const h1 = document.querySelector('article h1')
     const offset = h1.offsetTop + h1.offsetHeight + 32
@@ -38,11 +49,12 @@ const { headers } = Astro.props as Props
 
     const links = document.querySelectorAll('[data-contents] li')
 
-    const show = () =>
-      window.requestAnimationFrame(() => {
-        if (window.scrollY < offset) contents.setAttribute('data-hide', 'true')
-        else contents.setAttribute('data-hide', 'false')
-      })
+    const show = () => {
+      if (window.scrollY < offset) contents.setAttribute('data-hide', 'true')
+      else contents.setAttribute('data-hide', 'false')
+
+      calc()
+    }
 
     const calc = debounce.default(() => {
       const screen = window.innerHeight
@@ -69,16 +81,20 @@ const { headers } = Astro.props as Props
       }
     }, 100)
 
-    show()
-    calc()
+    if (!disabled) show()
 
     if (debounce && headers.length !== 0) {
-      const run = () => {
-        show()
-        calc()
-      }
-      window.addEventListener('scroll', run)
-      window.addEventListener('resize', run)
+      window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(() => {
+          if (!disabled) show()
+        })
+      })
+      window.addEventListener('resize', () => {
+        window.requestAnimationFrame(() => {
+          disabled = window.matchMedia('(max-width: 72rem)').matches
+          if (!disabled) show()
+        })
+      })
     }
   }
 </script>
@@ -94,6 +110,15 @@ const { headers } = Astro.props as Props
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s, visibility 0.2s;
+
+    @media (max-width: 72rem) {
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+
+    &:hover {
+      color: var(--font-primary);
+    }
 
     ul {
       max-height: calc(100vh - 18rem);
@@ -117,14 +142,11 @@ const { headers } = Astro.props as Props
         color: inherit;
         border-left: var(--border);
         font-size: 0.925rem;
-        transition: border-left 0.2s, color 0.2s, font-size 0.2s;
+        transition: border-left 0.2s, font-size 0.2s;
 
         &[data-active] {
-          border-left: solid 1px var(--font-primary);
-          color: var(--font-primary);
-          font-weight: var(--font-bold);
-          font-size: 1.125rem;
-          transition: border-left 0.2s, color 0.2s, font-size 0.2s;
+          border-left: solid 1px var(--font-link);
+          color: var(--font-link);
         }
 
         a {
@@ -146,8 +168,16 @@ const { headers } = Astro.props as Props
           }
         }
 
+        &[data-depth='1'],
         &[data-depth='2'] {
+          font-size: 1rem;
           font-weight: var(--font-bold);
+        }
+
+        hr {
+          margin: 0.5rem 0;
+          border: none;
+          border-top: var(--border);
         }
       }
     }
