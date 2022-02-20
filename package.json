@@ -7,13 +7,11 @@
     "debug": "astro check --verbose",
     "build": "astro build",
     "preview": "astro preview --port 8000",
-    "reload":"astro check --reload"
+    "reload": "astro check --reload"
   },
   "devDependencies": {
     "astro": "^0.23.0",
-    "autoprefixer": "^10.4.2",
     "less": "^4.1.2",
-    "postcss": "^8.4.6",
     "prettier": "^2.5.1",
     "prettier-plugin-astro": "^0.0.12",
     "rehype-external-links": "^1.0.1",
@@ -22,6 +20,8 @@
     "remark-unwrap-images": "^3.0.1"
   },
   "dependencies": {
-    "astro-icon": "^0.6.0"
+    "astro-icon": "^0.6.0",
+    "lodash.debounce": "^4.0.8",
+    "medium-zoom": "^1.0.6"
   }
 }

@@ -5,7 +5,7 @@
     "paths": {
       "asset:*": ["src/assets/*?url"],
       "component:*": ["src/components/*.astro"],
-      "util:*": ["src/utils/*.ts"]
+      "import:*": ["src/components/import/*.svelte"]
     },
     "noEmit": true
   }

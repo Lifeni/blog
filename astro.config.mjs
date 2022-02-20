@@ -10,18 +10,12 @@
 export default /** @type {import('astro').AstroUserConfig} */ ({
   // Comment out "renderers: []" to enable Astro's default component support.
   pages: './src/routers',
-  renderers: [],
+  renderers: ['@astrojs/renderer-svelte'],
   vite: {
-    ssr: {
-      external: ['svgo'],
-    },
-    server: {
-      host: '0.0.0.0',
-    },
+    ssr: { external: ['svgo'] },
+    server: { host: '0.0.0.0' },
   },
-  buildOptions: {
-    site: 'https://lifeni.life',
-  },
+  buildOptions: { site: 'https://lifeni.life' },
   markdownOptions: {
     render: [
       '@astrojs/markdown-remark',

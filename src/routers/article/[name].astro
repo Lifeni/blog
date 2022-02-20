@@ -6,8 +6,10 @@ export interface Props {
 import Layout from 'component:Layout'
 
 import Actions from 'component:article/Actions'
-import Comments from 'component:article/Comments'
 import Indexes from 'component:article/Indexes'
+
+import MediumZoom from 'import:MediumZoom'
+import ContentsNavigation from 'import:ContentsNavigation'
 
 export async function getStaticPaths() {
   const files = Astro.fetchContent(
@@ -37,16 +39,10 @@ const markdown = Astro.resolve('../../markdown.less')
   {article.astro.headers.length !== 1 && (
     <Indexes headers={article.astro.headers} />
   )}
-  <!-- <Comments /> -->
-</Layout>
 
-<script type="module" defer>
-  const images = document.querySelectorAll('article img')
-  if (images.length !== 0) {
-    const zoom = await import('https://cdn.skypack.dev/medium-zoom')
-    zoom.default(images, { background: 'rgba(0, 0, 0, 0.8)' })
-  }
-</script>
+  <MediumZoom client:idle />
+  <ContentsNavigation client:media={'(min-width: 72rem)'} />
+</Layout>
 
 <style lang="less">
   :global(body) {
