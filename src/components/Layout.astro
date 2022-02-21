@@ -32,19 +32,17 @@ const { title, description = desc } = Astro.props as Props
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;800&family=Noto+Sans+SC:wght@500;800&family=JetBrains+Mono:wght@500;800&display=auto"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;800&family=Noto+Sans+SC:wght@500;800&family=JetBrains+Mono:wght@500;800&display=swap"
       rel="stylesheet"
+      crossorigin
     />
 
     <link rel="icon" href="/favicon.svg" />
-    <link rel="preconnect" href="https://dev.lifeni.life" />
   </head>
 
   <body>
     <Header />
-    <main>
-      <slot />
-    </main>
+    <main><slot /></main>
     <Footer />
   </body>
 </html>

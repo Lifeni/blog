@@ -14,7 +14,7 @@ const day = date.slice(8, 10)
 const time = `${year} 年 ${month} 月 ${day} 日`
 ---
 
-<section>
+<section data-meta>
   <time>
     <Icon name="mdi:clock-outline" aria-label="时间" />
     编辑于 {time}
@@ -40,7 +40,7 @@ const time = `${year} 年 ${month} 月 ${day} 日`
 </section>
 
 <style lang="less">
-  section {
+  section[data-meta] {
     display: flex;
     align-items: center;
     width: calc(100% + var(--extra-margin) * 2);

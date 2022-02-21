@@ -1,15 +1,12 @@
 ---
+import Layout from 'component:Layout'
+import Article from 'component:article/Markdown'
+import Meta from 'component:article/Meta'
+import Contents from 'component:article/Contents'
+
 export interface Props {
   article: Article
 }
-
-import Layout from 'component:Layout'
-
-import Actions from 'component:article/Actions'
-import Indexes from 'component:article/Indexes'
-
-import MediumZoom from 'import:MediumZoom'
-import ContentsNavigation from 'import:ContentsNavigation'
 
 export async function getStaticPaths() {
   const files = Astro.fetchContent(
@@ -23,25 +20,21 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props as Props
-
 const highlight = Astro.resolve('../../assets/highlight.css')
-const markdown = Astro.resolve('../../markdown.less')
 ---
 
 <Layout title={article.title} description={article.description}>
   <Fragment slot="head">
     <link rel="stylesheet" href={highlight} />
-    <link rel="stylesheet" href={markdown} />
+    <link rel="preconnect" href="https://file.lifeni.life" />
   </Fragment>
 
-  <article set:html={article.astro.html}></article>
-  <Actions date={article.date} license={article.license} />
-  {article.astro.headers.length !== 1 && (
-    <Indexes headers={article.astro.headers} />
-  )}
+  <Article html={article.astro.html} />
 
-  <MediumZoom client:idle />
-  <ContentsNavigation client:media={'(min-width: 72rem)'} />
+  <Meta date={article.date} license={article.license} />
+  {article.astro.headers.length !== 1 && (
+    <Contents headers={article.astro.headers} />
+  )}
 </Layout>
 
 <style lang="less">

@@ -5,8 +5,10 @@
     "paths": {
       "asset:*": ["src/assets/*?url"],
       "component:*": ["src/components/*.astro"],
-      "import:*": ["src/components/import/*.svelte"]
+      "libs:*": ["src/libs/*"]
     },
-    "noEmit": true
+    "noEmit": true,
+    "target": "es2020",
+    "module": "es2022"
   }
 }

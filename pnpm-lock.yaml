@@ -4,7 +4,6 @@ specifiers:
   astro: ^0.23.0
   astro-icon: ^0.6.0
   less: ^4.1.2
-  lodash.debounce: ^4.0.8
   medium-zoom: ^1.0.6
   prettier: ^2.5.1
   prettier-plugin-astro: ^0.0.12
@@ -15,7 +14,6 @@ specifiers:
 
 dependencies:
   astro-icon: 0.6.0
-  lodash.debounce: 4.0.8
   medium-zoom: 1.0.6
 
 devDependencies:
@@ -2424,10 +2422,6 @@ packages:
     dependencies:
       p-locate: 4.1.0
     dev: true
-
-  /lodash.debounce/4.0.8:
-    resolution: {integrity: sha1-gteb/zCmfEAF/9XiUVMArZyk168=}
-    dev: false
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}

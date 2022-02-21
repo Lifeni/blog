@@ -4,21 +4,11 @@ export interface Props {
 }
 
 const { headers } = Astro.props as Props
-
+const contents = Astro.resolve('../../libs/follow-contents.ts')
 ---
 
 <nav data-contents data-hide>
   <ul>
-    <li
-      title={headers[0].text}
-      data-depth={headers[0].depth}
-      data-slug={headers[0].slug}
-    >
-      <a href={`#${headers[0].slug}`}>{headers[0].text}</a>
-    </li>
-
-    <li aria-hidden><hr /></li>
-
     {headers.map(
       header =>
         (header.depth === 2 || header.depth === 3) && (
@@ -27,13 +17,14 @@ const { headers } = Astro.props as Props
             data-depth={header.depth}
             data-slug={header.slug}
           >
-            <a href={`#${header.slug}`}>{header.text}</a>
+            <a href={`#${header.slug}`} set:text={header.text} />
           </li>
         )
     )}
   </ul>
-
 </nav>
+
+<script src={contents} defer type="module" hoist></script>
 
 <style lang="less">
   nav[data-contents] {
@@ -106,7 +97,6 @@ const { headers } = Astro.props as Props
 
         &[data-depth='1'],
         &[data-depth='2'] {
-          font-size: 1rem;
           font-weight: var(--font-bold);
         }
 

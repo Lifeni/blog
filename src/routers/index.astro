@@ -1,11 +1,14 @@
 ---
 import Layout from 'component:Layout'
-
 import Articles from 'component:home/Articles'
 import Hero from 'component:home/Hero'
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://dev.lifeni.life" />
+  </Fragment>
+
   <Hero />
   <Articles />
 </Layout>

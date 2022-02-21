@@ -1,19 +1,16 @@
 ---
-import { Markdown } from 'astro/components'
 import ExternalLink from 'component:base/ExternalLink'
 
 const base = `https://dev.lifeni.life`
 const assets = `${base}/assets`
 const items = `${base}/items`
 
-const about = (await fetch(`${items}/about`).then(r => r.json())) as About
+const hero = (await fetch(`${items}/hero`).then(r => r.json())) as About
 const friends = (await fetch(`${items}/friends`).then(r => r.json())) as Friends
 ---
 
 <article>
-  <Markdown>
-    <Markdown content={about.data.content} />
-  </Markdown>
+  <Fragment set:html={hero.data.content} />
   <section>
     {friends.data.map(friend => (
       <ExternalLink href={friend.link} data-name={friend.name}>
@@ -37,18 +34,14 @@ const friends = (await fetch(`${items}/friends`).then(r => r.json())) as Friends
     font-family: var(--font-sans);
     line-height: 1.875;
 
-    del {
-      text-decoration: none;
-    }
-
     @media (max-width: 36rem) {
-      margin: 1rem 0 2.5rem 0;
+      margin: 1rem 0 2.75rem 0;
     }
 
     @media (max-width: 28rem) {
-      margin: 1rem 0 2.25rem 0;
+      margin: 1rem 0 2.5rem 0;
 
-      del {
+      span[data-optional] {
         display: none;
       }
     }
@@ -64,11 +57,11 @@ const friends = (await fetch(`${items}/friends`).then(r => r.json())) as Friends
       &::before {
         content: '👋🏻';
         margin-right: 1rem;
-        margin-left: -0.25rem;
+        margin-left: -0.125rem;
         font-weight: var(--font-normal);
 
         @media (max-width: 28rem) {
-          margin-left: -0.125rem;
+          margin-left: 0;
         }
       }
 
@@ -112,7 +105,6 @@ const friends = (await fetch(`${items}/friends`).then(r => r.json())) as Friends
           color: transparent;
           background-color: var(--background-subtle-r);
           transition: all 0.2s;
-          animation: fade-in 0.2s;
         }
 
         &::before {
