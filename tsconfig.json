@@ -2,11 +2,6 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "baseUrl": ".",
-    "paths": {
-      "asset:*": ["src/assets/*?url"],
-      "component:*": ["src/components/*.astro"],
-      "libs:*": ["src/libs/*"]
-    },
     "noEmit": true,
     "target": "es2020",
     "module": "es2022"

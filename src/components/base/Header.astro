@@ -1,11 +1,11 @@
 ---
 import { Icon } from 'astro-icon'
-import ExternalLink from 'component:base/ExternalLink'
+import ExternalLink from './ExternalLink.astro'
 ---
 
 <header>
   <h1>
-    <a href="/" data-tooltip="主页" aria-label="主页">
+    <a href="/" data-text="主页" aria-label="主页">
       <Icon name="mdi:circle-outline" />
     </a>
   </h1>
@@ -13,13 +13,13 @@ import ExternalLink from 'component:base/ExternalLink'
     <ExternalLink
       role="listitem"
       href="https://travellings.link/"
-      data-tooltip="开往"
+      data-text="开往"
       aria-label="开往"
     >
       <Icon name="mdi:triangle-outline" />
     </ExternalLink>
 
-    <a role="listitem" href="/explore" data-tooltip="探索" aria-label="探索">
+    <a role="listitem" href="/explore" data-text="探索" aria-label="探索">
       <Icon name="mdi:square-outline" />
     </a>
   </nav>

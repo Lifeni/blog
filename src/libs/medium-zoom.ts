@@ -1,17 +1,19 @@
-import { $$, css, init } from 'libs:$'
+import { $, css, start } from './$'
 
-init(() => {
-  const images = $$('article img')
-  if (!images.length) return
+start(async () => {
+  const images = $('article img')
+  if (images.len() === 0) return
 
-  import('medium-zoom').then(({ default: zoom }) => {
-    zoom(images, { background: 'rgba(0, 0, 0, 0.8)' })
-
-    css(`
+  const { default: zoom } = await import('medium-zoom')
+  zoom(images.elements, { background: 'rgba(0, 0, 0, 0.8)' })
+  css`
     .medium-zoom-overlay,
     .medium-zoom-image--opened {
       z-index: 99999;
     }
-  `)
-  })
+
+    .medium-zoom-image {
+      transition: transform 300ms cubic-bezier(0.4, 0, 0, 1) !important;
+    }
+  `
 })

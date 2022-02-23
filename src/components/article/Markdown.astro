@@ -4,12 +4,12 @@ export interface Props {
 }
 
 const { html } = Astro.props as Props
-const zoom = Astro.resolve('../../libs/medium-zoom.ts')
+const zoom = Astro.resolve('../../libs/medium-zoom')
 ---
 
 <article set:html={html}></article>
 
-<script src={zoom} defer type="module" hoist></script>
+<script defer type="module" src={zoom} hoist></script>
 
 <style lang="less" global>
   article {
@@ -110,7 +110,7 @@ const zoom = Astro.resolve('../../libs/medium-zoom.ts')
       border: var(--border);
       border-radius: var(--border-radius);
       font-family: var(--font-mono);
-      background-color: var(--background-subtle);
+      background-color: var(--code-background);
       overflow-wrap: break-word;
       word-break: break-all;
     }
@@ -122,7 +122,7 @@ const zoom = Astro.resolve('../../libs/medium-zoom.ts')
       font-size: 0.925em;
       border: var(--border);
       border-radius: var(--border-radius);
-      background-color: var(--background-subtle);
+      background-color: var(--code-background);
       line-height: 1.875;
 
       code {
@@ -209,7 +209,7 @@ const zoom = Astro.resolve('../../libs/medium-zoom.ts')
       margin: 1rem calc(var(--extra-margin) * -1);
       border: var(--border);
       border-radius: var(--border-radius);
-      background-color: var(--background-subtle);
+      background-color: var(--placeholder-background);
     }
 
     hr {
@@ -236,7 +236,7 @@ const zoom = Astro.resolve('../../libs/medium-zoom.ts')
 
       tr {
         &:nth-of-type(even) {
-          background-color: var(--background-subtle);
+          background-color: var(--placeholder-background);
         }
       }
 
@@ -267,7 +267,7 @@ const zoom = Astro.resolve('../../libs/medium-zoom.ts')
 
       th {
         font-weight: var(--font-bold);
-        background-color: var(--background-subtle);
+        background-color: var(--placeholder-background);
       }
     }
 

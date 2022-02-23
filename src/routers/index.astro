@@ -1,20 +1,18 @@
 ---
-import Layout from 'component:Layout'
-import Articles from 'component:home/Articles'
-import Hero from 'component:home/Hero'
+import Layout from '../components/Layout.astro'
+import Posts from '../components/home/Posts.astro'
+import Friends from '../components/home/Friends.astro'
+import Intro from '../components/base/Intro.astro'
+
+const items = 'https://dev.lifeni.life/items'
+const hero = (await fetch(`${items}/hero`).then(r => r.json())) as About
 ---
 
 <Layout>
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://dev.lifeni.life" />
-  </Fragment>
+  <Intro>
+    <Fragment set:html={hero.data.content} />
+    <Friends />
+  </Intro>
 
-  <Hero />
-  <Articles />
+  <Posts />
 </Layout>
-
-<style lang="less">
-  :global(body) {
-    background-color: var(--background-r) !important;
-  }
-</style>

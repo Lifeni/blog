@@ -1,27 +1,26 @@
 ---
+export interface Props {
+  title?: string
+  emoji?: string
+}
+
+const { title, emoji } = Astro.props as Props
 ---
 
-<article>
-  <h1>探索</h1>
+<article data-container>
+  {title && <h1 data-emoji={emoji}>{title}</h1>}
+  <slot />
 </article>
 
-<style lang="less">
-  article {
-    margin: 1rem 0 3rem 0;
+<style lang="less" global>
+  article[data-container] {
+    margin: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     font-family: var(--font-sans);
     line-height: 1.875;
-
-    @media (max-width: 36rem) {
-      margin: 1rem 0 2rem 0;
-    }
-
-    @media (max-width: 28rem) {
-      margin: 1rem 0;
-    }
 
     h1 {
       font-weight: var(--font-bold);
@@ -32,7 +31,7 @@
       line-height: 1.75;
 
       &::before {
-        content: '🔭';
+        content: attr(data-emoji);
         margin-right: 1rem;
         margin-left: -0.125rem;
         font-weight: var(--font-normal);
@@ -50,6 +49,14 @@
         margin: 0 0 3rem 0;
         font-size: 1.625rem;
       }
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+
+    strong {
+      font-weight: var(--font-bold);
     }
   }
 </style>

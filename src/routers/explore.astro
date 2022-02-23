@@ -1,18 +1,10 @@
 ---
-import Layout from 'component:Layout'
-import Dashboard from 'component:explore/Dashboard'
+import Layout from '../components/Layout.astro'
+import Calendar from '../components/explore/Calendar.astro'
+import Intro from '../components/base/Intro.astro'
 ---
 
 <Layout title="探索" description="做一些有趣的东西。">
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://dev.lifeni.life" />
-  </Fragment>
-
-  <Dashboard />
+  <Intro title="探索" emoji="🔭" />
+  <Calendar client:load name="Lifeni" />
 </Layout>
-
-<style lang="less">
-  :global(body) {
-    background-color: var(--background-r) !important;
-  }
-</style>

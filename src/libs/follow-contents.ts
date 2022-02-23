@@ -1,51 +1,55 @@
-import { $$, $, init, listen, media } from 'libs:$'
+import type { Shortcuts } from './$'
+import { $, debounce, match, start } from './$'
 
-init(() => {
+start(() => {
   const contents = $('[data-contents]')
-  if (!contents) return
+  if (contents.len() === 0) return
 
-  const h1 = $('article h1')
-  const offset = h1.offsetTop + h1.offsetHeight + 32
+  const headers = $('article h1, article h2, article h3')
+  const links = $('[data-contents] li')
 
-  const headers = $$('article h2, article h3')
-  const links = $$('[data-contents] li')
+  let disabled = match(
+    '(max-width: 72rem)',
+    event => (disabled = event.matches)
+  )
 
-  let disabled = media('(max-width: 72rem)', e => (disabled = e.matches))
+  let pre: Shortcuts | null = null
+  let dir = 1
 
-  const show = () => {
+  const focus = debounce((ins: Shortcuts) => ins.view(), 200)
+
+  const observer = new IntersectionObserver(entries => {
     if (disabled) return
 
-    if (window.scrollY < offset) contents.setAttribute('data-hide', 'true')
-    else contents.setAttribute('data-hide', 'false')
-
-    const screen = window.innerHeight
-    const page = document.documentElement.scrollHeight
-
-    let up = { top: page, element: null }
-    let down = { top: -page, element: null }
-
-    headers.forEach(header => {
-      const top = header.getBoundingClientRect().top
-      if (top >= 0 && top < screen / 2 && top <= up.top)
-        up = { element: header, top }
-      else if (top < 0 && top > down.top) down = { element: header, top }
+    entries.forEach(entry => {
+      if (entry.target.tagName === 'H1') {
+        if (entry.isIntersecting) contents.attr('data-hide').set('true')
+        else contents.attr('data-hide').set('false')
+      } else {
+        const id = entry.target.id
+        const link = links.find().attr('data-slug').equal(id).get()
+        if (entry.isIntersecting) {
+          link.attr('data-visible').add()
+          pre = link
+        } else {
+          link.attr('data-visible').remove()
+          if (entry.boundingClientRect.y < 0) dir = 1
+          else dir = -1
+        }
+      }
     })
 
-    const id = up.element?.id || down.element?.id
-    if (!id) return
+    const visible = $('[data-visible]')
+    links.attr('data-active').remove()
 
-    links.forEach((e: HTMLElement) => e.removeAttribute('data-active'))
-    const active = [...links].find((e: HTMLElement) => e.dataset.slug === id)
+    let cur = pre
+    if (visible.len() !== 0) cur = visible.get()
+    else if (pre && dir === -1) cur = pre.pre()
 
-    console.log(active)
+    if (!cur) return
+    cur.attr('data-active').add()
+    focus(cur)
+  })
 
-    if (!active) return
-    active.setAttribute('data-active', 'true')
-    active.scrollIntoView({ block: 'center', inline: 'center' })
-  }
-
-  show()
-
-  listen('scroll', show, 100)
-  listen('resize', show, 100)
+  headers.each().func(observer.observe.bind(observer))
 })

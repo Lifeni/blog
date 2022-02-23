@@ -1,8 +1,8 @@
 ---
-import Layout from 'component:Layout'
-import Article from 'component:article/Markdown'
-import Meta from 'component:article/Meta'
-import Contents from 'component:article/Contents'
+import Layout from '../../components/Layout.astro'
+import Article from '../../components/article/Markdown.astro'
+import Info from '../../components/article/Info.astro'
+import Contents from '../../components/article/Contents.astro'
 
 export interface Props {
   article: Article
@@ -31,7 +31,7 @@ const highlight = Astro.resolve('../../assets/highlight.css')
 
   <Article html={article.astro.html} />
 
-  <Meta date={article.date} license={article.license} />
+  <Info date={article.date} license={article.license} />
   {article.astro.headers.length !== 1 && (
     <Contents headers={article.astro.headers} />
   )}
@@ -39,6 +39,6 @@ const highlight = Astro.resolve('../../assets/highlight.css')
 
 <style lang="less">
   :global(body) {
-    background-color: var(--background) !important;
+    background-color: var(--article-background) !important;
   }
 </style>
