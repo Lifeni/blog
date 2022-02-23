@@ -1,10 +1,14 @@
 ---
 import Layout from '../components/Layout.astro'
+import About from '../components/base/About.astro'
 import Calendar from '../components/explore/Calendar.astro'
-import Intro from '../components/base/Intro.astro'
+import Pins from '../components/explore/Pins.astro'
+import Player from '../components/explore/Player.astro'
 ---
 
 <Layout title="探索" description="做一些有趣的东西。">
-  <Intro title="探索" emoji="🔭" />
-  <Calendar client:load name="Lifeni" />
+  <About title="探索" emoji="🔭" />
+  <Calendar name="Lifeni" />
+  <Player />
+  <Pins />
 </Layout>

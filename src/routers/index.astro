@@ -2,17 +2,17 @@
 import Layout from '../components/Layout.astro'
 import Posts from '../components/home/Posts.astro'
 import Friends from '../components/home/Friends.astro'
-import Intro from '../components/base/Intro.astro'
+import About from '../components/base/About.astro'
 
 const items = 'https://dev.lifeni.life/items'
-const hero = (await fetch(`${items}/hero`).then(r => r.json())) as About
+const about = (await fetch(`${items}/about`).then(r => r.json())) as About
 ---
 
 <Layout>
-  <Intro>
-    <Fragment set:html={hero.data.content} />
+  <About>
+    <Fragment set:html={about.data.content} />
     <Friends />
-  </Intro>
+  </About>
 
   <Posts />
 </Layout>

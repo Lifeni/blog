@@ -1,0 +1,54 @@
+---
+export interface Props {
+  title?: string
+}
+
+const { title } = Astro.props as Props
+---
+
+<section>
+  {title && <h2>{title}</h2>}
+  <ul>
+    <slot />
+  </ul>
+</section>
+
+<style lang="less">
+  section {
+    &:last-of-type {
+      margin: 0 0 3rem 0;
+
+      @media (max-width: 36rem) {
+        margin: 0 0 2rem 0;
+      }
+
+      @media (max-width: 28rem) {
+        margin: 0 0 1rem 0;
+      }
+    }
+
+    h2 {
+      margin: 2rem 0;
+      display: flex;
+      font-size: 1.5rem;
+      font-weight: var(--font-bold);
+
+      @media (max-width: 36rem) {
+        font-size: 1.375rem;
+      }
+
+      @media (max-width: 28rem) {
+        margin: 1rem 0;
+      }
+    }
+
+    ul {
+      width: calc(100% + var(--extra-margin) * 2);
+      margin: 0 calc(var(--extra-margin) * -1);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+      border: var(--border);
+      background-color: var(--card-background);
+    }
+  }
+</style>

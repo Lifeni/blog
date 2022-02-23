@@ -28,7 +28,7 @@ interface Group {
 }
 
 interface Friends {
-  data: { id: string; name: string; link: string; avatar: string }[]
+  data: { id: number; name: string; link: string; avatar: string }[]
 }
 
 interface About {
@@ -38,4 +38,16 @@ interface About {
     date_updated: string | null
     content: string
   }
+}
+
+interface Projects {
+  data: {
+    id: number
+    icon: string
+    name: string
+    description: string
+    github: string
+    website?: string
+    docs?: string
+  }[]
 }

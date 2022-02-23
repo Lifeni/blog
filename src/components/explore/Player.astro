@@ -1,0 +1,35 @@
+---
+---
+
+<section>
+  <h2>来点音乐</h2>
+  <div></div>
+</section>
+
+<style lang="less">
+  section {
+    h2 {
+      margin: 2rem 0;
+      display: flex;
+      font-size: 1.5rem;
+      font-weight: var(--font-bold);
+
+      @media (max-width: 36rem) {
+        font-size: 1.375rem;
+      }
+
+      @media (max-width: 28rem) {
+        margin: 1rem 0;
+      }
+    }
+
+    div {
+      width: calc(100% + var(--extra-margin) * 2);
+      margin: 0 calc(var(--extra-margin) * -1);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      border: var(--border);
+      background-color: var(--card-background);
+    }
+  }
+</style>

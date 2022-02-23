@@ -1,8 +1,7 @@
 ---
 import ExternalLink from '../base/ExternalLink.astro'
+import { items, assets } from '../../const'
 
-const assets = 'https://dev.lifeni.life/assets'
-const items = 'https://dev.lifeni.life/items'
 const friends = (await fetch(`${items}/friends`).then(r => r.json())) as Friends
 ---
 
