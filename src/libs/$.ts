@@ -18,11 +18,24 @@ export class Shortcuts {
   public get = () => new Shortcuts(this.elements[0])
   public all = () => this.elements.map(element => new Shortcuts(element))
   public element = () => this.elements[0]
+  public rand = () =>
+    new Shortcuts(
+      this.elements[Math.floor(Math.random() * this.elements.length)]
+    )
+
+  public first = () => new Shortcuts(this.elements[0])
+  public last = () => new Shortcuts(this.elements[this.elements.length - 1])
 
   public len = () => this.elements.length
 
-  public pre = () => new Shortcuts(this.elements[0].previousElementSibling)
-  public next = () => new Shortcuts(this.elements[0].nextElementSibling)
+  public prev = () => {
+    const el = this.elements[0].previousElementSibling
+    return el ? new Shortcuts(el) : null
+  }
+  public next = () => {
+    const el = this.elements[0].nextElementSibling
+    return el ? new Shortcuts(el) : null
+  }
 
   public func = (func: (element: Element) => void) =>
     this.elements.forEach(func)
@@ -61,12 +74,18 @@ export class Shortcuts {
 
   public attr = (name: string) => ({
     get: () => this.elements[0].getAttribute(name),
+    equal: (value: string) => this.elements[0].getAttribute(name) === value,
     all: () => this.elements.map(element => element.getAttribute(name)),
     add: () => this.elements.forEach(element => element.setAttribute(name, '')),
     set: (value?: string) =>
       this.elements.forEach(element => element.setAttribute(name, value)),
     remove: () =>
       this.elements.forEach(element => element.removeAttribute(name)),
+  })
+
+  public on = (event: string) => ({
+    func: (func: (event: Event) => void) =>
+      this.elements.forEach(element => element.addEventListener(event, func)),
   })
 
   public view = () =>
@@ -79,6 +98,8 @@ export class Shortcuts {
   public scroll = () => ({
     right: () => this.elements[0].scrollTo(this.elements[0].scrollWidth, 0),
   })
+
+  public click = () => (this.elements[0] as HTMLElement).click()
 }
 
 export const start = (callback: () => void) => listen('load', callback)

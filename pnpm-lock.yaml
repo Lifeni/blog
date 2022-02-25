@@ -5,6 +5,7 @@ specifiers:
   astro-icon: ^0.6.0
   less: ^4.1.2
   medium-zoom: ^1.0.6
+  nprogress: ^0.2.0
   prettier: ^2.5.1
   prettier-plugin-astro: ^0.0.12
   rehype-external-links: ^1.0.1
@@ -15,6 +16,7 @@ specifiers:
 dependencies:
   astro-icon: 0.6.0
   medium-zoom: 1.0.6
+  nprogress: 0.2.0
 
 devDependencies:
   astro: 0.23.0_less@4.1.2
@@ -3082,6 +3084,10 @@ packages:
   /not/0.1.0:
     resolution: {integrity: sha1-yWkcF0bFXc++VMvYvU/wQbwrUZ0=}
     dev: true
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha1-y480xTIT2JVyP8urkH6UIq28r7E=}
+    dev: false
 
   /nth-check/2.0.1:
     resolution: {integrity: sha512-it1vE95zF6dTT9lBsYbxvqh0Soy4SPowchj0UBGj/V6cTPnXXtQOPUbhZ6CmGzAD/rW22LQK6E96pcdJXk4A4w==}

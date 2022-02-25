@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "astro-icon": "^0.6.0",
-    "medium-zoom": "^1.0.6"
+    "medium-zoom": "^1.0.6",
+    "nprogress": "^0.2.0"
   }
 }

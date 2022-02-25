@@ -1,25 +1,51 @@
 ---
+import { Icon } from 'astro-icon'
 import Group from '../base/Group.astro'
 import ExternalLink from '../base/ExternalLink.astro'
 
 import { items, assets } from '../../const'
 
-const projects = (await fetch(`${items}/projects`).then(r =>
-  r.json()
-)) as Projects
+const projects = (await fetch(`${items}/apps`).then(r => r.json())) as Projects
 ---
 
 <Group title="开源项目">
   <ul>
     {projects.data.map(project => (
       <li>
-        <ExternalLink href={project.github}>
-          <img src={`${assets}/${project.icon}`} alt={project.name} />
-          <div data-info>
-            <h3 title={project.name}>{project.name}</h3>
-            <p title={project.description}>{project.description}</p>
+        <img src={`${assets}/${project.icon}`} alt={project.name} />
+        <div data-info>
+          <h3 title={project.name}>{project.name}</h3>
+          <p title={project.description}>{project.description}</p>
+          <div data-links>
+            {project.github && (
+              <ExternalLink href={project.github}>
+                <Icon name="mdi:github" aria-label="GitHub" />
+                <span>GitHub</span>
+              </ExternalLink>
+            )}
+
+            {project.website && (
+              <ExternalLink href={project.website} data-tooltip="网站">
+                <Icon name="mdi:web" aria-label="网站" />
+                <span>网站</span>
+              </ExternalLink>
+            )}
+
+            {project.docs && (
+              <ExternalLink href={project.docs} data-tooltip="文档">
+                <Icon name="mdi:text-box-outline" aria-label="文档" />
+                <span>文档</span>
+              </ExternalLink>
+            )}
+
+            {project.package && (
+              <ExternalLink href={project.package} data-tooltip="获取">
+                <Icon name="mdi:package-variant-closed" aria-label="获取" />
+                <span>获取</span>
+              </ExternalLink>
+            )}
           </div>
-        </ExternalLink>
+        </div>
       </li>
     ))}
   </ul>
@@ -33,54 +59,80 @@ const projects = (await fetch(`${items}/projects`).then(r =>
 
     li {
       width: 100%;
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      gap: 1.5rem;
       list-style: none;
 
-      a {
-        width: 100%;
-        padding: 0.5rem 0.75rem;
-        display: flex;
-        align-items: center;
-        color: var(--font-primary);
-        border-radius: var(--border-radius);
-        border: solid var(--border-width) var(--card-background);
-        gap: 1.5rem;
+      img {
+        width: 2.25rem;
+        height: 2.25rem;
+        margin: 0.5rem 0 0;
+        border-radius: 100%;
+        box-shadow: var(--shadow);
+      }
 
-        img {
-          width: 2.25rem;
-          height: 2.25rem;
-          border-radius: 100%;
-          box-shadow: var(--shadow);
+      div[data-info] {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        h3 {
+          padding: 0 0 0.125rem 0;
+          font-size: 1rem;
+          font-weight: var(--font-normal);
+          line-height: 1.875;
+          white-space: nowrap;
         }
 
-        div[data-info] {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
+        p {
+          color: var(--font-secondary);
+          font-size: 0.925rem;
+          line-height: 1.75;
+          text-overflow: ellipsis;
           overflow: hidden;
+          white-space: nowrap;
+        }
 
-          h3 {
-            font-size: 1rem;
-            font-weight: var(--font-normal);
-            line-height: 1.75;
-            white-space: nowrap;
+        div[data-links] {
+          padding: 0.5rem 0 0 0;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+
+          @media (max-width: 36rem) {
+            padding: 0.25rem 0 0 0;
           }
 
-          p {
+          a {
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--font-secondary);
             font-size: 0.925rem;
-            line-height: 1.75;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-          }
-        }
 
-        &:hover,
-        &:focus-visible {
-          text-decoration: none;
-          border: var(--border);
-          background-color: var(--card-background-focus);
-          outline-offset: 0;
+            svg {
+              width: 1.25rem;
+              height: 1.25rem;
+            }
+
+            span {
+              display: none;
+              line-height: 1.75;
+
+              @media (max-width: 36rem) {
+                margin: 0 0 0 0.5rem;
+                display: flex;
+              }
+            }
+
+            &:hover,
+            &:focus-visible {
+              color: var(--font-link);
+            }
+          }
         }
       }
     }

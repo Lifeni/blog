@@ -49,6 +49,7 @@ interface Projects {
     github: string
     website?: string
     docs?: string
+    package?: string
   }[]
 }
 

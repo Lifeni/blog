@@ -5,7 +5,7 @@ start(async () => {
   if (images.len() === 0) return
 
   const { default: zoom } = await import('medium-zoom')
-  zoom(images.elements, { background: 'rgba(0, 0, 0, 0.8)' })
+  zoom(images.elements as HTMLElement[], { background: 'rgba(0, 0, 0, 0.8)' })
   css`
     .medium-zoom-overlay,
     .medium-zoom-image--opened {

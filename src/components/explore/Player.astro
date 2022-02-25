@@ -1,6 +1,7 @@
 ---
 import { music, list } from '../../const'
 import { Icon } from 'astro-icon'
+import Beat from '../base/Beat.astro'
 import ExternalLink from '../base/ExternalLink.astro'
 import Group from '../base/Group.astro'
 
@@ -14,10 +15,15 @@ const duration = (num: number) => {
   const s = Math.floor(t % 60)
   return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`
 }
+
+const player = Astro.resolve('../../libs/cloud-music-player.ts')
 ---
+
+<script defer type="module" src={player} hoist></script>
 
 <Group title="来点音乐">
   <div data-player>
+    <audio data-audio></audio>
     <div data-control>
       <div data-left>
         <ExternalLink
@@ -32,18 +38,23 @@ const duration = (num: number) => {
         <button data-previous data-tooltip="上一首">
           <Icon name="mdi:skip-previous" aria-label="上一首" />
         </button>
-        <button data-primary data-play data-tooltip="播放">
-          <Icon name="mdi:play" aria-label="播放" />
-          <Icon name="mdi:pause" data-remove aria-label="暂停" />
+        <button data-primary data-play-action="play" data-tooltip="播放">
+          <Icon name="mdi:play" data-play aria-label="播放" />
+          <Icon name="mdi:pause" data-pause data-remove aria-label="暂停" />
         </button>
         <button data-next data-tooltip="下一首">
           <Icon name="mdi:skip-next" aria-label="下一首" />
         </button>
       </div>
       <div data-right>
-        <button data-volume data-tooltip="静音">
-          <Icon name="mdi:volume" aria-label="静音" />
-          <Icon name="mdi:volume-off" data-remove aria-label="取消静音" />
+        <button data-volume="on" data-tooltip="静音">
+          <Icon name="mdi:volume" data-volume-off aria-label="静音" />
+          <Icon
+            name="mdi:volume-off"
+            data-volume-on
+            data-remove
+            aria-label="取消静音"
+          />
         </button>
       </div>
     </div>
@@ -52,6 +63,10 @@ const duration = (num: number) => {
         <li data-music={`${music}?id=${song.id}.mp3`}>
           <div data-cover>
             <img loading="lazy" src={`${song.al.picUrl}?param=150x150`} />
+            <div data-status>
+              <Beat />
+              <span>00:00</span>
+            </div>
           </div>
           <div data-info>
             <span data-name title={song.name}>
@@ -168,8 +183,31 @@ const duration = (num: number) => {
         }
 
         div[data-cover] {
+          position: relative;
           display: flex;
           align-items: center;
+
+          div[data-status] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            border-radius: var(--border-radius);
+            background-color: var(--dark-2a);
+
+            span {
+              color: var(--light-2);
+              font-size: 1.125rem;
+            }
+          }
 
           img {
             width: 100%;
@@ -217,24 +255,29 @@ const duration = (num: number) => {
 
         div[data-side] {
           position: absolute;
-          right: 1.25rem;
-          top: 1rem;
+          right: 0.75rem;
+          top: 0.75rem;
+          padding: 0 0.5rem;
           display: flex;
-          font-size: 0.925rem;
-          line-height: 1.5;
+          font-size: 0.875rem;
           opacity: 0;
           visibility: hidden;
-          text-shadow: var(--text-shadow);
+          border: var(--border);
+          border-radius: 0 var(--border-radius) 0 var(--border-radius);
+          background-color: var(--dark-2);
           color: var(--light-2);
-          transition: opacity 0.2s, visibility 0.2s;
 
           @media (max-width: 36rem) {
             position: relative;
             top: unset;
             right: unset;
+            padding: 0;
             font-size: 1rem;
+            border: none;
+            border-radius: 0;
             opacity: 1;
             visibility: visible;
+            background-color: transparent;
             color: var(--font-primary);
             text-shadow: none;
           }
@@ -250,6 +293,34 @@ const duration = (num: number) => {
           div[data-side] {
             opacity: 1;
             visibility: visible;
+          }
+        }
+
+        &[data-playing] {
+          div[data-side] {
+            display: none;
+
+            @media (max-width: 36rem) {
+              display: flex;
+              font-weight: var(--font-bold);
+            }
+          }
+
+          span[data-name] {
+            @media (max-width: 36rem) {
+              font-weight: bold;
+            }
+          }
+
+          div[data-cover] div[data-status] {
+            opacity: 1;
+            visibility: visible;
+
+            @media (max-width: 36rem) {
+              & > span {
+                display: none;
+              }
+            }
           }
         }
       }

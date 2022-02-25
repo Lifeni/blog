@@ -13,8 +13,8 @@ start(() => {
     event => (disabled = event.matches)
   )
 
-  let pre: Shortcuts | null = null
-  let dir = 1
+  let previous: Shortcuts | null = null
+  let direction = 1
 
   const focus = debounce((ins: Shortcuts) => ins.view(), 200)
 
@@ -30,11 +30,11 @@ start(() => {
         const link = links.find().attr('data-slug').equal(id).get()
         if (entry.isIntersecting) {
           link.attr('data-visible').add()
-          pre = link
+          previous = link
         } else {
           link.attr('data-visible').remove()
-          if (entry.boundingClientRect.y < 0) dir = 1
-          else dir = -1
+          if (entry.boundingClientRect.y < 0) direction = 1
+          else direction = -1
         }
       }
     })
@@ -42,13 +42,13 @@ start(() => {
     const visible = $('[data-visible]')
     links.attr('data-active').remove()
 
-    let cur = pre
-    if (visible.len() !== 0) cur = visible.get()
-    else if (pre && dir === -1) cur = pre.pre()
+    let current = previous
+    if (visible.len() !== 0) current = visible.get()
+    else if (previous && direction === -1) current = previous.prev()
 
-    if (!cur) return
-    cur.attr('data-active').add()
-    focus(cur)
+    if (!current) return
+    current.attr('data-active').add()
+    focus(current)
   })
 
   headers.each().func(observer.observe.bind(observer))
