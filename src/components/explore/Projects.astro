@@ -19,28 +19,28 @@ const projects = (await fetch(`${items}/apps`).then(r => r.json())) as Projects
           <div data-links>
             {project.github && (
               <ExternalLink href={project.github}>
-                <Icon name="mdi:github" aria-label="GitHub" />
+                <Icon name="tabler:brand-github" aria-label="GitHub" />
                 <span>GitHub</span>
               </ExternalLink>
             )}
 
             {project.website && (
               <ExternalLink href={project.website} data-tooltip="网站">
-                <Icon name="mdi:web" aria-label="网站" />
+                <Icon name="tabler:world" aria-label="网站" />
                 <span>网站</span>
               </ExternalLink>
             )}
 
             {project.docs && (
               <ExternalLink href={project.docs} data-tooltip="文档">
-                <Icon name="mdi:text-box-outline" aria-label="文档" />
+                <Icon name="tabler:vocabulary" aria-label="文档" />
                 <span>文档</span>
               </ExternalLink>
             )}
 
             {project.package && (
               <ExternalLink href={project.package} data-tooltip="获取">
-                <Icon name="mdi:package-variant-closed" aria-label="获取" />
+                <Icon name="tabler:apps" aria-label="获取" />
                 <span>获取</span>
               </ExternalLink>
             )}
@@ -61,12 +61,12 @@ const projects = (await fetch(`${items}/apps`).then(r => r.json())) as Projects
       width: 100%;
       padding: 0.5rem 0.75rem;
       display: flex;
-      gap: 1.5rem;
+      gap: 1.25rem;
       list-style: none;
 
       img {
-        width: 2.25rem;
-        height: 2.25rem;
+        width: 2.5rem;
+        height: 2.5rem;
         margin: 0.5rem 0 0;
         border-radius: 100%;
         box-shadow: var(--shadow);
@@ -84,6 +84,10 @@ const projects = (await fetch(`${items}/apps`).then(r => r.json())) as Projects
           font-weight: var(--font-normal);
           line-height: 1.875;
           white-space: nowrap;
+
+          @media (max-width: 36rem) {
+            padding: 0 0 0.25rem 0;
+          }
         }
 
         p {
@@ -121,6 +125,7 @@ const projects = (await fetch(`${items}/apps`).then(r => r.json())) as Projects
             span {
               display: none;
               line-height: 1.75;
+              white-space: nowrap;
 
               @media (max-width: 36rem) {
                 margin: 0 0 0 0.5rem;

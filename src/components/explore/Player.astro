@@ -31,26 +31,31 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
           data-playlist
           data-tooltip="查看歌单"
         >
-          <Icon name="mdi:playlist-music" aria-label="查看歌单" />
+          <Icon name="tabler:playlist" aria-label="查看歌单" />
         </ExternalLink>
       </div>
       <div data-middle>
         <button data-previous data-tooltip="上一首">
-          <Icon name="mdi:skip-previous" aria-label="上一首" />
+          <Icon name="tabler:player-skip-back" aria-label="上一首" />
         </button>
         <button data-primary data-play-action="play" data-tooltip="播放">
-          <Icon name="mdi:play" data-play aria-label="播放" />
-          <Icon name="mdi:pause" data-pause data-remove aria-label="暂停" />
+          <Icon name="tabler:player-play" data-play aria-label="播放" />
+          <Icon
+            name="tabler:player-pause"
+            data-pause
+            data-remove
+            aria-label="暂停"
+          />
         </button>
         <button data-next data-tooltip="下一首">
-          <Icon name="mdi:skip-next" aria-label="下一首" />
+          <Icon name="tabler:player-skip-forward" aria-label="下一首" />
         </button>
       </div>
       <div data-right>
         <button data-volume="on" data-tooltip="静音">
-          <Icon name="mdi:volume" data-volume-off aria-label="静音" />
+          <Icon name="tabler:volume" data-volume-off aria-label="静音" />
           <Icon
-            name="mdi:volume-off"
+            name="tabler:volume-3"
             data-volume-on
             data-remove
             aria-label="取消静音"
@@ -119,8 +124,8 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
           outline-offset: 0;
 
           &[data-primary] {
-            width: 3rem;
-            height: 3rem;
+            width: 2.75rem;
+            height: 2.75rem;
           }
 
           &:hover,
@@ -138,8 +143,8 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
           color: inherit;
 
           svg {
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 1.375rem;
+            height: 1.375rem;
           }
         }
       }
@@ -204,7 +209,7 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
             background-color: var(--dark-2a);
 
             span {
-              color: var(--light-2);
+              color: var(--cover-color);
               font-size: 1.125rem;
             }
           }
@@ -264,8 +269,8 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
           visibility: hidden;
           border: var(--border);
           border-radius: 0 var(--border-radius) 0 var(--border-radius);
-          background-color: var(--dark-2);
-          color: var(--light-2);
+          background-color: var(--tooltip-background);
+          color: var(--tooltip-color);
 
           @media (max-width: 36rem) {
             position: relative;
@@ -279,6 +284,7 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
             visibility: visible;
             background-color: transparent;
             color: var(--font-primary);
+            font-variant-numeric: tabular-nums;
             text-shadow: none;
           }
         }

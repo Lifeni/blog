@@ -54,8 +54,8 @@ const friends = (await fetch(`${items}/friends`).then(r => r.json())) as Friends
         left: 50%;
         padding: 0.125em 0.75em;
         font-size: 0.925rem;
-        color: var(--light);
-        background-color: var(--dark);
+        background-color: var(--tooltip-background);
+        color: var(--tooltip-color);
         border-radius: var(--border-radius);
         border: var(--border);
         box-shadow: var(--shadow);

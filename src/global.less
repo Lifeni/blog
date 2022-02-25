@@ -27,6 +27,8 @@
   --light-2: #f6f8fa;
   --light-3: #eaeef2;
   --light-4: #d0d7de;
+  --light-5: #c9d1d9;
+  --light-6: #8b949e;
 
   --dark-1: #0d1117;
   --dark-2: #161b22;
@@ -45,15 +47,17 @@
   --code-background: var(--light-2);
   --placeholder-background: var(--light-2);
 
-  --tooltip-background: var(--dark-3);
+  --tooltip-color: var(--light-2);
+  --tooltip-background: var(--dark-4);
+  --cover-color: var(--light-2);
 
   --scrollbar-background: var(--light-1);
   --scrollbar-thumb-background: var(--light-2);
   --scrollbar-background-hover: var(--light-3);
   --scrollbar-background-focus: var(--light-4);
 
-  --font-primary: #24292f;
-  --font-secondary: #69727b;
+  --font-primary: var(--dark-4);
+  --font-secondary: var(--dark-5);
   --font-link: #0969da;
 
   --shadow-color: rgba(140, 149, 159, 0.2);
@@ -83,20 +87,20 @@
     --code-background: var(--dark-2);
     --placeholder-background: var(--dark-2);
 
+    --tooltip-color: var(--light-5);
+
     --scrollbar-background: var(--dark-2);
     --scrollbar-thumb-background: var(--dark-3);
     --scrollbar-background-hover: var(--dark-3);
     --scrollbar-background-focus: var(--dark-4);
 
-    --font-primary: #c9d1d9;
-    --font-secondary: #8b949e;
+    --font-primary: var(--light-5);
+    --font-secondary: var(--light-6);
     --font-link: #58a6ff;
 
     --shadow-color: #010409;
     --border-color: rgba(240, 246, 252, 0.1);
     --shadow-lite: 0 3px 6px #010409;
-
-    --light: #c9d1d9;
 
     --graph-1: #0e4429;
     --graph-2: #006d32;
@@ -198,8 +202,8 @@ button {
     z-index: 1;
     height: fit-content;
     padding: 0 0.5rem;
-    background-color: var(--dark-2);
-    color: var(--light-2);
+    background-color: var(--tooltip-background);
+    color: var(--tooltip-color);
     border: var(--border);
     border-radius: var(--border-radius);
     font-size: 0.875rem;
