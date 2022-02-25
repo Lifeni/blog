@@ -1,5 +1,5 @@
 ---
-import GitHubLogo from '../../assets/github-logo.svg'
+import { Icon } from 'astro-icon'
 import ExternalLink from '../../components/base/ExternalLink.astro'
 import Spinner from '../../components/base/Spinner.astro'
 
@@ -8,14 +8,14 @@ const contributions = Astro.resolve('../../libs/github-contributions')
 
 <section>
   <div data-bar>
-    <ExternalLink href="https://github.com/Lifeni">
-      <img src={GitHubLogo} alt="GitHub" data-invert />
+    <ExternalLink data-tooltip="GitHub 主页" href="https://github.com/Lifeni">
+      <Icon name="mdi:github" aria-label="GitHub" />
     </ExternalLink>
     <span data-count> 数据加载中 🍪</span>
   </div>
 
   <div data-grid>
-    {Array(54 * 7)
+    {Array(53 * 7)
       .fill('0')
       .map(() => <span aria-hidden />)}
 
@@ -56,21 +56,28 @@ const contributions = Astro.resolve('../../libs/github-contributions')
       gap: 1rem;
 
       a {
+        border-radius: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--font-primary);
+
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
       }
     }
 
     div[data-grid] {
       position: relative;
       margin: 0 0 0.25rem 0;
-      padding: 0.75rem 0 0.5rem 0;
+      padding: 0.75rem 0.125rem 0.5rem 0;
       display: grid;
       grid-auto-flow: column;
-      grid-template-rows: repeat(7, 1fr);
-      grid-template-columns: repeat(54, 1fr);
+      grid-template-rows: repeat(7, 1rem);
+      grid-template-columns: repeat(53, 1rem);
+      justify-items: center;
       gap: 0.25rem;
       overflow-x: auto;
       scrollbar-width: thin;

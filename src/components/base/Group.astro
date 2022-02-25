@@ -8,9 +8,9 @@ const { title } = Astro.props as Props
 
 <section>
   {title && <h2>{title}</h2>}
-  <ul>
+  <div data-container>
     <slot />
-  </ul>
+  </div>
 </section>
 
 <style lang="less">
@@ -42,7 +42,7 @@ const { title } = Astro.props as Props
       }
     }
 
-    ul {
+    div[data-container] {
       width: calc(100% + var(--extra-margin) * 2);
       margin: 0 calc(var(--extra-margin) * -1);
       padding: 0.75rem;

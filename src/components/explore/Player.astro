@@ -1,35 +1,258 @@
 ---
+import { music, list } from '../../const'
+import { Icon } from 'astro-icon'
+import ExternalLink from '../base/ExternalLink.astro'
+import Group from '../base/Group.astro'
+
+const playlist = (await fetch(`${list}?id=7274116285`).then(r =>
+  r.json()
+)) as Playlist
+
+const duration = (num: number) => {
+  const t = Math.round(num / 1000)
+  const m = Math.floor(t / 60)
+  const s = Math.floor(t % 60)
+  return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`
+}
 ---
 
-<section>
-  <h2>来点音乐</h2>
-  <div></div>
-</section>
+<Group title="来点音乐">
+  <div data-player>
+    <div data-control>
+      <div data-left>
+        <ExternalLink
+          href="https://music.163.com/playlist?id=7274116285"
+          data-playlist
+          data-tooltip="查看歌单"
+        >
+          <Icon name="mdi:playlist-music" aria-label="查看歌单" />
+        </ExternalLink>
+      </div>
+      <div data-middle>
+        <button data-previous data-tooltip="上一首">
+          <Icon name="mdi:skip-previous" aria-label="上一首" />
+        </button>
+        <button data-primary data-play data-tooltip="播放">
+          <Icon name="mdi:play" aria-label="播放" />
+          <Icon name="mdi:pause" data-remove aria-label="暂停" />
+        </button>
+        <button data-next data-tooltip="下一首">
+          <Icon name="mdi:skip-next" aria-label="下一首" />
+        </button>
+      </div>
+      <div data-right>
+        <button data-volume data-tooltip="静音">
+          <Icon name="mdi:volume" aria-label="静音" />
+          <Icon name="mdi:volume-off" data-remove aria-label="取消静音" />
+        </button>
+      </div>
+    </div>
+    <ul>
+      {playlist?.songs?.map(song => (
+        <li data-music={`${music}?id=${song.id}.mp3`}>
+          <div data-cover>
+            <img loading="lazy" src={`${song.al.picUrl}?param=150x150`} />
+          </div>
+          <div data-info>
+            <span data-name title={song.name}>
+              {song.name}
+            </span>
+            <span data-artist title={`${song.ar[0].name} - ${song.al.name}`}>
+              {song.ar[0].name} - {song.al.name}
+            </span>
+          </div>
+          <div data-side>
+            <span data-duration>{duration(song.dt)}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Group>
 
 <style lang="less">
-  section {
-    h2 {
-      margin: 2rem 0;
-      display: flex;
-      font-size: 1.5rem;
-      font-weight: var(--font-bold);
+  div[data-player] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 
-      @media (max-width: 36rem) {
-        font-size: 1.375rem;
+    div[data-control] {
+      width: 100%;
+      padding: 0 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      div[data-left],
+      div[data-middle],
+      div[data-right] {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        gap: 0.25rem;
+
+        a,
+        button {
+          width: 2.5rem;
+          height: 2.5rem;
+          padding: 0.5rem;
+          border-radius: 100%;
+          cursor: pointer;
+          border: solid var(--border-width) var(--card-background);
+          transition: all 0.2s;
+          outline-offset: 0;
+
+          &[data-primary] {
+            width: 3rem;
+            height: 3rem;
+          }
+
+          &:hover,
+          &:focus-visible {
+            border: var(--border);
+            background-color: var(--card-background-focus);
+          }
+        }
       }
 
-      @media (max-width: 28rem) {
-        margin: 1rem 0;
+      div[data-left] {
+        justify-content: flex-start;
+
+        a {
+          color: inherit;
+
+          svg {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+        }
+      }
+
+      div[data-middle] {
+        justify-content: center;
+      }
+
+      div[data-right] {
+        justify-content: right;
       }
     }
 
-    div {
-      width: calc(100% + var(--extra-margin) * 2);
-      margin: 0 calc(var(--extra-margin) * -1);
-      padding: 1.5rem;
-      border-radius: var(--border-radius);
-      border: var(--border);
-      background-color: var(--card-background);
+    ul {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+      list-style: none;
+
+      @media (max-width: 36rem) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      li {
+        position: relative;
+        width: 100%;
+        padding: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        color: var(--font-primary);
+        border-radius: var(--border-radius);
+        border: solid var(--border-width) var(--card-background);
+        cursor: pointer;
+        gap: 0.5rem;
+
+        @media (max-width: 36rem) {
+          align-items: center;
+          flex-direction: row;
+          gap: 1.5rem;
+        }
+
+        div[data-cover] {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 100%;
+            border: var(--border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            aspect-ratio: 1 / 1;
+
+            @media (max-width: 36rem) {
+              width: 3.5rem;
+              height: 3.5rem;
+            }
+          }
+        }
+
+        div[data-info] {
+          width: 100%;
+          padding: 0.25rem 0 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          flex: 1;
+          overflow: hidden;
+
+          @media (max-width: 36rem) {
+            padding: 0;
+          }
+
+          span[data-name] {
+            line-height: 1.75;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          span[data-artist] {
+            font-size: 0.925rem;
+            line-height: 1.5;
+            color: var(--font-secondary);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+        }
+
+        div[data-side] {
+          position: absolute;
+          right: 1.25rem;
+          top: 1rem;
+          display: flex;
+          font-size: 0.925rem;
+          line-height: 1.5;
+          opacity: 0;
+          visibility: hidden;
+          text-shadow: var(--text-shadow);
+          color: var(--light-2);
+          transition: opacity 0.2s, visibility 0.2s;
+
+          @media (max-width: 36rem) {
+            position: relative;
+            top: unset;
+            right: unset;
+            font-size: 1rem;
+            opacity: 1;
+            visibility: visible;
+            color: var(--font-primary);
+            text-shadow: none;
+          }
+        }
+
+        &:hover,
+        &:focus-visible {
+          text-decoration: none;
+          border: var(--border);
+          background-color: var(--card-background-focus);
+          outline-offset: 0;
+
+          div[data-side] {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
     }
   }
 </style>

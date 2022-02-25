@@ -75,6 +75,10 @@ export class Shortcuts {
       block: 'center',
       inline: 'center',
     })
+
+  public scroll = () => ({
+    right: () => this.elements[0].scrollTo(this.elements[0].scrollWidth, 0),
+  })
 }
 
 export const start = (callback: () => void) => listen('load', callback)

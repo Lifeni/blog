@@ -53,6 +53,12 @@ const { title, emoji } = Astro.props as Props
 
     p {
       margin: 0.5rem 0;
+
+      @media (max-width: 28rem) {
+        span[data-optional] {
+          display: none;
+        }
+      }
     }
 
     strong {

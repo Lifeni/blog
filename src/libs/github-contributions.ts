@@ -19,6 +19,7 @@ start(async () => {
 
     $('[data-grid]').html().set(html(data.map))
     count.text().set(`过去一年贡献了 ${num} 次代码 ${emoji}`)
+    $('[data-grid]').scroll().right()
   } catch (error) {
     console.log(error)
     count.text().set(`${error.message} - 获取数据失败 🤔`)

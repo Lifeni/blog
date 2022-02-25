@@ -30,44 +30,48 @@ const formatter = (article: Article) =>
 修改时间：${article['date'].slice(0, 10)}`
 ---
 
-<div>
+<div data-list>
   <Group title="最近更新">
-    {updates.map(article => (
-      <li>
-        <a href={`/article/${article.name}`}>
-          <time title={formatter(article)}>
-            {article['date'].slice(5, 7)}
-            <span>/</span>
-            {article['date'].slice(8, 10)}
-          </time>
-          <h3 title={article.description}>{article.title}</h3>
-        </a>
-      </li>
-    ))}
+    <ul>
+      {updates.map(article => (
+        <li>
+          <a href={`/article/${article.name}`}>
+            <time title={formatter(article)}>
+              {article['date'].slice(5, 7)}
+              <span>/</span>
+              {article['date'].slice(8, 10)}
+            </time>
+            <h3 title={article.description}>{article.title}</h3>
+          </a>
+        </li>
+      ))}
+    </ul>
   </Group>
 
   {Object.keys(groups)
     .sort((a, b) => Number(b) - Number(a))
     .map(year => (
       <Group title={year}>
-        {groups[year].map(article => (
-          <li>
-            <a href={`/article/${article.name}`}>
-              <time title={formatter(article)}>
-                {article[key].slice(5, 7)}
-                <span>/</span>
-                {article[key].slice(8, 10)}
-              </time>
-              <h3 title={article.description}>{article.title}</h3>
-            </a>
-          </li>
-        ))}
+        <ul>
+          {groups[year].map(article => (
+            <li>
+              <a href={`/article/${article.name}`}>
+                <time title={formatter(article)}>
+                  {article[key].slice(5, 7)}
+                  <span>/</span>
+                  {article[key].slice(8, 10)}
+                </time>
+                <h3 title={article.title}>{article.title}</h3>
+              </a>
+            </li>
+          ))}
+        </ul>
       </Group>
     ))}
 </div>
 
 <style lang="less">
-  div {
+  div[data-list] {
     margin: 2rem 0 0 0;
 
     @media (max-width: 36rem) {
@@ -78,61 +82,62 @@ const formatter = (article: Article) =>
       margin: 0;
     }
 
-    li {
-      width: 100%;
-      list-style: none;
-
-      a {
+    ul {
+      li {
         width: 100%;
-        padding: 0.25rem 0.75rem;
-        display: flex;
-        align-items: center;
-        color: var(--font-primary);
-        border-radius: var(--border-radius);
-        border: solid var(--border-width) var(--card-background);
-        gap: 1.5rem;
+        list-style: none;
 
-        time {
+        a {
+          width: 100%;
+          padding: 0.25rem 0.75rem;
           display: flex;
-          color: var(--font-secondary);
-          font-family: var(--font-mono);
-        }
+          align-items: center;
+          color: var(--font-primary);
+          border-radius: var(--border-radius);
+          border: solid var(--border-width) var(--card-background);
+          gap: 1.5rem;
 
-        h3 {
-          font-size: inherit;
-          font-weight: inherit;
-          flex: 1;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-        }
-
-        &:after {
-          content: '->';
-          font-family: var(--font-mono);
-          color: var(--font-secondary);
-          margin-left: auto;
-          opacity: 0;
-          visibility: hidden;
-          transform: translateX(-0.5rem);
-          transition: all 0.2s;
-
-          @media (max-width: 36rem) {
-            display: none;
+          time {
+            display: flex;
+            color: var(--font-secondary);
+            font-family: var(--font-mono);
           }
-        }
 
-        &:hover,
-        &:focus-visible {
-          text-decoration: none;
-          border: var(--border);
-          background-color: var(--card-background-focus);
-          outline-offset: 0;
+          h3 {
+            font-size: 1rem;
+            flex: 1;
+            font-weight: var(--font-normal);
+            white-space: nowrap;
+          }
 
           &:after {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
+            content: '->';
+            font-family: var(--font-mono);
+            color: var(--font-secondary);
+            margin-left: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-0.5rem);
+            transition: all 0.2s;
+            white-space: nowrap;
+
+            @media (max-width: 36rem) {
+              display: none;
+            }
+          }
+
+          &:hover,
+          &:focus-visible {
+            text-decoration: none;
+            border: var(--border);
+            background-color: var(--card-background-focus);
+            outline-offset: 0;
+
+            &:after {
+              opacity: 1;
+              visibility: visible;
+              transform: translateX(0);
+            }
           }
         }
       }

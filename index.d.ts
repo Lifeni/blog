@@ -51,3 +51,22 @@ interface Projects {
     docs?: string
   }[]
 }
+
+interface Playlist {
+  songs: {
+    name: string
+    id: number
+    dt: number // 时长，ms
+    // 专辑
+    al: {
+      id: number
+      name: string
+      picUrl: string
+    }
+    // 歌手
+    ar: {
+      id: number
+      name: string
+    }[]
+  }[]
+}
