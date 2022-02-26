@@ -4,6 +4,7 @@ import { $, css, start } from './$'
 start(async () => {
   const player = $('[data-audio]')
   const audio = player.element() as HTMLAudioElement
+  audio.volume = 0.5
 
   let current: Shortcuts = null
   let beat: Shortcuts = null
@@ -14,7 +15,7 @@ start(async () => {
 
   const songs = $('[data-music]')
   songs.on('click').func(e => {
-    const song = $((e.target as HTMLElement).closest('li'))
+    const song = $((e.target as HTMLElement).closest('button'))
     audio.src = song.attr('data-music').get()
     audio.currentTime = 0
     audio.play()
@@ -27,7 +28,7 @@ start(async () => {
     beat = $('[data-playing] [data-beat]')
     status = $(
       '[data-playing] [data-status] > span, [data-playing] [data-duration]'
-    )
+    ) as Shortcuts
   })
 
   const action = $('[data-play-action]')
@@ -77,12 +78,14 @@ start(async () => {
     if (volume.attr('data-volume').equal('on')) {
       audio.muted = true
       volume.attr('data-volume').set('off')
+      volume.attr('data-tooltip').set('取消静音')
 
       off.attr('data-remove').add()
       on.attr('data-remove').remove()
     } else {
       audio.muted = false
       volume.attr('data-volume').set('on')
+      volume.attr('data-tooltip').set('静音')
 
       on.attr('data-remove').add()
       off.attr('data-remove').remove()
@@ -104,6 +107,7 @@ start(async () => {
 
   player.on('play').func(() => {
     action.attr('data-play-action').set('pause')
+    action.attr('data-tooltip').set('暂停')
     play.attr('data-remove').add()
     pause.attr('data-remove').remove()
 
@@ -112,6 +116,7 @@ start(async () => {
 
   player.on('pause').func(() => {
     action.attr('data-play-action').set('play')
+    action.attr('data-tooltip').set('播放')
     pause.attr('data-remove').add()
     play.attr('data-remove').remove()
 

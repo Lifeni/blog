@@ -65,25 +65,27 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
     </div>
     <ul>
       {playlist?.songs?.map(song => (
-        <li data-music={`${music}?id=${song.id}.mp3`}>
-          <div data-cover>
-            <img loading="lazy" src={`${song.al.picUrl}?param=150x150`} />
-            <div data-status>
-              <Beat />
-              <span>00:00</span>
+        <li>
+          <button data-music={`${music}?id=${song.id}.mp3`}>
+            <div data-cover>
+              <img loading="lazy" src={`${song.al.picUrl}?param=150x150`} />
+              <div data-status>
+                <Beat />
+                <span>00:00</span>
+              </div>
             </div>
-          </div>
-          <div data-info>
-            <span data-name title={song.name}>
-              {song.name}
-            </span>
-            <span data-artist title={`${song.ar[0].name} - ${song.al.name}`}>
-              {song.ar[0].name} - {song.al.name}
-            </span>
-          </div>
-          <div data-side>
-            <span data-duration>{duration(song.dt)}</span>
-          </div>
+            <div data-info>
+              <span data-name title={song.name}>
+                {song.name}
+              </span>
+              <span data-artist title={`${song.ar[0].name} - ${song.al.name}`}>
+                {song.ar[0].name} - {song.al.name}
+              </span>
+            </div>
+            <div data-side>
+              <span data-duration>{duration(song.dt)}</span>
+            </div>
+          </button>
         </li>
       ))}
     </ul>
@@ -120,7 +122,7 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
           border-radius: 100%;
           cursor: pointer;
           border: solid var(--border-width) var(--card-background);
-          transition: all 0.2s;
+          transition: background 0.2s, color 0.2s;
           outline-offset: 0;
 
           &[data-primary] {
@@ -172,120 +174,167 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
       li {
         position: relative;
         width: 100%;
-        padding: 0.75rem;
+        padding: 0.75rem 0.75rem 0.5rem;
         display: flex;
         flex-direction: column;
         color: var(--font-primary);
         border-radius: var(--border-radius);
         border: solid var(--border-width) var(--card-background);
-        cursor: pointer;
-        gap: 0.5rem;
 
-        @media (max-width: 36rem) {
-          align-items: center;
-          flex-direction: row;
-          gap: 1.5rem;
-        }
-
-        div[data-cover] {
+        button {
           position: relative;
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          outline-offset: 0.5rem;
+          gap: 0.5rem;
 
-          div[data-status] {
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 2;
+          @media (max-width: 36rem) {
+            align-items: center;
+            flex-direction: row;
+            gap: 1.5rem;
+          }
+
+          div[data-cover] {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            div[data-status] {
+              position: absolute;
+              left: 0;
+              top: 0;
+              z-index: 2;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              opacity: 0;
+              visibility: hidden;
+              border-radius: var(--border-radius);
+              background-color: var(--dark-2a);
+
+              span {
+                color: var(--cover-color);
+                font-size: 1.125rem;
+              }
+            }
+
+            img {
+              width: 100%;
+              border: var(--border);
+              border-radius: var(--border-radius);
+              box-shadow: var(--shadow);
+              aspect-ratio: 1 / 1;
+
+              @media (max-width: 36rem) {
+                width: 3.5rem;
+                height: 3.5rem;
+              }
+            }
+          }
+
+          div[data-info] {
             width: 100%;
-            height: 100%;
+            padding: 0.25rem 0 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            border-radius: var(--border-radius);
-            background-color: var(--dark-2a);
-
-            span {
-              color: var(--cover-color);
-              font-size: 1.125rem;
-            }
-          }
-
-          img {
-            width: 100%;
-            border: var(--border);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            aspect-ratio: 1 / 1;
+            flex: 1;
+            overflow: hidden;
 
             @media (max-width: 36rem) {
-              width: 3.5rem;
-              height: 3.5rem;
+              padding: 0;
+            }
+
+            span[data-name] {
+              font-size: 1rem;
+              line-height: 1.75;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              text-align: left;
+            }
+
+            span[data-artist] {
+              font-size: 0.925rem;
+              line-height: 1.5;
+              color: var(--font-secondary);
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              text-align: left;
             }
           }
-        }
 
-        div[data-info] {
-          width: 100%;
-          padding: 0.25rem 0 0;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          flex: 1;
-          overflow: hidden;
-
-          @media (max-width: 36rem) {
-            padding: 0;
-          }
-
-          span[data-name] {
-            line-height: 1.75;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-
-          span[data-artist] {
-            font-size: 0.925rem;
-            line-height: 1.5;
-            color: var(--font-secondary);
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-          }
-        }
-
-        div[data-side] {
-          position: absolute;
-          right: 0.75rem;
-          top: 0.75rem;
-          padding: 0 0.5rem;
-          display: flex;
-          font-size: 0.875rem;
-          opacity: 0;
-          visibility: hidden;
-          border: var(--border);
-          border-radius: 0 var(--border-radius) 0 var(--border-radius);
-          background-color: var(--tooltip-background);
-          color: var(--tooltip-color);
-
-          @media (max-width: 36rem) {
-            position: relative;
-            top: unset;
-            right: unset;
-            padding: 0;
-            font-size: 1rem;
-            border: none;
-            border-radius: 0;
-            opacity: 1;
-            visibility: visible;
-            background-color: transparent;
-            color: var(--font-primary);
+          div[data-side] {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0 0.5rem;
+            display: flex;
+            font-size: 0.875rem;
+            opacity: 0;
+            visibility: hidden;
+            border: var(--border);
+            border-radius: 0 var(--border-radius) 0 var(--border-radius);
+            background-color: var(--tooltip-background);
+            color: var(--tooltip-color);
             font-variant-numeric: tabular-nums;
-            text-shadow: none;
+
+            @media (max-width: 36rem) {
+              position: relative;
+              top: unset;
+              right: unset;
+              padding: 0;
+              font-size: 1rem;
+              border: none;
+              border-radius: 0;
+              opacity: 1;
+              visibility: visible;
+              background-color: transparent;
+              color: var(--font-primary);
+              text-shadow: none;
+            }
+          }
+
+          &:hover,
+          &:focus-visible {
+            z-index: 1;
+
+            div[data-side] {
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+
+          &[data-playing] {
+            div[data-side] {
+              display: none;
+
+              @media (max-width: 36rem) {
+                display: flex;
+                font-weight: var(--font-bold);
+              }
+            }
+
+            span[data-name] {
+              @media (max-width: 36rem) {
+                font-weight: bold;
+              }
+            }
+
+            div[data-cover] div[data-status] {
+              opacity: 1;
+              visibility: visible;
+
+              @media (max-width: 36rem) {
+                & > span {
+                  display: none;
+                }
+              }
+            }
           }
         }
 
@@ -294,40 +343,6 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
           text-decoration: none;
           border: var(--border);
           background-color: var(--card-background-focus);
-          outline-offset: 0;
-
-          div[data-side] {
-            opacity: 1;
-            visibility: visible;
-          }
-        }
-
-        &[data-playing] {
-          div[data-side] {
-            display: none;
-
-            @media (max-width: 36rem) {
-              display: flex;
-              font-weight: var(--font-bold);
-            }
-          }
-
-          span[data-name] {
-            @media (max-width: 36rem) {
-              font-weight: bold;
-            }
-          }
-
-          div[data-cover] div[data-status] {
-            opacity: 1;
-            visibility: visible;
-
-            @media (max-width: 36rem) {
-              & > span {
-                display: none;
-              }
-            }
-          }
         }
       }
     }
