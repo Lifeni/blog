@@ -5,20 +5,23 @@ import ExternalLink from '../base/ExternalLink.astro'
 
 import { items, assets } from '../../const'
 
-const projects = (await fetch(`${items}/apps`).then(r => r.json())) as Projects
+const apps = (await fetch(`${items}/apps`).then(r => r.json())) as Apps
 ---
 
 <Group title="开源项目">
   <ul>
-    {projects.data.map(project => (
+    {apps.data.map(project => (
       <li>
         <img src={`${assets}/${project.icon}`} alt={project.name} />
-        <div data-info>
-          <h3 title={project.name}>{project.name}</h3>
-          <p title={project.description}>{project.description}</p>
+        <div data-container>
+          <div data-info>
+            <h3 title={project.name}>{project.name}</h3>
+            <p title={project.description}>{project.description}</p>
+          </div>
+
           <div data-links>
             {project.github && (
-              <ExternalLink href={project.github}>
+              <ExternalLink href={project.github} data-tooltip="GitHub">
                 <Icon name="tabler:brand-github" aria-label="GitHub" />
                 <span>GitHub</span>
               </ExternalLink>
@@ -72,31 +75,39 @@ const projects = (await fetch(`${items}/apps`).then(r => r.json())) as Projects
         box-shadow: var(--shadow);
       }
 
-      div[data-info] {
+      div[data-container] {
+        width: 100%;
         flex: 1;
         display: flex;
         flex-direction: column;
-        overflow: hidden;
 
-        h3 {
-          padding: 0 0 0.125rem 0;
-          font-size: 1rem;
-          font-weight: var(--font-normal);
-          line-height: 1.875;
-          white-space: nowrap;
-
-          @media (max-width: 36rem) {
-            padding: 0 0 0.25rem 0;
-          }
-        }
-
-        p {
-          color: var(--font-secondary);
-          font-size: 0.925rem;
-          line-height: 1.75;
-          text-overflow: ellipsis;
+        div[data-info] {
+          width: 100%;
+          max-width: calc(100% - 3.75rem);
+          display: flex;
+          flex-direction: column;
           overflow: hidden;
-          white-space: nowrap;
+
+          h3 {
+            padding: 0 0 0.125rem 0;
+            font-size: 1rem;
+            font-weight: var(--font-normal);
+            line-height: 1.875;
+            white-space: nowrap;
+
+            @media (max-width: 36rem) {
+              padding: 0 0 0.25rem 0;
+            }
+          }
+
+          p {
+            color: var(--font-secondary);
+            font-size: 0.925rem;
+            line-height: 1.75;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
         }
 
         div[data-links] {

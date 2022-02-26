@@ -40,7 +40,7 @@ interface About {
   }
 }
 
-interface Projects {
+interface Apps {
   data: {
     id: number
     icon: string

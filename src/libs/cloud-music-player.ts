@@ -6,6 +6,9 @@ start(async () => {
   const audio = player.element() as HTMLAudioElement
   audio.volume = 0.5
 
+  const title = $('title')
+  const origin = title.text().get()
+
   let current: Shortcuts = null
   let beat: Shortcuts = null
   let status: Shortcuts = null
@@ -110,7 +113,7 @@ start(async () => {
     action.attr('data-tooltip').set('暂停')
     play.attr('data-remove').add()
     pause.attr('data-remove').remove()
-
+    title.text().set(`${current.attr('data-title').get()}`)
     if (beat) beat.attr('data-pause').remove()
   })
 
@@ -119,13 +122,17 @@ start(async () => {
     action.attr('data-tooltip').set('播放')
     pause.attr('data-remove').add()
     play.attr('data-remove').remove()
-
+    title.text().set(origin)
     if (beat) beat.attr('data-pause').add()
   })
 
   player.on('ended').func(() => {
     nprogress.set(1)
     next.click()
+  })
+
+  player.on('loadstart').func(() => {
+    if (status.len() !== 0) status.text().set('加载中')
   })
 
   css`

@@ -65,28 +65,30 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
     </div>
     <ul>
       {playlist?.songs?.map(song => (
-        <li>
-          <button data-music={`${music}?id=${song.id}.mp3`}>
-            <div data-cover>
-              <img loading="lazy" src={`${song.al.picUrl}?param=150x150`} />
-              <div data-status>
-                <Beat />
-                <span>00:00</span>
-              </div>
+        <button
+          role="listitem"
+          data-music={`${music}?id=${song.id}.mp3`}
+          data-title={`🎵 ${song.name} - ${song.ar[0].name} | 记录干杯`}
+        >
+          <div data-cover>
+            <img loading="lazy" src={`${song.al.picUrl}?param=150x150`} />
+            <div data-status>
+              <Beat />
+              <span>00:00</span>
             </div>
-            <div data-info>
-              <span data-name title={song.name}>
-                {song.name}
-              </span>
-              <span data-artist title={`${song.ar[0].name} - ${song.al.name}`}>
-                {song.ar[0].name} - {song.al.name}
-              </span>
-            </div>
-            <div data-side>
-              <span data-duration>{duration(song.dt)}</span>
-            </div>
-          </button>
-        </li>
+          </div>
+          <div data-info>
+            <span data-name title={song.name}>
+              {song.name}
+            </span>
+            <span data-artist title={`${song.ar[0].name} - ${song.al.name}`}>
+              {song.ar[0].name} - {song.al.name}
+            </span>
+          </div>
+          <div data-side>
+            <span data-duration>{duration(song.dt)}</span>
+          </div>
+        </button>
       ))}
     </ul>
   </div>
@@ -171,7 +173,7 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
         flex-direction: column;
       }
 
-      li {
+      button {
         position: relative;
         width: 100%;
         padding: 0.75rem 0.75rem 0.5rem;
@@ -180,161 +182,118 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
         color: var(--font-primary);
         border-radius: var(--border-radius);
         border: solid var(--border-width) var(--card-background);
+        outline-offset: 0;
+        gap: 0.5rem;
 
-        button {
+        @media (max-width: 36rem) {
+          align-items: center;
+          flex-direction: row;
+          gap: 1.5rem;
+        }
+
+        div[data-cover] {
           position: relative;
           display: flex;
-          flex-direction: column;
-          outline-offset: 0.5rem;
-          gap: 0.5rem;
+          align-items: center;
 
-          @media (max-width: 36rem) {
-            align-items: center;
-            flex-direction: row;
-            gap: 1.5rem;
-          }
-
-          div[data-cover] {
-            position: relative;
-            display: flex;
-            align-items: center;
-
-            div[data-status] {
-              position: absolute;
-              left: 0;
-              top: 0;
-              z-index: 2;
-              width: 100%;
-              height: 100%;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              opacity: 0;
-              visibility: hidden;
-              border-radius: var(--border-radius);
-              background-color: var(--dark-2a);
-
-              span {
-                color: var(--cover-color);
-                font-size: 1.125rem;
-              }
-            }
-
-            img {
-              width: 100%;
-              border: var(--border);
-              border-radius: var(--border-radius);
-              box-shadow: var(--shadow);
-              aspect-ratio: 1 / 1;
-
-              @media (max-width: 36rem) {
-                width: 3.5rem;
-                height: 3.5rem;
-              }
-            }
-          }
-
-          div[data-info] {
+          div[data-status] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
             width: 100%;
-            padding: 0.25rem 0 0;
+            height: 100%;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
-            flex: 1;
-            overflow: hidden;
-
-            @media (max-width: 36rem) {
-              padding: 0;
-            }
-
-            span[data-name] {
-              font-size: 1rem;
-              line-height: 1.75;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              text-align: left;
-            }
-
-            span[data-artist] {
-              font-size: 0.925rem;
-              line-height: 1.5;
-              color: var(--font-secondary);
-              text-overflow: ellipsis;
-              overflow: hidden;
-              white-space: nowrap;
-              text-align: left;
-            }
-          }
-
-          div[data-side] {
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 0 0.5rem;
-            display: flex;
-            font-size: 0.875rem;
             opacity: 0;
             visibility: hidden;
-            border: var(--border);
-            border-radius: 0 var(--border-radius) 0 var(--border-radius);
-            background-color: var(--tooltip-background);
-            color: var(--tooltip-color);
+            border-radius: var(--border-radius);
+            background-color: var(--dark-2a);
             font-variant-numeric: tabular-nums;
 
+            span {
+              color: var(--cover-color);
+              font-size: 1.125rem;
+            }
+          }
+
+          img {
+            width: 100%;
+            border: var(--border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            aspect-ratio: 1 / 1;
+
             @media (max-width: 36rem) {
-              position: relative;
-              top: unset;
-              right: unset;
-              padding: 0;
-              font-size: 1rem;
-              border: none;
-              border-radius: 0;
-              opacity: 1;
-              visibility: visible;
-              background-color: transparent;
-              color: var(--font-primary);
-              text-shadow: none;
+              width: 3.5rem;
+              height: 3.5rem;
             }
           }
+        }
 
-          &:hover,
-          &:focus-visible {
-            z-index: 1;
+        div[data-info] {
+          width: 100%;
+          padding: 0.25rem 0 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          flex: 1;
+          overflow: hidden;
 
-            div[data-side] {
-              opacity: 1;
-              visibility: visible;
-            }
+          @media (max-width: 36rem) {
+            padding: 0;
           }
 
-          &[data-playing] {
-            div[data-side] {
-              display: none;
+          span[data-name] {
+            font-size: 1rem;
+            line-height: 1.75;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: left;
+          }
 
-              @media (max-width: 36rem) {
-                display: flex;
-                font-weight: var(--font-bold);
-              }
-            }
+          span[data-artist] {
+            font-size: 0.925rem;
+            line-height: 1.5;
+            color: var(--font-secondary);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: left;
+          }
+        }
 
-            span[data-name] {
-              @media (max-width: 36rem) {
-                font-weight: bold;
-              }
-            }
+        div[data-side] {
+          position: absolute;
+          right: 0.75rem;
+          top: 0.75rem;
+          padding: 0 0.5rem;
+          display: flex;
+          font-size: 0.875rem;
+          opacity: 0;
+          visibility: hidden;
+          border: var(--border);
+          border-radius: 0 var(--border-radius) 0 var(--border-radius);
+          background-color: var(--tooltip-background);
+          color: var(--tooltip-color);
+          font-variant-numeric: tabular-nums;
 
-            div[data-cover] div[data-status] {
-              opacity: 1;
-              visibility: visible;
-
-              @media (max-width: 36rem) {
-                & > span {
-                  display: none;
-                }
-              }
-            }
+          @media (max-width: 36rem) {
+            position: relative;
+            top: unset;
+            right: unset;
+            padding: 0;
+            font-size: 1rem;
+            border: none;
+            border-radius: 0;
+            opacity: 1;
+            visibility: visible;
+            background-color: transparent;
+            color: var(--font-primary);
+            text-shadow: none;
           }
         }
 
@@ -343,6 +302,40 @@ const player = Astro.resolve('../../libs/cloud-music-player.ts')
           text-decoration: none;
           border: var(--border);
           background-color: var(--card-background-focus);
+          z-index: 1;
+
+          div[data-side] {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        &[data-playing] {
+          div[data-side] {
+            display: none;
+
+            @media (max-width: 36rem) {
+              display: flex;
+              font-weight: var(--font-bold);
+            }
+          }
+
+          span[data-name] {
+            @media (max-width: 36rem) {
+              font-weight: bold;
+            }
+          }
+
+          div[data-cover] div[data-status] {
+            opacity: 1;
+            visibility: visible;
+
+            @media (max-width: 36rem) {
+              & > span {
+                display: none;
+              }
+            }
+          }
         }
       }
     }

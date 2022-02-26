@@ -31,23 +31,6 @@ const formatter = (article: Article) =>
 ---
 
 <div data-list>
-  <Group title="最近更新">
-    <ul>
-      {updates.map(article => (
-        <li>
-          <a href={`/article/${article.name}`}>
-            <time title={formatter(article)}>
-              {article['date'].slice(5, 7)}
-              <span>/</span>
-              {article['date'].slice(8, 10)}
-            </time>
-            <h3 title={article.description}>{article.title}</h3>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </Group>
-
   {Object.keys(groups)
     .sort((a, b) => Number(b) - Number(a))
     .map(year => (
@@ -61,7 +44,7 @@ const formatter = (article: Article) =>
                   <span>/</span>
                   {article[key].slice(8, 10)}
                 </time>
-                <h3 title={article.title}>{article.title}</h3>
+                <h3 title={article.description}>{article.title}</h3>
               </a>
             </li>
           ))}

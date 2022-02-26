@@ -23,6 +23,8 @@ const { title, emoji } = Astro.props as Props
     line-height: 1.875;
 
     h1 {
+      display: flex;
+      align-items: center;
       font-weight: var(--font-bold);
       text-justify: none;
       text-align: left;
@@ -34,6 +36,8 @@ const { title, emoji } = Astro.props as Props
         content: attr(data-emoji);
         margin-right: 1rem;
         margin-left: -0.125rem;
+        display: flex;
+        align-items: center;
         font-weight: var(--font-normal);
 
         @media (max-width: 28rem) {
