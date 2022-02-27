@@ -6,6 +6,7 @@ const files = Astro.fetchContent('../../../contents/articles/*.md') as Article[]
 
 const key: 'date' | 'create-date' = 'create-date'
 const max = 4
+const recent = 4
 
 const groups = files
   .sort((a, b) => {
@@ -25,12 +26,15 @@ const updates = files
     const unix = (str: string) => new Date(str).getTime()
     return unix(b['date']) - unix(a['date'])
   })
-  .slice(0, 4)
+  .slice(0, recent)
 ---
 
 <div data-list>
-  <Group title="最近">
-    <ul>{updates.map(article => <PostLink article={article} key="date" />)}</ul>
+  <Group>
+    <ul>
+      <li><span data-title>最近的文章</span></li>
+      {updates.map(article => <PostLink article={article} key="date" />)}
+    </ul>
   </Group>
 
   {Object.keys(groups)
@@ -64,51 +68,57 @@ const updates = files
       width: 100%;
       list-style: none;
 
-      details {
-        summary {
-          position: relative;
-          width: 100%;
+      summary,
+      span[data-title] {
+        position: relative;
+        width: 100%;
+        padding: 0.25rem 0.75rem;
+        display: flex;
+        align-items: center;
+        color: var(--font-primary);
+        border-radius: var(--border-radius);
+        border: solid var(--border-width) var(--card-background);
+        gap: 0.75rem;
+        color: var(--font-secondary);
+
+        &::before {
+          content: '<-';
+          position: absolute;
+          right: 0;
+          top: 0;
           padding: 0.25rem 0.75rem;
-          display: flex;
-          align-items: center;
-          color: var(--font-primary);
-          border-radius: var(--border-radius);
-          border: solid var(--border-width) var(--card-background);
-          cursor: pointer;
-          gap: 0.75rem;
-          color: var(--font-secondary);
+          display: inline-block;
+          font-family: var(--font-mono);
+          transition: all 0.2s;
+        }
+      }
 
-          &::before {
-            content: '->';
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 0.25rem 0.75rem;
-            display: inline-block;
-            font-family: var(--font-mono);
-            transition: all 0.2s;
-          }
+      summary {
+        cursor: pointer;
 
-          &:hover,
-          &:focus-visible {
-            z-index: 1;
-            border: var(--border);
-            background-color: var(--card-background-focus);
-          }
-
-          &:focus-visible {
-            z-index: 1;
-            outline-color: var(--font-link);
-            outline-width: 0.25rem;
-            outline-offset: 0;
-            outline-style: solid;
-          }
+        &::before {
+          content: '->';
         }
 
-        &[open] summary {
-          &::before {
-            transform: rotate(90deg);
-          }
+        &:hover,
+        &:focus-visible {
+          z-index: 1;
+          border: var(--border);
+          background-color: var(--card-background-focus);
+        }
+
+        &:focus-visible {
+          z-index: 1;
+          outline-color: var(--font-link);
+          outline-width: 0.25rem;
+          outline-offset: 0;
+          outline-style: solid;
+        }
+      }
+
+      details[open] summary {
+        &::before {
+          transform: rotate(90deg);
         }
       }
     }

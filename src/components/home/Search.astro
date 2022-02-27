@@ -3,31 +3,31 @@ import { Icon } from 'astro-icon'
 ---
 
 <form method="GET" action="https://www.google.com/search">
+  <Icon name="tabler:search" aria-hidden />
   <input type="hidden" name="q" value="site:lifeni.life" />
   <input type="search" name="q" placeholder="使用 Google 搜索文章 ..." />
-  <Icon name="tabler:search" aria-hidden />
 </form>
 
 <style lang="less">
   form {
     position: relative;
     width: calc(100% + var(--extra-margin) * 2);
-    margin: 3rem calc(var(--extra-margin) * -1) 0;
+    margin: 3.5rem calc(var(--extra-margin) * -1) 1rem;
     border-radius: var(--border-radius);
     border: var(--border);
     background-color: var(--card-background);
 
     @media (max-width: 36rem) {
-      margin: 2.5rem calc(var(--extra-margin) * -1) 0;
+      margin: 2.5rem calc(var(--extra-margin) * -1) 1rem;
     }
 
     @media (max-width: 28rem) {
-      margin: 1rem calc(var(--extra-margin) * -1) 0;
+      margin: 1rem calc(var(--extra-margin) * -1) 1rem;
     }
 
     input {
       width: 100%;
-      padding: 1rem 1.5rem;
+      padding: 1rem 1.5rem 1rem 4rem;
       border: none;
       color: var(--font-primary);
       border-radius: var(--border-radius);
@@ -51,14 +51,16 @@ import { Icon } from 'astro-icon'
         }
       }
 
-      &::placeholder {
+      &::placeholder,
+      &::-moz-placeholder {
         color: var(--font-secondary);
+        opacity: 1;
       }
     }
 
     svg {
       position: absolute;
-      right: 0;
+      left: 0;
       top: 0;
       margin: 1rem 1.5rem;
       width: 1.25rem;

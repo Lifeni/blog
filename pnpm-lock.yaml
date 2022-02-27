@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  astro: ^0.23.1
+  astro: ^0.23.2
   astro-icon: ^0.6.0
   less: ^4.1.2
   medium-zoom: ^1.0.6
@@ -19,7 +19,7 @@ dependencies:
   nprogress: 0.2.0
 
 devDependencies:
-  astro: 0.23.1_less@4.1.2
+  astro: 0.23.2_less@4.1.2
   less: 4.1.2
   prettier: 2.5.1
   prettier-plugin-astro: 0.0.12
@@ -810,8 +810,8 @@ packages:
       svgo: 2.8.0
     dev: false
 
-  /astro/0.23.1_less@4.1.2:
-    resolution: {integrity: sha512-iieMjkqTVA9zAG7VvI3ckDHlQVHym79WCkxxhICoNKrPt2cq6PMZK/lqVIJZzTtIudMdnaHnH1KHsxHTN4AI/A==}
+  /astro/0.23.2_less@4.1.2:
+    resolution: {integrity: sha512-NoVZxRXDW/PLSsEQLdsiBub+AeVq8EAzc2Lg+XdHegvoeQnGsYrvrzLIxbztRHZIeOuY+lbgf8MlwgVnOrQY4g==}
     engines: {node: ^14.15.0 || >=16.0.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
