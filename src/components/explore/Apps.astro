@@ -12,42 +12,42 @@ const apps = (await fetch(`${items}/apps`).then(r => r.json())) as Apps
   <ul>
     {apps.data.map(project => (
       <li>
-        <img src={`${assets}/${project.icon}`} alt={project.name} />
         <div data-container>
+          <img src={`${assets}/${project.icon}`} alt={project.name} />
           <div data-info>
             <h3 title={project.name}>{project.name}</h3>
             <p title={project.description}>{project.description}</p>
           </div>
+        </div>
 
-          <div data-links>
-            {project.github && (
-              <ExternalLink href={project.github} data-tooltip="GitHub">
-                <Icon name="tabler:brand-github" aria-label="GitHub" />
-                <span>GitHub</span>
-              </ExternalLink>
-            )}
+        <div data-links>
+          {project.github && (
+            <ExternalLink href={project.github} data-tooltip="GitHub">
+              <Icon name="tabler:brand-github" aria-label="GitHub" />
+              <span>GitHub</span>
+            </ExternalLink>
+          )}
 
-            {project.website && (
-              <ExternalLink href={project.website} data-tooltip="网站">
-                <Icon name="tabler:world" aria-label="网站" />
-                <span>网站</span>
-              </ExternalLink>
-            )}
+          {project.website && (
+            <ExternalLink href={project.website} data-tooltip="网站">
+              <Icon name="tabler:world" aria-label="网站" />
+              <span>网站</span>
+            </ExternalLink>
+          )}
 
-            {project.docs && (
-              <ExternalLink href={project.docs} data-tooltip="文档">
-                <Icon name="tabler:vocabulary" aria-label="文档" />
-                <span>文档</span>
-              </ExternalLink>
-            )}
+          {project.docs && (
+            <ExternalLink href={project.docs} data-tooltip="文档">
+              <Icon name="tabler:vocabulary" aria-label="文档" />
+              <span>文档</span>
+            </ExternalLink>
+          )}
 
-            {project.package && (
-              <ExternalLink href={project.package} data-tooltip="获取">
-                <Icon name="tabler:apps" aria-label="获取" />
-                <span>获取</span>
-              </ExternalLink>
-            )}
-          </div>
+          {project.package && (
+            <ExternalLink href={project.package} data-tooltip="获取">
+              <Icon name="tabler:apps" aria-label="获取" />
+              <span>获取</span>
+            </ExternalLink>
+          )}
         </div>
       </li>
     ))}
@@ -64,27 +64,28 @@ const apps = (await fetch(`${items}/apps`).then(r => r.json())) as Apps
       width: 100%;
       padding: 0.5rem 0.75rem;
       display: flex;
-      gap: 1.25rem;
+      flex-direction: column;
       list-style: none;
-
-      img {
-        width: 2.5rem;
-        height: 2.5rem;
-        margin: 0.5rem 0 0;
-        border-radius: 100%;
-        box-shadow: var(--shadow);
-      }
+      overflow: hidden;
 
       div[data-container] {
         width: 100%;
         flex: 1;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+
+        img {
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 100%;
+          box-shadow: var(--shadow);
+        }
 
         div[data-info] {
           width: 100%;
-          max-width: calc(100% - 3.75rem);
           display: flex;
+          flex: 1;
           flex-direction: column;
           overflow: hidden;
 
@@ -109,45 +110,45 @@ const apps = (await fetch(`${items}/apps`).then(r => r.json())) as Apps
             white-space: nowrap;
           }
         }
+      }
 
-        div[data-links] {
-          padding: 0.5rem 0 0.125rem 0;
+      div[data-links] {
+        padding: 0.5rem 0 0.125rem 3.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        @media (max-width: 36rem) {
+          padding: 0.25rem 0 0 3.75rem;
+        }
+
+        a {
+          width: fit-content;
           display: flex;
           align-items: center;
-          gap: 0.75rem;
+          justify-content: center;
+          color: var(--font-secondary);
+          font-size: 0.925rem;
 
-          @media (max-width: 36rem) {
-            padding: 0.25rem 0 0 0;
+          svg {
+            width: 1.25rem;
+            height: 1.25rem;
           }
 
-          a {
-            width: fit-content;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--font-secondary);
-            font-size: 0.925rem;
+          span {
+            display: none;
+            line-height: 1.75;
+            white-space: nowrap;
 
-            svg {
-              width: 1.25rem;
-              height: 1.25rem;
+            @media (max-width: 36rem) {
+              margin: 0 0 0 0.5rem;
+              display: flex;
             }
+          }
 
-            span {
-              display: none;
-              line-height: 1.75;
-              white-space: nowrap;
-
-              @media (max-width: 36rem) {
-                margin: 0 0 0 0.5rem;
-                display: flex;
-              }
-            }
-
-            &:hover,
-            &:focus-visible {
-              color: var(--font-link);
-            }
+          &:hover,
+          &:focus-visible {
+            color: var(--font-link);
           }
         }
       }

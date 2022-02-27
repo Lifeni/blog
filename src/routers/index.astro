@@ -1,5 +1,6 @@
 ---
 import Layout from '../components/Layout.astro'
+import Search from '../components/home/Search.astro'
 import Posts from '../components/home/Posts.astro'
 import Friends from '../components/home/Friends.astro'
 import About from '../components/base/About.astro'
@@ -13,6 +14,6 @@ const about = (await fetch(`${items}/about`).then(r => r.json())) as About
     <Fragment set:html={about.data.content} />
     <Friends />
   </About>
-
+  <Search />
   <Posts />
 </Layout>

@@ -58,9 +58,17 @@ const { title, emoji } = Astro.props as Props
     p {
       margin: 0.5rem 0;
 
+      span[data-mobile] {
+        display: none;
+      }
+
       @media (max-width: 28rem) {
-        span[data-optional] {
+        span[data-desktop] {
           display: none;
+        }
+
+        span[data-mobile] {
+          display: initial;
         }
       }
     }
