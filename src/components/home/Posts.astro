@@ -19,9 +19,20 @@ const groups = files
     else obj[year] = [cur]
     return obj
   }, {}) as Group
+
+const updates = files
+  .sort((a, b) => {
+    const unix = (str: string) => new Date(str).getTime()
+    return unix(b['date']) - unix(a['date'])
+  })
+  .slice(0, 4)
 ---
 
 <div data-list>
+  <Group title="最近">
+    <ul>{updates.map(article => <PostLink article={article} key="date" />)}</ul>
+  </Group>
+
   {Object.keys(groups)
     .sort((a, b) => Number(b) - Number(a))
     .map(year => (

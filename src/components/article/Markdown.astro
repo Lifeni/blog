@@ -87,7 +87,7 @@ const zoom = Astro.resolve('../../libs/medium-zoom')
     }
 
     h4 {
-      margin: 1rem 0;
+      margin: 0.75rem 0;
       font-size: 1rem;
 
       @media (max-width: 28rem) {
@@ -113,6 +113,7 @@ const zoom = Astro.resolve('../../libs/medium-zoom')
       background-color: var(--code-background);
       overflow-wrap: break-word;
       word-break: break-all;
+      user-select: all;
     }
 
     pre {
@@ -130,6 +131,7 @@ const zoom = Astro.resolve('../../libs/medium-zoom')
         border: none;
         font-size: inherit;
         background-color: transparent;
+        user-select: auto;
       }
 
       &::after {

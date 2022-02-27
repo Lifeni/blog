@@ -7,7 +7,7 @@ start(async () => {
   audio.volume = 0.5
 
   const title = $('title')
-  const origin = title.text().get()
+  const backup = title.text().get()
 
   let current: Shortcuts = null
   let beat: Shortcuts = null
@@ -19,9 +19,11 @@ start(async () => {
   const songs = $('[data-music]')
   songs.on('click').func(e => {
     const song = $((e.target as HTMLElement).closest('button'))
+
     audio.src = song.attr('data-music').get()
     audio.currentTime = 0
     audio.play()
+
     nprogress.set(0)
 
     current = song
@@ -43,15 +45,17 @@ start(async () => {
       if (audio.src) audio.play()
       else songs.rand().click()
 
-      action.attr('data-play-action').set('pause')
       play.attr('data-remove').add()
       pause.attr('data-remove').remove()
+
+      action.attr('data-play-action').set('pause')
     } else {
       audio.pause()
 
-      action.attr('data-play-action').set('play')
       pause.attr('data-remove').add()
       play.attr('data-remove').remove()
+
+      action.attr('data-play-action').set('play')
     }
   })
 
@@ -80,6 +84,7 @@ start(async () => {
 
     if (volume.attr('data-volume').equal('on')) {
       audio.muted = true
+
       volume.attr('data-volume').set('off')
       volume.attr('data-tooltip').set('取消静音')
 
@@ -87,6 +92,7 @@ start(async () => {
       on.attr('data-remove').remove()
     } else {
       audio.muted = false
+
       volume.attr('data-volume').set('on')
       volume.attr('data-tooltip').set('静音')
 
@@ -99,6 +105,7 @@ start(async () => {
     const time = audio.currentTime
     const duration = audio.duration
     const percent = time / duration
+    
     nprogress.set(percent)
 
     if (status.len() !== 0) {
@@ -111,19 +118,23 @@ start(async () => {
   player.on('play').func(() => {
     action.attr('data-play-action').set('pause')
     action.attr('data-tooltip').set('暂停')
+
     play.attr('data-remove').add()
     pause.attr('data-remove').remove()
+
     title.text().set(`${current.attr('data-title').get()}`)
-    if (beat) beat.attr('data-pause').remove()
+    beat.attr('data-pause').remove()
   })
 
   player.on('pause').func(() => {
     action.attr('data-play-action').set('play')
     action.attr('data-tooltip').set('播放')
+
     pause.attr('data-remove').add()
     play.attr('data-remove').remove()
-    title.text().set(origin)
-    if (beat) beat.attr('data-pause').add()
+
+    title.text().set(backup)
+    beat.attr('data-pause').add()
   })
 
   player.on('ended').func(() => {

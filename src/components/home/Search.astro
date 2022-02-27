@@ -36,10 +36,14 @@ import { Icon } from 'astro-icon'
       font-family: inherit;
       font-weight: inherit;
 
+      &:focus {
+        outline: none;
+      }
+
       &:focus-visible {
         outline-color: var(--font-link);
         outline-width: 0.25rem;
-        outline-offset: -0.25rem;
+        outline-offset: 0;
         outline-style: solid;
 
         & + svg {
