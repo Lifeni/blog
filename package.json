@@ -13,7 +13,7 @@
     "reload": "astro check --reload"
   },
   "devDependencies": {
-    "astro": "^0.23.2",
+    "astro": "^0.23.4",
     "less": "^4.1.2",
     "prettier": "^2.5.1",
     "prettier-plugin-astro": "^0.0.12",

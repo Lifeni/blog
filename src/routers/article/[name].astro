@@ -30,9 +30,9 @@ const highlight = Astro.resolve('../../assets/highlight.css')
   </Fragment>
 
   <Article html={article.astro.html} />
-
   <Info date={article.date} license={article.license} />
-  {article.astro.headers.length !== 1 && (
+
+  {article.astro.headers.length > 1 && (
     <Contents headers={article.astro.headers} />
   )}
 </Layout>

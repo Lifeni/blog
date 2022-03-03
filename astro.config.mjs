@@ -12,7 +12,7 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
   pages: './src/routers',
   renderers: [],
   vite: {
-    ssr: { external: ['svgo', 'cash-dom'] },
+    ssr: { external: ['svgo'] },
     server: { host: '0.0.0.0' },
   },
   buildOptions: { site: 'https://lifeni.life' },

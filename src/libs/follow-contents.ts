@@ -23,8 +23,8 @@ start(() => {
 
     entries.forEach(entry => {
       if (entry.target.tagName === 'H1') {
-        if (entry.isIntersecting) contents.attr('data-hide').set('true')
-        else contents.attr('data-hide').set('false')
+        if (entry.isIntersecting) contents.attr('data-show').remove()
+        else contents.attr('data-show').add()
       } else {
         const id = entry.target.id
         const link = links.find().attr('data-slug').equal(id).get()

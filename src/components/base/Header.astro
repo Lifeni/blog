@@ -5,22 +5,29 @@ import ExternalLink from './ExternalLink.astro'
 
 <header>
   <h1>
-    <a href="/" data-text="主页" aria-label="主页">
-      <Icon name="tabler:circle" />
+    <a href="/" data-tooltip="主页" data-direction="bottom" aria-label="主页">
+      <Icon name="tabler:home" />
     </a>
   </h1>
   <nav role="list">
     <ExternalLink
       role="listitem"
       href="https://travellings.link/"
-      data-text="开往"
+      data-tooltip="开往"
+      data-direction="bottom"
       aria-label="开往"
     >
-      <Icon name="tabler:triangle" />
+      <Icon name="tabler:train" />
     </ExternalLink>
 
-    <a role="listitem" href="/explore" data-text="探索" aria-label="探索">
-      <Icon name="tabler:square" />
+    <a
+      role="listitem"
+      href="/explore"
+      data-tooltip="探索"
+      data-direction="bottom"
+      aria-label="探索"
+    >
+      <Icon name="tabler:layout-grid" />
     </a>
   </nav>
 </header>
@@ -95,7 +102,7 @@ import ExternalLink from './ExternalLink.astro'
         font-size: inherit;
         color: var(--font-primary);
         cursor: pointer;
-        transition: all 0.2s;
+        transition: color 0.2s;
         border-radius: 50%;
         outline-offset: 0;
 

@@ -30,9 +30,8 @@ const updates = files
 ---
 
 <div data-list>
-  <Group>
+  <Group title="最近">
     <ul>
-      <li><span data-title>最近的文章</span></li>
       {updates.map(article => <PostLink article={article} key="date" />)}
     </ul>
   </Group>
@@ -82,14 +81,14 @@ const updates = files
         color: var(--font-secondary);
 
         &::before {
-          content: '<-';
+          content: '〇';
           position: absolute;
           right: 0;
           top: 0;
           padding: 0.25rem 0.75rem;
           display: inline-block;
           font-family: var(--font-mono);
-          transition: all 0.2s;
+          transition: transform 0.2s;
         }
       }
 

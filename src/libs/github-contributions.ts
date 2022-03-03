@@ -24,7 +24,7 @@ start(async () => {
     console.log(error)
     count.text().set(`${error.message} - 获取数据失败 🤔`)
   } finally {
-    $('[data-spinner]').attr('data-hide').set('true')
+    $('[data-spinner]').attr('data-remove').add()
   }
 })
 

@@ -59,6 +59,7 @@
   --font-primary: var(--dark-4);
   --font-secondary: var(--dark-5);
   --font-link: #0969da;
+  --font-link-background: #096bda22;
 
   --shadow-color: rgba(140, 149, 159, 0.2);
   --shadow: 0 8px 24px var(--shadow-color);
@@ -150,46 +151,6 @@ button {
   }
 }
 
-[data-text] {
-  position: relative;
-
-  &::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    padding: 0.25rem 0.75rem;
-    display: flex;
-    align-items: center;
-    color: inherit;
-    font-family: var(--font-sans);
-    transform: translate(-50%, -20%) rotate3d(1, 0, 0, 75deg);
-    visibility: hidden;
-    opacity: 0;
-    white-space: nowrap;
-    transition: all 0.2s;
-    pointer-events: none;
-  }
-
-  & > svg {
-    transform: rotate3d(1, 0, 0, 0);
-    transition: all 0.2s;
-  }
-
-  &:hover > svg,
-  &:focus-visible > svg {
-    transform: translateY(-50%) rotate3d(1, 0, 0, -75deg);
-    opacity: 0;
-  }
-
-  &:hover::after,
-  &:focus-visible::after {
-    visibility: visible;
-    opacity: 1;
-    transform: translate(-50%, -50%) rotate3d(1, 0, 0, 0);
-  }
-}
-
 [data-tooltip] {
   position: relative;
 
@@ -207,10 +168,23 @@ button {
     border: var(--border);
     border-radius: var(--border-radius);
     font-size: 0.875rem;
+    line-height: 1.75rem;
     opacity: 0;
     visibility: hidden;
     white-space: nowrap;
     transform: translateX(-50%) translateY(-135%);
+  }
+
+  &[data-direction='top']::before {
+    top: 0;
+    bottom: unset;
+    transform: translateX(-50%) translateY(-135%);
+  }
+
+  &[data-direction='bottom']::before {
+    top: unset;
+    bottom: 0;
+    transform: translateX(-50%) translateY(100%);
   }
 
   &:hover,
@@ -228,17 +202,6 @@ button {
 
 [data-remove] {
   display: none !important;
-}
-
-[data-hide='true'] {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transition: opacity 0.2s, visibility 0.2s;
-}
-[data-hide='false'] {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transition: opacity 0.2s, visibility 0.2s;
 }
 
 @keyframes fade-in {

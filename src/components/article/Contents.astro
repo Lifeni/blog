@@ -7,7 +7,7 @@ const { headers } = Astro.props as Props
 const contents = Astro.resolve('../../libs/follow-contents.ts')
 ---
 
-<nav data-contents data-hide>
+<nav data-contents>
   <ul>
     {headers.map(
       header =>
@@ -32,19 +32,32 @@ const contents = Astro.resolve('../../libs/follow-contents.ts')
     top: 50%;
     left: 4.075rem;
     width: 18rem;
-    color: var(--font-secondary);
     transform: translateY(-50%);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.2s, visibility 0.2s;
 
     @media (max-width: 72rem) {
-      opacity: 0 !important;
-      visibility: hidden !important;
+      display: none;
+    }
+
+    &[data-show] {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.2s, visibility 0.2s;
     }
 
     &:hover {
-      color: var(--font-primary);
+      ul li {
+        color: var(--font-secondary);
+
+        a {
+          color: var(--font-secondary);
+        }
+
+        &[data-active] a {
+          color: var(--font-link);
+        }
+      }
     }
 
     ul {
@@ -63,25 +76,21 @@ const contents = Astro.resolve('../../libs/follow-contents.ts')
       li {
         position: relative;
         width: 100%;
+        margin: 0;
         padding: 0.125rem 1.5rem;
         list-style: none;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-        color: inherit;
-        border-left: var(--border);
-        font-size: 0.925rem;
-        transition: border-left 0.2s, font-size 0.2s, opacity 0.2s;
-
-        &[data-active] {
-          border-left: solid 1px var(--font-link);
-          color: var(--font-link);
-        }
+        border-left: solid 0.1rem var(--border-color);
+        transition: border 0.2s;
 
         a {
           width: 100%;
           margin: 0.5rem 0;
-          color: inherit;
+          color: var(--font-secondary);
+          font-size: 0.925rem;
+          transition: color 0.2s;
 
           &:focus-visible {
             outline-color: var(--font-link);
@@ -93,6 +102,14 @@ const contents = Astro.resolve('../../libs/follow-contents.ts')
           &:hover,
           &:focus-visible {
             text-decoration: none;
+            color: var(--font-link);
+          }
+        }
+
+        &[data-active] {
+          border-left-color: var(--font-link);
+
+          a {
             color: var(--font-link);
           }
         }

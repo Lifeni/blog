@@ -290,12 +290,12 @@ const zoom = Astro.resolve('../../libs/medium-zoom')
           display: inline-block;
           font-family: var(--font-mono);
           margin-right: 0.5rem;
-          transition: all 0.2s;
+          transition: transform 0.2s;
         }
 
         & + * {
           opacity: 0;
-          transition: all 0.2s;
+          transition: opacity 0.2s;
         }
       }
 

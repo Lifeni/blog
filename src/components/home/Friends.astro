@@ -43,7 +43,9 @@ const friends = (await fetch(`${items}/friends`).then(r => r.json())) as Friends
         box-shadow: var(--shadow-lite);
         color: transparent;
         background-color: var(--card-background);
-        transition: all 0.2s;
+        transform-origin: bottom;
+        transform: scale(1);
+        transition: transform 0.2s;
       }
 
       &::before {
@@ -63,7 +65,7 @@ const friends = (await fetch(`${items}/friends`).then(r => r.json())) as Friends
         white-space: nowrap;
         opacity: 0;
         visibility: hidden;
-        transition: all 0.2s;
+        transition: transform 0.2s, opacity 0.2s, visibility 0.2s;
       }
 
       &:hover,
@@ -80,7 +82,6 @@ const friends = (await fetch(`${items}/friends`).then(r => r.json())) as Friends
         img {
           box-shadow: var(--shadow);
           transform: scale(1.5);
-          transform-origin: bottom;
         }
       }
     }
