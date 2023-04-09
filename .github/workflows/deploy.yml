@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: "dist/*"
-          target: "/home/github/blog"
+          target: "/home/bot/blog"
           overwrite: true
           rm: true
           strip_components: 1
