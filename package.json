@@ -1,30 +1,37 @@
 {
   "name": "blog",
-  "version": "3.0.0",
+  "description": "Just for Record",
   "private": true,
+  "version": "4.0.0",
+  "author": {
+    "name": "Liang Fengning",
+    "email": "liangfengning@foxmail.com"
+  },
+  "license": "MIT",
   "scripts": {
-    "dev": "astro dev --port 8000",
-    "debug:dev": "cross-env DEBUG=astro:*,vite:* astro dev --verbose --port 8000",
-    "debug:build": "cross-env DEBUG=astro:*,vite:* astro build --verbose",
-    "debug:start": "cross-env DEBUG=astro:*,vite:* astro build --verbose && pnpm run preview",
     "build": "astro build",
-    "preview": "astro preview --port 8000",
-    "start": "pnpm run build && pnpm run preview",
-    "reload": "astro check --reload"
+    "dev": "astro dev",
+    "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^0.23.4",
-    "less": "^4.1.2",
-    "prettier": "^2.5.1",
-    "prettier-plugin-astro": "^0.0.12",
-    "rehype-external-links": "^1.0.1",
-    "rehype-plugin-image-native-lazy-loading": "^1.2.0",
-    "rehype-rewrite": "^3.0.4",
-    "remark-unwrap-images": "^3.0.1"
+    "@astrojs/lit": "^2.1.0",
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/partytown": "^1.2.3",
+    "@astrojs/react": "^2.2.1",
+    "@astrojs/sitemap": "^1.3.3",
+    "@astrojs/vercel": "^3.5.1",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@unocss/reset": "^0.53.4",
+    "astro": "^2.7.2",
+    "astro-icon": "^0.8.1",
+    "prettier": "^2.8.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "unocss": "^0.53.4"
   },
   "dependencies": {
-    "astro-icon": "^0.6.0",
-    "medium-zoom": "^1.0.6",
-    "nprogress": "^0.2.0"
+    "@fontsource/inter": "^5.0.3",
+    "medium-zoom": "^1.0.8"
   }
 }

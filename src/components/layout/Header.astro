@@ -1,0 +1,42 @@
+---
+export interface Props {
+  title?: string
+  path?: string
+  favicon?: string
+}
+
+import Nav from './Nav.astro'
+const { title, path, favicon } = Astro.props
+---
+
+<header
+  w="full"
+  flex="~ row items-center justify-between gap-4"
+  p="x-6 y-4 sm:x-10 sm:y-6"
+>
+  <h1
+    flex="~ row items-center gap-4"
+    text="lg"
+    font="800"
+    line-height="none"
+    select="none"
+  >
+    <a
+      href={path}
+      rounded="full"
+      filter="~ drop-shadow-none hover:drop-shadow-xl"
+      transition="filter"
+    >
+      <img
+        src={favicon}
+        alt={title}
+        w="9"
+        h="9"
+        pointer-events="none"
+        rounded="full"
+      />
+    </a>
+    <span>{title}</span>
+  </h1>
+  <Nav />
+</header>
