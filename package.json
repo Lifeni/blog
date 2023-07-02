@@ -7,6 +7,7 @@
     "name": "Liang Fengning",
     "email": "liangfengning@foxmail.com"
   },
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "build": "astro build",
@@ -31,7 +32,6 @@
     "unocss": "^0.53.4"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.0.3",
-    "medium-zoom": "^1.0.8"
+    "@fontsource/inter": "^5.0.3"
   }
 }
