@@ -37,13 +37,13 @@ const { content, align = 'center', circle } = Astro.props
     rounded="md"
     text="sm"
     whitespace="nowrap"
-    transform={`~ ${
+    transform={`~ scale-98 group-hover:scale-100 group-focus-within:scale-100 ${
       align === 'center'
         ? 'translate-x--1/2 origin-t'
         : align === 'left'
         ? 'origin-lt'
         : 'origin-rt'
-    } scale-98 group-hover:scale-100 group-focus-within:scale-100`}
+    }`}
     opacity="0 group-hover:100 group-focus-within:100"
     shadow="none group-hover:xl group-focus-within:xl"
     transition="transform opacity shadow"
