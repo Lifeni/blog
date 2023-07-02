@@ -1,9 +1,15 @@
 {
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
     "moduleResolution": "node",
-    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "noEmit": true,
-    "target": "es2020",
-    "module": "es2022"
+    "strict": true,
+    "importsNotUsedAsValues": "error",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

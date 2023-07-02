@@ -1,0 +1,73 @@
+---
+import { Icon } from 'astro-icon'
+import Tooltip from '../ui/Tooltip.astro'
+
+const navs = [
+  { name: '开往', href: 'https://travellings.link/', icon: 'location' },
+  { name: '随笔', href: '/life', icon: 'note' },
+]
+
+const apps = [
+  { name: '代码可行', href: '/dev', icon: 'brackets' },
+  { name: '时间之外', href: '/lab', icon: 'triangle' },
+  { name: '越过长城', href: '/server', icon: 'circle-dashed' },
+]
+---
+
+<nav flex="~ row items-center gap-3" p="y-1">
+  {
+    navs.map(({ name, href, icon }) => (
+      <Tooltip content={name} circle>
+        <a
+          slot="action"
+          aria-label={name}
+          href={href}
+          target={href.startsWith('http') ? '_blank' : '_self'}
+          rel={href.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
+          p="2"
+          flex="~ col items-center"
+          rounded="full"
+          bg="hover:subtle"
+          transition="background-color"
+        >
+          <Icon pack="tabler" name={icon} w="5" h="5" />
+        </a>
+      </Tooltip>
+    ))
+  }
+
+  <Tooltip circle align="right">
+    <button
+      slot="action"
+      aria-label="更多"
+      flex="~ col items-center"
+      p="2"
+      rounded="full"
+      bg="hover:subtle"
+      transition="background-color"
+    >
+      <Icon pack="tabler" name="apps" w="5" h="5" />
+    </button>
+    <ul slot="content" flex="~ col items-center" p="1.5">
+      {
+        apps.map(({ name, href, icon }) => (
+          <li flex="~">
+            <a
+              aria-label={name}
+              href={href}
+              p="x-2 y-1.5"
+              flex="~ row items-center justify-start gap-2"
+              rounded="md"
+              bg="hover:subtle"
+            >
+              <Icon pack="tabler" name={icon} w="5" h="5" />
+              <h2 font="500" font="sm" flex="~ 1" p="r-1">
+                {name}
+              </h2>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Tooltip>
+</nav>

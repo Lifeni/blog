@@ -2,78 +2,54 @@
 export interface Props {
   title?: string
   description?: string
+  color?: string
+  favicon?: string
+  path?: string
 }
 
-import Footer from './base/Footer.astro'
-import Meta from './base/Meta.astro'
-import Header from './base/Header.astro'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/800.css'
 
-const { title, description } = Astro.props as Props
+import Header from './layout/Header.astro'
+import Footer from './layout/Footer.astro'
+
+const {
+  title = '记录干杯',
+  description = '个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。',
+  color = '#feec44',
+  favicon = '/favicon.svg',
+  path = '/',
+} = Astro.props
 ---
 
+<!DOCTYPE html>
 <html lang="zh-hans">
   <head>
-    <title>{title ? `${title} | 记录干杯` : '记录干杯'}</title>
-    <meta
-      name="description"
-      content={description ||
-        '个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。'}
-    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
 
-    <Meta>
-      <slot name="head" />
-    </Meta>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={color} />
+    <link rel="icon" href={favicon} />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <slot name="head" />
   </head>
 
-  <body>
-    <Header />
-    <main><slot /></main>
+  <body
+    w="screen"
+    h="screen"
+    flex="~ col"
+    text="main"
+    font="500 sans"
+    bg="main"
+    overflow="hidden"
+  >
+    <Header {title} {favicon} {path} />
+    <main flex="~ 1 col">
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>
-
-<style lang="less">
-  html {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    font-size: var(--font-base);
-    scroll-behavior: smooth;
-    scroll-padding: 2.5rem;
-
-    body {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      font-family: var(--font-sans);
-      color: var(--font-primary);
-      background-color: var(--background);
-      font-weight: var(--font-normal);
-      line-height: 2;
-      text-align: justify;
-      text-justify: auto;
-      overflow-wrap: break-word;
-
-      main {
-        width: 100%;
-        max-width: var(--main-width);
-        margin: 0 auto;
-        padding: 1.5rem 3.5rem;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-
-        @media (max-width: 36rem) {
-          padding: 1.5rem 3rem;
-        }
-
-        @media (max-width: 28rem) {
-          padding: 1.25rem 2rem;
-        }
-      }
-    }
-  }
-</style>

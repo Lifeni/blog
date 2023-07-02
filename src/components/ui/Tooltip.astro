@@ -1,0 +1,55 @@
+---
+export interface Props {
+  content?: string
+  align?: 'left' | 'center' | 'right'
+  circle?: boolean
+}
+
+const { content, align = 'center', circle } = Astro.props
+---
+
+<div
+  tabindex="-1"
+  class="group"
+  position="relative"
+  rounded={circle ? 'full' : 'md'}
+>
+  <slot name="action" />
+  <span
+    position="absolute"
+    top="8"
+    left="0"
+    w="full"
+    h="4"
+    invisible
+    visible="group-hover:~ group-focus-within:~"
+    opacity="0"></span>
+  <span
+    position="absolute"
+    left={align === 'center' ? '1/2' : align === 'right' ? 'unset' : '-2'}
+    right={align === 'right' ? '-2' : 'unset'}
+    top="12"
+    flex="~ col"
+    invisible
+    visible="group-hover:~ group-focus-within:~"
+    border="~ 1 light-2 dark:dark-7"
+    bg="muted"
+    rounded="md"
+    text="sm"
+    whitespace="nowrap"
+    transform={`~ ${
+      align === 'center'
+        ? 'translate-x--1/2 origin-t'
+        : align === 'left'
+        ? 'origin-lt'
+        : 'origin-rt'
+    } scale-98 group-hover:scale-100 group-focus-within:scale-100`}
+    opacity="0 group-hover:100 group-focus-within:100"
+    shadow="none group-hover:xl group-focus-within:xl"
+    transition="transform opacity shadow"
+  >
+    <slot name="content">
+      <span p="x-2 y-1">{content}</span>
+    </slot>
+  </span>
+</div>
