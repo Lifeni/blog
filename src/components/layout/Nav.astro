@@ -1,16 +1,19 @@
 ---
-import { Icon } from 'astro-icon'
 import Tooltip from '../ui/Tooltip.astro'
 
 const navs = [
-  { name: '开往', href: 'https://travellings.link/', icon: 'location' },
-  { name: '随笔', href: '/life', icon: 'note' },
+  {
+    name: '开往',
+    href: 'https://travellings.link/',
+    icon: 'icon-tabler:location',
+  },
+  { name: '随笔', href: '/life', icon: 'icon-tabler:note' },
 ]
 
 const apps = [
-  { name: '代码可行', href: '/dev', icon: 'brackets' },
-  { name: '时间之外', href: '/lab', icon: 'triangle' },
-  { name: '越过长城', href: '/server', icon: 'circle-dashed' },
+  { name: '代码可行', href: '/dev', icon: 'icon-tabler:brackets' },
+  { name: '时间之外', href: '/lab', icon: 'icon-tabler:triangle' },
+  { name: '越过长城', href: '/server', icon: 'icon-tabler:circle-dashed' },
 ]
 ---
 
@@ -30,7 +33,7 @@ const apps = [
           bg="hover:subtle"
           transition="background-color"
         >
-          <Icon pack="tabler" name={icon} w="5" h="5" />
+          <div class={icon} w-5 h-5 />
         </a>
       </Tooltip>
     ))
@@ -46,7 +49,7 @@ const apps = [
       bg="hover:subtle"
       transition="background-color"
     >
-      <Icon pack="tabler" name="apps" w="5" h="5" />
+      <div class="icon-tabler:apps" w-5 h-5></div>
     </button>
     <ul slot="content" flex="~ col items-center" p="1.5">
       {
@@ -60,7 +63,7 @@ const apps = [
               rounded="md"
               bg="hover:subtle"
             >
-              <Icon pack="tabler" name={icon} w="5" h="5" />
+              <div class={icon} w-5 h-5 />
               <h2 font="500" font="sm" flex="~ 1" p="r-1">
                 {name}
               </h2>
