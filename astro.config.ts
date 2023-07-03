@@ -1,19 +1,17 @@
 import { defineConfig } from 'astro/config'
 import unocss from 'unocss/astro'
 
-import sitemap from '@astrojs/sitemap'
+import vercel from '@astrojs/vercel/serverless'
 import mdx from '@astrojs/mdx'
-import react from '@astrojs/react'
-import lit from '@astrojs/lit'
+import sitemap from '@astrojs/sitemap'
 
+const config = { injectReset: true }
+
+// https://astro.build/config
 export default defineConfig({
+  output: 'server',
   server: { port: 8000, host: true },
   site: 'https://lifeni.life/',
-  integrations: [
-    unocss({ injectReset: true }),
-    react(),
-    lit(),
-    sitemap(),
-    mdx(),
-  ],
+  adapter: vercel(),
+  integrations: [unocss(config), mdx(), sitemap()],
 })
