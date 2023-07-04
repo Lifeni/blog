@@ -7,10 +7,10 @@ import sitemap from '@astrojs/sitemap'
 
 // https://astro.build/config
 export default defineConfig({
+  adapter: vercel(),
   site: 'https://lifeni.life/',
   integrations: [unocss({ injectReset: true }), mdx(), sitemap()],
   server: { port: 8000, host: true },
   output: 'server',
-  adapter: vercel({ analytics: true }),
   build: { split: true },
 })
