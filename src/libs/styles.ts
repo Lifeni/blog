@@ -8,7 +8,7 @@ export const convertColors = (array: string[]) => {
 
 // prettier-ignore
 export const fonts = {
-  sans: `Inter, -apple-system, MISans, HarmonyOS Sans SC, system-ui, 
+  sans: `Inter Variable, -apple-system, MISans, HarmonyOS Sans SC, system-ui, 
          Source Han Sans SC, Noto Sans SC, Roboto, emoji, sans-serif`,
   serif: `Source Han Serif SC, Noto Serif SC, Times, Times New Roman, 
           Georgia, emoji, serif`,

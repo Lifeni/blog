@@ -4,6 +4,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/inter':
+        specifier: ^5.0.4
+        version: 5.0.4
       '@fontsource/inter':
         specifier: ^5.0.4
         version: 5.0.4
@@ -42,6 +45,9 @@ importers:
         specifier: ^0.53.4
         version: 0.53.4
       '@unocss/reset':
+        specifier: ^0.53.4
+        version: 0.53.4
+      '@unocss/transformer-variant-group':
         specifier: ^0.53.4
         version: 0.53.4
       astro:
@@ -707,6 +713,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@fontsource-variable/inter@5.0.4:
+    resolution: {integrity: sha512-MYomT1JVwFAPhinw3N4mQbtwNCXSQ2n+W2JFCgXNyhzDL7hgAXzI89/yZRyNz5kYfyyG7pgsOj9YZ0aujlHbEw==}
+    dev: false
 
   /@fontsource/inter@5.0.4:
     resolution: {integrity: sha512-rUiTktdsh6B45XRZYTsZb2y4+TVkiVJhkqCSnSXfWxdUl0Rp6Cheu27IcurdjSfxJPUD+nl18wYp5RFf5P5zlA==}

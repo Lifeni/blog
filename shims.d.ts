@@ -9,6 +9,7 @@ declare global {
       top?: string
       bottom?: string
       whitespace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap'
+      op?: string
     }
   }
 }

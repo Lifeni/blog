@@ -14,7 +14,6 @@ const { content, align = 'center', circle } = Astro.props
   position="relative"
   rounded={circle ? 'full' : 'md'}
 >
-  <slot name="action" />
   <span
     position="absolute"
     top="8"
@@ -23,7 +22,10 @@ const { content, align = 'center', circle } = Astro.props
     h="4"
     invisible
     visible="group-hover:~ group-focus-within:~"
-    opacity="0"></span>
+    op="0"
+  >
+  </span>
+  <slot name="action" />
   <span
     position="absolute"
     left={align === 'center' ? '1/2' : align === 'right' ? 'unset' : '-2'}
@@ -44,12 +46,12 @@ const { content, align = 'center', circle } = Astro.props
         ? 'origin-lt'
         : 'origin-rt'
     }`}
-    opacity="0 group-hover:100 group-focus-within:100"
+    op="0 group-hover:100 group-focus-within:100"
     shadow="none group-hover:xl group-focus-within:xl"
     transition="transform opacity shadow"
   >
     <slot name="content">
-      <span p="x-2 y-1">{content}</span>
+      <span p="x-2 y-1" font="500">{content}</span>
     </slot>
   </span>
 </div>

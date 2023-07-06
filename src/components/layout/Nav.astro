@@ -11,9 +11,9 @@ const navs = [
 ]
 
 const apps = [
-  { name: '代码可行', href: '/dev', icon: 'icon-tabler:brackets' },
-  { name: '时间之外', href: '/lab', icon: 'icon-tabler:triangle' },
-  { name: '越过长城', href: '/server', icon: 'icon-tabler:circle-dashed' },
+  { name: 'Dev', href: '/dev', icon: 'icon-tabler:brackets' },
+  { name: 'Lab', href: '/lab', icon: 'icon-tabler:math-avg' },
+  { name: 'Server', href: '/server', icon: 'icon-tabler:delta' },
 ]
 ---
 
@@ -54,14 +54,16 @@ const apps = [
     <ul slot="content" flex="~ col items-center" p="1.5">
       {
         apps.map(({ name, href, icon }) => (
-          <li flex="~">
+          <li flex="~" w="full">
             <a
               aria-label={name}
               href={href}
+              w="full"
               p="x-2 y-1.5"
               flex="~ row items-center justify-start gap-2"
               rounded="md"
               bg="hover:subtle"
+              transition="background-color"
             >
               <div class={icon} w-5 h-5 />
               <h2 font="500" font="sm" flex="~ 1" p="r-1">

@@ -1,18 +1,18 @@
 ---
 export interface Props {
   title?: string
-  path?: string
   favicon?: string
 }
 
+import Tooltip from '../ui/Tooltip.astro'
 import Nav from './Nav.astro'
-const { title, path, favicon } = Astro.props
+const { title, favicon } = Astro.props
 ---
 
 <header
   w="full"
   flex="~ row items-center justify-between gap-4"
-  p="x-6 y-4 sm:x-10 sm:y-6"
+  p="x-6 y-5 sm:x-8 sm:y-6"
 >
   <h1
     flex="~ row items-center gap-4"
@@ -21,21 +21,43 @@ const { title, path, favicon } = Astro.props
     line-height="none"
     select="none"
   >
-    <a
-      href={path}
-      rounded="full"
-      filter="~ drop-shadow-none hover:drop-shadow-xl"
-      transition="filter"
-    >
-      <img
-        src={favicon}
-        alt={title}
+    <Tooltip content="回到主页">
+      <a
+        slot="action"
+        href="/"
+        position="relative"
         w="9"
         h="9"
-        pointer-events="none"
         rounded="full"
-      />
-    </a>
+        filter="~ drop-shadow-none hover:drop-shadow-xl"
+        transition="filter"
+      >
+        <div
+          class="icon-tabler:home"
+          position="absolute"
+          z="10"
+          left="1/2"
+          top="1/2"
+          w="5"
+          h="5"
+          op="0 group-hover:100 group-focus-within:100"
+          transform="~ translate-x--1/2 translate-y--1/3 scale-95 group-hover:(translate-y--1/2 scale-100) group-focus-within:(translate-y--1/2 scale-100)"
+          transition="opacity transform"
+        >
+        </div>
+        <img
+          src={favicon}
+          alt={title}
+          w="9"
+          h="9"
+          pointer-events="none"
+          rounded="full"
+          filter="~ dark:(group-hover:brightness-60 group-focus-within:brightness-60)"
+          transition="filter"
+        />
+      </a>
+    </Tooltip>
+
     <span>{title}</span>
   </h1>
   <Nav />
