@@ -12,5 +12,4 @@ export default defineConfig({
   integrations: [unocss({ injectReset: true }), mdx(), sitemap()],
   server: { port: 8000, host: true },
   output: 'server',
-  build: { split: true },
 })
