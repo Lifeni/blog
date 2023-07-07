@@ -1,10 +1,16 @@
 ---
 import Layout from '../../components/Layout.astro'
-Astro.response.status = 404
+
+export function getStaticPaths() {
+  return [{ params: { id: '404' } }]
+}
 ---
 
-<Layout title="找不到页面" description="你要找的页面也许并不存在。" yellow>
-  <div flex="~ 1 items-center justify-center" p="b-4">
-    <h1 text="32 sm:48" font="sans 800 slashed-zero" select="none">404</h1>
+<Layout title="找不到页面" description="你要找的页面也许并不存在。" index>
+  <div flex="~ 1 col items-center justify-center">
+    <h1 text="32 sm:48" font="mono 800" select="none" line-height="none">
+      404
+    </h1>
+    <p text="4 sm:6" p="y-4">找不到页面</p>
   </div>
 </Layout>

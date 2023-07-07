@@ -11,9 +11,9 @@ const navs = [
 ]
 
 const apps = [
-  { name: 'Dev', href: '/dev', icon: 'icon-tabler:brackets' },
-  { name: 'Lab', href: '/lab', icon: 'icon-tabler:math-avg' },
-  { name: 'Server', href: '/server', icon: 'icon-tabler:delta' },
+  { name: '代码可行', href: '/dev', icon: 'icon-tabler:brackets' },
+  { name: '时间之外', href: '/lab', icon: 'icon-tabler:math-avg' },
+  { name: '越过长城', href: '/server', icon: 'icon-tabler:delta' },
 ]
 ---
 
@@ -49,6 +49,17 @@ const apps = [
       bg="hover:subtle"
       transition="background-color"
     >
+      <span
+        position="absolute"
+        top="8"
+        left="0"
+        w="full"
+        h="4"
+        invisible
+        visible="group-hover:~ group-focus-within:~"
+        op="0"
+      >
+      </span>
       <div class="icon-tabler:apps" w-5 h-5></div>
     </button>
     <ul slot="content" flex="~ col items-center" p="1.5">
@@ -60,7 +71,7 @@ const apps = [
               href={href}
               w="full"
               p="x-2 y-1.5"
-              flex="~ row items-center justify-start gap-2"
+              flex="~ row items-center justify-start gap-3"
               rounded="md"
               bg="hover:subtle"
               transition="background-color"

@@ -8,14 +8,12 @@ export const convertColors = (array: string[]) => {
 
 // prettier-ignore
 export const fonts = {
-  sans: `Inter Variable, -apple-system, MISans, HarmonyOS Sans SC, system-ui, 
+  sans: `Inter Variable, Inter, -apple-system, MISans, HarmonyOS Sans SC, system-ui, 
          Source Han Sans SC, Noto Sans SC, Roboto, emoji, sans-serif`,
-  serif: `Source Han Serif SC, Noto Serif SC, Times, Times New Roman, 
-          Georgia, emoji, serif`,
-  mono: `Cascadia Mono, JetBrains Mono, Consolas, Roboto Mono, 
+  serif: `Source Han Serif SC, Noto Serif SC, Times, Times New Roman, Georgia, emoji, serif`,
+  mono: `JetBrains Mono Variable, JetBrains Mono, Cascadia Mono, Consolas, Roboto Mono, 
          Fira Mono, Courier New, emoji, monospace`,
-  emoji: `Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, 
-          Noto Color Emoji, emoji`,
+  emoji: `Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji, emoji`,
 }
 
 // prettier-ignore
