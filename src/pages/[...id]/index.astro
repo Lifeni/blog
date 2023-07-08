@@ -1,8 +1,5 @@
 ---
 import Layout from '../../components/Layout.astro'
-
-const { id } = Astro.params
-if (id !== '404') Astro.redirect('/404')
 Astro.response.status = 404
 ---
 
