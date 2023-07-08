@@ -8,7 +8,7 @@ import unocss from 'unocss/astro'
 // https://astro.build/config
 export default defineConfig({
   experimental: { assets: true },
-  site: 'https://lifeni.life/',
+  site: 'https://lifeni.life',
   integrations: [unocss({ injectReset: true }), mdx(), sitemap(), rome()],
   server: { port: 8000, host: true },
   publicDir: 'assets',
