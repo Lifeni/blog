@@ -37,7 +37,8 @@
   "dependencies": {
     "@fontsource-variable/inter": "^5.0.4",
     "@fontsource-variable/jetbrains-mono": "^5.0.5",
-    "medium-zoom": "^1.0.8"
+    "medium-zoom": "^1.0.8",
+    "remeda": "^1.23.0"
   },
   "pnpm": {
     "patchedDependencies": {

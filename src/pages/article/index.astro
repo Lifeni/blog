@@ -1,9 +1,96 @@
 ---
 import Layout from '../../components/Layout.astro'
+import type { MDXInstance } from 'astro'
+import Section from '../../components/layout/Section.astro'
+import type { Article, Archive } from '../../types.d'
+import { groupBy } from 'remeda'
+
+const sort = (obj: Record<string, MDXInstance<Article | Archive>[]>) =>
+  Object.entries(obj)
+    .map(([year, articles]) => ({ year, articles }))
+    .sort((a, b) => Number(b.year) - Number(a.year))
+
+const date = (date: string) => {
+  const d = new Date(date)
+  const p = (num: number) => num.toString().padStart(2, '0')
+  return `${p(d.getMonth() + 1)}/${p(d.getDate())}`
+}
+
+const articles = sort(
+  groupBy(
+    (await Astro.glob<Article>('../../notebook/文章/*.mdx')).sort(
+      (a: MDXInstance<Article>, b: MDXInstance<Article>) =>
+        new Date(a.frontmatter.date.created).getTime() -
+        new Date(b.frontmatter.date.created).getTime()
+    ),
+    article =>
+      new Date(article.frontmatter.date.created).getFullYear().toString()
+  )
+) as {
+  year: string
+  articles: MDXInstance<Article>[]
+}[]
+
+const archives = sort(
+  groupBy(
+    (await Astro.glob<Archive>('../../notebook/存档/**/*.md')).sort(
+      (a: MDXInstance<Archive>, b: MDXInstance<Archive>) =>
+        new Date(b.frontmatter['create-date']).getTime() -
+        new Date(a.frontmatter['create-date']).getTime()
+    ),
+    article =>
+      new Date(article.frontmatter['create-date']).getFullYear().toString()
+  )
+) as {
+  year: string
+  articles: MDXInstance<Archive>[]
+}[]
+
+export const prerender = true;
 ---
 
 <Layout title="文章" index>
-  <div flex="~ 1 items-center justify-center" p="b-4">
-    <h1 text="2xl" font="800" select="none">文章</h1>
+  <div w="full" flex="~ 1 col items-center justify-start gap-8" p="4">
+    {
+      archives.map(({ year, articles }) => (
+        <Section name={year} card>
+          <ul w="full" p="2">
+            {articles.map(article => (
+              <li w="full" flex="~">
+                <a
+                  href={`/article/${article.frontmatter.name}`}
+                  class="group"
+                  w="full"
+                  flex="~ row items-center justify-start gap-3"
+                  p="2"
+                  bg="hover:subtle"
+                  text="truncate"
+                  rounded="md"
+                  transition="background-color"
+                >
+                  <code text="subtle sm" font="mono 700" m="x-1 sm:x-2">
+                    {date(article.frontmatter['create-date'])}
+                  </code>
+                  <span flex="1" text="truncate">
+                    {article.frontmatter.title}
+                  </span>
+                  <code
+                    class="op-0 group-hover:op-100"
+                    display="none sm:flex"
+                    text="subtle sm"
+                    font="mono 700"
+                    m="x-2"
+                    transform="translate-x--2 group-hover:translate-x-0"
+                    transition="all"
+                  >
+                    {'-->'}
+                  </code>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      ))
+    }
   </div>
 </Layout>

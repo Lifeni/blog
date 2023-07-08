@@ -17,8 +17,33 @@ const { title, favicon, index } = Astro.props
   p="x-6 y-5 sm:x-8 sm:y-6"
 >
   <h1 flex="~ row items-center gap-4" text="lg" font="800" line-height="none">
-    {
-      title === '记录干杯' ? (
+    <Tooltip content={title === '记录干杯' ? '主页' : '回到主页'} circle extend>
+      <a
+        slot="action"
+        href="/"
+        position="relative"
+        flex="~ items-center justify-center"
+        w="9"
+        h="9"
+        rounded="full"
+        filter="~ drop-shadow-none group-hover:drop-shadow-xl"
+        transition="filter"
+      >
+        <div
+          class={`icon-tabler:${
+            title === '记录干杯' ? 'home' : 'arrow-left'
+          } op-0 group-hover:op-100 group-focus-within:op-100`}
+          position="absolute"
+          z="10"
+          left="1/2"
+          top="1/2"
+          w="5"
+          h="5"
+          text="main"
+          transform="~ translate-x--1/2 translate-y--1/2 scale-99 group-hover:scale-100 group-focus-within:scale-100"
+          transition="all"
+        >
+        </div>
         <img
           src={favicon}
           alt={title}
@@ -27,48 +52,11 @@ const { title, favicon, index } = Astro.props
           pointer-events="none"
           rounded="full"
           select="none"
-          filter="~ dark:(group-hover:brightness-60 group-focus-within:brightness-60)"
+          filter="~ dark:(group-hover:brightness-50 group-focus-within:brightness-50)"
           transition="filter"
         />
-      ) : (
-        <Tooltip content="回到主页" circle extend>
-          <a
-            slot="action"
-            href="/"
-            position="relative"
-            flex="~ items-center justify-center"
-            w="9"
-            h="9"
-            rounded="full"
-            filter="~ drop-shadow-none hover:drop-shadow-xl"
-            transition="filter"
-          >
-            <div
-              class="icon-tabler:home op-0 group-hover:op-100 group-focus-within:op-100"
-              position="absolute"
-              z="10"
-              left="1/2"
-              top="1/2"
-              w="5"
-              h="5"
-              transform="~ translate-x--1/2 translate-y--1/3 scale-95 group-hover:(translate-y--1/2 scale-100) group-focus-within:(translate-y--1/2 scale-100)"
-              transition="all"
-            />
-            <img
-              src={favicon}
-              alt={title}
-              w="9"
-              h="9"
-              pointer-events="none"
-              rounded="full"
-              select="none"
-              filter="~ dark:(group-hover:brightness-60 group-focus-within:brightness-60)"
-              transition="filter"
-            />
-          </a>
-        </Tooltip>
-      )
-    }
+      </a>
+    </Tooltip>
 
     <span>{index ? '记录干杯' : title}</span>
   </h1>

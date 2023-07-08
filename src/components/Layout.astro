@@ -23,6 +23,7 @@ const {
   index = false,
   focus = false,
 } = Astro.props
+const dev = true
 ---
 
 <!DOCTYPE html>
@@ -44,16 +45,32 @@ const {
     position="relative"
     w="screen"
     h="screen"
-    flex="~ col items-center justify-center"
+    flex="~ col items-center justify-start"
     text="main"
     font="500 sans"
-    bg="main"
-    overflow="hidden"
+    bg="gradient"
+    overflow="x-hidden y-auto"
   >
     {!focus && <Header {title} {favicon} {index} />}
-    <main flex="~ 1 col">
+    <main w="full" flex="~ 1 col">
       <slot />
     </main>
     {!focus && <Footer />}
+    {
+      dev && (
+        <div
+          position="fixed"
+          left="0"
+          bottom="0"
+          w="screen"
+          flex="~ items-center justify-center"
+          p="x-4 y-2"
+          font="800"
+          bg="yellow-500 dark:yellow-700"
+        >
+          网站正在重新设计中，部分功能可能不可用。
+        </div>
+      )
+    }
   </body>
 </html>

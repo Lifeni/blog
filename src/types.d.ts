@@ -1,4 +1,4 @@
-export interface ArchivedArticleFrontmatter {
+export interface Archive {
   name: string
   title: string
   'create-date': string
@@ -7,7 +7,7 @@ export interface ArchivedArticleFrontmatter {
   license: string
 }
 
-export interface ArticleFrontmatter {
+export interface Frontmatter {
   name: string
   description: string
   id: string
@@ -18,13 +18,7 @@ export interface ArticleFrontmatter {
   }
 }
 
-export interface ExploreFrontmatter {
-  name: string
-  description: string
-  id: string
-  license: string
-  date: {
-    created: string
-    updated: string
-  }
-}
+export type Article = Frontmatter
+export type Story = Frontmatter
+
+

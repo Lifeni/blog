@@ -1,0 +1,23 @@
+---
+import Layout from '../../components/Layout.astro'
+
+export async function getStaticPaths() {
+  const articles = await Astro.glob('../../notebook/存档/**/*.md')
+
+  return articles.map(article => ({
+    params: { id: article.frontmatter.name },
+    props: { article },
+  }))
+}
+
+const { Content } = Astro.props.article
+export const prerender = true
+---
+
+<Layout>
+  <div w="full" flex="~ 1 col items-center justify-start gap-8" p="4">
+    <article class="prose" w="full" max-w="2xl" text="base">
+      <Content />
+    </article>
+  </div>
+</Layout>

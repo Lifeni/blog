@@ -1,0 +1,23 @@
+---
+export interface Props {
+  name?: string
+  card?: boolean
+}
+
+const { name, card } = Astro.props
+---
+
+<section w="full" max-w="2xl" flex="~ col gap-8">
+  <h2 text="2xl" font="800" p="x-4">{name}</h2>
+  {
+    card ? (
+      <div w="full" border="~ 1 color-line" bg="muted" rounded="md">
+        <slot />
+      </div>
+    ) : (
+      <div w="full" flex="~ col items-center gap-4">
+        <slot />
+      </div>
+    )
+  }
+</section>
