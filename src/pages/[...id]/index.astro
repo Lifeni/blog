@@ -1,7 +1,11 @@
 ---
 import Layout from '../../components/Layout.astro'
 
+const { id } = Astro.params
+if (id !== '404') Astro.redirect('/404')
+
 export function getStaticPaths() {
+  Astro.response.status = 404
   return [{ params: { id: '404' } }]
 }
 ---

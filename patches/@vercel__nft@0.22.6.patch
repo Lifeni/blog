@@ -1,0 +1,14 @@
+diff --git a/out/node-file-trace.js b/out/node-file-trace.js
+index c7c27f2e5d81e7c83de78b61a49271df95782226..4ebef6cfe64057174a329bc1770cfb7c4554364b 100644
+--- a/out/node-file-trace.js
++++ b/out/node-file-trace.js
+@@ -307,6 +307,9 @@ class Job {
+         }
+         await Promise.all([
+             ...[...assets].map(async (asset) => {
++                // patch
++                if (asset.startsWith('/dev')) return;
++                
+                 const ext = (0, path_1.extname)(asset);
+                 if (ext === '.js' || ext === '.mjs' || ext === '.node' || ext === '' ||
+                     this.ts && (ext === '.ts' || ext === '.tsx') && asset.startsWith(this.base) && asset.slice(this.base.length).indexOf(path_1.sep + 'node_modules' + path_1.sep) === -1)
