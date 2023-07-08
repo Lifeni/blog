@@ -3,9 +3,10 @@ export interface Props {
   content?: string
   align?: 'left' | 'center' | 'right'
   circle?: boolean
+  extend?: boolean
 }
 
-const { content, align = 'center', circle } = Astro.props
+const { content, align = 'center', circle, extend } = Astro.props
 ---
 
 <div
@@ -14,8 +15,24 @@ const { content, align = 'center', circle } = Astro.props
   position="relative"
   rounded={circle ? 'full' : 'md'}
 >
+  {
+    extend && (
+      <span
+        position="absolute"
+        top="8"
+        left="0"
+        w="full"
+        h="4"
+        invisible
+        visible="group-hover:~ group-focus-within:~"
+        op="0"
+      />
+    )
+  }
   <slot name="action" />
+
   <span
+    class="op-0 group-hover:op-100 group-focus-within:op-100"
     position="absolute"
     left={align === 'center' ? '1/2' : align === 'right' ? 'unset' : '-2'}
     right={align === 'right' ? '-2' : 'unset'}
@@ -35,9 +52,8 @@ const { content, align = 'center', circle } = Astro.props
         ? 'origin-lt'
         : 'origin-rt'
     }`}
-    op="0 group-hover:100 group-focus-within:100"
     shadow="none group-hover:xl group-focus-within:xl"
-    transition="transform opacity shadow"
+    transition="all"
   >
     <slot name="content">
       <span p="x-2 y-1" font="500">{content}</span>

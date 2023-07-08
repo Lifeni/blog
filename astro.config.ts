@@ -1,10 +1,9 @@
-import { defineConfig } from 'astro/config'
-import unocss from 'unocss/astro'
-import vercel from '@astrojs/vercel/serverless'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-
+import vercel from '@astrojs/vercel/serverless'
 import rome from 'astro-rome'
+import { defineConfig } from 'astro/config'
+import unocss from 'unocss/astro'
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,4 +13,5 @@ export default defineConfig({
   // https://github.com/withastro/astro/issues/7564
   output: 'server',
   adapter: vercel({ analytics: true }),
+  experimental: { assets: true },
 })

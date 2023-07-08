@@ -5,8 +5,11 @@ import {
   presetAttributify,
   presetIcons,
 } from 'unocss'
-import { colors, fonts, shortcuts } from './src/libs/styles'
+
 import variant from '@unocss/transformer-variant-group'
+import directives from '@unocss/transformer-directives'
+
+import { colors, fonts, shortcuts } from './src/libs/styles'
 
 export default defineConfig({
   presets: [
@@ -15,7 +18,7 @@ export default defineConfig({
     presetIcons({ prefix: 'icon-' }),
     presetAttributify(),
   ],
-  transformers: [variant()],
+  transformers: [variant(), directives()],
   theme: { fontFamily: fonts, colors },
   shortcuts,
 })

@@ -20,7 +20,7 @@ const apps = [
 <nav flex="~ row items-center gap-3" p="y-1">
   {
     navs.map(({ name, href, icon }) => (
-      <Tooltip content={name} circle>
+      <Tooltip content={name} circle extend>
         <a
           slot="action"
           aria-label={name}
@@ -39,7 +39,7 @@ const apps = [
     ))
   }
 
-  <Tooltip circle align="right">
+  <Tooltip circle align="right" extend>
     <button
       slot="action"
       aria-label="更多"
@@ -49,17 +49,6 @@ const apps = [
       bg="hover:subtle"
       transition="background-color"
     >
-      <span
-        position="absolute"
-        top="8"
-        left="0"
-        w="full"
-        h="4"
-        invisible
-        visible="group-hover:~ group-focus-within:~"
-        op="0"
-      >
-      </span>
       <div class="icon-tabler:apps" w-5 h-5></div>
     </button>
     <ul slot="content" flex="~ col items-center" p="1.5">

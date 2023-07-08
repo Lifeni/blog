@@ -26,6 +26,7 @@
     "@types/react-dom": "^18.2.6",
     "@unocss/preset-icons": "^0.53.4",
     "@unocss/reset": "^0.53.4",
+    "@unocss/transformer-directives": "^0.53.4",
     "@unocss/transformer-variant-group": "^0.53.4",
     "astro": "^2.8.0",
     "astro-rome": "^0.1.18",
