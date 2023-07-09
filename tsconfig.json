@@ -1,5 +1,6 @@
 {
   "extends": "astro/tsconfigs/base",
+  "include": ["./shims.d.ts", "./src/**/*"],
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",

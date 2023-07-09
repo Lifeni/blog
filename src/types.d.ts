@@ -18,7 +18,5 @@ export interface Frontmatter {
   }
 }
 
-export type Article = Frontmatter
-export type Story = Frontmatter
-
-
+export type Article = Frontmatter & {}
+export type Story = Frontmatter & {}

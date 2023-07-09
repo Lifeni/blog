@@ -13,3 +13,12 @@ declare global {
     }
   }
 }
+
+declare module 'react' {
+  interface HTMLAttributes<T> extends AttributifyAttributes {
+    flex?: string
+    display?: string
+    w?: string
+    h?: string
+  }
+}

@@ -1,0 +1,29 @@
+---
+import type { MDXInstance } from 'astro'
+import { groupBy } from 'remeda'
+import { unify } from '../../../libs/utils'
+import type { Archive, Article } from '../../../types.d'
+import { Archives as ArchivesBox } from './Archives'
+
+const group = (arr: MDXInstance<Article>[]) =>
+  Object.entries(
+    groupBy(
+      arr.sort(
+        (a: MDXInstance<Article>, b: MDXInstance<Article>) =>
+          new Date(b.frontmatter.date.created).getTime() -
+          new Date(a.frontmatter.date.created).getTime()
+      ),
+      article =>
+        new Date(article.frontmatter.date.created).getFullYear().toString()
+    )
+  )
+    .map(([year, articles]) => ({ year, articles }))
+    .sort((a, b) => Number(b.year) - Number(a.year))
+
+const articles = await Astro.glob<Article>('../../../notebook/文章/*.mdx')
+const archives = unify(
+  await Astro.glob<Archive>('../../../notebook/存档/**/*.md')
+)
+---
+
+<ArchivesBox groups={[...group(articles), ...group(archives)]} client:load />

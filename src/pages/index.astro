@@ -1,29 +1,18 @@
 ---
-import type { MDXInstance } from 'astro'
 import Layout from '../components/Layout.astro'
-import Section from '../components/layout/Section.astro'
-import type { Article, Archive } from '../types.d'
-
-const articles = await Astro.glob<Article>('../notebook/文章/*.mdx')
-
-const sort = (a: MDXInstance<Article>, b: MDXInstance<Article>) =>
-  new Date(a.frontmatter.date.created).getTime() -
-  new Date(b.frontmatter.date.created).getTime()
+import Section from '../components/base/Section.astro'
+import Archives from '../components/dashboard/archives/Archives.astro'
 
 export const prerender = true
 ---
 
 <Layout>
   <div w="full" flex="~ 1 col items-center justify-start gap-6 sm:gap-8" p="4">
-    <Section name="文章">
-      {
-        articles
-          .sort(sort)
-          .map(article => <div>{article.frontmatter.name}</div>)
-      }
-    </Section>
+    <Section name="你好" />
+    <Section name="文章" />
     <Section name="专题" />
-    <Section name="朋友" />
-    <Section name="存档" />
+    <Section name="存档">
+      <Archives />
+    </Section>
   </div>
 </Layout>
