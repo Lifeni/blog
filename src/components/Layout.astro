@@ -23,7 +23,8 @@ const {
   index = false,
   focus = false,
 } = Astro.props
-const dev = true
+
+const dev = import.meta.env.MODE === 'production'
 ---
 
 <!DOCTYPE html>

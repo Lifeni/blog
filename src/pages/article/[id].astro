@@ -1,13 +1,22 @@
 ---
+import type { MDXInstance } from 'astro'
 import Layout from '../../components/Layout.astro'
+import type { Article } from '../../types.d'
+import { unite } from './index.astro'
 
 export async function getStaticPaths() {
-  const articles = await Astro.glob('../../notebook/存档/**/*.md')
+  const output = (articles: MDXInstance<Article>[]) =>
+    articles.map(article => ({
+      params: { id: article.frontmatter.id },
+      props: { article },
+    }))
 
-  return articles.map(article => ({
-    params: { id: article.frontmatter.name },
-    props: { article },
-  }))
+  const articles = output(await Astro.glob('../../notebook/文章/*.mdx'))
+  const archives = output(
+    unite(await Astro.glob('../../notebook/存档/**/*.md'))
+  )
+
+  return [...articles, ...archives]
 }
 
 const { Content } = Astro.props.article
@@ -15,7 +24,7 @@ export const prerender = true
 ---
 
 <Layout>
-  <div w="full" flex="~ 1 col items-center justify-start gap-8" p="4">
+  <div w="full" flex="~ 1 col items-center justify-start" p="4">
     <article class="prose" w="full" max-w="2xl" text="base">
       <Content />
     </article>

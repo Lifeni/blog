@@ -30,8 +30,8 @@ const { title, favicon, index } = Astro.props
         transition="filter"
       >
         <div
-          class={`icon-tabler:${
-            title === '记录干杯' ? 'home' : 'arrow-left'
+          class={`${
+            title === '记录干杯' ? 'icon-tabler:home' : 'icon-tabler:arrow-left'
           } op-0 group-hover:op-100 group-focus-within:op-100`}
           position="absolute"
           z="10"

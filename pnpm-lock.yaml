@@ -41,8 +41,8 @@ importers:
         specifier: ^3.7.0
         version: 3.7.0(astro@2.8.0)(react@18.2.0)
       '@iconify-json/tabler':
-        specifier: ^1.1.80
-        version: 1.1.80
+        specifier: ^1.1.81
+        version: 1.1.81
       '@types/react':
         specifier: ^18.2.14
         version: 18.2.14
@@ -733,8 +733,8 @@ packages:
     resolution: {integrity: sha512-zdGGYkPUL249P1PeUOMHCKCzpFejuF6bvAX5V8HnWtfOOSFZWRQ9/Br1Axyf+ue8SMX6xElAOFF+oXrNlQoptQ==}
     dev: false
 
-  /@iconify-json/tabler@1.1.80:
-    resolution: {integrity: sha512-6W+XoTaoD8CDUr209ik9slyRmm3wliG8B3yp0qKc106wLCkHgfYt+6cjwY24qNBdRkqmuOYc4cfJ+IE3F8RWRg==}
+  /@iconify-json/tabler@1.1.81:
+    resolution: {integrity: sha512-tUBAw8D0etXBd51WYUDlFi1TvnVNEt2iFTsHmZgBhkyZy59s8WXEpUvSsVjac7Gf4zUrVT0qXJrWi6rhg9KlTw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
