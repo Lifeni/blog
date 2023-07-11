@@ -12,7 +12,8 @@ export const fonts = {
          Source Han Sans SC, Noto Sans SC, Roboto, emoji, sans-serif`,
   serif: `Source Han Serif SC, Noto Serif SC, Times, Times New Roman, Georgia, emoji, serif`,
   mono: `JetBrains Mono Variable, JetBrains Mono, Cascadia Mono, Consolas, Roboto Mono, 
-         Fira Mono, Courier New, emoji, monospace`,
+         Fira Mono, Courier New, -apple-system, MISans, HarmonyOS Sans SC, system-ui, 
+         Source Han Sans SC, Noto Sans SC, emoji, monospace`,
   emoji: `Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji, emoji`,
 }
 
@@ -35,6 +36,7 @@ export const shortcuts = {
   'text-subtle': 'text-light-5 dark:text-dark-3',
   'text-icon': 'text-light-4 dark:text-dark-4',
   'text-link': 'text-indigo-6 dark:text-indigo-4',
+
   'border-color-line': 'border-light-2 dark:border-dark-7',
   'bg-main': 'bg-light-0 dark:bg-dark-9',
   'bg-subtle': 'bg-light-0 dark:bg-dark-7',
