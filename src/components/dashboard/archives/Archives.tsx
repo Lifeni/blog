@@ -18,9 +18,16 @@ export const Archives = ({ groups }: ArchivesProps) => {
   const [articles, setArticles] = useState<MDXInstance<Article>[]>(all)
 
   useEffect(() => {
-    setArticles(groups.find(({ year: y }) => y === year)?.articles || all)
-    console.log(year, articles)
-  }, [year])
+    console.log(search)
+    const results = groups.find(({ year: y }) => y === year)?.articles || all
+    setArticles(
+      search
+        ? results.filter(({ frontmatter }) =>
+            frontmatter.name.toLowerCase().includes(search.toLowerCase())
+          )
+        : results
+    )
+  }, [year, search])
 
   const date = (date: string) => {
     const d = new Date(date)
@@ -31,71 +38,80 @@ export const Archives = ({ groups }: ArchivesProps) => {
   return (
     <div
       w="full"
-      flex="~ row"
+      flex="~ col sm:row"
       border="~ 1 color-line"
       bg="muted"
       rounded="md"
       h="120"
       overflow="hidden"
     >
-      <div flex="~ col" border="~ 0 r-1 color-line">
+      <div flex="~ col" border="~ 0 r-1 color-line" w="48">
         <input
           type="search"
           name="archives-search"
           id="archives-search"
           placeholder="搜索文章"
           onInput={e => setSearch((e.target as HTMLInputElement).value)}
+          w="full"
+          p="x-5 y-3"
           bg="muted"
-          p="x-4 y-3"
         />
+
         <ul p="2" border="~ 0 t-1 color-line">
-          {years.map(year => (
-            <li key={year}>
+          {years.map(y => (
+            <li key={y}>
               <button
-                onClick={() => setYear(year)}
+                onClick={() => setYear(y)}
                 w="full"
                 flex="~ row items-center justify-start gap-4"
-                p="x-2 y-2"
+                p="x-3 y-2"
                 bg="hover:subtle"
-                text="truncate"
+                text="truncate main"
+                font={`mono ${y === year ? '800' : '500'}`}
                 rounded="md"
                 transition="background-color"
               >
-                {year}
+                {y}
               </button>
             </li>
           ))}
         </ul>
       </div>
-      <div flex="~ col" overflow="y-auto">
-        <ul w="full" p="2">
-          {articles.map(article => (
-            <li
-              key={article.frontmatter.id}
-              className="group"
-              w="full"
-              flex="~"
-            >
-              <a
-                href={`/article/${article.frontmatter.id}`}
+      <div flex="~ col 1" overflow="y-auto">
+        {articles.length === 0 ? (
+          <div w="full" h="full" flex="~ col items-center justify-center">
+            <h2 text="subtle">没有找到相关文章</h2>
+          </div>
+        ) : (
+          <ul w="full" p="2">
+            {articles.map(article => (
+              <li
+                key={article.frontmatter.id}
+                className="group"
                 w="full"
-                flex="~ row items-center justify-start gap-4"
-                p="x-3 sm:x-2 y-2"
-                bg="hover:subtle"
-                text="truncate"
-                rounded="md"
-                transition="background-color"
+                flex="~"
               >
-                <span flex="1" text="truncate">
-                  {article.frontmatter.name}
-                </span>
-                <code text="subtle sm" font="mono 700">
-                  {date(article.frontmatter.date.created)}
-                </code>
-              </a>
-            </li>
-          ))}
-        </ul>
+                <a
+                  href={`/article/${article.frontmatter.id}`}
+                  w="full"
+                  flex="~ row items-center justify-start gap-4"
+                  p="x-3 y-2"
+                  bg="hover:subtle"
+                  text="truncate"
+                  rounded="md"
+                  transition="background-color"
+                >
+                  <span flex="1" text="truncate">
+                    {article.frontmatter.name}
+                  </span>
+                  <code text="subtle sm" font="mono 700">
+                    {date(article.frontmatter.date.created)}
+                  </code>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   )

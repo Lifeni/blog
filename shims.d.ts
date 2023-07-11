@@ -16,9 +16,14 @@ declare global {
 
 declare module 'react' {
   interface HTMLAttributes<T> extends AttributifyAttributes {
+    position?: 'fixed' | 'absolute' | 'relative' | 'static' | 'sticky'
     flex?: string
     display?: string
     w?: string
     h?: string
+    left?: string
+    right?: string
+    top?: string
+    bottom?: string
   }
 }

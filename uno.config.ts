@@ -19,6 +19,9 @@ export default defineConfig({
     presetAttributify(),
   ],
   transformers: [variant(), directives()],
-  theme: { fontFamily: fonts, colors },
+  theme: {
+    fontFamily: { ...fonts, mono: `${fonts.mono}, ${fonts.sans}` },
+    colors,
+  },
   shortcuts,
 })

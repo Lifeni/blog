@@ -33,11 +33,13 @@ export const colors = {
 export const shortcuts = {
   'text-main': 'text-light-10 dark:text-dark-0',
   'text-subtle': 'text-light-5 dark:text-dark-3',
+  'text-icon': 'text-light-4 dark:text-dark-4',
   'text-link': 'text-indigo-6 dark:text-indigo-4',
   'border-color-line': 'border-light-2 dark:border-dark-7',
   'bg-main': 'bg-light-0 dark:bg-dark-9',
   'bg-subtle': 'bg-light-0 dark:bg-dark-7',
   'bg-muted': 'bg-white dark:bg-dark-8',
   'bg-action': 'bg-light-1 dark:bg-dark-7',
-  'bg-gradient': 'bg-gradient-radial bg-light-0 dark:bg-gradient-from-dark-8 dark:bg-gradient-to-dark-9',
+  'bg-gradient':
+    'bg-gradient-radial bg-light-0 dark:bg-gradient-from-dark-8 dark:bg-gradient-to-dark-9',
 }
