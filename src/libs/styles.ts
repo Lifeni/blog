@@ -37,7 +37,7 @@ export const shortcuts = {
   'text-icon': 'text-light-4 dark:text-dark-4',
   'text-link': 'text-indigo-6 dark:text-indigo-4',
 
-  'border-color-line': 'border-light-2 dark:border-dark-7',
+  'border-color-line': 'border-light-1 dark:border-dark-7',
   'bg-main': 'bg-light-0 dark:bg-dark-9',
   'bg-subtle': 'bg-light-0 dark:bg-dark-7',
   'bg-muted': 'bg-white dark:bg-dark-8',

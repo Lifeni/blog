@@ -11,7 +11,7 @@ const { name, card } = Astro.props
   <h2 text="xl sm:2xl" font="800" p="x-3">{name}</h2>
   {
     card ? (
-      <div w="full" border="~ 1 color-line" bg="muted" rounded="md">
+      <div w="full" border="~ 1 color-line" bg="muted" rounded="md" shadow="md">
         <slot />
       </div>
     ) : (

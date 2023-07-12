@@ -4,8 +4,8 @@ import type { Article } from '../../../types'
 
 interface ArchivesProps {
   groups: {
-    year: string
     articles: MDXInstance<Article>[]
+    year: string
   }[]
 }
 
@@ -42,10 +42,11 @@ export const Archives = ({ groups }: ArchivesProps) => {
       border="~ 1 color-line"
       bg="muted"
       rounded="md"
-      h="120"
+      h="108"
+      shadow="lg"
       overflow="hidden"
     >
-      <div flex="~ col" border="~ 0 r-1 color-line" w="48">
+      <div flex="~ col" border="~ 0 b-1 sm:r-1 color-line" w="full sm:48">
         <input
           type="search"
           name="archives-search"
@@ -55,9 +56,15 @@ export const Archives = ({ groups }: ArchivesProps) => {
           w="full"
           p="x-5 y-3"
           bg="muted"
+          display="none sm:block"
         />
 
-        <ul p="2" border="~ 0 t-1 color-line">
+        <ul
+          p="2"
+          border="~ 0 sm:t-1 color-line"
+          flex="~ row sm:col"
+          overflow="x-auto"
+        >
           {years.map(y => (
             <li key={y}>
               <button
@@ -104,9 +111,9 @@ export const Archives = ({ groups }: ArchivesProps) => {
                   <span flex="1" text="truncate">
                     {article.frontmatter.name}
                   </span>
-                  <code text="subtle sm" font="mono 700">
+                  <time text="subtle sm" font="mono 700">
                     {date(article.frontmatter.date.created)}
-                  </code>
+                  </time>
                 </a>
               </li>
             ))}
