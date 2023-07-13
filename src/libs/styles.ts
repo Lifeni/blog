@@ -45,3 +45,5 @@ export const shortcuts = {
   'bg-gradient':
     'bg-gradient-radial bg-light-0 dark:bg-gradient-from-dark-8 dark:bg-gradient-to-dark-9',
 }
+
+export const safelist = []

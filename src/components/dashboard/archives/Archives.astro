@@ -1,7 +1,7 @@
 ---
 import type { MDXInstance } from 'astro'
 import { groupBy } from 'remeda'
-import { unify } from '../../../libs/utils'
+import { unify, year } from '../../../libs/utils'
 import type { Archive, Article } from '../../../types.d'
 import { Archives as ArchivesBox } from './Archives'
 
@@ -13,8 +13,7 @@ const group = (arr: MDXInstance<Article>[]) =>
           new Date(b.frontmatter.date.created).getTime() -
           new Date(a.frontmatter.date.created).getTime()
       ),
-      article =>
-        new Date(article.frontmatter.date.created).getFullYear().toString()
+      ({ frontmatter }) => year(frontmatter.date.created)
     )
   )
     .map(([year, articles]) => ({ year, articles }))

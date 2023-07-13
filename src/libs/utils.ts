@@ -14,3 +14,10 @@ export const unify = (arr: MDXInstance<Archive>[]) =>
       },
     },
   }))
+
+export const year = (date: string) => new Date(date).getFullYear().toString()
+export const date = (date: string) => {
+  const d = new Date(date)
+  const p = (num: number) => num.toString().padStart(2, '0')
+  return `${p(d.getMonth() + 1)}/${p(d.getDate())}`
+}

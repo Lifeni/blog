@@ -9,7 +9,7 @@ import {
 import variant from '@unocss/transformer-variant-group'
 import directives from '@unocss/transformer-directives'
 
-import { colors, fonts, shortcuts } from './src/libs/styles'
+import { colors, fonts, safelist, shortcuts } from './src/libs/styles'
 
 export default defineConfig({
   presets: [
@@ -21,4 +21,5 @@ export default defineConfig({
   transformers: [variant(), directives()],
   theme: { fontFamily: fonts, colors },
   shortcuts,
+  safelist,
 })
