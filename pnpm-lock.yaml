@@ -15,37 +15,40 @@ importers:
       '@fontsource-variable/jetbrains-mono':
         specifier: ^5.0.6
         version: 5.0.6
+      '@fontsource/noto-sans-sc':
+        specifier: ^5.0.5
+        version: 5.0.5
       medium-zoom:
         specifier: ^1.0.8
         version: 1.0.8
       remeda:
-        specifier: ^1.23.0
-        version: 1.23.0
+        specifier: ^1.24.0
+        version: 1.24.0
     devDependencies:
       '@astrojs/mdx':
         specifier: ^0.19.7
-        version: 0.19.7(astro@2.8.0)
+        version: 0.19.7(astro@2.8.3)
       '@astrojs/partytown':
         specifier: ^1.2.3
         version: 1.2.3
       '@astrojs/react':
         specifier: ^2.2.1
-        version: 2.2.1(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
+        version: 2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0)
       '@astrojs/sitemap':
-        specifier: ^1.3.3
-        version: 1.3.3
+        specifier: ^1.4.0
+        version: 1.4.0
       '@astrojs/vercel':
-        specifier: ^3.7.0
-        version: 3.7.0(astro@2.8.0)(react@18.2.0)
+        specifier: ^3.7.2
+        version: 3.7.2(astro@2.8.3)(react@18.2.0)
       '@iconify-json/tabler':
-        specifier: ^1.1.81
-        version: 1.1.81
+        specifier: ^1.1.82
+        version: 1.1.82
       '@types/react':
-        specifier: ^18.2.14
-        version: 18.2.14
+        specifier: ^18.2.15
+        version: 18.2.15
       '@types/react-dom':
-        specifier: ^18.2.6
-        version: 18.2.6
+        specifier: ^18.2.7
+        version: 18.2.7
       '@types/react-transition-group':
         specifier: ^4.4.6
         version: 4.4.6
@@ -62,8 +65,8 @@ importers:
         specifier: ^0.53.5
         version: 0.53.5
       astro:
-        specifier: ^2.8.0
-        version: 2.8.0
+        specifier: ^2.8.3
+        version: 2.8.3
       astro-rome:
         specifier: ^0.1.18
         version: 0.1.18
@@ -132,13 +135,13 @@ packages:
       vscode-uri: 3.0.7
     dev: true
 
-  /@astrojs/markdown-remark@2.2.1(astro@2.8.0):
+  /@astrojs/markdown-remark@2.2.1(astro@2.8.3):
     resolution: {integrity: sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==}
     peerDependencies:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.8.0
+      astro: 2.8.3
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -155,11 +158,11 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/mdx@0.19.7(astro@2.8.0):
+  /@astrojs/mdx@0.19.7(astro@2.8.3):
     resolution: {integrity: sha512-mfEbBD7oi8yBHhcJucEjnrquREkJ3os+jioURP8BR2B8tOV2rV2j8trvmLUgfS+P/+HevGObxCTjcRYxn6T7eg==}
     engines: {node: '>=16.12.0'}
     dependencies:
-      '@astrojs/markdown-remark': 2.2.1(astro@2.8.0)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.8.3)
       '@astrojs/prism': 2.1.2
       '@mdx-js/mdx': 2.3.0
       acorn: 8.10.0
@@ -196,7 +199,7 @@ packages:
       prismjs: 1.29.0
     dev: true
 
-  /@astrojs/react@2.2.1(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
+  /@astrojs/react@2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-nq5Zr8iWdwjSp5fh1NReaCplwsnL4w5PXAY5XWu1jE/frxEfF/ycGHrrhwWW0uJHX9G+kUtmQLR0GBhlR4FmAw==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
@@ -207,16 +210,16 @@ packages:
     dependencies:
       '@babel/core': 7.22.8
       '@babel/plugin-transform-react-jsx': 7.22.5(@babel/core@7.22.8)
-      '@types/react': 18.2.14
-      '@types/react-dom': 18.2.6
+      '@types/react': 18.2.15
+      '@types/react-dom': 18.2.7
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@astrojs/sitemap@1.3.3:
-    resolution: {integrity: sha512-TPyyb/hKxc+bHPpSoNPhsuI0QOTVzq2tueg2r0CTH1HqigYIAA2LQkCBlQzz85R+LrOZpv4kXYmhxdDcSkJCmA==}
+  /@astrojs/sitemap@1.4.0:
+    resolution: {integrity: sha512-uTK77kcg7iTiik+u7rTGG6vK4ZWTfYMaVnFndOVQrLzaE5xivmQgIbVLtlN+xRcME5n/m6vYQFJmogFR+elGCw==}
     dependencies:
       sitemap: 7.1.1
       zod: 3.21.4
@@ -238,16 +241,16 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/vercel@3.7.0(astro@2.8.0)(react@18.2.0):
-    resolution: {integrity: sha512-0nN2XNDPP2tjPzyCnBJO8k8bzuxkiLLFnbov5wTHwEPxkg8SZck+16snhDi9V2kHEX/PG5pkAIuPC9mGDRqh6A==}
+  /@astrojs/vercel@3.7.2(astro@2.8.3)(react@18.2.0):
+    resolution: {integrity: sha512-sCdsQ7aCDvZ5KtaENns7i6fdHilNi3PmP9LqnEgCVECCRqAm6Te0CyV1tAIVxVyX/ZC6+rLvzumVjSK2uGLTXw==}
     peerDependencies:
-      astro: ^2.8.0
+      astro: ^2.8.3
     dependencies:
       '@astrojs/internal-helpers': 0.1.1
       '@astrojs/webapi': 2.2.0
       '@vercel/analytics': 0.1.11(react@18.2.0)
       '@vercel/nft': 0.22.6(patch_hash=y3s6b62gdy72i2o24ranjqezp4)
-      astro: 2.8.0
+      astro: 2.8.3
       esbuild: 0.17.19
       fast-glob: 3.3.0
       set-cookie-parser: 2.6.0
@@ -927,8 +930,12 @@ packages:
     resolution: {integrity: sha512-EwcHm7hU8FlosfeW5RRGEB9A3w7Yg7pkF/CgMlekkkDArnbu1YYGlroZw361IG0CFkzjjjPo73vFycdcH+1pbg==}
     dev: false
 
-  /@iconify-json/tabler@1.1.81:
-    resolution: {integrity: sha512-tUBAw8D0etXBd51WYUDlFi1TvnVNEt2iFTsHmZgBhkyZy59s8WXEpUvSsVjac7Gf4zUrVT0qXJrWi6rhg9KlTw==}
+  /@fontsource/noto-sans-sc@5.0.5:
+    resolution: {integrity: sha512-S1Zba4NGeSIG3I6W4nZRG0eKWmL1DMs3pN//RIUzixRiXUjqwHdSIxPF8t7If05xxDA9+EvbKWChEJxQynHKgQ==}
+    dev: false
+
+  /@iconify-json/tabler@1.1.82:
+    resolution: {integrity: sha512-Wy+Qlw+oOpcVRlEmwI4YzLgbzdan4KgTZizsdHrydA1FguXQSgQZ8w3HvYbQoiBxLedIx3cw6Iea1nKgZl9Ljw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
@@ -1264,20 +1271,20 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react-dom@18.2.6:
-    resolution: {integrity: sha512-2et4PDvg6PVCyS7fuTc4gPoksV58bW0RwSxWKcPRcHZf0PRUGq03TKcD/rUHe3azfV6/5/biUBJw+HhCQjaP0A==}
+  /@types/react-dom@18.2.7:
+    resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
-      '@types/react': 18.2.14
+      '@types/react': 18.2.15
     dev: true
 
   /@types/react-transition-group@4.4.6:
     resolution: {integrity: sha512-VnCdSxfcm08KjsJVQcfBmhEQAPnLB8G08hAxn39azX1qYBQ/5RVQuoHuKIcfKOdncuaUvEpFKFzEvbtIMsfVew==}
     dependencies:
-      '@types/react': 18.2.14
+      '@types/react': 18.2.15
     dev: true
 
-  /@types/react@18.2.14:
-    resolution: {integrity: sha512-A0zjq+QN/O0Kpe30hA1GidzyFjatVvrpIvWLxD+xv67Vt91TWWgco9IvrJBkeyHm1trGaFS/FSGqPlhyeZRm0g==}
+  /@types/react@18.2.15:
+    resolution: {integrity: sha512-oEjE7TQt1fFTFSbf8kkNuc798ahTUzn3Le67/PWjE8MAfYAD/qB7O8hSTcromLFqHCt9bcdOg5GXMokzTjJ5SA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -1666,8 +1673,8 @@ packages:
       - '@rometools/wasm-web'
     dev: true
 
-  /astro@2.8.0:
-    resolution: {integrity: sha512-bqdhE9039dzi0mqaWGO9rMk5HKxTn5TckxFmRPUdsV1qmbpghXtwuERHblfJu5etQofV6WVEyTrouG+BLRkqfA==}
+  /astro@2.8.3:
+    resolution: {integrity: sha512-UopGl3WubMnl15TWlR6PTCcH54TooZ+JoAloErfoXQtz4PAvmEEqEVc7tHoJ45iC7rhKgzILsvDhqzitBeRihw==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -1679,7 +1686,7 @@ packages:
       '@astrojs/compiler': 1.5.5
       '@astrojs/internal-helpers': 0.1.1
       '@astrojs/language-server': 1.0.8
-      '@astrojs/markdown-remark': 2.2.1(astro@2.8.0)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.8.3)
       '@astrojs/telemetry': 2.1.1
       '@astrojs/webapi': 2.2.0
       '@babel/core': 7.22.8
@@ -4087,8 +4094,8 @@ packages:
       unist-util-visit: 4.1.2
     dev: true
 
-  /remeda@1.23.0:
-    resolution: {integrity: sha512-1y0jygsAc3opoFQW5BtA/QYOboai0u5IwdvwtbRAd1eJ2D9NmvZpDfV819LdSmrIQ0LONbp/dE9Uo/rGxUshPw==}
+  /remeda@1.24.0:
+    resolution: {integrity: sha512-tjLxwU4yLtvX8yHlePnE7CdQXRe2pKatlVY+AunqAQV5t9FNw1yuiIAqKpu6zevd+No5LQHEJ/HK3r3ZFK7KXg==}
     dev: false
 
   /resolve-from@5.0.0:

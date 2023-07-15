@@ -11,12 +11,14 @@ import Nav from './Nav.astro'
 const { title, favicon, index } = Astro.props
 ---
 
-<header
-  w="full"
-  flex="~ row items-center justify-between gap-4"
-  p="x-7 y-5 sm:x-8 sm:y-6"
->
-  <h1 flex="~ row items-center gap-4" text="lg" font="900" line-height="none">
+<header w="full" flex="~ row items-center justify-between gap-4" p="6">
+  <h1
+    flex="~ row items-center gap-4"
+    p="x-1 sm:x-2"
+    text="lg"
+    font="900"
+    line-height="none"
+  >
     <Tooltip content={title === '记录干杯' ? '主页' : '回到主页'} circle extend>
       <a
         slot="action"
@@ -26,6 +28,7 @@ const { title, favicon, index } = Astro.props
         w="9"
         h="9"
         rounded="full"
+        outline="~ none focus-visible:(4 yellow)"
         filter="~ drop-shadow-none group-hover:drop-shadow-xl"
         transition="filter"
       >

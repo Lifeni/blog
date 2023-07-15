@@ -46,9 +46,8 @@ export const Archives = ({ groups }: ArchivesProps) => {
       border="~ 1 color-line"
       bg="muted"
       rounded="md"
-      h="108"
+      h="96"
       shadow="lg"
-      overflow="hidden"
     >
       <div
         flex="~ col"
@@ -62,16 +61,19 @@ export const Archives = ({ groups }: ArchivesProps) => {
           placeholder="搜索文章"
           onInput={e => setSearch((e.target as HTMLInputElement).value)}
           w="full"
+          z="1"
           p="x-5 y-3"
           bg="muted"
           display="none sm:block"
+          rounded="sm t-md sm:tl-md focus:sm focus-visible:sm"
+          outline="~ none focus:(4 offset-0 yellow) focus-visible:(4 yellow)"
         />
 
         <ul
           p="2"
           border="~ 0 sm:t-1 color-line"
           flex="~ row sm:col"
-          overflow="x-auto"
+          overflow="auto"
         >
           {years.map(y => (
             <li key={y} className="group">
@@ -85,7 +87,8 @@ export const Archives = ({ groups }: ArchivesProps) => {
                 }`}
                 text="truncate main"
                 font={`mono ${y === filter ? '900' : '500'}`}
-                rounded="md"
+                rounded="md focus-visible:sm"
+                outline="~ none focus-visible:(4 yellow)"
                 transition="background-color"
               >
                 <span flex="1" text="start">
@@ -98,7 +101,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
                   bg="subtle"
                   p="x-1.5 y-0.5 group-hover:x-0.5"
                   rounded="full"
-                  transition="all"
+                  transition="padding"
                 >
                   <span display="group-hover:inline none">{'->'}</span>
                   <span display="group-hover:none inline">
@@ -118,7 +121,12 @@ export const Archives = ({ groups }: ArchivesProps) => {
           ))}
         </ul>
       </div>
-      <div flex="~ col 1" overflow="y-auto">
+      <div
+        flex="~ col 1"
+        rounded="b-md sm:r-md"
+        overflow="y-auto"
+        tabIndex={-1}
+      >
         {results.length === 0 ? (
           <div w="full" h="full" flex="~ col items-center justify-center">
             <h2 text="subtle">没有找到相关文章</h2>
@@ -126,7 +134,13 @@ export const Archives = ({ groups }: ArchivesProps) => {
         ) : (
           <ul w="full" p="2">
             {results.map(({ frontmatter }) => (
-              <li key={frontmatter.id} className="group" w="full" flex="~">
+              <li
+                key={frontmatter.id}
+                className="group"
+                w="full"
+                flex="~"
+                animate="fade-in duration-200 ease"
+              >
                 <a
                   href={`/article/${frontmatter.id}`}
                   w="full"
@@ -134,16 +148,27 @@ export const Archives = ({ groups }: ArchivesProps) => {
                   p="x-3 y-2"
                   bg="hover:subtle"
                   text="truncate"
-                  rounded="md"
+                  rounded="md focus-visible:sm"
+                  outline="~ none focus-visible:(4 yellow)"
                   transition="background-color"
                 >
-                  <time text="subtle sm" font="mono 700">
+                  <time
+                    title={date(frontmatter.date.created, { year: true })}
+                    text="subtle sm group-hover:muted"
+                    font="mono 700"
+                    transition="colors"
+                  >
                     {date(frontmatter.date.created)}
                   </time>
+
                   <span text="sm truncate" font="700">
                     {frontmatter.name}
                   </span>
-                  <span flex="1" text="truncate sm subtle">
+                  <span
+                    flex="1"
+                    text="sm truncate subtle group-hover:muted"
+                    transition="colors"
+                  >
                     {frontmatter.description}
                   </span>
                 </a>

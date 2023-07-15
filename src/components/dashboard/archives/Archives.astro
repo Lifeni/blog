@@ -25,4 +25,4 @@ const archives = unify(
 )
 ---
 
-<ArchivesBox groups={[...group(articles), ...group(archives)]} client:load />
+<ArchivesBox groups={group([...articles, ...archives])} client:load />

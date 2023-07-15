@@ -17,7 +17,7 @@ const apps = [
 ]
 ---
 
-<nav flex="~ row items-center gap-3" p="y-1">
+<nav flex="~ row items-center gap-2" p="sm:x-2">
   {
     navs.map(({ name, href, icon }) => (
       <Tooltip content={name} circle extend>
@@ -27,10 +27,11 @@ const apps = [
           href={href}
           target={href.startsWith('http') ? '_blank' : '_self'}
           rel={href.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
-          p="2"
+          p="2.5"
           flex="~ col items-center"
           rounded="full"
           bg="group-hover:action"
+          outline="~ none focus-visible:(4 yellow)"
           transition="background-color"
         >
           <div class={icon} w-5 h-5 />
@@ -44,9 +45,10 @@ const apps = [
       slot="action"
       aria-label="更多"
       flex="~ col items-center"
-      p="2"
+      p="2.5"
       rounded="full"
       bg="group-hover:action"
+      outline="~ none focus-visible:(4 yellow)"
       transition="background-color"
     >
       <div class="icon-tabler:apps" w-5 h-5></div>
@@ -61,8 +63,9 @@ const apps = [
               w="full"
               p="x-2 y-1.5"
               flex="~ row items-center justify-start gap-3"
-              rounded="md"
+              rounded="md focus-visible:sm"
               bg="hover:subtle"
+              outline="~ none focus-visible:(4 yellow)"
               transition="background-color"
             >
               <div class={icon} w-5 h-5 />

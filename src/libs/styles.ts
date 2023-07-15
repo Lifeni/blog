@@ -8,12 +8,12 @@ export const convertColors = (array: string[]) => {
 
 // prettier-ignore
 export const fonts = {
-  sans: `Inter Variable, Inter, -apple-system, MISans, HarmonyOS Sans SC, system-ui, 
-         Source Han Sans SC, Noto Sans SC, Roboto, emoji, sans-serif`,
+  sans: `Inter Variable, Inter, -apple-system, HarmonyOS Sans SC, MiSans, Source Han Sans SC, 
+         Noto Sans SC, system-ui, Roboto, emoji, sans-serif`,
   serif: `Source Han Serif SC, Noto Serif SC, Times, Times New Roman, Georgia, emoji, serif`,
   mono: `JetBrains Mono Variable, JetBrains Mono, Cascadia Mono, Consolas, Roboto Mono, 
-         Fira Mono, Courier New, -apple-system, MISans, HarmonyOS Sans SC, system-ui, 
-         Source Han Sans SC, Noto Sans SC, emoji, monospace`,
+         Fira Mono, Courier New, -apple-system, HarmonyOS Sans SC, MiSans, Source Han Sans SC, 
+         Noto Sans SC, system-ui, emoji, monospace`,
   emoji: `Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji, emoji`,
 }
 
@@ -32,18 +32,19 @@ export const colors = {
 }
 
 export const shortcuts = {
-  'text-main': 'text-light-10 dark:text-dark-0',
+  'text-main': 'text-light-9 dark:text-dark-0',
   'text-subtle': 'text-light-5 dark:text-dark-3',
   'text-icon': 'text-light-4 dark:text-dark-4',
-  'text-link': 'text-indigo-6 dark:text-indigo-4',
+  'text-link': 'text-indigo-5 dark:text-indigo-4',
+  'text-muted': 'text-light-6 dark:text-dark-2',
 
-  'border-color-line': 'border-light-1 dark:border-dark-7',
   'bg-main': 'bg-light-0 dark:bg-dark-9',
+  'bg-gradient':
+    'bg-gradient-radial bg-light-0 dark:bg-gradient-from-dark-8 dark:bg-gradient-to-dark-9',
   'bg-subtle': 'bg-light-0 dark:bg-dark-7',
   'bg-muted': 'bg-white dark:bg-dark-8',
   'bg-action': 'bg-light-1 dark:bg-dark-7',
-  'bg-gradient':
-    'bg-gradient-radial bg-light-0 dark:bg-gradient-from-dark-8 dark:bg-gradient-to-dark-9',
-}
 
-export const safelist = []
+  'border-color-line': 'border-light-1 dark:border-dark-7',
+  'outline-color-yellow': 'outline-yellow-4 dark:outline-yellow-3',
+}
