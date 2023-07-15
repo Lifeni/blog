@@ -10,6 +10,8 @@ declare global {
       bottom?: string
       whitespace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap'
       op?: string
+      scroll?: string
+      scrollbar?: string
     }
   }
 }

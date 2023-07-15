@@ -11,6 +11,8 @@ export interface Frontmatter {
   name: string
   description: string
   id: string
+  cover?: string
+  draft?: boolean
   license: string
   date: {
     created: string

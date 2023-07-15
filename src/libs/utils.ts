@@ -1,5 +1,5 @@
 import type { MDXInstance } from 'astro'
-import type { Article, Archive } from '../types.d'
+import type { Archive } from '../types.d'
 
 export const unify = (arr: MDXInstance<Archive>[]) =>
   arr.map(archive => ({

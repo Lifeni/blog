@@ -21,7 +21,6 @@ const { title, favicon, index } = Astro.props
   >
     <Tooltip content={title === '记录干杯' ? '主页' : '回到主页'} circle extend>
       <a
-        slot="action"
         href="/"
         position="relative"
         flex="~ items-center justify-center"

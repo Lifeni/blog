@@ -17,6 +17,7 @@ import '@fontsource-variable/jetbrains-mono'
 
 import Header from './base/Header.astro'
 import Footer from './base/Footer.astro'
+const production = import.meta.env.MODE === 'production'
 
 const {
   title = '记录干杯',
@@ -27,7 +28,6 @@ const {
   focus = false,
 } = Astro.props
 
-const dev = import.meta.env.MODE === 'production'
 ---
 
 <!DOCTYPE html>
@@ -54,6 +54,8 @@ const dev = import.meta.env.MODE === 'production'
     font="500 sans"
     bg="main"
     overflow="x-hidden y-auto"
+    scroll="smooth"
+    scrollbar="~ rounded main"
   >
     {!focus && <Header {title} {favicon} {index} />}
     <main w="full" flex="~ 1 col">
@@ -61,7 +63,7 @@ const dev = import.meta.env.MODE === 'production'
     </main>
     {!focus && <Footer />}
     {
-      dev && (
+      production && (
         <div
           position="fixed"
           left="0"
