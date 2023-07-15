@@ -46,5 +46,5 @@ export const shortcuts = {
   'border-color-line': 'border-light-1 dark:border-dark-7',
   'outline-color-yellow': 'outline-yellow-4 dark:outline-yellow-3',
   'scrollbar-main':
-    'scrollbar-track-color-transparent scrollbar-thumb-color-light-2 dark:scrollbar-thumb-color-dark-6',
+    'scrollbar-track-color-transparent scrollbar-thumb-color-light-2 dark:scrollbar-thumb-color-dark-5',
 }

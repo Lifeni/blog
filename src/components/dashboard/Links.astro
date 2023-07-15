@@ -14,7 +14,7 @@ const friends = [
 ]
 ---
 
-<div w="full" flex="~ row gap-4 sm:gap-5 wrap" p="x-1 sm:x-0">
+<div w="full" flex="~ row gap-4 sm:gap-5 wrap" p="x-1 b-4 sm:x-0">
   {
     friends.map(({ name, link, avatar }) => (
       <a href={link} target="_blank" rel="noopener noreferrer">
@@ -25,8 +25,9 @@ const friends = [
           z="1 hover:10"
           w="14 sm:16"
           h="14 sm:16"
+          border="~ 1 color-line"
           rounded="full"
-          shadow="lg hover:xl"
+          shadow="none hover:xl"
           transform="~ scale-100 translate-y-0 hover:(scale-125 translate-y--2)"
           transition="all"
         />

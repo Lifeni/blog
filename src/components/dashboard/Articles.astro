@@ -1,10 +1,36 @@
-<div
-  w="full"
-  flex="~ col sm:row"
-  border="~ 1 color-line"
-  bg="muted"
-  rounded="md"
-  h="96"
-  shadow="lg"
->
-</div>
+---
+import type { MDXInstance } from 'astro'
+import type { Article } from '../../types.d'
+
+const articles = (await Astro.glob<Article>('../../notebook/文章/*.mdx')).sort(
+  (a: MDXInstance<Article>, b: MDXInstance<Article>) =>
+    new Date(b.frontmatter.date.created).getTime() -
+    new Date(a.frontmatter.date.created).getTime()
+)
+---
+
+<ul w="full" grid="~ cols-1 sm:cols-2 gap-4">
+  {
+    articles.map(({ frontmatter }) => (
+      <li w="full">
+        <a
+          href={`/story/${frontmatter.id}`}
+          w="full"
+          h="64"
+          flex="~ col"
+          border="~ 1 color-line"
+          bg="muted"
+          rounded="md"
+        >
+          <div flex="1" />
+          <div flex="~ col gap-1" p="6">
+            <h2 text="2xl" font="900">
+              {frontmatter.name}
+            </h2>
+            <p text="sm subtle">{frontmatter.description}</p>
+          </div>
+        </a>
+      </li>
+    ))
+  }
+</ul>

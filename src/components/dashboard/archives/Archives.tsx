@@ -47,7 +47,6 @@ export const Archives = ({ groups }: ArchivesProps) => {
       bg="muted"
       rounded="md"
       h="96"
-      shadow="lg"
     >
       <div
         flex="~ col"
@@ -125,6 +124,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
         flex="~ col 1"
         rounded="b-md sm:r-md"
         overflow="y-auto"
+        scrollbar="~ rounded main"
         tabIndex={-1}
       >
         {results.length === 0 ? (
@@ -162,6 +162,18 @@ export const Archives = ({ groups }: ArchivesProps) => {
                   </time>
 
                   <span text="sm truncate" font="700">
+                    {frontmatter?.draft && (
+                      <span
+                        text="xs light-9"
+                        m="r-2"
+                        p="x-1 y-0.5"
+                        bg="yellow"
+                        rounded="sm"
+                      >
+                        草稿
+                      </span>
+                    )}
+
                     {frontmatter.name}
                   </span>
                   <span

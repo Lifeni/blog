@@ -1,28 +1,27 @@
 ---
 import type { MDXInstance } from 'astro'
 import Layout from '../../components/Layout.astro'
-import type { Article } from '../../types.d'
+import type { Story } from '../../types.d'
 import { unify } from '../../libs/utils'
 
 export async function getStaticPaths() {
   const production = import.meta.env.MODE === 'production'
-  const output = (articles: MDXInstance<Article>[]) =>
-    articles
+  const output = (stories: MDXInstance<Story>[]) =>
+    stories
       .filter(({ frontmatter }) => !production || !frontmatter.draft)
-      .map(article => ({
-        params: { id: article.frontmatter.id },
-        props: { article },
+      .map(story => ({
+        params: { id: story.frontmatter.id },
+        props: { story },
       })) || []
 
-  const articles = (await Astro.glob(
-    '../../notebook/文章/*.mdx'
-  )) as MDXInstance<Article>[]
-  const archives = unify(await Astro.glob('../../notebook/存档/**/*.md'))
+  const stories = (await Astro.glob(
+    '../../notebook/专题/*.mdx'
+  )) as MDXInstance<Story>[]
 
-  return output([...articles, ...archives])
+  return output(stories)
 }
 
-const { Content } = Astro.props.article
+const { Content } = Astro.props.story
 export const prerender = true
 ---
 

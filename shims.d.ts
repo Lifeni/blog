@@ -27,5 +27,6 @@ declare module 'react' {
     right?: string
     top?: string
     bottom?: string
+    scrollbar?: string
   }
 }
