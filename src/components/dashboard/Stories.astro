@@ -2,35 +2,51 @@
 import type { MDXInstance } from 'astro'
 import type { Story } from '../../types.d'
 
-const stories = (await Astro.glob<Story>('../../notebook/专题/*.mdx')).sort(
-  (a: MDXInstance<Story>, b: MDXInstance<Story>) =>
-    new Date(b.frontmatter.date.created).getTime() -
-    new Date(a.frontmatter.date.created).getTime()
-)
+const production = import.meta.env.MODE === 'production'
+const stories = (await Astro.glob<Story>('../../notebook/专题/*.mdx'))
+  .filter(({ frontmatter }) => !production || !frontmatter.draft)
+  .sort(
+    (a: MDXInstance<Story>, b: MDXInstance<Story>) =>
+      new Date(b.frontmatter.date.created).getTime() -
+      new Date(a.frontmatter.date.created).getTime()
+  )
 ---
 
-<ul w="full" grid="~ cols-1 sm:cols-2 gap-4">
-  {
-    stories.map(({ frontmatter }) => (
-      <li w="full">
-        <a
-          href={`/story/${frontmatter.id}`}
-          w="full"
-          h="64"
-          flex="~ col"
-          border="~ 1 color-line"
-          bg="muted"
-          rounded="md"
-        >
-          <div flex="1" />
-          <div flex="~ col gap-1" p="6">
-            <h2 text="2xl" font="900">
-              {frontmatter.name}
-            </h2>
-            <p text="sm subtle">{frontmatter.description}</p>
-          </div>
-        </a>
-      </li>
-    ))
-  }
-</ul>
+{
+  stories.length === 0 ? (
+    <div
+      w="full"
+      h="96"
+      flex="~ col items-center justify-center"
+      border="~ 1 color-line"
+      bg="muted"
+      rounded="md"
+    >
+      <h2 text="subtle">暂时没有专题</h2>
+    </div>
+  ) : (
+    <ul w="full" grid="~ cols-1 sm:cols-2 gap-4">
+      {stories.map(({ frontmatter }) => (
+        <li w="full">
+          <a
+            href={`/story/${frontmatter.id}`}
+            w="full"
+            h="64"
+            flex="~ col"
+            border="~ 1 color-line"
+            bg="muted"
+            rounded="md"
+          >
+            <div flex="1" />
+            <div flex="~ col gap-1" p="6">
+              <h2 text="2xl" font="900">
+                {frontmatter.name}
+              </h2>
+              <p text="sm subtle">{frontmatter.description}</p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
