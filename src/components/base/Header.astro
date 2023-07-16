@@ -11,10 +11,10 @@ import Nav from './Nav.astro'
 const { title, favicon, index } = Astro.props
 ---
 
-<header w="full" flex="~ row items-center justify-between gap-4" p="6">
+<header w="full" flex="~ row items-center justify-between gap-4" p="6" z="100">
   <h1
     flex="~ row items-center gap-4"
-    p="x-1 sm:x-2"
+    p="x-0 sm:x-2"
     text="lg"
     font="900"
     line-height="none"
@@ -27,7 +27,7 @@ const { title, favicon, index } = Astro.props
         w="9"
         h="9"
         rounded="full"
-        outline="~ none focus-visible:(4 yellow)"
+        outline="~ none focus-visible:(4 yellow offset-0)"
         filter="~ drop-shadow-none group-hover:drop-shadow-xl"
         transition="filter"
       >
@@ -41,7 +41,7 @@ const { title, favicon, index } = Astro.props
           top="1/2"
           w="5"
           h="5"
-          text="main light-9"
+          text="light"
           transform="~ translate-x--1/2 translate-y--1/2 scale-99 group-hover:scale-100 group-focus-within:scale-100"
           transition="all"
         >

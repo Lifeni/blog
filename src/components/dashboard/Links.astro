@@ -1,5 +1,4 @@
 ---
-import Tooltip from '../ui/Tooltip.astro'
 const avatar = 'https://file.lifeni.life/avatar/friends'
 
 // prettier-ignore
@@ -14,24 +13,55 @@ const friends = [
 ]
 ---
 
-<div w="full" flex="~ row gap-4 sm:gap-5 wrap" p="x-1 b-4 sm:x-0">
+<div w="full" grid="~ cols-5 sm:cols-8 gap-4" p="b-4">
   {
     friends.map(({ name, link, avatar }) => (
-      <a href={link} target="_blank" rel="noopener noreferrer">
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        rounded="full"
+        border="~ 1 color-line"
+        outline="~ none focus-visible:(4 yellow offset-0)"
+        shadow="lg hover:xl"
+        transition="shadow duration-250"
+      >
         <img
           src={avatar}
           alt={name}
           title={name}
           z="1 hover:10"
-          w="14 sm:16"
-          h="14 sm:16"
-          border="~ 1 color-line"
+          w="full"
+          h="full"
           rounded="full"
-          shadow="none hover:xl"
-          transform="~ scale-100 translate-y-0 hover:(scale-125 translate-y--2)"
-          transition="all"
+          transform="~ scale-100 hover:scale-125"
+          transition="transform"
         />
       </a>
     ))
   }
+
+  <a
+    href="mailto:liangfengning@foxmail.com"
+    title="通过邮箱联系"
+    class="group"
+    flex="~ justify-center items-center"
+    rounded="full"
+      border="~ 1 color-line"
+      outline="~ none focus-visible:(4 yellow offset-0)"
+    shadow="lg hover:xl"
+    bg="muted"
+    transition="shadow duration-250"
+  >
+    <div
+      class="icon-tabler:at"
+      w="1/2"
+      h="1/2"
+      z="1 hover:10"
+      text="icon group-hover:link"
+      rounded="full"
+      transition="colors"
+    >
+    </div>
+  </a>
 </div>

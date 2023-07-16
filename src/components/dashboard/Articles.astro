@@ -10,6 +10,12 @@ const articles = (await Astro.glob<Article>('../../notebook/文章/*.mdx'))
       new Date(b.frontmatter.date.created).getTime() -
       new Date(a.frontmatter.date.created).getTime()
   )
+
+export interface Props {
+  count?: number
+  grid?: boolean
+}
+const { count = articles.length, grid } = Astro.props
 ---
 
 {
@@ -25,17 +31,26 @@ const articles = (await Astro.glob<Article>('../../notebook/文章/*.mdx'))
       <h2 text="subtle">暂时没有文章</h2>
     </div>
   ) : (
-    <ul w="full" grid="~ cols-1 sm:cols-2 gap-4">
-      {articles.map(({ frontmatter }) => (
+    <ul
+      w="full"
+      flex={grid ? 'none' : '~ sm:grid'}
+      grid={grid ? '~ cols-1 sm:cols-2 gap-4' : 'sm:~ sm:cols-2 gap-4'}
+      filter="drop-shadow-lg sm:none"
+      overflow="x-auto sm:unset"
+    >
+      {articles.slice(0, count).map(({ frontmatter }) => (
         <li w="full">
           <a
             href={`/article/${frontmatter.id}`}
-            w="full"
+            w={grid ? 'full' : '80vw sm:full'}
             h="64"
             flex="~ col"
             border="~ 1 color-line"
             bg="muted"
             rounded="md"
+            shadow="lg hover:xl"
+            outline="~ none focus-visible:(4 yellow offset-0)"
+            transition="shadow"
           >
             <div flex="1" />
             <div flex="~ col gap-1" p="6">

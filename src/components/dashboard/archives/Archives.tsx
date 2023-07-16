@@ -47,6 +47,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
       bg="muted"
       rounded="md"
       h="96"
+      shadow="lg"
     >
       <div
         flex="~ col"
@@ -65,7 +66,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
           bg="muted"
           display="none sm:block"
           rounded="sm t-md sm:tl-md focus:sm focus-visible:sm"
-          outline="~ none focus:(4 offset-0 yellow) focus-visible:(4 yellow)"
+          outline="~ none focus:(4 offset-0 yellow) focus-visible:(4 yellow offset-0)"
         />
 
         <ul
@@ -87,7 +88,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
                 text="truncate main"
                 font={`mono ${y === filter ? '900' : '500'}`}
                 rounded="md focus-visible:sm"
-                outline="~ none focus-visible:(4 yellow)"
+                outline="~ none focus-visible:(4 yellow offset-0)"
                 transition="background-color"
               >
                 <span flex="1" text="start">
@@ -149,7 +150,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
                   bg="hover:subtle"
                   text="truncate"
                   rounded="md focus-visible:sm"
-                  outline="~ none focus-visible:(4 yellow)"
+                  outline="~ none focus-visible:(4 yellow offset-0)"
                   transition="background-color"
                 >
                   <time
@@ -164,7 +165,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
                   <span text="sm truncate" font="700">
                     {frontmatter?.draft && (
                       <span
-                        text="xs light-9"
+                        text="xs light"
                         m="r-2"
                         p="x-1 y-0.5"
                         bg="yellow"

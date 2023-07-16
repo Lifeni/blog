@@ -23,3 +23,5 @@ export const date = (date: string, config?: { year: boolean }) => {
     return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
   return `${p(d.getMonth() + 1)}/${p(d.getDate())}`
 }
+
+export const image = (src: string) => `https://file.lifeni.life/notebook/${src}`

@@ -30,10 +30,10 @@ const apps = [
           flex="~ col items-center"
           rounded="full"
           bg="group-hover:action"
-          outline="~ none focus-visible:(4 yellow)"
+          outline="~ none focus-visible:(4 yellow offset-0)"
           transition="background-color"
         >
-          <div class={icon} w-5 h-5 />
+          <div class={icon} w="5" h="5" />
         </a>
       </Tooltip>
     ))
@@ -46,10 +46,10 @@ const apps = [
       p="2.5"
       rounded="full"
       bg="group-hover:action"
-      outline="~ none focus-visible:(4 yellow)"
+      outline="~ none focus-visible:(4 yellow offset-0)"
       transition="background-color"
     >
-      <div class="icon-tabler:apps" w-5 h-5></div>
+      <div class="icon-tabler:apps" w="5" h="5"></div>
     </button>
     <ul slot="content" flex="~ col items-center" p="1.5">
       {
@@ -63,10 +63,10 @@ const apps = [
               flex="~ row items-center justify-start gap-3"
               rounded="md focus-visible:sm"
               bg="hover:subtle"
-              outline="~ none focus-visible:(4 yellow)"
+              outline="~ none focus-visible:(4 yellow offset-0)"
               transition="background-color"
             >
-              <div class={icon} w-5 h-5 />
+              <div class={icon} w="5" h="5" />
               <h2 font="500" font="sm" flex="~ 1" p="r-1">
                 {name}
               </h2>

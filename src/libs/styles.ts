@@ -34,6 +34,10 @@ export const shortcuts = {
   'text-subtle': 'text-light-5 dark:text-dark-3',
   'text-icon': 'text-light-4 dark:text-dark-4',
   'text-link': 'text-indigo-5 dark:text-indigo-4',
+  'text-light': 'text-light-9',
+  'text-light-subtle': 'text-light-2 dark:text-dark-3',
+  'text-dark': 'text-dark-0',
+  'text-dark-subtle': 'text-light-4 dark:text-dark-3',
   'text-muted': 'text-light-6 dark:text-dark-2',
 
   'bg-main': 'bg-light-0 dark:bg-dark-9',

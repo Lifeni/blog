@@ -2,22 +2,41 @@
 export interface Props {
   name?: string
   card?: boolean
+  more?: string
 }
 
-const { name, card } = Astro.props
+const { name, card, more } = Astro.props
 ---
 
-<section w="full" max-w="2xl" flex="~ col gap-6 sm:gap-8">
-  <h2 text="xl sm:2xl" font="900" p="x-4">{name}</h2>
+<section w="full" max-w="2xl" flex="~ col gap-6">
+  <div flex="~ row items-center justify-between" min-h="10">
+    <h2 text="2xl" font="900" p="x-2 sm:l-4">{name}</h2>
+    {
+      more && (
+        <a
+          aria-label={name}
+          href={more}
+          m="x-2"
+          p="2"
+          flex="~ col items-center"
+          rounded="full"
+          bg="hover:action"
+          outline="~ none focus-visible:(4 yellow offset-0)"
+          transition="background-color"
+        >
+          <div class="icon-tabler:arrow-right" w="6" h="6" />
+        </a>
+      )
+    }
+  </div>
+
   {
     card ? (
       <div w="full" border="~ 1 color-line" bg="muted" rounded="md">
         <slot />
       </div>
     ) : (
-      <div w="full" flex="~ col items-center gap-3 sm:gap-4">
-        <slot />
-      </div>
+      <slot />
     )
   }
 </section>

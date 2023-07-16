@@ -12,6 +12,7 @@ declare global {
       op?: string
       scroll?: string
       scrollbar?: string
+      object?: string
     }
   }
 }

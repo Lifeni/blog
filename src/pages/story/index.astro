@@ -1,0 +1,15 @@
+---
+import Layout from '../../components/Layout.astro'
+import Section from '../../components/base/Section.astro'
+import Stories from '../../components/dashboard/Stories.astro'
+
+export const prerender = true
+---
+
+<Layout title="专题" description="" index>
+  <div w="full" flex="~ 1 col items-center justify-start gap-10" p="x-4 y-2">
+    <Section name="专题">
+      <Stories grid />
+    </Section>
+  </div>
+</Layout>

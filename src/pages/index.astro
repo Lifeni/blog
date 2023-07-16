@@ -4,25 +4,17 @@ import Section from '../components/base/Section.astro'
 import Articles from '../components/dashboard/Articles.astro'
 import Links from '../components/dashboard/Links.astro'
 import Stories from '../components/dashboard/Stories.astro'
-import Archives from '../components/dashboard/archives/Archives.astro'
 
 export const prerender = true
 ---
 
 <Layout>
-  <div
-    w="full"
-    flex="~ 1 col items-center justify-start gap-6 sm:gap-8"
-    p="x-4 y-2"
-  >
-    <Section name="文章">
-      <Articles />
+  <div w="full" flex="~ 1 col items-center justify-start gap-10" p="x-4 y-2">
+    <Section name="文章" more="/article">
+      <Articles count={4} />
     </Section>
-    <Section name="专题">
-      <Stories />
-    </Section>
-    <Section name="存档">
-      <Archives />
+    <Section name="专题" more="/story">
+      <Stories count={2} />
     </Section>
     <Section name="朋友">
       <Links />
