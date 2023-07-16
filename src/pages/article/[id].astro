@@ -22,12 +22,12 @@ export async function getStaticPaths() {
   return output([...articles, ...archives])
 }
 
-const { Content } = Astro.props.article
+const { frontmatter, Content } = Astro.props.article
 export const prerender = true
 ---
 
-<Layout>
-  <div w="full" flex="~ 1 col items-center justify-start" p="x-4 y-2">
+<Layout title={frontmatter.name} description={frontmatter.description} index content>
+  <div w="full" flex="~ 1 col items-center justify-start" p="4">
     <article class="prose" w="full" max-w="2xl" text="base">
       <Content />
     </article>

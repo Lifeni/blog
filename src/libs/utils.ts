@@ -16,11 +16,18 @@ export const unify = (arr: MDXInstance<Archive>[]) =>
   }))
 
 export const year = (date: string) => new Date(date).getFullYear().toString()
-export const date = (date: string, config?: { year: boolean }) => {
+export const time = (
+  date: string,
+  config?: { year?: boolean; calendar?: boolean }
+) => {
   const d = new Date(date)
   const p = (num: number) => num.toString().padStart(2, '0')
   if (config?.year)
     return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
+  if (config?.calendar)
+    return `${d.getFullYear()} 年 ${p(d.getMonth() + 1)} 月 ${p(
+      d.getDate()
+    )} 日`
   return `${p(d.getMonth() + 1)}/${p(d.getDate())}`
 }
 

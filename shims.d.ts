@@ -13,6 +13,7 @@ declare global {
       scroll?: string
       scrollbar?: string
       object?: string
+      leading?: string
     }
   }
 }

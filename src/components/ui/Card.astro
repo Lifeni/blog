@@ -1,0 +1,81 @@
+---
+import { image, time } from '../../libs/utils'
+
+export interface Props {
+  href: string
+  cover?: {
+    image: string
+    copyright: string
+  }
+  name: string
+  description: string
+  date?: {
+    created: string
+    updated: string
+  }
+  grid?: boolean
+}
+
+const { href, cover, name, description, date, grid } = Astro.props
+---
+
+<a
+  {href}
+  class="group"
+  position="relative"
+  z="focus-visible:10"
+  w={grid ? 'full' : '80vw sm:full'}
+  flex="~ col justify-end"
+  rounded="md"
+  outline="~ none focus-visible:(4 yellow offset-0)"
+>
+  <div
+    flex="1"
+    w="full"
+    h="48"
+    min-h="48"
+    filter="dark:brightness-85"
+    bg="muted"
+    border="~ 1 color-line"
+    shadow="lg hover:xl"
+    transition="shadow"
+    rounded="md"
+    overflow="hidden"
+  >
+    {
+      cover && (
+        <img
+          src={image(cover.image)}
+          alt={`${name} | ${cover.copyright}`}
+          transform="~ scale-100 group-hover:scale-110"
+          w="full"
+          h="48"
+          rounded="md"
+          object="center cover"
+          transition="transform duration-250"
+        />
+      )
+    }
+  </div>
+  <div position="relative" z="10" flex="~ col gap-1" p="x-4 y-5" rounded="b-md">
+    <h2 text="xl main" font="900">
+      {name}
+    </h2>
+    <p text="sm truncate subtle" leading="6" flex="~ col">
+      <span text="truncate">{description}</span>
+
+      {
+        date && (
+          <time
+            text="sm truncate subtle"
+            leading="6"
+            flex="~ row gap-2 items-center"
+          >
+            <span class="icon-tabler:clock" w="4" h="4" text="icon" />
+            {time(date.created, { calendar: true })}
+          </time>
+        )
+      }
+    </p>
+  </div>
+</a>

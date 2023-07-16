@@ -1,4 +1,5 @@
 ---
+import Tooltip from '../ui/Tooltip.astro'
 const avatar = 'https://file.lifeni.life/avatar/friends'
 
 // prettier-ignore
@@ -11,44 +12,46 @@ const friends = [
   { name: 'ss967', link: 'https://ssblog.top/', avatar: `${avatar}/ss967.webp` },
   { name: 'Bakapiano', link: 'https://bakapiano.github.io/', avatar: `${avatar}/Bakapiano.webp` },
 ]
+
+const links = []
 ---
 
-<div w="full" grid="~ cols-5 sm:cols-8 gap-4" p="b-4">
+<div w="full" grid="~ cols-5 xs:cols-6 sm:cols-8 gap-4" p="b-2 sm:b-4">
   {
     friends.map(({ name, link, avatar }) => (
       <a
         href={link}
         target="_blank"
         rel="noopener noreferrer"
+        z="1 hover:10"
         rounded="full"
-        border="~ 1 color-line"
         outline="~ none focus-visible:(4 yellow offset-0)"
-        shadow="lg hover:xl"
-        transition="shadow duration-250"
       >
-        <img
-          src={avatar}
-          alt={name}
-          title={name}
-          z="1 hover:10"
-          w="full"
-          h="full"
-          rounded="full"
-          transform="~ scale-100 hover:scale-125"
-          transition="transform"
-        />
+        <Tooltip content={name} circle>
+          <img
+            src={avatar}
+            alt={name}
+            w="full"
+            h="full"
+            border="~ 1 color-line"
+            shadow="lg hover:xl"
+            rounded="full"
+            filter="dark:brightness-85"
+            transform="~ translate-y-0 group-hover:translate-y--4"
+            transition="all duration-250"
+          />
+        </Tooltip>
       </a>
     ))
   }
-
   <a
     href="mailto:liangfengning@foxmail.com"
     title="通过邮箱联系"
     class="group"
     flex="~ justify-center items-center"
     rounded="full"
-      border="~ 1 color-line"
-      outline="~ none focus-visible:(4 yellow offset-0)"
+    border="~ 1 color-line"
+    outline="~ none focus-visible:(4 yellow offset-0)"
     shadow="lg hover:xl"
     bg="muted"
     transition="shadow duration-250"

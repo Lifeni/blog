@@ -21,6 +21,7 @@ const { content, align = 'center', circle, extend } = Astro.props
         position="absolute"
         top="8"
         left="0"
+        z="0"
         w="full"
         h="4"
         invisible
@@ -35,8 +36,9 @@ const { content, align = 'center', circle, extend } = Astro.props
     class="op-0 group-hover:op-100 group-focus-within:op-100"
     position="absolute"
     left={align === 'center' ? '1/2' : align === 'right' ? 'unset' : '-2'}
-    right={align === 'right' ? '-2' : 'unset'}
+    right={align === 'right' ? '-1' : 'unset'}
     top="12"
+    z="10"
     flex="~ col"
     invisible
     visible="group-hover:~ group-focus-within:~"

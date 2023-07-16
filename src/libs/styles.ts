@@ -1,3 +1,5 @@
+import type { Rule } from 'unocss'
+
 export const convertColors = (array: string[]) => {
   const colors: Record<string, string> = {}
   array.forEach((color, index) => (colors[index] = color))
@@ -35,9 +37,9 @@ export const shortcuts = {
   'text-icon': 'text-light-4 dark:text-dark-4',
   'text-link': 'text-indigo-5 dark:text-indigo-4',
   'text-light': 'text-light-9',
-  'text-light-subtle': 'text-light-2 dark:text-dark-3',
+  'text-light-subtle': 'text-light-3 dark:text-dark-3',
   'text-dark': 'text-dark-0',
-  'text-dark-subtle': 'text-light-4 dark:text-dark-3',
+  'text-dark-subtle': 'text-light-3 dark:text-dark-3',
   'text-muted': 'text-light-6 dark:text-dark-2',
 
   'bg-main': 'bg-light-0 dark:bg-dark-9',
@@ -45,6 +47,7 @@ export const shortcuts = {
     'bg-gradient-radial bg-light-0 dark:bg-gradient-from-dark-8 dark:bg-gradient-to-dark-9',
   'bg-subtle': 'bg-light-0 dark:bg-dark-7',
   'bg-muted': 'bg-white dark:bg-dark-8',
+  'bg-content': 'bg-white dark:bg-dark-9',
   'bg-action': 'bg-light-1 dark:bg-dark-7',
 
   'border-color-line': 'border-light-1 dark:border-dark-7',
@@ -52,3 +55,7 @@ export const shortcuts = {
   'scrollbar-main':
     'scrollbar-track-color-transparent scrollbar-thumb-color-light-2 dark:scrollbar-thumb-color-dark-5',
 }
+
+// prettier-ignore
+export const breakpoints = { xs: '480px', sm: '640px', md: '768px', lg: '1024px', xl: '1280px', xxl: '1536px' }
+export const rules = [['w-extend', { width: 'calc(100% + 2rem)' }]] as Rule[]

@@ -15,25 +15,30 @@ const apps = [
   { name: '时间之外', href: '/lab', icon: 'icon-tabler:math-avg' },
   { name: '越过长城', href: '/server', icon: 'icon-tabler:delta' },
 ]
+
+export interface Props {
+  content?: boolean
+}
+const { content } = Astro.props
 ---
 
-<nav flex="~ row items-center gap-2" p="sm:x-2">
+<nav flex="~ row items-center gap-3" p="sm:x-2">
   {
     navs.map(({ name, href, icon }) => (
-      <Tooltip content={name} circle extend>
+      <Tooltip content={name} circle>
         <a
           aria-label={name}
           href={href}
           target={href.startsWith('http') ? '_blank' : '_self'}
           rel={href.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
-          p="2.5"
+          p="2"
           flex="~ col items-center"
           rounded="full"
-          bg="group-hover:action"
+          bg={content ? 'group-hover:subtle' : 'group-hover:action'}
           outline="~ none focus-visible:(4 yellow offset-0)"
           transition="background-color"
         >
-          <div class={icon} w="5" h="5" />
+          <div class={icon} w="5.5" h="5.5" />
         </a>
       </Tooltip>
     ))
@@ -42,16 +47,19 @@ const apps = [
   <Tooltip circle align="right" extend>
     <button
       aria-label="更多"
+      position="relative"
       flex="~ col items-center"
-      p="2.5"
+      z="10"
+      p="2"
       rounded="full"
-      bg="group-hover:action"
+      bg={content ? 'group-hover:subtle' : 'group-hover:action'}
       outline="~ none focus-visible:(4 yellow offset-0)"
+      cursor="pointer"
       transition="background-color"
     >
-      <div class="icon-tabler:apps" w="5" h="5"></div>
+      <div class="icon-tabler:apps" w="5.5" h="5.5"></div>
     </button>
-    <ul slot="content" flex="~ col items-center" p="1.5">
+    <ul slot="content" flex="~ col items-center" p="1.5" >
       {
         apps.map(({ name, href, icon }) => (
           <li flex="~" w="full">
@@ -66,8 +74,8 @@ const apps = [
               outline="~ none focus-visible:(4 yellow offset-0)"
               transition="background-color"
             >
-              <div class={icon} w="5" h="5" />
-              <h2 font="500" font="sm" flex="~ 1" p="r-1">
+              <div class={icon} w="5.5" h="5.5" m="l-0.5" />
+              <h2 font="500" text="base" flex="~ 1" p="r-1.5">
                 {name}
               </h2>
             </a>

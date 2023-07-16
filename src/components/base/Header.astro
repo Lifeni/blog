@@ -3,12 +3,13 @@ export interface Props {
   title?: string
   favicon?: string
   index?: boolean
+  content?: boolean
 }
 
 import Tooltip from '../ui/Tooltip.astro'
 import Nav from './Nav.astro'
 
-const { title, favicon, index } = Astro.props
+const { title, favicon, index, content } = Astro.props
 ---
 
 <header w="full" flex="~ row items-center justify-between gap-4" p="6" z="100">
@@ -19,13 +20,13 @@ const { title, favicon, index } = Astro.props
     font="900"
     line-height="none"
   >
-    <Tooltip content={title === '记录干杯' ? '主页' : '回到主页'} circle extend>
+    <Tooltip content={title === '记录干杯' ? '主页' : '回到主页'} circle>
       <a
         href="/"
         position="relative"
         flex="~ items-center justify-center"
-        w="9"
-        h="9"
+        w="9.5"
+        h="9.5"
         rounded="full"
         outline="~ none focus-visible:(4 yellow offset-0)"
         filter="~ drop-shadow-none group-hover:drop-shadow-xl"
@@ -39,8 +40,8 @@ const { title, favicon, index } = Astro.props
           z="10"
           left="1/2"
           top="1/2"
-          w="5"
-          h="5"
+          w="5.5"
+          h="5.5"
           text="light"
           transform="~ translate-x--1/2 translate-y--1/2 scale-99 group-hover:scale-100 group-focus-within:scale-100"
           transition="all"
@@ -49,8 +50,8 @@ const { title, favicon, index } = Astro.props
         <img
           src={favicon}
           alt={title}
-          w="9"
-          h="9"
+          w="full"
+          h="full"
           pointer-events="none"
           rounded="full"
           select="none"
@@ -58,7 +59,7 @@ const { title, favicon, index } = Astro.props
       </a>
     </Tooltip>
 
-    <span>{index ? '记录干杯' : title}</span>
+    <span text="xl">{index ? '记录干杯' : title}</span>
   </h1>
-  <Nav />
+  <Nav {content} />
 </header>

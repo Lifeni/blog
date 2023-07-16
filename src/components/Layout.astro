@@ -7,6 +7,7 @@ export interface Props {
   // 状态
   index?: boolean
   focus?: boolean
+  content?: boolean
 }
 
 import '@fontsource/noto-sans-sc/500.css'
@@ -26,8 +27,8 @@ const {
   favicon = '/favicon.svg',
   index = false,
   focus = false,
+  content = false,
 } = Astro.props
-
 ---
 
 <!DOCTYPE html>
@@ -52,12 +53,12 @@ const {
     flex="~ col items-center justify-start"
     text="main"
     font="500 sans"
-    bg="main"
+    bg={content ? 'content' : 'main'}
     overflow="x-hidden y-auto"
     scroll="smooth"
     scrollbar="~ rounded main"
   >
-    {!focus && <Header {title} {favicon} {index} />}
+    {!focus && <Header {title} {favicon} {index} {content} />}
     <main w="full" flex="~ 1 col">
       <slot />
     </main>

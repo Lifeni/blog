@@ -1,6 +1,6 @@
 import type { MDXInstance } from 'astro'
 import { useEffect, useState } from 'react'
-import { date, year } from '../../../libs/utils'
+import { time, year } from '../../../libs/utils'
 import type { Article } from '../../../types'
 
 interface ArchivesProps {
@@ -46,7 +46,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
       border="~ 1 color-line"
       bg="muted"
       rounded="md"
-      h="96"
+      h="112"
       shadow="lg"
     >
       <div
@@ -154,12 +154,12 @@ export const Archives = ({ groups }: ArchivesProps) => {
                   transition="background-color"
                 >
                   <time
-                    title={date(frontmatter.date.created, { year: true })}
+                    title={time(frontmatter.date.created, { year: true })}
                     text="subtle sm group-hover:muted"
                     font="mono 700"
                     transition="colors"
                   >
-                    {date(frontmatter.date.created)}
+                    {time(frontmatter.date.created)}
                   </time>
 
                   <span text="sm truncate" font="700">

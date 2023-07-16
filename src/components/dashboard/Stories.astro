@@ -2,6 +2,7 @@
 import type { MDXInstance } from 'astro'
 import type { Story } from '../../types.d'
 import { image } from '../../libs/utils'
+import Card from '../ui/Card.astro'
 
 const production = import.meta.env.MODE === 'production'
 const stories = (await Astro.glob<Story>('../../notebook/专题/*.mdx'))
@@ -16,7 +17,7 @@ export interface Props {
   count?: number
   grid?: boolean
 }
-const { count = stories.length ,grid} = Astro.props
+const { count = stories.length, grid } = Astro.props
 ---
 
 {
@@ -33,62 +34,22 @@ const { count = stories.length ,grid} = Astro.props
     </div>
   ) : (
     <ul
-      w="full"
+      w="extend"
+      m="x--4"
+      p="x-4"
       flex={grid ? 'none' : '~ sm:grid'}
-      grid={grid ? '~ cols-1 sm:cols-2 gap-4' : 'sm:~ sm:cols-2 gap-4'}
-      filter="drop-shadow-lg sm:none"
+      grid={grid ? '~ cols-1 sm:cols-2 gap-x-4' : 'sm:~ sm:cols-2 gap-x-4'}
       overflow="x-auto sm:unset"
     >
       {stories.slice(0, count).map(({ frontmatter }) => (
         <li w="full">
-          <a
+          <Card
             href={`/story/${frontmatter.id}`}
-            class="group"
-            position="relative"
-            w={grid?"full":"80vw sm:full"}
-            h="64"
-            flex="~ col justify-end"
-            border="~ 1 color-line"
-            bg="muted"
-            rounded="md"
-            shadow="sm:lg sm:hover:xl"
-            transition="shadow"
-            outline="~ none focus-visible:(4 yellow offset-0)"
-          >
-            <div
-              position="absolute"
-              left="0"
-              top="0"
-              flex="1"
-              w="full"
-              h="full"
-              filter="brightness-65 dark:brightness-35"
-              rounded="md"
-              overflow="hidden"
-            >
-              {frontmatter.cover && (
-                <img
-                  src={image(frontmatter.cover.image)}
-                  alt={`${frontmatter.name} | ${frontmatter.cover.copyright}`}
-                  position="absolute"
-                  left="1/2"
-                  top="1/2"
-                  transform="~ scale-100 translate-x--1/2 translate-y--1/2 group-hover:scale-110"
-                  w="full"
-                  h="full"
-                  rounded="md"
-                  object="center cover"
-                  transition="transform duration-250"
-                />
-              )}
-            </div>
-            <div position="relative" z="10" flex="~ col gap-1" p="x-6 y-5">
-              <h2 text="2xl dark" font="900">
-                {frontmatter.name}
-              </h2>
-              <p text="sm dark-subtle">{frontmatter.description}</p>
-            </div>
-          </a>
+            grid={grid}
+            cover={frontmatter.cover}
+            name={frontmatter.name}
+            description={frontmatter.description}
+          />
         </li>
       ))}
     </ul>
