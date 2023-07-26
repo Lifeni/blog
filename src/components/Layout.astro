@@ -7,6 +7,7 @@ export interface Props {
   // 状态
   index?: boolean
   focus?: boolean
+  indicator?: boolean
   content?: boolean
 }
 
@@ -18,6 +19,8 @@ import '@fontsource-variable/jetbrains-mono'
 
 import Header from './base/Header.astro'
 import Footer from './base/Footer.astro'
+import { Indicator } from './base/global/Indicator'
+
 const production = import.meta.env.MODE === 'production'
 
 const {
@@ -27,6 +30,7 @@ const {
   favicon = '/favicon.svg',
   index = false,
   focus = false,
+  indicator = false,
   content = false,
 } = Astro.props
 ---
@@ -63,6 +67,7 @@ const {
       <slot />
     </main>
     {!focus && <Footer />}
+    {indicator && <Indicator client:load />}
     {
       production && (
         <div

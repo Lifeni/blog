@@ -26,9 +26,14 @@ const { frontmatter, Content } = Astro.props.article
 export const prerender = true
 ---
 
-<Layout title={frontmatter.name} description={frontmatter.description} index content>
+<Layout
+  title={frontmatter.name}
+  description={frontmatter.description}
+  index
+  content
+>
   <div w="full" flex="~ 1 col items-center justify-start" p="4">
-    <article class="prose" w="full" max-w="2xl" text="base">
+    <article w="full" max-w="2xl" text="base" p="x-2">
       <Content />
     </article>
   </div>

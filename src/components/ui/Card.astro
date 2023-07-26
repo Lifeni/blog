@@ -19,17 +19,16 @@ export interface Props {
 const { href, cover, name, description, date, grid } = Astro.props
 ---
 
-<a
-  {href}
-  class="group"
+<div
   position="relative"
-  z="focus-visible:10"
   w={grid ? 'full' : '80vw sm:full'}
-  flex="~ col justify-end"
+  flex="~ col justify-end gap-5"
   rounded="md"
-  outline="~ none focus-visible:(4 yellow offset-0)"
 >
-  <div
+  <a
+    {href}
+    tabindex="-1"
+    class="group"
     flex="1"
     w="full"
     h="48"
@@ -47,7 +46,7 @@ const { href, cover, name, description, date, grid } = Astro.props
         <img
           src={image(cover.image)}
           alt={`${name} | ${cover.copyright}`}
-          transform="~ scale-100 group-hover:scale-110"
+          transform="~ scale-100 group-hover:scale-105"
           w="full"
           h="48"
           rounded="md"
@@ -56,26 +55,22 @@ const { href, cover, name, description, date, grid } = Astro.props
         />
       )
     }
-  </div>
-  <div position="relative" z="10" flex="~ col gap-1" p="x-4 y-5" rounded="b-md">
-    <h2 text="xl main" font="900">
-      {name}
-    </h2>
-    <p text="sm truncate subtle" leading="6" flex="~ col">
-      <span text="truncate">{description}</span>
+  </a>
+  <div
+    position="relative"
+    z="10"
+    flex="~ col gap-1 items-start"
+    p="x-2 sm:x-0"
+    rounded="b-md"
+  >
+    <a {href} rounded="sm" outline="~ none focus-visible:(4 yellow offset-2)">
+      <h2 w="full" text="xl main hover:link" font="900" transition="colors">
+        {name}
+      </h2>
+    </a>
 
-      {
-        date && (
-          <time
-            text="sm truncate subtle"
-            leading="6"
-            flex="~ row gap-2 items-center"
-          >
-            <span class="icon-tabler:clock" w="4" h="4" text="icon" />
-            {time(date.created, { calendar: true })}
-          </time>
-        )
-      }
+    <p w="full" text="sm truncate subtle" leading="6">
+      {description}
     </p>
   </div>
-</a>
+</div>

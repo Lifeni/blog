@@ -1,0 +1,44 @@
+---
+const links = [
+  {
+    name: '开往',
+    href: 'https://travellings.link/',
+    icon: 'icon-tabler:location',
+    external: true,
+  },
+  { name: '文章', href: '/article', icon: 'icon-tabler:book' },
+  { name: '专题', href: '/story', icon: 'icon-tabler:message-2' },
+  { name: '随笔', href: '/life', icon: 'icon-tabler:note' },
+  { name: '朋友', href: '/#朋友', icon: 'icon-tabler:circles-relation' },
+  { name: '更多', href: '/#更多', icon: 'icon-tabler:apps' },
+]
+---
+
+<section
+  w="full"
+  max-w="2xl"
+  m="b-4"
+  grid="~ cols-3 sm:cols-6"
+  border="~ 1 color-line"
+  shadow="lg hover:xl"
+  bg="muted"
+  rounded="md"
+  transition="shadow"
+>
+  {
+    links.map(({ name, href, icon }) => (
+      <a
+        {href}
+        w="full"
+        p="x-4 y-3"
+        border="~ r-1 color-line"
+        flex="~ row items-center justify-center gap-3"
+        outline="~ none focus-visible:(4 yellow offset-0)"
+        overflow="hidden"
+      >
+        <span class={icon} w="6" h="6" />
+        <span font="700">{name}</span>
+      </a>
+    ))
+  }
+</section>

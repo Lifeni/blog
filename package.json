@@ -18,22 +18,22 @@
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/partytown": "^1.2.3",
     "@astrojs/react": "^2.2.1",
-    "@astrojs/sitemap": "^1.4.0",
-    "@astrojs/vercel": "^3.7.2",
-    "@iconify-json/tabler": "^1.1.82",
-    "@types/react": "^18.2.15",
+    "@astrojs/sitemap": "^2.0.1",
+    "@astrojs/vercel": "^3.7.4",
+    "@iconify-json/tabler": "^1.1.84",
+    "@types/react": "^18.2.16",
     "@types/react-dom": "^18.2.7",
     "@types/react-transition-group": "^4.4.6",
-    "@unocss/preset-icons": "^0.53.5",
-    "@unocss/reset": "^0.53.5",
-    "@unocss/transformer-directives": "^0.53.5",
-    "@unocss/transformer-variant-group": "^0.53.5",
-    "astro": "^2.8.3",
+    "@unocss/preset-icons": "^0.53.6",
+    "@unocss/reset": "^0.53.6",
+    "@unocss/transformer-directives": "^0.53.6",
+    "@unocss/transformer-variant-group": "^0.53.6",
+    "astro": "^2.9.2",
     "astro-rome": "^0.1.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-transition-group": "^4.4.5",
-    "unocss": "^0.53.5",
+    "unocss": "^0.53.6",
     "unocss-preset-scrollbar": "^0.2.1"
   },
   "dependencies": {
@@ -41,7 +41,8 @@
     "@fontsource-variable/jetbrains-mono": "^5.0.6",
     "@fontsource/noto-sans-sc": "^5.0.5",
     "medium-zoom": "^1.0.8",
-    "remeda": "^1.24.0"
+    "remeda": "^1.24.0",
+    "usehooks-ts": "^2.9.1"
   },
   "pnpm": {
     "patchedDependencies": {

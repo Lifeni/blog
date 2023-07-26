@@ -4,20 +4,46 @@ import Section from '../components/base/Section.astro'
 import Articles from '../components/dashboard/Articles.astro'
 import Links from '../components/dashboard/Links.astro'
 import Stories from '../components/dashboard/Stories.astro'
+import More from '../components/dashboard/apps/More.astro'
 
 export const prerender = true
 ---
 
-<Layout>
-  <div w="full" flex="~ 1 col items-center justify-start gap-6" p="4">
-    <Section name="文章" more="/article">
-      <Articles count={4} />
+<Layout indicator>
+  <div w="full" flex="~ 1 col items-center justify-start gap-6 sm:gap-8" p="4">
+    <Section
+      name="文章"
+      more={{
+        href: '/article',
+        icon: 'icon-tabler:arrow-right',
+        text: '更多文章',
+      }}
+      icon="icon-tabler:book"
+    >
+      <Articles less />
     </Section>
-    <Section name="专题" more="/story">
-      <Stories count={4} />
+    <Section
+      name="专题"
+      more={{
+        href: '/story',
+        icon: 'icon-tabler:arrow-right',
+        text: '更多专题',
+      }}
+      icon="icon-tabler:message-2"
+    >
+      <Stories less />
     </Section>
-    <Section name="朋友">
-      <Links />
-    </Section>
+    <div w="full" max-w="2xl" grid="~ cols-1 sm:cols-2 gap-8 sm:gap-4">
+      <Section name="朋友" icon="icon-tabler:circles-relation">
+        <Links />
+      </Section>
+      <Section
+        name="更多"
+        more={{ href: '#', icon: 'icon-tabler:arrow-up', text: '返回顶部' }}
+        icon="icon-tabler:apps"
+      >
+        <More />
+      </Section>
+    </div>
   </div>
 </Layout>

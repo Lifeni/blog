@@ -12,59 +12,65 @@ const friends = [
   { name: 'ss967', link: 'https://ssblog.top/', avatar: `${avatar}/ss967.webp` },
   { name: 'Bakapiano', link: 'https://bakapiano.github.io/', avatar: `${avatar}/Bakapiano.webp` },
 ]
-
-const links = []
 ---
 
-<div w="full" grid="~ cols-5 xs:cols-6 sm:cols-8 gap-4" p="b-2 sm:b-4">
-  {
-    friends.map(({ name, link, avatar }) => (
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        z="1 hover:10"
-        rounded="full"
-        outline="~ none focus-visible:(4 yellow offset-0)"
-      >
+<div flex="~ col gap-6 sm:gap-5" p="b-5 sm:b-0">
+  <div flex="~ col gap-1.5" p="x-2 sm:x-0">
+    <p text="subtle sm">这些是我的朋友，欢迎去他们的网站看看。</p>
+    <p text="subtle sm">或者可以通过邮箱联系我。</p>
+  </div>
+
+  <div w="full" grid="~ cols-5 xs:cols-6 sm:cols-5 gap-4">
+    {
+      friends.map(({ name, link, avatar }) => (
         <Tooltip content={name} circle>
-          <img
-            src={avatar}
-            alt={name}
-            w="full"
-            h="full"
-            border="~ 1 color-line"
-            shadow="lg hover:xl"
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            position="relative"
+            z="1 hover:10"
             rounded="full"
-            filter="dark:brightness-85"
-            transform="~ translate-y-0 group-hover:translate-y--4"
-            transition="all duration-250"
-          />
+            outline="~ none focus-visible:(4 yellow offset-0)"
+          >
+            <img
+              src={avatar}
+              alt={name}
+              w="full"
+              h="full"
+              border="~ 1 color-line"
+              shadow="lg hover:xl"
+              rounded="full"
+              filter="dark:brightness-85"
+              transform="~ translate-y-0 group-hover:translate-y--2"
+              transition="all duration-250"
+            />
+          </a>
         </Tooltip>
-      </a>
-    ))
-  }
-  <a
-    href="mailto:liangfengning@foxmail.com"
-    title="通过邮箱联系"
-    class="group"
-    flex="~ justify-center items-center"
-    rounded="full"
-    border="~ 1 color-line"
-    outline="~ none focus-visible:(4 yellow offset-0)"
-    shadow="lg hover:xl"
-    bg="muted"
-    transition="shadow duration-250"
-  >
-    <div
-      class="icon-tabler:at"
-      w="1/2"
-      h="1/2"
-      z="1 hover:10"
-      text="icon group-hover:link"
+      ))
+    }
+    <a
+      href="mailto:liangfengning@foxmail.com"
+      title="通过邮箱联系"
+      class="group"
+      flex="~ justify-center items-center"
       rounded="full"
-      transition="colors"
+      border="~ 1 color-line"
+      outline="~ none focus-visible:(4 yellow offset-0)"
+      shadow="lg hover:xl"
+      bg="muted"
+      transition="shadow duration-250"
     >
-    </div>
-  </a>
+      <div
+        class="icon-tabler:at"
+        w="1/2"
+        h="1/2"
+        z="1 hover:10"
+        text="icon group-hover:link"
+        rounded="full"
+        transition="colors"
+      >
+      </div>
+    </a>
+  </div>
 </div>

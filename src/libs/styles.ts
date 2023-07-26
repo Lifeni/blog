@@ -43,6 +43,7 @@ export const shortcuts = {
   'text-muted': 'text-light-6 dark:text-dark-2',
 
   'bg-main': 'bg-light-0 dark:bg-dark-9',
+  'bg-line': 'bg-light-9 dark:bg-dark-0',
   'bg-gradient':
     'bg-gradient-radial bg-light-0 dark:bg-gradient-from-dark-8 dark:bg-gradient-to-dark-9',
   'bg-subtle': 'bg-light-0 dark:bg-dark-7',

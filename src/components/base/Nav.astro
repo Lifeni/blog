@@ -10,12 +10,6 @@ const navs = [
   { name: '随笔', href: '/life', icon: 'icon-tabler:note' },
 ]
 
-const apps = [
-  { name: '代码可行', href: '/dev', icon: 'icon-tabler:brackets' },
-  { name: '时间之外', href: '/lab', icon: 'icon-tabler:math-avg' },
-  { name: '越过长城', href: '/server', icon: 'icon-tabler:delta' },
-]
-
 export interface Props {
   content?: boolean
 }
@@ -23,6 +17,23 @@ const { content } = Astro.props
 ---
 
 <nav flex="~ row items-center gap-3" p="sm:x-2">
+  <Tooltip content="搜索" circle>
+    <button
+      aria-label="搜索"
+      position="relative"
+      flex="~ col items-center"
+      z="10"
+      p="2.5"
+      rounded="full"
+      bg={content ? 'group-hover:subtle' : 'group-hover:action'}
+      outline="~ none focus-visible:(4 yellow offset-0)"
+      cursor="pointer"
+      transition="background-color"
+    >
+      <div class="icon-tabler:search" w="5.5" h="5.5"></div>
+    </button>
+  </Tooltip>
+
   {
     navs.map(({ name, href, icon }) => (
       <Tooltip content={name} circle>
@@ -43,45 +54,4 @@ const { content } = Astro.props
       </Tooltip>
     ))
   }
-
-  <Tooltip circle align="right" extend>
-    <button
-      aria-label="更多"
-      position="relative"
-      flex="~ col items-center"
-      z="10"
-      p="2"
-      rounded="full"
-      bg={content ? 'group-hover:subtle' : 'group-hover:action'}
-      outline="~ none focus-visible:(4 yellow offset-0)"
-      cursor="pointer"
-      transition="background-color"
-    >
-      <div class="icon-tabler:apps" w="5.5" h="5.5"></div>
-    </button>
-    <ul slot="content" flex="~ col items-center" p="1.5" >
-      {
-        apps.map(({ name, href, icon }) => (
-          <li flex="~" w="full">
-            <a
-              aria-label={name}
-              href={href}
-              w="full"
-              p="x-2 y-1.5"
-              flex="~ row items-center justify-start gap-3"
-              rounded="md focus-visible:sm"
-              bg="hover:subtle"
-              outline="~ none focus-visible:(4 yellow offset-0)"
-              transition="background-color"
-            >
-              <div class={icon} w="5.5" h="5.5" m="l-0.5" />
-              <h2 font="500" text="base" flex="~ 1" p="r-1.5">
-                {name}
-              </h2>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </Tooltip>
 </nav>

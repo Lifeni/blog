@@ -14,14 +14,17 @@ const stories = (await Astro.glob<Story>('../../notebook/专题/*.mdx'))
   )
 
 export interface Props {
-  count?: number
+  less?: boolean
   grid?: boolean
 }
-const { count = stories.length, grid } = Astro.props
+
+const length = stories.length
+const count = 2
+const { less, grid } = Astro.props
 ---
 
 {
-  stories.length === 0 ? (
+  length === 0 ? (
     <div
       w="full"
       h="96"
@@ -36,18 +39,18 @@ const { count = stories.length, grid } = Astro.props
     <ul
       w="extend"
       m="x--4"
-      p="x-4"
+      p="x-4 b-5 sm:b-0"
       flex={grid ? 'none' : '~ sm:grid'}
       grid={grid ? '~ cols-1 sm:cols-2 gap-x-4' : 'sm:~ sm:cols-2 gap-x-4'}
       overflow="x-auto sm:unset"
     >
-      {stories.slice(0, count).map(({ frontmatter }) => (
+      {stories.slice(0, less ? count : length).map(({ frontmatter }) => (
         <li w="full">
           <Card
             href={`/story/${frontmatter.id}`}
             grid={grid}
             cover={frontmatter.cover}
-            name={frontmatter.name}
+            name={`${frontmatter.name} #${frontmatter.id}`}
             description={frontmatter.description}
           />
         </li>

@@ -8,12 +8,12 @@ import Archives from '../../components/dashboard/archives/Archives.astro'
 export const prerender = true
 ---
 
-<Layout title="文章" description="" index>
+<Layout title="文章" description="" index indicator>
   <div w="full" flex="~ 1 col items-center justify-start gap-6" p="4">
-    <Section name="文章">
+    <Section name="文章" icon="icon-tabler:book">
       <Articles grid />
     </Section>
-    <Section name="存档">
+    <Section name="存档" icon="icon-tabler:archive">
       <Archives />
     </Section>
   </div>
