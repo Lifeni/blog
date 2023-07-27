@@ -16,7 +16,11 @@ export const Indicator = ({ paper }: { paper?: boolean }) => {
     const { innerHeight } = window
     progress.current!.style.height = `${(innerHeight / scrollHeight) * 100}%`
     progress.current!.style.top = `${(scrollTop / scrollHeight) * 100}%`
-    setPercent((scrollTop / (scrollHeight - innerHeight)) * 100)
+    setPercent(
+      scrollHeight === innerHeight
+        ? 100
+        : (scrollTop / (scrollHeight - innerHeight)) * 100
+    )
   }
 
   return (
@@ -52,11 +56,10 @@ export const Indicator = ({ paper }: { paper?: boolean }) => {
           aria-label="去顶部"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           position="absolute"
-          left="1/2"
-          top="-12"
+          className="left-1/2 top--16"
           flex="~"
           rounded="full"
-          p="2"
+          p="2.5"
           bg={paper ? 'hover:subtle' : 'hover:action'}
           outline="~ none focus-visible:(4 yellow offset-0)"
           transform="~ translate-x--1/2"
@@ -76,11 +79,10 @@ export const Indicator = ({ paper }: { paper?: boolean }) => {
             })
           }
           position="absolute"
-          left="1/2"
-          bottom="-12"
+          className="left-1/2 bottom--16"
           flex="~"
           rounded="full"
-          p="2"
+          p="2.5"
           bg={paper ? 'hover:subtle' : 'hover:action'}
           outline="~ none focus-visible:(4 yellow offset-0)"
           transform="~ translate-x--1/2"

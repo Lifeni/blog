@@ -21,11 +21,16 @@ export async function getStaticPaths() {
   return output(stories)
 }
 
-const { Content } = Astro.props.story
+const { frontmatter, Content } = Astro.props.story
 export const prerender = true
 ---
 
-<Layout>
+<Layout
+  title={frontmatter.name}
+  description={frontmatter.description}
+  app="记录干杯"
+  paper
+>
   <div w="full" flex="~ 1 col items-center justify-start" p="4">
     <article class="prose" w="full" max-w="2xl" text="base">
       <Content />

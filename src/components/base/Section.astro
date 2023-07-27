@@ -2,55 +2,65 @@
 import Tooltip from '../ui/Tooltip.astro'
 export interface Props {
   name?: string
-  card?: boolean
   icon?: string
-  more?: {
+  type?: 'card' | 'grid' | 'list'
+  action?: {
     href: string
     icon: string
     text: string
   }
 }
 
-const { name, card, more, icon } = Astro.props
+const { name, type, action, icon } = Astro.props
+const external = action?.href.startsWith('http')
 ---
 
 <section w="full" max-w="2xl" flex="~ col gap-6">
-  <div flex="! row items-center justify-between">
-    <h2
-      id={name}
-      text="xl"
-      font="900"
-      flex="~ row gap-3 items-center"
-      p="x-2 sm:x-0"
-    >
-      {icon && <span class={icon} w="6" h="6" text="main" m="x-0.25" />}
-      <span>{name}</span>
-    </h2>
-    {
-      more && (
-        <div m="r--1.75 y--1.5">
-          <Tooltip content={more.text} circle>
-            <a
-              aria-label={name}
-              href={more.href}
-              p="2"
-              flex="~ col items-center"
-              rounded="full"
-              bg="hover:action"
-              outline="~ none focus-visible:(4 yellow offset-0)"
-              transition="background-color"
-            >
-              <div class={more.icon} w="6" h="6" />
-            </a>
-          </Tooltip>
-        </div>
-      )
-    }
-  </div>
+  {
+    name && (
+      <div flex="~ row items-center justify-between">
+        <h2
+          id={name}
+          text="xl"
+          font="900"
+          flex="~ row gap-4 items-center"
+          p="x-2 sm:x-0"
+        >
+          {icon && <span class={icon} w="6" h="6" text="main" m="x-0.25" />}
+          <span>{name}</span>
+        </h2>
+
+        {action && (
+          <div m="r--1.75 y--2.5">
+            <Tooltip content={action.text} circle>
+              <a
+                aria-label={name}
+                href={action.href}
+                target={external ? '_blank' : '_self'}
+                rel={external ? 'noopener noreferrer' : ''}
+                p="2.5"
+                flex="~ col items-center"
+                rounded="full"
+                bg="hover:action"
+                outline="~ none focus-visible:(4 yellow offset-0)"
+                transition="background-color"
+              >
+                <div class={action.icon} w="6" h="6" />
+              </a>
+            </Tooltip>
+          </div>
+        )}
+      </div>
+    )
+  }
 
   {
-    card ? (
+    type === 'card' ? (
       <div w="full" border="~ 1 color-line" bg="muted" rounded="md">
+        <slot />
+      </div>
+    ) : type === 'grid' ? (
+      <div w="full" grid="~ cols-1 sm:cols-2 gap-8 sm:gap-4">
         <slot />
       </div>
     ) : (

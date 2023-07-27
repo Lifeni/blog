@@ -1,15 +1,34 @@
 ---
-import Layout from '../../components/Layout.astro'
 ---
 
-<Layout
-  title="时间之外"
-  description=""
-  favicon="/lab/favicon.svg"
-  color="#f8584f"
-  focus
->
-  <div flex="~ 1 items-center justify-center" p="b-4">
-    <h1 text="2xl" font="900" select="none">Lab</h1>
-  </div>
-</Layout>
+<html lang="zh-hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Lab / 时间之外</title>
+
+    <meta name="description" content="" />
+    <meta name="theme-color" content="#f8584f" />
+    <link rel="icon" href="/lab/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+  </head>
+
+  <body
+    position="relative"
+    w="screen"
+    h="screen"
+    flex="~ col items-center justify-start"
+    text="main"
+    font="500 sans"
+    bg="paper"
+    overflow="x-hidden y-auto"
+    scroll="smooth"
+    scrollbar="~ rounded main"
+  >
+    <main w="full" flex="~ 1 col">
+      <div flex="~ 1 items-center justify-center" p="b-4">
+        <h1 text="2xl" font="900" select="none">Lab</h1>
+      </div>
+    </main>
+  </body>
+</html>

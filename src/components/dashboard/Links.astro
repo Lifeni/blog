@@ -14,11 +14,10 @@ const friends = [
 ]
 ---
 
-<div flex="~ col gap-6 sm:gap-5" p="b-5 sm:b-0">
-  <div flex="~ col gap-1.5" p="x-2 sm:x-0">
-    <p text="subtle sm">这些是我的朋友，欢迎去他们的网站看看。</p>
-    <p text="subtle sm">或者可以通过邮箱联系我。</p>
-  </div>
+<div flex="~ col gap-6 sm:gap-4" p="b-5 sm:b-0">
+  <p m="t--1" p="x-2 sm:x-0" text="subtle sm" leading="7">
+    这些都是我的朋友，有时间欢迎去他们的网站看看，也可以去导航栏「开往」下一个网站。
+  </p>
 
   <div w="full" grid="~ cols-5 xs:cols-6 sm:cols-5 gap-4">
     {
@@ -49,28 +48,5 @@ const friends = [
         </Tooltip>
       ))
     }
-    <a
-      href="mailto:liangfengning@foxmail.com"
-      title="通过邮箱联系"
-      class="group"
-      flex="~ justify-center items-center"
-      rounded="full"
-      border="~ 1 color-line"
-      outline="~ none focus-visible:(4 yellow offset-0)"
-      shadow="lg hover:xl"
-      bg="muted"
-      transition="shadow duration-250"
-    >
-      <div
-        class="icon-tabler:at"
-        w="1/2"
-        h="1/2"
-        z="1 hover:10"
-        text="icon group-hover:link"
-        rounded="full"
-        transition="colors"
-      >
-      </div>
-    </a>
   </div>
 </div>

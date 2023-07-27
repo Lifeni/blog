@@ -48,7 +48,7 @@ export const shortcuts = {
     'bg-gradient-radial bg-light-0 dark:bg-gradient-from-dark-8 dark:bg-gradient-to-dark-9',
   'bg-subtle': 'bg-light-0 dark:bg-dark-7',
   'bg-muted': 'bg-white dark:bg-dark-8',
-  'bg-content': 'bg-white dark:bg-dark-9',
+  'bg-paper': 'bg-white dark:bg-dark-9',
   'bg-action': 'bg-light-1 dark:bg-dark-7',
 
   'border-color-line': 'border-light-1 dark:border-dark-7',

@@ -1,19 +1,31 @@
 ---
 import Layout from '../components/Layout.astro'
 import Section from '../components/base/Section.astro'
+import Apps from '../components/dashboard/Apps.astro'
 import Articles from '../components/dashboard/Articles.astro'
 import Links from '../components/dashboard/Links.astro'
 import Stories from '../components/dashboard/Stories.astro'
-import More from '../components/dashboard/apps/More.astro'
 
 export const prerender = true
 ---
 
-<Layout indicator>
-  <div w="full" flex="~ 1 col items-center justify-start gap-6 sm:gap-8" p="4">
+<Layout>
+  <div w="full" flex="~ 1 col items-center justify-start gap-6 sm:gap-10" p="4">
+    <Section>
+      <div
+        w="full"
+        h="72"
+        flex="~ col items-center justify-center"
+        border="~ 1 color-line"
+        bg="muted"
+        rounded="md"
+      >
+      </div>
+    </Section>
+
     <Section
       name="文章"
-      more={{
+      action={{
         href: '/article',
         icon: 'icon-tabler:arrow-right',
         text: '更多文章',
@@ -22,9 +34,10 @@ export const prerender = true
     >
       <Articles less />
     </Section>
+
     <Section
       name="专题"
-      more={{
+      action={{
         href: '/story',
         icon: 'icon-tabler:arrow-right',
         text: '更多专题',
@@ -33,17 +46,23 @@ export const prerender = true
     >
       <Stories less />
     </Section>
-    <div w="full" max-w="2xl" grid="~ cols-1 sm:cols-2 gap-8 sm:gap-4">
+
+    <Section type="grid">
       <Section name="朋友" icon="icon-tabler:circles-relation">
         <Links />
       </Section>
+
       <Section
         name="更多"
-        more={{ href: '#', icon: 'icon-tabler:arrow-up', text: '返回顶部' }}
+        action={{
+          href: 'mailto:liangfengning@foxmail.com',
+          icon: 'icon-tabler:mail',
+          text: '邮件联系',
+        }}
         icon="icon-tabler:apps"
       >
-        <More />
+        <Apps />
       </Section>
-    </div>
+    </Section>
   </div>
 </Layout>

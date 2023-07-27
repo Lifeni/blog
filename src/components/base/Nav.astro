@@ -11,9 +11,9 @@ const navs = [
 ]
 
 export interface Props {
-  content?: boolean
+  paper?: boolean
 }
-const { content } = Astro.props
+const { paper } = Astro.props
 ---
 
 <nav flex="~ row items-center gap-3" p="sm:x-2">
@@ -25,12 +25,12 @@ const { content } = Astro.props
       z="10"
       p="2.5"
       rounded="full"
-      bg={content ? 'group-hover:subtle' : 'group-hover:action'}
+      bg={paper ? 'group-hover:subtle' : 'group-hover:action'}
       outline="~ none focus-visible:(4 yellow offset-0)"
       cursor="pointer"
       transition="background-color"
     >
-      <div class="icon-tabler:search" w="5.5" h="5.5"></div>
+      <div class="icon-tabler:search" w="6" h="6"></div>
     </button>
   </Tooltip>
 
@@ -42,14 +42,14 @@ const { content } = Astro.props
           href={href}
           target={href.startsWith('http') ? '_blank' : '_self'}
           rel={href.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
-          p="2"
+          p="2.5"
           flex="~ col items-center"
           rounded="full"
-          bg={content ? 'group-hover:subtle' : 'group-hover:action'}
+          bg={paper ? 'group-hover:subtle' : 'group-hover:action'}
           outline="~ none focus-visible:(4 yellow offset-0)"
           transition="background-color"
         >
-          <div class={icon} w="5.5" h="5.5" />
+          <div class={icon} w="6" h="6" />
         </a>
       </Tooltip>
     ))

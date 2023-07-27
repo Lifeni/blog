@@ -4,11 +4,8 @@ export interface Props {
   description?: string
   color?: string
   favicon?: string
-  // 状态
-  index?: boolean
-  focus?: boolean
-  indicator?: boolean
-  content?: boolean
+  app?: '记录干杯' | '代码可行' | '时间之外' | '越过长城'
+  paper?: boolean
 }
 
 import '@fontsource/noto-sans-sc/500.css'
@@ -19,7 +16,6 @@ import '@fontsource-variable/jetbrains-mono'
 
 import Header from './base/Header.astro'
 import Footer from './base/Footer.astro'
-import { Indicator } from './base/global/Indicator'
 
 const production = import.meta.env.MODE === 'production'
 
@@ -28,10 +24,8 @@ const {
   description = '个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。',
   color = '#feec44',
   favicon = '/favicon.svg',
-  index = false,
-  focus = false,
-  indicator = false,
-  content = false,
+  app,
+  paper = false,
 } = Astro.props
 ---
 
@@ -40,7 +34,7 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{title}{index && ' - 记录干杯'}</title>
+    <title>{title}{app === '记录干杯' && ' - 记录干杯'}</title>
 
     <meta name="description" content={description} />
     <meta name="theme-color" content={color} />
@@ -57,17 +51,16 @@ const {
     flex="~ col items-center justify-start"
     text="main"
     font="500 sans"
-    bg={content ? 'content' : 'main'}
-    overflow="x-hidden y-auto"
+    bg={paper ? 'paper' : 'main'}
+    overflow="x-hidden y-overlay"
     scroll="smooth"
     scrollbar="~ rounded main"
   >
-    {!focus && <Header {title} {favicon} {index} {content} />}
+    <Header {title} {favicon} {app} {paper} />
     <main w="full" flex="~ 1 col">
       <slot />
     </main>
-    {!focus && <Footer />}
-    {indicator && <Indicator client:load />}
+    <Footer />
     {
       production && (
         <div

@@ -2,17 +2,22 @@
 export interface Props {
   title?: string
   favicon?: string
-  index?: boolean
-  content?: boolean
+  app?: string
+  paper?: boolean
 }
 
 import Tooltip from '../ui/Tooltip.astro'
 import Nav from './Nav.astro'
 
-const { title, favicon, index, content } = Astro.props
+const { title, favicon, app, paper } = Astro.props
 ---
 
-<header w="full" flex="~ row items-center justify-between gap-4" p="6" z="100">
+<header
+  w="full"
+  flex="~ row items-center justify-between gap-4"
+  p="l-6 r-4 sm:x-6 y-6"
+  z="100"
+>
   <h1
     flex="~ row items-center gap-4"
     p="x-0 sm:x-2"
@@ -25,8 +30,8 @@ const { title, favicon, index, content } = Astro.props
         href="/"
         position="relative"
         flex="~ items-center justify-center"
-        w="10"
-        h="10"
+        w="11"
+        h="11"
         rounded="full"
         outline="~ none focus-visible:(4 yellow offset-0)"
         filter="~ drop-shadow-none group-hover:drop-shadow-xl"
@@ -59,7 +64,7 @@ const { title, favicon, index, content } = Astro.props
       </a>
     </Tooltip>
 
-    <span text="xl">{index ? '记录干杯' : title}</span>
+    <span text="xl truncate">{app || title}</span>
   </h1>
-  <Nav {content} />
+  <Nav {paper} />
 </header>

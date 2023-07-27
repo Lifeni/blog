@@ -11,7 +11,6 @@ const apps = [
   {
     name: '随意链接',
     href: 'https://iokl.link',
-    external: true,
     icon: 'https://iokl.link/favicon.svg',
     code: 'router',
   },
@@ -20,11 +19,11 @@ const apps = [
 
 <div grid="~ cols-2 gap-4" w="full">
   {
-    apps.map(({ name, href, icon, external, code }) => (
+    apps.map(({ name, href, icon, code }) => (
       <a
         {href}
-        target={external ? '_blank' : '_self'}
-        rel={external ? 'noopener noreferrer' : ''}
+        target={href.startsWith('http') ? '_blank' : '_self'}
+        rel={href.startsWith('http') ? 'noopener noreferrer' : ''}
         class="group"
         position="relative"
         w="full"
@@ -49,7 +48,7 @@ const apps = [
           src={icon}
           alt={name}
           position="absolute"
-          class="right--8 bottom--10 group-hover:(right--7 bottom--9)"
+          class="right--8 bottom--10 group-hover:bottom--8"
           w="24"
           h="24"
           z="10"
