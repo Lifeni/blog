@@ -21,7 +21,7 @@ const apps = [
   {
     apps.map(({ name, href, icon, code }) => (
       <a
-        {href}
+        href={href}
         target={href.startsWith('http') ? '_blank' : '_self'}
         rel={href.startsWith('http') ? 'noopener noreferrer' : ''}
         class="group"
@@ -48,12 +48,13 @@ const apps = [
           src={icon}
           alt={name}
           position="absolute"
-          class="right--8 bottom--10 group-hover:bottom--8"
+          class="right--8 bottom--10"
           w="24"
           h="24"
           z="10"
           rounded="full"
           filter="drop-shadow-lg"
+          transform="~ scale-100 group-hover:scale-110"
           transition="all"
         />
       </a>

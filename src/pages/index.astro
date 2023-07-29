@@ -10,7 +10,7 @@ export const prerender = true
 ---
 
 <Layout>
-  <div w="full" flex="~ 1 col items-center justify-start gap-6 sm:gap-10" p="4">
+  <div w="full" flex="~ 1 col items-center justify-start gap-6 sm:gap-8" p="4">
     <Section>
       <div
         w="full"
@@ -25,26 +25,26 @@ export const prerender = true
 
     <Section
       name="文章"
+      icon="icon-tabler:book"
       action={{
         href: '/article',
         icon: 'icon-tabler:arrow-right',
-        text: '更多文章',
+        name: '更多文章',
       }}
-      icon="icon-tabler:book"
     >
-      <Articles less />
+      <Articles limit={2} />
     </Section>
 
     <Section
       name="专题"
+      icon="icon-tabler:message-2"
       action={{
         href: '/story',
         icon: 'icon-tabler:arrow-right',
-        text: '更多专题',
+        name: '更多专题',
       }}
-      icon="icon-tabler:message-2"
     >
-      <Stories less />
+      <Stories limit={2} />
     </Section>
 
     <Section type="grid">
@@ -54,12 +54,12 @@ export const prerender = true
 
       <Section
         name="更多"
+        icon="icon-tabler:apps"
         action={{
           href: 'mailto:liangfengning@foxmail.com',
           icon: 'icon-tabler:mail',
-          text: '邮件联系',
+          name: '邮件联系',
         }}
-        icon="icon-tabler:apps"
       >
         <Apps />
       </Section>

@@ -1,42 +1,30 @@
 ---
 export interface Props {
-  content?: string
-  align?: 'left' | 'center' | 'right'
-  circle?: boolean
-  extend?: boolean
+  label?: string
+  placement?: 'left' | 'center' | 'right'
+  shape?: 'circle' | 'square'
 }
 
-const { content, align = 'center', circle, extend } = Astro.props
+const { label, placement = 'center', shape = 'square' } = Astro.props
 ---
 
 <div
   tabindex="-1"
   class="group"
   position="relative"
-  rounded={circle ? 'full' : 'md'}
+  rounded={shape === 'circle' ? 'full' : 'md'}
 >
-  {
-    extend && (
-      <span
-        position="absolute"
-        top="8"
-        left="0"
-        z="0"
-        w="full"
-        h="4"
-        invisible
-        visible="group-hover:~ group-focus-within:~"
-        op="0"
-      />
-    )
-  }
   <slot />
 
   <span
     class="op-0 group-hover:op-100 group-focus-within:op-100"
     position="absolute"
-    left={align === 'center' ? '1/2' : align === 'right' ? 'unset' : '-2'}
-    right={align === 'right' ? '-1' : 'unset'}
+    left={placement === 'center'
+      ? '1/2'
+      : placement === 'right'
+      ? 'unset'
+      : '-2'}
+    right={placement === 'right' ? '-1' : 'unset'}
     top="12"
     z="10"
     flex="~ col"
@@ -48,17 +36,17 @@ const { content, align = 'center', circle, extend } = Astro.props
     text="sm"
     whitespace="nowrap"
     transform={`~ scale-99 group-hover:scale-100 group-focus-within:scale-100 ${
-      align === 'center'
+      placement === 'center'
         ? 'translate-x--1/2 origin-t'
-        : align === 'left'
+        : placement === 'left'
         ? 'origin-lt'
         : 'origin-rt'
     }`}
     shadow="none group-hover:xl group-focus-within:xl"
     transition="all"
   >
-    <slot name="content">
-      <span p="x-2 y-1" font="500">{content}</span>
+    <slot name="label">
+      <span p="x-2 y-1" font="500">{label}</span>
     </slot>
   </span>
 </div>

@@ -3,13 +3,13 @@ export interface Props {
   title?: string
   favicon?: string
   app?: string
-  paper?: boolean
+  theme?: 'paper' | 'main'
 }
 
 import Tooltip from '../ui/Tooltip.astro'
 import Nav from './Nav.astro'
 
-const { title, favicon, app, paper } = Astro.props
+const { title, favicon, app, theme } = Astro.props
 ---
 
 <header
@@ -25,7 +25,7 @@ const { title, favicon, app, paper } = Astro.props
     font="900"
     line-height="none"
   >
-    <Tooltip content={title === '记录干杯' ? '主页' : '回到主页'} circle>
+    <Tooltip label={title === '记录干杯' ? '主页' : '回到主页'} shape="circle">
       <a
         href="/"
         position="relative"
@@ -66,5 +66,5 @@ const { title, favicon, app, paper } = Astro.props
 
     <span text="xl truncate">{app || title}</span>
   </h1>
-  <Nav {paper} />
+  <Nav theme={theme} />
 </header>

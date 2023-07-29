@@ -1,5 +1,6 @@
 ---
-import Tooltip from '../ui/Tooltip.astro'
+import Action from '../ui/Action.astro'
+
 export interface Props {
   name?: string
   icon?: string
@@ -7,12 +8,11 @@ export interface Props {
   action?: {
     href: string
     icon: string
-    text: string
+    name: string
   }
 }
 
 const { name, type, action, icon } = Astro.props
-const external = action?.href.startsWith('http')
 ---
 
 <section w="full" max-w="2xl" flex="~ col gap-6">
@@ -31,23 +31,8 @@ const external = action?.href.startsWith('http')
         </h2>
 
         {action && (
-          <div m="r--1.75 y--2.5">
-            <Tooltip content={action.text} circle>
-              <a
-                aria-label={name}
-                href={action.href}
-                target={external ? '_blank' : '_self'}
-                rel={external ? 'noopener noreferrer' : ''}
-                p="2.5"
-                flex="~ col items-center"
-                rounded="full"
-                bg="hover:action"
-                outline="~ none focus-visible:(4 yellow offset-0)"
-                transition="background-color"
-              >
-                <div class={action.icon} w="6" h="6" />
-              </a>
-            </Tooltip>
+          <div m="r--0 sm:r--2 y--2.5">
+            <Action {...action} />
           </div>
         )}
       </div>

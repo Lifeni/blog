@@ -1,7 +1,6 @@
 ---
 import type { MDXInstance } from 'astro'
 import type { Story } from '../../types.d'
-import { image } from '../../libs/utils'
 import Card from '../ui/Card.astro'
 
 const production = import.meta.env.MODE === 'production'
@@ -14,17 +13,15 @@ const stories = (await Astro.glob<Story>('../../notebook/专题/*.mdx'))
   )
 
 export interface Props {
-  less?: boolean
-  grid?: boolean
+  mode?: 'grid' | 'list'
+  limit?: number
 }
 
-const length = stories.length
-const count = 2
-const { less, grid } = Astro.props
+const { mode = 'list', limit } = Astro.props
 ---
 
 {
-  length === 0 ? (
+  stories.length === 0 ? (
     <div
       w="full"
       h="96"
@@ -40,18 +37,21 @@ const { less, grid } = Astro.props
       w="extend"
       m="x--4"
       p="x-4 b-5 sm:b-0"
-      flex={grid ? 'none' : '~ sm:grid'}
-      grid={grid ? '~ cols-1 sm:cols-2 gap-x-4' : 'sm:~ sm:cols-2 gap-x-4'}
+      flex={mode === 'grid' ? 'none' : '~ sm:grid'}
+      grid={
+        mode === 'grid'
+          ? '~ cols-1 sm:cols-2 gap-x-4 gap-y-5'
+          : 'sm:~ sm:cols-2 gap-x-4 gap-y-5'
+      }
       overflow="x-auto sm:unset"
     >
-      {stories.slice(0, less ? count : length).map(({ frontmatter }) => (
+      {stories.slice(0, limit || stories.length).map(({ frontmatter }) => (
         <li w="full">
           <Card
+            type="story"
             href={`/story/${frontmatter.id}`}
-            grid={grid}
-            cover={frontmatter.cover}
-            name={`${frontmatter.name} #${frontmatter.id}`}
-            description={frontmatter.description}
+            mode={mode}
+            frontmatter={frontmatter}
           />
         </li>
       ))}

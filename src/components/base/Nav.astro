@@ -1,57 +1,27 @@
 ---
-import Tooltip from '../ui/Tooltip.astro'
+import Action from '../ui/Action.astro'
 
 const navs = [
+  { name: '随笔', href: '/life', icon: 'icon-tabler:note' },
+  {
+    name: 'GitHub',
+    href: 'https://github.com/Lifeni',
+    icon: 'icon-tabler:brand-github',
+  },
   {
     name: '开往',
     href: 'https://travellings.link/',
-    icon: 'icon-tabler:location',
+    icon: 'icon-tabler:route',
   },
-  { name: '随笔', href: '/life', icon: 'icon-tabler:note' },
 ]
 
 export interface Props {
-  paper?: boolean
+  theme?: 'paper' | 'main'
+
 }
-const { paper } = Astro.props
+const { theme } = Astro.props
 ---
 
-<nav flex="~ row items-center gap-3" p="sm:x-2">
-  <Tooltip content="搜索" circle>
-    <button
-      aria-label="搜索"
-      position="relative"
-      flex="~ col items-center"
-      z="10"
-      p="2.5"
-      rounded="full"
-      bg={paper ? 'group-hover:subtle' : 'group-hover:action'}
-      outline="~ none focus-visible:(4 yellow offset-0)"
-      cursor="pointer"
-      transition="background-color"
-    >
-      <div class="icon-tabler:search" w="6" h="6"></div>
-    </button>
-  </Tooltip>
-
-  {
-    navs.map(({ name, href, icon }) => (
-      <Tooltip content={name} circle>
-        <a
-          aria-label={name}
-          href={href}
-          target={href.startsWith('http') ? '_blank' : '_self'}
-          rel={href.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
-          p="2.5"
-          flex="~ col items-center"
-          rounded="full"
-          bg={paper ? 'group-hover:subtle' : 'group-hover:action'}
-          outline="~ none focus-visible:(4 yellow offset-0)"
-          transition="background-color"
-        >
-          <div class={icon} w="6" h="6" />
-        </a>
-      </Tooltip>
-    ))
-  }
+<nav flex="~ row items-center gap-2 sm:gap-3" p="sm:x-2">
+  {navs.map(nav => <Action {...nav} theme={theme} />)}
 </nav>
