@@ -1,10 +1,12 @@
 ---
 import Layout from '../components/Layout.astro'
 import Section from '../components/base/Section.astro'
-import Apps from '../components/dashboard/Apps.astro'
-import Articles from '../components/dashboard/Articles.astro'
+
+import Dashboard from '../components/dashboard/Dashboard.astro'
+import Friends from '../components/dashboard/Friends.astro'
 import Links from '../components/dashboard/Links.astro'
-import Stories from '../components/dashboard/Stories.astro'
+import Articles from '../components/dashboard/lists/Articles.astro'
+import Stories from '../components/dashboard/lists/Stories.astro'
 
 export const prerender = true
 ---
@@ -12,15 +14,7 @@ export const prerender = true
 <Layout>
   <div w="full" flex="~ 1 col items-center justify-start gap-6 sm:gap-8" p="4">
     <Section>
-      <div
-        w="full"
-        h="72"
-        flex="~ col items-center justify-center"
-        border="~ 1 color-line"
-        bg="muted"
-        rounded="md"
-      >
-      </div>
+      <Dashboard />
     </Section>
 
     <Section
@@ -49,7 +43,7 @@ export const prerender = true
 
     <Section type="grid">
       <Section name="朋友" icon="icon-tabler:circles-relation">
-        <Links />
+        <Friends />
       </Section>
 
       <Section
@@ -61,7 +55,7 @@ export const prerender = true
           name: '邮件联系',
         }}
       >
-        <Apps />
+        <Links />
       </Section>
     </Section>
   </div>

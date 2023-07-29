@@ -1,27 +1,23 @@
 ---
 import type { MDXInstance } from 'astro'
-import type { Article } from '../../types.d'
-import Card from '../ui/Card.astro'
+import type { Article, Story } from '../../../types'
+import Card from '../../ui/Card.astro'
 
 const production = import.meta.env.MODE === 'production'
-const articles = (await Astro.glob<Article>('../../notebook/文章/*.mdx'))
-  .filter(({ frontmatter }) => !production || !frontmatter.draft)
-  .sort(
-    (a: MDXInstance<Article>, b: MDXInstance<Article>) =>
-      new Date(b.frontmatter.date.created).getTime() -
-      new Date(a.frontmatter.date.created).getTime()
-  )
 
 export interface Props {
   mode?: 'grid' | 'list'
   limit?: number
+  id: string
+  name: string
+  contents: MDXInstance<Article>[] | MDXInstance<Story>[]
 }
 
-const { mode = 'list', limit } = Astro.props
+const { mode = 'list', limit, id, name, contents } = Astro.props
 ---
 
 {
-  articles.length === 0 ? (
+  contents.length === 0 ? (
     <div
       w="full"
       h="96"
@@ -30,7 +26,7 @@ const { mode = 'list', limit } = Astro.props
       bg="muted"
       rounded="md"
     >
-      <h2 text="subtle">暂时没有文章</h2>
+      <h2 text="subtle">暂时没有{name}</h2>
     </div>
   ) : (
     <ul
@@ -45,11 +41,11 @@ const { mode = 'list', limit } = Astro.props
       }
       overflow="x-auto sm:unset"
     >
-      {articles.slice(0, limit || articles.length).map(({ frontmatter }) => (
+      {contents.slice(0, limit || contents.length).map(({ frontmatter }) => (
         <li w="full">
           <Card
-            type="article"
-            href={`/article/${frontmatter.id}`}
+            type={id}
+            href={`/${id}/${frontmatter.id}`}
             mode={mode}
             frontmatter={frontmatter}
           />

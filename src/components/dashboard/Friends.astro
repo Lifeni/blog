@@ -1,0 +1,52 @@
+---
+import Tooltip from '../ui/Tooltip.astro'
+
+const avatar = 'https://file.lifeni.life/avatar/friends'
+// prettier-ignore
+const friends = [
+  { name: 'Nanako', href: 'https://tanakarino.cn/', avatar: `${avatar}/Nanako.webp` },
+  { name: 'bluebonnet27', href: 'https://bluebonnet27.github.io/', avatar: `${avatar}/bluebonnet27.webp` },
+  { name: 'GluttonK', href: 'https://blog.csdn.net/GluttonK/', avatar: `${avatar}/GluttonK.webp` },
+  { name: 'Wumbuk', href: 'https://blog.csdn.net/qq_48081868/', avatar: `${avatar}/Wumbuk.webp` },
+  { name: 'YueChen', href: 'https://www.yuechen.xyz/', avatar: `${avatar}/YueChen.webp` },
+  { name: 'ss967', href: 'https://ssblog.top/', avatar: `${avatar}/ss967.webp` },
+  { name: 'Bakapiano', href: 'https://bakapiano.github.io/', avatar: `${avatar}/Bakapiano.webp` },
+]
+---
+
+<div flex="~ col gap-6 sm:gap-4" p="b-5 sm:b-0">
+  <p m="t--1" p="x-2 sm:x-0" text="subtle sm" leading="7">
+    这些都是我的朋友，有时间欢迎去他们的网站看看，也可以去导航栏「开往」下一个网站。
+  </p>
+
+  <div w="full" grid="~ cols-5 xs:cols-6 sm:cols-5 gap-4">
+    {
+      friends.map(({ name, href, avatar }) => (
+        <Tooltip label={name} shape="circle">
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            position="relative"
+            z="1 hover:10"
+            rounded="full"
+            outline="~ none focus-visible:(4 yellow offset-0)"
+          >
+            <img
+              src={avatar}
+              alt={name}
+              w="full"
+              h="full"
+              border="~ 1 color-line"
+              shadow="lg hover:xl"
+              rounded="full"
+              filter="dark:brightness-85"
+              transform="~ translate-y-0 group-hover:translate-y--2"
+              transition="all duration-250"
+            />
+          </a>
+        </Tooltip>
+      ))
+    }
+  </div>
+</div>
