@@ -24,7 +24,7 @@ export const Wallpapers = () => {
   }
 
   const [{ date, week, time }, setNow] = useState<Now>(getNow())
-  useInterval(() => setNow(getNow()), 1000 * 3)
+  useInterval(() => setNow(getNow()), 1000 * 3, { immediate: true })
 
   return (
     <div flex="~ col">
