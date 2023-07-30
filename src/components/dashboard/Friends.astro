@@ -14,9 +14,9 @@ const friends = [
 ]
 ---
 
-<div flex="~ col gap-6 sm:gap-4" p="b-5 sm:b-0">
-  <p m="t--1" p="x-2 sm:x-0" text="subtle sm" leading="7">
-    这些都是我的朋友，有时间欢迎去他们的网站看看，也可以去导航栏「开往」下一个网站。
+<div flex="~ col gap-5 sm:gap-3" p="b-5 sm:b-0">
+  <p m="t--1" p="x-2 sm:x-0" text="subtle sm justify" leading="6.5">
+    这些是我的朋友，有时间欢迎去他们的网站看看，也可以去上方导航栏点击「开往」随机前往下一个网站，或者通过邮件联系我。
   </p>
 
   <div w="full" grid="~ cols-5 xs:cols-6 sm:cols-5 gap-4">
@@ -28,21 +28,26 @@ const friends = [
             target="_blank"
             rel="noopener noreferrer"
             position="relative"
-            z="1 hover:10"
+            w="full"
+            h="full"
+            flex="~ col items-center"
+            z="1 group-hover:10"
             rounded="full"
+            bg="muted"
+            border="~ 1 color-line"
             outline="~ none focus-visible:(4 yellow offset-0)"
+            transform="~ translate-y-0 group-hover:translate-y--1.5"
+            transition="transform duration-250"
           >
             <img
               src={avatar}
               alt={name}
               w="full"
               h="full"
-              border="~ 1 color-line"
-              shadow="lg hover:xl"
+              shadow="lg group-hover:xl"
               rounded="full"
               filter="dark:brightness-85"
-              transform="~ translate-y-0 group-hover:translate-y--2"
-              transition="all duration-250"
+              transition="all"
             />
           </a>
         </Tooltip>

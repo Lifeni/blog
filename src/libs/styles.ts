@@ -60,3 +60,6 @@ export const shortcuts = {
 // prettier-ignore
 export const breakpoints = { xs: '480px', sm: '640px', md: '768px', lg: '1024px', xl: '1280px', xxl: '1536px' }
 export const rules = [['w-extend', { width: 'calc(100% + 2rem)' }]] as Rule[]
+
+// prettier-ignore
+export const safelist = ['bg-blue-4', 'bg-green-4', 'bg-red-4', 'bg-yellow-4', 'bg-purple-4']

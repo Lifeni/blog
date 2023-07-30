@@ -29,6 +29,7 @@
     "@unocss/transformer-directives": "^0.54.0",
     "@unocss/transformer-variant-group": "^0.54.0",
     "astro": "^2.9.6",
+    "astro-compress": "^1.1.50",
     "astro-rome": "^0.1.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -10,7 +10,14 @@ import directives from '@unocss/transformer-directives'
 import variant from '@unocss/transformer-variant-group'
 import { presetScrollbar } from 'unocss-preset-scrollbar'
 
-import { breakpoints, colors, fonts, rules, shortcuts } from './src/libs/styles'
+import {
+  breakpoints,
+  fonts,
+  rules,
+  shortcuts,
+  colors,
+  safelist,
+} from './src/libs/styles'
 
 export default defineConfig({
   presets: [
@@ -24,4 +31,5 @@ export default defineConfig({
   theme: { fontFamily: fonts, colors, breakpoints },
   shortcuts,
   rules,
+  safelist,
 })
