@@ -1,0 +1,38 @@
+---
+import { wallpapers } from '../../../libs/wallpapers'
+import { Time } from './Time'
+
+const wallpaper = wallpapers[0]
+---
+
+<div flex="~ col">
+  <div
+    position="relative"
+    w="full"
+    h="48 xs:64 sm:80"
+    p="x-5 y-4"
+    flex="~ row items-center justify-center"
+    border="~ 1 color-line"
+    shadow="lg"
+    bg="muted"
+    rounded="md"
+    overflow="hidden"
+  >
+    <Time client:only="react" />
+    <img
+      src={wallpaper.href}
+      alt={wallpaper.copyright}
+      position="absolute"
+      z="0"
+      left="0"
+      top="0"
+      w="full"
+      h="full"
+      object="cover"
+      filter="dark:brightness-85"
+    />
+  </div>
+  <div flex="~ row items-center justify-end" w="full" p="x-1 y-2.5">
+    <span text="subtle xs">{wallpaper.copyright}</span>
+  </div>
+</div>

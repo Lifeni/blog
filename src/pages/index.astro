@@ -2,11 +2,11 @@
 import Layout from '../components/Layout.astro'
 import Section from '../components/layout/Section.astro'
 
-import { Wallpapers } from '../components/dashboard/Wallpapers'
 import Friends from '../components/dashboard/Friends.astro'
 import Links from '../components/dashboard/Links.astro'
 import Articles from '../components/dashboard/lists/Articles.astro'
 import Stories from '../components/dashboard/lists/Stories.astro'
+import Wallpapers from '../components/dashboard/wallpapers/Wallpapers.astro'
 
 export const prerender = true
 ---
@@ -14,7 +14,7 @@ export const prerender = true
 <Layout>
   <div w="full" flex="~ 1 col items-center justify-start gap-6 sm:gap-8" p="4">
     <Section>
-      <Wallpapers client:load />
+      <Wallpapers />
     </Section>
 
     <Section
@@ -68,3 +68,4 @@ export const prerender = true
     </Section>
   </div>
 </Layout>
+../components/dashboard/Time
