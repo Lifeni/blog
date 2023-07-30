@@ -25,7 +25,15 @@ export const Time = () => {
   useInterval(() => setNow(getNow()), 1000 * 3, { immediate: true })
 
   return (
-    <div z="10" w="full" h="full" flex="~ col" select="none" text="dark">
+    <div
+      w="full"
+      h="full"
+      z="10"
+      flex="~ col"
+      select="none"
+      text="dark"
+      animate="fade-in duration-200 ease"
+    >
       <span text="sm" font="700">
         <span m="r-2">{date}</span>
         <span>{week}</span>
