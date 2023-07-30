@@ -1,8 +1,8 @@
 ---
 import Layout from '../components/Layout.astro'
-import Section from '../components/base/Section.astro'
+import Section from '../components/layout/Section.astro'
 
-import Dashboard from '../components/dashboard/Dashboard.astro'
+import { Wallpapers } from '../components/dashboard/Wallpapers'
 import Friends from '../components/dashboard/Friends.astro'
 import Links from '../components/dashboard/Links.astro'
 import Articles from '../components/dashboard/lists/Articles.astro'
@@ -14,7 +14,7 @@ export const prerender = true
 <Layout>
   <div w="full" flex="~ 1 col items-center justify-start gap-6 sm:gap-8" p="4">
     <Section>
-      <Dashboard />
+      <Wallpapers />
     </Section>
 
     <Section
@@ -22,7 +22,7 @@ export const prerender = true
       icon="icon-tabler:book"
       action={{
         href: '/article',
-        icon: 'icon-tabler:arrow-right',
+        icon: 'icon-tabler:list-search',
         name: '更多文章',
       }}
     >
@@ -34,7 +34,7 @@ export const prerender = true
       icon="icon-tabler:message-2"
       action={{
         href: '/story',
-        icon: 'icon-tabler:arrow-right',
+        icon: 'icon-tabler:message-2-search',
         name: '更多专题',
       }}
     >
@@ -42,7 +42,15 @@ export const prerender = true
     </Section>
 
     <Section type="grid">
-      <Section name="朋友" icon="icon-tabler:circles-relation">
+      <Section
+        name="朋友"
+        icon="icon-tabler:circles-relation"
+        action={{
+          href: 'mailto:liangfengning@foxmail.com',
+          icon: 'icon-tabler:mail',
+          name: '邮件联系',
+        }}
+      >
         <Friends />
       </Section>
 
@@ -50,9 +58,9 @@ export const prerender = true
         name="更多"
         icon="icon-tabler:apps"
         action={{
-          href: 'mailto:liangfengning@foxmail.com',
-          icon: 'icon-tabler:mail',
-          name: '邮件联系',
+          href: '/lab/wechat',
+          icon: 'icon-tabler:at',
+          name: '微信公众号',
         }}
       >
         <Links />

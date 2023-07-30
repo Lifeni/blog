@@ -23,7 +23,7 @@ const { name, type, action, icon } = Astro.props
           id={name}
           text="xl"
           font="900"
-          flex="~ row gap-4 items-center"
+          flex="~ row gap-3 items-center"
           p="x-2 sm:x-0"
         >
           {icon && <span class={icon} w="6" h="6" text="main" />}
@@ -41,7 +41,7 @@ const { name, type, action, icon } = Astro.props
 
   {
     type === 'card' ? (
-      <div w="full" border="~ 1 color-line" bg="muted" rounded="md">
+      <div w="full" border="~ 1 color-line" bg="muted" shadow="lg" rounded="md">
         <slot />
       </div>
     ) : type === 'grid' ? (
@@ -49,7 +49,9 @@ const { name, type, action, icon } = Astro.props
         <slot />
       </div>
     ) : (
-      <slot />
+      <div w="full" flex="~ col">
+        <slot />
+      </div>
     )
   }
 </section>

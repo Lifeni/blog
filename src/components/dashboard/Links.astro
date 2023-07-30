@@ -1,13 +1,4 @@
 ---
-import { getImage } from 'astro:assets'
-
-const router = await getImage({
-  src: 'https://iokl.link/favicon.svg',
-  format: 'svg',
-  width: 1024,
-  height: 1024,
-})
-
 const links = [
   {
     name: '代码可行',
@@ -33,7 +24,7 @@ const links = [
   {
     name: '随意链接',
     href: 'https://iokl.link',
-    icon: router.src,
+    icon: '/link.svg',
     id: 'router',
     color: 'bg-purple-4',
   },
@@ -63,12 +54,12 @@ const links = [
       >
         <div flex="~ row items-center gap-2">
           <span class={color} w="1" h="4.5" rounded="md" />
-          <h2 text="main" font="900" z="5" leading="7">
+          <h2 text="main" font="900" z="5" leading="6">
             {name}
           </h2>
         </div>
-        <code text="subtle sm" font="mono" leading="5" z="5">
-          /{id}
+        <code text="subtle xs" font="mono" leading="4" z="5">
+          {'->'} {id}
         </code>
         <img
           src={icon}
@@ -78,6 +69,7 @@ const links = [
           w="28"
           h="28"
           z="10"
+          bg="muted"
           rounded="full"
           filter="drop-shadow-lg"
           transition="all duration-250"

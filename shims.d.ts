@@ -30,5 +30,7 @@ declare module 'react' {
     top?: string
     bottom?: string
     scrollbar?: string
+    object?: string
+    leading?: string
   }
 }
