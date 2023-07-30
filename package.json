@@ -28,6 +28,7 @@
     "@unocss/reset": "^0.54.0",
     "@unocss/transformer-directives": "^0.54.0",
     "@unocss/transformer-variant-group": "^0.54.0",
+    "ahooks": "^3.7.8",
     "astro": "^2.9.6",
     "astro-compress": "^1.1.50",
     "astro-rome": "^0.1.18",
@@ -42,8 +43,7 @@
     "@fontsource-variable/jetbrains-mono": "^5.0.6",
     "@fontsource/noto-sans-sc": "^5.0.5",
     "medium-zoom": "^1.0.8",
-    "remeda": "^1.24.0",
-    "usehooks-ts": "^2.9.1"
+    "remeda": "^1.24.0"
   },
   "pnpm": {
     "patchedDependencies": {

@@ -1,14 +1,10 @@
+import { useEventListener } from 'ahooks'
 import { useEffect, useRef, useState } from 'react'
-import { useEventListener } from 'usehooks-ts'
 
 export const Indicator = ({ paper }: { paper?: boolean }) => {
   const [percent, setPercent] = useState(0)
   const indicator = useRef<HTMLDivElement>(null)
   const progress = useRef<HTMLDivElement>(null)
-
-  useEffect(() => calc(), [])
-  useEventListener('scroll', () => calc())
-  useEventListener('resize', () => calc())
 
   const calc = () => {
     if (!indicator.current || !progress.current) return
@@ -22,6 +18,10 @@ export const Indicator = ({ paper }: { paper?: boolean }) => {
         : (scrollTop / (scrollHeight - innerHeight)) * 100
     )
   }
+
+  useEffect(() => calc(), [])
+  useEventListener('scroll', calc, { target: indicator })
+  useEventListener('resize', calc, { target: indicator })
 
   return (
     <div

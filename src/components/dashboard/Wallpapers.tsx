@@ -1,5 +1,5 @@
+import { useInterval } from 'ahooks'
 import { useState } from 'react'
-import { useInterval } from 'usehooks-ts'
 import { wallpapers } from '../../libs/wallpapers'
 
 interface Now {
