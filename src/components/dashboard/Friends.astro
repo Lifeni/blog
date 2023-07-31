@@ -16,23 +16,27 @@ const friends = [
 
 <div flex="~ col gap-5 sm:gap-3" p="b-5 sm:b-0">
   <p m="t--1" p="x-2 sm:x-0" text="subtle sm justify" leading="6.5">
-    这些是我的朋友，欢迎去他们的网站看看，
-    <br />
-    也可以去导航栏点击 <span
-      class="icon-tabler:route"
-      w="4"
-      h="4"
-      m="b-0.75"
-      display="inline-block"
-      align="middle"></span> 开往 随机前往下一个网站，
-    <br />
-    或者通过 <span
-      class="icon-tabler:mail"
-      w="4"
-      h="4"
-      m="b-0.75"
-      display="inline-block"
-      align="middle"></span> 邮件 联系我。
+    这些是我的朋友，有时间欢迎去他们的网站看看，或者可以点击上方导航栏的
+    <span text="hover:link" cursor="default" transition="colors">
+      <span
+        class="icon-tabler:route"
+        w="4.5"
+        h="4.5"
+        m="b-0.75"
+        display="inline-block"
+        align="middle"></span> 开往
+    </span> 随机前往另一个网站，另外也可以通过
+    <span text="hover:link" cursor="default" transition="colors">
+      <span
+        class="icon-tabler:mail"
+        w="4.5"
+        h="4.5"
+        m="b-0.75"
+        display="inline-block"
+        align="middle"></span>
+      邮件
+    </span>
+    找到我。
   </p>
 
   <div w="full" grid="~ cols-5 xs:cols-6 sm:cols-5 gap-4">

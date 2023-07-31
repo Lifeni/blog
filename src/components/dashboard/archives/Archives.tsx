@@ -125,7 +125,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
         flex="~ col 1"
         rounded="b-md sm:r-md"
         overflow="y-auto"
-        scrollbar="~ rounded main"
+        scrollbar="sm:~ sm:rounded sm:main"
         tabIndex={-1}
       >
         {results.length === 0 ? (

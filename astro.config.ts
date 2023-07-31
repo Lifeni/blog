@@ -20,6 +20,7 @@ export default defineConfig({
     rome(),
     compress(),
   ],
+  markdown: { shikiConfig: { theme: 'css-variables' } },
   server: { port: 8000, host: true },
   redirects: { '/router': 'https://iokl.link' },
   publicDir: 'assets',

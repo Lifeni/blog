@@ -7,10 +7,10 @@ const production = import.meta.env.MODE === 'production'
 
 export interface Props {
   mode?: 'grid' | 'list'
-  limit?: number
-  id: string
   name: string
+  id: string
   contents: MDXInstance<Article>[] | MDXInstance<Story>[]
+  limit?: number
 }
 
 const { mode = 'list', limit, id, name, contents } = Astro.props
@@ -24,6 +24,7 @@ const { mode = 'list', limit, id, name, contents } = Astro.props
       flex="~ col items-center justify-center"
       border="~ 1 color-line"
       bg="muted"
+      shadow="lg"
       rounded="md"
     >
       <h2 text="subtle">暂时没有{name}</h2>
@@ -35,9 +36,7 @@ const { mode = 'list', limit, id, name, contents } = Astro.props
       p="x-4 b-5 sm:b-0"
       flex={mode === 'grid' ? 'none' : '~ sm:grid'}
       grid={
-        mode === 'grid'
-          ? '~ cols-1 sm:cols-2 gap-x-4 gap-y-5'
-          : 'sm:~ sm:cols-2 gap-x-4 gap-y-5'
+        mode === 'grid' ? '~ cols-1 sm:cols-2 gap-4' : 'sm:~ sm:cols-2 gap-4'
       }
       overflow="x-auto sm:unset"
     >

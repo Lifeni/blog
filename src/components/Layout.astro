@@ -30,7 +30,7 @@ const {
 ---
 
 <!DOCTYPE html>
-<html lang="zh-hans">
+<html lang="zh-hans" overflow="auto">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -54,7 +54,7 @@ const {
     bg={theme === 'paper' ? 'paper' : 'main'}
     overflow="x-hidden y-overlay"
     scroll="smooth"
-    scrollbar="~ rounded main"
+    scrollbar="sm:~ sm:rounded sm:main"
   >
     <Header title={title} favicon={favicon} app={app} theme={theme} />
     <main w="full" flex="~ 1 col">
