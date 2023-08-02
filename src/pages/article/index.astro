@@ -4,6 +4,7 @@ import Section from '../../components/layout/Section.astro'
 
 import Articles from '../../components/dashboard/lists/Articles.astro'
 import Archives from '../../components/dashboard/archives/Archives.astro'
+import Statistics from '../../components/dashboard/archives/Statistics.astro'
 
 export const prerender = true
 ---
@@ -30,6 +31,7 @@ export const prerender = true
         icon: 'icon-tabler:history',
       }}
     >
+      <Statistics />
       <Archives />
     </Section>
   </div>

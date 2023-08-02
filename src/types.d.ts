@@ -23,5 +23,7 @@ export interface Frontmatter {
   }
 }
 
-export type Article = Frontmatter & {}
+export type Article = Frontmatter & {
+  subtitle?: string
+}
 export type Story = Frontmatter & {}

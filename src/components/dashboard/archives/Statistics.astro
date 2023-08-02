@@ -1,0 +1,39 @@
+---
+import { filter } from 'remeda'
+import { unify } from '../../../libs/utils'
+import type { Article, Archive } from '../../../types'
+
+const articles = await Astro.glob<Article>('../../../notebook/文章/*.mdx')
+const archives = unify(
+  await Astro.glob<Archive>('../../../notebook/存档/**/*.md')
+)
+
+const cards = [
+  { name: '所有', content: articles.length + archives.length },
+  { name: '文章', content: articles.length },
+  { name: '存档', content: archives.length },
+  { name: '草稿', content: articles.filter(a => a.frontmatter.draft).length },
+]
+---
+
+<div w="full" grid="~ cols-2 xs:cols-4 gap-4">
+  {
+    cards.map(({ name, content }) => (
+      <div
+        flex="~ col items-start gap-1"
+        p="x-4 y-3"
+        border="~ 1 color-line"
+        rounded="md"
+        bg="muted"
+        shadow="lg"
+      >
+        <h2 text="sm subtle" font="700">
+          {name}
+        </h2>
+        <span text="2xl" font="700">
+          {content}
+        </span>
+      </div>
+    ))
+  }
+</div>

@@ -85,11 +85,11 @@ export const Archives = ({ groups }: ArchivesProps) => {
                 bg={`hover:subtle ${
                   y === filter ? 'subtle sm:transparent' : 'transparent'
                 }`}
-                text="truncate main"
+                text={`truncate ${y === filter ? 'main' : 'subtle'}`}
                 font={`mono ${y === filter ? '900' : '500'}`}
                 rounded="md focus-visible:sm"
                 outline="~ none focus-visible:(4 yellow offset-0)"
-                transition="background-color"
+                transition="colors"
               >
                 <span flex="1" text="start">
                   {y}
