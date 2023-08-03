@@ -53,6 +53,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
         flex="~ col"
         border="~ 0 b-1 sm:r-1 sm:b-0 color-line"
         w="full sm:48"
+        h="sm:full"
       >
         <input
           type="search"
@@ -73,6 +74,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
           p="2"
           border="~ 0 sm:t-1 color-line"
           flex="~ row sm:col"
+          h="sm:full"
           overflow="auto"
         >
           {years.map(y => (
@@ -85,7 +87,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
                 bg={`hover:subtle ${
                   y === filter ? 'subtle sm:transparent' : 'transparent'
                 }`}
-                text={`truncate ${y === filter ? 'main' : 'subtle'}`}
+                text="truncate main"
                 font={`mono ${y === filter ? '900' : '500'}`}
                 rounded="md focus-visible:sm"
                 outline="~ none focus-visible:(4 yellow offset-0)"
@@ -119,6 +121,31 @@ export const Archives = ({ groups }: ArchivesProps) => {
               </button>
             </li>
           ))}
+
+          <li w="full" display="none sm:flex" flex="1 col justify-end">
+            <a
+              href="https://web.archive.org/web/*/lifeni.life"
+              target="_blank"
+              rel="noopener noreferrer"
+              w="full"
+              flex="~ row items-center justify-start gap-2"
+              p="x-3 y-2"
+              bg="hover:subtle"
+              text="truncate subtle sm"
+              font="500 sans"
+              rounded="md focus-visible:sm"
+              outline="~ none focus-visible:(4 yellow offset-0)"
+              transition="colors"
+            >
+              <span
+                className="icon-tabler:history"
+                w="4.5"
+                h="4.5"
+                flex="~"
+              ></span>
+              <span>Wayback Machine</span>
+            </a>
+          </li>
         </ul>
       </div>
       <div

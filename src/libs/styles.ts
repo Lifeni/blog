@@ -34,7 +34,7 @@ export const colors = {
 export const shortcuts = {
   'text-main': 'text-light-9 dark:text-dark-0',
   'text-subtle': 'text-light-5 dark:text-dark-3',
-  'text-icon': 'text-light-4 dark:text-dark-4',
+  'text-icon': 'text-light-1 dark:text-dark-7',
   'text-link': 'text-indigo-5 dark:text-indigo-4',
   'text-light': 'text-light-9',
   'text-light-subtle': 'text-light-3 dark:text-dark-3',

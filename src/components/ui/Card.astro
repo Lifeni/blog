@@ -62,7 +62,7 @@ const date =
   >
     <div flex="~ row items-center gap-2.5">
       {
-        type === 'article' && frontmatter?.draft && (
+        frontmatter?.draft && (
           <span
             text="sm light"
             p="x-1 y-0.5"
@@ -86,19 +86,17 @@ const date =
         <h2 w="full" font="900">
           {frontmatter.name}
         </h2>
-
-        {
-          type === 'story' && (
-            <span text="xl" font="900">
-              #{frontmatter.id}
-            </span>
-          )
-        }
       </a>
-
+      {
+        type === 'story' && (
+          <span text="xl subtle" font="700">
+            #{frontmatter.id}
+          </span>
+        )
+      }
       {
         type === 'article' && (frontmatter as Article)?.subtitle && (
-          <span text="xl subtle" font="500">
+          <span text="xl subtle" font="700">
             {(frontmatter as Article).subtitle}
           </span>
         )
