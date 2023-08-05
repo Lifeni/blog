@@ -14,6 +14,7 @@ declare global {
       scrollbar?: string
       object?: string
       leading?: string
+      float?: string
     }
   }
 }

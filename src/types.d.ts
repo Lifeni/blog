@@ -11,11 +11,13 @@ export interface Frontmatter {
   name: string
   description: string
   id: string
+  draft?: boolean
+  color?: string
   cover?: {
     image: string
     copyright: string
   }
-  draft?: boolean
+  icon?: string
   license: string
   date: {
     created: string
@@ -25,5 +27,6 @@ export interface Frontmatter {
 
 export type Article = Frontmatter & {
   subtitle?: string
+  tags?: string[]
 }
 export type Story = Frontmatter & {}

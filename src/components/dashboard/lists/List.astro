@@ -8,7 +8,7 @@ const production = import.meta.env.MODE === 'production'
 export interface Props {
   mode?: 'grid' | 'list'
   name: string
-  id: string
+  id: 'article' | 'story'
   contents: MDXInstance<Article>[] | MDXInstance<Story>[]
   limit?: number
 }

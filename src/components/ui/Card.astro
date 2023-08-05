@@ -2,12 +2,24 @@
 import { image, time } from '../../libs/utils'
 import type { Article, Story } from '../../types'
 
-export interface Props {
-  type: 'article' | 'story' | string
+type BaseProps = {
+  type: string
   href: string
   mode?: 'grid' | 'list'
   frontmatter: Article | Story
 }
+
+type ArticleProps = {
+  type: 'article'
+  frontmatter: Article
+} & BaseProps
+
+type StoryProps = {
+  type: 'story'
+  frontmatter: Story
+} & BaseProps
+
+export type Props = ArticleProps | StoryProps
 
 const { type, href, frontmatter, mode = 'list' } = Astro.props
 const date =
@@ -26,11 +38,11 @@ const date =
     {href}
     tabindex="-1"
     class="group"
+    position="relative"
     flex="1"
     w="full"
     h="48"
     min-h="48"
-    filter="dark:brightness-85"
     bg="muted"
     border="~ 1 color-line"
     shadow="lg hover:xl"
@@ -42,69 +54,100 @@ const date =
       frontmatter?.cover && (
         <img
           src={image(frontmatter.cover.image)}
-          alt={`${frontmatter.name} | ${frontmatter.cover.copyright}`}
+          alt={`「${frontmatter.name}」${frontmatter.cover.copyright}`}
+          title={`「${frontmatter.name}」${frontmatter.cover.copyright}`}
           transform="~ scale-100 group-hover:scale-105"
           w="full"
           h="48"
           rounded="md"
           object="center cover"
+          filter="dark:brightness-85"
           transition="transform duration-250"
         />
+      )
+    }
+
+    {
+      frontmatter?.icon && (
+        <span
+          position="absolute"
+          z="10"
+          left="4"
+          bottom="4"
+          filter="drop-shadow-lg"
+        >
+          <span class={frontmatter.icon} w="8" h="8" flex="~" text="dark" />
+        </span>
       )
     }
   </a>
   <div
     position="relative"
     z="10"
-    flex="~ col gap-1 items-start"
+    flex="~ row gap-3 items-center"
     p="x-2 sm:x-0"
     rounded="b-md"
   >
-    <div flex="~ row items-center gap-2.5">
-      {
-        frontmatter?.draft && (
-          <span
-            text="sm light"
-            p="x-1 y-0.5"
-            m="r-0.5"
-            font="700"
-            bg="yellow"
-            rounded="sm"
-          >
-            草稿
-          </span>
-        )
-      }
-      <a
-        {href}
-        rounded="sm"
-        outline="~ none focus-visible:(4 yellow offset-2)"
-        flex="~ row items-center gap-2.5"
-        text="xl main hover:link"
-        transition="colors"
-      >
-        <h2 w="full" font="900">
-          {frontmatter.name}
-        </h2>
-      </a>
-      {
-        type === 'story' && (
-          <span text="xl subtle" font="700">
-            #{frontmatter.id}
-          </span>
-        )
-      }
-      {
-        type === 'article' && (frontmatter as Article)?.subtitle && (
-          <span text="xl subtle" font="700">
-            {(frontmatter as Article).subtitle}
-          </span>
-        )
-      }
-    </div>
+    {
+      type === 'story' && (
+        <span
+          class={frontmatter.color}
+          w="1.5"
+          min-w="1.5"
+          h="14"
+          rounded="md"
+        />
+      )
+    }
+    <div w="full" flex="~ col gap-1 items-start 1">
+      <div w="full" flex="~ row items-center gap-2.5">
+        {
+          type === 'article' && frontmatter.tags && (
+            <span
+              class={frontmatter.color || 'bg-yellow'}
+              text="sm light"
+              p="x-1.5 y-0.5"
+              m="r-0.5"
+              font="900"
+              flex="~ items-center"
+              rounded="sm"
+            >
+              {frontmatter.tags[0]}
+            </span>
+          )
+        }
 
-    <p w="full" text="sm truncate subtle" leading="6">
-      {frontmatter.description}
-    </p>
+        <a
+          {href}
+          rounded="sm"
+          outline="~ none focus-visible:(4 yellow offset-2)"
+          flex="~ row items-center gap-2"
+          text="xl main hover:link truncate"
+          transition="colors"
+        >
+          <h2 font="900">{frontmatter.name}</h2>
+          {type === 'story' && <span font="900">#{frontmatter.id}</span>}
+        </a>
+
+        {
+          type === 'article' && (
+            <span text="xl subtle" font="500">
+              {frontmatter.subtitle}
+            </span>
+          )
+        }
+      </div>
+
+      <p w="full" text="sm truncate subtle" leading="6">
+        <span>{frontmatter.description}</span>
+        {
+          type === 'story' && (
+            <span float="right" font="mono">
+              {'-->'}
+            </span>
+          )
+        }
+      </p>
+    </div>
   </div>
 </div>

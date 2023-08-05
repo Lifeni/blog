@@ -172,7 +172,7 @@ export const Archives = ({ groups }: ArchivesProps) => {
                 <a
                   href={`/article/${frontmatter.id}`}
                   w="full"
-                  flex="~ row items-center justify-start gap-4"
+                  flex="~ row items-center justify-start gap-3"
                   p="x-3 y-2"
                   bg="hover:subtle"
                   text="truncate"
@@ -192,13 +192,13 @@ export const Archives = ({ groups }: ArchivesProps) => {
                   <span text="sm truncate" font="700">
                     {frontmatter?.draft && (
                       <span
+                        className={frontmatter.color || 'bg-yellow'}
                         text="xs light"
-                        m="r-2"
+                        m="r-3"
                         p="x-1 y-0.5"
-                        bg="yellow"
                         rounded="sm"
                       >
-                        草稿
+                        {frontmatter.tags[0]}
                       </span>
                     )}
 
