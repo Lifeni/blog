@@ -5,7 +5,7 @@ import { Time } from './Time'
 const wallpaper = wallpapers[0]
 ---
 
-<div flex="~ col gap-2.5">
+<figure flex="~ col items-end gap-2.5">
   <div
     position="relative"
     w="full"
@@ -28,11 +28,11 @@ const wallpaper = wallpapers[0]
       top="0"
       w="full"
       h="full"
-      object="cover"
+      object="center cover"
       filter="dark:brightness-85"
     />
   </div>
-  <div flex="~ row items-center justify-end" w="full" p="x-1">
-    <span text="subtle xs">{wallpaper.copyright}</span>
-  </div>
-</div>
+  <figcaption p="x-1" text="subtle xs">
+    {wallpaper.copyright}
+  </figcaption>
+</figure>

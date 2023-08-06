@@ -17,7 +17,7 @@ import {
   shortcuts,
   colors,
   safelist,
-} from './src/libs/styles'
+} from './src/libs/styles/styles'
 
 export default defineConfig({
   presets: [

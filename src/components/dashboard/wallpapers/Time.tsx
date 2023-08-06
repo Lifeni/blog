@@ -34,11 +34,11 @@ export const Time = () => {
       text="dark"
       animate="fade-in duration-200 ease"
     >
-      <span text="sm" font="700">
+      <span text="sm" font="700" leading="6">
         <span m="r-2">{date}</span>
         <span>{week}</span>
       </span>
-      <span className="text-2xl" font="700" leading="8">
+      <span className="text-2xl" font="700" leading="7 sm:8">
         {time}
       </span>
     </div>

@@ -36,18 +36,20 @@ export const shortcuts = {
   'text-subtle': 'text-light-5 dark:text-dark-3',
   'text-icon': 'text-light-1 dark:text-dark-7',
   'text-link': 'text-indigo-5 dark:text-indigo-4',
+  'text-muted': 'text-light-6 dark:text-dark-2',
+
   'text-light': 'text-light-9',
   'text-light-subtle': 'text-light-3 dark:text-dark-3',
   'text-dark': 'text-dark-0',
   'text-dark-subtle': 'text-light-3 dark:text-dark-3',
-  'text-muted': 'text-light-6 dark:text-dark-2',
 
   'bg-main': 'bg-light-0 dark:bg-dark-9',
   'bg-line': 'bg-light-9 dark:bg-dark-0',
+  'bg-code': 'bg-light-0 dark:bg-dark-8',
   'bg-gradient':
     'bg-gradient-radial bg-light-0 dark:bg-gradient-from-dark-8 dark:bg-gradient-to-dark-9',
-  'bg-subtle': 'bg-light-0 dark:bg-dark-7',
   'bg-muted': 'bg-white dark:bg-dark-8',
+  'bg-subtle': 'bg-light-0 dark:bg-dark-7',
   'bg-paper': 'bg-white dark:bg-dark-9',
   'bg-action': 'bg-light-1 dark:bg-dark-7',
 
@@ -59,7 +61,10 @@ export const shortcuts = {
 
 // prettier-ignore
 export const breakpoints = { xs: '480px', sm: '640px', md: '768px', lg: '1024px', xl: '1280px', xxl: '1536px' }
-export const rules = [['w-extend', { width: 'calc(100% + 2rem)' }]] as Rule[]
+export const rules = [
+  ['w-extend', { width: 'calc(100% + 2rem)' }],
+  ['rounded-base', { 'border-radius': '0.25rem' }],
+] as Rule[]
 
 // prettier-ignore
 export const safelist = ['bg-blue-4', 'bg-green-4', 'bg-red-4', 'bg-yellow-4', 'bg-purple-4']

@@ -2,7 +2,9 @@
 import type { MDXInstance } from 'astro'
 import Layout from '../../components/Layout.astro'
 import type { Article } from '../../types.d'
-import { unify } from '../../libs/utils'
+import { unify, image, date } from '../../libs/utils'
+
+import '../../libs/styles/markdown.less'
 
 export async function getStaticPaths() {
   const production = import.meta.env.MODE === 'production'
@@ -22,7 +24,9 @@ export async function getStaticPaths() {
   return output([...articles, ...archives])
 }
 
-const { frontmatter, Content } = Astro.props.article
+const { frontmatter, Content } = Astro.props.article as MDXInstance<Article>
+const caption =
+  frontmatter?.cover && `「${frontmatter.name}」${frontmatter.cover.copyright}`
 export const prerender = true
 ---
 
@@ -33,7 +37,78 @@ export const prerender = true
   theme="paper"
 >
   <div w="full" flex="~ 1 col items-center justify-start" p="4">
-    <article w="full" max-w="2xl" text="base" p="x-2">
+    <article
+      class="markdown"
+      w="full"
+      max-w="2xl"
+      text="base"
+      p="x-2"
+      prose-h1="text-md"
+    >
+      <p class="meta" w="full" flex="~ row items-center gap-2.5" m="y-2">
+        {
+          frontmatter.tags ? (
+            <span
+              class={frontmatter.color || 'bg-yellow-400'}
+              text="sm light"
+              p="x-1.5 y-0.5"
+              m="r-0.5"
+              font="900"
+              flex="~ items-center"
+              rounded="base"
+            >
+              {frontmatter.tags[0]}
+            </span>
+          ) : (
+            <span
+              text="sm light"
+              p="x-1.5 y-0.5"
+              m="r-0.5"
+              font="900"
+              flex="~ items-center"
+              bg="yellow-400"
+              rounded="base"
+            >
+              存档
+            </span>
+          )
+        }
+        <time flex="1" font="700">{date(frontmatter.date)}</time>
+      </p>
+
+      <h1 text="4xl" leading="normal" flex="~">
+        <span font="900">{frontmatter.name}</span>
+        {
+          frontmatter.subtitle && (
+            <span text="subtle" m="x-4">
+              {frontmatter.subtitle}
+            </span>
+          )
+        }
+      </h1>
+
+      <p class="meta" m="y-2">{frontmatter.description}</p>
+
+      {
+        frontmatter?.cover && (
+          <section flex="~ col items-end gap-2.5" w="extend" m="x--4 y-8">
+            <img
+              src={image(frontmatter.cover.image)}
+              alt={caption}
+              class="cover aspect-ratio-16/9"
+              bg="muted"
+              border="~ 1 color-line"
+              shadow="lg"
+              rounded="md"
+              object="center cover"
+              filter="dark:brightness-85"
+            />
+          </section>
+        )
+      }
+
+      <hr m="y-8" border="color-line" />
+
       <Content />
     </article>
   </div>

@@ -190,13 +190,13 @@ export const Archives = ({ groups }: ArchivesProps) => {
                   </time>
 
                   <span text="sm truncate" font="700">
-                    {frontmatter?.draft && (
+                    {frontmatter?.tags && (
                       <span
-                        className={frontmatter.color || 'bg-yellow'}
+                        className={frontmatter.color || 'bg-yellow-400'}
                         text="xs light"
                         m="r-3"
                         p="x-1 y-0.5"
-                        rounded="sm"
+                        rounded="base"
                       >
                         {frontmatter.tags[0]}
                       </span>

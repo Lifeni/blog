@@ -30,5 +30,9 @@ export const time = (
     )} 日`
   return `${p(d.getMonth() + 1)}/${p(d.getDate())}`
 }
+export const date = (date: { created: string; updated: string }) =>
+  date.created === date.updated
+    ? `发布于 ${time(date.created, { calendar: true })}`
+    : `编辑于 ${time(date.updated, { calendar: true })}`
 
 export const image = (src: string) => `https://file.lifeni.life/notebook/${src}`

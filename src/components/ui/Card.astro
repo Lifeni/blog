@@ -20,12 +20,7 @@ type StoryProps = {
 } & BaseProps
 
 export type Props = ArticleProps | StoryProps
-
 const { type, href, frontmatter, mode = 'list' } = Astro.props
-const date =
-  frontmatter.date.created === frontmatter.date.updated
-    ? `发布于 ${time(frontmatter.date.created, { calendar: true })}`
-    : `编辑于 ${time(frontmatter.date.updated, { calendar: true })}`
 ---
 
 <div
@@ -104,13 +99,13 @@ const date =
         {
           type === 'article' && frontmatter.tags && (
             <span
-              class={frontmatter.color || 'bg-yellow'}
+              class={frontmatter.color || 'bg-yellow-400'}
               text="sm light"
               p="x-1.5 y-0.5"
               m="r-0.5"
               font="900"
               flex="~ items-center"
-              rounded="sm"
+              rounded="base"
             >
               {frontmatter.tags[0]}
             </span>
@@ -119,7 +114,7 @@ const date =
 
         <a
           {href}
-          rounded="sm"
+          rounded="base"
           outline="~ none focus-visible:(4 yellow offset-2)"
           flex="~ row items-center gap-2"
           text="xl main hover:link truncate"
