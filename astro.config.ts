@@ -23,7 +23,6 @@ export default defineConfig({
   markdown: { shikiConfig: { theme: 'css-variables' } },
   server: { port: 8000, host: true },
   redirects: { '/router': 'https://iokl.link' },
-  publicDir: 'assets',
   // https://github.com/withastro/astro/issues/7564
   output: 'server',
   adapter: vercel({ analytics: true }),
