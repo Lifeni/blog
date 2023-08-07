@@ -9,21 +9,31 @@
     --at-apply: text-xl font-700 my-6;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    code {
+      --at-apply: 'text-size-inherit!';
+    }
+  }
+
   p:not(.meta) {
     --at-apply: my-4;
   }
 
   a {
-    --at-apply: underline underline-offset-4 text-link;
+    --at-apply: 'rounded-sm underline underline-offset-4 text-link outline outline-none focus-visible:outline-4 focus-visible:outline-yellow focus-visible:outline-offset-4';
   }
 
   code:not(pre > code) {
-    --at-apply: border border-color-line text-sm font-mono bg-code rounded-base
-      px-2 py-1;
+    --at-apply: 'border border-color-line text-sm font-mono bg-code rounded-base px-1.5 py-0.75';
   }
 
   pre {
-    --at-apply: 'w-extend mx--4 my-4 border border-color-line text-sm font-mono rounded-base px-5 py-4 bg-code!';
+    --at-apply: 'w-extend mx--4 my-4 border border-color-line text-sm font-mono rounded-base px-5 py-4 bg-code! sm:scrollbar sm:scrollbar-rounded sm:scrollbar-main';
 
     code {
       --at-apply: text-sm font-mono leading-6;
@@ -37,7 +47,36 @@
   }
 
   table {
-    --at-apply: w-extend mx--4 my-4 border border-color-line rounded-md;
+    --at-apply: w-extend mx--4 my-4 border border-color-line rounded-md
+      border-separate border-spacing-0 table-auto text-center overflow-x-auto;
+
+    tr {
+      &:nth-of-type(even) {
+        --at-apply: bg-code;
+      }
+    }
+
+    tbody tr:last-of-type td {
+      --at-apply: border-b-0;
+    }
+
+    th,
+    td {
+      --at-apply: px-4 py-2 border-r-1 border-b-1 border-color-line text-left
+        text-justify break-words;
+
+      &:last-of-type {
+        --at-apply: border-r-0;
+      }
+
+      code {
+        --at-apply: whitespace-nowrap;
+      }
+    }
+
+    th {
+      --at-apply: font-700 bg-code;
+    }
   }
 }
 
