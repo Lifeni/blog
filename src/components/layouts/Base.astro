@@ -1,0 +1,21 @@
+---
+import '@fontsource/noto-sans-sc/500.css'
+import '@fontsource/noto-sans-sc/700.css'
+import '@fontsource/noto-sans-sc/900.css'
+import '@fontsource-variable/inter'
+import '@fontsource-variable/jetbrains-mono'
+---
+
+<!doctype html>
+<html lang="zh-hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <slot name="head" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+  </head>
+
+  <body>
+    <slot name="body" />
+  </body>
+</html>

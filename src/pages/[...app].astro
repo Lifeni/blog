@@ -1,0 +1,13 @@
+---
+import Paper from '@components/layouts/Paper.astro'
+
+const title = '找不到页面'
+const description = '你要找的页面也许并不存在。'
+
+export const prerender = true
+---
+
+<Paper {title} {description}>
+  <code>404</code>
+  <h1>{title}</h1>
+</Paper>
