@@ -1,0 +1,29 @@
+---
+import Base from '@components/layouts/Base.astro'
+
+export interface Props {
+  title: string
+  description: string
+  color?: string
+  favicon?: string
+}
+
+const {
+  title,
+  description,
+  color = '#f75248',
+  favicon = '/lab/favicon.svg',
+} = Astro.props
+---
+
+<Base>
+  <Fragment slot="head">
+    <title>Lab | {title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href={favicon} />
+    <meta name="theme-color" content={color} />
+  </Fragment>
+  <Fragment slot="body">
+    <slot />
+  </Fragment>
+</Base>

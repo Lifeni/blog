@@ -2,7 +2,7 @@
   "name": "blog",
   "description": "Just for Record",
   "private": true,
-  "version": "4.0.0",
+  "version": "5.0.0",
   "author": {
     "name": "Liang Fengning",
     "email": "liangfengning@foxmail.com"
@@ -12,40 +12,22 @@
   "scripts": {
     "build": "astro build",
     "dev": "astro dev",
-    "preview": "astro preview"
-  },
-  "devDependencies": {
-    "@astrojs/mdx": "^0.19.7",
-    "@astrojs/partytown": "^1.2.3",
-    "@astrojs/react": "^2.2.1",
-    "@astrojs/sitemap": "^2.0.1",
-    "@astrojs/vercel": "^3.8.0",
-    "@iconify-json/tabler": "^1.1.86",
-    "@types/react": "^18.2.18",
-    "@types/react-dom": "^18.2.7",
-    "@types/react-transition-group": "^4.4.6",
-    "@unocss/preset-icons": "^0.54.1",
-    "@unocss/reset": "^0.54.1",
-    "@unocss/transformer-directives": "^0.54.1",
-    "@unocss/transformer-variant-group": "^0.54.1",
-    "ahooks": "^3.7.8",
-    "astro": "^2.10.1",
-    "astro-compress": "^1.1.50",
-    "astro-rome": "^0.1.18",
-    "less": "^4.1.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-transition-group": "^4.4.5",
-    "rehype-external-links": "^2.1.0",
-    "rehype-rewrite": "^3.0.6",
-    "unocss": "^0.54.1",
-    "unocss-preset-scrollbar": "^0.2.1"
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@fontsource-variable/inter": "^5.0.7",
-    "@fontsource-variable/jetbrains-mono": "^5.0.8",
-    "@fontsource/noto-sans-sc": "^5.0.6",
+    "@astrojs/mdx": "^1.0.3",
+    "@astrojs/partytown": "^2.0.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/svelte": "^4.0.2",
+    "@astrojs/tailwind": "^5.0.0",
+    "@astrojs/vercel": "^4.0.5",
+    "@fontsource-variable/inter": "^5.0.8",
+    "@fontsource-variable/jetbrains-mono": "^5.0.13",
+    "@fontsource/noto-sans-sc": "^5.0.11",
+    "astro": "^3.0.12",
     "medium-zoom": "^1.0.8",
-    "remeda": "^1.24.0"
+    "svelte": "^4.2.0",
+    "tailwindcss": "^3.3.3"
   }
 }
