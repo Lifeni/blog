@@ -1,13 +1,55 @@
 ---
-import Paper from '@components/layouts/Paper.astro'
+import Content from '@components/layouts/Content.astro'
 
-const title = '找不到页面'
-const description = '你要找的页面也许并不存在。'
+export async function getStaticPaths() {
+  const apps = [
+    {
+      title: '代码可行',
+      description: '这里有一些我做过的开源项目。',
+      color: '#29b7f7',
+      favicon: '/dev/favicon.svg',
+      id: 'dev',
+    },
+    {
+      title: '越过长城',
+      description:
+        'Across the Great Wall we can reach every corner in the world.',
+      color: '#40d583',
+      favicon: '/server/favicon.svg',
+      id: 'server',
+    },
+  ]
 
+  return apps.map(({ id, ...props }) => ({
+    params: { app: id },
+    props: { id, ...props },
+  }))
+}
+
+const { id, title, description, color, favicon } = Astro.props
 export const prerender = true
 ---
 
-<Paper {title} {description}>
-  <code>404</code>
-  <h1>{title}</h1>
-</Paper>
+<Content {title} {description} {color} {favicon}>
+  <div class="flex flex-row items-center gap-4 select-none p-8">
+    <img
+      class="w-12 h-12 rounded-full shadow-lg"
+      src={favicon}
+      alt={`Logo | ${title}`}
+    />
+    <span class="w-[1px] h-12 bg-light-100 dark:bg-dark-700"></span>
+    <div class="flex flex-col gap-0.5">
+      <h1 class="text-2xl font-bold">{title}</h1>
+      <code class="text-sm text-light-500 dark:text-dark-400">
+        <a
+          class="hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
+          href="/"
+          title="返回主页"
+        >
+          {'..'}
+        </a>
+        <span>/{id}</span>
+      </code>
+    </div>
+  </div>
+</Content>

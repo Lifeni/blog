@@ -6,6 +6,7 @@ export interface Props {
   description?: string
   color?: string
   favicon?: string
+  type?: 'paper' | 'notebook'
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   description = '个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。',
   color = '#feec44',
   favicon = '/favicon.svg',
+  type = 'paper',
 } = Astro.props
 ---
 
@@ -23,7 +25,24 @@ const {
     <link rel="icon" href={favicon} />
     <meta name="theme-color" content={color} />
   </Fragment>
-  <Fragment slot="body">
-    <slot />
-  </Fragment>
+
+  {
+    type === 'paper' && (
+      <Fragment slot="body">
+        <main class="w-screen h-screen flex flex-col items-center justify-center">
+          <slot />
+        </main>
+      </Fragment>
+    )
+  }
+
+  {
+    type === 'notebook' && (
+      <Fragment slot="body">
+        <main class="w-screen h-screen flex flex-col items-center justify-center">
+          <slot />
+        </main>
+      </Fragment>
+    )
+  }
 </Base>
