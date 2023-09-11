@@ -1,5 +1,5 @@
 ---
-import Paper from '@components/layouts/Paper.astro'
+import Content from '@components/layouts/Content.astro'
 
 const title = '找不到页面'
 const description = '你要找的页面也许并不存在。'
@@ -7,7 +7,9 @@ const description = '你要找的页面也许并不存在。'
 export const prerender = true
 ---
 
-<Paper {title} {description}>
-  <code>404</code>
-  <h1>{title}</h1>
-</Paper>
+<Content {title} {description}>
+  <div class="flex flex-col items-center gap-2 select-none p-8">
+    <code class="font-sans text-8xl font-extrabold">404</code>
+    <h1 class="text-2xl">{title}</h1>
+  </div>
+</Content>
