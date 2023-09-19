@@ -3,13 +3,18 @@ import Content from '@components/layouts/Content.astro'
 
 const title = '找不到页面'
 const description = '你要找的页面也许并不存在。'
+const error = 404
 
 export const prerender = true
 ---
 
 <Content {title} {description}>
-  <div class="flex flex-col items-center gap-2 select-none p-8">
-    <code class="font-sans text-8xl font-extrabold">404</code>
+  <div class="flex flex-col items-center gap-3 select-none p-8">
+    <code
+      class="font-sans text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-br from-yellow-300 to-yellow-500 drop-shadow-xl"
+    >
+      {error}
+    </code>
     <h1 class="text-2xl">{title}</h1>
   </div>
 </Content>

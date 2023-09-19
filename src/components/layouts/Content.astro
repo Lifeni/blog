@@ -1,5 +1,6 @@
 ---
 import Base from '@components/layouts/Base.astro'
+import NavBar from '@components/layouts/NavBar.astro'
 
 export interface Props {
   title?: string
@@ -39,8 +40,18 @@ const {
   {
     type === 'notebook' && (
       <Fragment slot="body">
-        <main class="w-screen h-screen flex flex-col items-center justify-center">
-          <slot />
+        <main class="relative w-screen min-h-screen flex flex-row items-start justify-start">
+          <NavBar />
+
+          <div class="relative w-full min-h-screen flex flex-row flex-1 flex-nowrap items-start justify-between bg-white dark:bg-dark-800 shadow-xl gap-8">
+            <div class="w-full max-w-2xl">
+              <slot name="main" />
+            </div>
+
+            <aside class="sticky top-0 w-64">
+              <slot name="side" />
+            </aside>
+          </div>
         </main>
       </Fragment>
     )
