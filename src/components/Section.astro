@@ -1,0 +1,32 @@
+---
+import Card from '@components/Card.astro'
+import Divider from '@components/ui/Divider.astro'
+import type { Article } from 'src/types'
+
+export interface Props {
+  name: string
+  icon: string
+  items: { data: Article }[]
+}
+
+const { name, icon, items } = Astro.props
+const articles = items
+  .map(({ data }) => data)
+  .filter(({ draft }) => import.meta.env.DEV || !draft)
+  .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
+---
+
+<section id={name} class="w-full flex flex-col scroll-mt-12">
+  <ul class="w-full flex flex-col gap-6">
+    {
+      articles.map(({ ...props }, i) => (
+        <Fragment>
+          <Card type={name} {...props} />
+          {name === '存档' && i !== articles.length - 1 && (
+            <Divider color={1} />
+          )}
+        </Fragment>
+      ))
+    }
+  </ul>
+</section>

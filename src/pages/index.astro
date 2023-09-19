@@ -1,7 +1,36 @@
 ---
+import Section from '@components/Section.astro'
 import Content from '@components/layouts/Content.astro'
+import Divider from '@components/ui/Divider.astro'
+import { getCollection } from 'astro:content'
+
+const articles = await getCollection('文章')
+const stories = await getCollection('专题')
+const archives = (await getCollection('存档')).map(({ data, ...props }) => ({
+  ...props,
+  data: {
+    ...data,
+    name: data.title,
+    description: data.description,
+    id: data.name,
+    license: data.license,
+    date: {
+      created: data['create-date'],
+      updated: data.date,
+    },
+    cover: undefined,
+    tags: undefined,
+    subtitle: undefined,
+    draft: false,
+  },
+}))
 ---
 
-<Content>
-  <h1>hello</h1>
+<Content type="notebook">
+  <div slot="main" class="w-full flex flex-col gap-6 px-14 py-12">
+    <Section name="文章" icon="book" items={articles} />
+    <Section name="专题" icon="message-2" items={stories} />
+    <Divider color={1} />
+    <Section name="存档" icon="list-search" items={archives} />
+  </div>
 </Content>
