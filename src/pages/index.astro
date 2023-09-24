@@ -2,35 +2,87 @@
 import Section from '@components/Section.astro'
 import Content from '@components/layouts/Content.astro'
 import Divider from '@components/ui/Divider.astro'
+import { format } from '@libs/frontmatter'
 import { getCollection } from 'astro:content'
 
 const articles = await getCollection('文章')
 const stories = await getCollection('专题')
 const archives = (await getCollection('存档')).map(({ data, ...props }) => ({
   ...props,
-  data: {
-    ...data,
-    name: data.title,
-    description: data.description,
-    id: data.name,
-    license: data.license,
-    date: {
-      created: data['create-date'],
-      updated: data.date,
-    },
-    cover: undefined,
-    tags: undefined,
-    subtitle: undefined,
-    draft: false,
-  },
+  data: { ...data, ...format(data) },
 }))
+
+const friends = [
+  {
+    name: 'Nanako',
+    href: 'https://tanakarino.cn/',
+    avatar: 'Nanako.webp',
+    type: '无法访问',
+  },
+  {
+    name: 'bluebonnet27',
+    href: 'https://bluebonnet27.github.io/',
+    avatar: 'bluebonnet27.webp',
+    type: '暂停更新',
+  },
+  {
+    name: 'GluttonK',
+    href: 'https://blog.csdn.net/GluttonK/',
+    avatar: 'GluttonK.webp',
+    type: '暂停更新',
+  },
+  {
+    name: 'Wumbuk',
+    href: 'https://blog.csdn.net/qq_48081868/',
+    avatar: 'Wumbuk.webp',
+    type: '一切正常',
+  },
+  {
+    name: 'YueChen',
+    href: 'https://www.yuechen.xyz/',
+    avatar: 'YueChen.webp',
+    type: '一切正常',
+  },
+  {
+    name: 'ss967',
+    href: 'https://ssblog.top/',
+    avatar: 'ss967.webp',
+    type: '暂停更新',
+  },
+  {
+    name: 'Bakapiano',
+    href: 'https://bakapiano.github.io/',
+    avatar: 'Bakapiano.webp',
+    type: '暂停更新',
+  },
+]
 ---
 
 <Content type="notebook">
-  <div slot="main" class="w-full flex flex-col gap-6 px-14 py-12">
+  <div slot="main" class="w-full flex flex-col gap-6 px-12 py-10">
     <Section name="文章" icon="book" items={articles} />
     <Section name="专题" icon="message-2" items={stories} />
     <Divider color={1} />
     <Section name="存档" icon="list-search" items={archives} />
+
+    <section id="朋友" class="w-full flex flex-col scroll-mt-12">
+      <ul>
+        {
+          friends.map(({ name, href, avatar, type }) => (
+            <li class="group flex flex-col items-start gap-2 leading-7">
+              <a
+                class="truncate hover:underline underline-offset-4 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
+                href={href}
+              >
+                {name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+  <div slot="side" class="flex flex-col gap-6 py-8 px-10">
+    <h2 class="py-4 text-light-500 dark:text-dark-400"># 在这个页面上</h2>
   </div>
 </Content>

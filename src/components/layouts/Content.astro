@@ -40,19 +40,18 @@ const {
   {
     type === 'notebook' && (
       <Fragment slot="body">
-        <main class="relative w-screen min-h-screen flex flex-row items-start justify-start">
+        <div class="relative w-screen min-h-screen grid grid-cols-[20rem_1fr]">
           <NavBar />
 
-          <div class="relative w-full min-h-screen flex flex-row flex-1 flex-nowrap items-start justify-between bg-white dark:bg-dark-800 shadow-xl gap-8">
-            <div class="w-full max-w-2xl">
+          <main class="relative w-full flex flex-row items-start bg-white dark:bg-dark-800 shadow-xl">
+            <div class="w-full max-w-2xl flex-1">
               <slot name="main" />
             </div>
-
-            <aside class="sticky top-0 w-64">
+            <aside class="sticky top-0 w-full max-w-sm flex flex-row items-start h-screen overflow-y-auto scrollbar-none">
               <slot name="side" />
             </aside>
-          </div>
-        </main>
+          </main>
+        </div>
       </Fragment>
     )
   }

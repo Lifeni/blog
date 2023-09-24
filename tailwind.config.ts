@@ -1,4 +1,6 @@
 import type { Config } from 'tailwindcss'
+import typography from '@tailwindcss/typography'
+import scrollbar from 'tailwind-scrollbar'
 
 export default {
   content: ['./src/**/*.{astro,md,mdx,ts,tsx}'],
@@ -27,9 +29,9 @@ export default {
         'serif',
       ],
       mono: [
+        'Cascadia Mono',
         'JetBrains Mono Variable',
         'JetBrains Mono',
-        'Cascadia Mono',
         'Consolas',
         'Roboto Mono',
         'Fira Mono',
@@ -82,5 +84,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [typography, scrollbar],
 } satisfies Config

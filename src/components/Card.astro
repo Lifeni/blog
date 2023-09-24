@@ -1,4 +1,5 @@
 ---
+import { fileBaseUrl } from '@libs/const'
 import dayjs from 'dayjs'
 import type { Article } from 'src/types'
 
@@ -6,7 +7,6 @@ export interface Props extends Article {
   type?: '文章' | '专题' | string
 }
 
-const base = 'https://file.lifeni.life/notebook/'
 const {
   type = '文章',
   name,
@@ -25,7 +25,7 @@ const {
     cover && (
       <img
         class="w-full rounded-md aspect-video object-cover mb-4 shadow-xl"
-        src={`${base}${cover.image}`}
+        src={`${fileBaseUrl}${cover.image}`}
         alt={cover.caption}
       />
     )
@@ -59,7 +59,7 @@ const {
   </h2>
   <p>{description}</p>
   <span
-    class="py-0.5 flex flex-row gap-2 items-center text-sm text-light-600 dark:text-dark-200"
+    class="flex flex-row gap-2 items-center leading-6 text-sm text-light-600 dark:text-dark-200"
   >
     {
       tags ? (

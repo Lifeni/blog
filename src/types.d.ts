@@ -13,8 +13,8 @@ export interface Article {
 export interface Archive {
   name: string
   title: string
-  'create-date': string
-  date: string
+  'create-date': Date
+  date: Date
   description: string
   license: string
 }
