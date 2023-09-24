@@ -53,7 +53,7 @@ const apps = [
     icon: '/link.svg',
   },
   {
-    name: '开往 Travelings',
+    name: '开往 Traveling',
     href: 'https://travellings.cn/go',
     icon: '/favicon.svg',
   },
@@ -63,9 +63,9 @@ const { title = '记录干杯', favicon = '/favicon.svg' } = Astro.props
 ---
 
 <div
-  class="sticky top-0 left-0 w-80 h-screen flex flex-col gap-8 items-center justify-between p-8 bg-light-50 dark:bg-dark-900 overflow-y-auto"
+  class="sticky top-0 left-0 w-full min-w-72 h-screen flex flex-col gap-8 items-center justify-between p-8 bg-light-50 dark:bg-dark-900 overflow-y-auto"
 >
-  <header class="w-full flex flex-row gap-4 py-2 items-center select-none">
+  <header class="w-full flex flex-row gap-4 py-4 items-center select-none">
     <img
       class="w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-shadow pointer-events-none"
       src={favicon}
@@ -90,11 +90,9 @@ const { title = '记录干杯', favicon = '/favicon.svg' } = Astro.props
             >
               <Icon class="w-6 h-6" name={`tabler:${icon}`} />
               <span>{name}</span>
-              {count && (
-                <span class="text-xs flex px-2 py-1 bg-light-100 dark:bg-dark-800 rounded-full">
-                  {count.toString().padStart(2, '0')}
-                </span>
-              )}
+              <span class="text-xs flex px-2 py-1 bg-light-100 dark:bg-dark-800 rounded-full">
+                {count ? count.toString().padStart(2, '0') : ':-)'}
+              </span>
             </a>
           </li>
         ))
