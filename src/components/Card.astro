@@ -44,7 +44,7 @@ const {
 
     <a
       class="truncate hover:underline underline-offset-4 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
-      href={`/article/${id}`}
+      href={`/${type === '专题' ? 'story' : 'article'}/${id}`}
     >
       {name}
     </a>
