@@ -1,5 +1,10 @@
 ---
 import Container from '@components/Container.astro'
+import Footer from '@components/notebook/Footer.astro'
+import Header from '@components/notebook/Header.astro'
+import Nav from '@components/notebook/Nav.astro'
+
+import { info } from '@libs/const'
 import { format } from '@libs/frontmatter'
 import { getCollection, type CollectionEntry } from 'astro:content'
 import dayjs from 'dayjs'
@@ -27,11 +32,18 @@ const date = (date: { created: Date; updated: Date }) => {
 
 const { entry } = Astro.props as { entry: CollectionEntry<'文章'> }
 const { Content: Markdown, headings } = await entry.render()
+
+const title = `${entry.data.name} | ${info.title}`
+const description = entry.data.description
+
 export const prerender = true
 ---
 
-<Container>
-  <article>
+<Container {title} {description}>
+  <Header slot="header" />
+  <Nav slot="nav" />
+  <Footer slot="footer" />
+  <article class="prose" w="full" max-w="2xl" m="x-auto" p="6">
     <Markdown />
   </article>
 </Container>
