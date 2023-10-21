@@ -1,3 +1,8 @@
+---
+import { Image } from 'astro:assets'
+import WeChat from '@assets/wechat.svg'
+---
+
 <form
   action="https://google.com/search"
   method="get"
@@ -28,9 +33,10 @@
     outline="none"
     transition="colors"
   />
-  <a
-    href="/wechat.svg"
-    title="微信公众号"
+  <button
+    type="button"
+    class="group"
+    pos="relative"
     w="10"
     h="10"
     m="x-2"
@@ -38,8 +44,22 @@
     flex="~"
     rounded="full"
     text="subtle hover:link"
+    bg="transparent"
     transition="colors"
   >
     <span class="i-ic-round-qr-code" w="6" h="6"></span>
-  </a>
+    <span class="sr-only">微信公众号</span>
+    <div
+      class="invisible group-hover:visible op-0 group-hover:op-100"
+      pos="absolute left-1/2 top-12"
+      w="72"
+      transform="~ translate-x--1/2"
+      rounded="md"
+      shadow="sm group-hover:lg"
+      cursor="default"
+      transition="all"
+    >
+      <Image src={WeChat} alt="微信公众号图片" width="360" />
+    </div>
+  </button>
 </form>
