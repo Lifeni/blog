@@ -1,0 +1,40 @@
+import {
+  presetAttributify,
+  defineConfig,
+  presetIcons,
+  presetTypography,
+  presetUno,
+} from 'unocss'
+
+export default defineConfig({
+  presets: [
+    presetAttributify(),
+    presetIcons(),
+    presetTypography(),
+    presetUno({ dark: 'media' }),
+  ],
+  theme: {
+    // prettier-ignore
+    fontFamily: {
+      sans: 'Inter Variable, Inter, -apple-system, HarmonyOS Sans SC, MiSans, Source Han Sans SC, Noto Sans SC, system-ui, Roboto, emoji, sans-serif',
+      serif: 'Source Han Serif SC, Noto Serif SC, Times, Times New Roman, Georgia, emoji, serif',
+      mono: 'Cascadia Mono, JetBrains Mono, Consolas, Roboto Mono, Fira Mono, Courier New, -apple-system, HarmonyOS Sans SC, MiSans, Source Han Sans SC, Noto Sans SC, system-ui, emoji, monospace',
+      emoji: 'Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji, emoji',
+    },
+  },
+  shortcuts: [
+    {
+      'text-main': 'text-dark-900 dark:text-light-200',
+      'text-subtle': 'text-true-gray-500 dark:text-true-gray-400',
+      'text-link': 'text-indigo-500 dark:text-indigo-400',
+    },
+    {
+      'bg-main': 'bg-light-200 dark:bg-dark-800',
+      'bg-subtle': 'bg-white dark:bg-dark-600',
+    },
+    {
+      // prettier-ignore
+      'border-main': 'border-solid border-color-light-600 dark:border-color-dark-400 ',
+    },
+  ],
+})

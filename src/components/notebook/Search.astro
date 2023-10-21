@@ -1,0 +1,45 @@
+<form
+  action="https://google.com/search"
+  method="get"
+  target="_blank"
+  w="full"
+  flex="~ row items-center justify-between"
+  bg="subtle"
+  border="1 main"
+  rounded="md"
+  shadow="lg hover:xl"
+  transition="shadow"
+>
+  <span class="i-ic-round-search" w="6" h="6" m="x-4" text="subtle"></span>
+  <input type="hidden" name="q" value="site:lifeni.life" />
+  <input
+    type="search"
+    name="q"
+    id="search"
+    placeholder="使用 Google 搜索 …"
+    autocomplete="off"
+    w="full"
+    p="x-2 y-3"
+    border="none"
+    flex="1"
+    font="medium sans"
+    text="center subtle focus:main"
+    bg="transparent"
+    outline="none"
+    transition="colors"
+  />
+  <a
+    href="/wechat.svg"
+    title="微信公众号"
+    w="10"
+    h="10"
+    m="x-2"
+    p="2"
+    flex="~"
+    rounded="full"
+    text="subtle hover:link"
+    transition="colors"
+  >
+    <span class="i-ic-round-qr-code" w="6" h="6"></span>
+  </a>
+</form>

@@ -1,85 +1,68 @@
 ---
-import Section from '@components/Section.astro'
-import Content from '@components/layouts/Content.astro'
-import Divider from '@components/ui/Divider.astro'
+import Card from '@components/Card.astro'
+import Container from '@components/Container.astro'
+import Footer from '@components/notebook/Footer.astro'
+import Header from '@components/notebook/Header.astro'
+import Nav from '@components/notebook/Nav.astro'
+
 import { format } from '@libs/frontmatter'
 import { getCollection } from 'astro:content'
 
-const articles = await getCollection('文章')
-const stories = await getCollection('专题')
-const archives = (await getCollection('存档')).map(({ data, ...props }) => ({
-  ...props,
-  data: { ...data, ...format(data) },
-}))
+// 文章
+const articles = (await getCollection('文章'))
+  .map(({ data }) => data)
+  .filter(({ draft }) => import.meta.env.DEV || !draft)
+  .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
 
-const friends = [
-  {
-    name: 'Nanako',
-    href: 'https://tanakarino.cn/',
-    avatar: 'Nanako.webp',
-    type: '无法访问',
-  },
-  {
-    name: 'bluebonnet27',
-    href: 'https://bluebonnet27.github.io/',
-    avatar: 'bluebonnet27.webp',
-    type: '暂停更新',
-  },
-  {
-    name: 'GluttonK',
-    href: 'https://blog.csdn.net/GluttonK/',
-    avatar: 'GluttonK.webp',
-    type: '暂停更新',
-  },
-  {
-    name: 'Wumbuk',
-    href: 'https://blog.csdn.net/qq_48081868/',
-    avatar: 'Wumbuk.webp',
-    type: '一切正常',
-  },
-  {
-    name: 'YueChen',
-    href: 'https://www.yuechen.xyz/',
-    avatar: 'YueChen.webp',
-    type: '一切正常',
-  },
-  {
-    name: 'ss967',
-    href: 'https://ssblog.top/',
-    avatar: 'ss967.webp',
-    type: '暂停更新',
-  },
-  {
-    name: 'Bakapiano',
-    href: 'https://bakapiano.github.io/',
-    avatar: 'Bakapiano.webp',
-    type: '暂停更新',
-  },
-]
+// 存档
+const archives = (await getCollection('存档'))
+  .map(({ data, ...props }) => ({
+    ...props,
+    data: { ...data, ...format(data) },
+  }))
+  .map(({ data }) => data)
+  .filter(({ draft }) => import.meta.env.DEV || !draft)
+  .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
+
+// 专题
+const stories = (await getCollection('专题'))
+  .map(({ data }) => data)
+  .filter(({ draft }) => import.meta.env.DEV || !draft)
+  .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
+
+const sections = [
+  { name: '文章', type: '文章', suffix: ' 篇文章', items: articles },
+  { name: '专题', type: '专题', suffix: ' 个专题', items: stories },
+  { name: '存档', type: '文章', suffix: ' 篇已存档文章', items: archives },
+] as const
 ---
 
-<Content type="notebook">
-  <div slot="main" class="w-full flex flex-col gap-6 px-12 py-10">
-    <Section name="文章" icon="book" items={articles} />
-    <Section name="专题" icon="message-2" items={stories} />
-    <Divider color={1} />
-    <Section name="存档" icon="list-search" items={archives} />
-
-    <section id="朋友" class="w-full flex flex-col scroll-mt-12">
-      <ul>
-        {
-          friends.map(({ name, href, avatar, type }) => (
-            <li class="group flex flex-col items-start gap-2 leading-7">
-              <a
-                class="truncate hover:underline underline-offset-4 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
-                href={href}
-              >
-                {name}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-  </div>
-</Content>
+<Container>
+  <Header slot="header" />
+  <Nav slot="nav" />
+  <Footer slot="footer" />
+  <main p="x-6 y-2" w="full" max-w="2xl" m="x-auto" flex="~ col gap-8">
+    {
+      sections.map(
+        ({ name, type, suffix, items }) =>
+          items.length > 0 && (
+            <section flex="~ col gap-4">
+              <h2 id={name} class="scroll-mt-6" text="subtle">
+                {items.length} {suffix}
+              </h2>
+              <ul flex="~ col gap-6">
+                {items.map((item, i) => (
+                  <li w="full" flex="~ col gap-6">
+                    <Card {type} {...item} />
+                    {name === '存档' && items.length !== i + 1 && (
+                      <span w="full" h="0" flex="~" border="b-1 main" />
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+      )
+    }
+  </main>
+</Container>
