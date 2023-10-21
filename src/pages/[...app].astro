@@ -1,5 +1,5 @@
 ---
-import Content from '@components/layouts/Content.astro'
+import Container from '@components/Container.astro'
 
 export async function getStaticPaths() {
   const apps = [
@@ -9,6 +9,13 @@ export async function getStaticPaths() {
       color: '#29b7f7',
       favicon: '/dev/favicon.svg',
       id: 'dev',
+    },
+    {
+      title: '时间之外',
+      description: '在这里尝试做一些有趣的东西。',
+      color: '#f75248',
+      favicon: '/lab/favicon.svg',
+      id: 'lab',
     },
     {
       title: '越过长城',
@@ -30,26 +37,36 @@ const { id, title, description, color, favicon } = Astro.props
 export const prerender = true
 ---
 
-<Content {title} {description} {color} {favicon}>
-  <div class="flex flex-row items-center gap-4 select-none p-8">
+<Container {title} {description} {color} {favicon}>
+  <main
+    h="screen"
+    flex="~ row items-center justify-center gap-4"
+    p="8"
+    select="none"
+  >
     <img
-      class="w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-shadow"
       src={favicon}
       alt={`Logo | ${title}`}
+      w="12"
+      h="12"
+      rounded="full"
+      shadow="lg hover:xl"
+      transition="shadow"
     />
-    <span class="w-[1px] h-12 bg-light-100 dark:bg-dark-700"></span>
-    <div class="flex flex-col gap-0.5">
-      <h1 class="text-xl font-extrabold">{title}</h1>
-      <code class="text-sm text-light-500 dark:text-dark-400">
+    <span w="0" h="12" border="r-1 main"></span>
+    <div flex="~ col gap-0.5">
+      <h1 text="xl" font="extrabold">{title}</h1>
+      <code text="sm subtle" font="mono">
         <a
-          class="hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
           href="/"
           title="返回主页"
+          text="subtle hover:link"
+          transition="colors"
         >
           {'..'}
         </a>
         <span>/{id}</span>
       </code>
     </div>
-  </div>
-</Content>
+  </main>
+</Container>

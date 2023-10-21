@@ -1,5 +1,5 @@
 ---
-import Content from '@components/layouts/Content.astro'
+import Container from '@components/Container.astro'
 
 const title = '找不到页面'
 const description = '你要找的页面也许并不存在。'
@@ -8,13 +8,23 @@ const error = 404
 export const prerender = true
 ---
 
-<Content {title} {description}>
-  <div class="flex flex-col items-center gap-3 select-none p-8">
+<Container {title} {description}>
+  <main
+    h="screen"
+    flex="~ col items-center justify-center gap-3"
+    p="8"
+    select="none"
+  >
     <code
-      class="font-sans text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-br from-yellow-300 to-yellow-500 drop-shadow-xl"
+      class=""
+      font="black mono"
+      text="8xl transparent"
+      bg="clip-text"
+      bg-gradient="linear shape-br from-yellow-300 to-yellow-500"
+      filter="drop-shadow-xl"
     >
       {error}
     </code>
-    <h1 class="text-2xl">{title}</h1>
-  </div>
-</Content>
+    <h1 text="2xl" font-extrabold>{title}</h1>
+  </main>
+</Container>

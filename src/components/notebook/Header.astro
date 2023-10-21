@@ -1,0 +1,65 @@
+---
+import { info } from '@libs/const'
+import Search from './Search.astro'
+import Button from '@components/Button.astro'
+
+const apps = [
+  { name: '代码可行', href: '/dev', icon: '/dev/favicon.svg' },
+  { name: '时间之外', href: '/lab', icon: '/lab/favicon.svg' },
+  { name: '越过长城', href: '/server', icon: '/server/favicon.svg' },
+  {
+    name: '随意链接',
+    href: 'https://iokl.link',
+    icon: '/link.svg',
+  },
+]
+
+const traveling = {
+  name: '开往',
+  href: 'https://www.travellings.cn/go.html',
+  icon: 'i-ic-round-navigation',
+}
+
+export interface Props {
+  title?: string
+  favicon?: string
+}
+
+const { title = info.title, favicon = info.favicon } = Astro.props
+---
+
+<header
+  w="full"
+  p="6 t-8 sm:b-6"
+  flex="~ row items-center justify-between gap-4"
+>
+  <section flex="~ 1 row items-center justify-start justify-self-start gap-4">
+    <img
+      src={favicon}
+      alt={`${title} Logo`}
+      w="12"
+      h="12"
+      rounded="full"
+      shadow="lg hover:xl"
+      transition="shadow"
+    />
+    <div class="whitespace-nowrap" flex="~ col gap-1">
+      <h1 text="xl" font="extrabold" select="none">
+        {title}
+      </h1>
+      <span text="xs subtle">{' ​( ゜- ゜)つロ 干杯'}</span>
+    </div>
+  </section>
+  <section
+    class="hidden lg:flex"
+    w="full"
+    max-w="2xl"
+    p="x-6"
+    flex="justify-center"
+  >
+    <Search />
+  </section>
+  <section flex="~ 1 justify-end justify-self-end">
+    <Button {...traveling} />
+  </section>
+</header>

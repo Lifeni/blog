@@ -1,0 +1,40 @@
+---
+export interface Props {
+  name: string
+  icon: string
+  href: string
+}
+
+const { name, icon, href } = Astro.props
+---
+
+<a
+  {href}
+  target={href.startsWith('http') ? '_blank' : '_self'}
+  rel={href.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
+  class="group"
+  pos="relative"
+  w="12 hover:26"
+  h="12"
+  p="3 hover:x-4"
+  flex="~ row items-center justify-start"
+  bg="subtle"
+  border="1 main"
+  font="semibold"
+  text="subtle hover:link"
+  rounded="full"
+  shadow="lg hover:xl"
+  overflow="hidden"
+  transition="all"
+>
+  <span class={icon} w="6" h="6" flex="~"> </span>
+  <span
+    class="op-0 group-hover:op-100 whitespace-nowrap"
+    pos="absolute left-12 top-1/2"
+    p="x-1"
+    transform="~ translate-y--1/2"
+    transition="opacity"
+  >
+    {name}
+  </span>
+</a>
