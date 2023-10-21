@@ -21,6 +21,7 @@
     "@iconify/json": "^2.2.131",
     "astro": "^3.3.2",
     "dayjs": "^1.11.10",
+    "sharp": "^0.32.6",
     "unocss": "^0.56.5"
   },
   "dependencies": {
