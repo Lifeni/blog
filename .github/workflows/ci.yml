@@ -9,22 +9,25 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           submodules: recursive
-      - name: Install, build, and upload your site
-        uses: withastro/action@v1
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          package-manager: pnpm@latest
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+          node-version: latest
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - name: Build Astro Site
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
       - name: Deploy to Server
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
