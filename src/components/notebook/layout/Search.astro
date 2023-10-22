@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets'
+import WeChat from '@assets/wechat.svg'
+---
+
+<div
+  w="full"
+  flex="~ row items-center justify-between"
+  bg="subtle"
+  border="1 main"
+  rounded="md"
+  shadow="lg hover:xl"
+  transition="shadow"
+>
+  <form
+    action="https://google.com/search"
+    method="get"
+    target="_blank"
+    class="group"
+    w="full"
+    flex="~ row items-center justify-between"
+  >
+    <span
+      aria-label="搜索图标"
+      class="i-ic-round-search"
+      w="6"
+      h="6"
+      m="x-4"
+      text="subtle group-hover:link"
+      transition="colors"
+    >
+    </span>
+    <input type="hidden" name="q" value="site:lifeni.life" />
+    <input
+      type="search"
+      name="q"
+      id="search"
+      placeholder="使用 Google 搜索 …"
+      autocomplete="off"
+      class="placeholder:text-subtle"
+      w="full"
+      p="x-2 y-3"
+      border="none"
+      flex="1"
+      font="medium sans"
+      text="center subtle focus:main"
+      bg="transparent"
+      outline="none"
+      transition="colors"
+    />
+  </form>
+
+  <button
+    type="button"
+    class="group"
+    pos="relative"
+    w="10"
+    h="10"
+    m="x-2"
+    p="2"
+    flex="~"
+    rounded="full"
+    text="subtle hover:link"
+    bg="transparent"
+    transition="colors"
+  >
+    <span aria-label="二维码图标" class="i-ic-round-qr-code" w="6" h="6"></span>
+    <span class="sr-only">微信公众号</span>
+    <div
+      class="invisible group-hover:visible op-0 group-hover:op-100"
+      pos="absolute left-1/2 top-12"
+      w="72"
+      transform="~ translate-x--1/2 translate-y-1 group-hover:translate-y-1.5"
+      rounded="md"
+      shadow="sm group-hover:2xl"
+      bg="subtle"
+      cursor="default"
+      transition="all"
+    >
+      <Image src={WeChat} alt="微信公众号图片" width="360" />
+    </div>
+  </button>
+</div>

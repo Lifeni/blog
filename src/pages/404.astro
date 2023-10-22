@@ -1,5 +1,5 @@
 ---
-import Container from '@components/Container.astro'
+import Layout from '@components/notebook/Layout.astro'
 
 const title = '找不到页面'
 const description = '你要找的页面也许并不存在。'
@@ -8,7 +8,7 @@ const error = 404
 export const prerender = true
 ---
 
-<Container {title} {description}>
+<Layout {title} {description}>
   <main
     h="screen"
     flex="~ col items-center justify-center gap-3"
@@ -27,4 +27,4 @@ export const prerender = true
     </code>
     <h1 text="2xl" font-extrabold>{title}</h1>
   </main>
-</Container>
+</Layout>

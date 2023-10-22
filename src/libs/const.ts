@@ -1,4 +1,5 @@
 export const file = 'https://file.lifeni.life/notebook/'
+export const avatar = 'https://file.lifeni.life/avatar/friends/'
 
 export const info = {
   title: '记录干杯',

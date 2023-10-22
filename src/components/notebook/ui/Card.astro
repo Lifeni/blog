@@ -35,8 +35,14 @@ const {
     )
   }
 
-  <section flex="~ col gap-2">
-    <h2 max-w="full" flex="~ row gap-4 items-center" text="xl" font="extrabold">
+  <section flex="~ col gap-1">
+    <h2
+      class="leading-8"
+      max-w="full"
+      flex="~ row gap-3 items-center"
+      text="xl"
+      font="extrabold"
+    >
       {
         draft && (
           <span text="sm dark-900" bg="yellow-400" p="x-1.5 y-0.5" rounded>
@@ -63,7 +69,7 @@ const {
       }
     </h2>
     <p class="leading-7 break-all md:break-normal">{description}</p>
-    <span flex="~ row gap-2 items-center " text="sm subtle">
+    <span class="leading-7" flex="~ row gap-2 items-center " text="sm subtle">
       {
         tags ? (
           tags.map(tag => <span>{tag}</span>)

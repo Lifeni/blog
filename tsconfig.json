@@ -5,7 +5,6 @@
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
-      "@ui/*": ["src/components/ui/*"],
       "@notebook/*": ["src/components/notebook/*"],
       "@libs/*": ["src/libs/*"],
       "@content/*": ["src/content/*"]

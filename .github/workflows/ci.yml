@@ -33,6 +33,7 @@ jobs:
         with:
           server: ${{ secrets.SFTP_SERVER }}
           port: ${{ secrets.SFTP_PORT }}
+          ssh_private_key: ''
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           local_path: './dist/*'

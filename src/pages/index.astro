@@ -1,9 +1,10 @@
 ---
-import Card from '@components/Card.astro'
-import Container from '@components/Container.astro'
-import Footer from '@components/notebook/Footer.astro'
-import Header from '@components/notebook/Header.astro'
-import Nav from '@components/notebook/Nav.astro'
+import Layout from '@components/notebook/Layout.astro'
+import Friends from '@components/notebook/app/Friends.astro'
+import Footer from '@components/notebook/layout/Footer.astro'
+import Header from '@components/notebook/layout/Header.astro'
+import Nav from '@components/notebook/layout/Nav.astro'
+import Card from '@components/notebook/ui/Card.astro'
 
 import { format } from '@libs/frontmatter'
 import { getCollection } from 'astro:content'
@@ -37,7 +38,7 @@ const sections = [
 ] as const
 ---
 
-<Container>
+<Layout>
   <Header slot="header" />
   <Nav slot="nav" />
   <Footer slot="footer" />
@@ -47,7 +48,7 @@ const sections = [
         ({ name, type, suffix, items }) =>
           items.length > 0 && (
             <section flex="~ col gap-4">
-              <h2 id={name} class="scroll-mt-6" text="subtle">
+              <h2 id={name} class="scroll-mt-4" text="subtle">
                 {items.length} {suffix}
               </h2>
               <ul flex="~ col gap-6">
@@ -64,5 +65,6 @@ const sections = [
           )
       )
     }
+    <Friends />
   </main>
-</Container>
+</Layout>

@@ -1,5 +1,5 @@
 ---
-import Container from '@components/Container.astro'
+import Layout from '@components/notebook/Layout.astro'
 
 export async function getStaticPaths() {
   const apps = [
@@ -37,7 +37,7 @@ const { id, title, description, color, favicon } = Astro.props
 export const prerender = true
 ---
 
-<Container {title} {description} {color} {favicon}>
+<Layout {title} {description} {color} {favicon}>
   <main
     h="screen"
     flex="~ row items-center justify-center gap-4"
@@ -69,4 +69,4 @@ export const prerender = true
       </code>
     </div>
   </main>
-</Container>
+</Layout>

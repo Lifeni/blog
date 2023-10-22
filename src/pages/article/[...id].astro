@@ -1,8 +1,8 @@
 ---
-import Container from '@components/Container.astro'
-import Footer from '@components/notebook/Footer.astro'
-import Header from '@components/notebook/Header.astro'
-import Nav from '@components/notebook/Nav.astro'
+import Layout from '@components/notebook/Layout.astro'
+import Footer from '@components/notebook/layout/Footer.astro'
+import Header from '@components/notebook/layout/Header.astro'
+import Nav from '@components/notebook/layout/Nav.astro'
 
 import { info } from '@libs/const'
 import { format } from '@libs/frontmatter'
@@ -39,11 +39,11 @@ const description = entry.data.description
 export const prerender = true
 ---
 
-<Container {title} {description}>
+<Layout {title} {description}>
   <Header slot="header" />
   <Nav slot="nav" />
   <Footer slot="footer" />
   <article class="prose" w="full" max-w="2xl" m="x-auto" p="6">
     <Markdown />
   </article>
-</Container>
+</Layout>
