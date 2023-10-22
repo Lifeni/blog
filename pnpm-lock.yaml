@@ -42,7 +42,7 @@ devDependencies:
     version: 0.32.6
   unocss:
     specifier: ^0.56.5
-    version: 0.56.5(postcss@8.4.29)(vite@4.4.9)
+    version: 0.56.5(postcss@8.4.31)(vite@4.4.9)
 
 packages:
 
@@ -1075,7 +1075,7 @@ packages:
       sirv: 2.0.3
     dev: true
 
-  /@unocss/postcss@0.56.5(postcss@8.4.29):
+  /@unocss/postcss@0.56.5(postcss@8.4.31):
     resolution: {integrity: sha512-oDY1vCdrCQZx/oxDkq3z77a0RoO+WVQT090oDZzLFO/cPWH3elSOHwnoJU/KzrpJLbUFpyTQKZ/k3VbBaEdGTA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -1087,7 +1087,7 @@ packages:
       css-tree: 2.3.1
       fast-glob: 3.3.1
       magic-string: 0.30.3
-      postcss: 8.4.29
+      postcss: 8.4.31
     dev: true
 
   /@unocss/preset-attributify@0.56.5:
@@ -3555,8 +3555,8 @@ packages:
       pathe: 1.1.1
     dev: true
 
-  /postcss@8.4.29:
-    resolution: {integrity: sha512-cbI+jaqIeu/VGqXEarWkRCCffhjgXc0qjBtXpqJhTBohMUjUQnbBr0xqX3vEKudc4iviTewcJo5ajcec5+wdJw==}
+  /postcss@8.4.31:
+    resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.6
@@ -4333,7 +4333,7 @@ packages:
       unist-util-visit-parents: 6.0.1
     dev: true
 
-  /unocss@0.56.5(postcss@8.4.29)(vite@4.4.9):
+  /unocss@0.56.5(postcss@8.4.31)(vite@4.4.9):
     resolution: {integrity: sha512-tO+9St4CntSjHpLXZqBo0/etS06MtvFF1NEny/qFJCL9sCopWwmDKuzW6/LIb4wfqZLdMpVFoEACMNv8nP849A==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -4349,7 +4349,7 @@ packages:
       '@unocss/cli': 0.56.5
       '@unocss/core': 0.56.5
       '@unocss/extractor-arbitrary-variants': 0.56.5
-      '@unocss/postcss': 0.56.5(postcss@8.4.29)
+      '@unocss/postcss': 0.56.5(postcss@8.4.31)
       '@unocss/preset-attributify': 0.56.5
       '@unocss/preset-icons': 0.56.5
       '@unocss/preset-mini': 0.56.5
@@ -4474,7 +4474,7 @@ packages:
     dependencies:
       esbuild: 0.18.20
       less: 4.2.0
-      postcss: 8.4.29
+      postcss: 8.4.31
       rollup: 3.28.1
     optionalDependencies:
       fsevents: 2.3.3
