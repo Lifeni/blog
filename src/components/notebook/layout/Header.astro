@@ -23,11 +23,7 @@ export interface Props {
 const { title = info.title, favicon = info.favicon } = Astro.props
 ---
 
-<header
-  w="full"
-  p="6 t-8 sm:t-6"
-  flex="~ row items-center justify-between gap-4"
->
+<header w="full" p="6 t-8 sm:t-6" flex="~ row items-center justify-between">
   <section flex="~ 1 row items-center justify-start justify-self-start gap-4">
     <div
       class="group"
@@ -103,15 +99,24 @@ const { title = info.title, favicon = info.favicon } = Astro.props
         }
 
         <li text="right" class="leading-4">
-          <a href="/" font="mono" text="sm subtle hover:link" m="x-2">cd ~</a>
+          <a
+            href="/"
+            font="mono"
+            text="sm subtle hover:link"
+            m="x-2"
+            title="返回主页"
+          >
+            cd ~
+          </a>
         </li>
       </ul>
     </div>
-    <div class="group whitespace-nowrap" flex="~ col" select="none">
-      <h1 text="xl" font="extrabold">
+    <div class="group" flex="~ col" select="none">
+      <h1 text="xl" font="extrabold" w="fit">
         {title}
       </h1>
       <span
+        w="full"
         h="0 group-hover:4"
         p="t-0 group-hover:t-0.5"
         text="xs subtle"
