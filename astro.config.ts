@@ -8,4 +8,5 @@ export default defineConfig({
   server: { port: 8000, host: true },
   site: 'https://lifeni.life',
   integrations: [mdx(), sitemap(), uno()],
+  markdown: { shikiConfig: { theme: 'css-variables' } },
 })

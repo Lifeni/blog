@@ -1,6 +1,7 @@
+import transformerDirectives from '@unocss/transformer-directives'
 import {
-  presetAttributify,
   defineConfig,
+  presetAttributify,
   presetIcons,
   presetTypography,
   presetUno,
@@ -13,6 +14,7 @@ export default defineConfig({
     presetTypography(),
     presetUno({ dark: 'media' }),
   ],
+  transformers: [transformerDirectives()],
   theme: {
     // prettier-ignore
     fontFamily: {

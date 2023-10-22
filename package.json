@@ -19,8 +19,11 @@
     "@astrojs/mdx": "^1.1.2",
     "@astrojs/sitemap": "^3.0.2",
     "@iconify/json": "^2.2.131",
+    "@unocss/transformer-directives": "^0.56.5",
     "astro": "^3.3.2",
     "dayjs": "^1.11.10",
+    "less": "^4.2.0",
+    "prettier": "^3.0.3",
     "sharp": "^0.32.6",
     "unocss": "^0.56.5"
   },

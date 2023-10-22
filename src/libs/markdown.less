@@ -1,0 +1,80 @@
+:root {
+  --astro-code-color-text: #24292f;
+  --astro-code-color-background: theme('colors.white');
+  --astro-code-token-constant: #0550ae;
+  --astro-code-token-string: #0a3069;
+  --astro-code-token-comment: #6e7781;
+  --astro-code-token-keyword: #cf222e;
+  --astro-code-token-parameter: #116329;
+  --astro-code-token-function: #8250df;
+  --astro-code-token-string-expression: #0a3069;
+  --astro-code-token-punctuation: #212121;
+  --astro-code-token-link: #0a3069;
+
+  @media (prefers-color-scheme: dark) {
+    --astro-code-color-text: #c9d1d9;
+    --astro-code-color-background: theme('colors.dark.600');
+    --astro-code-token-constant: #79c0ff;
+    --astro-code-token-string: #a5d6ff;
+    --astro-code-token-comment: #8b949e;
+    --astro-code-token-keyword: #ff7b72;
+    --astro-code-token-parameter: #7ee787;
+    --astro-code-token-function: #d2a8ff;
+    --astro-code-token-string-expression: #a5d6ff;
+    --astro-code-token-punctuation: #212121;
+    --astro-code-token-link: #a5d6ff;
+  }
+}
+
+.prose {
+  h1,
+  h2,
+  h3,
+  h4 {
+    --uno: 'font-extrabold';
+    a,
+    code {
+      --uno: 'font-extrabold';
+    }
+  }
+
+  h1 {
+    --uno: 'text-4xl leading-13';
+  }
+
+  a {
+    --uno: 'text-link no-underline hover:underline underline-from-font hover:underline-offset-4';
+  }
+
+  pre,
+  img,
+  table {
+    --uno: 'w-full border-1 border-main rounded-md shadow-lg my-6 leading-6';
+  }
+
+  table {
+    --uno: '';
+  }
+
+  th,
+  td {
+    --uno: 'border-1 border-main';
+  }
+
+  tr,
+  thead,
+  tbody {
+    --uno: 'w-full';
+  }
+
+  blockquote {
+    --uno: 'not-italic border-1 border-l-6 border-main border-l-blue-500 dark:border-l-blue-400 rounded-md shadow-lg my-6 pl-7 pr-6 py-2';
+  }
+
+  li {
+    --uno: 'my-2';
+    p {
+      --uno: 'my-0';
+    }
+  }
+}

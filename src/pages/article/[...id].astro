@@ -4,8 +4,9 @@ import Footer from '@components/notebook/layout/Footer.astro'
 import Header from '@components/notebook/layout/Header.astro'
 import Nav from '@components/notebook/layout/Nav.astro'
 
-import { info } from '@libs/const'
-import { format } from '@libs/frontmatter'
+import '@libs/markdown.less'
+import { info } from '@libs/consts'
+import { format } from '@libs/utils'
 import { getCollection, type CollectionEntry } from 'astro:content'
 import dayjs from 'dayjs'
 
