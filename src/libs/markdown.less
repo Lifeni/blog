@@ -1,9 +1,9 @@
 :root {
   --astro-code-color-text: #24292f;
-  --astro-code-color-background: theme('colors.white');
+  --astro-code-color-background: theme('colors.light.600');
   --astro-code-token-constant: #0550ae;
   --astro-code-token-string: #0a3069;
-  --astro-code-token-comment: #6e7781;
+  --astro-code-token-comment: theme('colors.truegray.500');
   --astro-code-token-keyword: #cf222e;
   --astro-code-token-parameter: #116329;
   --astro-code-token-function: #8250df;
@@ -16,7 +16,7 @@
     --astro-code-color-background: theme('colors.dark.600');
     --astro-code-token-constant: #79c0ff;
     --astro-code-token-string: #a5d6ff;
-    --astro-code-token-comment: #8b949e;
+    --astro-code-token-comment: theme('colors.truegray.400');
     --astro-code-token-keyword: #ff7b72;
     --astro-code-token-parameter: #7ee787;
     --astro-code-token-function: #d2a8ff;
@@ -31,7 +31,7 @@
   h2,
   h3,
   h4 {
-    --uno: 'font-extrabold';
+    --uno: 'font-extrabold break-words';
     a,
     code {
       --uno: 'font-extrabold';
@@ -42,37 +42,61 @@
     --uno: 'text-4xl leading-13';
   }
 
+  p {
+    --uno: 'text-justify';
+  }
+
   a {
     --uno: 'text-link no-underline hover:underline underline-from-font hover:underline-offset-4';
   }
 
-  pre,
-  img,
-  table {
-    --uno: 'w-full border-1 border-main rounded-md shadow-lg my-6 leading-6';
+  img {
+    --uno: 'w-full border-1 border-main bg-subtle rounded-md shadow-lg my-6 leading-6';
   }
 
   table {
-    --uno: '';
+    --uno: 'w-full border-1 border-main bg-subtle table rounded-md my-6 leading-6 overflow-hidden';
+    th,
+    td {
+      --uno: 'border-1 border-main text-left break-words text-wrap';
+    }
+    tr,
+    thead,
+    tbody {
+      --uno: 'w-full';
+    }
   }
 
-  th,
-  td {
-    --uno: 'border-1 border-main';
+  pre {
+    --uno: 'w-full border-1 border-main rounded-md pl-4 overflow-x-auto bg-code my-6 leading-6';
+    code {
+      counter-reset: step;
+      counter-increment: step 0;
+      .line {
+        &::before {
+          --uno: 'whitespace-nowrap';
+          content: counter(step);
+          counter-increment: step;
+          --uno: 'inline-block mr-6 w-4 text-right text-light whitespace-nowrap';
+        }
+      }
+    }
   }
 
-  tr,
-  thead,
-  tbody {
-    --uno: 'w-full';
+  :not(pre) code {
+    --uno: 'break-words text-wrap rounded border-1 border-main bg-code px-2 py-1';
+    &::before,
+    &::after {
+      content: none;
+    }
   }
 
   blockquote {
-    --uno: 'not-italic border-1 border-l-6 border-main border-l-blue-500 dark:border-l-blue-400 rounded-md shadow-lg my-6 pl-7 pr-6 py-2';
+    --uno: 'not-italic border-solid border-l-6 border-l-light-600 dark:border-l-dark-600 my-6 px-6 py-1';
   }
 
   li {
-    --uno: 'my-2';
+    --uno: 'my-1';
     p {
       --uno: 'my-0';
     }

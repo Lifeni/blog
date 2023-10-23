@@ -29,18 +29,22 @@ export default defineConfig({
   },
   shortcuts: [
     {
-      'text-main': 'text-dark-900 dark:text-light-200',
+      'text-main': 'text-dark-900 dark:text-light-400',
       'text-subtle': 'text-true-gray-500 dark:text-true-gray-400',
       'text-link': 'text-indigo-500 dark:text-indigo-400',
+      'text-light': 'text-true-gray-400 dark:text-true-gray-500',
     },
     {
       'bg-main': 'bg-light-200 dark:bg-dark-800',
       'bg-subtle': 'bg-white dark:bg-dark-600',
+      'bg-code': 'bg-light-600 dark:bg-dark-600',
       'bg-hover': 'bg-light-400 dark:bg-dark-400',
     },
     {
-      // prettier-ignore
-      'border-main': 'border-solid border-color-light-600 dark:border-color-dark-400 ',
+      'border-main':
+        'border-solid border-color-light-600 dark:border-color-dark-400 ',
+      'border-quote':
+        'border-solid border-color-light-900 dark:border-color-dark-100 ',
     },
   ],
 })
