@@ -1,6 +1,6 @@
 :root {
   --astro-code-color-text: #24292f;
-  --astro-code-color-background: theme('colors.light.600');
+  --astro-code-color-background: theme('colors.light.200');
   --astro-code-token-constant: #0550ae;
   --astro-code-token-string: #0a3069;
   --astro-code-token-comment: theme('colors.truegray.500');
@@ -50,7 +50,8 @@
     --uno: 'text-link no-underline hover:underline underline-from-font hover:underline-offset-4';
   }
 
-  img {
+  img,
+  iframe {
     --uno: 'w-full border-1 border-main bg-subtle rounded-md shadow-lg my-6 leading-6';
   }
 
@@ -83,7 +84,7 @@
     }
   }
 
-  :not(pre) code {
+  :not(pre) > code {
     --uno: 'break-words text-wrap rounded border-1 border-main bg-code px-2 py-1';
     &::before,
     &::after {

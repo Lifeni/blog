@@ -35,9 +35,9 @@ export default defineConfig({
       'text-light': 'text-true-gray-400 dark:text-true-gray-500',
     },
     {
-      'bg-main': 'bg-light-200 dark:bg-dark-800',
+      'bg-main': 'bg-white dark:bg-dark-800',
       'bg-subtle': 'bg-white dark:bg-dark-600',
-      'bg-code': 'bg-light-600 dark:bg-dark-600',
+      'bg-code': 'bg-light-200 dark:bg-dark-600',
       'bg-hover': 'bg-light-400 dark:bg-dark-400',
     },
     {
