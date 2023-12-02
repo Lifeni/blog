@@ -1,6 +1,6 @@
 :root {
   --astro-code-color-text: #24292f;
-  --astro-code-color-background: theme('colors.light.200');
+  --astro-code-color-background: theme('colors.white');
   --astro-code-token-constant: #0550ae;
   --astro-code-token-string: #0a3069;
   --astro-code-token-comment: theme('colors.truegray.500');
@@ -56,7 +56,7 @@
   }
 
   table {
-    --uno: 'w-full border-1 border-main bg-subtle table rounded-md my-6 leading-6 overflow-hidden';
+    --uno: 'w-full border-1 border-main bg-subtle table rounded-md my-6 leading-6 overflow-hidden shadow-lg';
     th,
     td {
       --uno: 'border-1 border-main text-left break-words text-wrap';
@@ -69,7 +69,7 @@
   }
 
   pre {
-    --uno: 'w-full border-1 border-main rounded-md pl-4 overflow-x-auto bg-code my-6 leading-6';
+    --uno: 'w-full border-1 border-main rounded-md pl-4 overflow-x-auto bg-code my-6 leading-6 shadow-lg';
     code {
       counter-reset: step;
       counter-increment: step 0;

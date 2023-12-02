@@ -25,15 +25,8 @@ const archives = (await getCollection('存档'))
   .filter(({ draft }) => import.meta.env.DEV || !draft)
   .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
 
-// 专题
-const stories = (await getCollection('专题'))
-  .map(({ data }) => data)
-  .filter(({ draft }) => import.meta.env.DEV || !draft)
-  .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
-
 const sections = [
   { name: '文章', type: '文章', suffix: ' 篇文章', items: articles },
-  { name: '专题', type: '专题', suffix: ' 个专题', items: stories },
   { name: '存档', type: '文章', suffix: ' 篇已存档文章', items: archives },
 ] as const
 ---
