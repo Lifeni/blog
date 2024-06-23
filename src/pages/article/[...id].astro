@@ -1,14 +1,26 @@
 ---
-import Layout from '@components/notebook/Layout.astro'
-import Footer from '@components/notebook/layout/Footer.astro'
-import Header from '@components/notebook/layout/Header.astro'
-import Nav from '@components/notebook/layout/Nav.astro'
-
-import '@libs/markdown.less'
-import { info } from '@libs/consts'
-import { format } from '@libs/utils'
+import App from '@components/App.astro'
+import Footer from '@components/base/Footer.astro'
+import Header from '@components/base/Header.astro'
+import Markdown from '@components/notebook/Markdown.astro'
+import { navs } from '@libs/consts'
 import { getCollection, type CollectionEntry } from 'astro:content'
-import dayjs from 'dayjs'
+import type { Archive, Article } from 'types'
+
+export const format = (data: Archive): Article => ({
+  name: data.title,
+  description: data.description,
+  id: data.name,
+  license: data.license,
+  date: {
+    created: data['create-date'],
+    updated: data.date,
+  },
+  cover: undefined,
+  tags: undefined,
+  subtitle: undefined,
+  draft: false,
+})
 
 export async function getStaticPaths() {
   const articles = (await getCollection('文章')).filter(
@@ -24,30 +36,18 @@ export async function getStaticPaths() {
   }))
 }
 
-const date = (date: { created: Date; updated: Date }) => {
-  const created = dayjs(date.created).format('YYYY 年 MM 月 DD 日')
-  const updated = dayjs(date.updated).format('YYYY 年 MM 月 DD 日')
-  if (created === updated) return `发布于 ${updated}`
-  return `更新于 ${created}`
-}
-
 const { entry } = Astro.props as { entry: CollectionEntry<'文章'> }
-const { Content: Markdown, headings } = await entry.render()
-
-const title = `${entry.data.name} | ${info.title}`
-const description = entry.data.description
-
-export const prerender = true
+const { Content, headings } = await entry.render()
 ---
 
-<Layout {title} {description}>
-  <Header slot="header" />
-  <Nav slot="nav" />
+<App
+  scope="记录干杯"
+  name={entry.data.name}
+  description={entry.data.description}
+>
+  <Header slot="header" action="目录" links={navs} contents={headings} />
   <Footer slot="footer" />
-  <article class="prose" w="full" max-w="2xl" m="x-auto" p="6">
-    <time text="main" font="extrabold">
-      {date(entry.data.date)}
-    </time>
-    <Markdown />
-  </article>
-</Layout>
+  <Markdown frontmatter={entry.data}>
+    <Content />
+  </Markdown>
+</App>

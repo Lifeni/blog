@@ -1,0 +1,29 @@
+---
+import Icon from '@components/ui/Icon.astro'
+
+export interface Props {
+  name?: string
+  icon?: string[]
+  href?: string
+  current?: boolean
+}
+
+const { name, icon, href, current } = Astro.props
+---
+
+<li>
+  <a
+    aria-label={name}
+    flex="~ col justify-center items-center gap-2.5"
+    p="x-3 y-3"
+    rounded="~"
+    bg="transparent hover:accent"
+    transition="colors"
+    {href}
+  >
+    {icon && <Icon icon={icon[0]} size="6" name={name} />}
+    <span font={current && 'extrabold'} text="sm">
+      {name}
+    </span>
+  </a>
+</li>

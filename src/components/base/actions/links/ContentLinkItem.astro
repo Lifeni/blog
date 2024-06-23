@@ -1,0 +1,32 @@
+---
+export interface Props {
+  slug: string
+  text: string
+  depth: number
+}
+
+const { slug, text, depth } = Astro.props
+---
+
+<li>
+  <a
+    aria-label={text}
+    w="full"
+    flex="~ row items-center"
+    p="x-2 y-2"
+    rounded="~"
+    bg="transparent hover:accent"
+    transition="colors"
+    href={`#${slug}`} 
+  >
+    {
+      new Array(depth - 2)
+        .fill(0)
+        .map(() => <span min-w="4" whitespace="nowrap" />)
+    }
+    <span text="sm truncate" font={depth <= 2 ? 'bold' : ''}>
+      <span text="secondary">{'# '}</span>
+      {text}
+    </span>
+  </a>
+</li>

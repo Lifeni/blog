@@ -1,10 +1,10 @@
 ---
-import { file } from '@libs/consts'
+import { files } from '@libs/consts'
 import dayjs from 'dayjs'
-import type { Article } from 'src/types'
+import type { Article } from 'types'
 
 export interface Props extends Article {
-  type?: '文章' | '专题'
+  type?: '文章' | '专题' | '存档'
 }
 
 const {
@@ -20,12 +20,12 @@ const {
 } = Astro.props
 ---
 
-<div class="group" flex="~ col gap-6">
+<div class="group" flex="~ col gap-5">
   {
     cover && (
       <img
-        class="aspect-video object-cover"
-        src={`${file}${cover.image}`}
+        class="aspect-3/2 md:aspect-video object-cover"
+        src={`${files.notebook}${cover.image}`}
         alt={cover.caption}
         w="full"
         shadow="lg hover:xl"
@@ -45,7 +45,7 @@ const {
     >
       {
         draft && (
-          <span text="sm dark-900" bg="yellow-400" p="x-1.5 y-0.5" rounded>
+          <span text="sm dark-900" bg="yellow-400" p="x-1.5 y-0.5" rounded="~">
             {'草稿'}
           </span>
         )
@@ -53,7 +53,7 @@ const {
 
       <a
         href={`/${type === '专题' ? 'story' : 'article'}/${id}`}
-        text="truncate hover:link"
+        text="hover:link"
         underline="none hover:~ from-font hover:offset-4"
         transition="colors"
       >
@@ -62,7 +62,7 @@ const {
 
       {
         subtitle && (
-          <span font="medium" text="subtle truncate">
+          <span font="medium" text="secondary truncate">
             {subtitle}
           </span>
         )
@@ -71,7 +71,11 @@ const {
     <p class="leading-7 break-all md:break-words text-justify">
       {description}
     </p>
-    <span class="leading-7" flex="~ row gap-2 items-center " text="sm subtle">
+    <span
+      class="leading-7"
+      flex="~ row gap-2.5 items-center "
+      text="sm secondary"
+    >
       {
         tags ? (
           tags.map(tag => <span>{tag}</span>)

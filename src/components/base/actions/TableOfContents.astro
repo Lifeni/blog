@@ -1,0 +1,51 @@
+---
+import Button from '@components/ui/Button.astro'
+import Popover from '@components/ui/Popover.astro'
+import type { ContentItems } from 'types'
+import ContentLinkItem from './links/ContentLinkItem.astro'
+import Icon from '@components/ui/Icon.astro'
+import TitleBar from '@components/ui/popover/TitleBar.astro'
+import TitleBarLink from '@components/ui/popover/TitleBarLink.astro'
+
+export interface Props {
+  contents?: ContentItems
+}
+const { contents } = Astro.props
+const index = contents?.filter(({ depth }) => depth !== 1)
+---
+
+<Popover align="right">
+  <Button slot="action" type="icon" name="索引" icon="i-ri:file-list-line" />
+
+  <div slot="content" h="full" max-h="72vh" min-h="72" flex="~ col">
+    <TitleBar name="目录">
+      <TitleBarLink
+        name="回到顶部"
+        icon="i-ri:arrow-up-line"
+        href={`#${contents?.filter(({ depth }) => depth === 1)[0].slug}` || '#'}
+      />
+    </TitleBar>
+
+    {
+      index && index.length > 0 ? (
+        <ul class="scroll-smooth" overflow="y-auto" scrollbar="thin">
+          {index.map(({ text, slug, depth }, i) => (
+            <ContentLinkItem {text} {slug} {depth} />
+          ))}
+        </ul>
+      ) : (
+        <div flex="~ 1 col items-center justify-center gap-3" rounded="~">
+          <Icon
+            icon="i-ri:file-4-line"
+            color="secondary"
+            size="12"
+            name="没有目录"
+          />
+          <span text="sm secondary" transition="colors">
+            没有目录
+          </span>
+        </div>
+      )
+    }
+  </div>
+</Popover>

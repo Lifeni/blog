@@ -1,0 +1,50 @@
+---
+export interface Props {
+  name?: string
+  href?: string
+  links?: {
+    name?: string
+    href?: string
+  }[]
+}
+const { name, href, links } = Astro.props
+---
+
+<section w="full" m="t--4" flex="~ row items-center justify-end gap-2">
+  {
+    links ? (
+      <Fragment>
+        <span text="link" font="mono">
+          {'> '}
+        </span>
+        {links.map(({ name, href }, i) => (
+          <Fragment>
+            <a
+              href={href}
+              text="link"
+              underline="none hover:~ from-font hover:offset-4"
+              transition="colors"
+            >
+              <span>{name}</span>
+            </a>
+            {i !== links.length - 1 && (
+              <span text=" link" font="mono">
+                /
+              </span>
+            )}
+          </Fragment>
+        ))}
+      </Fragment>
+    ) : (
+      <a
+        href={href}
+        text="link"
+        underline="none hover:~ from-font hover:offset-4"
+        transition="colors"
+      >
+        <span font="mono">{'> '}</span>
+        <span>{name}</span>
+      </a>
+    )
+  }
+</section>

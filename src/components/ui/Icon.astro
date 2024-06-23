@@ -1,0 +1,22 @@
+---
+export interface Props {
+  class?: string
+  name?: string
+  icon?: string
+  color?: string
+  size?: string
+}
+
+const { name, icon, size, color, class: className } = Astro.props
+---
+
+<span
+  class={`${icon} ${className}`}
+  w={size}
+  h={size}
+  {size}
+  flex="~"
+  text={color}
+>
+  {name && <span class="sr-only">{name}</span>}
+</span>

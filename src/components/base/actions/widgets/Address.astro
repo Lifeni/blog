@@ -1,0 +1,39 @@
+---
+export interface Props {
+  href?: string
+}
+
+const { href } = Astro.props
+---
+
+<div flex="~ row items-center justify-between">
+  <a
+    aria-label="邮箱"
+    href="mailto:liangfengning@foxmail.com"
+    text="xs secondary hover:link"
+    font="mono"
+    p="x-3 y-0.75"
+    rounded="~"
+    transition="colors"
+    title="liangfengning@foxmail.com"
+  >
+    @LFN
+  </a>
+  {
+    href && (
+      <a
+        aria-label="返回主页"
+        {href}
+        p="x-1.5 y-0.75"
+        font="mono"
+        text="xs secondary hover:link"
+        bg="accent"
+        rounded="~"
+        transition="colors"
+        title="返回主页"
+      >
+        cd ~
+      </a>
+    )
+  }
+</div>

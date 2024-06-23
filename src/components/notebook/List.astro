@@ -1,0 +1,72 @@
+---
+import type { Article } from 'types'
+import Card from '@components/notebook/Card.astro'
+import Icon from '@components/ui/Icon.astro'
+import Divider from '@components/ui/Divider.astro'
+
+export interface Props {
+  type?: '文章' | '专题' | '存档'
+  suffix?: '篇文章' | '个专题' | '项记录'
+  name?: string
+  icon?: string
+  contents: Article[]
+}
+
+const { type, name, suffix, icon, contents } = Astro.props
+---
+
+<main
+  flex={contents.length === 0
+    ? '~ 1 col items-center justify-center'
+    : '~ 1 col items-center justify-start gap-16'}
+  p={contents.length === 0 ? '8' : 'x-6 t-32 md:t-20 b-8'}
+  w="full"
+  max-w="2xl"
+  m="x-auto"
+>
+  {
+    contents.length === 0 ? (
+      <div flex="~ col items-center justify-center" select="none">
+        <code
+          font="extrabold mono"
+          text="6xl transparent"
+          bg="clip-text"
+          bg-gradient="linear shape-br from-yellow-300 to-yellow-500"
+          filter="drop-shadow-xl"
+        >
+          {`(*/ω＼*)`}
+        </code>
+        <h1 text="2xl" m="4" font="extrabold">
+          敬请期待
+        </h1>
+      </div>
+    ) : (
+      <Fragment>
+        <div flex="~ col gap-1.5 justify-center" w="full">
+          <h2
+            class="scroll-mt-4"
+            text="2xl"
+            font="extrabold"
+            flex="~ row items-center gap-3"
+          >
+            {icon && <Icon {icon} {name} size="7" />}
+            <span>{name || `所有${type}`}</span>
+          </h2>
+          <p text="secondary">
+            {suffix ? `${contents.length} ${suffix}` : '最近更新'}
+          </p>
+        </div>
+
+        <ul flex={type === '存档' ? '~ col gap-6' : '~ col gap-12'}>
+          {contents.map((item, i) => (
+            <li w="full" flex="~ col gap-5">
+              <Card {type} {...item} />
+              {type === '存档' && contents.length !== i + 1 && <Divider />}
+            </li>
+          ))}
+        </ul>
+      </Fragment>
+    )
+  }
+  <slot />
+</main>

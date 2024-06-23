@@ -4,19 +4,16 @@ import Footer from '@components/base/Footer.astro'
 import Header from '@components/base/Header.astro'
 import List from '@components/notebook/List.astro'
 import { navs } from '@libs/consts'
-import { getCollection } from 'astro:content'
 
-const latest = [
-  ...(await getCollection('文章')),
-  ...(await getCollection('专题')),
-]
+import { getCollection } from 'astro:content'
+const stories = (await getCollection('专题'))
   .map(({ data }) => data)
   .filter(({ draft }) => import.meta.env.DEV || !draft)
-  .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())[0]
+  .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
 ---
 
-<App>
+<App scope="记录干杯" name="专题">
   <Header slot="header" action="更多" links={navs} />
   <Footer slot="footer" />
-  <List type="文章" name="记录干杯" contents={[latest]} />
+  <List type="专题" suffix="个专题" contents={stories} />
 </App>

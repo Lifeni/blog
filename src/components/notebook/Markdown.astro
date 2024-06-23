@@ -1,0 +1,50 @@
+---
+import '@libs/markdown.less'
+import dayjs from 'dayjs'
+import type { Article } from 'types'
+
+export interface Props {
+  frontmatter?: Article
+}
+const { frontmatter } = Astro.props
+
+const format = (date: { created: Date; updated: Date }) => {
+  const created = dayjs(date.created).format('YYYY 年 MM 月 DD 日')
+  const updated = dayjs(date.updated).format('YYYY 年 MM 月 DD 日')
+  if (created === updated) return `${updated}`
+  return `${created}`
+}
+---
+
+<main
+  flex="~ 1 col items-center gap-16"
+  p="x-6 t-32 md:t-20 b-8"
+  w="full"
+  max-w="2xl"
+  m="x-auto"
+>
+  <article class="prose" w="full">
+    <slot />
+    {
+      frontmatter && (
+        <section
+          flex="~ col items-end justify-center gap-2"
+          text="secondary"
+          m="t-12"
+          transition="colors"
+        >
+          <time>{format(frontmatter.date)}</time>
+          <div flex="~ row gap-2">
+            {frontmatter.tags ? (
+              frontmatter.tags.map(tag => <span># {tag}</span>)
+            ) : (
+              <span># 已存档文章</span>
+            )}
+          </div>
+
+          {frontmatter.license && <span>© {frontmatter.license}</span>}
+        </section>
+      )
+    }
+  </article>
+</main>

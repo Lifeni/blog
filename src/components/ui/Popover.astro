@@ -1,0 +1,50 @@
+---
+export interface Props {
+  align?: 'left' | 'center' | 'right'
+  width?: 'sm' | 'md' | 'lg' | 'full'
+}
+
+const { align = 'center', width = 'md' } = Astro.props
+---
+
+<div
+  class="group"
+  pos="relative"
+  flex="~ items-center justify-center"
+  pointer-events="auto"
+>
+  <slot name="action" />
+  <div
+    class="invisible group-hover:visible group-focus-within:visible"
+    pos={`absolute top-14 ${align === 'left' ? 'left-0' : align === 'right' ? 'right-0' : 'left-1/2'}`}
+    w={width === 'sm'
+      ? '48'
+      : width === 'md'
+        ? '64'
+        : width === 'lg'
+          ? '72'
+          : 'full'}
+    p="2"
+    transform={`~ translate-y-0 group-hover:translate-y-1 group-focus-within:translate-y-1 ${align === 'center' && 'translate-x--1/2'}`}
+    rounded="md"
+    shadow="sm group-hover:2xl group-focus-within:2xl"
+    op="0 group-hover:100 group-focus-within:100"
+    bg="popover"
+    border="1 main"
+    cursor="default"
+    transition="all"
+  >
+    <span
+      pos={`absolute top--1.25 ${align === 'center' ? 'left-1/2' : align === 'left' ? 'left-4.625' : 'right-4.625'}`}
+      w="2.5"
+      h="2.5"
+      border="1 r-0 b-0 main"
+      bg="popover"
+      transform="rotate-45"
+      transition="colors"
+    >
+    </span>
+
+    <slot name="content" />
+  </div>
+</div>

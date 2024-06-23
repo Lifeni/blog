@@ -1,0 +1,65 @@
+---
+import Button from '@components/ui/Button.astro'
+import Popover from '@components/ui/Popover.astro'
+
+import WeChat from '@assets/wechat.svg'
+import { Image } from 'astro:assets'
+import { friends, files } from '@libs/consts'
+import Divider from '@components/ui/Divider.astro'
+import Icon from '@components/ui/Icon.astro'
+import TitleBarLink from '@components/ui/popover/TitleBarLink.astro'
+import TitleBar from '@components/ui/popover/TitleBar.astro'
+---
+
+<Popover align="right">
+  <Button slot="action" type="icon" name="更多" icon="i-ri:menu-line" />
+
+  <div slot="content">
+    <TitleBar name={`${friends.length} 位朋友`}>
+      <TitleBarLink
+        name="开往"
+        icon="i-ri:subway-line"
+        href="https://www.travellings.cn/plain.html"
+      />
+    </TitleBar>
+
+    <ul grid="~ cols-4">
+      {
+        friends.map(({ name, href, avatar }) => (
+          <li>
+            <a
+              {href}
+              class="group"
+              pos="relative"
+              p="2"
+              flex="~ col items-center gap-2"
+              bg="transparent hover:accent"
+              rounded="~"
+              transition="colors"
+            >
+              <Image
+                src={`${files.avatar}${avatar}`}
+                alt={`${name} 的头像`}
+                width="48"
+                height="48"
+                loading="eager"
+                rounded="full"
+                shadow="md"
+                title={name}
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <Divider />
+    <Image
+      src={WeChat}
+      alt="微信公众号"
+      width="248"
+      loading="eager"
+      filter="drop-shadow-md"
+    />
+  </div>
+</Popover>

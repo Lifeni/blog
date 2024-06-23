@@ -1,0 +1,17 @@
+---
+import App from '@components/App.astro'
+import Header from '@components/base/Header.astro'
+
+const name = '越过长城'
+const description =
+  'Across the Great Wall we can reach every corner of the world.'
+const color = '#40d583'
+const favicon = '/server/favicon.svg'
+---
+
+<App {name} {description} {color} {favicon}>
+  <Header slot="header" {name} />
+  <main flex="~ 1 col items-center justify-center gap-3" p="8" select="none">
+    <h1 text="2xl" font-extrabold>{name}</h1>
+  </main>
+</App>

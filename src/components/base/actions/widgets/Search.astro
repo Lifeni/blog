@@ -1,0 +1,54 @@
+---
+import Icon from '@components/ui/Icon.astro'
+---
+
+<form
+  action="https://google.com/search"
+  method="get"
+  target="_blank"
+  class="group"
+  w="full"
+  p="x-2 y-0.5"
+  flex="~ row items-center justify-between gap-1"
+  bg="accent"
+  rounded="~"
+  transition="colors"
+>
+  <span p="1" flex="~ row items-center">
+    <Icon icon="i-ri:search-line" size="4" name="搜索" color="secondary" />
+  </span>
+  <input type="hidden" name="q" value="site:lifeni.life" />
+  <input
+    type="search"
+    name="q"
+    id="search"
+    placeholder="在此搜索 …"
+    autocomplete="off"
+    class="placeholder:text-secondary"
+    w="full"
+    p="x-1.25 y-1.5"
+    border="none"
+    flex="1"
+    font="medium sans"
+    text="sm secondary focus:main"
+    bg="transparent"
+    outline="none"
+    transition="colors"
+  />
+
+  <button
+    p="x-0.75 y-0.5"
+    flex="~ row items-center"
+    rounded="~"
+    border="1 secondary"
+    cursor="pointer"
+    transition="colors"
+  >
+    <Icon
+      icon="i-ri:corner-down-left-line"
+      size="3.5"
+      name="回车"
+      color="secondary"
+    />
+  </button>
+</form>

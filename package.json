@@ -2,7 +2,7 @@
   "name": "blog",
   "description": "Just for Record",
   "private": true,
-  "version": "5.0.0",
+  "version": "6.0.0",
   "author": {
     "name": "Liang Fengning",
     "email": "liangfengning@foxmail.com"
@@ -10,25 +10,31 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "build": "astro build",
+    "build": "astro check && astro build",
     "dev": "astro dev",
     "preview": "astro preview",
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^1.1.3",
-    "@astrojs/sitemap": "^3.0.3",
-    "@iconify/json": "^2.2.137",
-    "@unocss/transformer-directives": "^0.57.2",
-    "astro": "^3.4.3",
-    "dayjs": "^1.11.10",
+    "@astrojs/alpinejs": "^0.4.0",
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/mdx": "^3.1.0",
+    "@astrojs/sitemap": "^3.1.5",
+    "@iconify-json/ri": "^1.1.21",
+    "@types/alpinejs": "^3.13.10",
+    "@unocss/reset": "^0.61.0",
+    "@unocss/transformer-directives": "^0.61.0",
+    "alpinejs": "^3.14.0",
+    "astro": "^4.10.2",
+    "dayjs": "^1.11.11",
     "less": "^4.2.0",
-    "prettier": "^3.0.3",
-    "sharp": "^0.32.6",
-    "unocss": "^0.57.2"
+    "prettier": "^3.3.2",
+    "typescript": "^5.4.5",
+    "unocss": "^0.61.0",
+    "unocss-preset-scrollbar": "^0.3.1"
   },
   "dependencies": {
-    "@fontsource-variable/inter": "^5.0.15",
-    "@unocss/reset": "^0.57.2"
+    "@fontsource-variable/fira-code": "^5.0.18",
+    "@fontsource-variable/inter": "^5.0.18"
   }
 }

@@ -1,9 +1,9 @@
 ---
 import App from '@components/App.astro'
 
-const name = '找不到页面'
-const description = '你要找的页面也许并不存在。'
-const error = 404
+const name = '服务器出错'
+const description = '网站的服务器也许坏掉了。'
+const error = 500
 ---
 
 <App {name} {description}>
@@ -17,7 +17,7 @@ const error = 404
       font="extrabold mono"
       text="8xl transparent"
       bg="clip-text"
-      bg-gradient="linear shape-br from-yellow-300 to-yellow-500"
+      bg-gradient="linear shape-br from-red-400 to-red-500"
       filter="drop-shadow-xl"
     >
       {error}

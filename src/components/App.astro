@@ -1,0 +1,58 @@
+---
+import DevMode from '@components/base/DevMode.astro'
+import { infos } from '@libs/consts'
+import { ViewTransitions } from 'astro:transitions'
+
+import '@fontsource-variable/fira-code'
+import '@fontsource-variable/inter'
+
+export interface Props {
+  scope?: string
+  name?: string
+  description?: string
+  color?: string
+  favicon?: string
+}
+
+const {
+  scope,
+  name = infos.title,
+  description = infos.description,
+  color = infos.color,
+  favicon = infos.favicon,
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="zh-cn" class="scroll-smooth" scrollbar="thin">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{scope ? `${name} | ${scope}` : name}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={color} />
+    <link rel="icon" href={favicon} />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <slot name="meta" />
+    <ViewTransitions />
+  </head>
+
+  <body
+    pos="relative"
+    min-h="screen dvh"
+    bg="main"
+    text="main"
+    font="medium sans"
+    flex="~ col"
+    transition="colors"
+  >
+    <DevMode />
+
+    <slot name="header" />
+    <slot name="nav" />
+    <div flex="~ 1 col">
+      <slot />
+    </div>
+    <slot name="footer" />
+  </body>
+</html>

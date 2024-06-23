@@ -1,0 +1,34 @@
+---
+import Icon from '@components/ui/Icon.astro'
+
+export interface Props {
+  type?: 'icon' | 'text'
+  name?: string
+  icon?: string
+  href?: string
+}
+
+const { type = 'text', name, icon, href } = Astro.props
+const Element = href ? 'a' : 'button'
+---
+
+<Element
+  {href}
+  target={href?.startsWith('http') ? '_blank' : '_self'}
+  rel={href?.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
+  class="group"
+  pos="relative"
+  w={type === 'text' ? 'auto' : '12'}
+  h={type === 'text' ? 'auto' : '12'}
+  p="3"
+  flex="~ row items-center justify-center gap-2"
+  bg="transparent hover:secondary focus:secondary"
+  font="semibold"
+  rounded={type === 'text' ? 'sm' : 'full'}
+  overflow="hidden"
+  transition="colors"
+>
+  {icon && <Icon {icon} {name} size="6" />}
+  {type === 'text' && <span>{name}</span>}
+  <slot />
+</Element>

@@ -1,0 +1,53 @@
+---
+import NavLinkItem from '@components/base/actions/links/NavLinkItem.astro'
+import NavTile from '@components/base/actions/links/NavTile.astro'
+import Search from '@components/base/actions/widgets/Search.astro'
+import Button from '@components/ui/Button.astro'
+import Divider from '@components/ui/Divider.astro'
+import Popover from '@components/ui/Popover.astro'
+import TitleBar from '@components/ui/popover/TitleBar.astro'
+import TitleBarLink from '@components/ui/popover/TitleBarLink.astro'
+import { apps } from '@libs/consts'
+import type { AppsName, NavLinks } from 'types'
+
+export interface Props {
+  name?: AppsName | string
+  links?: NavLinks
+}
+
+const { name = '记录干杯', links } = Astro.props
+const path = Astro.url.pathname
+const home = apps.filter(({ name: n }) => name === n)[0].href
+---
+
+<Popover align="left" width="sm">
+  <Button slot="action" type="icon" name="导航" icon="i-ri:circle-line" />
+
+  <section slot="content">
+    <TitleBar {name}>
+      <TitleBarLink name="主页" icon="i-ri:home-4-line" href={home} />
+    </TitleBar>
+
+    {
+      links && links.length > 0 && (
+        <ul w="full" grid="~ cols-3">
+          {links.map(({ name: n, href, icon }) => (
+            <NavTile name={n} {href} {icon} current={path === href} />
+          ))}
+        </ul>
+      )
+    }
+    <slot />
+    <Divider />
+
+    <ul w="full">
+      {
+        apps
+          .filter(({ name: n }) => n !== name)
+          .map(({ name: n, href, icon, todo }) => (
+            <NavLinkItem name={n} {href} {icon} current={name === n} {todo} />
+          ))
+      }
+    </ul>
+  </section>
+</Popover>

@@ -1,6 +1,6 @@
 :root {
   --astro-code-color-text: #24292f;
-  --astro-code-color-background: theme('colors.white');
+  --astro-code-color-background: theme('colors.light.400');
   --astro-code-token-constant: #0550ae;
   --astro-code-token-string: #0a3069;
   --astro-code-token-comment: theme('colors.truegray.500');
@@ -13,7 +13,7 @@
 
   @media (prefers-color-scheme: dark) {
     --astro-code-color-text: #c9d1d9;
-    --astro-code-color-background: theme('colors.dark.600');
+    --astro-code-color-background: theme('colors.dark.400');
     --astro-code-token-constant: #79c0ff;
     --astro-code-token-string: #a5d6ff;
     --astro-code-token-comment: theme('colors.truegray.400');
@@ -39,7 +39,19 @@
   }
 
   h1 {
-    --uno: 'text-4xl leading-13';
+    --uno: 'text-3xl leading-12 mt-2 mb-24 md:mt-8 md:mb-24';
+  }
+
+  h2 {
+    --uno: 'text-2xl my-8';
+  }
+
+  h3 {
+    --uno: 'text-xl';
+  }
+
+  h4 {
+    --uno: 'text-lg';
   }
 
   p {
@@ -52,14 +64,14 @@
 
   img,
   iframe {
-    --uno: 'w-full border-1 border-main bg-subtle rounded-md shadow-lg my-6 leading-6';
+    --uno: 'w-full border-1 border-main bg-secondary rounded-md shadow-lg my-6 leading-6';
   }
 
   table {
-    --uno: 'w-full border-1 border-main bg-subtle table rounded-md my-6 leading-6 overflow-hidden shadow-lg';
+    --uno: 'w-full border-1 border-secondary table rounded-md my-6 leading-6';
     th,
     td {
-      --uno: 'border-1 border-main text-left break-words text-wrap';
+      --uno: 'border-1 border-secondary text-left break-words text-wrap';
     }
     tr,
     thead,
@@ -69,23 +81,23 @@
   }
 
   pre {
-    --uno: 'w-full border-1 border-main rounded-md pl-4 overflow-x-auto bg-code my-6 leading-6 shadow-lg';
+    --uno: 'w-full rounded-md pl-4 overflow-x-auto bg-code my-6 leading-6 transition-colors';
     code {
       counter-reset: step;
       counter-increment: step 0;
       .line {
-        &::before {
+        &:not(:last-child)::before {
           --uno: 'whitespace-nowrap';
           content: counter(step);
           counter-increment: step;
-          --uno: 'inline-block mr-6 w-4 text-right text-light whitespace-nowrap';
+          --uno: 'inline-block mr-6 w-4 text-right text-secondary whitespace-nowrap';
         }
       }
     }
   }
 
   :not(pre) > code {
-    --uno: 'break-words text-wrap rounded border-1 border-main bg-code px-2 py-1';
+    --uno: 'break-words text-wrap rounded bg-code px-1.5 py-0.75 transition-colors';
     &::before,
     &::after {
       content: none;
@@ -93,7 +105,7 @@
   }
 
   blockquote {
-    --uno: 'not-italic border-solid border-l-6 border-l-light-600 dark:border-l-dark-600 my-6 px-6 py-1';
+    --uno: 'not-italic border-solid border-l-6 border-main my-6 px-6 py-0.5 text-secondary transition-colors';
   }
 
   li {
@@ -101,5 +113,9 @@
     p {
       --uno: 'my-0';
     }
+  }
+
+  details {
+    --uno: 'p-0';
   }
 }

@@ -1,0 +1,13 @@
+---
+import App from '@components/App.astro'
+import Footer from '@components/base/Footer.astro'
+import Header from '@components/base/Header.astro'
+import { navs } from '@libs/consts'
+---
+
+<App scope="记录干杯" name="时刻">
+  <Header slot="header" action="更多" links={navs} />
+  <Footer slot="footer" />
+  <main flex="~ col items-center justify-center gap-3" p="8" select="none">
+  </main>
+</App>
