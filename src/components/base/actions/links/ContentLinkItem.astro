@@ -13,19 +13,24 @@ const { slug, text, depth } = Astro.props
     aria-label={text}
     w="full"
     flex="~ row items-center"
-    p="x-2 y-2"
+    p={depth >= 4 ? 'x-2 y-1.75' : 'x-2 y-2'}
     rounded="~"
     bg="transparent hover:accent"
     transition="colors"
-    href={`#${slug}`} 
+    href={`#${slug}`}
   >
     {
       new Array(depth - 2)
         .fill(0)
         .map(() => <span min-w="4" whitespace="nowrap" />)
     }
-    <span text="sm truncate" font={depth <= 2 ? 'bold' : ''}>
-      <span text="secondary">{'# '}</span>
+    <span
+      text={depth >= 4 ? 'xs truncate' : 'sm truncate'}
+      font={depth <= 2 ? 'bold' : ''}
+    >
+      <span text="secondary" p="x-0.5" font="mono medium">
+        {depth === 2 ? '# ' : '- '}
+      </span>
       {text}
     </span>
   </a>

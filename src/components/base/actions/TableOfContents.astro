@@ -12,24 +12,19 @@ export interface Props {
 }
 const { contents } = Astro.props
 const index = contents?.filter(({ depth }) => depth !== 1)
+const title = contents?.filter(({ depth }) => depth === 1)[0]?.text
 ---
 
 <Popover align="right">
   <Button slot="action" type="icon" name="索引" icon="i-ri:file-list-line" />
 
   <div slot="content" h="full" max-h="72vh" min-h="72" flex="~ col">
-    <TitleBar name="目录">
-      <TitleBarLink
-        name="回到顶部"
-        icon="i-ri:arrow-up-line"
-        href={`#${contents?.filter(({ depth }) => depth === 1)[0].slug}` || '#'}
-      />
-    </TitleBar>
+    <TitleBar name={title || '目录'} />
 
     {
       index && index.length > 0 ? (
         <ul class="scroll-smooth" overflow="y-auto" scrollbar="thin">
-          {index.map(({ text, slug, depth }, i) => (
+          {index.map(({ text, slug, depth }) => (
             <ContentLinkItem {text} {slug} {depth} />
           ))}
         </ul>

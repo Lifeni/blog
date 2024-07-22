@@ -5,27 +5,28 @@ import Icon from '@components/ui/Icon.astro'
 import Divider from '@components/ui/Divider.astro'
 
 export interface Props {
-  type?: '文章' | '专题' | '存档'
+  type?: '文章' | '存档' | '专题'
   suffix?: '篇文章' | '个专题' | '项记录'
   name?: string
+  description?: string
   icon?: string
   contents: Article[]
 }
 
-const { type, name, suffix, icon, contents } = Astro.props
+const { type, suffix, name, description, icon, contents } = Astro.props
 ---
 
 <main
   flex={contents.length === 0
     ? '~ 1 col items-center justify-center'
-    : '~ 1 col items-center justify-start gap-16'}
-  p={contents.length === 0 ? '8' : 'x-6 t-32 md:t-20 b-8'}
+    : '~ 1 col items-center justify-start gap-20 md:gap-16'}
+  p={contents.length === 0 ? '8' : 'x-6 t-28 md:t-20 b-8'}
   w="full"
   max-w="2xl"
   m="x-auto"
 >
   {
-    contents.length === 0 ? (
+    contents?.length === 0 ? (
       <div flex="~ col items-center justify-center" select="none">
         <code
           font="extrabold mono"
@@ -53,7 +54,8 @@ const { type, name, suffix, icon, contents } = Astro.props
             <span>{name || `所有${type}`}</span>
           </h2>
           <p text="secondary">
-            {suffix ? `${contents.length} ${suffix}` : '最近更新'}
+            {description ||
+              (suffix ? `${contents.length} ${suffix}` : '最近更新')}
           </p>
         </div>
 

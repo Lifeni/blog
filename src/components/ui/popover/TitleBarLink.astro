@@ -16,6 +16,7 @@ const { name, href, icon } = Astro.props
   rel={href?.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
   flex="~ row items-center gap-1"
   text="sm secondary hover:link"
+  whitespace="nowrap"
   transition="colors"
 >
   <Icon icon={icon} name={name} size="4" />
