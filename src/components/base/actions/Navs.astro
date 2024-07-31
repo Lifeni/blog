@@ -21,11 +21,11 @@ const home = apps.filter(({ name: n }) => name === n)[0].href
 ---
 
 <Popover align="left" width="sm">
-  <Button slot="action" type="icon" name="导航" icon="i-ri:circle-line" />
+  <Button slot="action" type="icon" name="导航" icon="i-ri:menu-line" />
 
   <section slot="content">
     <TitleBar {name}>
-      <TitleBarLink name="主页" icon="i-ri:home-4-line" href={home} />
+      <TitleBarLink name="主页" icon="i-ri:home-2-line" href={home} />
     </TitleBar>
 
     {

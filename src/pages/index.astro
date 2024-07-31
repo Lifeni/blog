@@ -3,6 +3,7 @@ import App from '@components/App.astro'
 import Footer from '@components/base/Footer.astro'
 import Header from '@components/base/Header.astro'
 import List from '@components/notebook/List.astro'
+import MoreLink from '@components/ui/link/MoreLink.astro'
 import { navs } from '@libs/consts'
 import { getCollection } from 'astro:content'
 
@@ -18,5 +19,7 @@ const latest = [
 <App>
   <Header slot="header" action="更多" links={navs} />
   <Footer slot="footer" />
-  <List type="文章" name="记录干杯" contents={[latest]} />
+  <List type="文章" name="记录干杯" contents={[latest]}>
+    <MoreLink name="查看更多" href="/articles" />
+  </List>
 </App>

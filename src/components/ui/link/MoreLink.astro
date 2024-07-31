@@ -10,7 +10,11 @@ export interface Props {
 const { name, href, links } = Astro.props
 ---
 
-<section w="full" m="t--4" flex="~ row items-center justify-end gap-2">
+<section
+  w="full"
+  m="t--8 b-4 md:t--4"
+  flex="~ row items-center justify-end gap-2"
+>
   {
     links ? (
       <Fragment>

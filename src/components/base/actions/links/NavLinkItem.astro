@@ -16,18 +16,19 @@ const { name, icon, href, current, todo } = Astro.props
   <a
     aria-label={name}
     w="full"
-    flex="~ row items-center gap-3.5"
+    flex="~ row items-center gap-3"
     p="x-2 y-2"
     rounded="~"
     bg="transparent hover:accent"
     transition="colors"
-    {href}
+    cursor={todo ? 'not-allowed' : 'pointer'}
+    href={todo ? null : href}
   >
     <img
       src={icon}
       w="4.5"
       h="4.5"
-      m="x-0.25"
+      m="x-0.5"
       flex="~"
       rounded="full"
       shadow="md"
@@ -39,11 +40,27 @@ const { name, icon, href, current, todo } = Astro.props
     </span>
 
     <span flex="1"></span>
-    <Icon
-      icon={current ? 'i-ri:pushpin-2-fill' : 'i-ri:arrow-right-line'}
-      size="4"
-      {name}
-      color={current ? 'main' : 'secondary'}
-    />
+    {
+      todo ? (
+        <span
+          text="0.625rem secondary"
+          font="mono"
+          p="x-1.5 y-0.5"
+          rounded
+          bg="accent"
+        >
+          开发中
+        </span>
+      ) : (
+        <span m="x-0.5">
+          <Icon
+            icon={current ? 'i-ri:pushpin-2-fill' : 'i-ri:arrow-right-line'}
+            size="4"
+            {name}
+            color={current ? 'main' : 'secondary'}
+          />
+        </span>
+      )
+    }
   </a>
 </li>

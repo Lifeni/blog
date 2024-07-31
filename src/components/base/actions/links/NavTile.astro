@@ -21,9 +21,7 @@ const { name, icon, href, current } = Astro.props
     transition="colors"
     {href}
   >
-    {icon && <Icon icon={icon[0]} size="6" name={name} />}
-    <span font={current && 'extrabold'} text="sm">
-      {name}
-    </span>
+    {icon && <Icon icon={current ? icon[1] : icon[0]} size="6.5" name={name} />}
+    <span text="sm">{name}</span>
   </a>
 </li>

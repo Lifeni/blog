@@ -1,18 +1,16 @@
 ---
-import Button from '@components/ui/Button.astro'
-import Popover from '@components/ui/Popover.astro'
-
 import WeChat from '@assets/wechat.svg'
-import { Image } from 'astro:assets'
-import { friends, files } from '@libs/consts'
+import Button from '@components/ui/Button.astro'
 import Divider from '@components/ui/Divider.astro'
-import Icon from '@components/ui/Icon.astro'
-import TitleBarLink from '@components/ui/popover/TitleBarLink.astro'
+import Popover from '@components/ui/Popover.astro'
 import TitleBar from '@components/ui/popover/TitleBar.astro'
+import TitleBarLink from '@components/ui/popover/TitleBarLink.astro'
+import { files, friends } from '@libs/consts'
+import { Image } from 'astro:assets'
 ---
 
 <Popover align="right">
-  <Button slot="action" type="icon" name="更多" icon="i-ri:menu-line" />
+  <Button slot="action" type="icon" name="更多" icon="i-ri:at-line" />
 
   <div slot="content">
     <TitleBar name={`${friends.length} 位朋友`}>

@@ -29,14 +29,15 @@ const title = contents?.filter(({ depth }) => depth === 1)[0]?.text
           ))}
         </ul>
       ) : (
-        <div flex="~ 1 col items-center justify-center gap-3" rounded="~">
+        <div flex="~ 1 col items-center justify-center gap-2" rounded="~">
           <Icon
-            icon="i-ri:file-4-line"
+            icon="i-ri:hashtag"
             color="secondary"
             size="12"
             name="没有目录"
           />
-          <span text="sm secondary" transition="colors">
+
+          <span text="sm secondary" transition="colors" m="b-8">
             没有目录
           </span>
         </div>

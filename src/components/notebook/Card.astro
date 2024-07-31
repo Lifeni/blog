@@ -2,6 +2,7 @@
 import { files } from '@libs/consts'
 import dayjs from 'dayjs'
 import type { Article } from 'types'
+import { Image } from 'astro:assets'
 
 export interface Props extends Article {
   type?: '文章' | '专题' | '存档'
@@ -23,10 +24,13 @@ const {
 <div class="group" flex="~ col gap-5">
   {
     cover && (
-      <img
+      <Image
         class="aspect-3/2 md:aspect-video object-cover"
         src={`${files.notebook}${cover.image}`}
         alt={cover.caption}
+        width="1920"
+        height="1080"
+        loading="eager"
         w="full"
         shadow="lg hover:xl"
         rounded="md"
