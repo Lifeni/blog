@@ -3,7 +3,7 @@ const production = import.meta.env.PROD
 ---
 
 {
-  production && (
+  !production && (
     <section
       w="full"
       p="1.5"

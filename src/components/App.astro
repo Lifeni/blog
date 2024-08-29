@@ -46,13 +46,12 @@ const {
     flex="~ col"
     transition="colors"
   >
-    <DevMode />
-
     <slot name="header" />
     <slot name="nav" />
     <div flex="~ 1 col">
       <slot />
     </div>
     <slot name="footer" />
+    <DevMode />
   </body>
 </html>

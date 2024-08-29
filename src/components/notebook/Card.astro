@@ -90,8 +90,8 @@ const {
         )
       }
       <span>|</span>
-      <time datetime={dayjs(date.created).format('YYYY-MM-DD')}>
-        {dayjs(date.created).format('YYYY 年 MM 月 DD 日')}
+      <time datetime={dayjs(date?.created).format('YYYY-MM-DD')}>
+        {dayjs(date?.created).format('YYYY 年 MM 月 DD 日')}
       </time>
     </span>
   </section>
