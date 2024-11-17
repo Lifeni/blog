@@ -7,20 +7,21 @@ import Drawer from '@components/notebook/header/Drawer.astro'
 import Nav from '@components/notebook/header/Nav.astro'
 import { getCollection } from 'astro:content'
 
-const articles = (await getCollection('文章'))
+const stories = (await getCollection('专题'))
   .map(({ data }) => data)
   .filter(({ draft }) => import.meta.env.DEV || !draft)
-  .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
+  .filter(({ group }) => group)
+  .sort((a, b) => b.date.updated.getTime() - a.date.updated.getTime())
 
 const contents = [
-  ...articles.filter(({ star }) => star),
-  ...articles.filter(({ star }) => !star),
+  ...stories.filter(({ star }) => star),
+  ...stories.filter(({ star }) => !star),
 ]
 ---
 
-<Notebook>
+<Notebook name="专题">
   <Header blur>
-    <Nav slot="left" name="文章" />
+    <Nav slot="left" name="专题" />
     <Drawer slot="right" />
   </Header>
   <main
@@ -29,7 +30,7 @@ const contents = [
     p="x-5 t-16 b-10"
     transition:animate="fade"
   >
-    <List name="文章" type="article" {contents} />
+    <List name="专题" type="story" {contents} />
   </main>
   <Footer />
 </Notebook>

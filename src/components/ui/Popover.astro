@@ -1,50 +1,44 @@
 ---
 export interface Props {
-  align?: 'left' | 'center' | 'right'
-  width?: 'sm' | 'md' | 'lg' | 'full'
+  class?: string
 }
 
-const { align = 'center', width = 'md' } = Astro.props
+const { class: classes } = Astro.props
 ---
 
-<div
-  class="group"
-  pos="relative"
-  flex="~ items-center justify-center"
-  pointer-events="auto"
->
+<div class={`group ${classes} pointer-events-auto`}>
   <slot name="action" />
+
   <div
-    class="invisible group-hover:visible group-focus-within:visible"
-    pos={`absolute top-14 ${align === 'left' ? 'left-0' : align === 'right' ? 'right-0' : 'left-1/2'}`}
-    w={width === 'sm'
-      ? '48'
-      : width === 'md'
-        ? '64'
-        : width === 'lg'
-          ? '72'
-          : 'full'}
-    p="2"
-    transform={`~ translate-y-0 group-hover:translate-y-1 group-focus-within:translate-y-1 ${align === 'center' && 'translate-x--1/2'}`}
-    rounded="md"
-    shadow="sm group-hover:2xl group-focus-within:2xl"
-    op="0 group-hover:100 group-focus-within:100"
-    bg="popover"
-    border="1 main"
-    cursor="default"
+    class="invisible group-focus-within:visible"
+    pos="fixed top-0 left-0 z-50"
+    w="full"
+    h="screen dvh"
+    op="0 group-focus-within:100"
+    bg="back"
     transition="all"
   >
-    <span
-      pos={`absolute top--1.25 ${align === 'center' ? 'left-1/2' : align === 'left' ? 'left-4.625' : 'right-4.625'}`}
-      w="2.5"
-      h="2.5"
-      border="1 r-0 b-0 main"
+  </div>
+  <div
+    class="invisible group-focus-within:visible"
+    pos="fixed top-0 left-0 z-50"
+    w="full"
+    h="screen dvh"
+    overflow="hidden"
+  >
+    <div
+      class="scrollbar-none"
+      pos="absolute left-0 top-25vh xs:(top-0 right-0 left-unset) z-100"
+      w="full xs:72"
+      h="75vh 75dvh xs:(screen dvh)"
+      shadow="none group-focus-within:lg"
+      transform="~ translate-x-0 translate-y-75vh translate-y-75dvh xs:(translate-x-72 translate-y-0) group-focus-within:(translate-x-0 translate-y-0)"
       bg="popover"
-      transform="rotate-45"
-      transition="colors"
+      rounded="t-md xs:none"
+      transition="all duration-300"
+      overflow="y-auto"
     >
-    </span>
-
-    <slot name="content" />
+      <slot name="content" />
+    </div>
   </div>
 </div>

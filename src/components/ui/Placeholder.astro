@@ -1,0 +1,21 @@
+---
+export interface Props {
+  code: string | number
+  text: string
+  size?: 'sm' | 'md'
+}
+const { code, text, size = 'md' } = Astro.props
+const sizes = size == 'sm' ? 'text-6xl sm:text-7xl' : 'text-8xl'
+---
+
+<code
+  class={sizes}
+  font="extrabold mono"
+  text="transparent"
+  bg="clip-text"
+  bg-gradient="linear shape-br from-yellow-300 to-yellow-500"
+  filter="drop-shadow-xl"
+>
+  {code}
+</code>
+<h1 text="2xl" m="t-2 b-4" font="extrabold">{text}</h1>

@@ -1,74 +1,154 @@
 ---
-import type { Article } from 'types'
-import Card from '@components/notebook/Card.astro'
-import Icon from '@components/ui/Icon.astro'
 import Divider from '@components/ui/Divider.astro'
+import Icon from '@components/ui/Icon.astro'
+import IconText from '@components/ui/IconText.astro'
+import Placeholder from '@components/ui/Placeholder.astro'
+import Picture from '@components/widget/Picture.astro'
+import { cdn } from '@libs/consts'
+import { dateFormat } from '@libs/utils'
+import { Image } from 'astro:assets'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh'
+import relative from 'dayjs/plugin/relativeTime'
+import type { Article } from 'types'
+
+dayjs.locale('zh')
+dayjs.extend(relative)
 
 export interface Props {
-  type?: '文章' | '存档' | '专题'
-  suffix?: '篇文章' | '个专题' | '项记录'
   name?: string
-  description?: string
-  icon?: string
+  type?: 'article' | 'archive' | 'story'
   contents: Article[]
 }
 
-const { type, suffix, name, description, icon, contents } = Astro.props
+const { name, type, contents } = Astro.props
+const path = type === 'story' ? 'story' : 'article'
 ---
 
-<main
-  flex={contents.length === 0
-    ? '~ 1 col items-center justify-center'
-    : '~ 1 col items-center justify-start gap-20 md:gap-16'}
-  p={contents.length === 0 ? '8' : 'x-6 t-28 b-8 md:t-22'}
-  w="full"
-  max-w="2xl"
-  m="x-auto"
->
+<div flex="~ col items-center justify-center" w="full" max-w="xl">
   {
     contents?.length === 0 ? (
-      <div flex="~ col items-center justify-center" select="none">
-        <code
-          font="extrabold mono"
-          text="6xl transparent"
-          bg="clip-text"
-          bg-gradient="linear shape-br from-yellow-300 to-yellow-500"
-          filter="drop-shadow-xl"
-        >
-          {`(*/ω＼*)`}
-        </code>
-        <h1 text="2xl" m="4" font="extrabold">
-          敬请期待
-        </h1>
+      <div flex="~ 1 col items-center justify-center gap-2" select="none">
+        <Placeholder code={`(*/ω＼*)`} text="这里什么都没有" size="sm" />
       </div>
     ) : (
-      <Fragment>
-        <div flex="~ col gap-1.5 justify-center" w="full">
-          <h2
-            class="scroll-mt-4"
-            text="2xl"
-            font="extrabold"
-            flex="~ row items-center gap-3"
-          >
-            {icon && <Icon {icon} {name} size="7" />}
-            <span>{name || `所有${type}`}</span>
-          </h2>
-          <p text="secondary">
-            {description ||
-              (suffix ? `${contents.length} ${suffix}` : '最近更新')}
-          </p>
-        </div>
+      <ul flex="~ col gap-8" w="full">
+        {contents.map(
+          (
+            { name, subtitle, date, description, id, cover, draft, star, tags },
+            i
+          ) => (
+            <li w="full" flex="~ col gap-8">
+              <div class="group" pos="relative" flex="~ col gap-4">
+                {cover && (
+                  <Fragment>
+                    <Picture
+                      src={`${cdn}${cover.image}`}
+                      alt={cover.caption}
+                      cover
+                    />
 
-        <ul flex={type === '存档' ? '~ col gap-6' : '~ col gap-12'}>
-          {contents.map((item, i) => (
-            <li w="full" flex="~ col gap-5">
-              <Card {type} {...item} />
-              {type === '存档' && contents.length !== i + 1 && <Divider />}
+                    {draft && (
+                      <div
+                        pos="absolute right-4 top-0"
+                        p="x-1.5 y-2"
+                        text="dark-800"
+                        bg="yellow-400"
+                        shadow="md"
+                        rounded="sm t-0"
+                        title="草稿"
+                      >
+                        <Icon name="草稿" size="4" icon="i-ri:draft-line" />
+                      </div>
+                    )}
+                  </Fragment>
+                )}
+
+                <div flex="~ col gap-1">
+                  <section w="full" flex="~ row gap-3 items-center">
+                    <h2 text="leading-7 lg" font="bold">
+                      <a
+                        href={`/${path}/${id}`}
+                        w="fit"
+                        text="main hover:link"
+                        underline="link"
+                        transition="colors"
+                      >
+                        {name}
+                      </a>
+                    </h2>
+                    {subtitle && (
+                      <span text="md secondary truncate" font="leading-7">
+                        {subtitle}
+                      </span>
+                    )}
+                  </section>
+                  <section>
+                    <p
+                      class="break-all md:break-word"
+                      text="sm justify"
+                      font="leading-6"
+                      p="b-1"
+                    >
+                      {description}
+                    </p>
+                  </section>
+                  <section w="full" flex="~ row gap-3 items-center">
+                    {type !== 'archive' &&
+                      (tags ? (
+                        tags.map(tag => (
+                          <IconText name="标签" icon="i-ri:hashtag">
+                            {tag}
+                          </IconText>
+                        ))
+                      ) : (
+                        <IconText name="标签" icon="i-ri:hashtag">
+                          存档
+                        </IconText>
+                      ))}
+
+                    <IconText name="日期" icon="i-ri:time-line" type="time">
+                      {dateFormat(date.created)}
+                    </IconText>
+
+                    {star && (
+                      <IconText name="置顶" icon="i-ri:pushpin-2-line">
+                        置顶
+                      </IconText>
+                    )}
+                  </section>
+                </div>
+              </div>
+              {type === 'archive' && contents.length !== i + 1 && <Divider />}
             </li>
-          ))}
-        </ul>
-      </Fragment>
+          )
+        )}
+        {(type === 'article' || type === 'story') && (
+          <li>
+            <section w="full" flex="~ col items-end gap-2" p="y-1">
+              <IconText name="统计" icon="i-ri:calendar-schedule-line">
+                共计 {contents.length} 篇{name}，最近更新于
+                {dayjs(contents[0].date.updated).fromNow()}
+              </IconText>
+
+              {type === 'article' && (
+                <IconText name="存档" icon="i-ri:archive-2-line">
+                  <a
+                    href="/article/archived"
+                    w="fit"
+                    font="medium"
+                    text="xs secondary hover:link"
+                    underline="link"
+                    transition="colors"
+                  >
+                    查看已存档文章
+                  </a>
+                </IconText>
+              )}
+            </section>
+          </li>
+        )}
+      </ul>
     )
   }
-  <slot />
-</main>
+</div>

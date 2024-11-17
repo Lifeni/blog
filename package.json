@@ -1,8 +1,9 @@
 {
+  "displayName": "记录干杯",
   "name": "blog",
-  "description": "Just for Record",
+  "description": "个人网站，在这里记录",
   "private": true,
-  "version": "6.0.0",
+  "version": "2025.01",
   "author": {
     "name": "Liang Fengning",
     "email": "liangfengning@foxmail.com"
@@ -12,29 +13,36 @@
   "scripts": {
     "build": "astro check && astro build",
     "dev": "astro dev",
-    "preview": "astro preview",
+    "preview": "astro check && astro build && astro preview",
     "astro": "astro"
   },
   "devDependencies": {
     "@astrojs/alpinejs": "^0.4.0",
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/mdx": "^3.1.5",
-    "@astrojs/sitemap": "^3.1.6",
-    "@iconify-json/ri": "^1.1.22",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^3.1.9",
+    "@astrojs/sitemap": "^3.2.1",
+    "@iconify-json/ri": "^1.2.3",
     "@types/alpinejs": "^3.13.10",
-    "@unocss/reset": "^0.62.3",
-    "@unocss/transformer-directives": "^0.62.3",
-    "alpinejs": "^3.14.1",
-    "astro": "^4.15.0",
+    "@unocss/reset": "^0.64.1",
+    "@unocss/transformer-directives": "^0.64.1",
+    "alpinejs": "^3.14.3",
+    "astro": "^4.16.13",
     "dayjs": "^1.11.13",
+    "hast-util-parse-selector": "^4.0.0",
+    "hast-util-select": "^6.0.3",
     "less": "^4.2.0",
     "prettier": "^3.3.3",
-    "typescript": "^5.5.4",
-    "unocss": "^0.62.3",
+    "rehype-rewrite": "^4.0.2",
+    "rehype-wrap": "^1.1.0",
+    "sharp": "^0.33.5",
+    "typescript": "^5.6.3",
+    "unist-util-visit": "^5.0.0",
+    "unocss": "^0.64.1",
+    "unocss-preset-animations": "^1.1.0",
     "unocss-preset-scrollbar": "^0.3.1"
   },
   "dependencies": {
-    "@fontsource-variable/fira-code": "^5.0.19",
-    "@fontsource-variable/inter": "^5.0.20"
+    "@fontsource-variable/fira-code": "^5.1.0",
+    "@fontsource-variable/inter": "^5.1.0"
   }
 }

@@ -1,0 +1,75 @@
+---
+import HeaderButton from '@components/ui/HeaderButton.astro'
+import Icon from '@components/ui/Icon.astro'
+import Popover from '@components/ui/Popover.astro'
+import type { ContentItems } from 'types'
+
+export interface Props {
+  contents?: ContentItems
+}
+const { contents } = Astro.props
+const index = contents?.filter(({ depth }) => depth !== 1)
+const title = contents?.filter(({ depth }) => depth === 1)[0]?.text
+
+const name = '目录'
+const icons = ['i-ri:file-list-2-line', 'i-ri:file-list-2-fill']
+---
+
+<Popover class="flex px-2 pb-1.5">
+  <HeaderButton {name} {icons} slot="action" />
+  <div slot="content" p="3" h="full" flex="~ 1 col">
+    <section flex="~ row items-center gap-2" p="2">
+      <Icon {name} icon={icons[0]} size="4" />
+      <span text="sm" font="semibold" flex="1">目录</span>
+      <span text="xs secondary" underline="~ from-font dotted offset-4">
+        点击任意处关闭
+      </span>
+    </section>
+
+    {
+      index && index.length > 0 ? (
+        <ul p="t-2 b-4">
+          {index.map(({ text, slug, depth }) => (
+            <li>
+              <a
+                aria-label={text}
+                w="full"
+                flex="~ row items-center"
+                p={depth >= 4 ? 'x-2 y-1.5' : 'x-2 y-1.75'}
+                rounded="~"
+                bg="transparent hover:accent"
+                transition="colors"
+                href={`#${slug}`}
+              >
+                {new Array(depth - 2).fill(0).map(() => (
+                  <span min-w="4" whitespace="nowrap" />
+                ))}
+                <span
+                  text={depth >= 4 ? 'xs truncate' : 'sm truncate'}
+                  font={depth <= 2 ? 'bold' : ''}
+                >
+                  <span text="secondary" p="x-0.5" font="mono medium">
+                    {depth === 2 ? '# ' : '- '}
+                  </span>
+                  {text}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div flex="~ 1 col items-center justify-center gap-3" rounded="~">
+          <Icon
+            icon="i-ri:history-line"
+            class="text-secondary"
+            size="16"
+            name="没有目录"
+          />
+          <h2 text="lg secondary truncate" font="medium leading-7">
+            没有目录
+          </h2>
+        </div>
+      )
+    }
+  </div>
+</Popover>

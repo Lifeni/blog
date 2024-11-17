@@ -1,0 +1,24 @@
+---
+import Footer from '@components/Footer.astro'
+import Header from '@components/Header.astro'
+import Notebook from '@components/notebook/Notebook.astro'
+import Drawer from '@components/notebook/header/Drawer.astro'
+import Nav from '@components/notebook/header/Nav.astro'
+import Placeholder from '@components/ui/Placeholder.astro'
+---
+
+<Notebook name="时刻">
+  <Header blur>
+    <Nav slot="left" name="时刻" />
+    <Drawer slot="right" />
+  </Header>
+  <main
+    id="~"
+    p="x-5 t-16 b-10"
+    flex="~ 1 col items-center justify-center gap-2"
+    transition:animate="fade"
+  >
+    <Placeholder code={`(*/ω＼*)`} text="这里什么都没有" size="sm" />
+  </main>
+  <Footer />
+</Notebook>

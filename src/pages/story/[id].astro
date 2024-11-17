@@ -1,0 +1,40 @@
+---
+import Footer from '@components/Footer.astro'
+import Header from '@components/Header.astro'
+import Content from '@components/notebook/Content.astro'
+import Notebook from '@components/notebook/Notebook.astro'
+import Nav from '@components/notebook/header/Nav.astro'
+import TableOfContents from '@components/notebook/header/TableOfContents.astro'
+import { getCollection, type CollectionEntry } from 'astro:content'
+
+export async function getStaticPaths() {
+  const stories = (await getCollection('专题')).filter(
+    entry => import.meta.env.DEV || !entry.data.draft
+  )
+  return stories.map(entry => ({
+    params: { id: entry.data.id },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'专题'> }
+const { Content: MarkdownContent, headings } = await entry.render()
+---
+
+<Notebook name={entry.data.name} description={entry.data.description}>
+  <Header blur>
+    <Nav slot="left" name="专题" />
+    <TableOfContents slot="right" contents={headings} />
+  </Header>
+  <main
+    id="~"
+    flex="~ 1 col items-center"
+    p="x-5 t-16 b-10"
+    transition:animate="fade"
+  >
+    <Content frontmatter={entry.data}>
+      <MarkdownContent />
+    </Content>
+  </main>
+  <Footer />
+</Notebook>

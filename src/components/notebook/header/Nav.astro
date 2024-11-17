@@ -1,0 +1,27 @@
+---
+import HeaderButton from '@components/ui/HeaderButton.astro'
+
+export interface Props {
+  name?: string
+}
+const { name: page } = Astro.props
+
+// prettier-ignore
+const links = [
+  { name: '文章', href: '/', icons: ['i-ri:book-open-line', 'i-ri:book-open-fill'] },
+  { name: '专题', href: '/story', icons: ['i-ri:chat-3-line', 'i-ri:chat-3-fill'] },
+  { name: '时刻', href: '/moment', icons: ['i-ri:image-line', 'i-ri:image-fill'] },
+]
+---
+
+<nav p="x-2 b-1.5">
+  <ul flex="~ row items-center">
+    {
+      links.map(({ name, href, icons }) => (
+        <li>
+          <HeaderButton {name} {href} {icons} active={page === name} />
+        </li>
+      ))
+    }
+  </ul>
+</nav>

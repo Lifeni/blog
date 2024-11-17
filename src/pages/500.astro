@@ -1,42 +1,9 @@
 ---
-import App from '@components/App.astro'
+import ErrorPage from '@components/app/ErrorPage.astro'
 
 const name = '服务器出错'
 const description = '网站的服务器也许坏掉了。'
 const error = 500
 ---
 
-<App {name} {description}>
-  <main
-    h="screen dvh"
-    flex="~ col items-center justify-center"
-    p="8"
-    select="none"
-  >
-    <code
-      font="extrabold mono"
-      text="8xl transparent"
-      bg="clip-text"
-      bg-gradient="linear shape-br from-red-400 to-red-500"
-      filter="drop-shadow-xl"
-    >
-      {error}
-    </code>
-    <h1 text="2xl" m="t-2 b-4" font="extrabold">{name}</h1>
-
-    <a
-      href="/"
-      pos="fixed left-1/2 bottom-12"
-      p="x-1.5 y-0.5"
-      font="mono"
-      text="xs secondary hover:link"
-      bg="accent"
-      rounded="~"
-      transform="~ translate-x--1/2"
-      transition="colors"
-      title="返回根目录"
-    >
-      cd /
-    </a>
-  </main>
-</App>
+<ErrorPage {name} {description} {error} />

@@ -1,6 +1,5 @@
 ---
-import App from '@components/App.astro'
-import Header from '@components/base/Header.astro'
+import App from '@components/app/App.astro'
 
 const name = '代码可行'
 const description = '这里有一些做过的开源项目。'
@@ -8,9 +7,4 @@ const color = '#29b7f7'
 const favicon = '/dev/favicon.svg'
 ---
 
-<App {name} {description} {color} {favicon}>
-  <Header slot="header" {name} />
-  <main flex="~ 1 col items-center justify-center gap-3" p="8" select="none">
-    <h1 text="2xl" font-extrabold>{name}</h1>
-  </main>
-</App>
+<App {name} {description} {color} {favicon} />

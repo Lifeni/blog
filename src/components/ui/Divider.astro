@@ -1,1 +1,23 @@
-<hr border="main" m="y-2" transition="colors" />
+---
+export interface Props {
+  type?: 'vertical' | 'horizontal'
+  class?: string
+}
+
+const { type = 'horizontal', class: classes } = Astro.props
+---
+
+{
+  type === 'vertical' ? (
+    <hr
+      class={classes}
+      min-h="1rem"
+      w="1px"
+      bg="border"
+      border="none"
+      transition="colors"
+    />
+  ) : (
+    <hr class={classes} border="main" w="full" transition="colors" />
+  )
+}

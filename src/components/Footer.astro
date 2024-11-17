@@ -1,0 +1,56 @@
+---
+export interface Props {
+  type?: 'all' | 'icp'
+}
+const { type = 'all' } = Astro.props
+
+const cdn = {
+  name: '由「又拍云」提供 CDN 加速与云储存服务',
+  href: 'https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral',
+}
+const icp = { name: '鲁ICP备19006085号', href: 'https://beian.miit.gov.cn' }
+const mps = {
+  name: '鲁公网安备37132102371392号',
+  href: 'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37132102371392',
+}
+
+const links = () => {
+  switch (type) {
+    case 'all':
+      return [[cdn], [icp, mps]]
+    case 'icp':
+      return [[], [icp]]
+  }
+}
+---
+
+<footer
+  w="full"
+  flex="~ col gap-1.5 md:(row items-center justify-between gap-4)"
+  p="x-5 y-5 sm:y-3"
+  bg="footer"
+  shadow="lg dark inset opacity-2"
+  transition="colors"
+>
+  {
+    links().map(group => (
+      <section flex="~ col gap-1.5 xs:(row items-center gap-4)">
+        {group
+          .filter(link => !!link)
+          .map(({ href, name }) => (
+            <a
+              {href}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              w="fit"
+              text="xs secondary hover:link"
+              underline="link"
+              transition="colors"
+            >
+              {name}
+            </a>
+          ))}
+      </section>
+    ))
+  }
+</footer>

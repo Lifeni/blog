@@ -1,0 +1,94 @@
+---
+import IconText from '@components/ui/IconText.astro'
+import Picture from '@components/widget/Picture.astro'
+import { cdn } from '@libs/consts'
+import { dateFormat, findContents, parseHref } from '@libs/utils'
+
+export interface Props {
+  name: string
+  href: string
+}
+const { name, href } = Astro.props
+
+const { type, id } = parseHref(href)
+const entry = id && (await findContents(id))
+---
+
+<a
+  class="widget"
+  aria-label={name}
+  {href}
+  target={type === '外部' ? '_blank' : '_self'}
+  rel={type === '外部' ? 'nofollow noopener noreferrer' : ''}
+  pos="relative"
+  flex="~ col"
+  w="full"
+  m="y-6"
+  border="main 1"
+  bg="popover"
+  shadow="lg hover:xl"
+  text="main"
+  rounded="md"
+  overflow="hidden"
+  transition="shadow"
+>
+  {
+    entry && entry.data.cover && (
+      <Picture
+        src={`${cdn}${entry.data.cover.image}`}
+        alt={entry.data.cover.caption}
+        cover
+      />
+    )
+  }
+
+  <section
+    class={entry && entry.data.cover && 'backdrop-blur'}
+    w="full"
+    pos={entry && entry.data.cover ? 'absolute left-0 bottom-0' : ''}
+    p="x-4 y-3.5"
+    flex="~ col gap-0.5"
+    bg="white/90 dark:dark-800/90"
+    transition="colors"
+  >
+    <span
+      text="lg leading-7 main"
+      w="fit"
+      flex="~ row gap-2 items-center"
+      font="bold"
+      m="y-0"
+      transition="colors"
+    >
+      <span> {(entry && entry?.data?.name) || name}</span>
+      {
+        entry && entry?.data?.subtitle && (
+          <span text="md secondary truncate" font="leading-7">
+            {entry?.data?.subtitle}
+          </span>
+        )
+      }
+    </span>
+    {
+      entry && (
+        <span
+          class="break-all md:break-word"
+          text="sm main justify"
+          font="leading-6"
+          p="b-1"
+        >
+          {entry.data.description}
+        </span>
+      )
+    }
+    <section flex="~ row items-center justify-between">
+      {
+        entry && (
+          <IconText name="日期" icon="i-ri:time-line" type="time">
+            {dateFormat(entry.data.date.created)}
+          </IconText>
+        )
+      }
+      <span text="xs secondary" font="mono">{id ? `/${id}` : href}</span>
+    </section>
+  </section>
+</a>

@@ -1,0 +1,108 @@
+---
+import Icon from '@components/ui/Icon.astro'
+---
+
+<div
+  id="indicator-container"
+  class="hidden lg:flex"
+  pos="fixed left-10 top-[50%]"
+  transform="~ translate-y-[-50%]"
+  w="1px"
+  h="75vh"
+  max-h="120"
+  m="1.5"
+  op="0"
+  bg="border"
+  transition="opacity colors"
+  tabindex="-1"
+>
+  <div
+    id="indicator"
+    pos="absolute left-0"
+    w="full"
+    bg="invert"
+    transition="colors"
+  >
+  </div>
+  <span
+    id="indicator-text"
+    pos="absolute left-[50%] bottom--8"
+    p="1.5"
+    text="xs center main"
+    transform="~ translate-x-[-50%]"
+    transition="all"></span>
+  <button
+    id="indicator-button"
+    pos="absolute left-[50%] top--8"
+    p="1.5"
+    text="xs center main"
+    transform="~ translate-x-[-50%]"
+    bg="hover:secondary"
+    rounded="full"
+    transition="all"
+    onclick="window.scrollTo({ top:0 })"
+    title="回到顶部"
+  >
+    <Icon name="回到顶部" icon="i-ri:arrow-up-s-line" size="4" />
+  </button>
+</div>
+
+<script>
+  let animation: number
+
+  const calc = () => {
+    const indicator = document.getElementById('indicator')
+    const indicatorText = document.getElementById('indicator-text')
+    const docHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.clientHeight
+    )
+
+    const scrollTop = document.documentElement.scrollTop
+    const scrollPercent = (scrollTop / docHeight) * 100
+    const winHeight = window.innerHeight
+    const scrollSpace = docHeight - winHeight
+    const indicatorHeight = (winHeight / docHeight) * 100
+    const indicatorPercent =
+      scrollSpace === 0 ? 100 : (scrollTop / scrollSpace) * 100
+
+    const top = `${scrollPercent}%`
+    const height = `${indicatorHeight}%`
+    if (indicator) {
+      indicator.style.top = top
+      indicator.style.height = height
+    }
+    if (indicatorText) {
+      const percent = Math.round(indicatorPercent)
+      if (percent === 0) indicatorText.style.opacity = '0'
+      else {
+        indicatorText.style.opacity = '1'
+        indicatorText.innerText = `${Math.round(indicatorPercent)}%`
+      }
+
+      if (scrollSpace === 0) {
+        const container = document.getElementById('indicator-container')
+        if (container) container.style.opacity = '0'
+      }
+    }
+
+    animation = requestAnimationFrame(calc)
+  }
+
+  const indicate = () => {
+    const container = document.getElementById('indicator-container')
+    if (container) container.style.opacity = '1'
+    const matcher = window.matchMedia('(min-width: 1024px)')
+    if (!matcher.matches) return
+    if (animation) cancelAnimationFrame(animation)
+    animation = requestAnimationFrame(calc)
+  }
+
+  window.addEventListener('resize', indicate)
+  document.addEventListener('astro:page-load', indicate)
+  document.addEventListener('scroll', indicate)
+</script>

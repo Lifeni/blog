@@ -1,0 +1,19 @@
+---
+import Root from '@components/Root.astro'
+import SkipToContent from '@components/ui/SkipToContent.astro'
+import type { MetaProps } from 'types'
+
+export interface Props extends Partial<MetaProps> {}
+const { name, description, color, favicon } = Astro.props
+---
+
+<Root
+  name={name ? `${name} - 记录干杯` : '记录干杯'}
+  description={description ||
+    '个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。'}
+  color={color || '#feec44'}
+  favicon={favicon || '/favicon.svg'}
+>
+  <SkipToContent />
+  <slot />
+</Root>

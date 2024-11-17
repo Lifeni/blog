@@ -1,0 +1,24 @@
+---
+export interface Props {
+  blur?: boolean
+}
+
+const { blur } = Astro.props
+const color = blur
+  ? 'backdrop-blur xl:backdrop-blur-none bg-white/90 dark:bg-dark-800/90 xl:bg-transparent'
+  : ''
+---
+
+<header
+  class={`${color} xl:pointer-events-none`}
+  pos="fixed left-0 top-0 z-1000"
+  w="full"
+  flex="~ row items-center justify-between gap-4"
+  transition:animate="fade"
+>
+  <slot>
+    <slot name="left" />
+    <slot name="center" />
+    <slot name="right" />
+  </slot>
+</header>

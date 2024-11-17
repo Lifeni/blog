@@ -1,0 +1,42 @@
+---
+import '@fontsource-variable/fira-code'
+import '@fontsource-variable/inter'
+import { ViewTransitions } from 'astro:transitions'
+import type { MetaProps } from 'types'
+import DevMode from './ui/DevMode.astro'
+
+export interface Props extends MetaProps {}
+const dev = false
+const { name, description, color, favicon } = Astro.props
+---
+
+<!doctype html>
+<html lang="zh-cn" class="scroll-smooth scroll-p-16 xl:scroll-p-6">
+  <head>
+    <meta charset="utf-8" />
+    <title>{name}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={color} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href={favicon} />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <ViewTransitions />
+    <slot name="meta" />
+  </head>
+
+  <body
+    class="tabular-nums"
+    pos="relative"
+    h="screen dvh"
+    min-h="screen dvh"
+    flex="~ col"
+    text="main"
+    font="medium sans"
+    bg="main"
+    transition="colors"
+    overflow="x-hidden y-scroll"
+  >
+    <slot />
+    {dev && <DevMode />}
+  </body>
+</html>

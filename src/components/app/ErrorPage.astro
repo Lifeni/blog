@@ -1,0 +1,35 @@
+---
+import Root from '@components/Root.astro'
+import Placeholder from '@components/ui/Placeholder.astro'
+import type { MetaProps } from 'types'
+
+export interface Props extends Pick<MetaProps, 'name' | 'description'> {
+  error: number
+}
+const { name, description, error } = Astro.props
+---
+
+<Root {name} {description} color="#feec44" favicon="/favicon.svg">
+  <main
+    h="screen dvh"
+    flex="~ col items-center justify-center"
+    p="8"
+    select="none"
+  >
+    <Placeholder code={error} text={name} />
+    <a
+      href="/"
+      pos="fixed left-1/2 bottom-12"
+      p="x-1.5 y-0.5"
+      font="mono"
+      text="xs secondary hover:link"
+      bg="accent"
+      rounded="~"
+      transform="~ translate-x--1/2"
+      transition="colors"
+      title="返回根目录"
+    >
+      cd /
+    </a>
+  </main>
+</Root>

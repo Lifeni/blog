@@ -31,48 +31,76 @@
   h2,
   h3,
   h4 {
-    --uno: 'font-extrabold break-words';
+    --uno: 'font-extrabold break-words bold';
+    word-break: auto-phrase;
+
     a,
     code {
       --uno: 'font-extrabold';
     }
   }
 
-  h1 {
-    --uno: 'text-3xl leading-12 mt-0 mb-20 md:mt-8 md:mb-24';
-  }
-
   h2 {
-    --uno: 'text-2xl my-8';
+    --uno: 'text-xl my-6';
   }
 
   h3 {
-    --uno: 'text-xl';
-  }
-
-  h4 {
     --uno: 'text-lg';
   }
 
+  h4 {
+    --uno: 'text-base';
+  }
+
   p {
-    --uno: 'text-justify';
+    --uno: 'text-justify text-sm leading-6';
   }
 
   a {
     --uno: 'text-link break-words no-underline hover:underline underline-from-font hover:underline-offset-4';
   }
 
-  img,
+  a.widget {
+    --uno: 'no-underline hover:no-underline';
+
+    figure {
+      --uno: 'my-0';
+    }
+  }
+
+  .cover {
+    --uno: 'mt-0';
+  }
+
+  img:not(.cover),
   iframe {
     --uno: 'w-full border-1 border-main bg-secondary rounded-md shadow-lg my-6 leading-6';
   }
 
+  figure:not(.cover) {
+    --uno: 'my-6';
+
+    img:not(.cover) {
+      --uno: 'my-0';
+    }
+  }
+
+  .table-container {
+    --uno: 'w-full my-6 overflow-x-auto';
+  }
+
   table {
-    --uno: 'w-full border-1 border-secondary table rounded-md my-6 leading-6';
+    --uno: 'w-full border-1 border-secondary table m-0 rounded-md leading-6 text-sm';
+
     th,
     td {
-      --uno: 'border-1 border-secondary text-left break-words text-wrap';
+      --uno: 'border-1 border-secondary text-left whitespace-nowrap';
     }
+
+    td code {
+      --uno: 'whitespace-nowrap';
+    }
+
     tr,
     thead,
     tbody {
@@ -81,13 +109,13 @@
   }
 
   pre {
-    --uno: 'w-full rounded-md pl-4 overflow-x-auto bg-code my-6 leading-6 transition-colors';
+    --uno: 'rounded-md my-6 px-3 py-3 overflow-x-auto bg-code leading-5 text-sm transition-colors';
+
     code {
       counter-reset: step;
       counter-increment: step 0;
       .line {
         &:not(:last-child)::before {
-          --uno: 'whitespace-nowrap';
           content: counter(step);
           counter-increment: step;
           --uno: 'inline-block mr-6 w-4 text-right text-secondary whitespace-nowrap';
@@ -97,7 +125,7 @@
   }
 
   :not(pre) > code {
-    --uno: 'break-words text-wrap rounded bg-code px-1.5 py-0.75 transition-colors';
+    --uno: 'break-words text-wrap rounded bg-code px-1.5 py-0.5 transition-colors';
     &::before,
     &::after {
       content: none;
@@ -105,11 +133,15 @@
   }
 
   blockquote {
-    --uno: 'not-italic border-solid border-l-6 border-main my-6 px-6 py-0.5 text-secondary transition-colors';
+    --uno: 'not-italic border-solid border-l-6 border-secondary bg-code my-4 px-6 py-1 rounded-md text-secondary transition-colors';
+
+    code {
+      --uno: 'bg-code-accent';
+    }
   }
 
   li {
-    --uno: 'my-1 pl-1 text-justify';
+    --uno: 'my-1 pl-1 text-justify text-sm leading-6';
 
     p {
       --uno: 'my-0';
@@ -118,5 +150,9 @@
 
   details {
     --uno: 'p-0';
+
+    summary {
+      --uno: 'text-sm';
+    }
   }
 }

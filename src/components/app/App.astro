@@ -1,0 +1,14 @@
+---
+import Root from '@components/Root.astro'
+import type { MetaProps } from 'types'
+import Fallback from './Fallback.astro'
+
+export interface Props extends MetaProps {}
+const { name, description, color, favicon } = Astro.props
+---
+
+<Root {name} {description} {color} {favicon}>
+  <slot>
+    <Fallback {name} {favicon} path={Astro.url.pathname} />
+  </slot>
+</Root>

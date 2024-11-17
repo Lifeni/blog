@@ -1,0 +1,47 @@
+---
+import Icon from '@components/ui/Icon.astro'
+---
+
+<form
+  action="https://google.com/search"
+  method="get"
+  target="_blank"
+  class="group"
+  w="full"
+  p="x-2 y-1 xs:y-0.5"
+  flex="~ row items-center justify-between gap-1"
+  bg="accent"
+  rounded="~"
+  transition="colors"
+>
+  <span p="1" flex="~ row items-center">
+    <Icon icon="i-ri:search-line" size="4" name="搜索" class="text-secondary" />
+  </span>
+  <input type="hidden" name="q" value="site:lifeni.life" />
+  <input
+    type="search"
+    name="q"
+    id="search"
+    placeholder="在「记录干杯」中搜索 …"
+    autocomplete="off"
+    class="placeholder:text-secondary"
+    w="full"
+    p="x-0 y-2"
+    border="none"
+    flex="1"
+    font="medium sans"
+    text="sm secondary focus:main"
+    bg="transparent"
+    outline="none"
+    transition="colors"
+  />
+
+  <span p="1" flex="~ row items-center">
+    <Icon
+      icon="i-ri:corner-down-left-line"
+      size="4"
+      name="回车"
+      class="text-secondary"
+    />
+  </span>
+</form>

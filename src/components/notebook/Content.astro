@@ -1,0 +1,111 @@
+---
+import Icon from '@components/ui/Icon.astro'
+import IconText from '@components/ui/IconText.astro'
+import Picture from '@components/widget/Picture.astro'
+import '@libs/markdown.less'
+import { dateFormat } from '@libs/utils'
+import dayjs from 'dayjs'
+import type { Article } from 'types'
+
+export interface Props {
+  frontmatter?: Article
+}
+const { frontmatter } = Astro.props
+const cdn = 'https://file.lifeni.life/notebook/'
+const msg = false
+
+const outdated = (date: { created: Date; updated: Date }) => {
+  const latest = dayjs(date.updated)
+  return dayjs().isAfter(latest.add(1, 'year'))
+}
+---
+
+<article class="prose" w="full" max-w="xl">
+  {
+    frontmatter?.cover && (
+      <Picture
+        src={`${cdn}${frontmatter.cover.image}`}
+        alt={frontmatter.cover.caption}
+        cover
+        caption
+      />
+    )
+  }
+
+  <h1
+    m={frontmatter?.cover ? 'y-0' : 't-4 lg:t-0 b-0'}
+    text="2xl"
+    font="leading-9"
+  >
+    {frontmatter?.name}
+    {
+      frontmatter?.subtitle && (
+        <span text="xl secondary truncate" m="l-2">
+          {frontmatter?.subtitle}
+        </span>
+      )
+    }
+  </h1>
+
+  <span flex="~ gap-1" font="mono" text="sm secondary" m="t-1 b-12">
+    <span>{'/'}</span>
+    <span>{frontmatter?.id}</span>
+  </span>
+
+  {
+    msg && frontmatter?.date && outdated(frontmatter?.date) && (
+      <div
+        w="fit"
+        p="x-2.5 y-1.5"
+        m="b-2.5"
+        text="xs dark-800"
+        flex="~ row items-center gap-1.5"
+        bg="warning"
+        rounded="~"
+      >
+        <Icon name="警告" icon="i-ri:error-warning-line" size="4" />
+        <span p="r-0.5">文章过于久远，其中内容可能出现变化</span>
+      </div>
+    )
+  }
+  <slot />
+  {
+    frontmatter && (
+      <div
+        m="t-8"
+        flex="~ col items-end justify-center gap-2"
+        text="secondary"
+        transition="colors"
+      >
+        <IconText name="时间" icon="i-ri:time-line" type="time">
+          创建于 {dateFormat(frontmatter.date.created)}
+        </IconText>
+        {frontmatter.date.updated.getTime() !==
+          frontmatter.date.created.getTime() && (
+          <IconText name="编辑" icon="i-ri:edit-line" type="time">
+            编辑于 {dateFormat(frontmatter.date.updated)}
+          </IconText>
+        )}
+
+        <section flex="~ row items-center gap-2">
+          {frontmatter.tags ? (
+            frontmatter.tags.map(tag => (
+              <IconText name="标签" icon="i-ri:hashtag">
+                {tag}
+              </IconText>
+            ))
+          ) : (
+            <IconText name="标签" icon="i-ri:hashtag">
+              已存档文章
+            </IconText>
+          )}
+        </section>
+        {frontmatter.license && (
+          <IconText name="版权" icon="i-ri:copyright-line">
+            {frontmatter.license}
+          </IconText>
+        )}
+      </div>
+    )
+  }
+</article>

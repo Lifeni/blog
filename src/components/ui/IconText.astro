@@ -1,0 +1,17 @@
+---
+import Icon from '@components/ui/Icon.astro'
+
+export interface Props {
+  name?: string
+  icon?: string
+  type?: 'span' | 'time'
+}
+
+const { name, icon, type = 'span' } = Astro.props
+const Element = type
+---
+
+<Element flex="~ items-center gap-1.5" text="xs secondary">
+  <Icon {name} class="text-secondary" size="3.5" {icon} />
+  <span><slot /></span>
+</Element>

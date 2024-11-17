@@ -1,0 +1,81 @@
+---
+import Icon from '@components/ui/Icon.astro'
+import { Image } from 'astro:assets'
+
+export interface Props {
+  name?: string
+  type: 'apps' | 'friends'
+  items: {
+    name: string
+    href: string
+    image: string
+  }[]
+}
+
+const { name, type, items } = Astro.props
+const cdn = 'https://file.lifeni.life/avatar/friends/'
+---
+
+<div flex="~ col gap-3" p="2">
+  {
+    name && (
+      <h2 text="sm secondary" font="bold">
+        {name}
+      </h2>
+    )
+  }
+  <ul grid="~ cols-5 xs:cols-4 gap-3" w="full">
+    {
+      items.map(({ name, href, image }) => (
+        <li w="full" flex="~ col items-center gap-1">
+          <a
+            aria-label={name}
+            {href}
+            target={href.startsWith('http') ? '_blank' : '_self'}
+            rel={href.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
+            pos="relative"
+            p="1"
+            bg="hover:accent"
+            rounded="full"
+            transition="colors"
+          >
+            <Image
+              src={`${type === 'friends' ? cdn : '/'}${image}`}
+              alt={name}
+              width="256"
+              height="256"
+              loading="lazy"
+              w="full"
+              shadow="lg hover:xl"
+              rounded="full"
+              transition="shadow"
+            />
+            <span
+              title={`前往 ${href}`}
+              pos="absolute left-0 top-0"
+              w="full"
+              h="full"
+              p="r-6 hover:r-0"
+              flex="~ col items-center justify-center"
+              bg="back"
+              rounded="full"
+              op="0 hover:100"
+              transition="all"
+              overflow="hidden"
+            >
+              <Icon
+                icon="i-ri:arrow-right-line"
+                class="text-light"
+                size="6"
+                name="前往"
+              />
+            </span>
+          </a>
+          <span text="xs secondary truncate center" w="full">
+            {name}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</div>

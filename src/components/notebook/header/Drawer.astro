@@ -1,0 +1,50 @@
+---
+import WeChat from '@assets/wechat.svg'
+import Buttons from '@components/notebook/header/drawer/Buttons.astro'
+import Links from '@components/notebook/header/drawer/Links.astro'
+import Search from '@components/notebook/header/drawer/Search.astro'
+import HeaderButton from '@components/ui/HeaderButton.astro'
+import Popover from '@components/ui/Popover.astro'
+import { Image } from 'astro:assets'
+
+export const apps = [
+  { name: '记录干杯', href: '/', image: 'favicon.svg' },
+  { name: '代码可行', href: '/dev', image: 'dev/favicon.svg' },
+  { name: '时间之外', href: '/lab', image: 'lab/favicon.svg' },
+  { name: '越过长城', href: '/server', image: 'server/favicon.svg' },
+  { name: '随意链接', href: 'https://iokl.link', image: 'link.svg' },
+]
+
+// prettier-ignore
+export const friends = [
+  { name: 'Nanako', href: 'https://tanakarino.cn/', image: 'Nanako.webp'},
+  { name: 'bluebonnet27', href: 'https://bluebonnet27.github.io/', image: 'bluebonnet27.webp'},
+  { name: 'GluttonK', href: 'https://blog.csdn.net/GluttonK/', image: 'GluttonK.webp'},
+  { name: 'Wumbuk', href: 'https://blog.csdn.net/qq_48081868/', image: 'Wumbuk.webp'},
+  { name: 'YueChen', href: 'https://www.yuechen.xyz/', image: 'YueChen.webp'},
+  { name: 'ss967', href: 'https://ssblog.top/', image: 'ss967.webp'},
+  { name: 'Bakapiano', href: 'https://bakapiano.github.io/', image: 'Bakapiano.webp'},
+  { name: '+博客园', href: 'https://www.cnblogs.com/liangfengning/', image: '博客园.webp'},
+]
+
+const name = '更多'
+const icons = ['i-ri:menu-search-line', 'i-ri:menu-search-fill']
+---
+
+<Popover class="flex px-2 pb-1.5">
+  <HeaderButton {name} {icons} slot="action" />
+  <div slot="content" p="3" h="full" flex="~ 1 col gap-3" overflow="y-auto">
+    <Search />
+    <Buttons />
+    <Links name="朋友" type="friends" items={friends} />
+    <Links name="应用" type="apps" items={apps} />
+    <span flex="~ 1"></span>
+    <Image
+      src={WeChat}
+      alt="微信公众号"
+      width="512"
+      loading="eager"
+      filter="drop-shadow-md hover:drop-shadow-lg"
+    />
+  </div>
+</Popover>

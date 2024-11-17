@@ -1,0 +1,38 @@
+---
+import Icon from '@components/ui/Icon.astro'
+
+export interface Props {
+  active?: boolean
+  name: string
+  href?: string
+  icons: string[]
+}
+
+const { name, icons, href, active } = Astro.props
+const Element = href ? 'a' : 'button'
+
+const target = href?.startsWith('http') ? '_blank' : '_self'
+const rel = href?.startsWith('http') ? 'nofollow noopener noreferrer' : ''
+const icon = active ? icons[1] : icons[0]
+const color = active
+  ? 'border-active border-0 border-t-4 font-semibold'
+  : 'border-transparent hover:border-secondary border-0 border-t-4  text-secondary'
+---
+
+<Element
+  {href}
+  {target}
+  {rel}
+  class={`${color} pointer-events-auto`}
+  pos="relative"
+  p="x-3 y-2.5"
+  flex="~ row items-center justify-center gap-2"
+  text="sm hover:main"
+  bg="transparent hover:secondary focus:secondary"
+  overflow="hidden"
+  rounded="~ t-none"
+  transition="colors"
+>
+  <Icon {name} {icon} size="5 xs:4" />
+  <span class="hidden xs:flex">{name}</span>
+</Element>

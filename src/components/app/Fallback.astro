@@ -1,0 +1,42 @@
+---
+import Divider from '@components/ui/Divider.astro'
+import { Image } from 'astro:assets'
+export interface Props {
+  name: string
+  path: string
+  favicon: string
+}
+
+const { name, path, favicon } = Astro.props
+---
+
+<main
+  id="~"
+  flex="~ 1 col items-center justify-center"
+  p="4"
+  transition:animate="fade"
+>
+  <div flex="~ row items-center gap-4">
+    <Image
+      src={favicon}
+      alt={name}
+      width="40"
+      height="40"
+      loading="eager"
+      w="10"
+      h="10"
+      select="none"
+      bg="popover"
+      shadow="lg hover:xl"
+      rounded="full"
+      transition="all"
+    />
+    <Divider type="vertical" class="h-10" />
+    <div flex="~ col">
+      <h1 text="lg" font="semibold">{name}</h1>
+      <code text="xs secondary" font="mono">
+        <a href="/" text="secondary hover:link" underline="link">~</a>{path}
+      </code>
+    </div>
+  </div>
+</main>

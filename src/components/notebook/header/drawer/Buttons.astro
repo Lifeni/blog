@@ -1,0 +1,51 @@
+---
+import Icon from '@components/ui/Icon.astro'
+
+const links = [
+  {
+    name: '开往',
+    href: 'https://www.travellings.cn/go.html',
+    icon: 'i-ri:subway-fill',
+    color: 'text-red-900 dark:text-red-100 bg-red-500/15 hover:bg-red-500/20',
+  },
+  {
+    name: '邮箱',
+    href: 'mailto:liangfengning@foxmail.com',
+    icon: 'i-ri:mail-fill',
+    color:
+      'text-amber-900 dark:text-amber-100 bg-amber-500/15 hover:bg-amber-500/20',
+  },
+  {
+    name: '主页',
+    href: 'https://github.com/Lifeni',
+    icon: 'i-ri:github-fill',
+    color:
+      'text-cyan-900 dark:text-cyan-100 bg-cyan-500/15 hover:bg-cyan-500/20',
+  },
+]
+---
+
+<section flex="~ row gap-3">
+  {
+    links.map(({ name, href, icon, color }) => (
+      <a
+        aria-label={name}
+        class={`${color}`}
+        {href}
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        flex="~ 1 row items-center xs:justify-center gap-2"
+        p="x-3 y-3 xs:y-2.5"
+        font="medium"
+        rounded="~"
+        transition="all"
+      >
+        <Icon {name} {icon} size="4" />
+        <span text="sm truncate" flex="1">
+          {name}
+        </span>
+        <Icon class="xs:hidden" name="前往" icon="i-ri:links-line" size="4" />
+      </a>
+    ))
+  }
+</section>
