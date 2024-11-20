@@ -42,11 +42,13 @@ const path = type === 'story' ? 'story' : 'article'
               <div class="group" pos="relative" flex="~ col gap-4">
                 {cover && (
                   <Fragment>
-                    <Picture
-                      src={`${cdn}${cover.image}`}
-                      alt={cover.caption}
-                      cover
-                    />
+                    <a href={`/${path}/${id}`} tabindex="-1">
+                      <Picture
+                        src={`${cdn}${cover.image}`}
+                        alt={cover.caption}
+                        cover
+                      />
+                    </a>
 
                     {draft && (
                       <div

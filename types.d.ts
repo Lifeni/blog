@@ -29,6 +29,7 @@ export interface Article {
   id: string
   cover?: { image: string; caption: string }
   draft?: boolean
+  hide?: boolean
   group?: boolean
   star?: boolean
   license: string

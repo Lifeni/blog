@@ -16,7 +16,7 @@ const archives = (await getCollection('存档'))
     data: { ...data, ...frontmatterFormat(data) },
   }))
   .map(({ data }) => data)
-  .filter(({ draft }) => import.meta.env.DEV || !draft)
+  .filter(({ hide, draft }) => !hide && (import.meta.env.DEV || !draft))
   .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
 
 const contents = [

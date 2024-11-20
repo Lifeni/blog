@@ -9,7 +9,7 @@ import { getCollection } from 'astro:content'
 
 const articles = (await getCollection('文章'))
   .map(({ data }) => data)
-  .filter(({ draft }) => import.meta.env.DEV || !draft)
+  .filter(({ hide, draft }) => !hide && (import.meta.env.DEV || !draft))
   .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
 
 const contents = [
