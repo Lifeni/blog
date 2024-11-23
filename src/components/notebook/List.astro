@@ -44,7 +44,7 @@ const path = type === 'story' ? 'story' : 'article'
                   <Fragment>
                     <a href={`/${path}/${id}`} tabindex="-1">
                       <Picture
-                        src={`${cdn}${cover.image}`}
+                        src={cover.image.map(src => `${cdn}${src}`)}
                         alt={cover.caption}
                         cover
                       />
@@ -53,11 +53,11 @@ const path = type === 'story' ? 'story' : 'article'
                     {draft && (
                       <div
                         pos="absolute right-4 top-0"
-                        p="x-1.5 y-2"
+                        p="x-1.5 t-2 b-2.5"
                         text="dark-800"
                         bg="yellow-400"
                         shadow="md"
-                        rounded="sm t-0"
+                        rounded="full t-0"
                         title="草稿"
                       >
                         <Icon name="草稿" size="4" icon="i-ri:draft-line" />
@@ -68,11 +68,12 @@ const path = type === 'story' ? 'story' : 'article'
 
                 <div flex="~ col gap-1">
                   <section w="full" flex="~ row gap-3 items-center">
-                    <h2 text="leading-7 lg" font="bold">
+                    <h2 text="leading-7 lg">
                       <a
                         href={`/${path}/${id}`}
                         w="fit"
                         text="main hover:link"
+                        font="bold"
                         underline="link"
                         transition="colors"
                       >

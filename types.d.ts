@@ -27,7 +27,7 @@ export interface Article {
   date: { created: Date; updated: Date }
   description: string
   id: string
-  cover?: { image: string; caption: string }
+  cover?: { image: string[]; caption: string }
   draft?: boolean
   hide?: boolean
   group?: boolean

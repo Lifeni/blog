@@ -23,12 +23,14 @@ const outdated = (date: { created: Date; updated: Date }) => {
 <article class="prose" w="full" max-w="xl">
   {
     frontmatter?.cover && (
-      <Picture
-        src={`${cdn}${frontmatter.cover.image}`}
-        alt={frontmatter.cover.caption}
-        cover
-        caption
-      />
+      <div m="b-6">
+        <Picture
+          src={frontmatter.cover.image.map(src => `${cdn}${src}`)}
+          alt={frontmatter.cover.caption}
+          cover
+          caption
+        />
+      </div>
     )
   }
 
@@ -39,7 +41,7 @@ const outdated = (date: { created: Date; updated: Date }) => {
   >
     {frontmatter?.name}
     {
-      frontmatter?.subtitle && (
+      frontmatter?.subtitle && !frontmatter?.group && (
         <span text="xl secondary truncate" m="l-2">
           {frontmatter?.subtitle}
         </span>

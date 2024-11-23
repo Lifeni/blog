@@ -9,11 +9,17 @@ import rewrite from 'rehype-rewrite'
 
 // @ts-ignore
 const rewriteHTML = (node, i, parent) => {
-  if (node.type === 'element' && node.tagName === 'h1')
+  if (node.type !== 'element') return
+  if (node.tagName === 'h1')
     // @ts-ignore
     parent.children = parent.children.filter(n => n !== node)
-  if (node.type === 'element' && node.tagName === 'img')
-    node.properties.loading = 'lazy'
+  if (node.tagName === 'img') node.properties.loading = 'lazy'
+  if (node.tagName === 'a') {
+    if (node.properties.href.startsWith('http')) {
+      node.properties.target = '_blank'
+      node.properties.rel = 'noopener noreferrer'
+    }
+  }
 }
 
 const redirects = {

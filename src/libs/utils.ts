@@ -32,7 +32,7 @@ export const parseHref = (href: string) => {
     return { type: '应用', href }
   }
 
-  return { type: '外部', href }
+  return { type: '链接', href }
 }
 
 export const findContents = async (id: string) => {

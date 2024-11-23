@@ -31,12 +31,12 @@
   h2,
   h3,
   h4 {
-    --uno: 'font-extrabold break-words bold';
+    --uno: 'font-bold break-words bold';
     word-break: auto-phrase;
 
     a,
     code {
-      --uno: 'font-extrabold';
+      --uno: 'font-bold';
     }
   }
 
@@ -68,19 +68,19 @@
     }
   }
 
-  .cover {
+  img.widget {
     --uno: 'mt-0';
   }
 
-  img:not(.cover),
+  img:not(.widget),
   iframe {
     --uno: 'w-full border-1 border-main bg-secondary rounded-md shadow-lg my-6 leading-6';
   }
 
-  figure:not(.cover) {
+  figure:not(.widget) {
     --uno: 'my-6';
 
-    img:not(.cover) {
+    img:not(.widget) {
       --uno: 'my-0';
     }
   }

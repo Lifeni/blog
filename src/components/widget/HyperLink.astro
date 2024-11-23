@@ -15,7 +15,7 @@ const entry = id && (await findContents(id))
 ---
 
 <a
-  class="widget"
+  class="widget not-prose"
   aria-label={name}
   {href}
   target={type === '外部' ? '_blank' : '_self'}
@@ -30,35 +30,47 @@ const entry = id && (await findContents(id))
   text="main"
   rounded="md"
   overflow="hidden"
-  transition="shadow"
+  transition="all"
 >
   {
     entry && entry.data.cover && (
-      <Picture
-        src={`${cdn}${entry.data.cover.image}`}
-        alt={entry.data.cover.caption}
-        cover
-      />
+      <div p="0 sm:3 sm:b-0">
+        <div rounded="sm:~" border="secondary b-1 sm:1" overflow="hidden">
+          <Picture
+            src={entry.data.cover.image.map(src => `${cdn}${src}`)}
+            alt={entry.data.cover.caption}
+            classes="aspect-video object-t object-cover"
+          />
+        </div>
+      </div>
     )
   }
 
   <section
     class={entry && entry.data.cover && 'backdrop-blur'}
     w="full"
-    pos={entry && entry.data.cover ? 'absolute left-0 bottom-0' : ''}
-    p="x-4 y-3.5"
-    flex="~ col gap-0.5"
-    bg="white/90 dark:dark-800/90"
-    transition="colors"
+    p="x-3 y-3"
+    flex="~ col"
   >
     <span
-      text="lg leading-7 main"
-      w="fit"
+      text="md leading-7 main"
+      w="full"
       flex="~ row gap-2 items-center"
       font="bold"
       m="y-0"
+      p="y-0.5"
       transition="colors"
     >
+      <span
+        p="x-1.5 y-0.75"
+        bg="yellow-400"
+        text="dark-900 xs"
+        font="medium"
+        rounded="full"
+        transform="~ scale-95"
+      >
+        {type}
+      </span>
       <span> {(entry && entry?.data?.name) || name}</span>
       {
         entry && entry?.data?.subtitle && (
