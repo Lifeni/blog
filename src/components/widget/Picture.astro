@@ -7,40 +7,41 @@ export interface Props {
   alt: string
   classes?: string
   cover?: boolean
+  picture?: boolean
   caption?: boolean
 }
-const { src, alt, classes, caption, cover } = Astro.props
+const { src, alt, classes, caption, cover, picture } = Astro.props
 const images = src.length > 1
 ---
 
 <figure class="widget not-prose" flex="~ col gap-3">
   <Image
-    class={`widget ${classes} ${images ? 'dark:hidden' : ''} ${cover ? 'aspect-3/2 md:aspect-video object-t object-cover' : ''}`}
+    class={`widget ${images ? 'dark:hidden' : ''} ${cover ? 'aspect-3/2 md:aspect-video object-t object-cover' : ''} ${classes}`}
     src={src[0]}
     {alt}
     width="1920"
     height="1080"
     loading="lazy"
     w="full"
-    border={cover && 'secondary 1'}
-    shadow={cover && 'lg hover:xl'}
-    rounded={cover && 'md'}
-    transition={cover && 'shadow'}
+    border={(cover || picture) && 'secondary 1'}
+    shadow={(cover || picture) && 'lg hover:xl'}
+    rounded={(cover || picture) && 'md'}
+    transition={(cover || picture) && 'shadow'}
   />
   {
     images && (
       <Image
-        class={`widget ${classes} ${images ? 'hidden dark:block' : ''} ${cover ? 'aspect-3/2 md:aspect-video object-t object-cover' : ''}`}
+        class={`widget ${images ? 'hidden dark:block' : ''} ${cover ? 'aspect-3/2 md:aspect-video object-t object-cover' : ''} ${classes}`}
         src={src[1]}
         {alt}
         width="1920"
         height="1080"
         loading="lazy"
         w="full"
-        border={cover && 'secondary 1'}
-        shadow={cover && 'lg hover:xl'}
-        rounded={cover && 'md'}
-        transition={cover && 'shadow'}
+        border={(cover || picture) && 'secondary 1'}
+        shadow={(cover || picture) && 'lg hover:xl'}
+        rounded={(cover || picture) && 'md'}
+        transition={(cover || picture) && 'shadow'}
       />
     )
   }

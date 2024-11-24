@@ -42,7 +42,7 @@ const outdated = (date: { created: Date; updated: Date }) => {
     {frontmatter?.name}
     {
       frontmatter?.subtitle && !frontmatter?.group && (
-        <span text="xl secondary truncate" m="l-2">
+        <span text="xl secondary truncate" font="medium" m="l-2">
           {frontmatter?.subtitle}
         </span>
       )

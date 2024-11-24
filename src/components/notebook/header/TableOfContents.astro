@@ -41,7 +41,7 @@ const icons = ['i-ri:file-list-2-line', 'i-ri:file-list-2-fill']
                 transition="colors"
                 href={`#${slug}`}
               >
-                {new Array(depth - 2).fill(0).map(() => (
+                {new Array(depth > 2 ? depth - 3 : 0).fill(0).map(() => (
                   <span min-w="4" whitespace="nowrap" />
                 ))}
                 <span
