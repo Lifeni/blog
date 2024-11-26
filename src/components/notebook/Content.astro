@@ -1,7 +1,7 @@
 ---
 import Icon from '@components/ui/Icon.astro'
 import IconText from '@components/ui/IconText.astro'
-import Picture from '@components/widget/Picture.astro'
+import Image from '@components/ui/Image.astro'
 import '@libs/markdown.less'
 import { dateFormat } from '@libs/utils'
 import dayjs from 'dayjs'
@@ -24,7 +24,7 @@ const outdated = (date: { created: Date; updated: Date }) => {
   {
     frontmatter?.cover && (
       <div m="b-6">
-        <Picture
+        <Image
           src={frontmatter.cover.image.map(src => `${cdn}${src}`)}
           alt={frontmatter.cover.caption}
           cover

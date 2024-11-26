@@ -16,10 +16,10 @@ const { name, type, items } = Astro.props
 const cdn = 'https://file.lifeni.life/avatar/friends/'
 ---
 
-<div flex="~ col gap-3" p="2">
+<div flex="~ col gap-3" p="x-1 y-2">
   {
     name && (
-      <h2 text="sm secondary" font="bold">
+      <h2 text="sm secondary" font="bold" p="x-1">
         {name}
       </h2>
     )

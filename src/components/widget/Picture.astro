@@ -1,67 +1,11 @@
 ---
-import Icon from '@components/ui/Icon.astro'
-import { Image } from 'astro:assets'
+import Image from '@components/ui/Image.astro'
 
 export interface Props {
-  src: string[]
+  src: string
   alt: string
-  classes?: string
-  cover?: boolean
-  picture?: boolean
-  caption?: boolean
 }
-const { src, alt, classes, caption, cover, picture } = Astro.props
-const images = src.length > 1
+const { src, alt } = Astro.props
 ---
 
-<figure class="widget not-prose" flex="~ col gap-3">
-  <Image
-    class={`widget ${images ? 'dark:hidden' : ''} ${cover ? 'aspect-3/2 md:aspect-video object-t object-cover' : ''} ${classes}`}
-    src={src[0]}
-    {alt}
-    width="1920"
-    height="1080"
-    loading="lazy"
-    w="full"
-    border={(cover || picture) && 'secondary 1'}
-    shadow={(cover || picture) && 'lg hover:xl'}
-    rounded={(cover || picture) && 'md'}
-    transition={(cover || picture) && 'shadow'}
-  />
-  {
-    images && (
-      <Image
-        class={`widget ${images ? 'hidden dark:block' : ''} ${cover ? 'aspect-3/2 md:aspect-video object-t object-cover' : ''} ${classes}`}
-        src={src[1]}
-        {alt}
-        width="1920"
-        height="1080"
-        loading="lazy"
-        w="full"
-        border={(cover || picture) && 'secondary 1'}
-        shadow={(cover || picture) && 'lg hover:xl'}
-        rounded={(cover || picture) && 'md'}
-        transition={(cover || picture) && 'shadow'}
-      />
-    )
-  }
-
-  {
-    caption && (
-      <figcaption
-        flex="~ row gap-1.5 justify-right"
-        text="xs secondary"
-        font="leading-5"
-        transition="colors"
-      >
-        <Icon
-          class="my-0.25"
-          name="图片说明"
-          icon="i-ri:arrow-up-s-line"
-          size="4"
-        />
-        <span>{alt}</span>
-      </figcaption>
-    )
-  }
-</figure>
+<Image src={[src]} {alt} picture caption />

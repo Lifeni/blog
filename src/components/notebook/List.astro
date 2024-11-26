@@ -2,11 +2,10 @@
 import Divider from '@components/ui/Divider.astro'
 import Icon from '@components/ui/Icon.astro'
 import IconText from '@components/ui/IconText.astro'
+import Image from '@components/ui/Image.astro'
 import Placeholder from '@components/ui/Placeholder.astro'
-import Picture from '@components/widget/Picture.astro'
 import { cdn } from '@libs/consts'
 import { dateFormat } from '@libs/utils'
-import { Image } from 'astro:assets'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh'
 import relative from 'dayjs/plugin/relativeTime'
@@ -43,7 +42,7 @@ const path = type === 'story' ? 'story' : 'article'
                 {cover && (
                   <Fragment>
                     <a href={`/${path}/${id}`} tabindex="-1">
-                      <Picture
+                      <Image
                         src={cover.image.map(src => `${cdn}${src}`)}
                         alt={cover.caption}
                         cover
@@ -81,7 +80,10 @@ const path = type === 'story' ? 'story' : 'article'
                       </a>
                     </h2>
                     {subtitle && (
-                      <span text="md secondary truncate" font="medium leading-7">
+                      <span
+                        text="md secondary truncate"
+                        font="medium leading-7"
+                      >
                         {subtitle}
                       </span>
                     )}
@@ -97,6 +99,9 @@ const path = type === 'story' ? 'story' : 'article'
                     </p>
                   </section>
                   <section w="full" flex="~ row gap-3 items-center">
+                    <IconText name="日期" icon="i-ri:time-line" type="time">
+                      {dateFormat(date.created)}
+                    </IconText>
                     {type !== 'archive' &&
                       (tags ? (
                         tags.map(tag => (
@@ -109,10 +114,6 @@ const path = type === 'story' ? 'story' : 'article'
                           存档
                         </IconText>
                       ))}
-
-                    <IconText name="日期" icon="i-ri:time-line" type="time">
-                      {dateFormat(date.created)}
-                    </IconText>
 
                     {star && (
                       <IconText name="置顶" icon="i-ri:pushpin-2-line">
