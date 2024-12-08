@@ -1,7 +1,7 @@
 ---
 import '@fontsource-variable/fira-code'
 import '@fontsource-variable/inter'
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 import type { MetaProps } from 'types'
 import DevMode from './ui/DevMode.astro'
 
@@ -20,7 +20,7 @@ const { name, description, color, favicon } = Astro.props
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href={favicon} />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <ViewTransitions />
+    <ClientRouter />
     <slot name="meta" />
   </head>
 

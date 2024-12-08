@@ -24,7 +24,7 @@ const { name, type, contents } = Astro.props
 const path = type === 'story' ? 'story' : 'article'
 ---
 
-<div flex="~ col items-center justify-center" w="full" max-w="xl">
+<div flex="~ 1 col items-center justify-center" w="full" max-w="xl">
   {
     contents?.length === 0 ? (
       <div flex="~ 1 col items-center justify-center gap-2" select="none">
@@ -52,7 +52,7 @@ const path = type === 'story' ? 'story' : 'article'
                     {draft && (
                       <div
                         pos="absolute right-4 top-0"
-                        p="x-1.5 t-2 b-2.5"
+                        p="x-1.5 t-1.5 b-2.5"
                         text="dark-800"
                         bg="yellow-400"
                         shadow="md"
@@ -65,7 +65,7 @@ const path = type === 'story' ? 'story' : 'article'
                   </Fragment>
                 )}
 
-                <div flex="~ col gap-1">
+                <div flex="~ col gap-0.5">
                   <section w="full" flex="~ row gap-3 items-center">
                     <h2 text="leading-7 lg">
                       <a

@@ -21,21 +21,8 @@ const outdated = (date: { created: Date; updated: Date }) => {
 ---
 
 <article class="prose" w="full" max-w="xl">
-  {
-    frontmatter?.cover && (
-      <div m="b-6">
-        <Image
-          src={frontmatter.cover.image.map(src => `${cdn}${src}`)}
-          alt={frontmatter.cover.caption}
-          cover
-          caption
-        />
-      </div>
-    )
-  }
-
   <h1
-    m={frontmatter?.cover ? 'y-0' : 't-4 lg:t-0 b-0'}
+    m={frontmatter?.cover ? 't-2 b-0' : 'b-2 lg:b-0 t-2'}
     text="2xl"
     font="leading-9"
   >
@@ -49,10 +36,23 @@ const outdated = (date: { created: Date; updated: Date }) => {
     }
   </h1>
 
-  <span flex="~ gap-1" font="mono" text="sm secondary" m="t-1 b-12">
+  <span flex="~ gap-1" font="mono" text="sm secondary" m="t-1 b-12 lg:b-16">
     <span>{'/'}</span>
     <span>{frontmatter?.id}</span>
   </span>
+
+  {
+    frontmatter?.cover && (
+      <div m="y-8">
+        <Image
+          src={frontmatter.cover.image.map(src => `${cdn}${src}`)}
+          alt={frontmatter.cover.caption}
+          cover
+          caption
+        />
+      </div>
+    )
+  }
 
   {
     msg && frontmatter?.date && outdated(frontmatter?.date) && (

@@ -5,7 +5,7 @@ import Content from '@components/notebook/Content.astro'
 import Notebook from '@components/notebook/Notebook.astro'
 import Nav from '@components/notebook/header/Nav.astro'
 import TableOfContents from '@components/notebook/header/TableOfContents.astro'
-import { getCollection, type CollectionEntry } from 'astro:content'
+import { getCollection, render, type CollectionEntry } from 'astro:content'
 
 export async function getStaticPaths() {
   const stories = (await getCollection('专题')).filter(
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props as { entry: CollectionEntry<'专题'> }
-const { Content: MarkdownContent, headings } = await entry.render()
+const { Content: MarkdownContent, headings } = await render(entry)
 ---
 
 <Notebook name={entry.data.name} description={entry.data.description}>
