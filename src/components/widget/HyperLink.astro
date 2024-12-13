@@ -25,7 +25,7 @@ const external = type === '链接'
   target={external ? '_blank' : '_self'}
   rel={external ? 'nofollow noopener noreferrer' : ''}
   pos="relative"
-  grid={cover ? '~ cols-1 sm:cols-2' : '~ cols-1'}
+  grid={cover ? '~ cols-1 sm:cols-5' : '~ cols-1'}
   w="full"
   m="y-6"
   border="main 1"
@@ -38,30 +38,32 @@ const external = type === '链接'
 >
   {
     entry && entry.data.cover && (
-      <div p="0 sm:2 sm:r-0">
-        <div rounded="sm:~" border="secondary b-1 sm:1" overflow="hidden">
-          <Image
-            src={entry.data.cover.image.map(src => `${cdn}${src}`)}
-            alt={entry.data.cover.caption}
-            class="aspect-video object-t object-cover"
-          />
-        </div>
+      <div
+        grid={cover ? 'col-span-2' : 'col-span-1'}
+        border="secondary b-1 sm:r-1"
+      >
+        <Image
+          src={entry.data.cover.image.map(src => `${cdn}${src}`)}
+          alt={entry.data.cover.caption}
+          class="aspect-video sm:aspect-3/2 object-t object-cover"
+        />
       </div>
     )
   }
 
   <section
     class={cover && 'backdrop-blur'}
+    grid={cover ? 'col-span-3' : 'col-span-1'}
     w="full"
     p="4"
-    flex="~ col sm:gap-0.5"
+    flex="~ col"
   >
     <span
-      text="md leading-7 main"
+      text="lg leading-7 main"
       w="full"
+      m="t--0.5 b-0.5"
       flex="~ row gap-2 items-center"
       font="bold"
-      m="b-2.5 sm:b-0.5"
       transition="colors"
     >
       <span

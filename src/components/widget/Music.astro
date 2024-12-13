@@ -1,3 +1,100 @@
 ---
-// TODO
+import Icon from '@components/ui/Icon.astro'
+import IconText from '@components/ui/IconText.astro'
+import { cdn } from '@libs/consts'
+import { Image as AstroImage } from 'astro:assets'
+
+export interface Props {
+  title: string
+  description?: string
+  album: string
+  artist: string
+  src: string
+  cover: string
+}
+const { src, cover, title, description, artist, album } = Astro.props
 ---
+
+<figure
+  class="widget not-prose group"
+  pos="relative"
+  w="full"
+  m="y-6"
+  flex="~ col"
+  border="main 1"
+  bg="popover"
+  shadow="lg hover:xl"
+  rounded="md"
+  overflow="hidden"
+  transition="all"
+>
+  <figcaption w="full" flex="~ row">
+    <AstroImage
+      src={`${cdn}${cover}`}
+      alt={`${title} 封面`}
+      inferSize
+      loading="lazy"
+      class="widget aspect-square"
+      w="30"
+      h="30"
+      select="none"
+      pointer-events="none"
+      border="secondary r-1"
+    />
+    <section w="full" flex="~ col gap-0.5" p="x-4 y-3" x-data="{ play: false }">
+      <span text="base main" font="bold leading-6" transition="colors">
+        {title}
+        <span
+          x-show="play"
+          animate="in fade-in direction-alternate count-infinite duration-750"
+        >
+          🎵
+        </span>
+      </span>
+      <span text="xs secondary" font="leading-5">{description}</span>
+      <span flex="1"></span>
+
+      <section w="full" flex="~ row items-end justify-between" font="leading-5">
+        <IconText name="作者和专辑" icon="i-ri:mic-line">
+          <span>{artist}</span>
+          <span class="hidden xs:inline">-</span>
+          <span class="hidden xs:inline">{album}</span>
+        </IconText>
+        <button
+          x-on:click="$refs.music.play();play = !play"
+          x-show="!play"
+          m="x--2 y--1"
+          p="1.5"
+          text="secondary"
+          bg="popover hover:accent"
+          rounded="full"
+          transition="colors"
+        >
+          <Icon name="播放" size="5" icon="i-ri:play-large-line" />
+        </button>
+        <button
+          x-on:click="$refs.music.pause(); play = !play"
+          x-show="play"
+          m="x--2 y--1"
+          p="1.5"
+          text="secondary"
+          bg="popover hover:accent"
+          rounded="full"
+          transition="colors"
+        >
+          <Icon name="暂停" size="5" icon="i-ri:pause-large-line" />
+        </button>
+      </section>
+
+      <audio
+        w="full"
+        border="secondary 1"
+        rounded="full"
+        x-ref="music"
+        x-init="$el.volume = 0.3"
+      >
+        <source src={`${cdn}${src}`} type="audio/mpeg" />
+      </audio>
+    </section>
+  </figcaption>
+</figure>

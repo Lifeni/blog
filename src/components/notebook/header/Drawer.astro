@@ -1,6 +1,6 @@
 ---
 import WeChat from '@assets/wechat.svg'
-import Buttons from '@components/notebook/header/drawer/Buttons.astro'
+import Actions from '@components/notebook/header/drawer/Actions.astro'
 import Links from '@components/notebook/header/drawer/Links.astro'
 import Search from '@components/notebook/header/drawer/Search.astro'
 import HeaderButton from '@components/ui/HeaderButton.astro'
@@ -35,7 +35,7 @@ const icons = ['i-ri:menu-search-line', 'i-ri:menu-search-fill']
   <HeaderButton {name} {icons} slot="action" />
   <div slot="content" p="3" h="full" flex="~ 1 col gap-3" overflow="y-auto">
     <Search />
-    <Buttons />
+    <Actions />
     <Links name="朋友" type="friends" items={friends} />
     <Links name="应用" type="apps" items={apps} />
     <span flex="~ 1"></span>

@@ -1,10 +1,10 @@
+import alpinejs from '@astrojs/alpinejs'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import { defineConfig } from 'astro/config'
-import uno from 'unocss/astro'
-
-import { plugin as wrap } from './src/libs/rehype-wrap-all'
 import rewrite from 'rehype-rewrite'
+import uno from 'unocss/astro'
+import { plugin as wrap } from './src/libs/rehype-wrap-all'
 
 // @ts-ignore
 const rewriteHTML = (node, i, parent) => {
@@ -31,7 +31,7 @@ const redirects = {
 export default defineConfig({
   server: { port: 8000, host: true },
   site: 'https://lifeni.life',
-  integrations: [uno({ injectReset: true }), mdx(), sitemap()],
+  integrations: [uno({ injectReset: true }), mdx(), sitemap(), alpinejs()],
   redirects,
   markdown: {
     shikiConfig: { theme: 'css-variables' },
