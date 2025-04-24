@@ -17,32 +17,32 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/alpinejs": "0.4.0",
+    "@astrojs/alpinejs": "0.4.6",
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.0.1",
-    "@astrojs/sitemap": "^3.2.1",
-    "@iconify-json/ri": "^1.2.3",
-    "@unocss/reset": "^0.65.1",
-    "@unocss/transformer-directives": "^0.65.1",
+    "@astrojs/mdx": "^4.2.4",
+    "@astrojs/sitemap": "^3.3.0",
+    "@iconify-json/ri": "^1.2.5",
+    "@unocss/reset": "^66.0.0",
+    "@unocss/transformer-directives": "^66.0.0",
     "@types/alpinejs": "3.13.11",
-    "alpinejs": "3.14.7",
-    "astro": "^5.0.3",
+    "alpinejs": "3.14.9",
+    "astro": "^5.7.4",
     "dayjs": "^1.11.13",
     "hast-util-parse-selector": "^4.0.0",
-    "hast-util-select": "^6.0.3",
-    "less": "^4.2.1",
-    "prettier": "^3.4.2",
+    "hast-util-select": "^6.0.4",
+    "less": "^4.3.0",
+    "prettier": "^3.5.3",
     "rehype-rewrite": "^4.0.2",
     "rehype-wrap": "^1.1.0",
-    "sharp": "^0.33.5",
-    "typescript": "^5.7.2",
+    "sharp": "^0.34.1",
+    "typescript": "^5.8.3",
     "unist-util-visit": "^5.0.0",
-    "unocss": "^0.65.1",
-    "unocss-preset-animations": "^1.1.0",
-    "unocss-preset-scrollbar": "^0.3.1"
+    "unocss": "^66.0.0",
+    "unocss-preset-animations": "^1.1.1",
+    "unocss-preset-scrollbar": "^3.2.0"
   },
   "dependencies": {
-    "@fontsource-variable/fira-code": "^5.1.0",
-    "@fontsource-variable/inter": "^5.1.0"
+    "@fontsource-variable/fira-code": "^5.2.5",
+    "@fontsource-variable/inter": "^5.2.5"
   }
 }
