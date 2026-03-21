@@ -1,0 +1,57 @@
+---
+import HeaderButton from '@components/layout/header/HeaderButton.astro'
+import SidebarLinkList from '@components/layout/header/sidebar/SidebarLinkList.astro'
+import SiteSearch from '@components/layout/header/sidebar/SiteSearch.astro'
+import WeChatQRCode from '@components/layout/header/sidebar/WeChatQRCode.astro'
+import Spacer from '@components/ui/Spacer.astro'
+import { apps } from '@libs/configs'
+---
+
+<div class:list={['group', 'pointer-events-auto']}>
+  <HeaderButton name="导航" icon="ri:function-fill" />
+
+  <div
+    class:list={[
+      'invisible group-focus-within:visible',
+      'fixed top-0 left-0 z-100',
+      'w-full h-screen',
+      'opacity-0 group-focus-within:opacity-100 transition-all',
+      'bg-[rgba(0,0,0,0.5)]',
+    ]}
+  >
+  </div>
+  <div
+    class:list={[
+      'invisible group-focus-within:visible',
+      'fixed top-0 left-0 z-150',
+      'w-full h-screen',
+      'overflow-hidden',
+    ]}
+  >
+    <div
+      tabindex="-1"
+      class:list={[
+        'absolute left-0 top-0 z-150',
+        'w-72 h-screen max-h-[100dvh]',
+        'bg-white dark:bg-neutral-900',
+        'rounded-r-2xl',
+        'shadow-none group-focus-within:shadow-2xl',
+        '-translate-x-72 -translate-y-0 group-focus-within:-translate-x-0',
+        'transition-all duration-300',
+        'scrollbar-none outline-none',
+        'overflow-y-auto',
+      ]}
+    >
+      <nav class:list={['h-full', 'flex flex-col gap-4', 'p-4']}>
+        <SiteSearch />
+        {
+          apps.map(link => (
+            <SidebarLinkList name={link.name} items={link.items} />
+          ))
+        }
+        <Spacer />
+        <WeChatQRCode />
+      </nav>
+    </div>
+  </div>
+</div>

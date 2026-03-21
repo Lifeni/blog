@@ -1,0 +1,34 @@
+---
+import Main from '@components/layout/Main.astro'
+import ArticleMarkdown from '@components/notebook/article/ArticleMarkdown.astro'
+import Layout from '@components/notebook/Layout.astro'
+import { prefixes } from '@libs/configs'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const articles = await getCollection('文章')
+  return articles
+    .filter(article => import.meta.env.DEV || !article.data.draft)
+    .map(article => ({
+      params: { id: article.data.id },
+      props: { article },
+    }))
+}
+
+const { article } = Astro.props
+const { Content, headings } = await render(article)
+---
+
+<Layout name={article.data.name} description={article.data.description}>
+  <Main class:list={['sm:px-6 sm:py-8']}>
+    <ArticleMarkdown
+      {...article.data}
+      id={headings[0].slug}
+      cover={{
+        path: `${prefixes.article}/${article.data.cover?.path}`,
+        description: article.data.cover?.description || '',
+      }}
+      content={Content}
+    />
+  </Main>
+</Layout>

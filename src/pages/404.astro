@@ -1,9 +1,13 @@
 ---
-import ErrorPage from '@components/app/ErrorPage.astro'
+import Main from '@components/layout/Main.astro'
+import Root from '@components/ui/Root.astro'
 
-const name = '找不到页面'
-const description = '你要找的页面也许并不存在。'
-const error = 404
+const error = {
+  code: '404',
+  text: '找不到页面',
+}
 ---
 
-<ErrorPage {name} {description} {error} />
+<Root>
+  <Main error={error} />
+</Root>

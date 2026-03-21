@@ -1,0 +1,56 @@
+---
+import Placeholder from '@components/ui/Placeholder.astro'
+
+interface Props {
+  error?: { code: string; text: string; warning?: string[] }
+  class?: string
+}
+
+const { error, class: className } = Astro.props
+---
+
+{
+  error ? (
+    <main class:list={['flex flex-col items-center justify-center flex-1']}>
+      <Placeholder code={error.code} text={error.text} />
+      {error.warning && (
+        <div class:list={['fixed left-0 bottom-0 z-50', 'select-none']}>
+          <div
+            class:list={[
+              'w-screen h-2',
+              'bg-[repeating-linear-gradient(-60deg,#000000,#000000_0.5rem,#ffff00_0.5rem,#ffff00_1rem)]',
+            ]}
+          />
+          <div
+            class:list={[
+              'w-screen',
+              'py-2',
+              'flex items-center justify-center flex-nowrap gap-8',
+              'text-lg font-mono font-bold text-[#000000] uppercase',
+              'bg-[#ffff00]',
+              'whitespace-nowrap',
+            ]}
+          >
+            {Array.from({ length: 20 }).map(() => (
+              <Fragment>
+                {error.warning?.map(message => (
+                  <span>{message}</span>
+                ))}
+              </Fragment>
+            ))}
+          </div>
+          <div
+            class:list={[
+              'w-screen h-2',
+              'bg-[repeating-linear-gradient(60deg,#000000,#000000_0.5rem,#ffff00_0.5rem,#ffff00_1rem)]',
+            ]}
+          />
+        </div>
+      )}
+    </main>
+  ) : (
+    <main class:list={['flex flex-col flex-1', className]}>
+      <slot />
+    </main>
+  )
+}

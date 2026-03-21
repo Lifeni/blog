@@ -1,10 +1,23 @@
 ---
-import App from '@components/app/App.astro'
+import Footer from '@components/layout/Footer.astro'
+import Header from '@components/layout/Header.astro'
+import Main from '@components/layout/Main.astro'
+import Root from '@components/ui/Root.astro'
 
-const name = '代码可行'
-const description = '这里有一些做过的开源项目。'
-const color = '#29b7f7'
-const favicon = '/dev/favicon.svg'
+const error = {
+  code: 'Todo',
+  text: '代码可行',
+  warning: ['「代码可行」正在开发中', 'This page is under development'],
+}
 ---
 
-<App {name} {description} {color} {favicon} />
+<Root
+  name="代码可行"
+  description="这里有一些做过的开源项目。"
+  color="#f75248"
+  favicon="/dev/favicon.svg"
+>
+  <Header shortcut="GitHub" />
+  <Main error={error} />
+  <Footer />
+</Root>

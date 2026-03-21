@@ -1,0 +1,7 @@
+---
+const props = Astro.props
+---
+
+<p {...props} class:list={['text-justify leading-[1.75]']}>
+  <slot />
+</p>

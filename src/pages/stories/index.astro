@@ -1,0 +1,32 @@
+---
+import Main from '@components/layout/Main.astro'
+import Layout from '@components/notebook/Layout.astro'
+import StoryCard from '@components/notebook/story/StoryCard.astro'
+import { getCollection } from 'astro:content'
+
+const stories = await getCollection('专题')
+---
+
+<Layout name="专题">
+  <Main class:list={['p-4 sm:px-6 sm:py-8']}>
+    <ul
+      class:list={[
+        'w-full max-w-148',
+        'mx-auto my-0 p-0',
+        'grid grid-cols-2 gap-4',
+      ]}
+    >
+      {
+        stories
+          .map(story => story.data)
+          .filter(story => import.meta.env.DEV || !story.draft)
+          .sort(
+            (a, b) =>
+              new Date(b.date.updated).getTime() -
+              new Date(a.date.updated).getTime(),
+          )
+          .map(story => <StoryCard story={story} />)
+      }
+    </ul>
+  </Main>
+</Layout>

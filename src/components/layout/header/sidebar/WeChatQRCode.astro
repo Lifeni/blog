@@ -1,0 +1,13 @@
+---
+import WeChat from '@assets/wechat.svg'
+import { Image } from 'astro:assets'
+---
+
+<Image
+  src={WeChat}
+  alt="微信公众号"
+  width="512"
+  loading="eager"
+  layout="full-width"
+  class:list={['w-full h-auto', 'rounded-md', 'shadow-lg']}
+/>

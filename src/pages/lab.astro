@@ -1,10 +1,23 @@
 ---
-import App from '@components/app/App.astro'
+import Footer from '@components/layout/Footer.astro'
+import Header from '@components/layout/Header.astro'
+import Main from '@components/layout/Main.astro'
+import Root from '@components/ui/Root.astro'
 
-const name = '时间之外'
-const description = '在这里做一些有意思的东西。'
-const color = '#f75248'
-const favicon = '/lab/favicon.svg'
+const error = {
+  code: 'Todo',
+  text: '时间之外',
+  warning: ['「时间之外」正在开发中', 'This page is under development'],
+}
 ---
 
-<App {name} {description} {color} {favicon} />
+<Root
+  name="时间之外"
+  description="在这里做一些有意思的东西。"
+  color="#f75248"
+  favicon="/lab/favicon.svg"
+>
+  <Header shortcut="邮箱" />
+  <Main error={error} />
+  <Footer />
+</Root>

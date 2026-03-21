@@ -1,0 +1,63 @@
+---
+import SidebarLink from '@components/layout/header/sidebar/SidebarLink.astro'
+import Spacer from '@components/ui/Spacer.astro'
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  name: string
+  items: { name: string; href: string; icon: string }[]
+}
+
+const { name, items } = Astro.props
+---
+
+<details open class:list={['group flex flex-col items-start gap-3']}>
+  <summary
+    class:list={[
+      'w-full',
+      'flex items-center justify-between gap-2',
+      'text-neutral-500 dark:text-neutral-400',
+      'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
+      'rounded-md',
+      'cursor-pointer pointer-events-none',
+      'transition-all',
+    ]}
+  >
+    <code
+      class:list={[
+        'flex items-center justify-center',
+        'px-1.5 py-0.5',
+        'bg-neutral-100 dark:bg-neutral-850',
+        'text-xs font-bold font-mono',
+        'rounded-full',
+      ]}
+    >
+      {items.length}
+    </code>
+    <h2 class:list={['m-0 p-0', 'text-sm font-medium']}>{name}</h2>
+    <Spacer />
+    <span class:list={['flex', 'p-1', 'rounded-full', 'pointer-events-auto']}>
+      <Icon
+        name={'ri:arrow-left-s-line'}
+        class:list={[
+          'w-4 h-4',
+          'transform rotate-0 group-open:-rotate-90',
+          'transition-transform',
+        ]}
+      />
+    </span>
+  </summary>
+  <ul
+    class:list={[
+      'w-full max-h-0 group-open:max-h-48',
+      'm-0 p-0',
+      'grid grid-cols-4',
+    ]}
+  >
+    {
+      items.map(item => (
+        <SidebarLink name={item.name} href={item.href} icon={item.icon} />
+      ))
+    }
+  </ul>
+</details>

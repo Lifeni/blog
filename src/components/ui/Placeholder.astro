@@ -1,21 +1,24 @@
 ---
-export interface Props {
+interface Props {
   code: string | number
   text: string
-  size?: 'sm' | 'md'
 }
-const { code, text, size = 'md' } = Astro.props
-const sizes = size == 'sm' ? 'text-6xl sm:text-7xl' : 'text-8xl'
+const { code, text } = Astro.props
 ---
 
-<code
-  class={sizes}
-  font="extrabold mono"
-  text="transparent"
-  bg="clip-text"
-  bg-gradient="linear shape-br from-yellow-300 to-yellow-500"
-  filter="drop-shadow-xl"
+<div
+  class:list={[
+    'flex-1 flex flex-col items-center justify-center gap-2',
+    'select-none',
+  ]}
 >
-  {code}
-</code>
-<h1 text="2xl" m="t-2 b-4" font="extrabold">{text}</h1>
+  <code class:list={['m-0', 'text-6xl font-mono font-bold']}>{code}</code>
+  <h1
+    class:list={[
+      'm-0',
+      'text-xl text-neutral-500 dark:text-neutral-500 font-medium',
+    ]}
+  >
+    {text}
+  </h1>
+</div>

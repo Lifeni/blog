@@ -1,0 +1,15 @@
+---
+const props = Astro.props
+---
+
+<ol {...props} class:list={['mx-0 my-1 py-0 pl-4.5']}>
+  <slot />
+</ol>
+
+<style>
+  @reference "tailwindcss";
+
+  ol :global(p) {
+    @apply m-0;
+  }
+</style>

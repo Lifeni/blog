@@ -1,33 +1,33 @@
 import { defineCollection, z } from 'astro:content'
 import { glob } from 'astro/loaders'
 
-const schema = z.object({
-  name: z.string(),
-  description: z.string(),
-  subtitle: z.string().optional(),
-  id: z.string(),
-  cover: z.object({
-    caption: z.string(),
-    image: z.array(z.string()),
-  }),
-  star: z.boolean().optional(),
-  draft: z.boolean().optional(),
-  hide: z.boolean().optional(),
-  group: z.boolean().optional(),
-  license: z.string(),
-  tags: z.array(z.string()),
-  date: z.object({
-    created: z.date(),
-    updated: z.date(),
-  }),
-})
-
 const articles = defineCollection({
   loader: glob({
     pattern: '**/*.{md,mdx}',
     base: './src/content/文章',
   }),
-  schema,
+  schema: z.object({
+    name: z.string(),
+    description: z.string(),
+    subtitle: z.string().optional(),
+    id: z.string(),
+    cover: z
+      .object({
+        description: z.string(),
+        path: z.string(),
+      })
+      .optional(),
+    license: z.string(),
+    tags: z.array(z.string()),
+    date: z.object({
+      created: z.date(),
+      updated: z.date(),
+    }),
+    draft: z.boolean().optional(),
+    archived: z.boolean().optional(),
+    featured: z.boolean().optional(),
+    pinned: z.boolean().optional(),
+  }),
 })
 
 const stories = defineCollection({
@@ -35,7 +35,24 @@ const stories = defineCollection({
     pattern: '**/*.{md,mdx}',
     base: './src/content/专题',
   }),
-  schema,
+  schema: z.object({
+    name: z.string(),
+    description: z.string(),
+    subtitle: z.string().optional(),
+    id: z.string(),
+    cover: z.object({
+      description: z.string(),
+      path: z.string(),
+    }),
+    license: z.string(),
+    tags: z.array(z.string()),
+    date: z.object({
+      created: z.date(),
+      updated: z.date(),
+    }),
+    draft: z.boolean().optional(),
+    articles: z.array(z.string()).optional(),
+  }),
 })
 
 const archives = defineCollection({
@@ -45,13 +62,11 @@ const archives = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
-    subtitle: z.string().optional(),
     description: z.string(),
     name: z.string(),
     'create-date': z.date(),
     date: z.date(),
     license: z.string(),
-    star: z.boolean().optional(),
   }),
 })
 

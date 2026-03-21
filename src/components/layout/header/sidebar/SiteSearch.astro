@@ -1,0 +1,46 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<form
+  action="https://google.com/search"
+  method="get"
+  target="_blank"
+  class:list={[
+    'group',
+    'px-2 py-1',
+    'flex flex-row items-center justify-between',
+    'bg-neutral-100 dark:bg-neutral-850',
+    'focus-within:outline-yellow-500 dark:focus-within:outline-yellow-400 focus-within:outline-4 focus-within:outline-offset-1',
+    'rounded-md',
+    'transition-all',
+  ]}
+>
+  <input type="hidden" name="q" value="site:lifeni.life" />
+  <input
+    type="search"
+    name="q"
+    id="search"
+    placeholder="在「记录干杯」中搜索 …"
+    autocomplete="off"
+    class:list={[
+      'w-full px-2 py-2',
+      'flex flex-1',
+      'border-none',
+      'text-neutral-900 dark:text-neutral-100 font-sans font-medium',
+      'bg-transparent',
+      'focus:outline-none',
+      'placeholder:text-neutral-500 dark:placeholder:text-neutral-400',
+      'transition-colors',
+    ]}
+  />
+
+  <span class:list={['p-1', 'flex flex-row items-center']}>
+    <Icon
+      name="ri:search-fill"
+      aria-label="搜索"
+      title="搜索"
+      class:list={['w-4 h-4', 'text-neutral-500 dark:text-neutral-400']}
+    />
+  </span>
+</form>

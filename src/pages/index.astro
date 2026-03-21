@@ -1,35 +1,34 @@
 ---
-import Footer from '@components/Footer.astro'
-import Header from '@components/Header.astro'
-import List from '@components/notebook/List.astro'
-import Notebook from '@components/notebook/Notebook.astro'
-import Drawer from '@components/notebook/header/Drawer.astro'
-import Nav from '@components/notebook/header/Nav.astro'
+import Main from '@components/layout/Main.astro'
+import ArticleCard from '@components/notebook/article/ArticleCard.astro'
+import Layout from '@components/notebook/Layout.astro'
 import { getCollection } from 'astro:content'
 
-const articles = (await getCollection('文章'))
-  .map(({ data }) => data)
-  .filter(({ hide, draft }) => !hide && (import.meta.env.DEV || !draft))
-  .sort((a, b) => b.date.created.getTime() - a.date.created.getTime())
-
-const contents = [
-  ...articles.filter(({ star }) => star),
-  ...articles.filter(({ star }) => !star),
-]
+const articles = (await getCollection('文章')).map(article => article.data)
 ---
 
-<Notebook>
-  <Header blur>
-    <Nav slot="left" name="文章" />
-    <Drawer slot="right" />
-  </Header>
-  <main
-    id="~"
-    flex="~ 1 col items-center"
-    p="x-5 t-16 b-10"
-    transition:animate="fade"
-  >
-    <List name="文章" type="article" {contents} />
-  </main>
-  <Footer />
-</Notebook>
+<Layout>
+  <Main class:list={['p-4 sm:px-6 sm:py-8']}>
+    <ul
+      class:list={[
+        'w-full max-w-148',
+        'mx-auto my-0 p-0',
+        'flex flex-col gap-4',
+      ]}
+    >
+      {
+        articles
+          .filter(
+            article =>
+              article.featured && (import.meta.env.DEV || !article.draft),
+          )
+          .sort(
+            (a, b) =>
+              new Date(b.date.created).getTime() -
+              new Date(a.date.created).getTime(),
+          )
+          .map(article => <ArticleCard article={article} />)
+      }
+    </ul>
+  </Main>
+</Layout>

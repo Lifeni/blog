@@ -1,9 +1,13 @@
 ---
-import ErrorPage from '@components/app/ErrorPage.astro'
+import Main from '@components/layout/Main.astro'
+import Root from '@components/ui/Root.astro'
 
-const name = '服务器出错'
-const description = '网站的服务器也许坏掉了。'
-const error = 500
+const error = {
+  code: '500',
+  text: '服务器出错',
+}
 ---
 
-<ErrorPage {name} {description} {error} />
+<Root>
+  <Main error={error} />
+</Root>

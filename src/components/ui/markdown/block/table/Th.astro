@@ -1,0 +1,14 @@
+---
+const props = Astro.props
+---
+
+<th
+  {...props}
+  class:list={[
+    'px-4 py-2',
+    'border-1 border-neutral-200 dark:border-neutral-700',
+    'text-left',
+  ]}
+>
+  <slot />
+</th>

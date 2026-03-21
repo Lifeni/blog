@@ -3,46 +3,37 @@
   "name": "blog",
   "description": "个人网站，在这里记录",
   "private": true,
-  "version": "2025.01",
+  "version": "2026.0",
   "author": {
     "name": "Liang Fengning",
     "email": "liangfengning@foxmail.com"
   },
+  "repository": {
+    "url": "https://github.com/Lifeni/blog"
+  },
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "build": "astro check && astro build",
-    "dev": "astro dev",
-    "preview": "astro check && astro build && astro preview",
-    "astro": "astro"
-  },
-  "devDependencies": {
-    "@astrojs/alpinejs": "0.4.6",
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.2.4",
-    "@astrojs/sitemap": "^3.3.0",
-    "@iconify-json/ri": "^1.2.5",
-    "@unocss/reset": "^66.0.0",
-    "@unocss/transformer-directives": "^66.0.0",
-    "@types/alpinejs": "3.13.11",
-    "alpinejs": "3.14.9",
-    "astro": "^5.7.4",
-    "dayjs": "^1.11.13",
-    "hast-util-parse-selector": "^4.0.0",
-    "hast-util-select": "^6.0.4",
-    "less": "^4.3.0",
-    "prettier": "^3.5.3",
-    "rehype-rewrite": "^4.0.2",
-    "rehype-wrap": "^1.1.0",
-    "sharp": "^0.34.1",
-    "typescript": "^5.8.3",
-    "unist-util-visit": "^5.0.0",
-    "unocss": "^66.0.0",
-    "unocss-preset-animations": "^1.1.1",
-    "unocss-preset-scrollbar": "^3.2.0"
+    "build": "bunx --bun astro build",
+    "dev": "bunx --bun astro dev",
+    "preview": "bunx --bun astro preview",
+    "add": "bunx --bun astro add"
   },
   "dependencies": {
-    "@fontsource-variable/fira-code": "^5.2.5",
-    "@fontsource-variable/inter": "^5.2.5"
+    "@astrojs/mdx": "^4.3.14",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/sitemap": "^3.7.1",
+    "@fontsource-variable/fira-code": "^5.2.7",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@iconify-json/ri": "^1.2.10",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.18.1",
+    "astro-icon": "^1.1.5",
+    "dayjs": "^1.11.20",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.2"
   }
 }

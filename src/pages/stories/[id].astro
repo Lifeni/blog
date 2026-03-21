@@ -1,0 +1,87 @@
+---
+import Main from '@components/layout/Main.astro'
+import ArticleCard from '@components/notebook/article/ArticleCard.astro'
+import ArticleMarkdown from '@components/notebook/article/ArticleMarkdown.astro'
+import Layout from '@components/notebook/Layout.astro'
+import { prefixes } from '@libs/configs'
+import { frontmatterFormat } from '@libs/utils'
+import { Icon } from 'astro-icon/components'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const stories = await getCollection('专题')
+  return stories
+    .filter(story => import.meta.env.DEV || !story.data.draft)
+    .map(story => ({
+      params: { id: story.data.id },
+      props: { story },
+    }))
+}
+
+const { story } = Astro.props
+const { Content, headings } = await render(story)
+
+const articles = await getCollection('文章')
+const archives = await getCollection('存档')
+
+const storyArticles = articles
+  .filter(article => story.data.articles?.includes(article.data.id))
+  .map(article => article.data)
+
+const storyArchives = archives
+  .filter(archive => story.data.articles?.includes(archive.data.name))
+  .map(archive => frontmatterFormat(archive.data))
+
+const allArticles = [...storyArticles, ...storyArchives]
+---
+
+<Layout name={story.data.name} description={story.data.description}>
+  <Main class:list={['sm:px-6 sm:py-8']}>
+    <ArticleMarkdown
+      {...story.data}
+      id={headings[0].slug}
+      cover={{
+        path: `${prefixes.story}/${story.data.cover?.path}`,
+        description: story.data.cover?.description || '',
+      }}
+      content={Content}
+    />
+    {
+      storyArticles.length > 0 && (
+        <section
+          class:list={[
+            'w-full max-w-156 sm:max-w-148',
+            'mx-auto px-4 sm:px-0',
+            'flex flex-col',
+          ]}
+        >
+          <div
+            class:list={[
+              'flex flex-col justify-center items-center gap-1',
+              'p-4',
+              'text-sm text-center text-neutral-500 dark:text-neutral-400',
+            ]}
+          >
+            <span class:list={['flex', 'whitespace-nowrap']}>
+              包含 {allArticles.length} 篇文章
+            </span>
+            <Icon name="ri:arrow-down-double-line" class:list={['w-4 h-4']} />
+          </div>
+
+          <ul class:list={['w-full', 'm-0 p-0', 'flex flex-col gap-4']}>
+            {allArticles
+              .filter(article => import.meta.env.DEV || !article.draft)
+              .sort(
+                (a, b) =>
+                  new Date(b.date.created).getTime() -
+                  new Date(a.date.created).getTime(),
+              )
+              .map(article => (
+                <ArticleCard article={article} />
+              ))}
+          </ul>
+        </section>
+      )
+    }
+  </Main>
+</Layout>

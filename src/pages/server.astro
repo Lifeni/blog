@@ -1,11 +1,23 @@
 ---
-import App from '@components/app/App.astro'
+import Footer from '@components/layout/Footer.astro'
+import Header from '@components/layout/Header.astro'
+import Main from '@components/layout/Main.astro'
+import Root from '@components/ui/Root.astro'
 
-const name = '越过长城'
-const description =
-  'Across the Great Wall we can reach every corner of the world.'
-const color = '#40d583'
-const favicon = '/server/favicon.svg'
+const error = {
+  code: 'Todo',
+  text: '越过长城',
+  warning: ['「越过长城」正在开发中', 'This page is under development'],
+}
 ---
 
-<App {name} {description} {color} {favicon} />
+<Root
+  name="越过长城"
+  description="Across the Great Wall we can reach every corner of the world."
+  color="#40d583"
+  favicon="/server/favicon.svg"
+>
+  <Header shortcut="Hello" />
+  <Main error={error} />
+  <Footer />
+</Root>

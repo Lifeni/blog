@@ -1,0 +1,9 @@
+---
+const props = Astro.props
+---
+
+<div class:list={['wrapper', 'w-full', 'mx-0 my-4', 'flex', 'overflow-x-auto']}>
+  <table {...props} class:list={['w-full', 'border-collapse']}>
+    <slot />
+  </table>
+</div>

@@ -1,0 +1,28 @@
+---
+import Main from '@components/layout/Main.astro'
+import ArticleMarkdown from '@components/notebook/article/ArticleMarkdown.astro'
+import Layout from '@components/notebook/Layout.astro'
+import { frontmatterFormat } from '@libs/utils'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const archives = await getCollection('存档')
+  return archives.map(archive => ({
+    params: { id: archive.data.name },
+    props: { archive },
+  }))
+}
+
+const { archive } = Astro.props
+const { Content, headings } = await render(archive)
+---
+
+<Layout name={archive.data.title} description={archive.data.description}>
+  <Main class:list={['sm:px-6 sm:py-8']}>
+    <ArticleMarkdown
+      {...frontmatterFormat(archive.data)}
+      id={headings[0].slug}
+      content={Content}
+    />
+  </Main>
+</Layout>

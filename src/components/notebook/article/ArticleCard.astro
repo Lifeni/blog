@@ -1,0 +1,101 @@
+---
+import Divider from '@components/ui/Divider.astro'
+import { prefixes } from '@libs/configs'
+import { Image } from 'astro:assets'
+import dayjs from 'dayjs'
+import type { Article } from 'src/content'
+
+interface Props {
+  article: Article
+}
+
+const { article } = Astro.props
+---
+
+<li class:list={['w-full', 'list-none']}>
+  <a
+    href={`/articles/${article.id}`}
+    class:list={[
+      'relative z-1 hover:z-10',
+      'w-full',
+      'p-4',
+      'flex flex-col gap-4',
+      'text-neutral-950 dark:text-neutral-100',
+      'bg-white dark:bg-neutral-850',
+      'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
+      'no-underline',
+      'rounded-2xl',
+      'hover:shadow-2xl',
+      'transition-all',
+    ]}
+  >
+    {
+      article.cover && (
+        <Image
+          src={`${prefixes.article}/${article.cover.path}`}
+          alt={article.cover.description}
+          title={article.cover.description}
+          inferSize
+          layout="full-width"
+          class:list={[
+            'w-full h-auto',
+            'rounded-md',
+            'transition-shadow',
+            'aspect-3/2 sm:aspect-video',
+            'object-t object-cover',
+          ]}
+        />
+      )
+    }
+
+    <div class:list={['flex flex-col', 'overflow-hidden']}>
+      <section class:list={['w-full', 'py-0.5', 'flex items-baseline gap-3']}>
+        <h2 class:list={['m-0', 'font-bold leading-[1.5] text-lg']}>
+          {article.name}
+        </h2>
+        {
+          article.subtitle && (
+            <span
+              class:list={[
+                'font-medium leading-[1.5] text-lg text-neutral-500 dark:text-neutral-400',
+                'truncate',
+              ]}
+            >
+              {article.subtitle}
+            </span>
+          )
+        }
+      </section>
+
+      <p
+        class:list={[
+          'w-full',
+          'm-0',
+          'text-sm text-justify leading-[1.625]',
+          'truncate',
+        ]}
+      >
+        {article.description}
+      </p>
+
+      <section
+        class:list={[
+          'w-full',
+          'pt-0.5',
+          'flex items-center gap-3',
+          'text-sm truncate text-neutral-500 dark:text-neutral-400 leading-[1.625]',
+        ]}
+      >
+        <time>
+          {dayjs(article.date.created).format('YYYY 年 MM 月 DD 日')}
+        </time>
+        {
+          article.tags.length > 0 && (
+            <Divider orientation="vertical" class:list={['h-3.5']} />
+          )
+        }
+        {article.tags.map(tag => <span>{tag}</span>)}
+      </section>
+    </div>
+  </a>
+</li>

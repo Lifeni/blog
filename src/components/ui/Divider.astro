@@ -1,23 +1,19 @@
 ---
-export interface Props {
-  type?: 'vertical' | 'horizontal'
+interface Props {
+  orientation?: 'horizontal' | 'vertical'
   class?: string
 }
 
-const { type = 'horizontal', class: classes } = Astro.props
+const { orientation = 'horizontal', class: className } = Astro.props
 ---
 
-{
-  type === 'vertical' ? (
-    <hr
-      class={classes}
-      min-h="1rem"
-      w="1px"
-      bg="border"
-      border="none"
-      transition="colors"
-    />
-  ) : (
-    <hr class={classes} border="main" w="full" transition="colors" />
-  )
-}
+<span
+  class:list={[
+    orientation === 'vertical' ? 'w-auto' : 'w-full',
+    orientation === 'vertical' ? 'border-r' : 'border-t ',
+    'flex',
+    'border-neutral-200 dark:border-neutral-700',
+    className,
+  ]}
+>
+</span>

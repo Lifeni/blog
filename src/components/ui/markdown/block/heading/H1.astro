@@ -1,0 +1,13 @@
+---
+const props = Astro.props
+---
+
+<h1
+  {...props}
+  class:list={[
+    'mx-0 mt-0 mb-6 p-0',
+    'text-pretty font-bold leading-[1.625] text-2xl',
+  ]}
+>
+  <slot />
+</h1>

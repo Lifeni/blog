@@ -1,0 +1,50 @@
+---
+import Main from '@components/layout/Main.astro'
+import ArchivedArticleLink from '@components/notebook/article/ArchivedArticleLink.astro'
+import Layout from '@components/notebook/Layout.astro'
+import Divider from '@components/ui/Divider.astro'
+import { frontmatterFormat, groupArticlesByYear } from '@libs/utils'
+import { getCollection } from 'astro:content'
+
+const articles = await getCollection('文章')
+const archives = await getCollection('存档')
+
+const formattedArchives = archives.map(({ data }) => frontmatterFormat(data))
+const allArticles = [...articles.map(item => item.data), ...formattedArchives]
+const groupedArticles = groupArticlesByYear(allArticles)
+---
+
+<Layout name="存档">
+  <Main class:list={['p-4 sm:px-6 sm:py-8', 'gap-4']}>
+    {
+      groupedArticles.map(group => (
+        <section
+          class:list={[
+            'w-full max-w-148',
+            'mx-auto px-0 py-4',
+            'flex flex-col gap-4',
+            'bg-white dark:bg-neutral-850',
+            'rounded-2xl',
+          ]}
+        >
+          <h2 class:list={['m-0 px-5', 'font-mono text-xl']}>{group.year}</h2>
+          <ul class:list={['w-full', 'm-0 p-0', 'flex flex-col']}>
+            {group.articles.map((article, index) => (
+              <>
+                <ArchivedArticleLink article={article} />
+                {(index + 1) % 7 === 0 &&
+                  index !== group.articles.length - 1 && (
+                    <li
+                      class:list={['w-full', 'my-4 px-5', 'flex', 'list-none']}
+                    >
+                      <Divider />
+                    </li>
+                  )}
+              </>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </Main>
+</Layout>

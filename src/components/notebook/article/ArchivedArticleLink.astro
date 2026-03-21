@@ -1,0 +1,85 @@
+---
+import Spacer from '@components/ui/Spacer.astro'
+import { Icon } from 'astro-icon/components'
+import dayjs from 'dayjs'
+import type { Article } from 'src/content'
+
+interface Props {
+  article: Article
+}
+
+const { article } = Astro.props
+---
+
+<li class:list={['w-full', 'list-none']}>
+  <a
+    href={`/${article.archived ? 'archives' : 'articles'}/${article.id}`}
+    class:list={[
+      'group',
+      'w-full',
+      'px-5 py-1.5',
+      'flex items-center justify-between gap-4',
+      'text-neutral-950 dark:text-neutral-100',
+      'bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-750',
+      'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
+      'no-underline',
+      'overflow-hidden',
+      'transition-all',
+    ]}
+  >
+    <time class:list={['text-neutral-500 dark:text-neutral-400 font-mono']}>
+      {dayjs(article.date.created).format('MM/DD')}
+    </time>
+
+    <h3 class:list={['w-fit', 'm-0', 'font-medium text-base', 'truncate']}>
+      {article.name}
+    </h3>
+
+    {
+      article.subtitle && (
+        <span
+          class:list={[
+            'font-normal leading-[1.625] text-neutral-500 dark:text-neutral-400',
+            'truncate',
+          ]}
+        >
+          {article.subtitle}
+        </span>
+      )
+    }
+
+    <Spacer />
+
+    {
+      article.draft && (
+        <Icon
+          name="ri:quill-pen-fill"
+          title="未完成"
+          class:list={[
+            'hidden sm:block',
+            'w-4.5 h-4.5 min-w-4.5',
+            'mx-1',
+            'text-neutral-300 dark:text-neutral-500 group-hover:text-neutral-500 dark:group-hover:text-neutral-300',
+            'transition-all',
+          ]}
+        />
+      )
+    }
+
+    {
+      article.archived && (
+        <Icon
+          name="ri:archive-2-fill"
+          title="已存档"
+          class:list={[
+            'hidden sm:block',
+            'w-4.5 h-4.5 min-w-4.5',
+            'mx-1',
+            'text-neutral-300 dark:text-neutral-500 group-hover:text-neutral-500 dark:group-hover:text-neutral-300',
+            'transition-all',
+          ]}
+        />
+      )
+    }
+  </a>
+</li>

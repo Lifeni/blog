@@ -1,0 +1,29 @@
+---
+const props = Astro.props
+---
+
+<div
+  class:list={[
+    'wrapper',
+    'w-full',
+    'mx-0 my-4 p-0',
+    'bg-neutral-100 dark:bg-neutral-800',
+    'font-mono',
+    'rounded-md',
+    'overflow-x-auto',
+  ]}
+>
+  <pre {...props}><slot /></pre>
+</div>
+
+<style>
+  @reference "tailwindcss";
+
+  pre {
+    @apply m-0 px-4 py-3;
+  }
+
+  pre :global(code) {
+    @apply p-0 flex flex-col leading-[1.75] whitespace-pre;
+  }
+</style>

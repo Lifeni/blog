@@ -1,38 +1,48 @@
 import { getCollection } from 'astro:content'
-import dayjs from 'dayjs'
-import type { Archive, Article } from 'types'
-
-export const dateFormat = (date: Date) =>
-  dayjs(date).format('YYYY 年 MM 月 DD 日')
+import type { Archive, Article } from 'src/content'
 
 export const frontmatterFormat = (data: Archive): Article => ({
   name: data.title,
   description: data.description,
+  subtitle: '',
   id: data.name,
+  cover: undefined,
   license: data.license,
+  tags: [],
   date: {
     created: data['create-date'],
     updated: data.date,
   },
-  cover: undefined,
-  tags: undefined,
-  subtitle: data.subtitle,
-  group: false,
   draft: false,
-  star: data.star,
+  archived: true,
+  featured: false,
+  pinned: false,
 })
 
-export const parseHref = (href: string) => {
-  if (href.startsWith('/')) {
-    const url = new URL(href, 'http://localhost')
-    if (url.pathname.startsWith('/story'))
-      return { type: '专题', href, id: url.pathname.replace('/story/', '') }
-    if (url.pathname.startsWith('/article'))
-      return { type: '文章', href, id: url.pathname.replace('/article/', '') }
-    return { type: '应用', href }
-  }
+export const groupArticlesByYear = (
+  articles: Article[],
+): {
+  year: number
+  articles: Article[]
+}[] => {
+  const groups: Record<number, Article[]> = {}
 
-  return { type: '链接', href }
+  articles.forEach(article => {
+    const year = article.date.created.getFullYear()
+    if (!groups[year]) {
+      groups[year] = []
+    }
+    groups[year].push(article)
+  })
+
+  return Object.entries(groups)
+    .map(([year, articles]) => ({
+      year: parseInt(year),
+      articles: articles.sort(
+        (a, b) => b.date.created.getTime() - a.date.created.getTime(),
+      ),
+    }))
+    .sort((a, b) => b.year - a.year)
 }
 
 export const findContents = async (id: string) => {
@@ -44,6 +54,6 @@ export const findContents = async (id: string) => {
   }))
 
   return [...articles, ...stories, ...archives].find(
-    ({ data }) => data.id === id
+    ({ data }) => data.id === id,
   )
 }

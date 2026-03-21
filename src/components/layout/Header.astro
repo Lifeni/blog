@@ -1,0 +1,39 @@
+---
+import HeaderButton from '@components/layout/header/HeaderButton.astro'
+import Sidebar from '@components/layout/header/Sidebar.astro'
+import { shortcuts } from '@libs/configs'
+
+interface Props {
+  pages?: { name: string; href: string; icons: string[]; id: string }[]
+  shortcut?: string
+}
+
+const { pages, shortcut } = Astro.props
+
+const currentPath = Astro.url.pathname
+const currentPage = currentPath === '/' ? '/articles' : currentPath
+const isActive = (id: string) => currentPage.startsWith(`/${id}`)
+
+const link = shortcuts.find(link => link.name === shortcut) || shortcuts[0]
+---
+
+<header
+  class:list={['px-4 py-4', 'flex items-center justify-between gap-0 sm:gap-1']}
+>
+  <Sidebar />
+  {
+    pages && (
+      <nav class:list={['flex items-center justify-center gap-0 sm:gap-1']}>
+        {pages.map(page => (
+          <HeaderButton
+            href={page.href}
+            icon={isActive(page.id) ? page.icons[1] : page.icons[0]}
+            name={page.name}
+            active={isActive(page.id)}
+          />
+        ))}
+      </nav>
+    )
+  }
+  <HeaderButton name={link.name} icon={link.icon} href={link.href} />
+</header>

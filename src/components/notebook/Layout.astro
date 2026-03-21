@@ -1,0 +1,25 @@
+---
+import Footer from '@components/layout/Footer.astro'
+import Header from '@components/layout/Header.astro'
+import Root from '@components/ui/Root.astro'
+import { pages } from '@libs/configs'
+
+interface Props {
+  name?: string
+  description?: string
+}
+
+const { name, description } = Astro.props
+---
+
+<Root
+  name={name ? `${name} - 记录干杯` : '记录干杯'}
+  description={description ||
+    '个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。'}
+  color="#feec44"
+  favicon="/favicon.svg"
+>
+  <Header pages={pages} shortcut="开往" />
+  <slot />
+  <Footer />
+</Root>

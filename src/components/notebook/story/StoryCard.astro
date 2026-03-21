@@ -1,0 +1,70 @@
+---
+import Spacer from '@components/ui/Spacer.astro'
+import { Image } from 'astro:assets'
+import type { Story } from 'src/content'
+
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import { prefixes } from '@libs/configs'
+
+dayjs.extend(relativeTime)
+dayjs.locale('zh-cn')
+
+interface Props {
+  story: Story
+}
+
+const { story } = Astro.props
+---
+
+<li class:list={['w-full', 'list-none']}>
+  <a
+    href={`/stories/${story.id}`}
+    class:list={[
+      'relative z-1 hover:z-10',
+      'w-fit',
+      'p-4',
+      'flex flex-col gap-4',
+      'text-neutral-950 dark:text-neutral-100',
+      'bg-white dark:bg-neutral-850',
+      'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
+      'no-underline',
+      'rounded-2xl',
+      'hover:shadow-2xl',
+      'transition-all',
+    ]}
+  >
+    <Image
+      src={`${prefixes.story}/${story.cover.path}`}
+      alt={story.cover.description}
+      title={story.cover.description}
+      inferSize
+      layout="full-width"
+      class:list={[
+        'w-full h-auto',
+        'rounded-md',
+        'transition-shadow',
+        'aspect-1/1',
+        'object-t object-cover',
+      ]}
+    />
+
+    <div class:list={['flex flex-row items-center gap-2']}>
+      <h2 class:list={['m-0', 'font-bold text-sm']}>
+        # {story.name}
+      </h2>
+      <Spacer />
+      <code
+        class:list={[
+          'm-0 p-0',
+          'text-sm text-neutral-500 dark:text-neutral-400 font-sans',
+          'break-all md:break-word',
+          'truncate',
+        ]}
+      >
+        ×{story.articles?.length || 0}
+      </code>
+    </div>
+  </a>
+</li>

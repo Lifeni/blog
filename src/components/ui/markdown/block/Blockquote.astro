@@ -1,0 +1,22 @@
+---
+const props = Astro.props
+---
+
+<blockquote
+  {...props}
+  class:list={[
+    'ml-0.5 mr-0 my-4',
+    'text-neutral-500 dark:text-neutral-400 leading-[1.625] ',
+    'border-l-4 border-neutral-300 dark:border-neutral-700 pl-4',
+  ]}
+>
+  <slot />
+</blockquote>
+
+<style>
+  @reference "tailwindcss";
+
+  blockquote :global(p) {
+    @apply my-2;
+  }
+</style>

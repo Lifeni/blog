@@ -1,0 +1,75 @@
+---
+import '@fontsource-variable/fira-code'
+import '@fontsource-variable/inter'
+import '@libs/reset.css'
+
+import { ClientRouter } from 'astro:transitions'
+const { name, description, color, favicon } = Astro.props
+---
+
+<!doctype html>
+<html
+  lang="zh-cn"
+  class:list={[
+    'bg-neutral-100 dark:bg-neutral-900',
+    'font-sans text-neutral-950 dark:text-neutral-100',
+    'tabular-nums',
+    'overflow-x-hidden overflow-y-scroll',
+  ]}
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{name}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={color} />
+    <link rel="icon" href={favicon} />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
+  </head>
+  <body class:list={['min-h-screen', 'flex flex-col']}>
+    <slot />
+  </body>
+</html>
+
+<style>
+  @import 'tailwindcss';
+
+  @theme {
+    --font-sans:
+      'Inter Variable', Inter, -apple-system, 'HarmonyOS Sans SC', MiSans,
+      'Source Han Sans SC', 'Noto Sans SC', system-ui, Roboto, sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+    --font-serif:
+      'Source Han Serif SC', 'Noto Serif SC', Times, 'Times New Roman', Georgia,
+      serif;
+    --font-mono:
+      'Fira Code Variable', 'Cascadia Mono', 'JetBrains Mono', Consolas,
+      'Roboto Mono', 'Fira Mono', 'Courier New', -apple-system,
+      'HarmonyOS Sans SC', MiSans, 'Source Han Sans SC', 'Noto Sans SC',
+      system-ui, monospace;
+    --font-emoji:
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+  }
+
+  @theme {
+    --writing-normal: horizontal-tb;
+    --writing-vertical: vertical-lr;
+    --writing-vertical-reverse: vertical-rl;
+    --writing-sideways: sideways-lr;
+    --writing-sideways-reverse: sideways-rl;
+  }
+
+  @theme {
+    --color-neutral-750: oklch(33.5% 0 0);
+    --color-neutral-800: oklch(28.2% 0 0);
+    --color-neutral-850: oklch(24.7% 0 0);
+  }
+
+  @utility writing-* {
+    writing-mode: --value(--writing-*);
+  }
+</style>

@@ -1,0 +1,197 @@
+---
+import WidgetImage from '@components/notebook/widget/WidgetImage.astro'
+import Divider from '@components/ui/Divider.astro'
+import Blockquote from '@components/ui/markdown/block/Blockquote.astro'
+import H1 from '@components/ui/markdown/block/heading/H1.astro'
+import H2 from '@components/ui/markdown/block/heading/H2.astro'
+import H3 from '@components/ui/markdown/block/heading/H3.astro'
+import H4 from '@components/ui/markdown/block/heading/H4.astro'
+import H5 from '@components/ui/markdown/block/heading/H5.astro'
+import H6 from '@components/ui/markdown/block/heading/H6.astro'
+import Hr from '@components/ui/markdown/block/Hr.astro'
+import Img from '@components/ui/markdown/block/Img.astro'
+import Li from '@components/ui/markdown/block/list/Li.astro'
+import Ol from '@components/ui/markdown/block/list/Ol.astro'
+import Ul from '@components/ui/markdown/block/list/Ul.astro'
+import P from '@components/ui/markdown/block/P.astro'
+import Pre from '@components/ui/markdown/block/Pre.astro'
+import Table from '@components/ui/markdown/block/table/Table.astro'
+import Tbody from '@components/ui/markdown/block/table/Tbody.astro'
+import Td from '@components/ui/markdown/block/table/Td.astro'
+import Tfoot from '@components/ui/markdown/block/table/Tfoot.astro'
+import Th from '@components/ui/markdown/block/table/Th.astro'
+import Thead from '@components/ui/markdown/block/table/Thead.astro'
+import Tr from '@components/ui/markdown/block/table/Tr.astro'
+import A from '@components/ui/markdown/inline/A.astro'
+import Code from '@components/ui/markdown/inline/Code.astro'
+import Em from '@components/ui/markdown/inline/Em.astro'
+import Null from '@components/ui/markdown/Null.astro'
+import Spacer from '@components/ui/Spacer.astro'
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import type { Article } from 'src/content'
+
+dayjs.extend(relativeTime)
+dayjs.locale('zh-cn')
+
+interface Props extends Article {
+  content: AstroComponentFactory
+  class?: string
+}
+
+const {
+  name,
+  subtitle,
+  id,
+  date,
+  cover,
+  tags,
+  license,
+  content,
+  class: className,
+} = Astro.props
+const Content = content
+
+const markdownReset = {
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
+  a: A,
+  p: P,
+  img: Img,
+  hr: Hr,
+  code: Code,
+  pre: Pre,
+  blockquote: Blockquote,
+  ul: Ul,
+  ol: Ol,
+  li: Li,
+  table: Table,
+  thead: Thead,
+  tbody: Tbody,
+  tfoot: Tfoot,
+  tr: Tr,
+  th: Th,
+  td: Td,
+  em: Em,
+}
+---
+
+<article
+  class:list={[
+    'w-full max-w-148',
+    'mx-auto px-8 pt-8 pb-7',
+    'bg-white dark:bg-neutral-850',
+    'rounded-4xl sm:rounded-2xl',
+  ]}
+>
+  <section class:list={['flex items-baseline gap-3']}>
+    <h1
+      id={id}
+      class:list={['m-0 py-1', 'text-pretty font-bold leading-[1.5] text-2xl']}
+    >
+      {name}
+    </h1>
+    {
+      subtitle && (
+        <span
+          class:list={[
+            'font-medium leading-[1.5] text-xl text-neutral-500 dark:text-neutral-400',
+            'truncate',
+          ]}
+        >
+          {subtitle}
+        </span>
+      )
+    }
+  </section>
+
+  <section
+    class:list={[
+      'w-full',
+      'flex items-center gap-3',
+      'text-sm truncate text-neutral-500 dark:text-neutral-400 leading-[1.75]',
+    ]}
+  >
+    <time>
+      {dayjs(date.created).format('YYYY 年 MM 月 DD 日')}
+    </time>
+  </section>
+
+  {
+    cover ? (
+      <section class:list={['w-calc[100% + 2rem]', '-mx-4 my-8']}>
+        <WidgetImage
+          path={cover.path}
+          description={cover.description}
+          class:list={['aspect-3/2']}
+        />
+      </section>
+    ) : (
+      <Divider class:list={['mt-7 mb-8']} />
+    )
+  }
+
+  <Content
+    components={{
+      ...markdownReset,
+      h1: Null,
+    }}
+  />
+
+  <section
+    class:list={[
+      'w-full',
+      'mt-8',
+      'flex items-center gap-3',
+      'text-sm truncate text-neutral-500 dark:text-neutral-400',
+    ]}
+  >
+    <time title={dayjs(date.updated).format('YYYY 年 MM 月 DD 日')}>
+      修改于 {dayjs(date.updated).fromNow()}
+    </time>
+    <Spacer />
+    {tags.map(tag => <span>{tag}</span>)}
+    {
+      tags.length > 0 && (
+        <Divider orientation="vertical" class:list={['h-3.5']} />
+      )
+    }
+    <span>{license}</span>
+  </section>
+
+  <slot />
+</article>
+
+<style>
+  @reference "tailwindcss";
+
+  article :global(.wrapper) {
+    @apply -mx-4 my-4;
+    width: calc(100% + 2rem);
+  }
+
+  article :global(iframe) {
+    @apply flex -mx-4 my-4 rounded-md overflow-hidden;
+    width: calc(100% + 2rem);
+  }
+
+  article :global(li) :global(.wrapper),
+  article :global(details) :global(.wrapper),
+  article :global(blockquote) :global(.wrapper) {
+    @apply w-full mx-0 my-4;
+  }
+
+  article :global(details) {
+    @apply flex flex-col;
+  }
+
+  article :global(summary) {
+    @apply w-fit font-bold cursor-pointer;
+  }
+</style>
