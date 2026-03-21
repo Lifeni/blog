@@ -10,7 +10,11 @@ const articles = await getCollection('文章')
 const archives = await getCollection('存档')
 
 const formattedArchives = archives.map(({ data }) => frontmatterFormat(data))
-const allArticles = [...articles.map(item => item.data), ...formattedArchives]
+const allArticles = [
+  ...articles.map(item => item.data),
+  ...formattedArchives,
+].filter(article => import.meta.env.DEV || !article.draft)
+
 const groupedArticles = groupArticlesByYear(allArticles)
 ---
 

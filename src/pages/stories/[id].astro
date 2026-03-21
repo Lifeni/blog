@@ -33,6 +33,11 @@ const storyArchives = archives
   .map(archive => frontmatterFormat(archive.data))
 
 const allArticles = [...storyArticles, ...storyArchives]
+  .filter(article => import.meta.env.DEV || !article.draft)
+  .sort(
+    (a, b) =>
+      new Date(b.date.created).getTime() - new Date(a.date.created).getTime(),
+  )
 ---
 
 <Layout name={story.data.name} description={story.data.description}>
@@ -40,6 +45,10 @@ const allArticles = [...storyArticles, ...storyArchives]
     <ArticleMarkdown
       {...story.data}
       id={headings[0].slug}
+      date={{
+        created: story.data.date.created,
+        updated: allArticles?.[0].date.created || story.data.date.updated,
+      }}
       cover={{
         path: `${prefixes.story}/${story.data.cover?.path}`,
         description: story.data.cover?.description || '',
@@ -69,16 +78,9 @@ const allArticles = [...storyArticles, ...storyArchives]
           </div>
 
           <ul class:list={['w-full', 'm-0 p-0', 'flex flex-col gap-4']}>
-            {allArticles
-              .filter(article => import.meta.env.DEV || !article.draft)
-              .sort(
-                (a, b) =>
-                  new Date(b.date.created).getTime() -
-                  new Date(a.date.created).getTime(),
-              )
-              .map(article => (
-                <ArticleCard article={article} />
-              ))}
+            {allArticles.map(article => (
+              <ArticleCard article={article} />
+            ))}
           </ul>
         </section>
       )

@@ -1,12 +1,13 @@
 ---
 import Spacer from '@components/ui/Spacer.astro'
+import { prefixes } from '@libs/configs'
+import { frontmatterFormat } from '@libs/utils'
 import { Image } from 'astro:assets'
-import type { Story } from 'src/content'
-
+import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { prefixes } from '@libs/configs'
+import type { Story } from 'src/content'
 
 dayjs.extend(relativeTime)
 dayjs.locale('zh-cn')
@@ -16,6 +17,21 @@ interface Props {
 }
 
 const { story } = Astro.props
+
+const articles = await getCollection('文章')
+const archives = await getCollection('存档')
+
+const storyArticles = articles
+  .filter(article => story.articles?.includes(article.data.id))
+  .map(article => article.data)
+
+const storyArchives = archives
+  .filter(archive => story.articles?.includes(archive.data.name))
+  .map(archive => frontmatterFormat(archive.data))
+
+const allArticles = [...storyArticles, ...storyArchives].filter(
+  article => import.meta.env.DEV || !article.draft,
+)
 ---
 
 <li class:list={['w-full', 'list-none']}>
@@ -63,7 +79,7 @@ const { story } = Astro.props
           'truncate',
         ]}
       >
-        ×{story.articles?.length || 0}
+        ×{allArticles.length || 0}
       </code>
     </div>
   </a>
