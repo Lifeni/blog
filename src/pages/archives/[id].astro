@@ -5,6 +5,11 @@ import Layout from '@components/notebook/Layout.astro'
 import { frontmatterFormat } from '@libs/utils'
 import { getCollection, render } from 'astro:content'
 import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+import relativeTime from 'dayjs/plugin/relativeTime'
+
+dayjs.extend(relativeTime)
+dayjs.locale('zh-cn')
 
 export async function getStaticPaths() {
   const archives = await getCollection('存档')
