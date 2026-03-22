@@ -47,7 +47,10 @@ const allArticles = [...storyArticles, ...storyArchives]
       id={headings[0].slug}
       date={{
         created: story.data.date.created,
-        updated: allArticles?.[0].date.created || story.data.date.updated,
+        updated:
+          allArticles.length > 0
+            ? allArticles[0].date.created
+            : story.data.date.updated,
       }}
       cover={{
         path: `${prefixes.story}/${story.data.cover?.path}`,

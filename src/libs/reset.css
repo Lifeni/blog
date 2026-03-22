@@ -17,7 +17,7 @@
 
   @media (prefers-color-scheme: dark) {
     --astro-code-foreground: var(--color-neutral-300);
-    --astro-code-background: var(--color-neutral-800);
+    --astro-code-background: var(--color-neutral-900);
     --astro-code-token-constant: #79c0ff;
     --astro-code-token-string: #a5d6ff;
     --astro-code-token-comment: var(--color-neutral-400);

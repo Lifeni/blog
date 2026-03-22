@@ -27,17 +27,20 @@ import Code from '@components/ui/markdown/inline/Code.astro'
 import Em from '@components/ui/markdown/inline/Em.astro'
 import Null from '@components/ui/markdown/Null.astro'
 import Spacer from '@components/ui/Spacer.astro'
+import type { MarkdownHeading } from 'astro'
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import type { Article } from 'src/content'
+import ArticleTableOfContents from './ArticleTableOfContents.astro'
 
 dayjs.extend(relativeTime)
 dayjs.locale('zh-cn')
 
 interface Props extends Article {
   content: AstroComponentFactory
+  headings?: MarkdownHeading[]
   class?: string
 }
 
@@ -50,6 +53,7 @@ const {
   tags,
   license,
   content,
+  headings,
   class: className,
 } = Astro.props
 const Content = content
@@ -84,6 +88,7 @@ const markdownReset = {
 
 <article
   class:list={[
+    'relative',
     'w-full max-w-148',
     'mx-auto px-8 pt-8 pb-7',
     'bg-white dark:bg-neutral-850',
@@ -93,7 +98,10 @@ const markdownReset = {
   <section class:list={['flex items-baseline gap-3']}>
     <h1
       id={id}
-      class:list={['m-0 py-1', 'text-pretty font-bold leading-[1.5] text-2xl']}
+      class:list={[
+        'm-0 pb-0.5',
+        'text-pretty font-bold leading-[1.5] text-2xl',
+      ]}
     >
       {name}
     </h1>
@@ -123,6 +131,7 @@ const markdownReset = {
     </time>
   </section>
 
+  {headings && <ArticleTableOfContents headings={headings} />}
   {
     cover ? (
       <section class:list={['w-calc[100% + 2rem]', '-mx-4 my-8']}>

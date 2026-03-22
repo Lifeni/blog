@@ -1,6 +1,7 @@
 ---
 import Main from '@components/layout/Main.astro'
 import ArticleMarkdown from '@components/notebook/article/ArticleMarkdown.astro'
+import ArticleTableOfContents from '@components/notebook/article/ArticleTableOfContents.astro'
 import Layout from '@components/notebook/Layout.astro'
 import { prefixes } from '@libs/configs'
 import { getCollection, render } from 'astro:content'
@@ -29,6 +30,7 @@ const { Content, headings } = await render(article)
         description: article.data.cover?.description || '',
       }}
       content={Content}
+      headings={headings}
     />
   </Main>
 </Layout>

@@ -1,5 +1,103 @@
 ---
+import Spacer from '@components/ui/Spacer.astro'
+import type { MarkdownHeading } from 'astro'
+import { Icon } from 'astro-icon/components'
 
+interface Props {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+const list = headings.filter(
+  heading => heading.depth === 2 || heading.depth === 3,
+)
 ---
 
-<aside>toc</aside>
+<aside class:list={['sticky top-0 bottom-48', 'hidden lg:flex']}>
+  <div
+    class:list={[
+      'absolute -right-96 top-0',
+      'h-screen max-h-screen',
+      'p-8',
+      'flex flex-col gap-4',
+      'pointer-events-none',
+    ]}
+  >
+    <ul
+      class:list={[
+        'group',
+        'w-72 h-calc[100vh - 4rem]',
+        'm-0 p-0',
+        'flex flex-col',
+        'overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+        'pointer-events-none',
+        'list-none',
+      ]}
+    >
+      {
+        list.map(heading => (
+          <li
+            class:list={[
+              'w-full',
+              'flex items-centergap-2',
+              'pointer-events-auto',
+            ]}
+          >
+            <span
+              class:list={['flex items-center justify-center', 'w-3 min-w-3']}
+            >
+              <span
+                class:list={[
+                  'flex',
+                  'rounded-full',
+                  'bg-neutral-200 dark:bg-neutral-700 group-hover:bg-neutral-300 dark:group-hover:bg-neutral-500',
+                  'transition-colors',
+                  heading.depth === 2 ? 'w-2 h-2 min-w-2' : 'w-1 h-1 min-w-1',
+                ]}
+              />
+            </span>
+            <a
+              href={`#${heading.slug}`}
+              class:list={[
+                'flex',
+                'px-2 py-1',
+                'text-sm text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300',
+                'no-underline underline-offset-4 hover:underline',
+                'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-2',
+                'opacity-0 group-hover:opacity-100 visibility-hidden group-hover:visible',
+                'rounded-md',
+                'overflow-hidden',
+                'transition-all',
+                heading.depth === 2 ? 'font-bold' : 'font-normal',
+              ]}
+            >
+              <span class:list={['w-full min-w-0', 'flex-1', 'truncate']}>
+                {heading.text}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <Spacer />
+    <a
+      aria-label="回到顶部"
+      href={`#${headings[0].slug}`}
+      title="回到顶部"
+      class:list={[
+        'w-8 h-8 min-w-8 min-h-8',
+        '-mx-2.5',
+        'flex items-center justify-center',
+        'text-sm text-neutral-300 hover:text-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-400',
+        'bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-850',
+        'no-underline',
+        'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-2',
+        'pointer-events-auto',
+        'rounded-full',
+        'transition-all',
+      ]}
+    >
+      <Icon name="ri:skip-up-line" class:list={['w-4.5 h-4.5']} />
+    </a>
+  </div>
+</aside>

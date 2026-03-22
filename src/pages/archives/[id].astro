@@ -23,6 +23,7 @@ const { Content, headings } = await render(archive)
       {...frontmatterFormat(archive.data)}
       id={headings[0].slug}
       content={Content}
+      headings={headings}
     />
   </Main>
 </Layout>
