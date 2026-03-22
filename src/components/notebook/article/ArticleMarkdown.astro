@@ -41,6 +41,7 @@ dayjs.locale('zh-cn')
 
 interface Props extends Article {
   content: AstroComponentFactory
+  icon?: string
   headings?: MarkdownHeading[]
   message?: string
   class?: string
@@ -55,6 +56,7 @@ const {
   tags,
   license,
   content,
+  icon,
   message,
   headings,
   class: className,
@@ -98,27 +100,23 @@ const markdownReset = {
     'rounded-4xl sm:rounded-2xl',
   ]}
 >
-  {
-    message && (
-      <div
-        class:list={[
-          'w-calc[100% + 2rem]',
-          '-mx-4 -mt-4 mb-8 px-4 py-3 sm:py-2.5',
-          'flex items-center justify-center gap-2',
-          'text-sm text-black',
-          'bg-yellow-300 dark:bg-yellow-400',
-          'rounded-2xl sm:rounded-md',
-        ]}
-      >
-        <Icon name="ri:error-warning-fill" class:list={['w-4 h-4']} />
-        <span>{message}</span>
-      </div>
-    )
-  }
-  <section class:list={['flex items-baseline gap-3']}>
+  <section class:list={['relative', 'flex items-baseline gap-3', 'pr-24']}>
+    {
+      icon && (
+        <Icon
+          name={icon}
+          class:list={[
+            'absolute -right-0 -top-2 z-0',
+            'w-18 h-18',
+            'text-neutral-100 dark:text-neutral-800',
+          ]}
+        />
+      )
+    }
     <h1
       id={id}
       class:list={[
+        'z-1',
         'm-0 pb-0.5',
         'text-pretty font-bold leading-[1.5] text-2xl',
       ]}
@@ -129,6 +127,7 @@ const markdownReset = {
       subtitle && (
         <span
           class:list={[
+            'z-1',
             'font-medium leading-[1.5] text-xl text-neutral-500 dark:text-neutral-400',
             'truncate',
           ]}
@@ -161,6 +160,20 @@ const markdownReset = {
           class:list={['aspect-3/2']}
         />
       </section>
+    ) : message ? (
+      <div
+        class:list={[
+          'w-calc[100% + 2rem]',
+          '-mx-4 -mt-4 mt-8 px-4 py-3 sm:py-2.5',
+          'flex items-center justify-center gap-2',
+          'text-sm text-black',
+          'bg-yellow-300 dark:bg-yellow-400',
+          'rounded-md',
+        ]}
+      >
+        <Icon name="ri:error-warning-fill" class:list={['w-4 h-4']} />
+        <span>{message}</span>
+      </div>
     ) : (
       <Divider class:list={['mt-7 mb-8']} />
     )

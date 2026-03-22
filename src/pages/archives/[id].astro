@@ -25,6 +25,7 @@ const { Content, headings } = await render(archive)
       id={headings[0].slug}
       content={Content}
       message={`本文编写于 ${dayjs(archive.data.date).fromNow()}，内容可能过时，请注意甄别`}
+      icon="ri:folder-open-fill"
       headings={headings}
     />
   </Main>
