@@ -1,0 +1,17 @@
+---
+// @ts-nocheck
+interface Props {
+  id: string
+}
+
+const { id } = Astro.props
+---
+
+<iframe
+  src={`//player.bilibili.com/player.html?isOutside=true&bvid=${id}&p=1&autoplay=0`}
+  scrolling="no"
+  border="0"
+  frameborder="no"
+  framespacing="0"
+  allowfullscreen="true"
+  height={360}></iframe>
