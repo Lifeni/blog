@@ -10,7 +10,7 @@ import { redirects } from './src/libs/configs'
 export default defineConfig({
   server: { port: 8000, host: true },
   site: 'https://lifeni.life',
-  image: { domains: ['file.lifeni.life', 'octodex.github.com'] },
+  image: { domains: ['file.lifeni.life'] },
   integrations: [react(), mdx(), sitemap(), icon()],
   vite: { plugins: [tailwindcss()] },
   markdown: {
