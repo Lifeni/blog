@@ -4,6 +4,7 @@ import ArticleMarkdown from '@components/notebook/article/ArticleMarkdown.astro'
 import Layout from '@components/notebook/Layout.astro'
 import { frontmatterFormat } from '@libs/utils'
 import { getCollection, render } from 'astro:content'
+import dayjs from 'dayjs'
 
 export async function getStaticPaths() {
   const archives = await getCollection('存档')
@@ -18,11 +19,12 @@ const { Content, headings } = await render(archive)
 ---
 
 <Layout name={archive.data.title} description={archive.data.description}>
-  <Main class:list={['sm:px-6 sm:py-8']}>
+  <Main class:list={['sm:px-6 sm:py-8', 'gap-4']}>
     <ArticleMarkdown
       {...frontmatterFormat(archive.data)}
       id={headings[0].slug}
       content={Content}
+      message={`本文编写于 ${dayjs(archive.data.date).fromNow()}，内容可能过时，请注意甄别`}
       headings={headings}
     />
   </Main>

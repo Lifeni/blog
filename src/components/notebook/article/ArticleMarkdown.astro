@@ -34,6 +34,7 @@ import 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import type { Article } from 'src/content'
 import ArticleTableOfContents from './ArticleTableOfContents.astro'
+import { Icon } from 'astro-icon/components'
 
 dayjs.extend(relativeTime)
 dayjs.locale('zh-cn')
@@ -41,6 +42,7 @@ dayjs.locale('zh-cn')
 interface Props extends Article {
   content: AstroComponentFactory
   headings?: MarkdownHeading[]
+  message?: string
   class?: string
 }
 
@@ -53,6 +55,7 @@ const {
   tags,
   license,
   content,
+  message,
   headings,
   class: className,
 } = Astro.props
@@ -95,6 +98,23 @@ const markdownReset = {
     'rounded-4xl sm:rounded-2xl',
   ]}
 >
+  {
+    message && (
+      <div
+        class:list={[
+          'w-calc[100% + 2rem]',
+          '-mx-4 -mt-4 mb-8 px-4 py-3 sm:py-2.5',
+          'flex items-center justify-center gap-2',
+          'text-sm text-black',
+          'bg-yellow-300 dark:bg-yellow-400',
+          'rounded-2xl sm:rounded-md',
+        ]}
+      >
+        <Icon name="ri:error-warning-fill" class:list={['w-4 h-4']} />
+        <span>{message}</span>
+      </div>
+    )
+  }
   <section class:list={['flex items-baseline gap-3']}>
     <h1
       id={id}
