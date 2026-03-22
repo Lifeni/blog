@@ -56,6 +56,7 @@ const allArticles = [...storyArticles, ...storyArchives].filter(
       alt={story.cover.description}
       title={story.cover.description}
       inferSize
+      loading="lazy"
       layout="full-width"
       class:list={[
         'w-full h-auto',

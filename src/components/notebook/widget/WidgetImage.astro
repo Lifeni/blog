@@ -16,6 +16,7 @@ const { description, path, class: className } = Astro.props
     alt={description}
     title={description}
     inferSize
+    loading="lazy"
     layout="full-width"
     class:list={[
       'w-full h-auto',

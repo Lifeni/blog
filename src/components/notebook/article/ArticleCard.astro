@@ -7,14 +7,15 @@ import type { Article } from 'src/content'
 
 interface Props {
   article: Article
+  path?: 'articles' | 'archives'
 }
 
-const { article } = Astro.props
+const { article, path = 'articles' } = Astro.props
 ---
 
 <li class:list={['w-full', 'list-none']}>
   <a
-    href={`/articles/${article.id}`}
+    href={`/${path}/${article.id}`}
     class:list={[
       'relative z-1 hover:z-10',
       'w-full',
@@ -36,6 +37,7 @@ const { article } = Astro.props
           alt={article.cover.description}
           title={article.cover.description}
           inferSize
+          loading="lazy"
           layout="full-width"
           class:list={[
             'w-full h-auto',

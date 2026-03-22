@@ -26,11 +26,11 @@ const archives = await getCollection('存档')
 
 const storyArticles = articles
   .filter(article => story.data.articles?.includes(article.data.id))
-  .map(article => article.data)
+  .map(article => ({ ...article.data, type: '文章' }))
 
 const storyArchives = archives
   .filter(archive => story.data.articles?.includes(archive.data.name))
-  .map(archive => frontmatterFormat(archive.data))
+  .map(archive => ({ ...frontmatterFormat(archive.data), type: '存档' }))
 
 const allArticles = [...storyArticles, ...storyArchives]
   .filter(article => import.meta.env.DEV || !article.draft)
@@ -83,7 +83,10 @@ const allArticles = [...storyArticles, ...storyArchives]
 
           <ul class:list={['w-full', 'm-0 p-0', 'flex flex-col gap-4']}>
             {allArticles.map(article => (
-              <ArticleCard article={article} />
+              <ArticleCard
+                article={article}
+                path={article.type === '存档' ? 'archives' : 'articles'}
+              />
             ))}
           </ul>
         </section>
