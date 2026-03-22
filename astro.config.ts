@@ -13,12 +13,10 @@ export default defineConfig({
   image: { domains: ['file.lifeni.life', 'octodex.github.com'] },
   integrations: [react(), mdx(), sitemap(), icon()],
   vite: { plugins: [tailwindcss()] },
-
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: { theme: 'css-variables' },
   },
-
   redirects,
   adapter: vercel(),
 })

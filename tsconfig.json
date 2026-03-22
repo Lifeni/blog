@@ -3,7 +3,7 @@
   "include": [".astro/types.d.ts", "**/*", "src/pages/.ts"],
   "exclude": ["dist"],
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "paths": {
