@@ -28,22 +28,22 @@ export const pages = [
 export const shortcuts = [
   {
     name: '开往',
-    avatar: 'ri:triangle-fill',
+    icon: 'ri:triangle-fill',
     href: 'https://www.travellings.cn/go.html',
   },
   {
     name: 'GitHub',
-    avatar: 'ri:profile-fill',
+    icon: 'ri:profile-fill',
     href: 'https://github.com/Lifeni',
   },
   {
     name: '邮箱',
-    avatar: 'ri:mail-fill',
+    icon: 'ri:mail-fill',
     href: 'mailto:liangfengning@foxmail.com',
   },
   {
     name: 'Hello',
-    avatar: 'ri:terminal-box-fill',
+    icon: 'ri:terminal-box-fill',
     href: 'https://lifeni.life/hello',
   },
 ]
