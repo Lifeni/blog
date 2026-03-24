@@ -5,7 +5,7 @@ export type Article = {
   id: string
   cover?: {
     description: string
-    path: string
+    path: ImageMetadata
   }
   license: string
   tags: string[]
@@ -26,7 +26,7 @@ export type Story = {
   id: string
   cover: {
     description: string
-    path: string
+    path: ImageMetadata
   }
   license: string
   tags: string[]

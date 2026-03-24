@@ -6,28 +6,29 @@ const articles = defineCollection({
     pattern: '**/*.{md,mdx}',
     base: './src/content/文章',
   }),
-  schema: z.object({
-    name: z.string(),
-    description: z.string(),
-    subtitle: z.string().optional(),
-    id: z.string(),
-    cover: z
-      .object({
-        description: z.string(),
-        path: z.string(),
-      })
-      .optional(),
-    license: z.string(),
-    tags: z.array(z.string()),
-    date: z.object({
-      created: z.date(),
-      updated: z.date(),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      description: z.string(),
+      subtitle: z.string().optional(),
+      id: z.string(),
+      cover: z
+        .object({
+          description: z.string(),
+          path: image(),
+        })
+        .optional(),
+      license: z.string(),
+      tags: z.array(z.string()),
+      date: z.object({
+        created: z.date(),
+        updated: z.date(),
+      }),
+      draft: z.boolean().optional(),
+      archived: z.boolean().optional(),
+      featured: z.boolean().optional(),
+      pinned: z.boolean().optional(),
     }),
-    draft: z.boolean().optional(),
-    archived: z.boolean().optional(),
-    featured: z.boolean().optional(),
-    pinned: z.boolean().optional(),
-  }),
 })
 
 const stories = defineCollection({
@@ -35,24 +36,25 @@ const stories = defineCollection({
     pattern: '**/*.{md,mdx}',
     base: './src/content/专题',
   }),
-  schema: z.object({
-    name: z.string(),
-    description: z.string(),
-    subtitle: z.string().optional(),
-    id: z.string(),
-    cover: z.object({
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
       description: z.string(),
-      path: z.string(),
+      subtitle: z.string().optional(),
+      id: z.string(),
+      cover: z.object({
+        description: z.string(),
+        path: image(),
+      }),
+      license: z.string(),
+      tags: z.array(z.string()),
+      date: z.object({
+        created: z.date(),
+        updated: z.date(),
+      }),
+      draft: z.boolean().optional(),
+      articles: z.array(z.string()).optional(),
     }),
-    license: z.string(),
-    tags: z.array(z.string()),
-    date: z.object({
-      created: z.date(),
-      updated: z.date(),
-    }),
-    draft: z.boolean().optional(),
-    articles: z.array(z.string()).optional(),
-  }),
 })
 
 const archives = defineCollection({

@@ -1,6 +1,5 @@
 ---
 import Divider from '@components/ui/Divider.astro'
-import { prefixes } from '@libs/configs'
 import { Image } from 'astro:assets'
 import dayjs from 'dayjs'
 import type { Article } from 'src/content'
@@ -33,18 +32,16 @@ const { article, path = 'articles' } = Astro.props
     {
       article.cover && (
         <Image
-          src={`${prefixes.article}/${article.cover.path}`}
+          src={article.cover.path}
           alt={article.cover.description}
           title={article.cover.description}
-          inferSize
           loading="lazy"
-          layout="full-width"
           class:list={[
             'w-full h-auto',
             'rounded-md',
             'transition-shadow',
             'aspect-3/2 sm:aspect-video',
-            'object-t object-cover',
+            'object-cover',
           ]}
         />
       )

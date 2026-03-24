@@ -1,8 +1,3 @@
-export const prefixes = {
-  article: 'https://file.lifeni.life/notebook/文章',
-  story: 'https://file.lifeni.life/notebook/专题',
-}
-
 export const pages = [
   {
     name: '文章',
@@ -33,22 +28,22 @@ export const pages = [
 export const shortcuts = [
   {
     name: '开往',
-    icon: 'ri:triangle-fill',
+    avatar: 'ri:triangle-fill',
     href: 'https://www.travellings.cn/go.html',
   },
   {
     name: 'GitHub',
-    icon: 'ri:profile-fill',
+    avatar: 'ri:profile-fill',
     href: 'https://github.com/Lifeni',
   },
   {
     name: '邮箱',
-    icon: 'ri:mail-fill',
+    avatar: 'ri:mail-fill',
     href: 'mailto:liangfengning@foxmail.com',
   },
   {
     name: 'Hello',
-    icon: 'ri:terminal-box-fill',
+    avatar: 'ri:terminal-box-fill',
     href: 'https://lifeni.life/hello',
   },
 ]
@@ -57,14 +52,22 @@ export const apps = [
   {
     name: '应用',
     items: [
-      { name: '记录干杯', href: '/', icon: '/favicon.svg' },
-      { name: '代码可行', href: '/dev', icon: '/dev/favicon.svg' },
-      { name: '时间之外', href: '/lab', icon: '/lab/favicon.svg' },
-      { name: '越过长城', href: '/server', icon: '/server/favicon.svg' },
-      { name: '随意链接', href: 'https://iokl.link', icon: '/link.svg' },
-      { name: '数据有限', href: 'https://file.lifeni.life', icon: '/file.svg' },
+      { name: '记录干杯', href: '/', avatar: '/favicon.svg' },
+      { name: '代码可行', href: '/dev', avatar: '/dev/favicon.svg' },
+      { name: '时间之外', href: '/lab', avatar: '/lab/favicon.svg' },
+      { name: '越过长城', href: '/server', avatar: '/server/favicon.svg' },
+      {
+        name: '随意链接',
+        href: 'https://iokl.link',
+        avatar: '/apps/iokl.link.svg',
+      },
+      {
+        name: '数据有限',
+        href: 'https://file.lifeni.life',
+        avatar: '/apps/life.lifeni.life.svg',
+      },
     ],
-    icon: 'ri:gamepad-line',
+    avatar: 'ri:gamepad-line',
   },
   {
     name: '朋友',
@@ -72,52 +75,56 @@ export const apps = [
       {
         name: 'Nanako',
         href: 'https://web.archive.org/web/20240226171341/https://tanakarino.cn/',
-        icon: 'https://file.lifeni.life/avatar/friends/Nanako.webp',
+        avatar: '/friends/Nanako.webp',
       },
       {
         name: 'bluebonnet27',
         href: 'https://bluebonnet27.github.io/',
-        icon: 'https://file.lifeni.life/avatar/friends/bluebonnet27.webp',
+        avatar: '/friends/bluebonnet27.webp',
       },
       {
         name: 'GluttonK',
         href: 'https://blog.csdn.net/GluttonK/',
-        icon: 'https://file.lifeni.life/avatar/friends/GluttonK.webp',
+        avatar: '/friends/GluttonK.webp',
       },
       {
         name: 'Wumbuk',
         href: 'https://blog.csdn.net/qq_48081868/',
-        icon: 'https://file.lifeni.life/avatar/friends/Wumbuk.webp',
+        avatar: '/friends/Wumbuk.webp',
       },
       {
         name: 'YueChen',
         href: 'https://web.archive.org/web/20240905161039/https://www.yuechen.xyz/',
-        icon: 'https://file.lifeni.life/avatar/friends/YueChen.webp',
+        avatar: '/friends/YueChen.webp',
       },
       {
         name: 'ss967',
         href: 'https://web.archive.org/web/20231001045610/https://ssblog.top/',
-        icon: 'https://file.lifeni.life/avatar/friends/ss967.webp',
+        avatar: '/friends/ss967.webp',
       },
       {
         name: 'Bakapiano',
         href: 'https://bakapiano.github.io/',
-        icon: 'https://file.lifeni.life/avatar/friends/Bakapiano.webp',
+        avatar: '/friends/Bakapiano.webp',
       },
     ],
-    icon: 'ri:user-smile-line',
+    avatar: 'ri:user-smile-line',
   },
   {
     name: '网站',
     items: [
-      { name: '网上邻居', href: 'https://life.lifeni.life', icon: '/life.svg' },
+      {
+        name: '网上邻居',
+        href: 'https://life.lifeni.life',
+        avatar: '/apps/life.lifeni.life.svg',
+      },
       {
         name: '那年夏天',
         href: 'https://the-algorithm.dist.run/',
-        icon: '/algorithm.svg',
+        avatar: '/apps/the-algorithm.dist.run.svg',
       },
     ],
-    icon: 'ri:global-line',
+    avatar: 'ri:global-line',
   },
 ]
 

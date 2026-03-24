@@ -4,10 +4,10 @@ import { Image } from 'astro:assets'
 interface Props {
   name: string
   href: string
-  icon: string
+  avatar: string
 }
 
-const { name, href, icon } = Astro.props
+const { name, href, avatar } = Astro.props
 ---
 
 <li class:list={['list-none']}>
@@ -36,11 +36,10 @@ const { name, href, icon } = Astro.props
         'rounded-full',
       ]}
     >
-      <Image
-        src={icon}
+      <img
+        src={avatar}
         alt={name}
-        width="256"
-        height="256"
+        loading="lazy"
         class:list={[
           'w-full h-auto',
           'shadow-lg hover:shadow-xl',

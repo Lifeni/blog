@@ -44,6 +44,7 @@ interface Props extends Article {
   icon?: string
   headings?: MarkdownHeading[]
   message?: string
+  reset?: Record<string, AstroComponentFactory>
   class?: string
 }
 
@@ -58,6 +59,7 @@ const {
   content,
   icon,
   message,
+  reset,
   headings,
   class: className,
 } = Astro.props
@@ -88,6 +90,7 @@ const markdownReset = {
   th: Th,
   td: Td,
   em: Em,
+  ...reset,
 }
 ---
 
@@ -153,10 +156,10 @@ const markdownReset = {
   {headings && <ArticleTableOfContents headings={headings} />}
   {
     cover ? (
-      <section class:list={['w-calc[100% + 2rem]', '-mx-4 my-8']}>
+      <section class:list={['my-8']}>
         <WidgetImage
-          path={cover.path}
-          description={cover.description}
+          src={cover.path}
+          alt={cover.description}
           class:list={['aspect-3/2']}
         />
       </section>

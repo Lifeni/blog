@@ -1,24 +1,18 @@
 ---
-import { Image } from 'astro:assets'
 const props = Astro.props
 ---
 
 <div class:list={['wrapper', 'w-full', 'mx-0 my-4', 'flex']}>
-  <Image
+  <img
     src={props.src}
     alt={props.alt}
     title={props.alt}
-    inferSize
     loading="lazy"
-    layout="full-width"
     class:list={[
       'w-full h-auto',
       'rounded-md overflow-hidden',
       'transition-shadow',
-      'object-t object-cover',
       props.class,
     ]}
-  >
-    <slot />
-  </Image>
+  />
 </div>

@@ -1,9 +1,8 @@
 ---
 import Main from '@components/layout/Main.astro'
 import ArticleMarkdown from '@components/notebook/article/ArticleMarkdown.astro'
-import ArticleTableOfContents from '@components/notebook/article/ArticleTableOfContents.astro'
 import Layout from '@components/notebook/Layout.astro'
-import { prefixes } from '@libs/configs'
+import WidgetImage from '@components/notebook/widget/WidgetImage.astro'
 import { getCollection, render } from 'astro:content'
 
 export async function getStaticPaths() {
@@ -25,13 +24,14 @@ const { Content, headings } = await render(article)
     <ArticleMarkdown
       {...article.data}
       id={headings[0].slug}
-      cover={{
-        path: `${prefixes.article}/${article.data.cover?.path}`,
+      cover={article.data.cover && {
+        path: article.data.cover?.path,
         description: article.data.cover?.description || '',
       }}
       content={Content}
       icon="ri:book-open-fill"
       headings={headings}
+      reset={{ img: WidgetImage }}
     />
   </Main>
 </Layout>

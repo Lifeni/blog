@@ -1,6 +1,5 @@
 ---
 import Spacer from '@components/ui/Spacer.astro'
-import { prefixes } from '@libs/configs'
 import { frontmatterFormat } from '@libs/utils'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
@@ -39,7 +38,7 @@ const allArticles = [...storyArticles, ...storyArchives].filter(
     href={`/stories/${story.id}`}
     class:list={[
       'relative z-1 hover:z-10',
-      'w-fit',
+      'w-full',
       'p-4',
       'flex flex-col gap-4',
       'text-neutral-950 dark:text-neutral-100',
@@ -52,18 +51,20 @@ const allArticles = [...storyArticles, ...storyArchives].filter(
     ]}
   >
     <Image
-      src={`${prefixes.story}/${story.cover.path}`}
+      src={story.cover.path}
       alt={story.cover.description}
       title={story.cover.description}
       inferSize
       loading="lazy"
       layout="full-width"
+      position="center"
+      fit="cover"
       class:list={[
         'w-full h-auto',
         'rounded-md',
         'transition-shadow',
         'aspect-1/1',
-        'object-t object-cover',
+        'object-cover',
       ]}
     />
 
