@@ -36,10 +36,10 @@ const { article, path = 'articles' } = Astro.props
           alt={article.cover.description}
           title={article.cover.description}
           loading="lazy"
+          layout="full-width"
           class:list={[
             'w-full h-auto',
             'rounded-md',
-            'transition-shadow',
             'aspect-3/2 sm:aspect-video',
             'object-cover',
           ]}

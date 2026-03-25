@@ -54,18 +54,9 @@ const allArticles = [...storyArticles, ...storyArchives].filter(
       src={story.cover.path}
       alt={story.cover.description}
       title={story.cover.description}
-      inferSize
       loading="lazy"
       layout="full-width"
-      position="center"
-      fit="cover"
-      class:list={[
-        'w-full h-auto',
-        'rounded-md',
-        'transition-shadow',
-        'aspect-1/1',
-        'object-cover',
-      ]}
+      class:list={['w-full h-auto', 'rounded-md', 'aspect-1/1', 'object-cover']}
     />
 
     <div class:list={['flex flex-row items-center gap-2']}>

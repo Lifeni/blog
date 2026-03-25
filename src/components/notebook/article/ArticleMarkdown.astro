@@ -41,10 +41,10 @@ dayjs.locale('zh-cn')
 
 interface Props extends Article {
   content: AstroComponentFactory
-  icon?: string
+  components?: Record<string, AstroComponentFactory>
   headings?: MarkdownHeading[]
+  icon?: string
   message?: string
-  reset?: Record<string, AstroComponentFactory>
   class?: string
 }
 
@@ -59,7 +59,7 @@ const {
   content,
   icon,
   message,
-  reset,
+  components,
   headings,
   class: className,
 } = Astro.props
@@ -90,7 +90,7 @@ const markdownReset = {
   th: Th,
   td: Td,
   em: Em,
-  ...reset,
+  ...components,
 }
 ---
 
@@ -160,7 +160,7 @@ const markdownReset = {
         <WidgetImage
           src={cover.path}
           alt={cover.description}
-          class:list={['aspect-3/2']}
+          class:list={['aspect-3/2', 'object-cover']}
         />
       </section>
     ) : message ? (
@@ -218,11 +218,6 @@ const markdownReset = {
 
   article :global(.wrapper) {
     @apply -mx-4 my-4;
-    width: calc(100% + 2rem);
-  }
-
-  article :global(iframe) {
-    @apply flex -mx-4 my-4 rounded-md overflow-hidden;
     width: calc(100% + 2rem);
   }
 

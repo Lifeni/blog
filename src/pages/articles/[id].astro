@@ -2,7 +2,6 @@
 import Main from '@components/layout/Main.astro'
 import ArticleMarkdown from '@components/notebook/article/ArticleMarkdown.astro'
 import Layout from '@components/notebook/Layout.astro'
-import WidgetImage from '@components/notebook/widget/WidgetImage.astro'
 import { getCollection, render } from 'astro:content'
 
 export async function getStaticPaths() {
@@ -31,7 +30,6 @@ const { Content, headings } = await render(article)
       content={Content}
       icon="ri:book-open-fill"
       headings={headings}
-      reset={{ img: WidgetImage }}
     />
   </Main>
 </Layout>

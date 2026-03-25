@@ -17,10 +17,9 @@ const { alt, src, class: className } = Astro.props
     src={src}
     alt={alt}
     title={alt}
-    inferSize
     loading="lazy"
     layout="full-width"
-    class:list={['w-full h-auto', 'rounded-md', 'transition-shadow', className]}
+    class:list={['w-full h-auto', 'rounded-md', className]}
   />
 
   <figcaption
