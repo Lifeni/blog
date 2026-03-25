@@ -64,7 +64,7 @@ export const apps = [
       {
         name: '数据有限',
         href: 'https://file.lifeni.life',
-        avatar: '/apps/life.lifeni.life.svg',
+        avatar: '/apps/file.lifeni.life.svg',
       },
     ],
     avatar: 'ri:gamepad-line',

@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.14",
+    "@astrojs/partytown": "^2.1.5",
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.7.1",
     "@astrojs/vercel": "^10.0.2",
@@ -34,6 +35,7 @@
     "astro": "^5.18.1",
     "astro-icon": "^1.1.5",
     "dayjs": "^1.11.20",
+    "medium-zoom": "^1.1.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.2.2"

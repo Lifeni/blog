@@ -10,16 +10,14 @@ export interface Props {
 const { alt, src, class: className } = Astro.props
 ---
 
-<figure
-  class:list={['w-calc[100% + 2rem]', '-mx-4 my-4', 'flex flex-col gap-2']}
->
+<figure class:list={['wrapper', 'flex flex-col gap-2']}>
   <Image
     src={src}
     alt={alt}
     title={alt}
     loading="lazy"
     layout="full-width"
-    class:list={['w-full h-auto', 'rounded-md', className]}
+    class:list={['medium-zoom', 'w-full h-auto', 'rounded-md', className]}
   />
 
   <figcaption
@@ -34,3 +32,14 @@ const { alt, src, class: className } = Astro.props
     <Icon name="ri:arrow-up-s-line" class:list={['my-0.25']} />
   </figcaption>
 </figure>
+
+<script>
+  import mediumZoom from 'medium-zoom/dist/pure'
+  import 'medium-zoom/dist/style.css'
+
+  document.addEventListener('astro:page-load', () => {
+    mediumZoom('.medium-zoom', {
+      background: 'rgba(0, 0, 0, 0.5)',
+    })
+  })
+</script>

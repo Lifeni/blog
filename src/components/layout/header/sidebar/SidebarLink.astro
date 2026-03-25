@@ -16,6 +16,7 @@ const { name, href, avatar } = Astro.props
     href={href}
     target={href.startsWith('http') ? '_blank' : '_self'}
     rel={href.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
+    title={name}
     class:list={[
       'w-full h-auto',
       'p-1',
@@ -48,7 +49,9 @@ const { name, href, avatar } = Astro.props
         ]}
       />
     </span>
-    <span class:list={['w-full', 'pb-1', 'text-xs text-center', 'truncate']}>
+    <span
+      class:list={['w-full', 'px-1 pb-1', 'text-xs text-center', 'truncate']}
+    >
       {name}
     </span>
   </a>

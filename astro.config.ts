@@ -1,4 +1,5 @@
 import mdx from '@astrojs/mdx'
+import partytown from '@astrojs/partytown'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import vercel from '@astrojs/vercel'
@@ -11,7 +12,7 @@ export default defineConfig({
   server: { port: 8000, host: true },
   site: 'https://lifeni.life',
   image: { domains: ['file.lifeni.life'] },
-  integrations: [react(), mdx(), sitemap(), icon()],
+  integrations: [react(), mdx(), sitemap(), icon(), partytown()],
   vite: { plugins: [tailwindcss()] },
   markdown: {
     syntaxHighlight: 'shiki',

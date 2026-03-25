@@ -157,11 +157,7 @@ const markdownReset = {
   {
     cover ? (
       <section class:list={['my-8']}>
-        <WidgetImage
-          src={cover.path}
-          alt={cover.description}
-          class:list={['aspect-3/2', 'object-cover']}
-        />
+        <WidgetImage src={cover.path} alt={cover.description} />
       </section>
     ) : message ? (
       <div
