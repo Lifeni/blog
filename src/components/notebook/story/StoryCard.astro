@@ -56,7 +56,13 @@ const allArticles = [...storyArticles, ...storyArchives].filter(
       title={story.cover.description}
       loading="lazy"
       layout="full-width"
-      class:list={['w-full h-auto', 'rounded-md', 'aspect-1/1', 'object-cover']}
+      class:list={[
+        'w-full h-auto',
+        'rounded-md',
+        'aspect-1/1',
+        'object-cover',
+        'animate-fade-in',
+      ]}
     />
 
     <div class:list={['flex flex-row items-center gap-2']}>

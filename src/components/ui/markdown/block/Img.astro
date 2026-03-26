@@ -4,7 +4,7 @@ import { Image } from 'astro:assets'
 const props = Astro.props
 ---
 
-<div class:list={['wrapper', 'flex']}>
+<div class:list={['wrapper', 'flex', 'animate-fade-in']}>
   <Image
     src={props.src}
     alt={props.alt}

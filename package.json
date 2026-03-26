@@ -16,9 +16,9 @@
   "scripts": {
     "build": "bunx --bun astro build",
     "dev": "bunx --bun astro dev",
-    "dev:debug": "bunx --bun astro dev --verbose",
     "preview": "bunx --bun astro preview",
-    "add": "bunx --bun astro add"
+    "add": "bunx --bun astro add",
+    "debug": "bunx --bun astro dev --verbose"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.14",

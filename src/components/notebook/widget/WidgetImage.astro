@@ -10,7 +10,7 @@ export interface Props {
 const { alt, src, class: className } = Astro.props
 ---
 
-<figure class:list={['wrapper', 'flex flex-col gap-2']}>
+<figure class:list={['wrapper', 'flex flex-col gap-2', 'animate-fade-in']}>
   <Image
     src={src}
     alt={alt}

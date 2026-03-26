@@ -69,6 +69,18 @@ const { name, description, color, favicon } = Astro.props
     --color-neutral-850: oklch(24.7% 0 0);
   }
 
+  @theme {
+    --animate-fade-in: fadeIn 0.35s ease-in-out forwards;
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
   @utility writing-* {
     writing-mode: --value(--writing-*);
   }
