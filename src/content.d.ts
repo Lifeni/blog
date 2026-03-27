@@ -15,8 +15,8 @@ export type Article = {
   }
   draft?: boolean
   archived?: boolean
-  featured?: boolean
   pinned?: boolean
+  featured?: boolean
 }
 
 export type Story = {
@@ -45,4 +45,16 @@ export type Archive = {
   'create-date': Date
   date: Date
   license: string
+}
+
+export type Moment = {
+  id: string
+  name: string
+  date: Date
+  camera: string
+  location: string
+  exif: string[]
+  path: ImageMetadata
+  edited?: boolean
+  draft?: boolean
 }

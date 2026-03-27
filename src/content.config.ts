@@ -72,8 +72,28 @@ const archives = defineCollection({
   }),
 })
 
+const moments = defineCollection({
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/时刻',
+  }),
+  schema: ({ image }) =>
+    z.object({
+      id: z.string(),
+      name: z.string(),
+      date: z.date(),
+      camera: z.string(),
+      location: z.string(),
+      exif: z.array(z.string()),
+      path: image(),
+      edited: z.boolean().optional(),
+      draft: z.boolean().optional(),
+    }),
+})
+
 export const collections = {
   文章: articles,
   专题: stories,
   存档: archives,
+  时刻: moments,
 }

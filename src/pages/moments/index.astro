@@ -1,13 +1,24 @@
 ---
 import Main from '@components/layout/Main.astro'
 import Layout from '@components/notebook/Layout.astro'
+import MomentCard from '@components/notebook/moment/MomentCard.astro'
+import { getCollection } from 'astro:content'
 
-const error = {
-  code: '(*/ω\\*)',
-  text: '这里什么也没有',
-}
+const moments = await getCollection('时刻')
 ---
 
 <Layout name="时刻">
-  <Main error={error} />
+  <Main class:list={['p-4 sm:px-6 sm:py-8']}>
+    <ul class:list={['w-full', 'm-0 p-0', 'columns-auto columns-xs']}>
+      {
+        moments
+          .map(moment => moment.data)
+          .filter(moment => import.meta.env.DEV || !moment.draft)
+          .sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+          )
+          .map(moment => <MomentCard moment={moment} />)
+      }
+    </ul>
+  </Main>
 </Layout>

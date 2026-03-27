@@ -4,15 +4,7 @@ import ArticleCard from '@components/notebook/article/ArticleCard.astro'
 import Layout from '@components/notebook/Layout.astro'
 import { getCollection } from 'astro:content'
 
-const articles = (await getCollection('文章'))
-  .map(article => article.data)
-  .filter(
-    article => article.featured && (import.meta.env.DEV || !article.draft),
-  )
-  .sort(
-    (a, b) =>
-      new Date(b.date.created).getTime() - new Date(a.date.created).getTime(),
-  )
+const articles = await getCollection('文章')
 ---
 
 <Layout>
@@ -24,7 +16,20 @@ const articles = (await getCollection('文章'))
         'flex flex-col gap-4',
       ]}
     >
-      {articles.map(article => <ArticleCard article={article} />)}
+      {
+        articles
+          .map(article => article.data)
+          .filter(
+            article =>
+              article.featured && (import.meta.env.DEV || !article.draft),
+          )
+          .sort(
+            (a, b) =>
+              new Date(b.date.created).getTime() -
+              new Date(a.date.created).getTime(),
+          )
+          .map(article => <ArticleCard article={article} />)
+      }
     </ul>
   </Main>
 </Layout>

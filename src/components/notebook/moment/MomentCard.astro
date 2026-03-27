@@ -1,0 +1,80 @@
+---
+import Spacer from '@components/ui/Spacer.astro'
+import { frontmatterFormat } from '@libs/utils'
+import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import type { Moment, Story } from 'src/content'
+
+dayjs.extend(relativeTime)
+dayjs.locale('zh-cn')
+
+interface Props {
+  moment: Moment
+}
+
+const { moment } = Astro.props
+---
+
+<li class:list={['w-full', 'mb-4', 'list-none']}>
+  <a
+    href={`/moments/${moment.id}`}
+    class:list={[
+      'group relative z-1 hover:z-10',
+      'w-full',
+      'flex flex-col gap-4',
+      'text-neutral-950 dark:text-neutral-100',
+      'bg-white dark:bg-neutral-850',
+      'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
+      'no-underline',
+      'rounded-2xl',
+      'hover:shadow-2xl',
+      'overflow-hidden',
+      'transition-all',
+    ]}
+  >
+    <Image
+      src={moment.path}
+      alt={moment.name}
+      title={moment.name}
+      loading="lazy"
+      layout="full-width"
+      class:list={[
+        'w-full h-auto',
+        'scale-100 group-hover:scale-105',
+        'object-cover',
+        'animate-fade-in',
+        'transition-transform duration-250',
+      ]}
+    />
+
+    <div
+      class:list={[
+        'absolute bottom-0 left-0',
+        'w-full',
+        'px-4 py-3',
+        'flex flex-row items-center gap-2',
+        'text-neutral-100',
+        ,
+      ]}
+    >
+      <h2 class:list={['m-0', 'font-bold text-sm', 'drop-shadow-lg']}>
+        {moment.name}
+      </h2>
+      <Spacer />
+      <date
+        class:list={[
+          'm-0 p-0',
+          'text-sm',
+          'break-all md:break-word',
+          'drop-shadow-lg',
+          'truncate',
+        ]}
+      >
+        {dayjs(moment.date).format('YYYY 年 MM 月 DD 日')}
+      </date>
+    </div>
+  </a>
+</li>
