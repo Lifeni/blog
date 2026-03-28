@@ -1,5 +1,7 @@
 ---
 import Divider from '@components/ui/Divider.astro'
+import Spacer from '@components/ui/Spacer.astro'
+import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import dayjs from 'dayjs'
 import type { Article } from 'src/content'
@@ -16,6 +18,7 @@ const { article, path = 'articles' } = Astro.props
   <a
     href={`/${path}/${article.id}`}
     class:list={[
+      'group',
       'relative z-1 hover:z-10',
       'w-full',
       'p-4',
@@ -39,7 +42,7 @@ const { article, path = 'articles' } = Astro.props
           layout="full-width"
           class:list={[
             'w-full h-auto',
-            'text-sm text-neutral-500 dark:text-neutral-400',
+            'text-sm text-neutral-500 dark:text-neutral-400 leading-12',
             'bg-neutral-100 dark:bg-neutral-900',
             'rounded-md',
             'aspect-3/2 sm:aspect-video',
@@ -97,6 +100,11 @@ const { article, path = 'articles' } = Astro.props
           )
         }
         {article.tags.map(tag => <span>{tag}</span>)}
+        <Spacer />
+        <Icon
+          name="ri:arrow-right-line"
+          class:list={['w-4 h-4', 'group-hover:rotate-45 transition-transform']}
+        />
       </section>
     </div>
   </a>

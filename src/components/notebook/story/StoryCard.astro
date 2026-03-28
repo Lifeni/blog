@@ -54,7 +54,7 @@ const allArticles = [...storyArticles, ...storyArchives].filter(
         layout="full-width"
         class:list={[
           'w-full h-auto',
-          'text-sm text-neutral-500 dark:text-neutral-400',
+          'text-sm text-neutral-500 dark:text-neutral-400 leading-12',
           'bg-neutral-100 dark:bg-neutral-900',
           'rounded-md',
           'aspect-4/3 sm:aspect-1/1',
@@ -70,11 +70,14 @@ const allArticles = [...storyArticles, ...storyArchives].filter(
         'flex flex-col sm:flex-row items-center gap-2',
       ]}
     >
-      <Icon name="ri:hashtag" class:list={['w-4 h-4', 'mt-1 sm:mt-0']} />
+      <Icon
+        name="ri:hashtag"
+        class:list={['w-4 h-4', 'mt-1 sm:mt-0 sm:mb-0.5']}
+      />
       <h2
         class:list={[
           'm-0',
-          'font-medium text-sm',
+          'font-bold text-sm',
           'tracking-[0.15rem] sm:tracking-normal writing-vertical sm:writing-normal',
         ]}
       >

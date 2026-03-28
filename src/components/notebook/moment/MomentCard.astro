@@ -35,11 +35,10 @@ const { moment, class: className } = Astro.props
       layout="full-width"
       class:list={[
         'w-full h-auto',
-        'text-sm text-neutral-500 dark:text-neutral-400',
+        'text-sm text-neutral-500 dark:text-neutral-400 leading-12',
         'bg-white dark:bg-neutral-850',
         'scale-100 group-hover:scale-105',
         'object-cover',
-        'animate-fade-in',
         'transition-transform duration-250',
         'animate-fade-in',
         className,
@@ -60,7 +59,7 @@ const { moment, class: className } = Astro.props
         class:list={[
           'm-0',
           'font-bold text-sm',
-          'drop-shadow-xl drop-shadow-neutral-700',
+          'drop-shadow-md drop-shadow-neutral-600',
         ]}
       >
         {moment.name}
@@ -71,7 +70,7 @@ const { moment, class: className } = Astro.props
           'm-0 p-0',
           'text-sm',
           'break-all md:break-word',
-          'drop-shadow-xl drop-shadow-neutral-700',
+          'drop-shadow-md drop-shadow-neutral-600',
           'truncate',
         ]}
       >
