@@ -48,7 +48,6 @@ export type Archive = {
 }
 
 export type Moment = {
-  id: string
   name: string
   date: Date
   camera: string
@@ -56,5 +55,4 @@ export type Moment = {
   exif: string[]
   path: ImageMetadata
   edited?: boolean
-  draft?: boolean
 }

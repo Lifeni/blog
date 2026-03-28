@@ -1,12 +1,10 @@
 ---
 import Spacer from '@components/ui/Spacer.astro'
-import { frontmatterFormat } from '@libs/utils'
 import { Image } from 'astro:assets'
-import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import type { Moment, Story } from 'src/content'
+import type { Moment } from 'src/content'
 
 dayjs.extend(relativeTime)
 dayjs.locale('zh-cn')
@@ -20,7 +18,7 @@ const { moment } = Astro.props
 
 <li class:list={['w-full', 'mb-4', 'list-none']}>
   <a
-    href={`/moments/${moment.id}`}
+    href={`/moments/${dayjs(moment.date).format('YYYY-MM-DD')}`}
     class:list={[
       'group relative z-1 hover:z-10',
       'w-full',
@@ -38,7 +36,6 @@ const { moment } = Astro.props
     <Image
       src={moment.path}
       alt={moment.name}
-      title={moment.name}
       loading="lazy"
       layout="full-width"
       class:list={[

@@ -79,7 +79,6 @@ const moments = defineCollection({
   }),
   schema: ({ image }) =>
     z.object({
-      id: z.string(),
       name: z.string(),
       date: z.date(),
       camera: z.string(),
@@ -87,7 +86,6 @@ const moments = defineCollection({
       exif: z.array(z.string()),
       path: image(),
       edited: z.boolean().optional(),
-      draft: z.boolean().optional(),
     }),
 })
 
