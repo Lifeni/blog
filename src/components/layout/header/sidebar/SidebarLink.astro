@@ -43,9 +43,12 @@ const { name, href, avatar } = Astro.props
         loading="lazy"
         class:list={[
           'w-full h-auto',
+          'text-sm text-neutral-500 dark:text-neutral-400',
+          'bg-neutral-100 dark:bg-neutral-900',
           'shadow-lg hover:shadow-xl',
           'rounded-full',
           'transition-shadow',
+          'animate-fade-in',
         ]}
       />
     </span>

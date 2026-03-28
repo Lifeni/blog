@@ -40,10 +40,13 @@ const { moment, class: className } = Astro.props
       layout="full-width"
       class:list={[
         'w-full h-auto',
+        'text-sm text-neutral-500 dark:text-neutral-400',
+        'bg-white dark:bg-neutral-850',
         'scale-100 group-hover:scale-105',
         'object-cover',
         'animate-fade-in',
         'transition-transform duration-250',
+        'animate-fade-in',
         className,
       ]}
     />

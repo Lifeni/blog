@@ -17,14 +17,21 @@ const { alt, src, class: className } = Astro.props
     title={alt}
     loading="lazy"
     layout="full-width"
-    class:list={['medium-zoom', 'w-full h-auto', 'rounded-md', className]}
+    class:list={[
+      'medium-zoom',
+      'w-full h-auto',
+      'text-sm text-neutral-500 dark:text-neutral-400',
+      'bg-neutral-100 dark:bg-neutral-900',
+      'rounded-md',
+      className,
+    ]}
   />
 
   <figcaption
     class:list={[
       'w-full',
       'flex items-center justify-end gap-1.5',
-      'text-xs -[1.625] text-neutral-500 dark:text-neutral-400',
+      'text-xs leading-[1.625] text-neutral-500 dark:text-neutral-400',
       'transition-colors',
     ]}
   >
