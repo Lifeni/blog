@@ -4,13 +4,7 @@ import { frontmatterFormat } from '@libs/utils'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
-import dayjs from 'dayjs'
-import 'dayjs/locale/zh-cn'
-import relativeTime from 'dayjs/plugin/relativeTime'
 import type { Story } from 'src/content'
-
-dayjs.extend(relativeTime)
-dayjs.locale('zh-cn')
 
 interface Props {
   story: Story

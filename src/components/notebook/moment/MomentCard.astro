@@ -2,12 +2,7 @@
 import Spacer from '@components/ui/Spacer.astro'
 import { Image } from 'astro:assets'
 import dayjs from 'dayjs'
-import 'dayjs/locale/zh-cn'
-import relativeTime from 'dayjs/plugin/relativeTime'
 import type { Moment } from 'src/content'
-
-dayjs.extend(relativeTime)
-dayjs.locale('zh-cn')
 
 interface Props {
   moment: Moment
@@ -61,7 +56,13 @@ const { moment, class: className } = Astro.props
         'whitespace-nowrap',
       ]}
     >
-      <h2 class:list={['m-0', 'font-bold text-sm', 'drop-shadow-lg']}>
+      <h2
+        class:list={[
+          'm-0',
+          'font-bold text-sm',
+          'drop-shadow-xl drop-shadow-neutral-700',
+        ]}
+      >
         {moment.name}
       </h2>
       <Spacer />
@@ -70,7 +71,7 @@ const { moment, class: className } = Astro.props
           'm-0 p-0',
           'text-sm',
           'break-all md:break-word',
-          'drop-shadow-lg',
+          'drop-shadow-xl drop-shadow-neutral-700',
           'truncate',
         ]}
       >

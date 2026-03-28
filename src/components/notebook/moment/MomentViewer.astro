@@ -3,12 +3,7 @@ import Divider from '@components/ui/Divider.astro'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import dayjs from 'dayjs'
-import 'dayjs/locale/zh-cn'
-import relativeTime from 'dayjs/plugin/relativeTime'
 import type { Moment } from 'src/content'
-
-dayjs.extend(relativeTime)
-dayjs.locale('zh-cn')
 
 interface Props extends Moment {}
 const { name, date, location, path, camera, exif, edited } = Astro.props

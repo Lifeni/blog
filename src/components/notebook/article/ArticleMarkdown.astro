@@ -45,7 +45,6 @@ interface Props extends Article {
   headings?: MarkdownHeading[]
   icon?: string
   message?: string
-  class?: string
 }
 
 const {
@@ -61,7 +60,6 @@ const {
   message,
   components,
   headings,
-  class: className,
 } = Astro.props
 const Content = content
 
