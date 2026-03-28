@@ -1,6 +1,7 @@
 ---
 import Spacer from '@components/ui/Spacer.astro'
 import { frontmatterFormat } from '@libs/utils'
+import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
@@ -40,7 +41,7 @@ const allArticles = [...storyArticles, ...storyArchives].filter(
       'relative z-1 hover:z-10',
       'w-full',
       'p-4',
-      'flex flex-col gap-4',
+      'flex flex-row-reverse sm:flex-col gap-4',
       'text-neutral-950 dark:text-neutral-100',
       'bg-white dark:bg-neutral-850',
       'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
@@ -50,26 +51,40 @@ const allArticles = [...storyArticles, ...storyArchives].filter(
       'transition-all',
     ]}
   >
-    <Image
-      src={story.cover.path}
-      alt={story.cover.description}
-      title={story.cover.description}
-      loading="lazy"
-      layout="full-width"
-      class:list={[
-        'w-full h-auto',
-        'text-sm text-neutral-500 dark:text-neutral-400',
-        'bg-neutral-100 dark:bg-neutral-900',
-        'rounded-md',
-        'aspect-1/1',
-        'object-cover',
-        'animate-fade-in',
-      ]}
-    />
+    <div class:list={['flex']}>
+      <Image
+        src={story.cover.path}
+        alt={story.cover.description}
+        title={story.cover.description}
+        loading="lazy"
+        layout="full-width"
+        class:list={[
+          'w-full h-auto',
+          'text-sm text-neutral-500 dark:text-neutral-400',
+          'bg-neutral-100 dark:bg-neutral-900',
+          'rounded-md',
+          'aspect-4/3 sm:aspect-1/1',
+          'object-cover',
+          'animate-fade-in',
+        ]}
+      />
+    </div>
 
-    <div class:list={['flex flex-row items-center gap-2']}>
-      <h2 class:list={['m-0', 'font-bold text-sm']}>
-        # {story.name}
+    <div
+      class:list={[
+        'w-auto sm:w-full',
+        'flex flex-col sm:flex-row items-center gap-2',
+      ]}
+    >
+      <Icon name="ri:hashtag" class:list={['w-4 h-4', 'mt-1 sm:mt-0']} />
+      <h2
+        class:list={[
+          'm-0',
+          'font-medium text-sm',
+          'tracking-[0.15rem] sm:tracking-normal writing-vertical sm:writing-normal',
+        ]}
+      >
+        {story.name}
       </h2>
       <Spacer />
       <code

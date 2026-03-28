@@ -1,29 +1,25 @@
 ---
-import WidgetImage from '@components/notebook/widget/WidgetImage.astro'
-import { Image } from 'astro:assets'
 import Divider from '@components/ui/Divider.astro'
-import Spacer from '@components/ui/Spacer.astro'
+import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import type { Moment } from 'src/content'
-import { Icon } from 'astro-icon/components'
 
 dayjs.extend(relativeTime)
 dayjs.locale('zh-cn')
 
-interface Props extends Moment {
-  class?: string
-}
-
+interface Props extends Moment {}
 const { name, date, location, path, camera, exif, edited } = Astro.props
+
 const isLandscape = path.width > path.height
 ---
 
 <article
   class:list={[
     'relative',
-    isLandscape ? 'w-auto' : 'w-full max-w-148',
+    isLandscape ? 'w-fit' : 'w-full max-w-148',
     'mx-auto p-4',
     'flex flex-col gap-4',
     'bg-white dark:bg-neutral-850',
@@ -31,24 +27,31 @@ const isLandscape = path.width > path.height
     'overflow-hidden',
   ]}
 >
-  <Image
-    src={path}
-    alt={name}
-    title={name}
-    loading="lazy"
-    layout="full-width"
+  <div
     class:list={[
-      'medium-zoom',
-      isLandscape
-        ? 'w-fit max-w-full h-full max-h-[calc(100dvh-(--spacing(62)))]'
-        : 'w-full h-auto',
-      'text-sm text-neutral-500 dark:text-neutral-400',
+      'flex justify-center',
       'bg-neutral-100 dark:bg-neutral-900',
       'rounded-2xl sm:rounded-md',
       'animate-fade-in',
+      'overflow-hidden',
     ]}
-  />
-
+  >
+    <Image
+      src={path}
+      alt={name}
+      title={name}
+      loading="lazy"
+      layout="full-width"
+      class:list={[
+        'medium-zoom',
+        isLandscape
+          ? 'w-fit max-w-full h-full max-h-[calc(100dvh-(--spacing(62)))] md:min-h-120'
+          : 'w-full h-auto',
+        'text-sm text-neutral-500 dark:text-neutral-400',
+        'bg-neutral-100 dark:bg-neutral-900',
+      ]}
+    />
+  </div>
   <section
     class:list={[
       'w-full',
