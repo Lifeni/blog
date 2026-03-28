@@ -3,12 +3,13 @@ import Main from '@components/layout/Main.astro'
 import Layout from '@components/notebook/Layout.astro'
 import StoryCard from '@components/notebook/story/StoryCard.astro'
 import { getCollection } from 'astro:content'
+import dayjs from 'dayjs'
 
 const stories = await getCollection('专题')
 ---
 
 <Layout name="专题">
-  <Main class:list={['p-4 sm:px-6 sm:py-8']}>
+  <Main class:list={['p-4 sm:px-6 sm:py-4']}>
     <ul
       class:list={[
         'w-full max-w-148',
@@ -22,8 +23,7 @@ const stories = await getCollection('专题')
           .filter(story => import.meta.env.DEV || !story.draft)
           .sort(
             (a, b) =>
-              new Date(b.date.updated).getTime() -
-              new Date(a.date.updated).getTime(),
+              dayjs(b.date.updated).unix() - dayjs(a.date.updated).unix(),
           )
           .map(story => <StoryCard story={story} />)
       }

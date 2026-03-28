@@ -3,12 +3,13 @@ import Main from '@components/layout/Main.astro'
 import ArticleCard from '@components/notebook/article/ArticleCard.astro'
 import Layout from '@components/notebook/Layout.astro'
 import { getCollection } from 'astro:content'
+import dayjs from 'dayjs'
 
 const articles = await getCollection('文章')
 ---
 
 <Layout>
-  <Main class:list={['p-4 sm:px-6 sm:py-8']}>
+  <Main class:list={['p-4 sm:px-6 sm:py-4']}>
     <ul
       class:list={[
         'w-full max-w-148',
@@ -25,8 +26,7 @@ const articles = await getCollection('文章')
           )
           .sort(
             (a, b) =>
-              new Date(b.date.created).getTime() -
-              new Date(a.date.created).getTime(),
+              dayjs(b.date.created).unix() - dayjs(a.date.created).unix(),
           )
           .map(article => <ArticleCard article={article} />)
       }

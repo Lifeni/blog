@@ -19,7 +19,7 @@ const groupedArticles = groupArticlesByYear(allArticles)
 ---
 
 <Layout name="存档">
-  <Main class:list={['p-4 sm:px-6 sm:py-8', 'gap-4']}>
+  <Main class:list={['p-4 sm:px-6 sm:py-4', 'gap-4']}>
     {
       groupedArticles.map(group => (
         <section

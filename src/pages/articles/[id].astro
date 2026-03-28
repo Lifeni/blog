@@ -19,7 +19,7 @@ const { Content, headings } = await render(article)
 ---
 
 <Layout name={article.data.name} description={article.data.description}>
-  <Main class:list={['sm:px-6 sm:py-8']}>
+  <Main class:list={['sm:px-6 sm:py-4']}>
     <ArticleMarkdown
       {...article.data}
       id={headings[0].slug}

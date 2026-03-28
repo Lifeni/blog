@@ -1,0 +1,113 @@
+---
+import WidgetImage from '@components/notebook/widget/WidgetImage.astro'
+import { Image } from 'astro:assets'
+import Divider from '@components/ui/Divider.astro'
+import Spacer from '@components/ui/Spacer.astro'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import type { Moment } from 'src/content'
+import { Icon } from 'astro-icon/components'
+
+dayjs.extend(relativeTime)
+dayjs.locale('zh-cn')
+
+interface Props extends Moment {
+  class?: string
+}
+
+const { name, date, location, path, camera, exif, edited } = Astro.props
+const isLandscape = path.width > path.height
+---
+
+<article
+  class:list={[
+    'relative',
+    isLandscape ? 'w-auto' : 'w-full max-w-148',
+    'mx-auto p-4',
+    'flex flex-col gap-4',
+    'bg-white dark:bg-neutral-850',
+    'rounded-4xl sm:rounded-2xl',
+    'overflow-hidden',
+  ]}
+>
+  <Image
+    src={path}
+    alt={name}
+    title={name}
+    loading="lazy"
+    layout="full-width"
+    class:list={[
+      'medium-zoom',
+      isLandscape
+        ? 'w-fit max-w-full h-full max-h-[calc(100dvh-(--spacing(62)))]'
+        : 'w-full h-auto',
+      'rounded-2xl sm:rounded-md',
+    ]}
+  />
+
+  <section
+    class:list={[
+      'w-full',
+      'px-4 py-1',
+      'flex items-center justify-between gap-x-8 gap-y-1 flex-wrap',
+      'text-sm truncate text-neutral-500 dark:text-neutral-400',
+    ]}
+  >
+    <div class:list={['flex items-center gap-x-3 gap-y-1 flex-wrap']}>
+      <time>
+        {dayjs(date).format('YYYY 年 MM 月 DD 日')}
+      </time>
+      <Divider orientation="vertical" class:list={['h-3.5']} />
+      <span>{location}</span>
+    </div>
+
+    <div class:list={['flex items-center gap-x-3 gap-y-1 flex-wrap']}>
+      <span>{camera}</span>
+
+      {
+        exif.map(item => (
+          <Fragment>
+            <Divider orientation="vertical" class:list={['h-3.5']} />
+            <span>{item}</span>
+          </Fragment>
+        ))
+      }
+
+      {
+        edited && (
+          <Fragment>
+            <Divider orientation="vertical" class:list={['h-3.5']} />
+            <span
+              title="图片已进行裁剪、调色或 AI 优化，参数可能不准确"
+              class:list={[
+                'flex items-center gap-1',
+                'hover:text-neutral-600 dark:hover:text-neutral-300',
+                'transition-colors',
+                'cursor-pointer',
+              ]}
+              onclick={`alert('图片已进行裁剪、调色或 AI 优化，参数可能不准确')`}
+            >
+              <span>已编辑</span>
+              <Icon
+                name="ri:question-fill"
+                class:list={['w-4 h-4', 'mb-0.25']}
+              />
+            </span>
+          </Fragment>
+        )
+      }
+    </div>
+  </section>
+</article>
+
+<script>
+  import mediumZoom from 'medium-zoom/dist/pure'
+  import 'medium-zoom/dist/style.css'
+
+  document.addEventListener('astro:page-load', () => {
+    mediumZoom('.medium-zoom', {
+      background: 'rgba(0, 0, 0, 0.5)',
+    })
+  })
+</script>

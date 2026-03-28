@@ -5,6 +5,7 @@ import {
   version,
   repository,
 } from '../../package.json'
+import dayjs from 'dayjs'
 
 export const GET = ({ generator, site }: APIContext) => {
   return new Response(
@@ -13,12 +14,12 @@ export const GET = ({ generator, site }: APIContext) => {
       名称: displayName,
       描述: description,
       版本: version,
-      时间: new Date().toISOString(),
+      时间: dayjs().toISOString(),
       代码: repository.url,
       框架: generator,
     }),
     {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    }
+    },
   )
 }

@@ -6,6 +6,7 @@ import Layout from '@components/notebook/Layout.astro'
 import { frontmatterFormat } from '@libs/utils'
 import { Icon } from 'astro-icon/components'
 import { getCollection, render } from 'astro:content'
+import dayjs from 'dayjs'
 
 export async function getStaticPaths() {
   const stories = await getCollection('专题')
@@ -35,12 +36,12 @@ const allArticles = [...storyArticles, ...storyArchives]
   .filter(article => import.meta.env.DEV || !article.draft)
   .sort(
     (a, b) =>
-      new Date(b.date.created).getTime() - new Date(a.date.created).getTime(),
+      dayjs(b.date.created).unix() - dayjs(a.date.created).unix(),
   )
 ---
 
 <Layout name={story.data.name} description={story.data.description}>
-  <Main class:list={['sm:px-6 sm:py-8']}>
+  <Main class:list={['sm:px-6 sm:py-4']}>
     <ArticleMarkdown
       {...story.data}
       id={headings[0].slug}
@@ -70,7 +71,7 @@ const allArticles = [...storyArticles, ...storyArchives]
           <div
             class:list={[
               'flex flex-col justify-center items-center gap-1',
-              'p-4',
+              'px-4 py-6',
               'text-sm text-center text-neutral-500 dark:text-neutral-400',
             ]}
           >

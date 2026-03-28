@@ -3,19 +3,18 @@ import Main from '@components/layout/Main.astro'
 import Layout from '@components/notebook/Layout.astro'
 import MomentCard from '@components/notebook/moment/MomentCard.astro'
 import { getCollection } from 'astro:content'
+import dayjs from 'dayjs'
 
 const moments = await getCollection('时刻')
 ---
 
 <Layout name="时刻">
-  <Main class:list={['p-4 sm:px-6 sm:py-8']}>
+  <Main class:list={['p-4 sm:px-6 sm:py-4']}>
     <ul class:list={['w-full', 'm-0 p-0', 'columns-auto columns-xs']}>
       {
         moments
           .map(moment => moment.data)
-          .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-          )
+          .sort((a, b) => dayjs(b.date).unix() - dayjs(a.date).unix())
           .map(moment => <MomentCard moment={moment} />)
       }
     </ul>

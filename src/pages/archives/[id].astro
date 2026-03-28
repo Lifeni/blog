@@ -25,7 +25,7 @@ const { Content, headings } = await render(archive)
 ---
 
 <Layout name={archive.data.title} description={archive.data.description}>
-  <Main class:list={['sm:px-6 sm:py-8', 'gap-4']}>
+  <Main class:list={['sm:px-6 sm:py-4', 'gap-4']}>
     <ArticleMarkdown
       {...frontmatterFormat(archive.data)}
       id={headings[0].slug}

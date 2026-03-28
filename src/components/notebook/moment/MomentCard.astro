@@ -11,9 +11,10 @@ dayjs.locale('zh-cn')
 
 interface Props {
   moment: Moment
+  class?: string
 }
 
-const { moment } = Astro.props
+const { moment, class: className } = Astro.props
 ---
 
 <li class:list={['w-full', 'mb-4', 'list-none']}>
@@ -28,7 +29,6 @@ const { moment } = Astro.props
       'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
       'no-underline',
       'rounded-2xl',
-      'hover:shadow-2xl',
       'overflow-hidden',
       'transition-all',
     ]}
@@ -44,6 +44,7 @@ const { moment } = Astro.props
         'object-cover',
         'animate-fade-in',
         'transition-transform duration-250',
+        className,
       ]}
     />
 
@@ -54,7 +55,7 @@ const { moment } = Astro.props
         'px-4 py-3',
         'flex flex-row items-center gap-2',
         'text-neutral-100',
-        ,
+        'whitespace-nowrap',
       ]}
     >
       <h2 class:list={['m-0', 'font-bold text-sm', 'drop-shadow-lg']}>
