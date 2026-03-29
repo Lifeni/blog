@@ -173,4 +173,7 @@ export const redirects = {
   '/article/use-git-flow': '/archives/use-git-flow',
   '/article/use-git': '/archives/use-git',
   '/article/windows-config': '/archives/windows-config',
+  '/article/2024-02-29': '/archives/2024-02-29',
+  '/article/bye-2023': '/articles/bye-2023',
+  '/story/bye-2024': '/articles/bye-2024',
 }

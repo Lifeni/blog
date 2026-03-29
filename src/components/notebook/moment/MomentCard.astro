@@ -35,7 +35,7 @@ const { moment, class: className } = Astro.props
       layout="full-width"
       class:list={[
         'w-full h-auto',
-        'text-sm text-neutral-500 dark:text-neutral-400 leading-12',
+        'text-sm text-white dark:text-neutral-850 leading-12',
         'bg-white dark:bg-neutral-850',
         'scale-100 group-hover:scale-105',
         'object-cover',
@@ -55,13 +55,7 @@ const { moment, class: className } = Astro.props
         'whitespace-nowrap',
       ]}
     >
-      <h2
-        class:list={[
-          'm-0',
-          'font-bold text-sm',
-          'drop-shadow-md drop-shadow-neutral-600',
-        ]}
-      >
+      <h2 class:list={['m-0', 'font-bold text-sm']}>
         {moment.name}
       </h2>
       <Spacer />
@@ -70,7 +64,6 @@ const { moment, class: className } = Astro.props
           'm-0 p-0',
           'text-sm',
           'break-all md:break-word',
-          'drop-shadow-md drop-shadow-neutral-600',
           'truncate',
         ]}
       >
