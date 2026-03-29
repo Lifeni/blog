@@ -4,7 +4,7 @@ import {
   description,
   version,
   repository,
-} from '../../package.json'
+} from '../../../package.json'
 import dayjs from 'dayjs'
 
 export const GET = ({ generator, site }: APIContext) => {
