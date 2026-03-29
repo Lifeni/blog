@@ -102,7 +102,7 @@ const { article, path = 'articles' } = Astro.props
         {article.tags.map(tag => <span>{tag}</span>)}
         <Spacer />
         <Icon
-          name="ri:arrow-right-line"
+          name={article.pinned ? 'ri:pushpin-2-line' : 'ri:arrow-right-line'}
           class:list={['w-4 h-4', 'group-hover:rotate-45 transition-transform']}
         />
       </section>

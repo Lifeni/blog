@@ -6,6 +6,15 @@ import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
 
 const articles = await getCollection('文章')
+const filteredArticles = articles
+  .map(article => article.data)
+  .filter(
+    article => article.featured && (import.meta.env.DEV || !article.draft),
+  )
+  .sort((a, b) => dayjs(b.date.created).unix() - dayjs(a.date.created).unix())
+
+const pinnedArticles = filteredArticles.filter(article => article.pinned)
+const unpinnedArticles = filteredArticles.filter(article => !article.pinned)
 ---
 
 <Layout>
@@ -17,19 +26,8 @@ const articles = await getCollection('文章')
         'flex flex-col gap-4',
       ]}
     >
-      {
-        articles
-          .map(article => article.data)
-          .filter(
-            article =>
-              article.featured && (import.meta.env.DEV || !article.draft),
-          )
-          .sort(
-            (a, b) =>
-              dayjs(b.date.created).unix() - dayjs(a.date.created).unix(),
-          )
-          .map(article => <ArticleCard article={article} />)
-      }
+      {pinnedArticles.map(article => <ArticleCard article={article} />)}
+      {unpinnedArticles.map(article => <ArticleCard article={article} />)}
     </ul>
   </Main>
 </Layout>

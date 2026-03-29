@@ -101,7 +101,13 @@ const markdownReset = {
     'rounded-4xl sm:rounded-2xl',
   ]}
 >
-  <section class:list={['relative', 'flex items-baseline gap-3', 'pr-24']}>
+  <section
+    class:list={[
+      'relative',
+      'flex items-baseline gap-x-3 gap-y-0 flex-wrap',
+      'pr-24 pb-0.5',
+    ]}
+  >
     {
       icon && (
         <Icon
@@ -118,7 +124,7 @@ const markdownReset = {
       id={id}
       class:list={[
         'z-1',
-        'm-0 pb-0.5',
+        'm-0 p-0',
         'text-pretty font-bold leading-[1.5] text-2xl',
       ]}
     >
@@ -212,6 +218,11 @@ const markdownReset = {
 
   article :global(.wrapper) {
     @apply -mx-4 my-4;
+    width: calc(100% + 2rem);
+  }
+
+  article :global(iframe) {
+    @apply -mx-4 my-4 rounded-md;
     width: calc(100% + 2rem);
   }
 

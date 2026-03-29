@@ -7,6 +7,7 @@ const props = Astro.props
   target={props.href.startsWith('http') ? '_blank' : '_self'}
   rel={props.href.startsWith('http') ? 'nofollow noopener noreferrer' : ''}
   class:list={[
+    'inline-block',
     'text-indigo-500 dark:text-indigo-400',
     'no-underline underline-offset-4 hover:underline',
     'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-2',
