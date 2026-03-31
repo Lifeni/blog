@@ -55,7 +55,7 @@ const { moment, class: className } = Astro.props
         'whitespace-nowrap',
       ]}
     >
-      <h2 class:list={['m-0', 'font-bold text-sm']}>
+      <h2 class:list={['m-0', 'font-bold text-sm', 'drop-shadow-lg/50']}>
         {moment.name}
       </h2>
       <Spacer />
@@ -64,6 +64,7 @@ const { moment, class: className } = Astro.props
           'm-0 p-0',
           'text-sm',
           'break-all md:break-word',
+          'drop-shadow-lg/50',
           'truncate',
         ]}
       >

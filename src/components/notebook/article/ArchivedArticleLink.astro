@@ -53,6 +53,7 @@ const { article } = Astro.props
     {
       article.draft && (
         <Icon
+          aria-label="未完成"
           name="ri:quill-pen-fill"
           title="未完成"
           class:list={[
@@ -69,6 +70,7 @@ const { article } = Astro.props
     {
       article.archived && (
         <Icon
+          aria-label="已存档"
           name="ri:archive-2-fill"
           title="已存档"
           class:list={[

@@ -30,8 +30,8 @@ const yearMoments = moments
 ---
 
 <Layout
-  name={dayjs(moment.data.date).format('YYYY 年 MM 月 DD 日')}
-  description={moment.data.name}
+  name={dayjs(moment.data.date).format('YYYY-MM-DD')}
+  description={`${moment.data.name}，${moment.data.location}`}
 >
   <Main class:list={['sm:px-6 sm:py-4']}>
     <MomentViewer {...moment.data} />
@@ -59,6 +59,7 @@ const yearMoments = moments
           }
         </span>
         <Icon
+          aria-hidden="true"
           name={yearMoments.length > 0
             ? 'ri:arrow-down-double-line'
             : 'ri:camera-4-line'}
@@ -77,12 +78,10 @@ const yearMoments = moments
             ]}
           >
             {yearMoments.map(moment => (
-              <div class:list={['w-auto']}>
-                <MomentCard
-                  moment={moment}
-                  class:list={['!w-auto !h-60 sm:!h-72']}
-                />
-              </div>
+              <MomentCard
+                moment={moment}
+                class:list={['!w-auto !h-60 sm:!h-72']}
+              />
             ))}
           </ul>
         )

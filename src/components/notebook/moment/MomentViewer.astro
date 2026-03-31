@@ -85,11 +85,12 @@ const isLandscape = path.width > path.height
                 'flex items-center gap-1',
                 'hover:text-neutral-600 dark:hover:text-neutral-300',
                 'transition-colors',
-                'cursor-pointer',
+                'cursor-help',
               ]}
             >
               <span>已编辑</span>
               <Icon
+                aria-hidden="true"
                 name="ri:question-fill"
                 class:list={['w-4 h-4', 'mb-0.25']}
               />

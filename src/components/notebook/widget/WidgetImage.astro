@@ -36,7 +36,11 @@ const { alt, src, class: className } = Astro.props
     ]}
   >
     <span>{alt}</span>
-    <Icon name="ri:arrow-up-s-line" class:list={['my-0.25']} />
+    <Icon
+      aria-hidden="true"
+      name="ri:arrow-up-s-line"
+      class:list={['my-0.25']}
+    />
   </figcaption>
 </figure>
 

@@ -81,7 +81,6 @@ const list = headings.filter(
         </ul>
         <Spacer />
         <a
-          aria-label="回到顶部"
           href={`#${headings[0].slug}`}
           title="回到顶部"
           class:list={[
@@ -97,7 +96,11 @@ const list = headings.filter(
             'transition-all',
           ]}
         >
-          <Icon name="ri:skip-up-line" class:list={['w-4.5 h-4.5']} />
+          <Icon
+            aria-label="回到顶部"
+            name="ri:skip-up-line"
+            class:list={['w-4.5 h-4.5']}
+          />
         </a>
       </div>
     </aside>

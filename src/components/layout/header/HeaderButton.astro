@@ -14,7 +14,6 @@ const Element = href ? 'a' : 'button'
 ---
 
 <Element
-  aria-label={name}
   href={href}
   target={href ? (href.startsWith('http') ? '_blank' : '_self') : ''}
   rel={href
@@ -38,6 +37,8 @@ const Element = href ? 'a' : 'button'
       : 'text-neutral-300 dark:text-neutral-500 hover:text-neutral-500 dark:hover:text-neutral-300',
   ]}
 >
-  {icon && <Icon name={icon} class:list={['w-5 h-5']} />}
-  <span class="sr-only">{name}</span>
+  {icon && <Icon aria-label={name} name={icon} class:list={['w-5 h-5']} />}
+  <span class:list={['sr-only', 'text-neutral-950 dark:text-neutral-100']}>
+    {name}
+  </span>
 </Element>

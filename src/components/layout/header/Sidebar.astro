@@ -42,7 +42,7 @@ import { apps } from '@libs/configs'
         'overflow-y-auto',
       ]}
     >
-      <nav class:list={['h-full', 'flex flex-col gap-4', 'p-4']}>
+      <nav class:list={['h-full', 'flex flex-col gap-4', 'px-4 pt-4']}>
         <SiteSearch />
         {
           apps.map(link => (
@@ -50,7 +50,9 @@ import { apps } from '@libs/configs'
           ))
         }
         <Spacer />
-        <WeChatQRCode />
+        <div class:list={['pb-4']}>
+          <WeChatQRCode />
+        </div>
       </nav>
     </div>
   </div>
