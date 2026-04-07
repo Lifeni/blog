@@ -44,13 +44,4 @@ const { alt, src, class: className } = Astro.props
   </figcaption>
 </figure>
 
-<script>
-  import mediumZoom from 'medium-zoom/dist/pure'
-  import 'medium-zoom/dist/style.css'
 
-  document.addEventListener('astro:page-load', () => {
-    mediumZoom('.medium-zoom', {
-      background: 'rgba(0, 0, 0, 0.5)',
-    })
-  })
-</script>

@@ -3,6 +3,7 @@ import Footer from '@components/layout/Footer.astro'
 import Header from '@components/layout/Header.astro'
 import Root from '@components/ui/Root.astro'
 import { pages } from '@libs/configs'
+import 'medium-zoom/dist/style.css'
 
 interface Props {
   name?: string
@@ -23,3 +24,13 @@ const { name, description } = Astro.props
   <slot />
   <Footer />
 </Root>
+
+<script>
+  import mediumZoom from 'medium-zoom/dist/pure'
+
+  document.addEventListener('astro:page-load', () => {
+    mediumZoom('.medium-zoom', {
+      background: 'rgba(0, 0, 0, 0.5)',
+    })
+  })
+</script>
