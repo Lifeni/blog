@@ -12,16 +12,16 @@ export const pages = [
     id: 'stories',
   },
   {
-    name: '存档',
-    href: '/archives',
-    icons: ['ri:folder-3-fill', 'ri:folder-open-fill'],
-    id: 'archives',
-  },
-  {
     name: '时刻',
     href: '/moments',
     icons: ['ri:camera-fill', 'ri:film-fill'],
     id: 'moments',
+  },
+  {
+    name: '存档',
+    href: '/archives',
+    icons: ['ri:folder-3-fill', 'ri:folder-open-fill'],
+    id: 'archives',
   },
 ]
 

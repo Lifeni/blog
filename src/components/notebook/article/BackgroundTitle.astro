@@ -1,0 +1,44 @@
+---
+interface Props {
+  name: string
+}
+
+const { name } = Astro.props
+const length = name.length
+---
+
+<aside
+  aria-hidden="true"
+  class:list={[
+    'fixed left-0 top-0 z-0',
+    'w-screen h-screen',
+    'px-8 py-6',
+    'flex items-center justify-center gap-24',
+    'font-bold font-serif text-neutral-200 dark:text-neutral-800',
+    'pointer-events-none',
+    'opacity-75',
+    'hidden lg:flex',
+  ]}
+>
+  {
+    name
+      .slice(0, length / 2)
+      .split('')
+      .map((char, i) => (
+        <span class:list={['text-[10vw]', 'flex items-center justify-center']}>
+          {char}
+        </span>
+      ))
+  }
+  <span class:list={['w-72']}></span>
+  {
+    name
+      .slice(length / 2)
+      .split('')
+      .map((char, i) => (
+        <span class:list={['text-[10vw]', 'flex items-center justify-center']}>
+          {char}
+        </span>
+      ))
+  }
+</aside>

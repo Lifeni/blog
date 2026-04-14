@@ -1,4 +1,5 @@
 ---
+import ArticleTableOfContents from '@components/notebook/article/ArticleTableOfContents.astro'
 import WidgetImage from '@components/notebook/widget/WidgetImage.astro'
 import Divider from '@components/ui/Divider.astro'
 import Blockquote from '@components/ui/markdown/block/Blockquote.astro'
@@ -28,13 +29,12 @@ import Em from '@components/ui/markdown/inline/Em.astro'
 import Null from '@components/ui/markdown/Null.astro'
 import Spacer from '@components/ui/Spacer.astro'
 import type { MarkdownHeading } from 'astro'
+import { Icon } from 'astro-icon/components'
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import type { Article } from 'src/content'
-import ArticleTableOfContents from './ArticleTableOfContents.astro'
-import { Icon } from 'astro-icon/components'
 
 dayjs.extend(relativeTime)
 dayjs.locale('zh-cn')
@@ -102,6 +102,7 @@ const markdownReset = {
   ]}
 >
   <section
+    id="顶部"
     class:list={[
       'relative',
       'flex items-baseline gap-x-3 gap-y-0 flex-wrap',
@@ -195,6 +196,7 @@ const markdownReset = {
   />
 
   <section
+    id="底部"
     class:list={[
       'w-full',
       'mt-8',

@@ -1,4 +1,5 @@
 ---
+import Link from '@components/ui/Link.astro'
 import { links } from '@libs/configs'
 ---
 
@@ -13,23 +14,7 @@ import { links } from '@libs/configs'
     links.map(section => (
       <section class:list={['flex items-center gap-x-4 gap-y-2 flex-wrap']}>
         {section.map(link => (
-          <a
-            href={link.href}
-            target={link.href.startsWith('http') ? '_blank' : '_self'}
-            rel={
-              link.href.startsWith('http') ? 'nofollow noopener noreferrer' : ''
-            }
-            class:list={[
-              'text-xs sm:text-sm text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300',
-              'truncate',
-              'no-underline underline-offset-4 hover:underline',
-              'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-2',
-              'rounded-md',
-              'transition-all',
-            ]}
-          >
-            {link.name}
-          </a>
+          <Link href={link.href} name={link.name} class="text-xs sm:text-sm" />
         ))}
       </section>
     ))

@@ -4,7 +4,14 @@ import { frontmatterFormat } from '@libs/utils'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
+import dayjs from 'dayjs'
 import type { Story } from 'src/content'
+import 'dayjs/locale/zh-cn'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import Divider from '@components/ui/Divider.astro'
+
+dayjs.extend(relativeTime)
+dayjs.locale('zh-cn')
 
 interface Props {
   story: Story
@@ -23,19 +30,19 @@ const storyArchives = archives
   .filter(archive => story.articles?.includes(archive.data.name))
   .map(archive => frontmatterFormat(archive.data))
 
-const allArticles = [...storyArticles, ...storyArchives].filter(
-  article => import.meta.env.DEV || !article.draft,
-)
+const allArticles = [...storyArticles, ...storyArchives]
+  .filter(article => import.meta.env.DEV || !article.draft)
+  .sort((a, b) => dayjs(b.date.updated).unix() - dayjs(a.date.updated).unix())
 ---
 
-<li class:list={['w-full', 'list-none']}>
+<li class:list={['w-full', 'mb-4', 'list-none break-inside-avoid']}>
   <a
     href={`/stories/${story.id}`}
     class:list={[
       'relative z-1 hover:z-10',
       'w-full',
       'p-4',
-      'flex flex-row-reverse sm:flex-col gap-4',
+      'flex flex-col gap-4',
       'text-neutral-950 dark:text-neutral-100',
       'bg-white dark:bg-neutral-850',
       'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
@@ -45,56 +52,103 @@ const allArticles = [...storyArticles, ...storyArchives].filter(
       'transition-all',
     ]}
   >
-    <div class:list={['flex']}>
-      <Image
-        src={story.cover.path}
-        alt={story.cover.description}
-        title={story.cover.description}
-        loading="lazy"
-        layout="full-width"
+    <section class:list={['flex flex-row-reverse sm:flex-col gap-4']}>
+      <div class:list={['flex']}>
+        <Image
+          src={story.cover.path}
+          alt={story.cover.description}
+          title={story.cover.description}
+          loading="lazy"
+          layout="full-width"
+          class:list={[
+            'w-full h-auto',
+            'text-sm text-neutral-100 dark:text-neutral-900 leading-12',
+            'bg-neutral-100 dark:bg-neutral-900',
+            'rounded-md',
+            'aspect-4/3 sm:aspect-1/1',
+            'object-cover',
+            'animate-fade-in',
+          ]}
+        />
+      </div>
+      <div
         class:list={[
-          'w-full h-auto',
-          'text-sm text-neutral-100 dark:text-neutral-900 leading-12',
-          'bg-neutral-100 dark:bg-neutral-900',
-          'rounded-md',
-          'aspect-4/3 sm:aspect-1/1',
-          'object-cover',
-          'animate-fade-in',
+          'w-auto sm:w-full',
+          'flex flex-col sm:flex-row items-center gap-2',
         ]}
-      />
-    </div>
+      >
+        <Icon
+          aria-label="标签"
+          name="ri:hashtag"
+          class:list={['w-4 h-4', 'mt-1 sm:mt-0']}
+        />
+        <h2
+          class:list={[
+            'm-0',
+            'font-bold text-sm',
+            'tracking-[0.15rem] sm:tracking-normal writing-vertical sm:writing-normal',
+          ]}
+        >
+          {story.name}
+        </h2>
+        <Spacer />
+        <code
+          class:list={[
+            'm-0 p-0',
+            'text-sm text-neutral-500 dark:text-neutral-400 font-sans',
+            'break-all md:break-word',
+            'truncate',
+          ]}
+        >
+          ×{allArticles.length || 0}
+        </code>
+      </div>
+    </section>
 
-    <div
-      class:list={[
-        'w-auto sm:w-full',
-        'flex flex-col sm:flex-row items-center gap-2',
-      ]}
-    >
-      <Icon
-        aria-label="标签"
-        name="ri:hashtag"
-        class:list={['w-4 h-4', 'mt-1 sm:mt-0 sm:mb-0.5']}
-      />
-      <h2
-        class:list={[
-          'm-0',
-          'font-bold text-sm',
-          'tracking-[0.15rem] sm:tracking-normal writing-vertical sm:writing-normal',
-        ]}
-      >
-        {story.name}
-      </h2>
-      <Spacer />
-      <code
-        class:list={[
-          'm-0 p-0',
-          'text-sm text-neutral-500 dark:text-neutral-400 font-sans',
-          'break-all md:break-word',
-          'truncate',
-        ]}
-      >
-        ×{allArticles.length || 0}
-      </code>
-    </div>
+    {
+      allArticles.length > 0 && (
+        <Fragment>
+          <Divider />
+          <ul
+            class:list={['flex flex-col gap-1.5', 'px-1 sm:p-0', 'list-none']}
+          >
+            {allArticles.slice(0, 3).map(article => (
+              <li
+                class:list={['m-0 p-0', 'flex gap-2 items-center', 'text-xs']}
+              >
+                <span
+                  class:list={[
+                    'w-1 h-1 min-w-1',
+                    'flex',
+                    'rounded-full',
+                    'bg-neutral-200 dark:bg-neutral-700',
+                  ]}
+                />
+                <span class:list={['truncate']}>{article.name}</span>
+                {article.subtitle && (
+                  <span
+                    class:list={[
+                      'text-neutral-500 dark:text-neutral-400',
+                      'truncate',
+                    ]}
+                  >
+                    {article.subtitle}
+                  </span>
+                )}
+                <Spacer />
+                <date
+                  class:list={[
+                    'text-xs text-neutral-500 dark:text-neutral-400',
+                    'whitespace-nowrap',
+                  ]}
+                >
+                  {dayjs(article.date.created).fromNow()}
+                </date>
+              </li>
+            ))}
+          </ul>
+        </Fragment>
+      )
+    }
   </a>
 </li>

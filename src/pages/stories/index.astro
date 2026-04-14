@@ -9,12 +9,13 @@ const stories = await getCollection('专题')
 ---
 
 <Layout name="专题">
-  <Main class:list={['p-4 sm:px-6 sm:py-4']}>
+  <Main class:list={['relative', 'p-4 sm:px-6 sm:py-4']}>
     <ul
       class:list={[
+        'z-1',
         'w-full max-w-148',
         'mx-auto my-0 p-0',
-        'grid grid-cols-1 sm:grid-cols-2 gap-4',
+        'columns-1 sm:columns-2 gap-4',
       ]}
     >
       {

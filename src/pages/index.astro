@@ -2,6 +2,8 @@
 import Main from '@components/layout/Main.astro'
 import ArticleCard from '@components/notebook/article/ArticleCard.astro'
 import Layout from '@components/notebook/Layout.astro'
+import Link from '@components/ui/Link.astro'
+import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
 
@@ -12,15 +14,17 @@ const filteredArticles = articles
     article => article.featured && (import.meta.env.DEV || !article.draft),
   )
   .sort((a, b) => dayjs(b.date.created).unix() - dayjs(a.date.created).unix())
+  .slice(0, 3)
 
 const pinnedArticles = filteredArticles.filter(article => article.pinned)
 const unpinnedArticles = filteredArticles.filter(article => !article.pinned)
 ---
 
 <Layout>
-  <Main class:list={['p-4 sm:px-6 sm:py-4']}>
+  <Main class:list={['relative', 'p-4 sm:px-6 sm:py-4']}>
     <ul
       class:list={[
+        'z-1',
         'w-full max-w-148',
         'mx-auto my-0 p-0',
         'flex flex-col gap-4',
@@ -28,6 +32,28 @@ const unpinnedArticles = filteredArticles.filter(article => !article.pinned)
     >
       {pinnedArticles.map(article => <ArticleCard article={article} />)}
       {unpinnedArticles.map(article => <ArticleCard article={article} />)}
+      <li
+        class:list={[
+          'flex flex-col justify-center items-center gap-1',
+          'px-4 pt-6 pb-3',
+          'text-sm text-center text-neutral-500 dark:text-neutral-400',
+          'list-none',
+        ]}
+      >
+        <span>
+          前往
+          <Link href="/stories" name="专题" class="text-sm" />
+          或
+          <Link href="/archives" name="存档" class="text-sm" />
+          查看更多文章
+        </span>
+
+        <Icon
+          aria-hidden="true"
+          name="ri:infinity-line"
+          class:list={['w-4 h-4']}
+        />
+      </li>
     </ul>
   </Main>
 </Layout>
