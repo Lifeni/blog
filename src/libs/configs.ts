@@ -12,16 +12,16 @@ export const pages = [
     id: 'stories',
   },
   {
-    name: '时刻',
-    href: '/moments',
-    icons: ['ri:camera-fill', 'ri:film-fill'],
-    id: 'moments',
-  },
-  {
     name: '存档',
     href: '/archives',
     icons: ['ri:folder-3-fill', 'ri:folder-open-fill'],
     id: 'archives',
+  },
+  {
+    name: '时刻',
+    href: '/moments',
+    icons: ['ri:camera-fill', 'ri:film-fill'],
+    id: 'moments',
   },
 ]
 
@@ -93,9 +93,9 @@ export const apps = [
         avatar: '/friends/Wumbuk.webp',
       },
       {
-        name: 'YueChen',
-        href: 'https://web.archive.org/web/20240905161039/https://www.yuechen.xyz/',
-        avatar: '/friends/YueChen.webp',
+        name: '朝花夕拾',
+        href: 'https://shenshijiu.com/',
+        avatar: '/friends/朝花夕拾.webp',
       },
       {
         name: 'ss967',

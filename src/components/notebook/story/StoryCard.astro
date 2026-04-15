@@ -52,50 +52,34 @@ const allArticles = [...storyArticles, ...storyArchives]
       'transition-all',
     ]}
   >
-    <section class:list={['flex flex-row-reverse sm:flex-col gap-4']}>
-      <div class:list={['flex']}>
-        <Image
-          src={story.cover.path}
-          alt={story.cover.description}
-          title={story.cover.description}
-          loading="lazy"
-          layout="full-width"
-          class:list={[
-            'w-full h-auto',
-            'text-sm text-neutral-100 dark:text-neutral-900 leading-12',
-            'bg-neutral-100 dark:bg-neutral-900',
-            'rounded-md',
-            'aspect-4/3 sm:aspect-1/1',
-            'object-cover',
-            'animate-fade-in',
-          ]}
-        />
-      </div>
-      <div
+    <div class:list={['flex']}>
+      <Image
+        src={story.cover.path}
+        alt={story.cover.description}
+        title={story.cover.description}
+        loading="lazy"
+        layout="full-width"
         class:list={[
-          'w-auto sm:w-full',
-          'flex flex-col sm:flex-row items-center gap-2',
+          'w-full h-auto',
+          'text-sm text-neutral-100 dark:text-neutral-900 leading-12',
+          'bg-neutral-100 dark:bg-neutral-900',
+          'rounded-md',
+          'aspect-3/2 sm:aspect-1/1',
+          'object-cover',
+          'animate-fade-in',
         ]}
-      >
-        <Icon
-          aria-label="标签"
-          name="ri:hashtag"
-          class:list={['w-4 h-4', 'mt-1 sm:mt-0']}
-        />
-        <h2
-          class:list={[
-            'm-0',
-            'font-bold text-sm',
-            'tracking-[0.15rem] sm:tracking-normal writing-vertical sm:writing-normal',
-          ]}
-        >
-          {story.name}
+      />
+    </div>
+    <section class:list={['flex flex-col gap-1']}>
+      <div class:list={['w-full', 'flex items-center gap-2']}>
+        <h2 class:list={['m-0', 'font-bold text-base']}>
+          # {story.name}
         </h2>
         <Spacer />
         <code
           class:list={[
             'm-0 p-0',
-            'text-sm text-neutral-500 dark:text-neutral-400 font-sans',
+            'text-base text-neutral-500 dark:text-neutral-400 font-sans',
             'break-all md:break-word',
             'truncate',
           ]}
@@ -103,28 +87,26 @@ const allArticles = [...storyArticles, ...storyArchives]
           ×{allArticles.length || 0}
         </code>
       </div>
+      <span
+        class:list={[
+          'text-sm text-neutral-500 dark:text-neutral-400',
+          'truncate',
+        ]}
+      >
+        {story.description}
+      </span>
     </section>
 
     {
       allArticles.length > 0 && (
         <Fragment>
           <Divider />
-          <ul
-            class:list={['flex flex-col gap-1.5', 'px-1 sm:p-0', 'list-none']}
-          >
+          <ul class:list={['flex flex-col gap-1.5', 'px-0.5', 'list-none']}>
             {allArticles.slice(0, 3).map(article => (
               <li
-                class:list={['m-0 p-0', 'flex gap-2 items-center', 'text-xs']}
+                class:list={['m-0 p-0', 'flex gap-2 items-center', 'text-sm']}
               >
-                <span
-                  class:list={[
-                    'w-1 h-1 min-w-1',
-                    'flex',
-                    'rounded-full',
-                    'bg-neutral-200 dark:bg-neutral-700',
-                  ]}
-                />
-                <span class:list={['truncate']}>{article.name}</span>
+                <span class:list={['whitespace-nowrap']}>{article.name}</span>
                 {article.subtitle && (
                   <span
                     class:list={[
@@ -138,7 +120,7 @@ const allArticles = [...storyArticles, ...storyArchives]
                 <Spacer />
                 <date
                   class:list={[
-                    'text-xs text-neutral-500 dark:text-neutral-400',
+                    'text-neutral-500 dark:text-neutral-400',
                     'whitespace-nowrap',
                   ]}
                 >

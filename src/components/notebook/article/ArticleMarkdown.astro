@@ -204,7 +204,7 @@ const markdownReset = {
       'text-sm truncate text-neutral-500 dark:text-neutral-400',
     ]}
   >
-    <time title={dayjs(date.updated).format('YYYY 年 MM 月 DD 日')}>
+    <time title={`更新于 ${dayjs(date.updated).format('YYYY 年 MM 月 DD 日')}`}>
       更新于 {dayjs(date.updated).fromNow()}
     </time>
     <Spacer />
