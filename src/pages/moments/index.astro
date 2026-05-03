@@ -10,7 +10,13 @@ const moments = await getCollection('时刻')
 
 <Layout name="时刻">
   <Main class:list={['p-4 sm:px-6 sm:py-4']}>
-    <ul class:list={['w-full', 'm-0 p-0', 'columns-auto columns-xs']}>
+    <ul
+      class:list={[
+        'w-full max-w-480',
+        'mx-auto my-0 p-0',
+        'columns-auto columns-xs',
+      ]}
+    >
       {
         moments
           .map(moment => moment.data)

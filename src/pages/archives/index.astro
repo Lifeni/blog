@@ -25,7 +25,7 @@ const groupedArticles = groupArticlesByYear(allArticles)
         <section
           class:list={[
             'z-1',
-            'w-full max-w-148',
+            'w-full max-w-160',
             'mx-auto px-0 py-4',
             'flex flex-col gap-4',
             'bg-white dark:bg-neutral-850',
@@ -37,7 +37,7 @@ const groupedArticles = groupArticlesByYear(allArticles)
             {group.articles.map((article, index) => (
               <>
                 <ArchivedArticleLink article={article} />
-                {(index + 1) % 7 === 0 &&
+                {(index + 1) % 5 === 0 &&
                   index !== group.articles.length - 1 && (
                     <li
                       class:list={['w-full', 'my-4 px-5', 'flex', 'list-none']}

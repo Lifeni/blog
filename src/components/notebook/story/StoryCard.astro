@@ -32,15 +32,15 @@ const storyArchives = archives
 
 const allArticles = [...storyArticles, ...storyArchives]
   .filter(article => import.meta.env.DEV || !article.draft)
-  .sort((a, b) => dayjs(b.date.updated).unix() - dayjs(a.date.updated).unix())
+  .sort((a, b) => dayjs(b.date.created).unix() - dayjs(a.date.created).unix())
 ---
 
-<li class:list={['w-full', 'mb-4', 'list-none break-inside-avoid']}>
+<li class:list={['w-full', 'list-none break-inside-avoid']}>
   <a
     href={`/stories/${story.id}`}
     class:list={[
       'relative z-1 hover:z-10',
-      'w-full',
+      'w-full h-full',
       'p-4',
       'flex flex-col gap-4',
       'text-neutral-950 dark:text-neutral-100',
@@ -52,28 +52,17 @@ const allArticles = [...storyArticles, ...storyArchives]
       'transition-all',
     ]}
   >
-    <div class:list={['flex']}>
-      <Image
-        src={story.cover.path}
-        alt={story.cover.description}
-        title={story.cover.description}
-        loading="lazy"
-        layout="full-width"
-        class:list={[
-          'w-full h-auto',
-          'text-sm text-neutral-100 dark:text-neutral-900 leading-12',
-          'bg-neutral-100 dark:bg-neutral-900',
-          'rounded-md',
-          'aspect-3/2 sm:aspect-1/1',
-          'object-cover',
-          'animate-fade-in',
-        ]}
-      />
-    </div>
     <section class:list={['flex flex-col gap-1']}>
       <div class:list={['w-full', 'flex items-center gap-2']}>
-        <h2 class:list={['m-0', 'font-bold text-base']}>
-          # {story.name}
+        <h2
+          class:list={[
+            'flex items-center gap-1.5',
+            'm-0',
+            'font-bold text-base',
+          ]}
+        >
+          <Icon name="ri:hashtag" class:list={['w-5 h-5']} />
+          <span>{story.name}</span>
         </h2>
         <Spacer />
         <code
@@ -87,6 +76,72 @@ const allArticles = [...storyArticles, ...storyArchives]
           ×{allArticles.length || 0}
         </code>
       </div>
+    </section>
+    <div class:list={['mb-0.5', 'flex']}>
+      <Image
+        src={story.cover.path}
+        alt={story.cover.description}
+        title={story.cover.description}
+        loading="lazy"
+        layout="full-width"
+        class:list={[
+          'w-full h-auto',
+          'text-sm text-neutral-100 dark:text-neutral-900 leading-12',
+          'bg-neutral-100 dark:bg-neutral-900',
+          'rounded-md',
+          'aspect-17/12 sm:aspect-1/1',
+          'object-cover',
+          'animate-fade-in',
+        ]}
+      />
+    </div>
+
+    {
+      allArticles.length > 0 ? (
+        <ul
+          class:list={['flex flex-1 flex-col gap-1.5', 'px-0.5', 'list-none']}
+        >
+          {allArticles.slice(0, 3).map(article => (
+            <li class:list={['m-0 p-0', 'flex gap-2 items-center', 'text-sm']}>
+              <span class:list={['whitespace-nowrap']}>{article.name}</span>
+              {article.subtitle && (
+                <span
+                  class:list={[
+                    'text-neutral-500 dark:text-neutral-400',
+                    'truncate',
+                  ]}
+                >
+                  {article.subtitle}
+                </span>
+              )}
+              <Spacer />
+              <date
+                class:list={[
+                  'text-neutral-500 dark:text-neutral-400',
+                  'whitespace-nowrap',
+                ]}
+              >
+                {dayjs(article.date.created).fromNow()}
+              </date>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div
+          class:list={[
+            'p-2',
+            'flex flex-1 flex-col items-center justify-center gap-2',
+            'text-sm text-neutral-500 dark:text-neutral-400',
+          ]}
+        >
+          <Icon name="ri:book-open-line" class:list={['w-5 h-5']} />
+          <span>暂无文章</span>
+        </div>
+      )
+    }
+
+    <Divider />
+    <section class:list={['flex flex-col gap-1']}>
       <span
         class:list={[
           'text-sm text-neutral-500 dark:text-neutral-400',
@@ -96,41 +151,5 @@ const allArticles = [...storyArticles, ...storyArchives]
         {story.description}
       </span>
     </section>
-
-    {
-      allArticles.length > 0 && (
-        <Fragment>
-          <Divider />
-          <ul class:list={['flex flex-col gap-1.5', 'px-0.5', 'list-none']}>
-            {allArticles.slice(0, 3).map(article => (
-              <li
-                class:list={['m-0 p-0', 'flex gap-2 items-center', 'text-sm']}
-              >
-                <span class:list={['whitespace-nowrap']}>{article.name}</span>
-                {article.subtitle && (
-                  <span
-                    class:list={[
-                      'text-neutral-500 dark:text-neutral-400',
-                      'truncate',
-                    ]}
-                  >
-                    {article.subtitle}
-                  </span>
-                )}
-                <Spacer />
-                <date
-                  class:list={[
-                    'text-neutral-500 dark:text-neutral-400',
-                    'whitespace-nowrap',
-                  ]}
-                >
-                  {dayjs(article.date.created).fromNow()}
-                </date>
-              </li>
-            ))}
-          </ul>
-        </Fragment>
-      )
-    }
   </a>
 </li>
