@@ -1,8 +1,7 @@
 ---
-import Spacer from '@components/ui/Spacer.astro'
-import { Image } from 'astro:assets'
 import dayjs from 'dayjs'
 import type { Moment } from 'src/content'
+import ImageCard from '../story/ImageCard.astro'
 
 interface Props {
   moment: Moment
@@ -13,63 +12,13 @@ const { moment, class: className } = Astro.props
 ---
 
 <li class:list={['w-full', 'mb-4', 'list-none']}>
-  <a
+  <ImageCard
     href={`/moments/${dayjs(moment.date).format('YYYY-MM-DD')}`}
-    class:list={[
-      'group relative z-1 hover:z-10',
-      'w-full',
-      'flex flex-col gap-4',
-      'text-neutral-950 dark:text-neutral-100',
-      'bg-white dark:bg-neutral-850',
-      'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
-      'no-underline',
-      'rounded-2xl',
-      'overflow-hidden',
-      'transition-all',
-    ]}
-  >
-    <Image
-      src={moment.path}
-      alt={moment.name}
-      loading="lazy"
-      layout="full-width"
-      class:list={[
-        'w-full h-auto',
-        'text-sm text-white dark:text-neutral-850 leading-12',
-        'bg-white dark:bg-neutral-850',
-        'scale-100 group-hover:scale-105',
-        'object-cover',
-        'transition-transform duration-250',
-        'animate-fade-in',
-        className,
-      ]}
-    />
-
-    <div
-      class:list={[
-        'absolute bottom-0 left-0',
-        'w-full',
-        'px-4 py-3',
-        'flex flex-row items-center gap-2',
-        'text-neutral-100',
-        'whitespace-nowrap',
-      ]}
-    >
-      <h2 class:list={['m-0', 'font-bold text-sm', 'drop-shadow-lg/50']}>
-        {moment.name}
-      </h2>
-      <Spacer />
-      <date
-        class:list={[
-          'm-0 p-0',
-          'text-sm',
-          'break-all md:break-word',
-          'drop-shadow-lg/50',
-          'truncate',
-        ]}
-      >
-        {dayjs(moment.date).format('YYYY 年 MM 月 DD 日')}
-      </date>
-    </div>
-  </a>
+    cover={{
+      path: moment.path,
+      description: moment.name,
+    }}
+    name={moment.name}
+    code={dayjs(moment.date).format('YYYY 年 MM 月 DD 日')}
+  />
 </li>
