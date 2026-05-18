@@ -3,6 +3,8 @@ import Main from '@components/layout/Main.astro'
 import ArticleCard from '@components/notebook/article/ArticleCard.astro'
 import Layout from '@components/notebook/Layout.astro'
 import Link from '@components/ui/Link.astro'
+import Spacer from '@components/ui/Spacer.astro'
+import { groupArticlesByYear } from '@libs/utils'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
@@ -17,42 +19,84 @@ const filteredArticles = articles
 
 const pinnedArticles = filteredArticles.filter(article => article.pinned)
 const unpinnedArticles = filteredArticles.filter(article => !article.pinned)
-const allArticles = [...pinnedArticles, ...unpinnedArticles].slice(0, 3)
+
+const groupedArticles = groupArticlesByYear(filteredArticles)
+const allArticles = [
+  {
+    year: '近期',
+    articles: [...pinnedArticles, ...unpinnedArticles].slice(0, 3),
+  },
+  ...groupedArticles,
+  {
+    year: '所有',
+    articles: [...pinnedArticles, ...unpinnedArticles],
+  },
+]
 ---
 
 <Layout>
-  <Main class:list={['relative', 'p-4 sm:px-6 sm:py-4']}>
-    <ul
-      class:list={[
-        'z-1',
-        'w-full max-w-160',
-        'mx-auto my-0 p-0',
-        'flex flex-col gap-4',
-      ]}
-    >
-      {allArticles.map(article => <ArticleCard article={article} />)}
-      <li
-        class:list={[
-          'flex flex-col justify-center items-center gap-1',
-          'px-4 pt-6 pb-3',
-          'text-sm text-center text-neutral-500 dark:text-neutral-400',
-          'list-none',
-        ]}
-      >
-        <span>
-          前往
-          <Link href="/stories" name="专题" class="text-sm" />
-          或
-          <Link href="/archives" name="存档" class="text-sm" />
-          查看更多文章
-        </span>
+  <Main class:list={['relative', 'p-4 sm:px-6 sm:py-4', 'gap-4']}>
+    <div class:list={['w-full max-w-160', 'mx-auto', 'flex flex-wrap gap-2']}>
+      {
+        allArticles.map((item, index) => (
+          <Fragment>
+            {index === allArticles.length - 1 && <Spacer />}
+            <a
+              href={`#${item.year}`}
+              class:list={[
+                'px-4 py-2',
+                'bg-white dark:bg-neutral-850',
+                'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
+                'no-underline',
+                'text-neutral-950 dark:text-neutral-100 text-sm font-medium whitespace-nowrap',
+                'rounded-full',
+              ]}
+            >
+              {item.year}
+            </a>
+          </Fragment>
+        ))
+      }
+    </div>
+    {
+      allArticles.map(item => (
+        <ul
+          id={`${item.year}`}
+          class:list={[
+            'hidden target:flex',
+            'z-1',
+            'w-full max-w-160',
+            'mx-auto my-0 p-0',
+            'flex-col gap-4',
+          ]}
+        >
+          {item.articles.map(article => (
+            <ArticleCard article={article} />
+          ))}
+          <li
+            class:list={[
+              'flex flex-col justify-center items-center gap-1',
+              'px-4 pt-6 pb-3',
+              'text-sm text-center text-neutral-500 dark:text-neutral-400',
+              'list-none',
+            ]}
+          >
+            <span>
+              前往
+              <Link href="/stories" name="专题" class="text-sm" />
+              或
+              <Link href="/archives" name="存档" class="text-sm" />
+              查看更多文章
+            </span>
 
-        <Icon
-          aria-hidden="true"
-          name="ri:infinity-line"
-          class:list={['w-4 h-4']}
-        />
-      </li>
-    </ul>
+            <Icon
+              aria-hidden="true"
+              name="ri:infinity-line"
+              class:list={['w-4 h-4']}
+            />
+          </li>
+        </ul>
+      ))
+    }
   </Main>
 </Layout>

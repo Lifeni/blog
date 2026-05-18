@@ -53,7 +53,7 @@ const allArticles = [...storyArticles, ...storyArchives]
     ]}
   >
     <section class:list={['flex flex-col gap-1']}>
-      <div class:list={['w-full', 'flex items-center gap-2']}>
+      <div class:list={['w-full', 'flex items-center gap-1.5']}>
         <h2
           class:list={[
             'flex items-center gap-1.5',
@@ -61,7 +61,7 @@ const allArticles = [...storyArticles, ...storyArchives]
             'font-bold text-base',
           ]}
         >
-          <Icon name="ri:hashtag" class:list={['w-5 h-5']} />
+          <Icon name="ri:hashtag" class:list={['w-4.5 h-4.5']} />
           <span>{story.name}</span>
         </h2>
         <Spacer />
@@ -77,7 +77,7 @@ const allArticles = [...storyArticles, ...storyArchives]
         </code>
       </div>
     </section>
-    <div class:list={['mb-0.5', 'flex']}>
+    <div class:list={['flex']}>
       <Image
         src={story.cover.path}
         alt={story.cover.description}
@@ -99,7 +99,11 @@ const allArticles = [...storyArticles, ...storyArchives]
     {
       allArticles.length > 0 ? (
         <ul
-          class:list={['flex flex-1 flex-col gap-1.5', 'px-0.5', 'list-none']}
+          class:list={[
+            'flex flex-1 flex-col gap-1.5',
+            'px-0.5 py-0.5',
+            'list-none',
+          ]}
         >
           {allArticles.slice(0, 3).map(article => (
             <li class:list={['m-0 p-0', 'flex gap-2 items-center', 'text-sm']}>
@@ -129,7 +133,7 @@ const allArticles = [...storyArticles, ...storyArchives]
       ) : (
         <div
           class:list={[
-            'p-2',
+            'px-2 py-2.5',
             'flex flex-1 flex-col items-center justify-center gap-2',
             'text-sm text-neutral-500 dark:text-neutral-400',
           ]}
@@ -139,17 +143,5 @@ const allArticles = [...storyArticles, ...storyArchives]
         </div>
       )
     }
-
-    <Divider />
-    <section class:list={['flex flex-col gap-1']}>
-      <span
-        class:list={[
-          'text-sm text-neutral-500 dark:text-neutral-400',
-          'truncate',
-        ]}
-      >
-        {story.description}
-      </span>
-    </section>
   </a>
 </li>
