@@ -1,7 +1,7 @@
 ---
-import Main from '@components/layout/Main.astro'
+import PageInfo from '@components/notebook/article/PageInfo.astro'
 import Layout from '@components/notebook/Layout.astro'
-import MomentCard from '@components/notebook/moment/MomentCard.astro'
+import MomentLink from '@components/notebook/moment/MomentLink.astro'
 import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
 
@@ -9,20 +9,31 @@ const moments = await getCollection('时刻')
 ---
 
 <Layout name="时刻">
-  <Main class:list={['p-4 sm:px-6 sm:py-4']}>
-    <ul
-      class:list={[
-        'w-full max-w-480',
-        'mx-auto my-0 p-0',
-        'columns-auto columns-xs',
-      ]}
-    >
-      {
-        moments
-          .map(moment => moment.data)
-          .sort((a, b) => dayjs(b.date).unix() - dayjs(a.date).unix())
-          .map(moment => <MomentCard moment={moment} />)
-      }
-    </ul>
-  </Main>
+  <ul
+    class:list={[
+      'w-full max-w-480',
+      'mx-auto -mb-4 mt-0 p-0',
+      'columns-auto columns-xs',
+    ]}
+  >
+    {
+      moments
+        .map(moment => moment.data)
+        .sort((a, b) => dayjs(b.date).unix() - dayjs(a.date).unix())
+        .map(moment => (
+          <li class:list={['w-full', 'mb-4', 'list-none']}>
+            <MomentLink
+              href={`/moments/${dayjs(moment.date).format('YYYY-MM-DD')}`}
+              cover={{
+                path: moment.path,
+                description: moment.name,
+              }}
+              name={moment.name}
+              code={dayjs(moment.date).format('YYYY 年 MM 月 DD 日')}
+            />
+          </li>
+        ))
+    }
+  </ul>
+  <PageInfo slot="[+]" text="所有时刻" code={moments.length} />
 </Layout>

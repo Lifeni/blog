@@ -13,7 +13,9 @@ const props = Astro.props
     'overflow-x-auto',
   ]}
 >
-  <pre {...props}><slot /></pre>
+  <pre {...props}>
+    <slot />
+  </pre>
 </div>
 
 <style>

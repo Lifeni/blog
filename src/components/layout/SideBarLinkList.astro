@@ -1,0 +1,124 @@
+---
+import Spacer from '@components/ui/Spacer.astro'
+import { Icon } from 'astro-icon/components'
+
+type SideBarLinkListItem = {
+  name: string
+  href: string
+  avatar: string
+}
+
+interface Props {
+  name: string
+  items: SideBarLinkListItem[]
+}
+
+const { name, items } = Astro.props
+---
+
+<details open class:list={['group flex flex-col items-start gap-3']}>
+  <summary
+    class:list={[
+      'w-full',
+      'flex items-center justify-between gap-2',
+      'text-neutral-500 dark:text-neutral-400',
+      'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
+      'rounded-md',
+      'cursor-pointer pointer-events-none',
+      'transition-all',
+    ]}
+  >
+    <code
+      class:list={[
+        'flex items-center justify-center',
+        'px-1.5 py-0.5',
+        'bg-neutral-100 dark:bg-neutral-800',
+        'text-xs font-bold font-mono',
+        'rounded-full',
+      ]}
+    >
+      {items.length}
+    </code>
+    <h2 class:list={['m-0 p-0', 'text-sm font-medium']}>{name}</h2>
+    <Spacer />
+    <span class:list={['flex', 'p-1', 'rounded-full', 'pointer-events-auto']}>
+      <Icon
+        aria-label="折叠或展开列表"
+        name={'ri:arrow-left-s-line'}
+        class:list={[
+          'w-4 h-4',
+          'transform rotate-0 group-open:-rotate-90',
+          'transition-transform',
+        ]}
+      />
+    </span>
+  </summary>
+  <ul
+    class:list={[
+      'w-full max-h-0 group-open:max-h-48',
+      'm-0 p-0',
+      'grid grid-cols-4',
+    ]}
+  >
+    {
+      items.map(item => (
+        <li class:list={['list-none']}>
+          <a
+            aria-label={item.name}
+            href={item.href}
+            target={item.href.startsWith('http') ? '_blank' : '_self'}
+            rel={
+              item.href.startsWith('http') ? 'nofollow noopener noreferrer' : ''
+            }
+            title={item.name}
+            class:list={[
+              'w-full h-auto',
+              'p-1',
+              'flex flex-col items-center gap-1',
+              'bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-850',
+              'text-neutral-500 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-400',
+              'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
+              'rounded-md',
+              'no-underline',
+              'transition-colors',
+            ]}
+          >
+            <span
+              class:list={[
+                'relative',
+                'px-1.75 py-1.5',
+                'flex flex-col',
+                'rounded-full',
+              ]}
+            >
+              <img
+                src={item.avatar}
+                alt={item.name}
+                loading="lazy"
+                class:list={[
+                  'w-full h-auto',
+                  'text-sm text-neutral-500 dark:text-neutral-400',
+                  'bg-neutral-100 dark:bg-neutral-900',
+                  'shadow-lg hover:shadow-xl',
+                  'rounded-full',
+                  'transition-shadow',
+                  'animate-fade-in',
+                ]}
+              />
+            </span>
+            <span
+              class:list={[
+                'w-full',
+                'px-1 pb-1',
+                'text-xs text-center',
+                'truncate',
+              ]}
+            >
+              {item.name}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</details>

@@ -20,7 +20,7 @@ const { name, code, href, cover, class: className } = Astro.props
   href={href}
   class:list={[
     'group relative z-1 hover:z-10',
-    'w-full h-fit',
+    'w-full h-fit max-h-full',
     'flex flex-col gap-4',
     'text-neutral-950 dark:text-neutral-100',
     'bg-white dark:bg-neutral-850',
@@ -47,22 +47,35 @@ const { name, code, href, cover, class: className } = Astro.props
       className,
     ]}
   />
-  {
-    name && (
-      <div
-        class:list={[
-          'absolute bottom-0 left-0',
-          'w-full',
-          'px-4 py-3',
-          'flex flex-row items-center gap-2',
-          'text-neutral-100',
-          'whitespace-nowrap',
-        ]}
-      >
-        <h2 class:list={['m-0', 'font-bold text-sm', 'drop-shadow-lg/50']}>
+
+  <div
+    class:list={[
+      'absolute bottom-0 left-0',
+      'w-full',
+      'px-4 py-3',
+      'flex flex-row items-center gap-2',
+      'text-neutral-100',
+      'whitespace-nowrap',
+    ]}
+  >
+    {
+      name && (
+        <h2
+          class:list={[
+            'm-0',
+            'font-bold text-sm',
+            'truncate',
+            'drop-shadow-lg/50',
+          ]}
+        >
           {name}
         </h2>
-        <Spacer />
+      )
+    }
+
+    <Spacer />
+    {
+      code && (
         <span
           class:list={[
             'm-0 p-0',
@@ -74,7 +87,7 @@ const { name, code, href, cover, class: className } = Astro.props
         >
           {code}
         </span>
-      </div>
-    )
-  }
+      )
+    }
+  </div>
 </a>

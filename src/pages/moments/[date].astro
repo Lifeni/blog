@@ -1,8 +1,8 @@
 ---
-import Main from '@components/layout/Main.astro'
+import PageInfo from '@components/notebook/article/PageInfo.astro'
 import Layout from '@components/notebook/Layout.astro'
-import MomentCard from '@components/notebook/moment/MomentCard.astro'
-import MomentViewer from '@components/notebook/moment/MomentViewer.astro'
+import MomentLink from '@components/notebook/moment/MomentLink.astro'
+import MomentPhoto from '@components/notebook/moment/MomentPhoto.astro'
 import { Icon } from 'astro-icon/components'
 import { getCollection, render } from 'astro:content'
 import dayjs from 'dayjs'
@@ -33,59 +33,65 @@ const yearMoments = moments
   name={dayjs(moment.data.date).format('YYYY-MM-DD')}
   description={`${moment.data.name}，${moment.data.location}`}
 >
-  <Main class:list={['sm:px-6 sm:py-4']}>
-    <MomentViewer {...moment.data} />
+  <MomentPhoto {...moment.data} />
+  <section class:list={['w-full', 'mx-auto px-0', 'flex flex-col gap-4']}>
+    <div
+      class:list={[
+        'flex flex-col justify-center items-center gap-1',
+        'px-4 py-2',
+        'text-sm text-center text-neutral-500 dark:text-neutral-400',
+      ]}
+    >
+      <span class:list={['flex', 'whitespace-nowrap']}>
+        {
+          yearMoments.length > 0 ? (
+            <Fragment>
+              {dayjs(moment.data.date).year()} 年还有 {yearMoments.length}
+              个时刻
+            </Fragment>
+          ) : (
+            <Fragment>
+              没有更多 {dayjs(moment.data.date).year()} 年的时刻
+            </Fragment>
+          )
+        }
+      </span>
+      <Icon
+        aria-hidden="true"
+        name={yearMoments.length > 0
+          ? 'ri:arrow-down-double-line'
+          : 'ri:camera-4-line'}
+        class:list={['w-4 h-4']}
+      />
+    </div>
 
-    <section class:list={['w-full', 'mx-auto px-4 sm:px-0', 'flex flex-col']}>
-      <div
-        class:list={[
-          'flex flex-col justify-center items-center gap-1',
-          'px-4 py-6',
-          'text-sm text-center text-neutral-500 dark:text-neutral-400',
-        ]}
-      >
-        <span class:list={['flex', 'whitespace-nowrap']}>
-          {
-            yearMoments.length > 0 ? (
-              <Fragment>
-                {dayjs(moment.data.date).year()} 年还有 {yearMoments.length}
-                个时刻
-              </Fragment>
-            ) : (
-              <Fragment>
-                没有更多 {dayjs(moment.data.date).year()} 年的时刻
-              </Fragment>
-            )
-          }
-        </span>
-        <Icon
-          aria-hidden="true"
-          name={yearMoments.length > 0
-            ? 'ri:arrow-down-double-line'
-            : 'ri:camera-4-line'}
-          class:list={['w-4 h-4']}
-        />
-      </div>
-
-      {
-        yearMoments.length > 0 && (
-          <ul
-            class:list={[
-              'w-auto max-w-full',
-              'mx-auto my-0 p-0',
-              'flex items-center gap-4',
-              'overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
-            ]}
-          >
-            {yearMoments.map(moment => (
-              <MomentCard
-                moment={moment}
+    {
+      yearMoments.length > 0 && (
+        <ul
+          class:list={[
+            'w-auto max-w-full',
+            'mx-auto my-0 p-0',
+            'flex items-center gap-4',
+            'overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          ]}
+        >
+          {yearMoments.map(moment => (
+            <li class:list={['w-full', 'list-none']}>
+              <MomentLink
+                href={`/moments/${dayjs(moment.date).format('YYYY-MM-DD')}`}
+                cover={{
+                  path: moment.path,
+                  description: moment.name,
+                }}
+                name={moment.name}
+                code={dayjs(moment.date).format('YYYY 年 MM 月 DD 日')}
                 class:list={['!w-auto !h-60 sm:!h-72']}
               />
-            ))}
-          </ul>
-        )
-      }
-    </section>
-  </Main>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+  <PageInfo slot="[+]" text={`「 ${moment.data.name} 」`} />
 </Layout>

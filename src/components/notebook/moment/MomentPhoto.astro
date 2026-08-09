@@ -14,8 +14,10 @@ const isLandscape = path.width > path.height
 <article
   class:list={[
     'relative',
-    isLandscape ? 'w-fit' : 'w-full max-w-160',
-    'mx-auto p-4',
+    isLandscape
+      ? 'w-[calc(100%+(--spacing(8)))] sm:w-fit'
+      : 'w-[calc(100%+(--spacing(8)))] sm:w-full max-w-144',
+    '-mx-4 sm:mx-auto p-4',
     'flex flex-col gap-4',
     'bg-white dark:bg-neutral-850',
     'rounded-4xl sm:rounded-2xl',
@@ -40,7 +42,7 @@ const isLandscape = path.width > path.height
       class:list={[
         'medium-zoom',
         isLandscape
-          ? 'w-fit max-w-full h-full max-h-[calc(100dvh-(--spacing(62)))] md:min-h-120'
+          ? 'w-fit max-w-full h-full max-h-[calc(100dvh-(--spacing(44)))] md:min-h-120'
           : 'w-full h-auto',
         'text-sm text-neutral-100 dark:text-neutral-900 leading-12',
         'bg-neutral-100 dark:bg-neutral-900',
@@ -50,54 +52,21 @@ const isLandscape = path.width > path.height
   <section
     class:list={[
       'w-full',
-      'px-4 py-1',
-      'flex items-center justify-between gap-x-8 gap-y-1 flex-wrap',
+      'px-3 py-0.5',
+      'flex items-center justify-between gap-x-3 gap-y-1 flex-wrap',
       'text-sm truncate text-neutral-500 dark:text-neutral-400',
     ]}
   >
     <div class:list={['flex items-center gap-x-3 gap-y-1 flex-wrap']}>
-      <time>
+      <time class:list={['font-bold']}>
         {dayjs(date).format('YYYY 年 MM 月 DD 日')}
       </time>
       <Divider orientation="vertical" class:list={['h-3.5']} />
       <span>{location}</span>
     </div>
 
-    <div class:list={['flex items-center gap-x-3 gap-y-1 flex-wrap']}>
-      <span>{camera}</span>
-
-      {
-        exif.map(item => (
-          <Fragment>
-            <Divider orientation="vertical" class:list={['h-3.5']} />
-            <span>{item}</span>
-          </Fragment>
-        ))
-      }
-
-      {
-        edited && (
-          <Fragment>
-            <Divider orientation="vertical" class:list={['h-3.5']} />
-            <span
-              title="图片已进行裁剪、调色或 AI 优化，参数可能不准确"
-              class:list={[
-                'flex items-center gap-1',
-                'hover:text-neutral-600 dark:hover:text-neutral-300',
-                'transition-colors',
-                'cursor-help',
-              ]}
-            >
-              <span>已编辑</span>
-              <Icon
-                aria-hidden="true"
-                name="ri:question-fill"
-                class:list={['w-4 h-4', 'mb-0.25']}
-              />
-            </span>
-          </Fragment>
-        )
-      }
+    <div class:list={['flex items-center gap-x-2 gap-y-1']}>
+      由 <span class:list={['font-bold']}>{camera}</span> 拍摄
     </div>
   </section>
 </article>

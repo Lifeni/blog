@@ -1,0 +1,53 @@
+---
+import type { NavBarLinkProps } from '@components/layout/NavBarLink.astro'
+import NavBarLink from '@components/layout/NavBarLink.astro'
+
+type NavBarItems = Partial<Record<'<--' | '>-<' | '-->', NavBarLinkProps[]>>
+
+interface Props {
+  position: '<--' | '-->'
+  items?: NavBarItems
+}
+
+const { position = '<--', items } = Astro.props
+const slots = ['<--', '>-<', '-->'] as const
+---
+
+<nav
+  class:list={[
+    position === '<--'
+      ? 'relative sm:fixed sm:top-0 sm:left-0 z-20'
+      : 'fixed bottom-0 right-0 z-10',
+    position === '<--'
+      ? 'w-screen h-auto sm:w-auto sm:h-screen'
+      : 'w-screen max-w-[calc(100%-(--spacing(6)))] h-auto sm:w-auto sm:h-screen',
+    position === '<--'
+      ? 'px-6 py-4 sm:px-3 sm:py-6'
+      : 'm-3 p-3 sm:m-0 sm:px-3 sm:py-6',
+    'flex flex-row sm:flex-col items-center justify-between gap-1',
+    position === '-->'
+      ? 'rounded-full bg-white dark:bg-neutral-800 shadow-2xl/20 sm:rounded-none sm:bg-transparent sm:dark:bg-transparent sm:shadow-none'
+      : '',
+  ]}
+>
+  {
+    slots.map(slot => (
+      <section
+        class:list={[
+          'flex flex-row sm:flex-col items-center justify-center gap-1',
+        ]}
+      >
+        <slot name={slot}>
+          {items?.[slot]?.map(item => (
+            <NavBarLink
+              name={item.name}
+              href={item.href}
+              icon={item.icon}
+              isActive={item.isActive}
+            />
+          ))}
+        </slot>
+      </section>
+    ))
+  }
+</nav>

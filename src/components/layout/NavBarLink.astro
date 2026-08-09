@@ -1,14 +1,15 @@
 ---
 import { Icon } from 'astro-icon/components'
 
-interface Props {
-  name?: string
+export type NavBarLinkProps = {
+  name: string
+  icon: string | string[]
   href?: string
-  icon: string
-  active?: boolean
+  isActive?: boolean
 }
 
-const { name, href, icon, active } = Astro.props
+interface Props extends NavBarLinkProps {}
+const { name, href, icon, isActive } = Astro.props
 
 const Element = href ? 'a' : 'button'
 ---
@@ -23,8 +24,8 @@ const Element = href ? 'a' : 'button'
     : ''}
   title={name}
   class:list={[
-    'group flex items-center justify-center',
-    'px-3.5 py-2 gap-2.5',
+    'group flex items-center justify-center gap-2.5',
+    'p-3',
     'border-none',
     'bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-850',
     'whitespace-nowrap',
@@ -32,12 +33,16 @@ const Element = href ? 'a' : 'button'
     'rounded-full',
     'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
     'transition-all',
-    active
+    isActive
       ? 'text-neutral-950 dark:text-neutral-100'
       : 'text-neutral-300 dark:text-neutral-500 hover:text-neutral-500 dark:hover:text-neutral-300',
   ]}
 >
-  {icon && <Icon aria-label={name} name={icon} class:list={['w-5 h-5']} />}
+  <Icon
+    aria-label={name}
+    name={Array.isArray(icon) ? (isActive ? icon[1] : icon[0]) : icon}
+    class:list={['w-5 h-5']}
+  />
   <span class:list={['sr-only', 'text-neutral-950 dark:text-neutral-100']}>
     {name}
   </span>

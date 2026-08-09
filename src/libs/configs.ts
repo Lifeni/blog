@@ -1,41 +1,55 @@
 export const pages = [
   {
-    name: '文章',
+    name: '主页',
     href: '/',
-    icons: ['ri:book-fill', 'ri:book-open-fill'],
+    icon: ['ri:book-fill', 'ri:book-open-fill'],
     id: 'articles',
   },
   {
     name: '专题',
     href: '/stories',
-    icons: ['ri:chat-3-fill', 'ri:chat-thread-fill'],
+    icon: ['ri:chat-3-fill', 'ri:chat-thread-fill'],
     id: 'stories',
   },
   {
     name: '存档',
     href: '/archives',
-    icons: ['ri:folder-3-fill', 'ri:folder-open-fill'],
+    icon: ['ri:folder-3-fill', 'ri:folder-open-fill'],
     id: 'archives',
   },
   {
     name: '时刻',
     href: '/moments',
-    icons: ['ri:camera-fill', 'ri:film-fill'],
+    icon: ['ri:camera-fill', 'ri:film-fill'],
     id: 'moments',
   },
 ]
 
+export const travellings = {
+  name: '开往',
+  icon: 'ri:subway-fill',
+  href: 'https://www.travellings.cn/go.html',
+}
+
+export const up = {
+  name: 'UP!',
+  href: '#↑',
+  icon: 'ri:triangle-fill',
+}
+
+export const github = {
+  name: 'GitHub',
+  icon: 'ri:github-fill',
+  href: 'https://github.com/Lifeni',
+}
+
 export const shortcuts = [
   {
     name: '开往',
-    icon: 'ri:triangle-fill',
+    icon: 'ri:planet-fill',
     href: 'https://www.travellings.cn/go.html',
   },
-  {
-    name: 'GitHub',
-    icon: 'ri:profile-fill',
-    href: 'https://github.com/Lifeni',
-  },
+
   {
     name: '邮箱',
     icon: 'ri:mail-fill',

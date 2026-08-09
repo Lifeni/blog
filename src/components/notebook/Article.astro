@@ -1,0 +1,306 @@
+---
+import TableOfContents from '@components/notebook/article/TableOfContents.astro'
+import Divider from '@components/ui/Divider.astro'
+import A from '@components/ui/markdown/A.astro'
+import Blockquote from '@components/ui/markdown/Blockquote.astro'
+import Code from '@components/ui/markdown/code/Code.astro'
+import Pre from '@components/ui/markdown/code/Pre.astro'
+import Em from '@components/ui/markdown/Em.astro'
+import H1 from '@components/ui/markdown/heading/H1.astro'
+import H2 from '@components/ui/markdown/heading/H2.astro'
+import H3 from '@components/ui/markdown/heading/H3.astro'
+import H4 from '@components/ui/markdown/heading/H4.astro'
+import H5 from '@components/ui/markdown/heading/H5.astro'
+import H6 from '@components/ui/markdown/heading/H6.astro'
+import Hr from '@components/ui/markdown/Hr.astro'
+import Li from '@components/ui/markdown/list/Li.astro'
+import Ol from '@components/ui/markdown/list/Ol.astro'
+import Ul from '@components/ui/markdown/list/Ul.astro'
+import Image from '@components/ui/markdown/media/Image.astro'
+import Img from '@components/ui/markdown/media/Img.astro'
+import Null from '@components/ui/markdown/Null.astro'
+import P from '@components/ui/markdown/P.astro'
+import Table from '@components/ui/markdown/table/Table.astro'
+import Tbody from '@components/ui/markdown/table/Tbody.astro'
+import Td from '@components/ui/markdown/table/Td.astro'
+import Tfoot from '@components/ui/markdown/table/Tfoot.astro'
+import Th from '@components/ui/markdown/table/Th.astro'
+import Thead from '@components/ui/markdown/table/Thead.astro'
+import Tr from '@components/ui/markdown/table/Tr.astro'
+import Spacer from '@components/ui/Spacer.astro'
+import type { MarkdownHeading } from 'astro'
+import { Icon } from 'astro-icon/components'
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import type { Article } from 'src/content'
+
+dayjs.extend(relativeTime)
+dayjs.locale('zh-cn')
+
+interface Props extends Article {
+  content: AstroComponentFactory
+  components?: Record<string, AstroComponentFactory>
+  headings?: MarkdownHeading[]
+  icon?: string
+  message?: string
+  layout?: 'article' | 'story'
+}
+
+const {
+  name,
+  subtitle,
+  description,
+  id,
+  date,
+  cover,
+  tags,
+  license,
+  content,
+  icon,
+  message,
+  components,
+  headings,
+  layout = 'article',
+} = Astro.props
+const Content = content
+
+const markdownReset = {
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
+  a: A,
+  p: P,
+  img: Image,
+  hr: Hr,
+  code: Code,
+  pre: Pre,
+  blockquote: Blockquote,
+  ul: Ul,
+  ol: Ol,
+  li: Li,
+  table: Table,
+  thead: Thead,
+  tbody: Tbody,
+  tfoot: Tfoot,
+  tr: Tr,
+  th: Th,
+  td: Td,
+  em: Em,
+  ...components,
+}
+---
+
+<article
+  class:list={[
+    'relative',
+    'w-full max-w-144',
+    'mx-auto',
+    'flex flex-col gap-4',
+  ]}
+>
+  <div
+    class:list={[
+      'w-full',
+      'px-8 pt-8 pb-6',
+      'bg-white dark:bg-neutral-850',
+      'rounded-4xl sm:rounded-2xl',
+    ]}
+  >
+
+  
+
+    <section
+     
+      class:list={[
+        'w-full',
+        '-mt-1',
+        'flex items-center gap-3',
+        'text-sm truncate text-neutral-500 dark:text-neutral-400 leading-[1.625]',
+      ]}
+    >
+      {
+        layout === 'article' ? (
+          <time>{dayjs(date.created).format('YYYY 年 MM 月 DD 日')}</time>
+        ) : (
+          <span class:list={['flex items-center gap-2']}>专题
+
+ <Divider orientation="vertical" class:list={['h-3.5']} />
+有 {} 篇文章
+          </span>
+        )
+      }
+
+     
+    </section>
+    <section
+      class:list={[
+        'relative',
+        'flex items-baseline gap-x-3 gap-y-0 flex-wrap',
+        'my-1 pr-24 pb-0.5',
+      ]}
+    >
+      {
+        icon && (
+          <Icon
+            aria-hidden="true"
+            name={icon}
+            class:list={[
+              'absolute -right-0 -top-6 z-0',
+              'w-18 h-18',
+              'text-neutral-100 dark:text-neutral-800',
+            ]}
+          />
+        )
+      }
+
+      <h1
+        id={id}
+        class:list={[
+          'z-1',
+          'm-0 p-0',
+          'text-pretty font-bold leading-[1.5] text-2xl',
+        ]}
+      >
+        {name}
+      </h1>
+      {
+        subtitle && (
+          <span
+            class:list={[
+              'z-1',
+              'font-medium leading-[1.5] text-xl text-neutral-500 dark:text-neutral-400',
+              'truncate',
+            ]}
+          >
+            {subtitle}
+          </span>
+        )
+      }
+    </section>
+
+    <section
+      class:list={[
+        'w-full',
+        'flex items-center gap-3',
+        'text-sm text-neutral-500 dark:text-neutral-400 leading-[1.625]',
+      ]}
+    >
+      <span>
+        {description}
+      </span>
+    </section>
+
+    {headings && <TableOfContents headings={headings} />}
+
+    <!-- 
+    {
+      layout === 'story' && (
+        <Content
+          components={{
+            ...markdownReset,
+            h1: Null,
+          }}
+        />
+      )
+    } -->
+    <!-- {
+      cover && (
+        <section  id="顶部" class:list={['-mx-4 my-8']}>
+          <WidgetImage src={cover.path} alt={cover.description} />
+        </section>
+      )
+    } -->
+        <span class:list={['flex', 'mt-8']} />
+    {
+      layout === 'article' && message ? (
+        <div
+          class:list={[
+            'w-calc[100%+2rem]',
+            '-mx-4 my-1 px-4 py-3 sm:py-2.5',
+            'flex items-center justify-center gap-2',
+            'text-sm text-black',
+            'bg-yellow-300 dark:bg-yellow-400',
+            'rounded-md',
+          ]}
+        >
+          <Icon
+            aria-label="提示"
+            name="ri:error-warning-fill"
+            class:list={['w-4 h-4']}
+          />
+          <span>{message}</span>
+        </div>
+      ) : (
+        <Divider />
+        // <Fragment />
+      )
+    }
+
+    <span class:list={['flex', 'mb-8']}></span>
+    <Content
+      components={{
+        ...markdownReset,
+        h1: Null,
+      }}
+    />
+    <span id="底部" class:list={['flex', 'mt-8']}></span>
+
+    <section
+      class:list={[
+        'w-full',
+        'py-1',
+        'flex items-center gap-3',
+        'text-sm truncate text-neutral-500 dark:text-neutral-400',
+      ]}
+    >
+      <time
+        title={`更新于 ${dayjs(date.updated).format('YYYY 年 MM 月 DD 日')}`}
+      >
+        更新于 {dayjs(date.updated).fromNow()}
+      </time>
+      <Spacer />
+      {tags.map(tag => <span>{tag}</span>)}
+      {
+        tags.length > 0 && (
+          <Divider orientation="vertical" class:list={['h-3.5']} />
+        )
+      }
+      <span>{license}</span>
+    </section>
+  </div>
+</article>
+
+<slot />
+
+<style>
+  @reference "tailwindcss";
+
+  article :global(.wrapper) {
+    @apply -mx-4 my-4;
+    width: calc(100% + 2rem);
+  }
+
+  article :global(iframe) {
+    @apply -mx-4 my-4 rounded-md;
+    width: calc(100% + 2rem);
+  }
+
+  article :global(li) :global(.wrapper),
+  article :global(details) :global(.wrapper),
+  article :global(blockquote) :global(.wrapper) {
+    @apply w-full mx-0 my-4;
+  }
+
+  article :global(details) {
+    @apply flex flex-col;
+  }
+
+  article :global(summary) {
+    @apply w-fit font-bold cursor-pointer;
+  }
+</style>

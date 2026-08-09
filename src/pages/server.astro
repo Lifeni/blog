@@ -1,14 +1,10 @@
 ---
-import Footer from '@components/layout/Footer.astro'
-import Header from '@components/layout/Header.astro'
-import Main from '@components/layout/Main.astro'
-import Root from '@components/ui/Root.astro'
+import Root from '@components/layout/Root.astro'
+import Placeholder from '@components/ui/Placeholder.astro'
 
-const error = {
-  code: 'Todo',
-  text: '越过长城',
-  warning: ['「越过长城」正在开发中', 'This page is under development'],
-}
+const code = 'Todo'
+const description = '越过长城'
+const warning = ['「越过长城」正在开发中', 'This page is under development']
 ---
 
 <Root
@@ -17,7 +13,5 @@ const error = {
   color="#40d583"
   favicon="/server/favicon.svg"
 >
-  <Header shortcut="Hello" />
-  <Main error={error} />
-  <Footer />
+  <Placeholder code={code} description={description} warning={warning} />
 </Root>

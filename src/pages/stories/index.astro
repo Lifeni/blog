@@ -1,7 +1,7 @@
 ---
-import Main from '@components/layout/Main.astro'
 import Layout from '@components/notebook/Layout.astro'
-import StoryCard from '@components/notebook/story/StoryCard.astro'
+import PageInfo from '@components/notebook/article/PageInfo.astro'
+import StoryLink from '@components/notebook/story/StoryLink.astro'
 import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
 
@@ -9,26 +9,28 @@ const stories = await getCollection('专题')
 ---
 
 <Layout name="专题">
-  <Main class:list={['relative', 'p-4 sm:px-6 sm:py-4']}>
-    <ul
-      class:list={[
-        'z-1',
-        'w-full max-w-160',
-        'mx-auto my-0 p-0',
-        'flex flex-col gap-4',
-        // 'grid grid-cols-1 sm:grid-cols-2 gap-4',
-      ]}
-    >
-      {
-        stories
-          .map(story => story.data)
-          .filter(story => import.meta.env.DEV || !story.draft)
-          .sort(
-            (a, b) =>
-              dayjs(b.date.updated).unix() - dayjs(a.date.updated).unix(),
-          )
-          .map(story => <StoryCard story={story} />)
-      }
-    </ul>
-  </Main>
+  <ul
+    class:list={[
+      'z-1',
+      'w-full max-w-144',
+      'mx-auto my-0 p-0',
+      'flex flex-col gap-4 flex-1 items-center justify-center',
+      'list-none',
+    ]}
+  >
+    {
+      stories
+        .map(story => story.data)
+        .filter(story => import.meta.env.DEV || !story.draft)
+        .sort(
+          (a, b) => dayjs(b.date.updated).unix() - dayjs(a.date.updated).unix(),
+        )
+        .map(story => (
+          <li class:list={['w-full', 'list-none']}>
+            <StoryLink story={story} />
+          </li>
+        ))
+    }
+  </ul>
+  <PageInfo slot="[+]" text="所有专题" code={stories.length} />
 </Layout>

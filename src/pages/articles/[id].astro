@@ -1,6 +1,6 @@
 ---
-import Main from '@components/layout/Main.astro'
-import ArticleMarkdown from '@components/notebook/article/ArticleMarkdown.astro'
+import ArticleContent from '@components/notebook/article/ArticleContent.astro'
+import TableOfContents from '@components/notebook/article/TableOfContents.astro'
 import Layout from '@components/notebook/Layout.astro'
 import { getCollection, render } from 'astro:content'
 
@@ -19,17 +19,16 @@ const { Content, headings } = await render(article)
 ---
 
 <Layout name={article.data.name} description={article.data.description}>
-  <Main class:list={['sm:px-6 sm:py-4']}>
-    <ArticleMarkdown
-      {...article.data}
-      id={headings[0].slug}
-      cover={article.data.cover && {
-        path: article.data.cover?.path,
-        description: article.data.cover?.description || '',
-      }}
-      content={Content}
-      icon="ri:book-open-fill"
-      headings={headings}
-    />
-  </Main>
+  <ArticleContent
+    {...article.data}
+    id={headings[0].slug}
+    cover={article.data.cover && {
+      path: article.data.cover?.path,
+      description: article.data.cover?.description || '',
+    }}
+    content={Content}
+    icon="ri:book-open-fill"
+    headings={headings}
+  />
+  {headings && <TableOfContents slot="[+]" headings={headings} />}
 </Layout>

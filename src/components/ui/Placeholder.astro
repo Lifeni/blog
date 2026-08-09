@@ -1,24 +1,63 @@
 ---
 interface Props {
   code: string | number
-  text: string
+  description: string
+  warning?: string[]
 }
-const { code, text } = Astro.props
+const { code, description, warning } = Astro.props
 ---
 
-<div
-  class:list={[
-    'flex-1 flex flex-col items-center justify-center gap-2',
-    'select-none',
-  ]}
->
-  <code class:list={['m-0', 'text-6xl font-mono font-bold']}>{code}</code>
-  <h1
+<div class:list={['flex flex-col items-center justify-center flex-1']}>
+  <div
     class:list={[
-      'm-0',
-      'text-xl text-neutral-500 dark:text-neutral-500 font-medium',
+      'flex-1 flex flex-col items-center justify-center gap-2',
+      'select-none',
     ]}
   >
-    {text}
-  </h1>
+    <code class:list={['m-0', 'text-6xl font-mono font-bold']}>{code}</code>
+    <h1
+      class:list={[
+        'm-0',
+        'text-xl text-neutral-500 dark:text-neutral-500 font-medium',
+      ]}
+    >
+      {description}
+    </h1>
+  </div>
+  {
+    warning && (
+      <div class:list={['fixed left-0 bottom-0 z-50', 'select-none']}>
+        <div
+          class:list={[
+            'w-screen h-2',
+            'bg-[repeating-linear-gradient(-60deg,#000000,#000000_0.5rem,#ffff00_0.5rem,#ffff00_1rem)]',
+          ]}
+        />
+        <div
+          class:list={[
+            'w-screen',
+            'py-2',
+            'flex items-center justify-center flex-nowrap gap-8',
+            'text-lg font-mono font-bold text-[#000000] uppercase',
+            'bg-[#ffff00]',
+            'whitespace-nowrap',
+          ]}
+        >
+          {Array.from({ length: 20 }).map(() => (
+            <Fragment>
+              {warning?.map(message => (
+                <span>{message}</span>
+              ))}
+            </Fragment>
+          ))}
+        </div>
+        <div
+          class:list={[
+            'w-screen h-2',
+            'bg-[repeating-linear-gradient(60deg,#000000,#000000_0.5rem,#ffff00_0.5rem,#ffff00_1rem)]',
+          ]}
+        />
+      </div>
+    )
+  }
 </div>

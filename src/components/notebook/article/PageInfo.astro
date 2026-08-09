@@ -1,0 +1,55 @@
+---
+interface Props {
+  text: string
+  code?: string | number
+  suffix?: string
+}
+
+const { text, code, suffix } = Astro.props
+---
+
+<div
+  class:list={[
+    'flex sm:flex-col items-center justify-center gap-2',
+    'text-neutral-500 dark:text-neutral-400 font-bold',
+    ,
+  ]}
+>
+  <span
+    class:list={[
+      'sm:writing-vertical',
+      'tracking-wider sm:tracking-[0.25rem]',
+      'truncate',
+    ]}
+  >
+    {text}
+  </span>
+  {
+    code && (
+      <code
+        class:list={[
+          'flex items-center justify-center',
+          'bg-neutral-100 dark:bg-neutral-750 sm:bg-neutral-200 sm:dark:bg-neutral-850',
+          'px-1.5 py-0.5',
+          'text-sm',
+          'rounded-full',
+        ]}
+      >
+        {code}
+      </code>
+    )
+  }
+  {
+    suffix && (
+      <span
+        class:list={[
+          'sm:writing-vertical',
+          'tracking-wider sm:tracking-[0.25rem]',
+          'truncate',
+        ]}
+      >
+        {suffix}
+      </span>
+    )
+  }
+</div>

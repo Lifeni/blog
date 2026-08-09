@@ -1,5 +1,6 @@
-import { defineCollection, z } from 'astro:content'
+import { defineCollection } from 'astro:content'
 import { glob } from 'astro/loaders'
+import { z } from 'astro/zod'
 
 const articles = defineCollection({
   loader: glob({
@@ -83,9 +84,7 @@ const moments = defineCollection({
       date: z.date(),
       camera: z.string(),
       location: z.string(),
-      exif: z.array(z.string()),
       path: image(),
-      edited: z.boolean().optional(),
     }),
 })
 

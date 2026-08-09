@@ -1,0 +1,104 @@
+---
+import Card from '@components/ui/Card.astro'
+import Divider from '@components/ui/Divider.astro'
+import Spacer from '@components/ui/Spacer.astro'
+import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import dayjs from 'dayjs'
+import type { Article } from 'src/content'
+
+interface Props {
+  article: Article
+  path?: 'articles' | 'archives'
+}
+
+const { article, path = 'articles' } = Astro.props
+---
+
+<Card
+  href={`/${path}/${article.id}`}
+  class:list={[
+    'group',
+    'relative z-1 hover:z-10',
+    'p-4',
+    'flex flex-col gap-4',
+    'overflow-hidden',
+  ]}
+>
+  {
+    article.cover && (
+      <Image
+        src={article.cover.path}
+        alt={article.cover.description}
+        title={article.cover.description}
+        loading="lazy"
+        layout="full-width"
+        class:list={[
+          'w-full h-auto',
+          'bg-neutral-200 dark:bg-neutral-900',
+          'rounded-md',
+          'aspect-17/12 sm:aspect-16/9 object-cover',
+          'animate-fade-in',
+        ]}
+      />
+    )
+  }
+
+  <div
+    class:list={['w-full', 'flex flex-col', 'px-1 py-0.5']}
+  >
+    <section class:list={['w-full', 'pb-0.5', 'flex items-baseline gap-3']}>
+      <h2 class:list={['m-0', 'font-bold leading-[1.5] text-lg']}>
+        {article.name}
+      </h2>
+      {
+        article.subtitle && (
+          <span
+            class:list={[
+              'font-medium leading-[1.5] text-base text-neutral-500 dark:text-neutral-400',
+              'truncate',
+            ]}
+          >
+            {article.subtitle}
+          </span>
+        )
+      }
+    </section>
+
+    <p
+      class:list={[
+        'w-full',
+        'm-0',
+        'text-sm text-justify leading-[1.625]',
+        'truncate',
+      ]}
+    >
+      {article.description}
+    </p>
+
+    <section
+      class:list={[
+        'w-full',
+        'pt-0.5',
+        'flex items-center gap-3',
+        'text-sm truncate text-neutral-500 dark:text-neutral-400 leading-[1.625]',
+      ]}
+    >
+      <time>
+        {dayjs(article.date.created).format('YYYY 年 MM 月 DD 日')}
+      </time>
+      {
+        article.tags.length > 0 && (
+          <Divider orientation="vertical" class:list={['h-3.5']} />
+        )
+      }
+      {article.tags.map(tag => <span>{tag}</span>)}
+      <Spacer />
+      <Icon
+        aria-label={article.pinned ? '已置顶' : '查看详情'}
+        name={article.pinned ? 'ri:pushpin-2-line' : 'ri:arrow-right-line'}
+        class:list={['w-4 h-4', 'group-hover:rotate-45 transition-transform']}
+      />
+    </section>
+  </div>
+</Card>

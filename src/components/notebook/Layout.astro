@@ -1,28 +1,97 @@
 ---
 import Footer from '@components/layout/Footer.astro'
-import Header from '@components/layout/Header.astro'
-import Root from '@components/ui/Root.astro'
-import { pages } from '@libs/configs'
+import NavBar from '@components/layout/NavBar.astro'
+import NavBarLink from '@components/layout/NavBarLink.astro'
+import Root from '@components/layout/Root.astro'
+import SideBar from '@components/layout/SideBar.astro'
+import SideBarLinkList from '@components/layout/SideBarLinkList.astro'
+import SearchBar from '@components/notebook/widget/SearchBar.astro'
+import WeChatQRCode from '@components/notebook/widget/WeChatQRCode.astro'
+import Spacer from '@components/ui/Spacer.astro'
+import { apps, pages, travellings, up } from '@libs/configs'
 import 'medium-zoom/dist/style.css'
 
 interface Props {
   name?: string
   description?: string
+  class?: string
 }
 
-const { name, description } = Astro.props
+const currentPath = Astro.url.pathname
+const currentPage = currentPath === '/' ? '/articles' : currentPath
+
+const currentList = currentPath.startsWith('/archives')
+  ? '/archives'
+  : currentPath.startsWith('/stories')
+    ? '/stories'
+    : currentPath.startsWith('/moments')
+      ? '/moments'
+      : '/'
+const isActive = (id?: string) =>
+  id ? currentPage.startsWith(`/${id}`) : false
+
+const { name, description, class: className } = Astro.props
 ---
 
 <Root
   name={name ? `${name} - 记录干杯` : '记录干杯'}
   description={description ||
-    '个人网站「记录干杯」，在这里记录一些技术相关的文章、尝试一些新的技术。'}
+    '欢迎来到「记录干杯」，在这里记录下一些回忆，做点有趣的事。'}
   color="#feec44"
   favicon="/favicon.svg"
 >
-  <Header pages={pages} shortcut="开往" />
-  <slot />
-  <Footer />
+  <NavBar
+    position="<--"
+    items={{
+      '>-<': pages.map(page => ({
+        name: page.name,
+        href: page.href,
+        icon: page.icon,
+        isActive: isActive(page.id),
+      })),
+      '-->': [travellings],
+    }}
+  >
+    <SideBar slot="<--">
+      <NavBarLink slot="@" name="导航" icon="ri:function-fill" />
+      <div
+        slot="<#>"
+        class:list={['h-full', 'flex flex-col gap-4', 'px-4 pt-4']}
+      >
+        <SearchBar />
+        {
+          apps.map(link => (
+            <SideBarLinkList name={link.name} items={link.items} />
+          ))
+        }
+        <Spacer />
+        <div class:list={['pb-4']}>
+          <WeChatQRCode />
+        </div>
+      </div>
+    </SideBar>
+  </NavBar>
+  <main
+    class:list={[
+      'w-full',
+      'flex flex-col flex-1 items-center gap-4',
+      'px-4 sm:px-18 sm:py-4',
+      className,
+    ]}
+  >
+    <slot />
+  </main>
+  <Footer class:list={['mb-20 px-5.5 py-4 sm:mb-0 sm:px-20 sm:py-7']} />
+  <NavBar position="-->" items={{ '-->': [up] }}>
+    <NavBarLink
+      slot="<--"
+      name="返回"
+      href={currentList}
+      icon="ri:home-3-fill"
+    />
+
+    <slot slot=">-<" name="[+]" />
+  </NavBar>
 </Root>
 
 <script>

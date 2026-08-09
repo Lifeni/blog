@@ -1,8 +1,8 @@
 ---
-import Main from '@components/layout/Main.astro'
-import ArticleMarkdown from '@components/notebook/article/ArticleMarkdown.astro'
+import ArticleContent from '@components/notebook/article/ArticleContent.astro'
+import TableOfContents from '@components/notebook/article/TableOfContents.astro'
 import Layout from '@components/notebook/Layout.astro'
-import BaseImg from '@components/ui/markdown/block/BaseImg.astro'
+import Img from '@components/ui/markdown/media/Img.astro'
 import { frontmatterFormat } from '@libs/utils'
 import { getCollection, render } from 'astro:content'
 import dayjs from 'dayjs'
@@ -25,15 +25,14 @@ const { Content, headings } = await render(archive)
 ---
 
 <Layout name={archive.data.title} description={archive.data.description}>
-  <Main class:list={['sm:px-6 sm:py-4', 'gap-4']}>
-    <ArticleMarkdown
-      {...frontmatterFormat(archive.data)}
-      id={headings[0].slug}
-      content={Content}
-      message={`本文编写于 ${dayjs(archive.data.date).fromNow()}，内容可能过时，请注意甄别`}
-      icon="ri:folder-open-fill"
-      headings={headings}
-      components={{ img: BaseImg }}
-    />
-  </Main>
+  <ArticleContent
+    {...frontmatterFormat(archive.data)}
+    id={headings[0].slug}
+    content={Content}
+    message={`本文编写于 ${dayjs(archive.data.date).fromNow()}，内容可能过时`}
+    icon="ri:folder-open-fill"
+    headings={headings}
+    components={{ img: Img }}
+  />
+  {headings && <TableOfContents slot="[+]" headings={headings} />}
 </Layout>

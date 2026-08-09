@@ -1,0 +1,150 @@
+---
+import Card from '@components/ui/Card.astro'
+import { frontmatterFormat } from '@libs/utils'
+import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import type { Story } from 'src/content'
+
+dayjs.extend(relativeTime)
+dayjs.locale('zh-cn')
+
+interface Props {
+  story: Story
+}
+
+const { story } = Astro.props
+
+const articles = await getCollection('文章')
+const archives = await getCollection('存档')
+
+const storyArticles = articles
+  .filter(article => story.articles?.includes(article.data.id))
+  .map(article => article.data)
+
+const storyArchives = archives
+  .filter(archive => story.articles?.includes(archive.data.name))
+  .map(archive => frontmatterFormat(archive.data))
+
+const allArticles = [...storyArticles, ...storyArchives]
+  .filter(article => import.meta.env.DEV || !article.draft)
+  .sort((a, b) => dayjs(b.date.created).unix() - dayjs(a.date.created).unix())
+  .filter(article => article.cover)
+
+const showArticles = allArticles.slice(0, 4)
+---
+
+<Card
+  href={`/stories/${story.id}`}
+  class:list={['group flex flex-col gap-4', 'p-4']}
+>
+  <section class:list={['w-full', 'grid grid-cols-1 sm:grid-cols-2 gap-4']}>
+    <Image
+      src={story.cover.path}
+      alt={story.cover.description}
+      title={story.cover.description}
+      loading="lazy"
+      layout="full-width"
+      class:list={[
+        'w-full h-auto',
+        'bg-neutral-200 dark:bg-neutral-900',
+        'rounded-md',
+        'aspect-17/12 sm:aspect-1/1 object-cover',
+        'animate-fade-in',
+      ]}
+    />
+
+    <div class:list={['grid grid-cols-3 sm:grid-cols-2 gap-4']}>
+      {
+        showArticles.map(
+          (article, i) =>
+            article.cover && (
+              <Image
+                src={article.cover.path}
+                alt={article.cover.description}
+                title={article.cover.description}
+                loading="lazy"
+                layout="full-width"
+                class:list={[
+                  'w-full h-auto',
+                  'bg-neutral-100 dark:bg-neutral-800',
+                  'rounded-md',
+                  'aspect-17/12 sm:aspect-1/1 object-cover',
+                  'animate-fade-in',
+                  i === 3 ? 'hidden sm:block' : '',
+                ]}
+              />
+            ),
+        )
+      }
+      {
+        Array.from({ length: 4 - showArticles.length }).map((_, i) => (
+          <div
+            class:list={[
+              'bg-neutral-100 dark:bg-neutral-800',
+              'rounded-md',
+              'aspect-17/12 sm:aspect-1/1',
+              i === 0 ? 'hidden sm:block' : '',
+            ]}
+          />
+        ))
+      }
+    </div>
+  </section>
+  <section
+    class:list={['w-full', 'px-1', 'flex items-center justify-between gap-4']}
+  >
+    <h2
+      class:list={[
+        'm-0',
+        'font-bold leading-[1.5] text-sm',
+        'whitespace-nowrap',
+      ]}
+    >
+      # {story.name}
+    </h2>
+    <p
+      class:list={[
+        'w-full',
+        'm-0 p-0',
+        'text-sm leading-[1.5] text-justify',
+        'truncate',
+      ]}
+    >
+      {story.description}
+    </p>
+    <span
+      class:list={[
+        'm-0',
+        'text-sm leading-[1.5] text-neutral-500 dark:text-neutral-400',
+      ]}
+    >
+      ×{allArticles.length || 0}
+    </span>
+  </section>
+
+  <!-- <section
+    class:list={[
+      'w-full',
+      'px-1',
+      'flex items-center justify-between gap-4',
+      'text-sm leading-[1.5] text-justify text-neutral-500 dark:text-neutral-400',
+    ]}
+  >
+    <span class:list={['m-0', 'truncate']}>
+      {
+        showArticles.length > 0
+          ? `最新文章「${showArticles[0].name}」`
+          : `专题中还没有文章 ¯\\_(ツ)_/¯`
+      }
+    </span>
+    <Icon
+      aria-label="查看详情"
+      name="ri:arrow-right-line"
+      class:list={['w-4 h-4', 'group-hover:rotate-45 transition-transform']}
+    />
+  </section> -->
+</Card>

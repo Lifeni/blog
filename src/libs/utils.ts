@@ -57,3 +57,34 @@ export const findContents = async (id: string) => {
     ({ data }) => data.id === id,
   )
 }
+
+export const getReadingStats = (
+  content: string,
+): { wordCount: number; readingTime: number } => {
+  const cleanContent = content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/`[^`]+`/g, '')
+    .replace(/!\[.*?\]\(.*?\)/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/^[\s]*[-*+]\s/gm, '')
+    .replace(/^[\s]*\d+\.\s/gm, '')
+    .replace(/^>\s*/gm, '')
+    .replace(/^[-*_]{3,}$/gm, '')
+
+  const chineseCount = (cleanContent.match(/[\u4e00-\u9fa5]/g) || []).length
+  const englishWordCount = cleanContent
+    .replace(/[\u4e00-\u9fa5]/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(w => w).length
+
+  const wordCount = chineseCount + englishWordCount
+  const readingTime = Math.max(
+    1,
+    Math.ceil(chineseCount / 300 + englishWordCount / 200),
+  )
+
+  return { wordCount, readingTime }
+}

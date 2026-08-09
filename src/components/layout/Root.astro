@@ -2,9 +2,17 @@
 import '@fontsource-variable/fira-code'
 import '@fontsource-variable/inter'
 import '@libs/reset.css'
-
 import { ClientRouter } from 'astro:transitions'
-const { name, description, color, favicon } = Astro.props
+
+interface Props {
+  name: string
+  description: string
+  color: string
+  favicon: string
+  class?: string
+}
+
+const { name, description, color, favicon, class: className } = Astro.props
 ---
 
 <!doctype html>
@@ -28,7 +36,8 @@ const { name, description, color, favicon } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
   </head>
-  <body class:list={['min-h-screen', 'flex flex-col']}>
+  <body class:list={['relative', 'min-h-screen', 'flex flex-col', className]}>
+    <a id="↑" class="sr-only"></a>
     <slot />
   </body>
 </html>

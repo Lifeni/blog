@@ -1,32 +1,30 @@
 ---
-import ArticleTableOfContents from '@components/notebook/article/ArticleTableOfContents.astro'
-import WidgetImage from '@components/notebook/widget/WidgetImage.astro'
 import Divider from '@components/ui/Divider.astro'
-import Blockquote from '@components/ui/markdown/block/Blockquote.astro'
-import H1 from '@components/ui/markdown/block/heading/H1.astro'
-import H2 from '@components/ui/markdown/block/heading/H2.astro'
-import H3 from '@components/ui/markdown/block/heading/H3.astro'
-import H4 from '@components/ui/markdown/block/heading/H4.astro'
-import H5 from '@components/ui/markdown/block/heading/H5.astro'
-import H6 from '@components/ui/markdown/block/heading/H6.astro'
-import Hr from '@components/ui/markdown/block/Hr.astro'
-import Img from '@components/ui/markdown/block/Img.astro'
-import Li from '@components/ui/markdown/block/list/Li.astro'
-import Ol from '@components/ui/markdown/block/list/Ol.astro'
-import Ul from '@components/ui/markdown/block/list/Ul.astro'
-import P from '@components/ui/markdown/block/P.astro'
-import Pre from '@components/ui/markdown/block/Pre.astro'
-import Table from '@components/ui/markdown/block/table/Table.astro'
-import Tbody from '@components/ui/markdown/block/table/Tbody.astro'
-import Td from '@components/ui/markdown/block/table/Td.astro'
-import Tfoot from '@components/ui/markdown/block/table/Tfoot.astro'
-import Th from '@components/ui/markdown/block/table/Th.astro'
-import Thead from '@components/ui/markdown/block/table/Thead.astro'
-import Tr from '@components/ui/markdown/block/table/Tr.astro'
-import A from '@components/ui/markdown/inline/A.astro'
-import Code from '@components/ui/markdown/inline/Code.astro'
-import Em from '@components/ui/markdown/inline/Em.astro'
+import A from '@components/ui/markdown/A.astro'
+import Blockquote from '@components/ui/markdown/Blockquote.astro'
+import Code from '@components/ui/markdown/code/Code.astro'
+import Pre from '@components/ui/markdown/code/Pre.astro'
+import Em from '@components/ui/markdown/Em.astro'
+import H1 from '@components/ui/markdown/heading/H1.astro'
+import H2 from '@components/ui/markdown/heading/H2.astro'
+import H3 from '@components/ui/markdown/heading/H3.astro'
+import H4 from '@components/ui/markdown/heading/H4.astro'
+import H5 from '@components/ui/markdown/heading/H5.astro'
+import H6 from '@components/ui/markdown/heading/H6.astro'
+import Hr from '@components/ui/markdown/Hr.astro'
+import Li from '@components/ui/markdown/list/Li.astro'
+import Ol from '@components/ui/markdown/list/Ol.astro'
+import Ul from '@components/ui/markdown/list/Ul.astro'
+import Image from '@components/ui/markdown/media/Image.astro'
 import Null from '@components/ui/markdown/Null.astro'
+import P from '@components/ui/markdown/P.astro'
+import Table from '@components/ui/markdown/table/Table.astro'
+import Tbody from '@components/ui/markdown/table/Tbody.astro'
+import Td from '@components/ui/markdown/table/Td.astro'
+import Tfoot from '@components/ui/markdown/table/Tfoot.astro'
+import Th from '@components/ui/markdown/table/Th.astro'
+import Thead from '@components/ui/markdown/table/Thead.astro'
+import Tr from '@components/ui/markdown/table/Tr.astro'
 import Spacer from '@components/ui/Spacer.astro'
 import type { MarkdownHeading } from 'astro'
 import { Icon } from 'astro-icon/components'
@@ -45,11 +43,13 @@ interface Props extends Article {
   headings?: MarkdownHeading[]
   icon?: string
   message?: string
+  layout?: 'article' | 'story'
 }
 
 const {
   name,
   subtitle,
+  description,
   id,
   date,
   cover,
@@ -60,6 +60,7 @@ const {
   message,
   components,
   headings,
+  layout = 'article',
 } = Astro.props
 const Content = content
 
@@ -72,7 +73,7 @@ const markdownReset = {
   h6: H6,
   a: A,
   p: P,
-  img: Img,
+  img: Image,
   hr: Hr,
   code: Code,
   pre: Pre,
@@ -95,18 +96,17 @@ const markdownReset = {
 <article
   class:list={[
     'relative',
-    'w-full max-w-160',
-    'mx-auto px-8 pt-8 pb-7',
+    'w-[calc(100%+(--spacing(8)))] sm:w-full max-w-144',
+    '-mx-4 sm:mx-auto px-8 pt-8 pb-6',
     'bg-white dark:bg-neutral-850',
     'rounded-4xl sm:rounded-2xl',
   ]}
 >
   <section
-    id="顶部"
     class:list={[
       'relative',
       'flex items-baseline gap-x-3 gap-y-0 flex-wrap',
-      'pr-24 pb-0.5',
+      'pr-20 pb-1.5',
     ]}
   >
     {
@@ -122,6 +122,7 @@ const markdownReset = {
         />
       )
     }
+
     <h1
       id={id}
       class:list={[
@@ -146,34 +147,28 @@ const markdownReset = {
       )
     }
   </section>
-
   <section
     class:list={[
       'w-full',
+      '-mt-1',
       'flex items-center gap-3',
-      'text-sm truncate text-neutral-500 dark:text-neutral-400 leading-[1.75]',
+      'text-sm truncate text-neutral-500 dark:text-neutral-400 leading-[1.625]',
     ]}
   >
-    <time>
-      {dayjs(date.created).format('YYYY 年 MM 月 DD 日')}
-    </time>
+    <time>{dayjs(date.created).format('YYYY 年 MM 月 DD 日')}</time>
   </section>
 
-  {headings && <ArticleTableOfContents headings={headings} />}
+  <span class:list={['flex', 'mt-8']}></span>
   {
-    cover ? (
-      <section class:list={['my-8']}>
-        <WidgetImage src={cover.path} alt={cover.description} />
-      </section>
-    ) : message ? (
+    layout === 'article' && message ? (
       <div
         class:list={[
-          'w-calc[100% + 2rem]',
-          '-mx-4 -mt-4 mt-8 px-4 py-3 sm:py-2.5',
+          'w-[calc(100%+(--spacing(8)))]',
+          '-mx-4 -my-2 px-4 py-3 sm:py-2.5',
           'flex items-center justify-center gap-2',
           'text-sm text-black',
           'bg-yellow-300 dark:bg-yellow-400',
-          'rounded-md',
+          'rounded-full sm:rounded-md',
         ]}
       >
         <Icon
@@ -184,22 +179,23 @@ const markdownReset = {
         <span>{message}</span>
       </div>
     ) : (
-      <Divider class:list={['mt-7 mb-8']} />
+      <Divider />
     )
   }
 
+  <span class:list={['flex', 'mb-8']}></span>
   <Content
     components={{
       ...markdownReset,
       h1: Null,
     }}
   />
+  <span id="底部" class:list={['flex', 'mt-8']}></span>
 
   <section
-    id="底部"
     class:list={[
       'w-full',
-      'mt-8',
+      'py-1',
       'flex items-center gap-3',
       'text-sm truncate text-neutral-500 dark:text-neutral-400',
     ]}
@@ -216,9 +212,9 @@ const markdownReset = {
     }
     <span>{license}</span>
   </section>
-
-  <slot />
 </article>
+
+<slot />
 
 <style>
   @reference "tailwindcss";
@@ -245,5 +241,14 @@ const markdownReset = {
 
   article :global(summary) {
     @apply w-fit font-bold cursor-pointer;
+  }
+
+  article :global(.astro-code) {
+    @apply mx-0 my-4 p-4 rounded-md bg-neutral-100 dark:bg-neutral-900;
+  }
+
+  article > :global(.astro-code) {
+    @apply -mx-4;
+    width: calc(100% + 2rem);
   }
 </style>

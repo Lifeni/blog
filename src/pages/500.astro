@@ -1,13 +1,16 @@
 ---
-import Main from '@components/layout/Main.astro'
-import Root from '@components/ui/Root.astro'
+import Root from '@components/layout/Root.astro'
+import Placeholder from '@components/ui/Placeholder.astro'
 
-const error = {
-  code: '500',
-  text: '服务器出错',
-}
+const code = '500'
+const description = '服务器出错'
 ---
 
-<Root>
-  <Main error={error} />
+<Root
+  name={code}
+  description={description}
+  color="#feec44"
+  favicon="/favicon.svg"
+>
+  <Placeholder code={code} description={description} />
 </Root>

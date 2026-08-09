@@ -52,7 +52,5 @@ export type Moment = {
   date: Date
   camera: string
   location: string
-  exif: string[]
   path: ImageMetadata
-  edited?: boolean
 }

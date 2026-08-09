@@ -1,0 +1,33 @@
+---
+interface Props {
+  href?: string
+  class?: string
+}
+const { href, class: className } = Astro.props
+
+const Element = href ? 'a' : 'div'
+---
+
+<Element
+  href={href}
+  target={href ? (href.startsWith('http') ? '_blank' : '_self') : ''}
+  rel={href
+    ? href.startsWith('http')
+      ? 'nofollow noopener noreferrer'
+      : ''
+    : ''}
+  class:list={[
+    'z-1',
+    'w-full',
+    'text-neutral-950 dark:text-neutral-100',
+    'bg-white dark:bg-neutral-850',
+    'focus-visible:outline-yellow-500 dark:focus-visible:outline-yellow-400 focus-visible:outline-4 focus-visible:outline-offset-1',
+    'no-underline',
+    href ? 'hover:shadow-2xl/10' : '',
+    'rounded-2xl',
+    'transition-all',
+    className,
+  ]}
+>
+  <slot />
+</Element>

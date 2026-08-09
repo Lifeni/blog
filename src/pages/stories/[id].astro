@@ -1,7 +1,7 @@
 ---
-import Main from '@components/layout/Main.astro'
-import ArticleCard from '@components/notebook/article/ArticleCard.astro'
-import ArticleMarkdown from '@components/notebook/article/ArticleMarkdown.astro'
+import ArticleContent from '@components/notebook/article/ArticleContent.astro'
+import ArticleLink from '@components/notebook/article/ArticleLink.astro'
+import TableOfContents from '@components/notebook/article/TableOfContents.astro'
 import Layout from '@components/notebook/Layout.astro'
 import { frontmatterFormat } from '@libs/utils'
 import { Icon } from 'astro-icon/components'
@@ -38,60 +38,62 @@ const allArticles = [...storyArticles, ...storyArchives]
 ---
 
 <Layout name={story.data.name} description={story.data.description}>
-  <Main class:list={['sm:px-6 sm:py-4']}>
-    <ArticleMarkdown
-      {...story.data}
-      id={headings[0].slug}
-      date={{
-        created: story.data.date.created,
-        updated:
-          allArticles.length > 0
-            ? allArticles[0].date.created
-            : story.data.date.updated,
-      }}
-      cover={{
-        path: story.data.cover?.path,
-        description: story.data.cover?.description || '',
-      }}
-      content={Content}
-      icon="ri:chat-thread-fill"
-    />
-    {
-      storyArticles.length > 0 && (
-        <section
+  <ArticleContent
+    {...story.data}
+    id={headings[0].slug}
+    date={{
+      created: story.data.date.created,
+      updated:
+        allArticles.length > 0
+          ? allArticles[0].date.created
+          : story.data.date.updated,
+    }}
+    cover={{
+      path: story.data.cover?.path,
+      description: story.data.cover?.description || '',
+    }}
+    content={Content}
+    icon="ri:chat-thread-fill"
+    layout="story"
+  />
+  {
+    storyArticles.length > 0 && (
+      <section
+        class:list={['w-full max-w-144', 'mx-auto', 'flex flex-col gap-4']}
+      >
+        <div
           class:list={[
-            'w-full max-w-160',
-            'mx-auto px-4 sm:px-0',
-            'flex flex-col',
+            'flex flex-col justify-center items-center gap-1',
+            'px-4',
+            'text-sm text-center text-neutral-500 dark:text-neutral-400',
           ]}
         >
-          <div
-            class:list={[
-              'flex flex-col justify-center items-center gap-1',
-              'px-4 py-6',
-              'text-sm text-center text-neutral-500 dark:text-neutral-400',
-            ]}
-          >
-            <span class:list={['flex', 'whitespace-nowrap']}>
-              包含 {allArticles.length} 篇文章
-            </span>
-            <Icon
-              aria-hidden="true"
-              name="ri:arrow-down-double-line"
-              class:list={['w-4 h-4']}
-            />
-          </div>
+          <span class:list={['flex', 'whitespace-nowrap']}>
+            包含 {allArticles.length} 篇文章
+          </span>
+          <Icon
+            aria-hidden="true"
+            name="ri:arrow-down-double-line"
+            class:list={['w-4 h-4']}
+          />
+        </div>
 
-          <ul class:list={['w-full', 'm-0 p-0', 'flex flex-col gap-4']}>
-            {allArticles.map(article => (
-              <ArticleCard
-                article={article}
-                path={article.type === '存档' ? 'archives' : 'articles'}
-              />
-            ))}
-          </ul>
-        </section>
-      )
-    }
-  </Main>
+        <ul
+          class:list={[
+            'w-full',
+            'm-0 p-0',
+            'grid grid-cols-1 sm:grid-cols-1 gap-4',
+          ]}
+        >
+          {allArticles.map(article => (
+            <ArticleLink
+              article={article}
+              path={article.type === '存档' ? 'archives' : 'articles'}
+            />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+  {headings && <TableOfContents slot="[+]" headings={headings} />}
 </Layout>
