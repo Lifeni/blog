@@ -10,7 +10,8 @@
       "@components/*": ["./src/components/*"],
       "@content/*": ["./src/content/*"],
       "@libs/*": ["./src/libs/*"],
-      "@pages/*": ["./src/pages/*"]
+      "@pages/*": ["./src/pages/*"],
+      "@src/*": ["./src/*"]
     }
   }
 }

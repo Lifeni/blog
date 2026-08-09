@@ -3,10 +3,10 @@ import Divider from '@components/ui/Divider.astro'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import dayjs from 'dayjs'
-import type { Moment } from 'src/content'
+import type { Moment } from '@src/content'
 
 interface Props extends Moment {}
-const { name, date, location, path, camera, exif, edited } = Astro.props
+const { name, date, location, path, camera } = Astro.props
 
 const isLandscape = path.width > path.height
 ---
